@@ -27,7 +27,7 @@
     "dev:https": "gatsby develop --https --host localhost.corp.adobe.com --port 9000",
     "build": "gatsby build",
     "serve": "gatsby serve",
-    "clean": "gatsby clean"
+    "clean": "gatsby clean",
     "test:links": "remark src/pages --quiet --frail"
   },
   "remarkConfig": {
