@@ -3,7 +3,9 @@ title: Commerce Services
 description: Review resources for working with Adobe Commerce services
 ---
 
-<Hero slots="heading, text" background="rgb(244, 111, 37)"/>
+<Hero slots="image, heading, text"/>
+
+![Commerce Services](_images/home-bg.jpeg)
 
 # Commerce Services
 
