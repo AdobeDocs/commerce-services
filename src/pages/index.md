@@ -1,6 +1,6 @@
 ---
 title: Commerce Services
-description: Review resources for working with Services for Adobe Commerce.
+description: Review resources for working with Adobe Commerce services.
 ---
 
 <Hero slots="image, heading, text"/>
