@@ -1,6 +1,6 @@
 ---
 title: Adobe Commerce Event Collector | Commerce Services
-description: Learn how to listen for (and handle) ADobe Commerce storefront events emitted by the events SDK.
+description: Learn how to listen for (and handle) Adobe Commerce storefront events emitted by the events SDK.
 edition: ee
 ---
 
