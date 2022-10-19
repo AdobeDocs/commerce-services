@@ -1,8 +1,11 @@
 ---
-group: shared-services
-title: Subscribe - Adobe Commerce Event SDK Reference
-ee_only: True
+title: Subscribe to storefront events | Commerce Services
+description: Learn how to programmatically subscribe to Adobe Commerce storefront events.
+edition: ee
 ---
+
+Subscribe to storefront events
+
 ## Functions
 
 The following functions subscribe to events.

@@ -1,8 +1,10 @@
 ---
-group: shared-services
-title: Unsubscribe - Adobe Commerce Event SDK Reference
-ee_only: True
+title: Unsubscribe from storefront events | Commerce Services
+description: Learn how to programmatically unsubscribe from Adobe Commerce storefront events.
+edition: ee
 ---
+
+# Unsubscribe from storefront events
 
 ## Functions
 

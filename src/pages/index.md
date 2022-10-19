@@ -1,6 +1,6 @@
 ---
 title: Commerce Services
-description: Review resources for working with Adobe Commerce services
+description: Review resources for working with Services for Adobe Commerce.
 ---
 
 <Hero slots="image, heading, text"/>
@@ -9,15 +9,14 @@ description: Review resources for working with Adobe Commerce services
 
 # Commerce Services
 
-Lorem ipsum dolor sit amet
+Adobe provides a collection of services to help merchants support key components of their business. Learn how to programmatically interact with these services.
 
 <Resources slots="heading, links"/>
 
 ## Resources
 
-*  [X](https://developer.adobe.com)
-*  [Y](https://developer.adobe.com)
-*  [Z](https://developer.adobe.com)
+*  [Services user guides](https://experienceleague.adobe.com/docs/commerce-merchant-services/user-guides/home.html)
+*  [Commerce Admin user guide](https://experienceleague.adobe.com/docs/commerce-admin/user-guides/home.html)
 
 ## Overview
 
@@ -31,16 +30,16 @@ Use these sections to learn about how to develop PHP extensions.
 
 ### Sections
 
-[Live Search](live-search/)
+<!-- [Live Search](live-search/)
 
 Lorem ipsum dolor sit amet
 
-<DiscoverBlock slots="link, text"/>
+<DiscoverBlock slots="link, text"/> -->
 
 [Shared services](shared-services/)
 
-Lorem ipsum dolor sit amet
+Explore common tools and SDKs shared across Services for Adobe Commerce
 
 ## Contributing to this documentation
 
-We encourage you to participate in our open documentation initiative. If you have suggestions, corrections, additions, or deletions for this documentation, check out the source on [GitHub](https://github.com/adobedocs/commerce-php), and open a pull request.
+We encourage you to participate in our open documentation initiative. If you have suggestions, corrections, additions, or deletions for this documentation, check out the source on [GitHub](https://github.com/adobedocs/commerce-services), and open a pull request.

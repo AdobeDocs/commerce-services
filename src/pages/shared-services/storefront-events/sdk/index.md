@@ -1,10 +1,12 @@
 ---
-group: shared-services
-title: Adobe Commerce Event SDK
-ee_only: True
+title: Adobe Commerce Events SDK | Commerce Services
+description: Learn how to programmatically publish and subscribe to Adobe Commerce storefront events.
+edition: ee
 ---
 
-This package serves as the foundation for eventing on an [{{site.data.var.ee}}](https://business.adobe.com/products/magento/magento-commerce.html) storefront. It provides access to a common data layer, and an event publishing and subscription service. Handling these events is up to you, but we provide the [Adobe Commerce Event Collector]({{ site.baseurl }}/shared-services/storefront-event-collector.html) package that can listen for events and send them to {{site.data.var.ee}} for processing.
+# Adobe Commerce Events SDK
+
+This package serves as the foundation for eventing on an [Adobe Commerce](https://business.adobe.com/products/magento/magento-commerce.html) storefront. It provides access to a common data layer, and an event publishing and subscription service. Handling these events is up to you, but we provide the [Adobe Commerce Event Collector](../collector/index.md) package that can listen for events and send them to Adobe Commerce for processing.
 
 ## Installation
 
@@ -26,14 +28,15 @@ npm install @adobe/magento-storefront-events-sdk
 
 Once imported, you have access to the four main functions of the Events SDK.
 
--  [Context]({{ site.baseurl }}/shared-services/storefront-events-api-ref-context.html) - Set context data
--  [Publish]({{ site.baseurl }}/shared-services/storefront-events-api-ref-publish.html) - Publish events
--  [Subscribe]({{ site.baseurl }}/shared-services/storefront-events-api-ref-subscribe.html) - Subscribe to events
--  [Unsubscribe]({{ site.baseurl }}/shared-services/storefront-events-api-ref-unsubscribe.html) - Unsubscribe from events
+-  [Context](context.md) - Set context data
+-  [Publish](publish.md) - Publish events
+-  [Subscribe](subscribe.md) - Subscribe to events
+-  [Unsubscribe](unsubscribe.md) - Unsubscribe from events
 
 The following code example shows how to get started.
 
-{:.bs-callout-warning}
+<InlineAlert variant="warning" slots="text" />
+
 Relevant context data must be populated before publishing events that require it.
 
 ```javascript
@@ -51,6 +54,7 @@ mse.publish.pageView();
 // unsubscribe from events
 mse.unsubscribe.pageView(pageViewHandler);
 ```
+
 ## Support
 
 If you have any questions or encounter any issues, reach out here:

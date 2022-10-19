@@ -1,8 +1,10 @@
 ---
-group: shared-services
-title: Publish - Adobe Commerce Event SDK Reference
-ee_only: True
+title: Publish storefront events | Commerce Services
+description: Learn how to programmatically publish Adobe Commerce storefront events.
+edition: ee
 ---
+
+# Publish storefront events
 
 ## Functions
 

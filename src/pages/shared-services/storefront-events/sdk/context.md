@@ -1,8 +1,10 @@
 ---
-group: shared-services
-title: Context - Adobe Commerce Event SDK Reference
-ee_only: True
+title: Context for storefront events | Commerce Services 
+description: Learn how to programmatically get and set context for Adobe Commerce storefront events.
+edition: ee
 ---
+
+# Context for storefront events
 
 ## Functions
 
