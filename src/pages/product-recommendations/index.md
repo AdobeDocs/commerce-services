@@ -11,7 +11,7 @@ If you need to programmatically access product recommendations for your storefro
 
 ### Dependencies
 
-Before installing the Product Recommendations JavaScript SDK, make sure you have installed the [DataServices Module](https://github.com/magento/data-services-eap/tree/master/DataServices/docs/README.md#how-to-enroll) and the [Catalog SaaS Export module](https://gist.github.com/erikmarr/36a9f293dc78fefa2ec567c4b48bddee).
+Before installing the Product Recommendations JavaScript SDK, make sure you have installed the [DataServices Module](https://github.com/magento/data-services-eap/tree/master/DataServices/docs/README.md#how-to-enroll) and the [Catalog SaaS Export module](catalog-saas-export-module.md).
 
 ### Product Recommendations JavaScript SDK
 
