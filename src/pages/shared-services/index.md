@@ -1,8 +1,8 @@
 ---
 title: Shared Services | Commerce Services
-description: placeholder 
+description: Explore tools and SDKs shared across Adobe Commerce services.
 ---
 
-# Introduction
+# Shared services
 
-Lorem ipsum dolor sit amet
+Explore common tools and SDKs shared across Adobe Commerce services.
