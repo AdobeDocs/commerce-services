@@ -1,6 +1,6 @@
 ---
 title: Install and Configure the Catalog SaaS Export Module
-description: 
+description: Learn how to install and configure the SaaSExport module
 ---
 
 # Install and Configure the Catalog SaaS Export Module
