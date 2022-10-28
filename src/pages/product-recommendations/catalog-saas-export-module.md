@@ -1,6 +1,6 @@
 ---
 title: Install and Configure the Catalog SaaS Export Module
-description: Learn how to install and configure the SaaSExport module
+description: Learn how to install and configure the SaaS Export module
 ---
 
 # Install and Configure the Catalog SaaS Export Module
@@ -11,7 +11,7 @@ This topic is a requirement to successfully use the [Product Recommendations JS 
 
 This module requires Magento 2.3 or later.
 
-## To Install the SaasExport Module using Composer:
+## To Install the Saas Export Module using Composer:
 
 1. Update your `composer.json` file in the Magento root installation directory to provide the location of the Saas Export module.
 
