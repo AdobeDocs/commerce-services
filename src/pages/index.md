@@ -7,7 +7,7 @@ description: Review resources for working with Adobe Commerce services.
 
 ![Commerce Services](_images/home-bg.jpeg)
 
-# Commerce Servicesdeveloper
+# Commerce Services developer
 
 Adobe provides a collection of services to help merchants support key components of their business. Learn how to programmatically interact with these services.
 
