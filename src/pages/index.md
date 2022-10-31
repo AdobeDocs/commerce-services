@@ -7,7 +7,7 @@ description: Review resources for working with Adobe Commerce services.
 
 ![Commerce Services](_images/home-bg.jpeg)
 
-# Commerce Services
+# Commerce Servicesdeveloper
 
 Adobe provides a collection of services to help merchants support key components of their business. Learn how to programmatically interact with these services.
 
@@ -35,6 +35,10 @@ Use these sections to learn about how to develop PHP extensions.
 Lorem ipsum dolor sit amet
 
 <DiscoverBlock slots="link, text"/> -->
+
+[Commerce Reporting API](reporting/)
+
+Learn how to import data into your Commerce data warehouse and export raw data from your Commerce Reporting dashboards
 
 [Shared services](shared-services/)
 
