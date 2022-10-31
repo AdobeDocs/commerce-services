@@ -7,10 +7,11 @@
     "url": "https://github.com/AdobeDocs/commerce-services"
   },
   "dependencies": {
-    "@adobe/gatsby-theme-aio": "4.6.4",
+    "@adobe/gatsby-theme-aio": "4.6.6",
     "gatsby": "4.22.0",
     "react": "^17.0.0",
-    "react-dom": "^17.0.0"
+    "react-dom": "^17.0.0",
+    "yarn": "^1.22.19"
   },
   "devDependencies": {
     "remark-cli": "^10.0.1",
@@ -30,5 +31,6 @@
     "plugins": [
       "remark-validate-links"
     ]
-  }
+  },
+  "packageManager": "yarn@3.2.4"
 }
