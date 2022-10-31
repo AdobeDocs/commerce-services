@@ -8,6 +8,10 @@ module.exports = [
     //   path: "/live-search/",
     // },
     {
+      title: "Reporting",
+      path: "/reporting/",
+    },
+    {
       title: "Shared Services",
       path: "/shared-services/",
     },
