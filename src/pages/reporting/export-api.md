@@ -4,7 +4,7 @@ description: Learn how to access the raw data behind your Adobe Commerce Reporti
 ---
 
 # Export API
-​
+
 The Adobe Commerce Reporting Export API allows you to access some of the raw data behind your Adobe Commerce Reporting dashboard.
 
 Before using the export API, make sure you [authenticate](index.md#authentication) your connection.

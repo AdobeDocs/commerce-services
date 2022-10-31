@@ -9,9 +9,9 @@ You can use the Adobe Commerce Reporting API to [import](import-api.md) data int
 
 The API is entirely HTTP-based. Methods are defined by an HTTP verb (GET, POST, PUT, DELETE), a URL, and a set of arguments. The response HTTP status code will be `200-Success` for all successful requests, unless otherwise specified. This API accepts and returns valid JSON for all its methods.
 
-To make integrating with the API easier, you can use one of the following [libraries](../docs/libraries.html).
+To make integrating with the API easier, you can use one of the following [libraries](libraries.md).
 
-## Authentication {#authentication}
+## Authentication
 
 Adobe Commerce Reporting API calls require an authorization token. The token must be passed in the HTTP header of every request, which allows Adobe Commerce to verify that the caller is authorized to access a system resource. You must use two different tokens depending on if you are using the import API or the export API.
 

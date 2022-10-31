@@ -511,7 +511,7 @@ Finally, incorporate the `syncUser` function into the original script.
             print "Failed to sync user with id ", user["id"]
 ```
 
-This example is included with the [client libraries](../docs/libraries.html) or can be [downloaded from github](https://github.com/rjmetrics).
+This example is included with the [client libraries](libraries.md) or can be [downloaded from github](https://github.com/rjmetrics).
 
 **Javascript:**
 
