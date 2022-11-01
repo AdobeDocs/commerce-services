@@ -1,6 +1,7 @@
 ---
 title: Product Recommendations SDK
 description: Learn how to use the Product Recommendations SDK with Adobe Commerce to fetch recommendations programmatically in the browser.
+edition: ee
 ---
 
 # Product Recommendations SDK
