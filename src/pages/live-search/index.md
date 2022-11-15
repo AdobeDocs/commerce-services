@@ -15,3 +15,9 @@ The [_Adobe Commerce Event SDK_](../shared-services/storefront-events/sdk/) prov
 |`searchResponseReceived`|Triggered when Live Search returns results for the "search as you type" popover or search results page.|
 |`searchResultsView`|Triggered when results appear in the "search as you type" popover or search results page.|
 |`searchSuggestionClick`|Triggered when a shopper clicks a product suggestion in the "search as you type" popover.|
+
+## Related information
+
+*  [Introduction to Live Search](https://experienceleague.adobe.com/docs/commerce-merchant-services/live-search/overview.html?lang=en)
+
+* [GraphQL queries](https://developer.adobe.com/commerce/webapi/graphql/schema/live-search/)
