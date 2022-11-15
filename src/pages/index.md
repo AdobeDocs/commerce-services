@@ -51,7 +51,7 @@ Learn how to use the Product Recommendations SDK with Adobe Commerce to fetch re
 
 [Commerce Reporting API](reporting/)
 
-Learn how to import data into your Commerce data warehouse and export raw data from your Commerce Reporting dashboards
+Learn how to import data into your Commerce data warehouse and export raw data from your Commerce Reporting dashboards.
 
 ## Contributing to this documentation
 
