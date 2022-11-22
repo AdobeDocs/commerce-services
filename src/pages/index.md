@@ -17,6 +17,7 @@ Adobe provides a collection of services to help merchants support key components
 
 *  [Services user guides](https://experienceleague.adobe.com/docs/commerce-merchant-services/user-guides/home.html)
 *  [Commerce Admin user guide](https://experienceleague.adobe.com/docs/commerce-admin/user-guides/home.html)
+*  [GraphQL Developer Guide](https://developer.adobe.com/commerce/webapi/graphql/)
 
 ## Overview
 
@@ -30,19 +31,27 @@ Use these sections to learn about how to develop PHP extensions.
 
 ### Sections
 
-<!-- [Live Search](live-search/)
+[Shared services](shared-services/)
 
-Lorem ipsum dolor sit amet
+Explore common tools and SDKs shared across Services for Adobe Commerce.
 
-<DiscoverBlock slots="link, text"/> -->
+<DiscoverBlock slots="link, text"/>
+
+[Live Search](live-search/)
+
+Lists the events defined in the Adobe Commerce Event SDK that are applicable to Live Search.
+
+<DiscoverBlock slots="link, text"/>
+
+[Product Recommendations](product-recommendations/)
+
+Learn how to use the Product Recommendations SDK with Adobe Commerce to fetch recommendations programmatically in the browser.
+
+<DiscoverBlock slots="link, text"/>
 
 [Commerce Reporting API](reporting/)
 
-Learn how to import data into your Commerce data warehouse and export raw data from your Commerce Reporting dashboards
-
-[Shared services](shared-services/)
-
-Explore common tools and SDKs shared across Services for Adobe Commerce
+Learn how to import data into your Commerce data warehouse and export raw data from your Commerce Reporting dashboards.
 
 ## Contributing to this documentation
 

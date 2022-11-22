@@ -1,6 +1,6 @@
 module.exports = [
   {
-    title: "Introduction",
+    title: "Live Search Events",
     path: "/live-search/",
   },
 ];
