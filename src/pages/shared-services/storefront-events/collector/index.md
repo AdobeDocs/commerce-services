@@ -10,7 +10,7 @@ This package listens for and handles events sent from the [Adobe Commerce Events
 
 ## Installation
 
-The collector can be used as a hosted script, or bundled in a JavaScript application. The script version is hosted on [unpkg](https://unpkg.com/@adobe/magento-storefront-event-collector@1.0.0/dist/index.js), and the bundled version is hosted on [npm](https://www.npmjs.com/package/@adobe/magento-storefront-event-collector).
+The collector can be used as a hosted script, or bundled in a JavaScript application. The script version is hosted on [unpkg](https://unpkg.com/@adobe/magento-storefront-event-collector@1.2.1/dist/index.js), and the bundled version is hosted on [npm](https://www.npmjs.com/package/@adobe/magento-storefront-event-collector).
 
 To load the SDK as a script, use the following snippet.
 
@@ -26,31 +26,46 @@ npm install @adobe/magento-storefront-event-collector
 
 ## Quick Start
 
-After loading the collector script, or importing the package as shown below, there is nothing else that needs to be done.
+After loading the collector script, or importing the package as shown below, there is nothing else to configure.
 
 ```bash
 import "@adobe/magento-storefront-event-collector";
 ```
 
-The collector then begins listening for the following events. When any of these events are fired, the collector runs the associated handler and sends the event along with any relevant information to Adobe Commerce for further processing.
+The collector then begins listening for events. When these events are fired, the collector runs the associated handler and sends the event along with any relevant information to Adobe Commerce for further processing.
 
--  `addToCart`
--  `instantPurchase`
--  `pageView`
--  `placeOrder`
--  `productPageView`
--  `recsItemAddToCartClick`
--  `recsItemClick`
--  `recsRequestSent`
--  `recsResponseReceived`
--  `recsUnitRender`
--  `recsUnitView`
--  `searchProductClick`
--  `searchRequestSent`
--  `searchResponseReceived`
--  `searchResultsView`
--  `searchSuggestionClick`
--  `shoppingCartView`
+The following table lists supported and unsupported events for Luma/PHP and PWA sites on the Snowplow or Beacon event frameworks.
+
+| Event| Luma/PHP Commerce |   Luma/PHP Commerce    | PWA   |  PWA     |
+| --- | --- | --- | --- | --- |
+|      | Commerce ("Snowplow")      | Experience Cloud ("Beacon")| Commerce ("Snowplow")      | Experience Cloud ("Beacon")|
+|      |       |       |       |       |
+| [b2b] add to requisition list | ❌     | PDP<br>PLP<br>Cart<br>Account              | ❌     | ❌     |
+| [b2b] create requisition list | ❌     | PDP<br>PLP<br>Cart<br>Account              | ❌     | ❌     |
+| [b2b] delete requisition list | ❌     | Account           | ❌     | ❌     |
+| cart open     | ❌     | PDP<br>PLP (Browse)<br>PLP (Search results)<br>Cart    | ❌     | ❌     |
+| cart view     | Cart  | Cart  | Cart  | Cart<br>Mini cart |
+| complete checkout             | Checkout          | Checkout          | Checkout          | Checkout          |
+| create account| ❌     | Account           | ❌     | Account           |
+| edit account  | ❌     | Account           | ❌     | Account           |
+| page view     | Landing page<br>PDP<br>PLP (Browse)<br>PLP (Search results)<br>Cart<br>Checkout | Landing page<br>PDP<br>PLP (Browse)<br>PLP (Search results)<br>Cart<br>Checkout | Landing page<br>PDP<br>PLP (Browse)<br>PLP (Search results)<br>Cart<br>Checkout | Landing page<br>PDP<br>PLP (Browse)<br>PLP (Search results)<br>Cart<br>Checkout |
+| product add to cart           | PDP<br>PLP (Browse)<br>PLP (Search results)<br>Cart    | PDP<br>PLP (Browse)<br>PLP (Search results)<br>Cart    | PDP   | PDP   |
+| product remove from cart      | ❌     | Cart  | ❌     | ❌     |
+| product view  | PDP   | PDP   | PDP   | PDP   |
+| recs item add to cart         | Recs carousel       | ❌     | Recs carousel       | ❌     |
+| recs item click               | Recs carousel       | ❌     | Recs carousel       | ❌     |
+| recs request sent             | Recs carousel       | ❌     | Recs carousel       | ❌     |
+| recs response received        | Recs carousel       | ❌     | Recs carousel       | ❌     |
+| recs unit render              | Recs carousel       | ❌     | Recs carousel       | ❌     |
+| recs unit view| Recs carousel       | ❌     | Recs carousel       | ❌     |
+| search category click         | Search popover    | ❌     | ❌     | ❌     |
+| search product click          | Search popover    | ❌     | ❌     | ❌     |
+| search request sent           | Search popover<br>PLP (Browse)<br>PLP (Search results) | Search popover<br>PLP (Browse)<br>PLP (Search results) | ❌     | ❌     |
+| search response received      | Search popover<br>PLP (Browse)<br>PLP (Search results) | Search popover<br>PLP (Browse)<br>PLP (Search results) | ❌     | ❌     |
+| search results view           | Search popover<br>PLP (Browse)<br>PLP (Search results) | ❌     | ❌     | ❌     |
+| sign in       | ❌     | Account           | ❌     | Account           |
+| sign out      | ❌     | ❌     | ❌     | ❌     |
+| start checkout| Cart  | Cart  | Cart  | Cart<br>Mini cart |
 
 ## Support
 
