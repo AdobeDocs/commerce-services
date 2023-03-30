@@ -40,7 +40,7 @@ The list of supported events can differ between eventing frameworks. The followi
 
 ### Event names by framework
 
-| Event| Storefront Events SDK (adobeDataLayer) | Commerce (Snowplow)| AEP/Beacon   |
+| Event| Storefront Events SDK (adobeDataLayer) | Commerce (Snowplow)| Adobe Experience Platform   |
 | --- | --- | --- | --- |
 | add to requisition list      | addToRequisitionList    | ❌    | xdm namespace: commerce<br>xdm type: requisitionListAdds     |
 | cart open     | openCart  | ❌    | xdm namespace: commerce<br>xdm type: productListOpens        |
@@ -71,7 +71,7 @@ The list of supported events can differ between eventing frameworks. The followi
 
 ### Event support by framework
 
-| Event | Luma/PHP  ("Snowplow")  | Luma/PHP Experience Cloud ("Beacon")   | PWA Commerce ("Snowplow")| PWA Experience Cloud ("Beacon")   |
+| Event | Luma/PHP  ("Snowplow")  | Luma/PHP Adobe Experience Platform  | PWA Commerce ("Snowplow")| PWA Adobe Experience Platform  |
 | --- | --- | --- | --- | --- |
 | add to requisition list  | ❌ | PDP<br>PLP<br>Cart<br>Account | ❌ | ❌ |
 | cart open  | ❌ | PDP<br>PLP (Browse)<br>PLP (Search results)<br>Cart  | ❌ | ❌ |
