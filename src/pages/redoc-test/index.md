@@ -1,4 +1,4 @@
 ---
 title: Adobe Commerce
-openAPISpec: /redoc-test/guest-schema-2.4.6.yaml
+openAPISpec: https://raw.githubusercontent.com/AdobeDocs/commerce-services/redoc-test/src/pages/redoc-test/guest-schema-2.4.6.yaml
 ---
