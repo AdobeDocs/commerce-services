@@ -1,4 +1,4 @@
 ---
 title: Adobe Commerce
-openAPISpec: https://raw.githubusercontent.com/AdobeDocs/commerce-webapi/main/src/openapi/guest-schema-2.3.7.yaml
+openAPISpec: /redoc-test/guest-schema-2.4.6.yaml
 ---
