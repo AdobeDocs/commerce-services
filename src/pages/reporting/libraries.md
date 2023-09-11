@@ -1,6 +1,10 @@
 ---
 title: Adobe Commerce Reporting API Libraries | Commerce Services
 description: Learn how to integrate with the Adobe Commerce Reporting API with one of our client libraries.
+keywords:
+  - Reporting
+  - REST
+  - Services
 ---
 
 # Libraries

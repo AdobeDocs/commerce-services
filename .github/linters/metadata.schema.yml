@@ -27,8 +27,14 @@ properties:
         - Inventory
         - Payments
         - Performance
+        - Personalization
+        - Recommendations
+        - Reporting
         - REST
+        - Search
         - Security
+        - Services
+        - Storefront
         - Tools
         - Upgrade
 

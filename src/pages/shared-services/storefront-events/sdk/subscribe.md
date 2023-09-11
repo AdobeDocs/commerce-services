@@ -2,6 +2,10 @@
 title: Subscribe to storefront events | Commerce Services
 description: Learn how to programmatically subscribe to Adobe Commerce storefront events.
 edition: ee
+keywords:
+  - Events
+  - Services
+  - Storefront
 ---
 
 Subscribe to storefront events

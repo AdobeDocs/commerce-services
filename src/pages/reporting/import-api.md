@@ -1,6 +1,10 @@
 ---
 title: Adobe Commerce Reporting Import API | Commerce Services
 description: Learn how to push arbitrary data into your data warehouse using REST.
+keywords:
+  - Reporting
+  - REST
+  - Services
 ---
 
 # Import API
