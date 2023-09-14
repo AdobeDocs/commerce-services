@@ -1,6 +1,10 @@
 ---
 title: Storefront events | Commerce Services
 description: Learn how to use the storefront events SDK and collector package to programmatically access Adobe Commerce storefront events.
+keywords:
+  - Events
+  - Services
+  - Storefront
 ---
 
 # Adobe Commerce storefront events
