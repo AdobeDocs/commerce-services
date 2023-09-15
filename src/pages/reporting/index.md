@@ -1,6 +1,10 @@
 ---
 title: Adobe Commerce Reporting API | Commerce Services
 description: Learn how to import data into your Adobe Commerce data warehouse and export raw data from your Adobe Commerce Reporting dashboards.
+keywords:
+  - Reporting
+  - REST
+  - Services
 ---
 
 # Adobe Commerce Reporting API
