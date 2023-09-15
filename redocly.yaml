@@ -1,0 +1,6 @@
+organization: adobe-developers
+extends:
+    - minimal
+apis:
+  Feed Ingestion Service:
+    root: src/openapi/openapi.yaml
