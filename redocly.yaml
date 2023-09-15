@@ -2,5 +2,5 @@ organization: adobe-developers
 extends:
     - minimal
 apis:
-  Feed Ingestion Service:
+  Future API Name:
     root: src/openapi/openapi.yaml
