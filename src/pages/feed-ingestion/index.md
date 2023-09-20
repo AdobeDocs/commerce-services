@@ -1,5 +1,5 @@
 ---
-title: Adobe Commerce
-description: This is an OpenAPI test.
-openAPISpec: /spec.yaml
+title: Adobe Commerce Feed Ingestion REST endpoints
+description: Reference information for Adobe Commerce Feed Ingestion REST endpoints.
+openAPISpec: /feed-ingestion.yaml
 ---
