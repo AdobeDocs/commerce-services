@@ -1,0 +1,2622 @@
+openapi: 3.0.3
+info:
+  title: Feed Ingestion Service
+  description: Feed Ingestion Service for Adobe Commerce is responsible for ingesting data from Adobe Commerce into the Adobe Commerce SaaS Platform.
+  version: 1.0.0
+servers:
+  - url: https://commerce.adobe.io/feeds/
+    description: Production Server
+
+tags:
+  - name: metadata
+    description: Product Metadata API
+  - name: scopes
+    description: Scope Feed API
+  - name: products
+    description: Product Feed Resource
+  - name: categories
+    description: Category Feed API
+paths:
+  /feeds/categories/v1/{environmentId}:
+    post:
+      tags:
+        - categories
+      summary: Category Feed API
+      description: Register or update categories in the scope of the Store View
+      operationId: PostV1CategoryFeed
+      parameters:
+        - name: environmentId
+          in: path
+          description: environmentId
+          required: true
+          style: simple
+          schema:
+            type: string
+        - name: Content-Type
+          in: header
+          required: true
+          schema:
+            type: string
+            enum: [application/json]
+        - name: x-api-key
+          in: header
+          required: true
+          schema:
+            type: string
+          description: Production public API key
+        - name: x-gw-signature
+          in: header
+          required: true
+          schema:
+            type: string
+          description: JWT generated for Production public API key
+        - name: Content-Encoding
+          in: header
+          required: false
+          schema:
+            type: string
+            enum: [gzip]
+          description: Use this header if the payload is compressed with gzip
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/FeedCategory'
+            examples:
+              FeedWithCategoryInformation:
+                summary: Example of category information
+                description: Example of category information
+                value:
+                  [
+                    {
+                      "categoryId": "2",
+                      "storeViewCode": "default",
+                      "storeCode": "main_website_store",
+                      "websiteCode": "base",
+                      "name": "Default Category",
+                      "description": "Welcome text",
+                      "displayMode": "PRODUCTS",
+                      "urlKey": "default-category",
+                      "image": null,
+                      "level": 1,
+                      "path": "1\/2",
+                      "parentId": "1",
+                      "children": [
+                        "3"
+                      ],
+                      "position": 1,
+                      "defaultSortBy": "position",
+                      "availableSortBy": null,
+                      "isAnchor": 0,
+                      "includeInMenu": 1,
+                      "isActive": 1,
+                      "createdAt": "2022-07-14 21:27:22",
+                      "updatedAt": "2023-07-21 15:18:17",
+                      "modifiedAt": "2023-03-22 18:32:48"
+                    },
+                    {
+                      "categoryId": "3",
+                      "storeViewCode": "default",
+                      "storeCode": "main_website_store",
+                      "websiteCode": "base",
+                      "name": "demo-category",
+                      "urlKey": "demoCategory",
+                      "urlPath": "demoCategory",
+                      "image": null,
+                      "level": 2,
+                      "path": "1\/2\/3",
+                      "parentId": "2",
+                      "children": null,
+                      "position": 2,
+                      "defaultSortBy": "position",
+                      "availableSortBy": null,
+                      "isAnchor": 1,
+                      "includeInMenu": 1,
+                      "isActive": 1,
+                      "createdAt": "2022-07-14 22:01:15",
+                      "updatedAt": "2023-03-22 18:32:48",
+                      "modifiedAt": "2023-03-22 18:32:48"
+                    }
+                  ]
+      responses:
+        '200':
+          description: Request accepted. Check the "invalidFeedItems" node for any invalid items that were not consumed
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/ProcessFeedResponse'
+        '400':
+          description: All feed items received were not valid. Check response body for errors
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/400ProcessFeedResponse'
+
+        '403':
+          description: Unauthorized request. Check that the "x-api-key" is correct and validate the JWT is not expired in "x-gw-signature"
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/403Response'
+
+  /feeds/metadata/v2/metadata/{environmentId}:
+    post:
+      tags:
+        - metadata
+      summary: Product Metadata API
+      description: Register or updates product attribute metadata
+      operationId: PostV2ProductMetadata
+      parameters:
+        - name: environmentId
+          in: path
+          description: environmentId
+          required: true
+          style: simple
+          schema:
+            type: string
+        - name: Content-Type
+          in: header
+          required: true
+          schema:
+            type: string
+            enum: [application/json]
+        - name: x-api-key
+          in: header
+          required: true
+          schema:
+            type: string
+          description: Production public API key
+        - name: x-gw-signature
+          in: header
+          required: true
+          schema:
+            type: string
+          description: JWT generated for Production public API key
+        - name: Content-Encoding
+          in: header
+          required: false
+          schema:
+            type: string
+            enum: [gzip]
+          description: Use this header if the payload is compressed with gzip
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/FeedMetadata'
+            examples:
+              FeedWithMetadataInformation:
+                summary: Example of product and category attributes
+                description: Enabled the feed with product attribute information
+                value:
+                  [
+                    {
+                      "id": "219",
+                      "storeCode": "main_website_store",
+                      "websiteCode": "base",
+                      "storeViewCode": "default",
+                      "attributeCode": "name",
+                      "attributeType": "catalog_product",
+                      "dataType": "varchar",
+                      "multi": false,
+                      "label": "Product Name",
+                      "frontendInput": "text",
+                      "required": true,
+                      "unique": false,
+                      "global": false,
+                      "visible": true,
+                      "searchable": true,
+                      "filterable": false,
+                      "visibleInCompareList": false,
+                      "visibleInListing": true,
+                      "sortable": true,
+                      "visibleInSearch": false,
+                      "filterableInSearch": false,
+                      "searchWeight": 5,
+                      "usedForRules": false,
+                      "boolean": false,
+                      "systemAttribute": false,
+                      "numeric": false,
+                      "attributeOptions": null
+                    },
+                    {
+                      "id": "225",
+                      "storeCode": "main_website_store",
+                      "websiteCode": "base",
+                      "storeViewCode": "default",
+                      "attributeCode": "description",
+                      "attributeType": "catalog_product",
+                      "dataType": "text",
+                      "multi": false,
+                      "label": "Description",
+                      "frontendInput": "textarea",
+                      "required": false,
+                      "unique": false,
+                      "global": false,
+                      "visible": true,
+                      "searchable": true,
+                      "filterable": false,
+                      "visibleInCompareList": true,
+                      "visibleInListing": false,
+                      "sortable": false,
+                      "visibleInSearch": false,
+                      "filterableInSearch": false,
+                      "searchWeight": 1,
+                      "usedForRules": false,
+                      "boolean": false,
+                      "systemAttribute": false,
+                      "numeric": false,
+                      "attributeOptions": null
+                    },
+                    {
+                      "id": "279",
+                      "storeCode": "main_website_store",
+                      "websiteCode": "base",
+                      "storeViewCode": "default",
+                      "attributeCode": "color",
+                      "attributeType": "catalog_product",
+                      "dataType": "int",
+                      "multi": false,
+                      "label": "Color",
+                      "frontendInput": "select",
+                      "required": false,
+                      "unique": false,
+                      "global": true,
+                      "visible": true,
+                      "searchable": true,
+                      "filterable": true,
+                      "visibleInCompareList": true,
+                      "visibleInListing": false,
+                      "sortable": false,
+                      "visibleInSearch": false,
+                      "filterableInSearch": false,
+                      "searchWeight": 1,
+                      "usedForRules": false,
+                      "boolean": false,
+                      "systemAttribute": true,
+                      "numeric": false,
+                      "attributeOptions": [
+                        "Blue",
+                        "Red",
+                        "Green"
+                      ]
+                    }
+                  ]
+      responses:
+        '200':
+          description: Request accepted. Check the "invalidFeedItems" node for any invalid items that were not consumed
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/ProcessFeedResponse'
+        '400':
+          description: All feed items received were not valid. Check response body for errors
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/400ProcessFeedResponse'
+        '403':
+          description: Unauthorized request. Check the "x-api-key" value and ensure the JWT is not expired in "x-gw-signature"
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/403Response'
+  /feeds/catalog/v2/products/{environmentId}:
+    post:
+      tags:
+        - products
+      summary: Product Feed API
+      description: Register or update Catalog Product for given Data Space ID
+      operationId: PostV2Products
+      parameters:
+        - name: environmentId
+          in: path
+          description: Data Space ID. See docs https://experienceleague.adobe.com/docs/commerce-admin/config/services/saas.html
+          required: true
+          style: simple
+          schema:
+            type: string
+        - name: Content-Type
+          in: header
+          required: true
+          schema:
+            type: string
+            enum: [application/json]
+        - name: x-api-key
+          in: header
+          required: true
+          schema:
+            type: string
+          description: Production public API key
+        - name: x-gw-signature
+          in: header
+          required: true
+          schema:
+            type: string
+          description: JWT generated for Production public API key
+        - name: Content-Encoding
+          in: header
+          required: false
+          schema:
+            type: string
+            enum: [gzip]
+          description: Use this header if the payload is compressed with gzip
+      responses:
+        '200':
+          description: Request accepted. Check the "invalidFeedItems" node for any invalid items that were not consumed
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/ProcessFeedResponse'
+        '400':
+          description: All feed items received were not valid. Check the response body for errors
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/400ProcessFeedResponse'
+        '403':
+          description: Unauthorized request. Verify the "x-api-key" value is correct and ensure the JWT is not expired in "x-gw-signature"
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/403Response'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/FeedProduct'
+            examples:
+              SimpleProductWithImages:
+                summary: Simple Product with images
+                description: Simple Product with images
+                value:
+                  [
+                    {
+                      "sku": "24-MB04",
+                      "storeViewCode": "default",
+                      "storeCode": "main_website_store",
+                      "websiteCode": "base",
+                      "name": "Strive Shoulder Pack",
+                      "type": "simple",
+                      "description": "<p>Convenience is next to nothing when your day is crammed with action. So whether you're heading to class, gym, or the unbeaten path, make sure you've got your Strive Shoulder Pack stuffed with all your essentials, and extras as well.</p>\n<ul>\n<li>Zippered main compartment.</li>\n<li>Front zippered pocket.</li>\n<li>Side mesh pocket.</li>\n<li>Cell phone pocket on strap.</li>\n<li>Adjustable shoulder strap and top carry handle.</li>\n</ul>",
+                      "image": {
+                        "url": "https://example.com/media/catalog/product/m/b/mb04-black-0.jpg",
+                        "label": "Image"
+                      },
+                      "smallImage": {
+                        "url": "https://example.com/media/catalog/product/m/b/mb04-black-0.jpg",
+                        "label": "Image"
+                      },
+                      "status": "Enabled",
+                      "taxClassId": "Taxable Goods",
+                      "thumbnail": {
+                        "url": "https://example.com/media/catalog/product/m/b/mb04-black-0.jpg",
+                        "label": "Image"
+                      },
+                      "createdAt": "2023-06-29 22:23:49",
+                      "updatedAt": "2023-06-29 22:24:10",
+                      "modifiedAt": "2023-06-29 22:30:19",
+                      "urlKey": "strive-shoulder-pack",
+                      "visibility": "Catalog, Search",
+                      "weight": 0.2,
+                      "weightUnit": "lb",
+                      "currency": "USD",
+                      "displayable": true,
+                      "buyable": true,
+                      "deleted": false,
+                      "attributes": [
+                        {
+                          "attributeCode": "erin_recommends",
+                          "type": "boolean",
+                          "value": [
+                            "yes"
+                          ]
+                        },
+                        {
+                          "attributeCode": "sale",
+                          "type": "boolean",
+                          "value": [
+                            "yes"
+                          ]
+                        },
+                        {
+                          "attributeCode": "activity",
+                          "type": "multiselect",
+                          "value": [
+                            "Gym",
+                            "Trail",
+                            "Urban",
+                            "Hiking"
+                          ]
+                        },
+                        {
+                          "attributeCode": "style_bags",
+                          "type": "multiselect",
+                          "value": [
+                            "Messenger",
+                            "Exercise",
+                            "Tote"
+                          ]
+                        },
+                        {
+                          "attributeCode": "material",
+                          "type": "multiselect",
+                          "value": [
+                            "Canvas",
+                            "Cotton",
+                            "Mesh",
+                            "Polyester"
+                          ]
+                        }
+                      ],
+                      "categoryData": [
+                        {
+                          "categoryId": "3",
+                          "categoryPath": "gear",
+                          "productPosition": 0
+                        },
+                        {
+                          "categoryId": "4",
+                          "categoryPath": "gear/bags",
+                          "productPosition": 0
+                        },
+                        {
+                          "categoryId": "7",
+                          "categoryPath": "collections",
+                          "productPosition": 0
+                        }
+                      ],
+                      "media_gallery": [
+                        {
+                          "url": "https://example.com/media/catalog/product/m/b/mb04-black-0.jpg",
+                          "label": "Image",
+                          "types": [
+                            "image",
+                            "small_image",
+                            "thumbnail"
+                          ],
+                          "sort_order": 1
+                        },
+                        {
+                          "url": "https://example.com/media/catalog/product/m/b/mb04-black-0_alt1.jpg",
+                          "label": "Image",
+                          "types": null,
+                          "sort_order": 2
+                        }
+                      ],
+                      "images": [
+                        {
+                          "resource": {
+                            "url": "https://example.com/media/catalog/product/m/b/mb04-black-0.jpg",
+                            "label": "Image",
+                            "roles": [
+                              "image",
+                              "small_image",
+                              "thumbnail"
+                            ]
+                          },
+                          "sortOrder": "1"
+                        },
+                        {
+                          "resource": {
+                            "url": "https://example.com/media/catalog/product/m/b/mb04-black-0_alt1.jpg",
+                            "label": "Image",
+                            "roles": null
+                          },
+                          "sortOrder": "2"
+                        }
+                      ],
+                      "videos": null,
+                      "links": [
+                        {
+                          "sku": "24-MB01",
+                          "type": "upsell"
+                        },
+                        {
+                          "sku": "24-UG05",
+                          "type": "crosssell"
+                        },
+                        {
+                          "sku": "24-WG080",
+                          "type": "crosssell"
+                        }
+                      ],
+                      "inStock": true,
+                      "lowStock": false,
+                      "url": "https://example.com/strive-shoulder-pack.html",
+                      "urlRewrites": [
+                        {
+                          "url": "https://example.com/strive-shoulder-pack.html",
+                          "parameters": [
+                            {
+                              "name": "id",
+                              "value": "2"
+                            }
+                          ]
+                        }
+                      ],
+                      "categories": [
+                        "gear",
+                        "gear/bags",
+                        "collections"
+                      ]
+                    }
+                  ]
+              ConfigurableProduct:
+                description: Create a configurable product with 4 variants (2 attributes with 2 options each)
+                value:
+                  [
+                    {
+                      "sku": "Configurable Product",
+                      "storeViewCode": "default",
+                      "storeCode": "main_website_store",
+                      "websiteCode": "base",
+                      "name": "Configurable Product",
+                      "productId": 705,
+                      "type": "configurable",
+                      "metaDescription": "Configurable Product ",
+                      "metaKeyword": "Configurable Product",
+                      "metaTitle": "Configurable Product",
+                      "status": "Enabled",
+                      "taxClassId": "Taxable Goods",
+                      "createdAt": "2023-06-22 20:27:00",
+                      "updatedAt": "2023-06-22 20:27:19",
+                      "urlKey": "lp-configurable-product",
+                      "visibility": "Catalog, Search",
+                      "weightUnit": null,
+                      "currency": "USD",
+                      "displayable": true,
+                      "buyable": true,
+                      "attributes": null,
+                      "categoryData": [
+                        {
+                          "categoryId": "66",
+                          "categoryPath": "demo-category",
+                          "productPosition": -6
+                        }
+                      ],
+                      "optionsV2": [
+                        {
+                          "id": "color",
+                          "label": "Color",
+                          "sortOrder": 0,
+                          "type": "configurable",
+                          "values": [
+                            {
+                              "id": "Y29uZmlndXJhYmxlLzI3OS80Mg==",
+                              "label": "Red"
+                            },
+                            {
+                              "id": "Y29uZmlndXJhYmxlLzI3OS80NQ==",
+                              "label": "Green"
+                            }
+                          ]
+                        },
+                        {
+                          "id": "size",
+                          "label": "Size",
+                          "sortOrder": 1,
+                          "type": "configurable",
+                          "values": [
+                            {
+                              "id": "Y29uZmlndXJhYmxlLzUzNy80OA==",
+                              "label": "S"
+                            },
+                            {
+                              "id": "Y29uZmlndXJhYmxlLzUzNy81NA==",
+                              "label": "L"
+                            }
+                          ]
+                        }
+                      ],
+                      "inStock": true,
+                      "lowStock": false,
+                      "variants": [
+                        {
+                          "sku": "Configurable Product-Red-L"
+                        },
+                        {
+                          "sku": "Configurable Product-Red-S"
+                        },
+                        {
+                          "sku": "Configurable Product-Green-L"
+                        },
+                        {
+                          "sku": "Configurable Product-Green-S"
+                        }
+                      ],
+                      "parents": null,
+                      "url": "https://example.com/default/lp-configurable-product.html",
+                      "urlRewrites": [
+                        {
+                          "url": "https://example.com/lp-configurable-product.html",
+                          "parameters": [
+                            {
+                              "name": "id",
+                              "value": "705"
+                            }
+                          ]
+                        }
+                      ],
+                      "categories": [
+                        "demo-category"
+                      ],
+                      "modifiedAt": "2023-07-21 23:00:38"
+                    },
+                    {
+                      "sku": "Configurable Product-Green-S",
+                      "storeViewCode": "default",
+                      "storeCode": "main_website_store",
+                      "websiteCode": "base",
+                      "name": "Configurable Product-Green-S",
+                      "productId": 702,
+                      "type": "virtual",
+                      "metaDescription": "Configurable Product ",
+                      "metaKeyword": "Configurable Product",
+                      "metaTitle": "Configurable Product",
+                      "status": "Enabled",
+                      "taxClassId": "Taxable Goods",
+                      "createdAt": "2023-06-22 20:26:59",
+                      "updatedAt": "2023-06-22 20:36:50",
+                      "urlKey": "lp-configurable-product-green-s",
+                      "visibility": "Not Visible Individually",
+                      "weightUnit": null,
+                      "currency": "USD",
+                      "displayable": false,
+                      "buyable": true,
+                      "attributes": [
+                        {
+                          "attributeCode": "color",
+                          "type": "select",
+                          "value": [
+                            "Green"
+                          ]
+#                          ,
+#                          "valueId": [
+#                            "45"
+#                          ]
+                        },
+                        {
+                          "attributeCode": "size",
+                          "type": "select",
+                          "value": [
+                            "S"
+                          ]
+#                          ,
+#                          "valueId": [
+#                            "48"
+#                          ]
+                        }
+                      ],
+                      "inStock": true,
+                      "lowStock": false,
+                      "parents": [
+                        {
+                          "sku": "Configurable Product",
+                          "productType": "configurable"
+                        }
+                      ],
+                      "url": "https://example.com/lp-configurable-product-green-s",
+                      "urlRewrites": null,
+                      "modifiedAt": "2023-07-21 23:00:38"
+                    },
+                    {
+                      "sku": "Configurable Product-Green-L",
+                      "storeViewCode": "default",
+                      "storeCode": "main_website_store",
+                      "websiteCode": "base",
+                      "name": "Configurable Product-Green-L",
+                      "productId": 699,
+                      "type": "virtual",
+                      "metaDescription": "Configurable Product ",
+                      "metaKeyword": "Configurable Product",
+                      "metaTitle": "Configurable Product",
+                      "status": "Enabled",
+                      "taxClassId": "Taxable Goods",
+                      "createdAt": "2023-06-22 20:26:59",
+                      "updatedAt": "2023-06-22 20:33:31",
+                      "urlKey": "lp-configurable-product-green-l",
+                      "visibility": "Not Visible Individually",
+                      "weightUnit": null,
+                      "currency": "USD",
+                      "displayable": false,
+                      "buyable": true,
+                      "attributes": [
+                        {
+                          "attributeCode": "color",
+                          "type": "select",
+                          "value": [
+                            "Green"
+                          ]
+#                          ,
+#                          "valueId": [
+#                            "45"
+#                          ]
+                        },
+                        {
+                          "attributeCode": "size",
+                          "type": "select",
+                          "value": [
+                            "L"
+                          ]
+#                          ,
+#                          "valueId": [
+#                            "54"
+#                          ]
+                        }
+                      ],
+                      "inStock": true,
+                      "lowStock": false,
+                      "parents": [
+                        {
+                          "sku": "Configurable Product",
+                          "productType": "configurable"
+                        }
+                      ],
+                      "url": "https://example.com/lp-configurable-product-green-l/",
+                      "urlRewrites": null,
+                      "modifiedAt": "2023-07-21 23:00:38"
+                    },
+                    {
+                      "sku": "Configurable Product-Red-S",
+                      "storeViewCode": "default",
+                      "storeCode": "main_website_store",
+                      "websiteCode": "base",
+                      "name": "Configurable Product-Red-S",
+                      "productId": 696,
+                      "type": "virtual",
+                      "metaDescription": "Configurable Product ",
+                      "metaKeyword": "Configurable Product",
+                      "metaTitle": "Configurable Product",
+                      "status": "Enabled",
+                      "taxClassId": "Taxable Goods",
+                      "createdAt": "2023-06-22 20:26:59",
+                      "updatedAt": "2023-06-22 20:34:56",
+                      "urlKey": "lp-configurable-product-red-s",
+                      "visibility": "Not Visible Individually",
+                      "weightUnit": null,
+                      "currency": "USD",
+                      "displayable": false,
+                      "buyable": true,
+                      "attributes": [
+                        {
+                          "attributeCode": "color",
+                          "type": "select",
+                          "value": [
+                            "Red"
+                          ]
+#                          ,
+#                          "valueId": [
+#                            "42"
+#                          ]
+                        },
+                        {
+                          "attributeCode": "size",
+                          "type": "select",
+                          "value": [
+                            "S"
+                          ]
+#                          ,
+#                          "valueId": [
+#                            "48"
+#                          ]
+                        }
+                      ],
+                      "inStock": true,
+                      "lowStock": false,
+                      "parents": [
+                        {
+                          "sku": "Configurable Product",
+                          "productType": "configurable"
+                        }
+                      ],
+                      "url": "https://example.com/lp-configurable-product-red-s",
+                      "urlRewrites": null,
+                      "modifiedAt": "2023-07-21 23:00:38"
+                    },
+                    {
+                      "sku": "Configurable Product-Red-L",
+                      "storeViewCode": "default",
+                      "storeCode": "main_website_store",
+                      "websiteCode": "base",
+                      "name": "Configurable Product-Red-L",
+                      "productId": 693,
+                      "type": "virtual",
+                      "metaDescription": "Configurable Product ",
+                      "metaKeyword": "Configurable Product",
+                      "metaTitle": "Configurable Product",
+                      "status": "Enabled",
+                      "taxClassId": "Taxable Goods",
+                      "createdAt": "2023-06-22 20:26:59",
+                      "updatedAt": "2023-06-22 20:30:26",
+                      "urlKey": "lp-configurable-product-red-l",
+                      "visibility": "Not Visible Individually",
+                      "weightUnit": null,
+                      "currency": "USD",
+                      "displayable": false,
+                      "buyable": true,
+                      "attributes": [
+                        {
+                          "attributeCode": "color",
+                          "type": "select",
+                          "value": [
+                            "Red"
+                          ]
+#                          ,
+#                          "valueId": [
+#                            "42"
+#                          ]
+                        },
+                        {
+                          "attributeCode": "size",
+                          "type": "select",
+                          "value": [
+                            "L"
+                          ]
+#                          ,
+#                          "valueId": [
+#                            "54"
+#                          ]
+                        }
+                      ],
+                      "inStock": true,
+                      "lowStock": false,
+                      "parents": [
+                        {
+                          "sku": "Configurable Product",
+                          "productType": "configurable"
+                        }
+                      ],
+                      "url": "https://example.com/lp-configurable-product-red-l",
+                      "urlRewrites": null,
+                      "modifiedAt": "2023-07-21 23:00:37"
+                    }
+                  ]
+              BundleDynamicProduct:
+                description: Create a Bundle Dynamic Product with 1 option and 2 selections
+                value:
+                  [
+                    {
+                      "sku": "es-bundle-dynamic-1",
+                      "storeViewCode": "default",
+                      "storeCode": "main_website_store",
+                      "websiteCode": "base",
+                      "name": "es-bundle-dynamic-1",
+                      "productId": 918,
+                      "type": "bundle",
+                      "priceView": "price_range",
+                      "metaDescription": "es-bundle-dynamic-1 ",
+                      "metaKeyword": "es-bundle-dynamic-1",
+                      "metaTitle": "es-bundle-dynamic-1",
+                      "status": "Enabled",
+                      "taxClassId": "Taxable Goods",
+                      "createdAt": "2023-07-21 14:22:11",
+                      "updatedAt": "2023-07-21 14:22:11",
+                      "urlKey": "es-bundle-dynamic-1",
+                      "visibility": "Catalog, Search",
+                      "weightType": "0",
+                      "currency": "USD",
+                      "displayable": true,
+                      "buyable": true,
+                      "optionsV2": [
+                          {
+                              "id": "174",
+                              "label": "es-bundle-1",
+                              "sortOrder": 1,
+                              "required": true,
+                              "renderType": "select",
+                              "type": "bundle",
+                              "values": [
+                                  {
+                                      "id": "YnVuZGxlLzE3NC8zODQvMQ==",
+                                      "label": "es-product-1",
+                                      "sortOrder": 1,
+                                      "isDefault": false,
+                                      "qtyMutability": false,
+                                      "qty": 1,
+                                      "sku": "es-product-1",
+                                      "price": 0,
+                                      "priceType": "fixed"
+                                  },
+                                  {
+                                      "id": "YnVuZGxlLzE3NC8zODcvMg==",
+                                      "label": "es-product-2",
+                                      "sortOrder": 2,
+                                      "isDefault": false,
+                                      "qtyMutability": false,
+                                      "qty": 2,
+                                      "sku": "es-product-2",
+                                      "price": 0,
+                                      "priceType": "fixed"
+                                  }
+                              ]
+                          }
+                      ],
+                      "categories": [
+                        "demo-category"
+                      ],
+                      "inStock": true,
+                      "lowStock": false,
+                      "url": "https://example.com/default/es-bundle-dynamic-1.html",
+                      "urlRewrites": [
+                          {
+                              "url": "https://example.com/es-bundle-dynamic-1.html",
+                              "parameters": [
+                                  {
+                                      "name": "id",
+                                      "value": "918"
+                                  }
+                              ]
+                          }
+                      ],
+                      "modifiedAt": "2023-07-21 14:24:01"
+                    },
+                    {
+                      "sku": "es-product-1",
+                      "storeViewCode": "default",
+                      "storeCode": "main_website_store",
+                      "websiteCode": "base",
+                      "name": "es-product-1",
+                      "productId": 912,
+                      "type": "simple",
+                      "metaDescription": "es-product-1 ",
+                      "metaKeyword": "es-product-1",
+                      "metaTitle": "es-product-1",
+                      "status": "Enabled",
+                      "taxClassId": "Taxable Goods",
+                      "createdAt": "2023-07-21 14:18:53",
+                      "updatedAt": "2023-07-21 14:20:02",
+                      "urlKey": "es-product-1",
+                      "visibility": "Catalog, Search",
+                      "weightUnit": null,
+                      "currency": "USD",
+                      "displayable": true,
+                      "buyable": true,
+                      "inStock": true,
+                      "lowStock": false,
+                      "parents": null,
+                      "url": "https://example.com/default\/es-product-1.html",
+                      "urlRewrites": [
+                        {
+                          "url": "https://example.com/es-product-1.html",
+                          "parameters": [
+                            {
+                              "name": "id",
+                              "value": "912"
+                            }
+                          ]
+                        }
+                      ],
+                      "modifiedAt": "2023-07-21 23:00:38"
+                    },
+                    {
+                      "sku": "es-product-2",
+                      "storeViewCode": "default",
+                      "storeCode": "main_website_store",
+                      "websiteCode": "base",
+                      "name": "es-product-2",
+                      "productId": 915,
+                      "type": "simple",
+                      "metaDescription": "es-product-2 ",
+                      "metaKeyword": "es-product-2",
+                      "metaTitle": "es-product-2",
+                      "status": "Enabled",
+                      "taxClassId": "Taxable Goods",
+                      "createdAt": "2023-07-21 14:20:44",
+                      "updatedAt": "2023-07-21 14:20:44",
+                      "urlKey": "es-product-2",
+                      "visibility": "Catalog, Search",
+                      "weightUnit": null,
+                      "currency": "USD",
+                      "displayable": true,
+                      "buyable": true,
+                      "inStock": true,
+                      "lowStock": false,
+                      "parents": null,
+                      "url": "https://example.com/default/es-product-2.html",
+                      "urlRewrites": [
+                        {
+                          "url": "https://example.com/es-product-2.html",
+                          "parameters": [
+                            {
+                              "name": "id",
+                              "value": "915"
+                            }
+                          ]
+                        }
+                      ],
+                      "modifiedAt": "2023-07-21 23:00:38"
+                    }
+                  ]
+  /feeds/products/v1/prices/{environmentId}:
+    post:
+      tags:
+        - products
+      summary: Product Price Feed API
+      description: Allows the managing of product prices in the scope of the Website Code and Customer Group Code. Price registered with "0" customerGroupCode are used as the default price for any Customer Group Code _this_ Website Code
+      operationId: PostV1ProductPrices
+      parameters:
+        - name: environmentId
+          in: path
+          description: environmentId
+          required: true
+          style: simple
+          schema:
+            type: string
+        - name: Content-Type
+          in: header
+          required: true
+          schema:
+            type: string
+            enum: [application/json]
+        - name: x-api-key
+          in: header
+          required: true
+          schema:
+            type: string
+          description: Production public API key
+        - name: x-gw-signature
+          in: header
+          required: true
+          schema:
+            type: string
+          description: JWT generated for Production public API key
+        - name: Content-Encoding
+          in: header
+          required: false
+          schema:
+            type: string
+            enum: [gzip]
+          description: Use this header if the payload is compressed with gzip
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/ProductPriceAggregate'
+            examples:
+              ProductPriceWithDiscount:
+                summary: Product with discount example
+                description: Register product with $10 as the regular price and $8 as the final price. Final Price = min (20% from $10, $9)
+                value:
+                  [
+                    {
+                      "sku": "final-price-example",
+                      "type": "SIMPLE",
+                      "customerGroupCode": "0",
+                      "websiteCode": "base",
+                      "regular": 10,
+                      "discounts": [
+                        {
+                          "code": "special_price",
+                          "percentage": 20
+                        },
+                        {
+                          "code": "catalog_rule",
+                          "price": 9
+                        }
+                      ],
+                      "deleted": false,
+                      "updatedAt": "2023-07-20T19:32:16+00:00"
+                    }
+                  ]
+              CompositeProductPrice:
+                summary: Composite product price example
+                description: Register a Configurable Product "t-shirt" with 3 variants "t-shirt-s" ($10) and "t-shirt-m" ($11), "t-shirt-l" ($12). Configurable product "t-shirt" will have min price as $10 and max price as $12
+                value:
+                  [
+                    {
+                      "sku": "t-shirt-s",
+                      "type": "SIMPLE",
+                      "customerGroupCode": "0",
+                      "websiteCode": "base",
+                      "regular": 10,
+                      "parents": [
+                        {
+                          "type": "CONFIGURABLE",
+                          "sku": "t-shirt"
+                        }
+                      ],
+                      "deleted": false,
+                      "updatedAt": "2023-07-20T19:32:16+00:00"
+                    },
+                    {
+                      "sku": "t-shirt-m",
+                      "type": "SIMPLE",
+                      "customerGroupCode": "0",
+                      "websiteCode": "base",
+                      "regular": 11,
+                      "parents": [
+                        {
+                          "type": "CONFIGURABLE",
+                          "sku": "t-shirt"
+                        }
+                      ],
+                      "deleted": false,
+                      "updatedAt": "2023-07-20T19:32:16+00:00"
+                    },
+                    {
+                      "sku": "t-shirt-l",
+                      "type": "SIMPLE",
+                      "customerGroupCode": "0",
+                      "websiteCode": "base",
+                      "regular": 12,
+                      "parents": [
+                        {
+                          "type": "CONFIGURABLE",
+                          "sku": "t-shirt"
+                        }
+                      ],
+                      "deleted": false,
+                      "updatedAt": "2023-07-20T19:32:16+00:00"
+                    }
+                  ]
+      responses:
+        '200':
+          description: Request accepted. Check the "invalidFeedItems" node for any invalid items that were not consumed
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/ProcessItemsPublishingResponse'
+        '400':
+          description: All feed items received were not valid. Check response body for errors
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/400ProcessFeedResponse'
+        '403':
+          description: Unauthorized request. Validate the "x-api-key" and ensure the JWT is not expired in "x-gw-signature"
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/403Response'
+  /feeds/catalog/v2/product-overrides/{environmentId}:
+    post:
+      tags:
+        - products
+      summary: Product Permissions Feed API
+      description: "Register or update catalog product permissions within the scope of Website and Customer Group. Limitations: if you want to hide products for a specific customer but want to keep all other products visible, you must submit feed items for each SKU for each Website with \"b6589fc6ab0dc82cf12099d1c2d40ab994e8410c\" Customer Group"
+      operationId: PostV2ProductOverrides
+      parameters:
+        - name: environmentId
+          in: path
+          description: environmentId
+          required: true
+          style: simple
+          schema:
+            type: string
+        - name: Content-Type
+          in: header
+          required: true
+          schema:
+            type: string
+            enum: [ application/json ]
+        - name: x-api-key
+          in: header
+          required: true
+          schema:
+            type: string
+          description: Production public API key
+        - name: x-gw-signature
+          in: header
+          required: true
+          schema:
+            type: string
+          description: JWT generated for Production public API key
+        - name: Content-Encoding
+          in: header
+          required: false
+          schema:
+            type: string
+            enum: [ gzip ]
+          description: Use this header if the payload is compressed with gzip
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/FeedProductOverride'
+            examples:
+              ProductPermissionsPerCustomerGroup:
+                summary: Set product permission for customer group
+                description: Hide product prices and add product to Cart for "demo-product" in the "base" website and the "hide-price" customer group
+                value:
+                  [
+                    {
+                      "sku": "demo-product",
+                      "productId": 1,
+                      "websiteCode": "base",
+                      "customerGroupCode": "hide-price",
+                      "displayable": true,
+                      "priceDisplayable": false,
+                      "addToCartAllowed": false,
+                      "deleted": false,
+                      "modifiedAt": "2023-07-20 12:20:22"
+                    }
+                  ]
+      responses:
+        '200':
+          description: Request accepted. Check the "invalidFeedItems" node for any invalid items that were not consumed
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/ProcessFeedResponse'
+        '400':
+          description: All feed items received were not valid. Check response body for errors
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/400ProcessFeedResponse'
+        '403':
+          description: Unauthorized request. Validate the "x-api-key" and ensure the JWT is not expired in "x-gw-signature"
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/403Response'
+  /feeds/product_variant/v2/product_variant/{environmentId}:
+    post:
+      tags:
+        - products
+      summary: Product Variant Feed API
+      description: Register or update catalog product variants
+      operationId: PostV2ProductVariant
+      parameters:
+        - name: environmentId
+          in: path
+          description: environmentId
+          required: true
+          style: simple
+          schema:
+            type: string
+        - name: Content-Type
+          in: header
+          required: true
+          schema:
+            type: string
+            enum: [application/json]
+        - name: x-api-key
+          in: header
+          required: true
+          schema:
+            type: string
+          description: Production public API key
+        - name: x-gw-signature
+          in: header
+          required: true
+          schema:
+            type: string
+          description: JWT generated for Production public API key
+        - name: Content-Encoding
+          in: header
+          required: false
+          schema:
+            type: string
+            enum: [gzip]
+          description: Use this header if the payload is compressed with gzip
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/FeedProductVariantNew'
+            examples:
+              ConfigurableProduct:
+                summary: Product variant information for simple products
+                description: Sends a feed with product variant information per customer group
+                value:
+                  [
+                    {
+                      "id": "0008f6e588abd240f0c8cac726710d90",
+                      "optionValues": [
+                        {
+                          "attributeCode": "color",
+                          "uid": "Y29uZmlndXJhYmxlLzcwMC84MzI=",
+                          "valueIndex": "832"
+                        },
+                        {
+                          "attributeCode": "size",
+                          "uid": "Y29uZmlndXJhYmxlLzcwMy84NDc=",
+                          "valueIndex": "847"
+                        }
+                      ],
+                      "parentSku": "Configurable Product",
+                      "productSku": "Configurable Product-Red-L",
+                      "modifiedAt": "2021-03-01 16:57:22",
+                      "deleted": false
+                    }
+                  ]
+      responses:
+        '200':
+          description: Request accepted
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/ProcessFeedResponse'
+        '400':
+          description: All feed items received were not valid. Check response body for errors
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/400ProcessFeedResponse'
+        '403':
+          description: Unauthorized request. Validate the "x-api-key" and ensure the JWT is not expired in "x-gw-signature"
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/403Response'
+  /feeds/scopes/v1/{environmentId}:
+    post:
+      tags:
+        - scopes
+      summary: Scope Feed API
+      description: Register and update relationships between customer group codes, websites and store views
+      operationId: PostV1Scopes
+      parameters:
+        - name: environmentId
+          in: path
+          description: environmentId
+          required: true
+          style: simple
+          schema:
+            type: string
+        - name: Content-Type
+          in: header
+          required: true
+          schema:
+            type: string
+            enum: [application/json]
+        - name: x-api-key
+          in: header
+          required: true
+          schema:
+            type: string
+          description: Production public API key
+        - name: x-gw-signature
+          in: header
+          required: true
+          schema:
+            type: string
+          description: JWT generated for Production public API key
+        - name: Content-Encoding
+          in: header
+          required: false
+          schema:
+            type: string
+            enum: [gzip]
+          description: Use this header if the payload is compressed with gzip
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                oneOf:
+                  - $ref: '#/components/schemas/WebsiteScopeFeedItem'
+                  - $ref: '#/components/schemas/CustomerGroupScopeFeedItem'
+            examples:
+              CreateWebsites:
+                summary: Create websites with stores and store views
+                value:
+                  [
+                    {
+                      "website": {
+                        "websiteCode": " base",
+                        "stores": [
+                          {
+                            "storeCode": "main_website_store",
+                            "storeViews": [
+                              {
+                                "storeViewCode": "default"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      "updatedAt": "2023-02-22T21:43:00+00:00",
+                      "deleted": false
+                    }
+                  ]
+              CreateCustomerGroups:
+                summary: Create customer groups
+                value:
+                  [
+                    {
+                      "customerGroup": {
+                        "customerGroupCode": "General",
+                        "websites": [
+                          {
+                            "websiteCode": "base"
+                          }
+                        ]
+                      },
+                      "updatedAt": "2023-07-21T21:09:06+00:00",
+                      "deleted": false
+                    }
+                  ]
+      responses:
+        '200':
+          description: Request accepted. Check the "invalidFeedItems" node for any invalid items that were not consumed
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/ProcessItemsPublishingResponse'
+        '400':
+          description: All feed items received were not valid. Check response body for errors
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/400ProcessFeedResponse'
+        '403':
+          description: Unauthorized request. Validate the "x-api-key" value and ensure the JWT is not expired in "x-gw-signature"
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/403Response'
+components:
+  schemas:
+    DiscountsFinalPrice:
+      title: Final Price
+      type: object
+      properties:
+        code:
+          type: object
+        price:
+          type: number
+          format: float
+    DiscountsPercentage:
+      title: Discount
+      type: object
+      properties:
+        code:
+          type: object
+        percentage:
+          type: number
+          format: float
+    FeedBreadcrumb:
+      title: FeedBreadcrumb
+      type: object
+      properties:
+        categoryId:
+          type: string
+          description: Category ID
+        categoryLevel:
+          type: integer
+          description: The category level
+          format: int32
+        categoryName:
+          type: string
+          description: The name of the category
+        categoryUrlKey:
+          type: string
+          description: The URL key for the category
+        categoryUrlPath:
+          type: string
+          description: The URL path to the category
+    FeedCategory:
+      title: FeedCategory
+      required:
+        - categoryId
+        - name
+        - urlKey
+        - urlPath
+        - deleted
+        - isActive
+        - storeCode
+        - storeViewCode
+        - websiteCode
+        - modifiedAt
+      type: object
+      properties:
+        availableSortBy:
+          type: array
+          description: A list describing the properties that can be used for displaying the available products
+          example: '["position", "name"]'
+          items:
+            type: string
+        breadcrumbs:
+          type: array
+          description: A list of FeedBreadcrumb objects; can be null
+          items:
+            $ref: '#/components/schemas/FeedBreadcrumb'
+        categoryId:
+          type: string
+          description: Category unique identifier
+          example: '123'
+        children:
+          type: array
+          description: A list of child categories
+          example: '["12", "13"]'
+          items:
+            type: string
+        createdAt:
+          type: string
+          description: Timestamp when the category was created
+          example: '2022-10-21 02:15:30'
+          format: yyyy-MM-dd HH:mm:ss
+        defaultSortBy:
+          type: string
+          description: A string describing the property that is used for displaying the available products by default
+          example: price
+        deleted:
+          type: boolean
+          description: Whether the product is deleted or not
+          example: false
+        description:
+          type: string
+          description: Natural language description of the category
+          example: Collection of products
+        displayMode:
+          type: string
+          description: The display mode
+          example: PRODUCTS
+        image:
+          type: string
+          description: URL of the associated image
+          example: http://path/to/image.jpg
+        includeInMenu:
+          type: boolean
+          description: Whether to include the category in the menu
+          example: false
+        isActive:
+          type: boolean
+          description: Whether the category is active
+          example: false
+        isAnchor:
+          type: boolean
+          description: Boolean indicating whether the category is an anchor
+          example: false
+        level:
+          type: integer
+          description: The level in the listing
+          format: int32
+          example: 2
+        metaDescription:
+          type: string
+          description: SEO meta description of the category
+          example: Category 1
+        metaKeywords:
+          type: string
+          description: SEO meta keywords of the category
+          example: Category 1
+        metaTitle:
+          type: string
+          description: SEO meta title of the category
+          example: Category 1
+        modifiedAt:
+          type: string
+          description: Timestamp when the product was last modified.
+          example: '2022-10-21 02:15:30'
+          format: yyyy-MM-dd HH:mm:ss
+        name:
+          type: string
+          description: Name of the category
+          example: Cat 201028
+        parentId:
+          type: integer
+          description: The category ID of the parent of this category
+          format: int32
+        path:
+          type: string
+          description: Category path in the website. Each part of the path is separated by a slash for each part the category id. Last part is the category id of the current category.
+          example: 2/3/4
+        pathInStore:
+          type: string
+          example: '10'
+        position:
+          type: integer
+          description: Position in the listing
+          format: int32
+          example: 2
+        productCount:
+          type: integer
+          description: Count of products in this category
+          format: int32
+          example: 4
+        storeCode:
+          type: string
+          description: Store identifier code
+        storeViewCode:
+          type: string
+          description: StoreView identifier code
+        updatedAt:
+          type: string
+          description: Timestamp when the product was updated in the admin console.
+          example: '2022-10-21 02:15:30'
+          format: yyyy-MM-dd HH:mm:ss
+        urlKey:
+          type: string
+          description: SEO URL key for the category
+          example: category-201028-child-category
+        urlPath:
+          type: string
+          description: SEO URL path for the category
+          example: category-201028/category-201028-child-category
+        websiteCode:
+          type: string
+          description: Website identifier code
+    FeedItemFailedValidationResult:
+      title: FeedItemFailedValidationResult
+      type: object
+      properties:
+        code:
+          type: string
+          description: code name of invalid field
+        itemIndex:
+          type: integer
+          format: int32
+          description: Reference to the feed line item with invalid payload. Starting from 0
+        message:
+          type: string
+          description: Error description
+    FeedMetadata:
+      title: FeedMetadata
+      required:
+        - attributeCode
+        - attributeType
+        - dataType
+        - label
+        - multi
+        - required
+        - storeCode
+        - storeViewCode
+        - websiteCode
+      type: object
+      properties:
+        attributeCode:
+          type: string
+          description: Attribute code
+        attributeId:
+          type: string
+          description: The attribute ID
+        attributeType:
+          type: string
+          description: Attribute type
+        dataType:
+          type: string
+          description: Data type
+        deleted:
+          type: boolean
+          description: True if the attribute has been deleted
+          example: false
+        filterable:
+          type: boolean
+          description: True if the attribute is added to the list of filter options in the product grid.
+          example: false
+        filterableInSearch:
+          type: boolean
+          description: True if the attribute can be used to filter on search
+          example: false
+        frontendInput:
+          type: string
+          description: Catalog Input Type for Store Owner
+        global:
+          type: boolean
+          description: Whether the attribute is global or not. Global attributes are available in all store views.
+          example: false
+        label:
+          type: string
+          description: The label on the feed
+        modifiedAt:
+          type: string
+          description: Timestamp when the product was last modified. Date format is yyyy-MM-dd HH:mm:ss.
+          example: '2019-01-01 00:00:00'
+        multi:
+          type: boolean
+          description: Whether this is multi or not
+          example: false
+        numeric:
+          type: boolean
+          description: True if the attribute is numeric
+          example: false
+        required:
+          type: boolean
+          description: Whether the item is required
+          example: false
+        searchWeight:
+          type: number
+          description: The weight associated with the search
+          format: float
+        searchable:
+          type: boolean
+          description: Whether the attribute is searchable in StoreFront.
+          example: false
+        sortable:
+          type: boolean
+          description: Whether the attribute can be used to sort.
+          example: false
+        storeCode:
+          type: string
+          description: Store identifier code
+        storeViewCode:
+          type: string
+          description: StoreView identifier code
+        systemAttribute:
+          type: boolean
+          description: True if the attribute is a system attribute.
+          example: false
+        unique:
+          type: boolean
+          description: Whether this attribute cannot be shared with other products.
+          example: false
+        usedForRules:
+          type: boolean
+          description: True if the attribute can be used for rules
+          example: false
+        visible:
+          type: boolean
+          description: Whether the attribute is visible or not.
+          example: false
+        visibleInCompareList:
+          type: boolean
+          description: Whether the attribute is comparable in StoreFront.
+          example: false
+        visibleInListing:
+          type: boolean
+          description: Whether the attribute is used in product listing. Depends on design theme.
+          example: false
+        visibleInSearch:
+          type: boolean
+          description: True if the attribute is visible on search
+          example: false
+        websiteCode:
+          type: string
+          description: Website identifier code
+      description: Metadata information for a product attribute
+    FeedOptionValue:
+      title: FeedOptionValue
+      type: object
+      properties:
+        colorHex:
+          type: string
+          description: A hex representation of the color of the option value
+        customSwatchValue:
+          type: string
+          description: A custom swatch value
+        id:
+          type: string
+          description: Option value ID
+        imageUrl:
+          type: string
+          description: Image URL of the option value
+        infoUrl:
+          type: string
+          description: Informational URL of the option value
+        isDefault:
+          type: boolean
+          description: Whether the option value is default
+          example: false
+        label:
+          type: string
+          description: Option value label
+        price:
+          type: number
+          description: The price of the optional value
+          format: float
+        priceType:
+          type: string
+          description: The type of price
+        qty:
+          type: number
+          description: How many of the option value
+          format: float
+        qtyMutability:
+          type: boolean
+          description: Whether the quantity is mutable
+          example: false
+        sku:
+          type: string
+          description: SKU for the option value
+        sortOrder:
+          type: integer
+          description: Sorting order of the option value
+          format: int32
+    FeedOptionValueRange:
+      title: FeedOptionValueRange
+      type: object
+      properties:
+        from:
+          type: number
+          description: Lower end of the range for this feed option
+          format: float
+        to:
+          type: number
+          description: Upper end of the range for this feed option
+          format: float
+    FeedPrice:
+      title: FeedPrice
+      type: object
+      properties:
+        finalAdjustments:
+          type: array
+          description: A list of final price adjustments
+          items:
+            $ref: '#/components/schemas/FeedPriceAdjustment'
+        finalPrice:
+          type: number
+          description: The final price of the product after adjustments
+          format: float
+        regularAdjustments:
+          type: array
+          description: A list of regular price adjustments
+          items:
+            $ref: '#/components/schemas/FeedPriceAdjustment'
+        regularPrice:
+          type: number
+          description: The regular price of the product
+          format: float
+    FeedPriceAdjustment:
+      title: FeedPriceAdjustment
+      type: object
+      properties:
+        amount:
+          type: number
+          description: The adjustment amount
+          format: float
+        code:
+          type: string
+          description: The adjustment code
+    FeedProduct:
+      title: Catalog Product payload
+      description: Catalog Product payload. Enables the registering of products in the Store View context
+      required:
+        - sku
+        - websiteCode
+        - storeCode
+        - storeViewCode
+        - type
+        - name
+        - url
+        - buyable
+        - displayable
+        - deleted
+        - createdAt
+        - modifiedAt
+      type: object
+      properties:
+        sku:
+          type: string
+          description: Product unique identifier
+          example: MH01
+        productId:
+          type: integer
+          description: Id of the product
+          format: int32
+          example: 68
+        websiteCode:
+          type: string
+          description: Website identifier code
+        storeCode:
+          type: string
+          description: Store identifier code
+        storeViewCode:
+          type: string
+          description: StoreView identifier code
+        type:
+          type: string
+          description: Product type
+          enum:
+            - bundle
+            - configurable
+            - downloadable
+            - giftcard
+            - grouped
+            - simple
+            - virtual
+        name:
+          type: string
+          description: Product name
+          example: Kangaroo Hoodie
+        url:
+          type: string
+          description: The URL of the product
+        buyable:
+          type: boolean
+          description: Whether the product is buyable or not. A non-buyable product can also mean the product is out of stock. Buyable state could affect price calculation for complex products related to this one.
+          example: true
+        displayable:
+          type: boolean
+          description: Whether the product is displayable on Storefront
+          example: true
+        visibility:
+          type: string
+          description: Comma-separated string listing areas where the product is visible
+          example: Catalog, Search
+          enum:
+            - Catalog
+            - Search
+            - Catalog, Search
+            - Not Visible Individually
+        deleted:
+          type: boolean
+          description: Value equals "deleted" when the product has been deleted or product has been unassigned from the given "websiteCode"
+          example: false
+        createdAt:
+          type: string
+          description: Timestamp when the product was created
+          example: '2022-10-21 02:15:30'
+          format: yyyy-MM-dd HH:mm:ss
+        updatedAt:
+          type: string
+          description: Timestamp when the product was updated
+          example: '2022-10-21 02:15:30'
+          format: yyyy-MM-dd HH:mm:ss
+        modifiedAt:
+          type: string
+          description: Timestamp when the feed item was last modified. To send a product update, the new value must be greater than the previous value
+          example: '2022-10-21 02:15:30'
+          format: yyyy-MM-dd HH:mm:ss
+        urlKey:
+          type: string
+          description: The URL key
+        urlRewrites:
+          type: array
+          description: A list of all URL rewrites
+          items:
+            $ref: '#/components/schemas/FeedProductUrlRewrites'
+        description:
+          type: string
+          description: A description of the product
+        shortDescription:
+          type: string
+          description: A short description of the product
+        image:
+          description: A URL and label of the product image
+          $ref: '#/components/schemas/FeedProductImage'
+        images:
+          type: array
+          description: A list of image objects
+          items:
+            $ref: '#/components/schemas/FeedProductItemImage'
+        smallImage:
+          description: A URL and label of a small product image
+          $ref: '#/components/schemas/FeedProductImage'
+        swatchImage:
+          description: A URL and label of the product swatch image
+          $ref: '#/components/schemas/FeedProductImage'
+        thumbnail:
+          description: A URL and label of the product thumbnail
+          $ref: '#/components/schemas/FeedProductImage'
+# TODO: what service use this fiedl? can they start using categoryData?
+#        categories:
+#          type: array
+#          description: A list of categories associated with the product
+#          example: '["collections/eco-friendly", "men/tops-men/hoodies"]'
+#          items:
+#            type: string
+        categoryData:
+          type: array
+          description: Data about categories associated with the product
+          items:
+            $ref: '#/components/schemas/FeedProductCategoryData'
+        metaDescription:
+          type: string
+          description: A meta description
+        metaKeyword:
+          type: string
+          description: A meta keyword
+        metaTitle:
+          type: string
+          description: A meta title
+        currency:
+          type: string
+          description: The currency used for selling the product
+          example: USD
+        inStock:
+          type: boolean
+          description: Whether the product is in stock
+          example: false
+        links:
+          type: array
+          description: Product SKUs linked with the product such as related, crosssell and upsell products
+          items:
+            $ref: '#/components/schemas/FeedProductLink'
+        linksPurchasedSeparately:
+          type: boolean
+          description: For downloadable products only, whether links can be purchased separately
+          example: false
+        lowStock:
+          type: boolean
+          description: Whether the product is low in stock. Supports only legacy catalog inventory
+          example: false
+        attributes:
+          type: array
+          description: A list of product attributes
+          items:
+            $ref: '#/components/schemas/FeedProductAttribute'
+        optionsV2:
+          type: array
+          description: Options associated with the product
+          items:
+            $ref: '#/components/schemas/FeedProductOption'
+        parents:
+          type: array
+          description: List of parent products for this product. This list is empty for simple products.
+          items:
+            $ref: '#/components/schemas/FeedProductParent'
+        shopperInputOptions:
+          type: array
+          description: Input options for the shopper
+          items:
+            $ref: '#/components/schemas/FeedProductShopperOption'
+        taxClassId:
+          type: string
+          description: The tax class ID for the product
+        variants:
+          type: array
+          description: List of product variants. Used to describe a list of product variants. If you use Catalog Service, you must submit the variants feed as well. See "Product Variant Feed API".
+          items:
+            $ref: '#/components/schemas/FeedProductVariant'
+        weight:
+          type: number
+          description: Numerical weight of the product
+          format: float
+          example: 100
+        weightType:
+          type: string
+          description: Specific to Bundle Product only. Determines if product weight is dynamic (0) or not dynamic (1).
+          enum:
+            - 0
+            - 1
+        weightUnit:
+          type: string
+          description: Unit used in the product weight
+          example: kg
+    FeedProductAttribute:
+      title: FeedProductAttribute
+      type: object
+      properties:
+        attributeCode:
+          type: string
+          description: Feed product attribute code
+        value:
+          type: array
+          description: A list of values associated with the attribute
+          items:
+            type: string
+#        valueId:
+#          type: array
+#          description: A list of value IDs corresponding to the values
+#          items:
+#            type: string
+    FeedProductCategoryData:
+      title: FeedProductCategoryData
+      type: object
+      properties:
+        categoryId:
+          type: string
+          description: The ID of the associated category
+        categoryPath:
+          type: string
+          description: The path of the associated category
+        productPosition:
+          type: integer
+          description: The position of the product
+          format: int32
+    FeedProductImage:
+      title: FeedProductImage
+      type: object
+      properties:
+        label:
+          type: string
+          description: The image label
+        url:
+          type: string
+          description: The URL path to the image
+    FeedProductItemImage:
+      title: FeedProductItemImage
+      type: object
+      properties:
+        resource:
+          description: The media resource
+          $ref: '#/components/schemas/FeedProductMediaResource'
+        sortOrder:
+          type: integer
+          description: The order in which to sort the images
+          format: int32
+    FeedProductLink:
+      title: FeedProductLink
+      type: object
+      properties:
+        sku:
+          type: string
+          description: SKU of the linked product
+        type:
+          type: string
+          description: Type of the linked product, e.g. related, crosssell, upsell
+          example: crosssell
+    FeedProductMediaResource:
+      title: FeedProductMediaResource
+      type: object
+      properties:
+        label:
+          type: string
+          description: Media resource label
+        roles:
+          type: array
+          description: A list of roles
+          items:
+            type: string
+        url:
+          type: string
+          description: Media resource URL
+    FeedProductOption:
+      title: FeedProductOption
+      type: object
+      properties:
+        id:
+          type: string
+          description: Option ID
+        label:
+          type: string
+          description: Option label
+        renderType:
+          type: string
+          description: Render type for the option
+        required:
+          type: boolean
+          description: Whether the option is required
+          example: false
+        sortOrder:
+          type: integer
+          description: Sorting order
+          format: int32
+        swatchType:
+          type: string
+          description: Type of the swatch
+        type:
+          type: string
+          description: Option type
+        values:
+          type: array
+          description: A list of option values
+          items:
+            $ref: '#/components/schemas/FeedOptionValue'
+    FeedProductOverride:
+      title: FeedProductOverride
+      required:
+        - sku
+        - customerGroupCode
+        - websiteCode
+        - displayable
+        - deleted
+      type: object
+      properties:
+        sku:
+          type: string
+          description: Product SKU
+        productId:
+          type: string
+          description: Product ID
+        websiteCode:
+          type: string
+          description: Website identifier code
+        customerGroupCode:
+          type: string
+          description: Customer group code
+        deleted:
+          type: boolean
+          example: false
+        displayable:
+          type: boolean
+          description: Override displayable permission. If true, customer group has display permissions for this product
+          example: false
+        addToCartAllowed:
+          type: boolean
+          description: Add to cart permission
+          example: false
+        priceDisplayable:
+          type: boolean
+          description: Product price displayable permission. If true, customer group has permission to display prices for this product
+          example: false
+        modifiedAt:
+          type: string
+          description: Timestamp when the product override was last modified.
+          example: '2021-03-01 16:57:22'
+      description: Override information for a customer group for an existing product.
+    FeedProductParent:
+      title: FeedProductParent
+      required:
+        - productType
+        - sku
+      type: object
+      properties:
+        productType:
+          type: string
+          description: Product type
+        sku:
+          type: string
+          description: SKU
+      description: Information about product parent
+    FeedProductPriceRange:
+      title: FeedProductPriceRange
+      type: object
+      properties:
+        maximumPrice:
+          $ref: '#/components/schemas/FeedPrice'
+        minimumPrice:
+          $ref: '#/components/schemas/FeedPrice'
+    FeedProductShopperOption:
+      title: FeedProductShopperOption
+      type: object
+      properties:
+        fileExtension:
+          type: string
+          description: The file extension in use for the option
+        id:
+          type: string
+          description: Id of the shopper option
+        imageSizeX:
+          type: integer
+          description: x-coordinate of the image size
+          format: int32
+        imageSizeY:
+          type: integer
+          description: y-coordinate of the image size
+          format: int32
+        label:
+          type: string
+          description: Shopper option's label
+        price:
+          type: number
+          description: Price of the shopper option
+          format: float
+        range:
+          $ref: '#/components/schemas/FeedOptionValueRange'
+        renderType:
+          type: string
+          description: The render type to use for the option
+        required:
+          type: boolean
+          description: Whether the shopper option is required
+          example: false
+        sku:
+          type: string
+          description: Shopper option SKU
+        sortOrder:
+          type: integer
+          description: Sorting order of the option
+          format: int32
+    FeedProductUrlRewrites:
+      title: FeedProductUrlRewrites
+      type: object
+      properties:
+        parameters:
+          type: array
+          description: A list of URL rewrites
+          items:
+            $ref: '#/components/schemas/FeedUrlRewritesParameter'
+        url:
+          type: string
+          description: The URL of the rewrite
+    FeedProductVariant:
+      title: FeedProductVariant
+      type: object
+      properties:
+        sku:
+          type: string
+          description: Product variant SKU
+    FeedProductVariantNew:
+      title: FeedProductVariantNew
+      required:
+        - deleted
+        - id
+        - optionValues
+        - websiteCode
+      type: object
+      properties:
+        deleted:
+          type: boolean
+          description: Whether the product variant has been deleted
+          example: false
+        id:
+          type: string
+          description: Unique variant identifier
+        modifiedAt:
+          type: string
+          description: Timestamp when the product variant was last modified in the system
+          example: '2021-03-01 16:57:22'
+        optionValues:
+          type: array
+          description: Intersection of the option values of configurable product attributes that unambiguously defines the variant
+          items:
+            $ref: '#/components/schemas/FeedProductVariantOptionValue'
+        parentSku:
+          type: string
+          description: Configurable Product SKU
+        productSku:
+          type: string
+          description: Product Variant SKU
+    FeedProductVariantOptionValue:
+      title: FeedProductVariantOptionValue
+      required:
+        - attributeCode
+        - uid
+        - valueIndex
+      type: object
+      properties:
+        attributeCode:
+          type: string
+          description: Attribute code
+          example: "color"
+        uid:
+          type: string
+          description: Unique identifier that represents the specific option value of this attribute
+          example: "color:green"
+        valueIndex:
+          type: string
+          description: Value index
+    FeedUrlRewritesParameter:
+      title: FeedUrlRewritesParameter
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of the parameter
+        value:
+          type: string
+          description: The associated value of the parameter
+    FloatValue:
+      title: FloatValue
+      type: object
+      properties:
+        value:
+          type: number
+          format: float
+          description: The monetary value
+          example: 23.04
+    ItemFailedValidationResult:
+      title: ItemFailedValidationResult
+      type: object
+      properties:
+        code:
+          type: string
+          description: Code of the validation error
+        itemIndex:
+          type: integer
+          description: Index of the conflicting item in the feed
+          format: int32
+        message:
+          type: string
+          description: Message of the validation error for the item
+    ProcessFeedResponse:
+      title: Response payload
+      type: object
+      properties:
+        feedItemReceivedCount:
+          type: integer
+          description: Number of valid feed items received and processed
+          format: int32
+        invalidFeedItems:
+          type: array
+          description: List of feed items that did not pass the validation. Fix the payload for invalid items before resubmitting the feed
+          items:
+            $ref: '#/components/schemas/FeedItemFailedValidationResult'
+      example:
+        {
+          "feedItemReceivedCount": 2,
+          "invalidFeedItems": [
+            {
+              "itemIndex": 1,
+              "code": "{error code}",
+              "message": "{error message}"
+            }
+          ]
+        }
+    400ProcessFeedResponse:
+      title: Response payload
+      type: object
+      properties:
+        feedItemReceivedCount:
+          type: integer
+          description: 0 valid feed items
+          format: int32
+          default: 0
+        invalidFeedItems:
+          type: array
+          description: List of feed items that did not pass the validation. Fix the payload for invalid items before resubmitting the feed
+          items:
+            $ref: '#/components/schemas/FeedItemFailedValidationResult'
+      example:
+        {
+          "feedItemReceivedCount": 0,
+          "invalidFeedItems": [
+            {
+              "itemIndex": 0,
+              "code": "{error code}",
+              "message": "{error message}"
+            },
+            {
+              "itemIndex": 1,
+              "code": "{error code}",
+              "message": "{error message}"
+            }
+          ]
+        }
+    403Response:
+      title: 403 Forbidden
+      type: object
+      oneOf:
+        - title: 403 Unauthorized - invalid JWT
+          type: object
+          properties:
+            error_code:
+              type: string
+              description: Error code
+            message:
+              type: string
+              description: Error message
+          example:
+            {
+              "error_code":"403053",
+              "message":"JWT is invalid"
+            }
+        - title: 403 Unauthorized
+          type: object
+          properties:
+            error:
+              type: object
+              properties:
+                code:
+                  type: string
+                  description: Error code
+                message:
+                  type: string
+                  description: Error message
+                details:
+                  type: object
+                  properties:
+                    error_code:
+                      type: string
+                      description: Error code
+          example:
+            {
+              "error": {
+                "code": "Forbidden",
+                "message": "Client ID is missing",
+                "details": {
+                  "error_code": "403000"
+                }
+              }
+            }
+
+
+
+    ProcessItemsPublishingResponse:
+      title: ProcessItemsPublishingResponse
+      type: object
+      properties:
+        feedItemReceivedCount:
+          type: integer
+          description: Number of valid feed items received and processed
+          format: int32
+        invalidFeedItems:
+          type: array
+          description: List of feed items that did not pass validation
+          items:
+            $ref: '#/components/schemas/ItemFailedValidationResult'
+    ProductPriceAggregate:
+      title: ProductPriceAggregate
+      type: object
+      required:
+        - sku
+        - websiteCode
+        - customerGroupCode
+        - regular
+        - updatedAt
+      properties:
+        sku:
+          type: string
+          description: Product SKU
+        websiteCode:
+          type: string
+          description: Website
+        customerGroupCode:
+          description: Customer Group
+        regular:
+          $ref: '#/components/schemas/FloatValue'
+          description: Regular product price
+        updatedAt:
+          type: string
+          description: Time in RFC 3339 standard
+          example: "2023-06-13T12:20:19+00:00"
+        discounts:
+          type: array
+          description: Product discount. You can specify as many discounts as you want; the final price is selected as min(discounts)
+          items:
+            oneOf:
+              - $ref: '#/components/schemas/DiscountsPercentage'
+              - $ref: '#/components/schemas/DiscountsFinalPrice'
+        parents:
+          type: array
+          description: Required if _this_ product is a part of composite product. Specifies the link to the parent product and its type
+          items:
+            $ref: '#/components/schemas/ProductPriceParents'
+        type:
+          type: string
+          default: SIMPLE
+          description: Product type
+          enum:
+            - BUNDLE_DYNAMIC
+            - BUNDLE_FIXED
+            - CONFIGURABLE
+            - DOWNLOADABLE
+            - GIFTCARD
+            - GROUPED
+            - SIMPLE
+        deleted:
+          type: boolean
+          default: false
+    ProductPriceParents:
+      title: ProductPriceParents
+      type: object
+      properties:
+        sku:
+          type: string
+        type:
+          type: string
+          description: Product type of parent product
+          enum:
+            - BUNDLE_DYNAMIC
+            - BUNDLE_FIXED
+            - CONFIGURABLE
+            - GROUPED
+    WebsiteScopeFeedItem:
+      title: Website Scope
+      type: object
+      properties:
+        website:
+          type: object
+          properties:
+            websiteCode:
+              type: string
+            stores:
+              type: array
+              items:
+                type: object
+                properties:
+                  storeCode:
+                    type: string
+                  storeViews:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        storeViewCode:
+                          type: string
+        deleted:
+          type: boolean
+        updatedAt:
+          type: string
+          description: Time in RFC 3339 standard
+          example: "2023-06-13T12:20:19+00:00"
+    CustomerGroupScopeFeedItem:
+      title: Customer Group Scope
+      type: object
+      properties:
+        customerGroup:
+          type: object
+          properties:
+            customerGroupCode:
+              type: string
+            websites:
+              type: array
+              items:
+                type: object
+                properties:
+                  websiteCode:
+                    type: string
+        deleted:
+          type: boolean
+        updatedAt:
+          type: string
+          description: Time in RFC 3339 standard
+          example: "2023-06-13T12:20:19+00:00"
