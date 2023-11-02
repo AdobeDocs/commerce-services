@@ -886,7 +886,7 @@ Field | Data Type | Description
 `attribute` | String! | The attribute code of a product attribute
 `direction` | SortEnum! | ASC (ascending) or DESC (descending)
 
-### QueryContextInput data type {#QueryContextInput}
+### QueryContextInput data type
 
 The `QueryContextInput` object can contain the following fields.
 
@@ -973,7 +973,7 @@ Field | Data Type | Description
 --- | --- | ---
 `appliedQueryRule` | AppliedQueryRule | The query rule type that was applied to this product, if any (in preview mode only, returns null otherwise). Possible values: `BOOST`, `BURY`, and `PIN`
 `product` | [ProductInterface!](https://developer.adobe.com/commerce/webapi/graphql/schema/products/interfaces/attributes/) | Contains details about the product. Go to `productInterface` for more information.
-`productView` | ProductView | If Catalog Service is installed, contains details about the product view. The Catalog Service [`products` query](../catalog-service/products/) fully describes this object.
+`productView` | ProductView | If Catalog Service is installed, contains details about the product view. The Catalog Service [`products` query](../catalog-service/products.md/) fully describes this object.
 
 ### SearchResultPageInfo data type
 

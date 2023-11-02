@@ -1,6 +1,6 @@
 ---
 title: Product Recommendations
-description:
+description: Learn how Product Recommendations implements GraphQL.
 edition: ee
 ---
 
