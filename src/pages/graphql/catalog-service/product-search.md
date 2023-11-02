@@ -6,7 +6,7 @@ description: Describes how to construct and use the Catalog Service productSearc
 
 # productSearch query
 
-The Catalog Service for Adobe Commerce `productSearch` query can use Live Search to return details about the SKUs specified as input. Although this query is the same  as the [`productSearch` query](https://devdocs.magento.com/live-search/product-search.html), Live Search returns a `productView` object. See the [`productSearch` query](../../live-search/queries/product-search.md) topic for reference information.
+The Catalog Service for Adobe Commerce `productSearch` query can use Live Search to return details about the SKUs specified as input. Although this query is functionally similar to the Live Search [`productSearch` query](../live-search/product-search.md), Live Search returns a `productView` object. See the [`productSearch` query](../live-search/product-search.md) topic for reference information.
 
 ## Syntax
 
@@ -20,9 +20,21 @@ productSearch(
 ): ProductSearchResponse!
 ```
 
+## Endpoint
+
+`https://catalog-service.adobe.io/graphql`
+
+## Required headers
+
+You must specify the following HTTP headers to run this query.
+
+import Docs from '/src/_includes/graphql/catalog-service/headers.md'
+
+<Docs />
+
 ## Example usage
 
-In the following example, the query returns information on the same products as the previous example. However, it has been constructed to return item information inside the Catalog Service `productView` object instead of the core `product` object. Note that the pricing information varies, depending on the product type. For the sake of brevity, facet information is not shown.
+In the following example, the query returns information on the same products as the Live Search [`productSearch` items list](../live-search/product-search.md#items-list) example. However, it has been constructed to return item information inside the Catalog Service `productView` object instead of the core `product` object. Note that the pricing information varies, depending on the product type. For the sake of brevity, facet information is not shown.
 
 **Request:**
 

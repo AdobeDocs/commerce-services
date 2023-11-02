@@ -258,7 +258,7 @@ facets {
 
 ### Items list
 
-The `items` object primarily provides details about each item returned. If Catalog Service is not installed, then you must specify the `product` field to return details about each item. The `product` field uses the [`ProductInterface`](../../products/interfaces/attributes/), which is defined in Adobe Commerce and Magento Open Source, to return details about the product. A typical query might return the product name, price, SKU, and image.
+The `items` object primarily provides details about each item returned. If Catalog Service is not installed, then you must specify the `product` field to return details about each item. The `product` field uses the [`ProductInterface`](https://developer.adobe.com/commerce/webapi/graphql/schema/products/interfaces/attributes/), which is defined in Adobe Commerce and Magento Open Source, to return details about the product. A typical query might return the product name, price, SKU, and image.
 
 The following snippet returns relevant information about each item when Catalog Service is not installed or used:
 
@@ -357,7 +357,7 @@ items {
 
 <InlineAlert variant="info" slots="text"/>
 
-The Catalog Service [products query](../../catalog-service/products.md) describes the contents of the `ProductView` object.
+The Catalog Service [products query](../catalog-service/products.md) describes the contents of the `ProductView` object.
 
 The `items` object can also optionally return highlighted text that shows the matching search terms.
 
@@ -368,6 +368,10 @@ The query response can also contain the following top-level fields and objects:
 - `page_info` - An object that lists the `page_size` and `current_page` input arguments and the total number of pages available.
 - `suggestions` - An array of strings that include the names of products and categories that exist in the catalog that are similar to the search query.
 - `total_count` - The number of products returned.
+
+## Endpoint
+
+`https://catalog-service.adobe.io/graphql`
 
 ## Required headers
 
@@ -381,7 +385,7 @@ import Docs from '/src/_includes/graphql/live-search-headers.md'
 
 This is an example of using Live Search to retrieve and filter results. The query uses the core `ProductInterface` to access product information. As a result, the query has a longer response time than using [Catalog Service](https://experienceleague.adobe.com/docs/commerce-merchant-services/catalog-service/guide-overview.html) to retrieve this information.
 
-For an example of using Live Search with Catalog Service, see [Catalog Service productSearch query](../../catalog-service/queries/product-search.md). Other than returning the `productView` object, all other attributes are the same.
+For an example of using Live Search with Catalog Service, see [Catalog Service productSearch query](../catalog-service/product-search.md). Other than returning the `productView` object, all other attributes are the same.
 
 In the example below, there is no search `phrase` passed and results are filtered on the "women/bottoms-women" category. In the response, two categories are returned:
 
@@ -846,14 +850,14 @@ The `productSearch` query accepts the following fields as input:
 
 Field | Data Type | Description
 --- | --- | ---
-`context` | [[QueryContextInput!]](#QueryContextInput) | Query context that allows customized search results to be returned based on the context passed
+`context` | [[QueryContextInput!]](#querycontextinput-data-type) | Query context that allows customized search results to be returned based on the context passed
 `current_page` | Int | Specifies which page of results to return. Default value: 1
-`filter` | [[SearchClauseInput!]](#SearchClauseInput) | Identifies which attributes to search for and return
+`filter` | [[SearchClauseInput!]](#searchclauseinput-data-type) | Identifies which attributes to search for and return
 `page_size` | Int | Specifies the maximum number of results to return at once. Default value: 20
 `phrase` | String! | The text to filter on. Can be an empty string.
-`sort` | [[ProductSearchSortInput!]](#ProductSearchSortInput) | Specifies which attribute to sort on, and whether to return the results in ascending or descending order
+`sort` | [[ProductSearchSortInput!]](#productsearchsortinput-data-type) | Specifies which attribute to sort on, and whether to return the results in ascending or descending order
 
-### SearchClauseInput data type {#SearchClauseInput}
+### SearchClauseInput data type
 
 The `SearchClauseInput` object can contain the following fields:
 
@@ -862,9 +866,9 @@ Field | Data Type | Description
 `attribute` | String! | The attribute code of a product attribute
 `eq` | String | A string value to filter on
 `in` | [String] | An array of string values to filter on
-`range` | [SearchRangeInput](#SearchRangeInput) | A range of numeric values to filter on
+`range` | [SearchRangeInput](#searchrangeinput-data-type) | A range of numeric values to filter on
 
-#### SearchRangeInput data type {#SearchRangeInput}
+#### SearchRangeInput data type
 
 The `SearchRangeInput` object can contain the following fields:
 
@@ -873,7 +877,7 @@ Field | Data Type | Description
 `from` | Float | The minimum value to filter on. If not specified, the value of `0` is applied
 `to` | Float | The maximum value to filter on
 
-### ProductSearchSortInput data type {#ProductSearchSortInput}
+### ProductSearchSortInput data type
 
 The `ProductSearchSortInput` object can contain the following fields.
 
@@ -889,9 +893,9 @@ The `QueryContextInput` object can contain the following fields.
 Field | Data Type | Description
 --- | --- | ---
 `customerGroup` | String! | The customer group code. For storefront clients, this value is available in the `dataservices_customer_group` cookie.
-`userViewHistory` | [ViewHistoryInput!]((#ViewHistoryInput)) | List of SKUs with timestamps. Used in "Recommended for you" ranking.
+`userViewHistory` | [ViewHistoryInput!](#viewhistoryinput-data-type) | List of SKUs with timestamps. Used in "Recommended for you" ranking.
 
-### ViewHistoryInput data type {#ViewHistoryInput}
+### ViewHistoryInput data type
 
 The `ViewHistoryInput` object can contain the following fields.
 
@@ -906,23 +910,23 @@ The `AttributeMetadataResponse` return object can contain the following fields:
 
 Field | Data Type | Description
 --- | --- | ---
-`facets` | [[Aggregation]](#Aggregation) | Provides details about the static and dynamic facets relevant to the search
-`items` | [[ProductSearchItem]](#ProductSearchItem) | An array of products returned by the query
-`page_info` | [SearchResultPageInfo](#SearchResultPageInfo) | Contains information for rendering pages of search results
+`facets` | [[Aggregation]](#aggregation-data-type) | Provides details about the static and dynamic facets relevant to the search
+`items` | [[ProductSearchItem]](#productsearchitem-data-type) | An array of products returned by the query
+`page_info` | [SearchResultPageInfo](#searchresultpageinfo-data-type) | Contains information for rendering pages of search results
 `related_terms` | [String] | Reserved for future use
 `suggestions` | [String] | An array of product URL keys that are similar to the search query. A maximum of five items are returned
 `total_count` | Int | The total number of items returned
 
-### Aggregation data type {#Aggregation}
+### Aggregation data type
 
 Field | Data Type | Description
 --- | --- | ---
 `attribute` | String! | The attribute code of the filter item
-`buckets` | [[Bucket]!](#Bucket) | A container that divides the data into manageable groups. For example, attributes that can have numeric values might have buckets that define price ranges
+`buckets` | [[Bucket]!](#bucket-data-type) | A container that divides the data into manageable groups. For example, attributes that can have numeric values might have buckets that define price ranges
 `title` | String! | The filter name displayed in layered navigation
 `type` | AggregationType | Identifies the data type as one of the following: `INTELLIGENT`, `PINNED`, or `POPULAR`
 
-### Bucket data type {#Bucket}
+### Bucket data type
 
 The `Bucket` object defines one field, `title`. However, the object has three implementations that can be used to provide greater detail.
 
@@ -961,17 +965,17 @@ Field | Data Type | Description
 `min` | Float! | The minimum value
 `title` | String! | The display text defining the bucket
 
-### ProductSearchItem data type {#ProductSearchItem}
+### ProductSearchItem data type
 
 The `ProductSearchItem` data type can contain the following fields:
 
 Field | Data Type | Description
 --- | --- | ---
 `appliedQueryRule` | AppliedQueryRule | The query rule type that was applied to this product, if any (in preview mode only, returns null otherwise). Possible values: `BOOST`, `BURY`, and `PIN`
-`product` | [ProductInterface!](../../products/interfaces/attributes/) | Contains details about the product. Go to `productInterface` for more information.
-`productView` | ProductView | If Catalog Service is installed, contains details about the product view. The Catalog Service [`products` query](../../catalog-service/queries/products/) fully describes this object.
+`product` | [ProductInterface!](https://developer.adobe.com/commerce/webapi/graphql/schema/products/interfaces/attributes/) | Contains details about the product. Go to `productInterface` for more information.
+`productView` | ProductView | If Catalog Service is installed, contains details about the product view. The Catalog Service [`products` query](../catalog-service/products/) fully describes this object.
 
-### SearchResultPageInfo data type {#SearchResultPageInfo}
+### SearchResultPageInfo data type
 
 The `SearchResultPageInfo` data type can contain the following fields:
 

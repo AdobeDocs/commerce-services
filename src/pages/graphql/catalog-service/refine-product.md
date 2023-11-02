@@ -16,6 +16,10 @@ You should construct the response of your query so that it contains both the `Co
 refineProduct(sku: String!, optionIds: [String!]!): ProductView
 ```
 
+## Endpoint
+
+`https://catalog-service.adobe.io/graphql`
+
 ## Required headers
 
 You must specify the following HTTP headers to run this query.
@@ -28,7 +32,7 @@ import Docs from '/src/_includes/graphql/catalog-service/headers.md'
 
 ### Return details about a partially selected complex product
 
-The following query returns details about the color options available for a medium-sized variant of product `MH12`. The value of the `optionIDs` input parameter is taken from the `products` query's [Return details about a complex product](products.html#complex-product-example) example.
+The following query returns details about the color options available for a medium-sized variant of product `MH12`. The value of the `optionIDs` input parameter is taken from the `products` query's [Return details about a complex product](products.md#return-details-about-a-complex-product) example.
 
 **Request:**
 

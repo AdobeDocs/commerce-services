@@ -12,6 +12,10 @@ The `attributeMetadata` query returns a list of product attribute codes that can
 
 `attributeMetadata: AttributeMetadataResponse!`
 
+## Endpoint
+
+`https://catalog-service.adobe.io/graphql`
+
 ## Required headers
 
 You must specify the following HTTP headers to run this query.
@@ -142,10 +146,10 @@ The `AttributeMetadataResponse` return object can contain the following fields:
 
 Field | Data Type | Description
 --- | --- | ---
-`filterableInSearch` | [FilterableInSearchAttribute](#FilterableInSearchAttribute) | An array of product attributes that can be used for filtering in a `productSearch` query
-`sortable` | [SortableAttribute](#SortableAttribute) | An array of product attributes that can be used for sorting in a `productSearch` query
+`filterableInSearch` | [FilterableInSearchAttribute](#filterableinsearchattribute-data-type) | An array of product attributes that can be used for filtering in a `productSearch` query
+`sortable` | [SortableAttribute](#sortableattribute-data-type) | An array of product attributes that can be used for sorting in a `productSearch` query
 
-### FilterableInSearchAttribute data type {#FilterableInSearchAttribute}
+### FilterableInSearchAttribute data type
 
 The `FilterableInSearchAttribute` data type can contain the following fields:
 
@@ -155,7 +159,7 @@ Field | Data Type | Description
 `label` | String | The display name assigned to the attribute
 `numeric` | Boolean | Indicates whether this attribute has a numeric value, such as a price or integer
 
-### SortableAttribute data type {#SortableAttribute}
+### SortableAttribute data type
 
 The `SortableAttribute` data type can contain the following fields:
 

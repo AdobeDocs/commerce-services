@@ -6,7 +6,7 @@ description: Describes how to construct and use the Catalog Service products que
 
 # products query
 
-The Catalog Service for Adobe Commerce `products` query returns details about the SKUs specified as input. Although this query has the same name as  the [`products` query](../../products/queries/products.md) that is provided with core Adobe Commerce and Magento Open Source, there are some differences.
+The Catalog Service for Adobe Commerce `products` query returns details about the SKUs specified as input. Although this query has the same name as the [`products` query](https://developer.adobe.com/commerce/webapi/graphql/schema/products/queries/products/) that is provided with core Adobe Commerce and Magento Open Source, there are some differences.
 
 The Catalog Service query requires one or more SKU values as input. The query is primarily designed to retrieve information to render the following types of content:
 
@@ -16,7 +16,7 @@ The Catalog Service query requires one or more SKU values as input. The query is
 
 <InlineAlert variant="info" slots="text"/>
 
-Use the Live Search [`productSearch` query](../../live-search/queries/product-search.md) to return product listing page content.
+Use the Live Search [`productSearch` query](../live-search/product-search.md) to return product listing page content.
 
 The `ProductView` output object is significantly different than the core `products` query `Products` output object. Key differences include:
 
@@ -31,6 +31,10 @@ The `ProductView` output object is significantly different than the core `produc
 ```graphql
 products (skus [String]) [ProductView]
 ```
+
+## Endpoint
+
+`https://catalog-service.adobe.io/graphql`
 
 ## Required headers
 
