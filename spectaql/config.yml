@@ -381,7 +381,6 @@ info:
   ##############################################
 
   description: The Adobe Commerce Services GraphQL API allows you to quickly and efficiently access the Adobe Commerce Catalog Service, Live Search, and Product Recommendations.</a>.
-  version: 2.4.6
   title: Adobe Commerce Services GraphQL API
   # This is non-standard and optional. If omitted, will use "title". Also only relevant
   # when building non-embedded.
