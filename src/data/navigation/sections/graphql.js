@@ -51,6 +51,6 @@ module.exports = [
     },
   {
     title: "Services GraphQL reference",
-    path: "/graphql/",
+    path: "/graphql/reference.md",
   },
 ];
