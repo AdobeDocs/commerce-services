@@ -340,7 +340,7 @@ servers:
 
   # same format as for OpenAPI Specification https://swagger.io/specification/#server-object
 
-  - url: https://<your store>/graphql
+  - url: https://catalog-service.adobe.io/graphql
     description: Production Server
     # Indicates to use this server's URL as the typical GraphQL request base in the documentation
     # If no server entries have this indicator, the first server's URL will be used.
