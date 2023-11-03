@@ -20,7 +20,7 @@ module.exports = [
       path: "/product-recommendations/",
     },
     {
-      title: "Services GraphQL reference",
+      title: "GraphQL",
       path: "/graphql/",
     },
   ];

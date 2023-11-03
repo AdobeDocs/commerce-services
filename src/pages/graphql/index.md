@@ -1,7 +1,8 @@
 ---
-title: GraphQL API reference
-description: Review comprehensive reference documentation for the Adobe Commerce and Magento Open Source Services GraphQL API schema.
+title: Services GraphQL API reference
+description: Review comprehensive GraphQL API reference documentation for Adobe Commerce Services.
 keywords:
   - GraphQL
+  - Services
 frameSrc: /graphql-api/index.html
 ---
