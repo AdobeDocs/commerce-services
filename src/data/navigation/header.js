@@ -12,15 +12,15 @@ module.exports = [
       path: "/live-search/",
     },
     {
-      title: "Reporting",
-      path: "/reporting/",
-    },
-    {
       title: "Product Recommendations SDK",
       path: "/product-recommendations/",
     },
     {
-      title: "GraphQL",
-      path: "/graphql/",
+      title: "Reporting",
+      path: "/reporting/",
     },
+    {
+      title: "GraphQL",
+      path: "/graphql/"
+    }
   ];
