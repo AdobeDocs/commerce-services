@@ -2,6 +2,10 @@
 title: Live Search
 edition: ee
 description: Learn how Live Search implements GraphQL.
+keywords:
+  - GraphQL
+  - Services
+  - Search
 ---
 
 # Live Search

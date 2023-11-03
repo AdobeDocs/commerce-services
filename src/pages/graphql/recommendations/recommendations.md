@@ -2,6 +2,9 @@
 title: recommendations query | GraphQL Developer Guide
 edition: ee
 description: Describes how to construct and use the Product Recommendations recommendations query.
+keywords:
+  - GraphQL
+  - Services
 ---
 
 # recommendations query

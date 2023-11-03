@@ -2,6 +2,9 @@
 title: categories query | GraphQL Developer Guide
 edition: ee
 description: Describes how to construct and use the Catalog Service categories query.
+keywords:
+  - GraphQL
+  - Services
 ---
 
 # categories query

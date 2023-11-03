@@ -2,6 +2,9 @@
 title: products query
 edition: ee
 description: Describes how to construct and use the Catalog Service products query.
+keywords:
+  - GraphQL
+  - Services
 ---
 
 # products query

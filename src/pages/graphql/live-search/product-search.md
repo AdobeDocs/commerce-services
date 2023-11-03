@@ -2,6 +2,10 @@
 title: productSearch query
 edition: ee
 description: Describes how to construct and use the Live Search productSearch query.
+keywords:
+  - GraphQL
+  - Services
+  - Search
 ---
 
 # productSearch query

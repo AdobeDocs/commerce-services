@@ -2,6 +2,9 @@
 title: Product Recommendations
 description: Learn how Product Recommendations implements GraphQL.
 edition: ee
+keywords:
+  - GraphQL
+  - Services
 ---
 
 # Product Recommendations
