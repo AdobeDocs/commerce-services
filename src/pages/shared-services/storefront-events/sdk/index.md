@@ -63,4 +63,4 @@ mse.unsubscribe.pageView(pageViewHandler);
 
 If you have any questions or encounter any issues, reach out here:
 
--  [GitHub](https://github.com/adobe/magento-storefront-event-collector/issues)
+-  [GitHub](https://github.com/adobe/commerce-events)

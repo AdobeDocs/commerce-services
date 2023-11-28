@@ -17,7 +17,7 @@ Before using the import API, make sure you [authenticate](index.md#authenticatio
 
 The Data Import API uses standard HTTP return codes to indicate the status of a request. Your application should handle each of the following return statuses.
 
-Codes in the 2xx range indicate a successful transaction, codes in the 4xx range indicate a bad request, and codes in the 5xx range indicate an error with Adobe Commerce Reporting. If errors in the 5xx range persist, please contact [support](https://support.magento.com/hc/en-us/articles/360019088251).
+Codes in the 2xx range indicate a successful transaction, codes in the 4xx range indicate a bad request, and codes in the 5xx range indicate an error with Adobe Commerce Reporting. If errors in the 5xx range persist, please contact [support](https://experienceleague.adobe.com/docs/commerce-knowledge-base/kb/help-center-guide/magento-help-center-user-guide.html).
 
 *  200 OK - request was successful.
 *  201 Created - new data was added as a result of the request.
