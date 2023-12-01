@@ -48,5 +48,9 @@ module.exports = [
         path: "graphql/recommendations/recommendations.md"
       }
     ]
+    },
+  {
+    title: "Reference",
+    path: "/graphql/reference.md",
   },
 ];
