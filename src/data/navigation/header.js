@@ -4,16 +4,17 @@ module.exports = [
       path: "/",
     },
     {
-      title: "Shared Services",
-      path: "/shared-services/",
-    },
-    {
-      title: "Live Search",
-      path: "/live-search/",
-    },
-    {
-      title: "Product Recommendations SDK",
-      path: "/product-recommendations/",
+      title: "Events",
+      menu: [
+        {
+          title: "Storefront Events",
+          path: "/shared-services/"
+        },
+        {
+          title: "Live Search",
+          path: "/live-search/"
+        }
+      ]
     },
     {
       title: "Reporting",
@@ -21,6 +22,19 @@ module.exports = [
     },
     {
       title: "GraphQL",
-      path: "/graphql/"
-    }
+      path: "/graphql/",
+    },
+    {
+      title: "SDKs",
+      menu: [
+        {
+          title: "Storefront Events",
+          path: "/shared-services/storefront-events/"
+        },
+        {
+          title: "Product Recommendations SDK",
+          path: "/product-recommendations/"
+        }
+      ]
+    },
   ];
