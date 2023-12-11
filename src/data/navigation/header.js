@@ -7,7 +7,7 @@ module.exports = [
       title: "Events",
       menu: [
         {
-          title: "Storefront Events",
+          title: "Storefront Events SDK",
           path: "/shared-services/"
         },
         {
@@ -28,7 +28,7 @@ module.exports = [
       title: "SDKs",
       menu: [
         {
-          title: "Storefront Events",
+          title: "Storefront Events SDK",
           path: "/shared-services/storefront-events/"
         },
         {
