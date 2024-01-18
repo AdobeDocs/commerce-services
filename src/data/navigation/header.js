@@ -12,6 +12,10 @@ module.exports = [
       path: "/live-search/",
     },
     {
+      title: "Feed Ingestion",
+      path: "/feed-ingestion/",
+    },
+    {
       title: "Reporting",
       path: "/reporting/",
     },
