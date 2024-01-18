@@ -4,12 +4,17 @@ module.exports = [
       path: "/",
     },
     {
-      title: "Shared Services",
-      path: "/shared-services/",
-    },
-    {
-      title: "Live Search",
-      path: "/live-search/",
+      title: "Events",
+      menu: [
+        {
+          title: "Storefront Events SDK",
+          path: "/shared-services/"
+        },
+        {
+          title: "Live Search",
+          path: "/live-search/"
+        }
+      ]
     },
     {
       title: "Feed Ingestion",
@@ -20,7 +25,20 @@ module.exports = [
       path: "/reporting/",
     },
     {
-      title: "Product Recommendations SDK",
-      path: "/product-recommendations/",
+      title: "GraphQL",
+      path: "/graphql/",
+    },
+    {
+      title: "SDKs",
+      menu: [
+        {
+          title: "Storefront Events SDK",
+          path: "/shared-services/storefront-events/"
+        },
+        {
+          title: "Product Recommendations SDK",
+          path: "/product-recommendations/"
+        }
+      ]
     },
   ];

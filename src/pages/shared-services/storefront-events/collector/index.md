@@ -108,5 +108,5 @@ The list of supported events can differ between eventing frameworks. The followi
 
 If you have any questions or encounter any issues, reach out here:
 
-- [GitHub](https://github.com/adobe/magento-storefront-event-collector/issues)
+- [GitHub](https://github.com/adobe/commerce-events)
 - [Zendesk](https://account.magento.com/customer/account/login/referer/aHR0cHM6Ly9hY2NvdW50Lm1hZ2VudG8uY29tL3plbmRlc2svbG9naW4vaW5kZXgv/)
