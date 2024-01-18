@@ -191,7 +191,7 @@ paths:
             examples:
               FeedWithMetadataInformation:
                 summary: Example of product and category attributes
-                description: Enabled the feed with product attribute information
+                description: Enables the feed with product attribute information
                 value:
                   [
                     {
@@ -879,7 +879,7 @@ paths:
                     }
                   ]
               BundleDynamicProduct:
-                description: Create a Bundle Dynamic Product with 1 option and 2 selections
+                description: Create a bundle dynamic product with 1 option and 2 selections
                 value:
                   [
                     {
@@ -1039,7 +1039,7 @@ paths:
       tags:
         - products
       summary: Product Price Feed API
-      description: Allows the managing of product prices in the scope of the Website Code and Customer Group Code. Price registered with "0" customerGroupCode are used as the default price for any Customer Group Code _this_ Website Code
+      description: Allows the managing of product prices in the scope of the Website Code and Customer Group Code. The price registered with a "0" customerGroupCode is used as the default price for any Customer Group Code with _this_ Website Code
       operationId: PostV1ProductPrices
       parameters:
         - name: environmentId
@@ -1109,7 +1109,7 @@ paths:
                   ]
               CompositeProductPrice:
                 summary: Composite product price example
-                description: Register a Configurable Product "t-shirt" with 3 variants "t-shirt-s" ($10) and "t-shirt-m" ($11), "t-shirt-l" ($12). Configurable product "t-shirt" will have min price as $10 and max price as $12
+                description: Register a configurable product "t-shirt" with 3 variants "t-shirt-s" ($10) and "t-shirt-m" ($11), "t-shirt-l" ($12). Configurable product "t-shirt" will have min price as $10 and max price as $12
                 value:
                   [
                     {
@@ -1606,8 +1606,8 @@ components:
           format: int32
         path:
           type: string
-          description: Category path in the website. Each part of the path is separated by a slash for each part the category id. Last part is the category id of the current category.
-          example: 2/3/4
+          description: Category path in the website. Each segment of the category path is separated by a slash. The last segment is the category id of the current category.
+          example: Womans/Tops/Jackets
         pathInStore:
           type: string
           example: '10'
@@ -2062,7 +2062,7 @@ components:
           example: 100
         weightType:
           type: string
-          description: Specific to Bundle Product only. Determines if product weight is dynamic (0) or not dynamic (1).
+          description: Specific to bundle product only. Determines if product weight is dynamic (0) or not dynamic (1).
           enum:
             - 0
             - 1
@@ -2387,6 +2387,9 @@ components:
         message:
           type: string
           description: Message of the validation error for the item
+        value:
+          type: string
+          description: The value supplied to the API
     ProcessFeedResponse:
       title: Response payload
       type: object
