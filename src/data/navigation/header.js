@@ -17,16 +17,16 @@ module.exports = [
       ]
     },
     {
-      title: "Feed Ingestion",
-      path: "/feed-ingestion/",
-    },
-    {
       title: "Reporting",
       path: "/reporting/",
     },
     {
       title: "GraphQL",
       path: "/graphql/",
+    },
+    {
+      title: "REST",
+      path: "/feed-ingestion/",
     },
     {
       title: "SDKs",
