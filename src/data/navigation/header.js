@@ -26,7 +26,7 @@ module.exports = [
     },
     {
       title: "REST",
-      path: "/feed-ingestion/",
+      path: "/data-ingestion/",
     },
     {
       title: "SDKs",

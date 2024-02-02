@@ -1,7 +1,7 @@
 openapi: 3.0.3
 info:
-  title: Feed Ingestion Service
-  description: Feed Ingestion Service for Adobe Commerce is responsible for ingesting data from Adobe Commerce into the Adobe Commerce SaaS Platform.
+  title: Data Ingestion Service
+  description: Data Ingestion Service for Adobe Commerce is responsible for ingesting data from Adobe Commerce into the Adobe Commerce SaaS Platform.
   version: 1.0.0
 servers:
   - url: https://commerce.adobe.io/feeds/
