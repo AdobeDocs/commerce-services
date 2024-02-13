@@ -11,7 +11,7 @@ The Data Ingestion Service allows customers with large and/or complex catalogs t
 
 The Data Ingestion Service decreases the time that it takes to process product changes by bypassing the Adobe Commerce instance and moving catalog data from a third-party Enterprise Resource Planning (ERP) directly to Adobe Commerce services.
 
-Read more about the [Data Ingestion Service](https://experienceleague.adobe.com/docs/commerce-merchant-services/catalog-service/feed-ingestion.html).
+Read more about the [Data Ingestion Service](https://experienceleague.adobe.com/docs/commerce-merchant-services/catalog-service/data-ingestion.html).
 
 The Data Ingestion endpoint is `https://commerce.adobe.io/feeds`.
 
