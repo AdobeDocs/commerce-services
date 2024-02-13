@@ -20,7 +20,7 @@ The Data Ingestion endpoint is `https://commerce.adobe.io/feeds`.
 Header name| Description
 --- | ---
 `Magento-Environment-Id` | This value is displayed at **Stores** > **Configuration** > **Services** > **Magento Services** > **SaaS Environment** or can be obtained by running the `bin/magento config:show services_connector/services_id/environment_id` command.
-`-X-Gw-Signaturee` | [JWT](https://jwt.io/) generated token. The only required payload parameter is `exp`: the expiration time.
+`-X-Gw-Signature` | [JWT](https://jwt.io/) generated token. The only required payload parameter is `exp`: the expiration time.
 `X-Api-Key` | Your [Commerce API](https://developer.adobe.com/commerce/marketplace/guides/eqp/v1/access-keys/) key.
 
 ### Sample JWT code
