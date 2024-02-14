@@ -25,10 +25,6 @@ module.exports = [
       path: "/graphql/",
     },
     {
-      title: "REST",
-      path: "/data-ingestion/",
-    },
-    {
       title: "SDKs",
       menu: [
         {
