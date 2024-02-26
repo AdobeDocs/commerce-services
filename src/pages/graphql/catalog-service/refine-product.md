@@ -19,9 +19,10 @@ You should construct the response of your query so that it contains both the `Co
 refineProduct(sku: String!, optionIds: [String!]!): ProductView
 ```
 
-## Endpoint
+## Endpoints
 
-`https://catalog-service.adobe.io/graphql`
+* Testing: `https://catalog-service-sandbox.adobe.io/graphql`
+* Production: `https://catalog-service.adobe.io/graphql`
 
 ## Required headers
 
