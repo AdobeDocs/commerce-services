@@ -25,8 +25,8 @@ productSearch(
 
 ## Endpoints
 
-Testing: `https://catalog-service-sandbox.adobe.io/graphql`
-Production: `https://catalog-service.adobe.io/graphql`
+* Testing: `https://catalog-service-sandbox.adobe.io/graphql`
+* Production: `https://catalog-service.adobe.io/graphql`
 
 ## Required headers
 
