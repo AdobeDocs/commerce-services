@@ -31,9 +31,10 @@ input Subtree {
 If using the `subtree` input, only one category `id` can be specified in the query.
 The `subtree` object allows you to specify how many levels of subcategories to return. Some sites may have a high number of subcategories, and returning the entire category tree could cause performance issues. It is recommended to keep `depth` to a maximum of 3 for the same reason.
 
-## Endpoint
+## Endpoints
 
-`https://catalog-service.adobe.io/graphql`
+Testing: `https://catalog-service-sandbox.adobe.io/graphql`
+Production: `https://catalog-service.adobe.io/graphql`
 
 ## Required headers
 
