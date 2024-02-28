@@ -23,17 +23,18 @@ productSearch(
 ): ProductSearchResponse!
 ```
 
-## Endpoint
+## Endpoints
 
-`https://catalog-service.adobe.io/graphql`
+* Testing: `https://catalog-service-sandbox.adobe.io/graphql`
+* Production: `https://catalog-service.adobe.io/graphql`
 
 ## Required headers
 
 You must specify the following HTTP headers to run this query.
 
-import Docs from '/src/_includes/graphql/catalog-service/headers.md'
+import Headers from '/src/_includes/graphql/catalog-service/headers.md'
 
-<Docs />
+<Headers />
 
 ## Example usage
 

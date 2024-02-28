@@ -375,7 +375,7 @@ The query response can also contain the following top-level fields and objects:
 
 ## Endpoint
 
-`https://catalog-service.adobe.io/graphql`
+`https://commerce.adobe.io/search/graphql`
 
 ## Required headers
 
