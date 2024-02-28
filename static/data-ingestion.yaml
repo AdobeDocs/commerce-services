@@ -1,11 +1,11 @@
 openapi: 3.0.3
 info:
-  title: Data Ingestion Service
-  description: Data Ingestion Service for Adobe Commerce is responsible for ingesting data from Adobe Commerce into the Adobe Commerce SaaS Platform.
+  title: Data Ingestion API
+  description: Data Ingestion API for Adobe Commerce is responsible for ingesting data from Adobe Commerce into the Adobe Commerce SaaS Platform.
   version: 1.0.0
 servers:
   - url: https://commerce.adobe.io/feeds/
-    description: Production Server
+    description: Production endpoint
 
 tags:
   - name: metadata
@@ -13,11 +13,11 @@ tags:
   - name: scopes
     description: Scope Feed API
   - name: products
-    description: Product Feed Resource
+    description: Product API to manage product data, prices, permissions
   - name: categories
-    description: Category Feed API
+    description: Category API
 paths:
-  /feeds/categories/v1/{environmentId}:
+  /categories/v1/{DATA_SPACE_ID}:
     post:
       tags:
         - categories
@@ -25,9 +25,9 @@ paths:
       description: Register or update categories in the scope of the Store View
       operationId: PostV1CategoryFeed
       parameters:
-        - name: environmentId
+        - name: DATA_SPACE_ID
           in: path
-          description: environmentId
+          description: Data Space ID
           required: true
           style: simple
           schema:
@@ -72,9 +72,9 @@ paths:
                   [
                     {
                       "categoryId": "2",
-                      "storeViewCode": "default",
-                      "storeCode": "main_website_store",
-                      "websiteCode": "base",
+                      "websiteCode": "us",
+                      "storeCode": "us",
+                      "storeViewCode": "us_en",
                       "name": "Default Category",
                       "description": "Welcome text",
                       "displayMode": "PRODUCTS",
@@ -82,7 +82,6 @@ paths:
                       "image": null,
                       "level": 1,
                       "path": "1\/2",
-                      "parentId": "1",
                       "children": [
                         "3"
                       ],
@@ -98,16 +97,15 @@ paths:
                     },
                     {
                       "categoryId": "3",
-                      "storeViewCode": "default",
-                      "storeCode": "main_website_store",
-                      "websiteCode": "base",
+                      "websiteCode": "us",
+                      "storeCode": "us",
+                      "storeViewCode": "us_en",
                       "name": "demo-category",
                       "urlKey": "demoCategory",
                       "urlPath": "demoCategory",
                       "image": null,
                       "level": 2,
                       "path": "1\/2\/3",
-                      "parentId": "2",
                       "children": null,
                       "position": 2,
                       "defaultSortBy": "position",
@@ -141,17 +139,18 @@ paths:
               schema:
                 $ref: '#/components/schemas/403Response'
 
-  /feeds/metadata/v2/metadata/{environmentId}:
+  /metadata/v2/metadata/{DATA_SPACE_ID}:
     post:
       tags:
         - metadata
-      summary: Product Metadata API
-      description: Register or updates product attribute metadata
+      summary: Product Attributes Metadata API
+      description: API allows to register or update product attribute. 
+        Product attributes allows you to define how product attributes will be displayed on Storefront, define their search characteristics
       operationId: PostV2ProductMetadata
       parameters:
-        - name: environmentId
+        - name: DATA_SPACE_ID
           in: path
-          description: environmentId
+          description: Data Space ID
           required: true
           style: simple
           schema:
@@ -195,10 +194,9 @@ paths:
                 value:
                   [
                     {
-                      "id": "219",
-                      "storeCode": "main_website_store",
-                      "websiteCode": "base",
-                      "storeViewCode": "default",
+                      "websiteCode": "us",
+                      "storeCode": "us",
+                      "storeViewCode": "us_en",
                       "attributeCode": "name",
                       "attributeType": "catalog_product",
                       "dataType": "varchar",
@@ -218,17 +216,14 @@ paths:
                       "filterableInSearch": false,
                       "searchWeight": 5,
                       "usedForRules": false,
-                      "boolean": false,
                       "systemAttribute": false,
                       "numeric": false,
                       "attributeOptions": null
                     },
                     {
-                      "id": "225",
-                      "storeCode": "main_website_store",
-                      "websiteCode": "base",
-                      "storeViewCode": "default",
-                      "attributeCode": "description",
+                      "websiteCode": "us",
+                      "storeCode": "us",
+                      "storeViewCode": "us_en",                      "attributeCode": "description",
                       "attributeType": "catalog_product",
                       "dataType": "text",
                       "multi": false,
@@ -247,16 +242,14 @@ paths:
                       "filterableInSearch": false,
                       "searchWeight": 1,
                       "usedForRules": false,
-                      "boolean": false,
                       "systemAttribute": false,
                       "numeric": false,
                       "attributeOptions": null
                     },
                     {
-                      "id": "279",
-                      "storeCode": "main_website_store",
-                      "websiteCode": "base",
-                      "storeViewCode": "default",
+                      "websiteCode": "us",
+                      "storeCode": "us",
+                      "storeViewCode": "us_en",
                       "attributeCode": "color",
                       "attributeType": "catalog_product",
                       "dataType": "int",
@@ -276,7 +269,6 @@ paths:
                       "filterableInSearch": false,
                       "searchWeight": 1,
                       "usedForRules": false,
-                      "boolean": false,
                       "systemAttribute": true,
                       "numeric": false,
                       "attributeOptions": [
@@ -305,15 +297,15 @@ paths:
             application/json;charset=UTF-8:
               schema:
                 $ref: '#/components/schemas/403Response'
-  /feeds/catalog/v2/products/{environmentId}:
+  /catalog/v2/products/{DATA_SPACE_ID}:
     post:
       tags:
         - products
       summary: Product Feed API
-      description: Register or update Catalog Product for given Data Space ID
+      description: Register or update Product entity for given Data Space ID.
       operationId: PostV2Products
       parameters:
-        - name: environmentId
+        - name: DATA_SPACE_ID
           in: path
           description: Data Space ID. See docs https://experienceleague.adobe.com/docs/commerce-admin/config/services/saas.html
           required: true
@@ -379,9 +371,9 @@ paths:
                   [
                     {
                       "sku": "24-MB04",
-                      "storeViewCode": "default",
-                      "storeCode": "main_website_store",
-                      "websiteCode": "base",
+                      "websiteCode": "us",
+                      "storeCode": "us",
+                      "storeViewCode": "us_en",
                       "name": "Strive Shoulder Pack",
                       "type": "simple",
                       "description": "<p>Convenience is next to nothing when your day is crammed with action. So whether you're heading to class, gym, or the unbeaten path, make sure you've got your Strive Shoulder Pack stuffed with all your essentials, and extras as well.</p>\n<ul>\n<li>Zippered main compartment.</li>\n<li>Front zippered pocket.</li>\n<li>Side mesh pocket.</li>\n<li>Cell phone pocket on strap.</li>\n<li>Adjustable shoulder strap and top carry handle.</li>\n</ul>",
@@ -413,21 +405,18 @@ paths:
                       "attributes": [
                         {
                           "attributeCode": "erin_recommends",
-                          "type": "boolean",
                           "value": [
                             "yes"
                           ]
                         },
                         {
                           "attributeCode": "sale",
-                          "type": "boolean",
                           "value": [
                             "yes"
                           ]
                         },
                         {
                           "attributeCode": "activity",
-                          "type": "multiselect",
                           "value": [
                             "Gym",
                             "Trail",
@@ -437,7 +426,6 @@ paths:
                         },
                         {
                           "attributeCode": "style_bags",
-                          "type": "multiselect",
                           "value": [
                             "Messenger",
                             "Exercise",
@@ -446,7 +434,6 @@ paths:
                         },
                         {
                           "attributeCode": "material",
-                          "type": "multiselect",
                           "value": [
                             "Canvas",
                             "Cotton",
@@ -458,17 +445,7 @@ paths:
                       "categoryData": [
                         {
                           "categoryId": "3",
-                          "categoryPath": "gear",
-                          "productPosition": 0
-                        },
-                        {
-                          "categoryId": "4",
-                          "categoryPath": "gear/bags",
-                          "productPosition": 0
-                        },
-                        {
-                          "categoryId": "7",
-                          "categoryPath": "collections",
+                          "categoryPath": "demoCategory",
                           "productPosition": 0
                         }
                       ],
@@ -529,23 +506,18 @@ paths:
                       ],
                       "inStock": true,
                       "lowStock": false,
-                      "url": "https://example.com/strive-shoulder-pack.html",
-                      "urlRewrites": [
-                        {
-                          "url": "https://example.com/strive-shoulder-pack.html",
-                          "parameters": [
-                            {
-                              "name": "id",
-                              "value": "2"
-                            }
-                          ]
-                        }
-                      ],
-                      "categories": [
-                        "gear",
-                        "gear/bags",
-                        "collections"
-                      ]
+                      "url": "https://example.com/strive-shoulder-pack.html"
+#                      "urlRewrites": [
+#                        {
+#                          "url": "https://example.com/strive-shoulder-pack.html",
+#                          "parameters": [
+#                            {
+#                              "name": "id",
+#                              "value": "2"
+#                            }
+#                          ]
+#                        }
+#                      ],
                     }
                   ]
               ConfigurableProduct:
@@ -554,9 +526,9 @@ paths:
                   [
                     {
                       "sku": "Configurable Product",
-                      "storeViewCode": "default",
-                      "storeCode": "main_website_store",
-                      "websiteCode": "base",
+                      "websiteCode": "us",
+                      "storeCode": "us",
+                      "storeViewCode": "us_en",
                       "name": "Configurable Product",
                       "productId": 705,
                       "type": "configurable",
@@ -576,9 +548,9 @@ paths:
                       "attributes": null,
                       "categoryData": [
                         {
-                          "categoryId": "66",
-                          "categoryPath": "demo-category",
-                          "productPosition": -6
+                          "categoryId": "3",
+                          "categoryPath": "demoCategory",
+                          "productPosition": 0
                         }
                       ],
                       "optionsV2": [
@@ -633,27 +605,24 @@ paths:
                       ],
                       "parents": null,
                       "url": "https://example.com/default/lp-configurable-product.html",
-                      "urlRewrites": [
-                        {
-                          "url": "https://example.com/lp-configurable-product.html",
-                          "parameters": [
-                            {
-                              "name": "id",
-                              "value": "705"
-                            }
-                          ]
-                        }
-                      ],
-                      "categories": [
-                        "demo-category"
-                      ],
+#                      "urlRewrites": [
+#                        {
+#                          "url": "https://example.com/lp-configurable-product.html",
+#                          "parameters": [
+#                            {
+#                              "name": "id",
+#                              "value": "705"
+#                            }
+#                          ]
+#                        }
+#                      ],
                       "modifiedAt": "2023-07-21 23:00:38"
                     },
                     {
                       "sku": "Configurable Product-Green-S",
-                      "storeViewCode": "default",
-                      "storeCode": "main_website_store",
-                      "websiteCode": "base",
+                      "websiteCode": "us",
+                      "storeCode": "us",
+                      "storeViewCode": "us_en",
                       "name": "Configurable Product-Green-S",
                       "productId": 702,
                       "type": "virtual",
@@ -673,7 +642,6 @@ paths:
                       "attributes": [
                         {
                           "attributeCode": "color",
-                          "type": "select",
                           "value": [
                             "Green"
                           ]
@@ -684,7 +652,6 @@ paths:
                         },
                         {
                           "attributeCode": "size",
-                          "type": "select",
                           "value": [
                             "S"
                           ]
@@ -708,9 +675,9 @@ paths:
                     },
                     {
                       "sku": "Configurable Product-Green-L",
-                      "storeViewCode": "default",
-                      "storeCode": "main_website_store",
-                      "websiteCode": "base",
+                      "websiteCode": "us",
+                      "storeCode": "us",
+                      "storeViewCode": "us_en",
                       "name": "Configurable Product-Green-L",
                       "productId": 699,
                       "type": "virtual",
@@ -730,7 +697,6 @@ paths:
                       "attributes": [
                         {
                           "attributeCode": "color",
-                          "type": "select",
                           "value": [
                             "Green"
                           ]
@@ -741,7 +707,6 @@ paths:
                         },
                         {
                           "attributeCode": "size",
-                          "type": "select",
                           "value": [
                             "L"
                           ]
@@ -765,9 +730,9 @@ paths:
                     },
                     {
                       "sku": "Configurable Product-Red-S",
-                      "storeViewCode": "default",
-                      "storeCode": "main_website_store",
-                      "websiteCode": "base",
+                      "websiteCode": "us",
+                      "storeCode": "us",
+                      "storeViewCode": "us_en",
                       "name": "Configurable Product-Red-S",
                       "productId": 696,
                       "type": "virtual",
@@ -787,7 +752,6 @@ paths:
                       "attributes": [
                         {
                           "attributeCode": "color",
-                          "type": "select",
                           "value": [
                             "Red"
                           ]
@@ -798,7 +762,6 @@ paths:
                         },
                         {
                           "attributeCode": "size",
-                          "type": "select",
                           "value": [
                             "S"
                           ]
@@ -822,9 +785,9 @@ paths:
                     },
                     {
                       "sku": "Configurable Product-Red-L",
-                      "storeViewCode": "default",
-                      "storeCode": "main_website_store",
-                      "websiteCode": "base",
+                      "websiteCode": "us",
+                      "storeCode": "us",
+                      "storeViewCode": "us_en",
                       "name": "Configurable Product-Red-L",
                       "productId": 693,
                       "type": "virtual",
@@ -844,7 +807,6 @@ paths:
                       "attributes": [
                         {
                           "attributeCode": "color",
-                          "type": "select",
                           "value": [
                             "Red"
                           ]
@@ -855,7 +817,6 @@ paths:
                         },
                         {
                           "attributeCode": "size",
-                          "type": "select",
                           "value": [
                             "L"
                           ]
@@ -884,9 +845,9 @@ paths:
                   [
                     {
                       "sku": "es-bundle-dynamic-1",
-                      "storeViewCode": "default",
-                      "storeCode": "main_website_store",
-                      "websiteCode": "base",
+                      "websiteCode": "us",
+                      "storeCode": "us",
+                      "storeViewCode": "us_en",
                       "name": "es-bundle-dynamic-1",
                       "productId": 918,
                       "type": "bundle",
@@ -938,30 +899,27 @@ paths:
                               ]
                           }
                       ],
-                      "categories": [
-                        "demo-category"
-                      ],
                       "inStock": true,
                       "lowStock": false,
                       "url": "https://example.com/default/es-bundle-dynamic-1.html",
-                      "urlRewrites": [
-                          {
-                              "url": "https://example.com/es-bundle-dynamic-1.html",
-                              "parameters": [
-                                  {
-                                      "name": "id",
-                                      "value": "918"
-                                  }
-                              ]
-                          }
-                      ],
+#                      "urlRewrites": [
+#                          {
+#                              "url": "https://example.com/es-bundle-dynamic-1.html",
+#                              "parameters": [
+#                                  {
+#                                      "name": "id",
+#                                      "value": "918"
+#                                  }
+#                              ]
+#                          }
+#                      ],
                       "modifiedAt": "2023-07-21 14:24:01"
                     },
                     {
                       "sku": "es-product-1",
-                      "storeViewCode": "default",
-                      "storeCode": "main_website_store",
-                      "websiteCode": "base",
+                      "websiteCode": "us",
+                      "storeCode": "us",
+                      "storeViewCode": "us_en",
                       "name": "es-product-1",
                       "productId": 912,
                       "type": "simple",
@@ -982,24 +940,24 @@ paths:
                       "lowStock": false,
                       "parents": null,
                       "url": "https://example.com/default\/es-product-1.html",
-                      "urlRewrites": [
-                        {
-                          "url": "https://example.com/es-product-1.html",
-                          "parameters": [
-                            {
-                              "name": "id",
-                              "value": "912"
-                            }
-                          ]
-                        }
-                      ],
+#                      "urlRewrites": [
+#                        {
+#                          "url": "https://example.com/es-product-1.html",
+#                          "parameters": [
+#                            {
+#                              "name": "id",
+#                              "value": "912"
+#                            }
+#                          ]
+#                        }
+#                      ],
                       "modifiedAt": "2023-07-21 23:00:38"
                     },
                     {
                       "sku": "es-product-2",
-                      "storeViewCode": "default",
-                      "storeCode": "main_website_store",
-                      "websiteCode": "base",
+                      "websiteCode": "us",
+                      "storeCode": "us",
+                      "storeViewCode": "us_en",
                       "name": "es-product-2",
                       "productId": 915,
                       "type": "simple",
@@ -1020,21 +978,21 @@ paths:
                       "lowStock": false,
                       "parents": null,
                       "url": "https://example.com/default/es-product-2.html",
-                      "urlRewrites": [
-                        {
-                          "url": "https://example.com/es-product-2.html",
-                          "parameters": [
-                            {
-                              "name": "id",
-                              "value": "915"
-                            }
-                          ]
-                        }
-                      ],
+#                      "urlRewrites": [
+#                        {
+#                          "url": "https://example.com/es-product-2.html",
+#                          "parameters": [
+#                            {
+#                              "name": "id",
+#                              "value": "915"
+#                            }
+#                          ]
+#                        }
+#                      ],
                       "modifiedAt": "2023-07-21 23:00:38"
                     }
                   ]
-  /feeds/products/v1/prices/{environmentId}:
+  /products/v1/prices/{DATA_SPACE_ID}:
     post:
       tags:
         - products
@@ -1042,9 +1000,9 @@ paths:
       description: Allows the managing of product prices in the scope of the Website Code and Customer Group Code. The price registered with a "0" customerGroupCode is used as the default price for any Customer Group Code with _this_ Website Code
       operationId: PostV1ProductPrices
       parameters:
-        - name: environmentId
+        - name: DATA_SPACE_ID
           in: path
-          description: environmentId
+          description: Data Space ID
           required: true
           style: simple
           schema:
@@ -1091,7 +1049,7 @@ paths:
                       "sku": "final-price-example",
                       "type": "SIMPLE",
                       "customerGroupCode": "0",
-                      "websiteCode": "base",
+                      "websiteCode": "us",
                       "regular": 10,
                       "discounts": [
                         {
@@ -1116,7 +1074,7 @@ paths:
                       "sku": "t-shirt-s",
                       "type": "SIMPLE",
                       "customerGroupCode": "0",
-                      "websiteCode": "base",
+                      "websiteCode": "us",
                       "regular": 10,
                       "parents": [
                         {
@@ -1131,7 +1089,7 @@ paths:
                       "sku": "t-shirt-m",
                       "type": "SIMPLE",
                       "customerGroupCode": "0",
-                      "websiteCode": "base",
+                      "websiteCode": "us",
                       "regular": 11,
                       "parents": [
                         {
@@ -1146,7 +1104,7 @@ paths:
                       "sku": "t-shirt-l",
                       "type": "SIMPLE",
                       "customerGroupCode": "0",
-                      "websiteCode": "base",
+                      "websiteCode": "us",
                       "regular": 12,
                       "parents": [
                         {
@@ -1177,17 +1135,17 @@ paths:
             application/json;charset=UTF-8:
               schema:
                 $ref: '#/components/schemas/403Response'
-  /feeds/catalog/v2/product-overrides/{environmentId}:
+  /catalog/v2/product-overrides/{DATA_SPACE_ID}:
     post:
       tags:
         - products
       summary: Product Permissions Feed API
       description: "Register or update catalog product permissions within the scope of Website and Customer Group. Limitations: if you want to hide products for a specific customer but want to keep all other products visible, you must submit feed items for each SKU for each Website with \"b6589fc6ab0dc82cf12099d1c2d40ab994e8410c\" Customer Group"
-      operationId: PostV2ProductOverrides
+      operationId: PostV2ProductPermissions
       parameters:
-        - name: environmentId
+        - name: DATA_SPACE_ID
           in: path
-          description: environmentId
+          description: Data Space ID
           required: true
           style: simple
           schema:
@@ -1227,13 +1185,13 @@ paths:
             examples:
               ProductPermissionsPerCustomerGroup:
                 summary: Set product permission for customer group
-                description: Hide product prices and add product to Cart for "demo-product" in the "base" website and the "hide-price" customer group
+                description: Hide product prices and add product to Cart for "demo-product" in the "us" website and the "hide-price" customer group
                 value:
                   [
                     {
                       "sku": "demo-product",
                       "productId": 1,
-                      "websiteCode": "base",
+                      "websiteCode": "us",
                       "customerGroupCode": "hide-price",
                       "displayable": true,
                       "priceDisplayable": false,
@@ -1261,17 +1219,17 @@ paths:
             application/json;charset=UTF-8:
               schema:
                 $ref: '#/components/schemas/403Response'
-  /feeds/product_variant/v2/product_variant/{environmentId}:
+  /product_variant/v2/product_variant/{DATA_SPACE_ID}:
     post:
       tags:
         - products
       summary: Product Variant Feed API
       description: Register or update catalog product variants
-      operationId: PostV2ProductVariant
+      operationId: PostV2ProductVariants
       parameters:
-        - name: environmentId
+        - name: DATA_SPACE_ID
           in: path
-          description: environmentId
+          description: Data Space ID
           required: true
           style: simple
           schema:
@@ -1353,7 +1311,7 @@ paths:
             application/json;charset=UTF-8:
               schema:
                 $ref: '#/components/schemas/403Response'
-  /feeds/scopes/v1/{environmentId}:
+  /scopes/v2/{DATA_SPACE_ID}:
     post:
       tags:
         - scopes
@@ -1361,9 +1319,9 @@ paths:
       description: Register and update relationships between customer group codes, websites and store views
       operationId: PostV1Scopes
       parameters:
-        - name: environmentId
+        - name: DATA_SPACE_ID
           in: path
-          description: environmentId
+          description: Data Space ID
           required: true
           style: simple
           schema:
@@ -1434,7 +1392,7 @@ paths:
                         "customerGroupCode": "General",
                         "websites": [
                           {
-                            "websiteCode": "base"
+                            "websiteCode": "us"
                           }
                         ]
                       },
@@ -1600,10 +1558,11 @@ components:
           type: string
           description: Name of the category
           example: Cat 201028
-        parentId:
-          type: integer
-          description: The category ID of the parent of this category
-          format: int32
+# TODO: do we really need this? Task to eliminate it: DCAT-1512
+#        parentId:
+#          type: integer
+#          description: The category ID of the parent of this category
+#          format: int32
         path:
           type: string
           description: Category path in the website. Each segment of the category path is separated by a slash. The last segment is the category id of the current category.
@@ -1664,36 +1623,46 @@ components:
         - attributeType
         - dataType
         - label
-        - multi
-        - required
         - storeCode
         - storeViewCode
         - websiteCode
+        - required
+        - modifiedAt
+        - deleted
       type: object
       properties:
         attributeCode:
           type: string
           description: Attribute code
-        attributeId:
-          type: string
-          description: The attribute ID
         attributeType:
           type: string
           description: Attribute type
         dataType:
           type: string
           description: Data type
+        label:
+          type: string
+          description: The attribute label
+        storeCode:
+          type: string
+          description: Store identifier code
+        storeViewCode:
+          type: string
+          description: StoreView identifier code
+        websiteCode:
+          type: string
+          description: Website identifier code
+        required:
+          type: boolean
+          description: Whether the item is required
+          example: false
+        modifiedAt:
+          type: string
+          description: Timestamp when the product attribute was last modified. Date format is yyyy-MM-dd HH:mm:ss.
+          example: '2019-01-01 00:00:00'
         deleted:
           type: boolean
           description: True if the attribute has been deleted
-          example: false
-        filterable:
-          type: boolean
-          description: True if the attribute is added to the list of filter options in the product grid.
-          example: false
-        filterableInSearch:
-          type: boolean
-          description: True if the attribute can be used to filter on search
           example: false
         frontendInput:
           type: string
@@ -1702,13 +1671,6 @@ components:
           type: boolean
           description: Whether the attribute is global or not. Global attributes are available in all store views.
           example: false
-        label:
-          type: string
-          description: The label on the feed
-        modifiedAt:
-          type: string
-          description: Timestamp when the product was last modified. Date format is yyyy-MM-dd HH:mm:ss.
-          example: '2019-01-01 00:00:00'
         multi:
           type: boolean
           description: Whether this is multi or not
@@ -1717,28 +1679,6 @@ components:
           type: boolean
           description: True if the attribute is numeric
           example: false
-        required:
-          type: boolean
-          description: Whether the item is required
-          example: false
-        searchWeight:
-          type: number
-          description: The weight associated with the search
-          format: float
-        searchable:
-          type: boolean
-          description: Whether the attribute is searchable in StoreFront.
-          example: false
-        sortable:
-          type: boolean
-          description: Whether the attribute can be used to sort.
-          example: false
-        storeCode:
-          type: string
-          description: Store identifier code
-        storeViewCode:
-          type: string
-          description: StoreView identifier code
         systemAttribute:
           type: boolean
           description: True if the attribute is a system attribute.
@@ -1750,6 +1690,18 @@ components:
         usedForRules:
           type: boolean
           description: True if the attribute can be used for rules
+          example: false
+        searchable:
+          type: boolean
+          description: Whether the attribute is searchable in StoreFront.
+          example: false
+        searchWeight:
+          type: number
+          description: The weight associated with the search
+          format: float
+        sortable:
+          type: boolean
+          description: Whether the attribute can be used to sort.
           example: false
         visible:
           type: boolean
@@ -1767,9 +1719,14 @@ components:
           type: boolean
           description: True if the attribute is visible on search
           example: false
-        websiteCode:
-          type: string
-          description: Website identifier code
+        filterable:
+          type: boolean
+          description: True if the attribute is added to the list of filter options in the product grid.
+          example: false
+        filterableInSearch:
+          type: boolean
+          description: True if the attribute can be used to filter on search
+          example: false
       description: Metadata information for a product attribute
     FeedOptionValue:
       title: FeedOptionValue
@@ -1866,7 +1823,7 @@ components:
           description: The adjustment code
     FeedProduct:
       title: Catalog Product payload
-      description: Catalog Product payload. Enables the registering of products in the Store View context
+      type: object
       required:
         - sku
         - websiteCode
@@ -1876,11 +1833,11 @@ components:
         - name
         - url
         - buyable
-        - displayable
+        - visibility
+        - status
         - deleted
         - createdAt
         - modifiedAt
-      type: object
       properties:
         sku:
           type: string
@@ -1928,13 +1885,20 @@ components:
           example: true
         visibility:
           type: string
-          description: Comma-separated string listing areas where the product is visible
-          example: Catalog, Search
+          description: Storefront area where the product is visible
+          example: Catalog
           enum:
             - Catalog
             - Search
             - Catalog, Search
             - Not Visible Individually
+        status:
+          type: string
+          description: Enabled (Product is visible on the storefront) / Disabled (Product is not visible on the storefront)
+          example: Enabled
+          enum:
+            - Enabled
+            - Disabled
         deleted:
           type: boolean
           description: Value equals "deleted" when the product has been deleted or product has been unassigned from the given "websiteCode"
@@ -1957,11 +1921,12 @@ components:
         urlKey:
           type: string
           description: The URL key
-        urlRewrites:
-          type: array
-          description: A list of all URL rewrites
-          items:
-            $ref: '#/components/schemas/FeedProductUrlRewrites'
+#  hide for now since feature is not used in downstream services
+#        urlRewrites:
+#          type: array
+#          description: A list of all URL rewrites
+#          items:
+#            $ref: '#/components/schemas/FeedProductUrlRewrites'
         description:
           type: string
           description: A description of the product
@@ -2116,7 +2081,6 @@ components:
       type: object
       properties:
         resource:
-          description: The media resource
           $ref: '#/components/schemas/FeedProductMediaResource'
         sortOrder:
           type: integer
@@ -2136,6 +2100,7 @@ components:
     FeedProductMediaResource:
       title: FeedProductMediaResource
       type: object
+      description: The media resource
       properties:
         label:
           type: string
@@ -2285,18 +2250,18 @@ components:
           type: integer
           description: Sorting order of the option
           format: int32
-    FeedProductUrlRewrites:
-      title: FeedProductUrlRewrites
-      type: object
-      properties:
-        parameters:
-          type: array
-          description: A list of URL rewrites
-          items:
-            $ref: '#/components/schemas/FeedUrlRewritesParameter'
-        url:
-          type: string
-          description: The URL of the rewrite
+#    FeedProductUrlRewrites:
+#      title: FeedProductUrlRewrites
+#      type: object
+#      properties:
+#        parameters:
+#          type: array
+#          description: A list of URL rewrites
+#          items:
+#            $ref: '#/components/schemas/FeedUrlRewritesParameter'
+#        url:
+#          type: string
+#          description: The URL of the rewrite
     FeedProductVariant:
       title: FeedProductVariant
       type: object
@@ -2367,6 +2332,7 @@ components:
     FloatValue:
       title: FloatValue
       type: object
+      description: Regular product price
       properties:
         value:
           type: number
@@ -2526,7 +2492,6 @@ components:
           description: Customer Group
         regular:
           $ref: '#/components/schemas/FloatValue'
-          description: Regular product price
         updatedAt:
           type: string
           description: Time in RFC 3339 standard
