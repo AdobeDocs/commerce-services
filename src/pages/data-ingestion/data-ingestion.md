@@ -1,5 +1,5 @@
 ---
-title: Adobe Commerce Data Ingestion REST endpoints
-description: Reference information for Adobe Commerce Data Ingestion REST endpoints.
+title: Adobe Commerce Data Ingestion API
+description: Reference information for Adobe Commerce Data Ingestion API
 openAPISpec: /data-ingestion.yaml
 ---

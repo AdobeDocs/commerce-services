@@ -1,6 +1,6 @@
 ---
-title: Adobe Commerce Data Ingestion REST endpoints
-description: Reference information for Adobe Commerce Data Ingestion REST endpoints.
+title: Adobe Commerce Data Ingestion API
+description: Reference information for Adobe Commerce Data Ingestion API.
 ---
 
 # Introduction
@@ -160,7 +160,6 @@ API Payload:
     "usedForRules": false,
     "systemAttribute": false,
     "numeric": false,
-    "attributeOptions": null,
     "modifiedAt": "2024-02-20 19:38:26",
     "deleted": false
   },
@@ -189,7 +188,6 @@ API Payload:
     "usedForRules": false,
     "systemAttribute": false,
     "numeric": false,
-    "attributeOptions": null,
     "modifiedAt": "2024-02-20 19:38:26",
     "deleted": false
   },
@@ -218,7 +216,6 @@ API Payload:
     "usedForRules": false,
     "systemAttribute": false,
     "numeric": false,
-    "attributeOptions": null,
     "modifiedAt": "2024-02-20 19:38:26",
     "deleted": false
   },
@@ -247,7 +244,6 @@ API Payload:
     "usedForRules": false,
     "systemAttribute": false,
     "numeric": false,
-    "attributeOptions": null,
     "modifiedAt": "2024-02-20 19:38:26",
     "deleted": false
   },
@@ -276,7 +272,6 @@ API Payload:
     "usedForRules": false,
     "systemAttribute": false,
     "numeric": true,
-    "attributeOptions": null,
     "modifiedAt": "2024-02-20 19:38:26",
     "deleted": false
   },
@@ -305,7 +300,6 @@ API Payload:
     "usedForRules": false,
     "systemAttribute": false,
     "numeric": true,
-    "attributeOptions": null,
     "modifiedAt": "2024-02-20 19:38:26",
     "deleted": false
   },
@@ -334,7 +328,6 @@ API Payload:
     "usedForRules": false,
     "systemAttribute": false,
     "numeric": false,
-    "attributeOptions": null,
     "modifiedAt": "2024-02-20 19:38:26",
     "deleted": false
   },
@@ -363,7 +356,6 @@ API Payload:
     "usedForRules": false,
     "systemAttribute": false,
     "numeric": false,
-    "attributeOptions": null,
     "modifiedAt": "2024-02-20 19:38:26",
     "deleted": false
   },
@@ -392,10 +384,6 @@ API Payload:
     "usedForRules": false,
     "systemAttribute": true,
     "numeric": false,
-    "attributeOptions": [
-      "red",
-      "blue"
-    ],
     "modifiedAt": "2024-02-20 19:38:26",
     "deleted": false
   },
@@ -424,10 +412,6 @@ API Payload:
     "usedForRules": false,
     "systemAttribute": true,
     "numeric": false,
-    "attributeOptions": [
-      "x",
-      "l"
-    ],
     "modifiedAt": "2024-02-20 19:38:26",
     "deleted": false
   }
@@ -519,7 +503,6 @@ API Payload:
     "weight": 1,
     "weightUnit": "lbs",
     "currency": "USD",
-    "displayable": true,
     "buyable": true,
     "attributes": [
       {
@@ -565,7 +548,6 @@ API Payload:
     "weight": 1,
     "weightUnit": "lbs",
     "currency": "USD",
-    "displayable": true,
     "buyable": true,
     "attributes": [
       {
@@ -611,7 +593,6 @@ API Payload:
     "weight": 1,
     "weightUnit": "lbs",
     "currency": "USD",
-    "displayable": true,
     "buyable": true,
     "attributes": [
       {
@@ -657,7 +638,6 @@ API Payload:
     "weight": 1,
     "weightUnit": "lbs",
     "currency": "USD",
-    "displayable": true,
     "buyable": true,
     "attributes": [
       {

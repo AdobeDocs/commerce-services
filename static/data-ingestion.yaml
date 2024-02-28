@@ -144,8 +144,8 @@ paths:
       tags:
         - metadata
       summary: Product Attributes Metadata API
-      description: API allows to register or update product attribute. 
-        Product attributes allows you to define how product attributes will be displayed on Storefront, define their search characteristics
+      description: API allows to register or update product attribute metadata.
+        Product attributes allows you to define how product attributes will be displayed on Storefront, define search characteristics etc.
       operationId: PostV2ProductMetadata
       parameters:
         - name: DATA_SPACE_ID
@@ -217,13 +217,13 @@ paths:
                       "searchWeight": 5,
                       "usedForRules": false,
                       "systemAttribute": false,
-                      "numeric": false,
-                      "attributeOptions": null
+                      "numeric": false
                     },
                     {
                       "websiteCode": "us",
                       "storeCode": "us",
-                      "storeViewCode": "us_en",                      "attributeCode": "description",
+                      "storeViewCode": "us_en",
+                      "attributeCode": "description",
                       "attributeType": "catalog_product",
                       "dataType": "text",
                       "multi": false,
@@ -243,8 +243,7 @@ paths:
                       "searchWeight": 1,
                       "usedForRules": false,
                       "systemAttribute": false,
-                      "numeric": false,
-                      "attributeOptions": null
+                      "numeric": false
                     },
                     {
                       "websiteCode": "us",
@@ -270,12 +269,7 @@ paths:
                       "searchWeight": 1,
                       "usedForRules": false,
                       "systemAttribute": true,
-                      "numeric": false,
-                      "attributeOptions": [
-                        "Blue",
-                        "Red",
-                        "Green"
-                      ]
+                      "numeric": false
                     }
                   ]
       responses:
@@ -302,7 +296,7 @@ paths:
       tags:
         - products
       summary: Product Feed API
-      description: Register or update Product entity for given Data Space ID.
+      description: Register or update Product entity for a given Data Space ID.
       operationId: PostV2Products
       parameters:
         - name: DATA_SPACE_ID
@@ -399,7 +393,6 @@ paths:
                       "weight": 0.2,
                       "weightUnit": "lb",
                       "currency": "USD",
-                      "displayable": true,
                       "buyable": true,
                       "deleted": false,
                       "attributes": [
@@ -543,7 +536,6 @@ paths:
                       "visibility": "Catalog, Search",
                       "weightUnit": null,
                       "currency": "USD",
-                      "displayable": true,
                       "buyable": true,
                       "attributes": null,
                       "categoryData": [
@@ -637,7 +629,6 @@ paths:
                       "visibility": "Not Visible Individually",
                       "weightUnit": null,
                       "currency": "USD",
-                      "displayable": false,
                       "buyable": true,
                       "attributes": [
                         {
@@ -692,7 +683,6 @@ paths:
                       "visibility": "Not Visible Individually",
                       "weightUnit": null,
                       "currency": "USD",
-                      "displayable": false,
                       "buyable": true,
                       "attributes": [
                         {
@@ -747,7 +737,6 @@ paths:
                       "visibility": "Not Visible Individually",
                       "weightUnit": null,
                       "currency": "USD",
-                      "displayable": false,
                       "buyable": true,
                       "attributes": [
                         {
@@ -802,7 +791,6 @@ paths:
                       "visibility": "Not Visible Individually",
                       "weightUnit": null,
                       "currency": "USD",
-                      "displayable": false,
                       "buyable": true,
                       "attributes": [
                         {
@@ -863,7 +851,6 @@ paths:
                       "visibility": "Catalog, Search",
                       "weightType": "0",
                       "currency": "USD",
-                      "displayable": true,
                       "buyable": true,
                       "optionsV2": [
                           {
@@ -934,7 +921,6 @@ paths:
                       "visibility": "Catalog, Search",
                       "weightUnit": null,
                       "currency": "USD",
-                      "displayable": true,
                       "buyable": true,
                       "inStock": true,
                       "lowStock": false,
@@ -972,7 +958,6 @@ paths:
                       "visibility": "Catalog, Search",
                       "weightUnit": null,
                       "currency": "USD",
-                      "displayable": true,
                       "buyable": true,
                       "inStock": true,
                       "lowStock": false,
@@ -997,7 +982,7 @@ paths:
       tags:
         - products
       summary: Product Price Feed API
-      description: Allows the managing of product prices in the scope of the Website Code and Customer Group Code. The price registered with a "0" customerGroupCode is used as the default price for any Customer Group Code with _this_ Website Code
+      description: Allows managing product prices in the scope of the Website Code and Customer Group Code
       operationId: PostV1ProductPrices
       parameters:
         - name: DATA_SPACE_ID
@@ -1463,17 +1448,65 @@ components:
       title: FeedCategory
       required:
         - categoryId
-        - name
-        - urlKey
-        - urlPath
-        - deleted
-        - isActive
+        - websiteCode
         - storeCode
         - storeViewCode
-        - websiteCode
+        - name
+        - path
+        - urlKey
+        - urlPath
+        - isActive
+        - deleted
         - modifiedAt
       type: object
       properties:
+        categoryId:
+          type: string
+          description: Category unique identifier
+          example: '3'
+        websiteCode:
+          type: string
+          description: Website identifier code
+        storeCode:
+          type: string
+          description: Store identifier code
+        storeViewCode:
+          type: string
+          description: StoreView identifier code
+        name:
+          type: string
+          description: Name of the category
+          example: Cat 201028
+        path:
+          type: string
+          description: Category path must follow pattern `{root categoryId}/{parent categoryId}*/{current CategoryId}`, e.g. `1/2/3`
+          example: 1/2/3
+        urlKey:
+          type: string
+          description: SEO URL key for _this_ category
+          example: category-201028-child-category
+        urlPath:
+          type: string
+          description: SEO URL path for the category. Should included parent category urlPath
+          example: category-201028/category-201028-child-category
+        isActive:
+          type: boolean
+          description: Whether the category is active
+          example: false
+        deleted:
+          type: boolean
+          description: Whether the category is deleted or not
+          example: false
+        modifiedAt:
+          type: string
+          description: Timestamp when the product was last modified.
+          example: '2022-10-21 02:15:30'
+          format: yyyy-MM-dd HH:mm:ss
+        level:
+          type: integer
+          description: The category depth level.
+          format: int32
+          example: 2
         availableSortBy:
           type: array
           description: A list describing the properties that can be used for displaying the available products
@@ -1485,10 +1518,6 @@ components:
           description: A list of FeedBreadcrumb objects; can be null
           items:
             $ref: '#/components/schemas/FeedBreadcrumb'
-        categoryId:
-          type: string
-          description: Category unique identifier
-          example: '123'
         children:
           type: array
           description: A list of child categories
@@ -1504,10 +1533,6 @@ components:
           type: string
           description: A string describing the property that is used for displaying the available products by default
           example: price
-        deleted:
-          type: boolean
-          description: Whether the product is deleted or not
-          example: false
         description:
           type: string
           description: Natural language description of the category
@@ -1524,19 +1549,10 @@ components:
           type: boolean
           description: Whether to include the category in the menu
           example: false
-        isActive:
-          type: boolean
-          description: Whether the category is active
-          example: false
         isAnchor:
           type: boolean
           description: Boolean indicating whether the category is an anchor
           example: false
-        level:
-          type: integer
-          description: The level in the listing
-          format: int32
-          example: 2
         metaDescription:
           type: string
           description: SEO meta description of the category
@@ -1549,24 +1565,6 @@ components:
           type: string
           description: SEO meta title of the category
           example: Category 1
-        modifiedAt:
-          type: string
-          description: Timestamp when the product was last modified.
-          example: '2022-10-21 02:15:30'
-          format: yyyy-MM-dd HH:mm:ss
-        name:
-          type: string
-          description: Name of the category
-          example: Cat 201028
-# TODO: do we really need this? Task to eliminate it: DCAT-1512
-#        parentId:
-#          type: integer
-#          description: The category ID of the parent of this category
-#          format: int32
-        path:
-          type: string
-          description: Category path in the website. Each segment of the category path is separated by a slash. The last segment is the category id of the current category.
-          example: Womans/Tops/Jackets
         pathInStore:
           type: string
           example: '10'
@@ -1575,33 +1573,11 @@ components:
           description: Position in the listing
           format: int32
           example: 2
-        productCount:
-          type: integer
-          description: Count of products in this category
-          format: int32
-          example: 4
-        storeCode:
-          type: string
-          description: Store identifier code
-        storeViewCode:
-          type: string
-          description: StoreView identifier code
         updatedAt:
           type: string
           description: Timestamp when the product was updated in the admin console.
           example: '2022-10-21 02:15:30'
           format: yyyy-MM-dd HH:mm:ss
-        urlKey:
-          type: string
-          description: SEO URL key for the category
-          example: category-201028-child-category
-        urlPath:
-          type: string
-          description: SEO URL path for the category
-          example: category-201028/category-201028-child-category
-        websiteCode:
-          type: string
-          description: Website identifier code
     FeedItemFailedValidationResult:
       title: FeedItemFailedValidationResult
       type: object
@@ -1621,11 +1597,11 @@ components:
       required:
         - attributeCode
         - attributeType
-        - dataType
-        - label
+        - websiteCode
         - storeCode
         - storeViewCode
-        - websiteCode
+        - dataType
+        - label
         - required
         - modifiedAt
         - deleted
@@ -1637,21 +1613,21 @@ components:
         attributeType:
           type: string
           description: Attribute type
-        dataType:
+        websiteCode:
           type: string
-          description: Data type
-        label:
-          type: string
-          description: The attribute label
+          description: Website identifier code
         storeCode:
           type: string
           description: Store identifier code
         storeViewCode:
           type: string
           description: StoreView identifier code
-        websiteCode:
+        dataType:
           type: string
-          description: Website identifier code
+          description: Data type
+        label:
+          type: string
+          description: The attribute label
         required:
           type: boolean
           description: Whether the item is required
@@ -1843,11 +1819,6 @@ components:
           type: string
           description: Product unique identifier
           example: MH01
-        productId:
-          type: integer
-          description: Id of the product
-          format: int32
-          example: 68
         websiteCode:
           type: string
           description: Website identifier code
@@ -1879,10 +1850,6 @@ components:
           type: boolean
           description: Whether the product is buyable or not. A non-buyable product can also mean the product is out of stock. Buyable state could affect price calculation for complex products related to this one.
           example: true
-        displayable:
-          type: boolean
-          description: Whether the product is displayable on Storefront
-          example: true
         visibility:
           type: string
           description: Storefront area where the product is visible
@@ -1901,7 +1868,7 @@ components:
             - Disabled
         deleted:
           type: boolean
-          description: Value equals "deleted" when the product has been deleted or product has been unassigned from the given "websiteCode"
+          description: To delete product set to "true"
           example: false
         createdAt:
           type: string
@@ -1915,7 +1882,7 @@ components:
           format: yyyy-MM-dd HH:mm:ss
         modifiedAt:
           type: string
-          description: Timestamp when the feed item was last modified. To send a product update, the new value must be greater than the previous value
+          description: Timestamp when the product was last modified. To send a product update, the new value must be greater than the previous value
           example: '2022-10-21 02:15:30'
           format: yyyy-MM-dd HH:mm:ss
         urlKey:
@@ -2058,13 +2025,13 @@ components:
       properties:
         categoryId:
           type: string
-          description: The ID of the associated category
+          description: The ID of the associated category. Must match `categoryId` from Category Feed API
         categoryPath:
           type: string
-          description: The path of the associated category
+          description: The path of the associated category. Must match `urlPath` from Category Feed API
         productPosition:
           type: integer
-          description: The position of the product
+          description: The position of the product in category
           format: int32
     FeedProductImage:
       title: FeedProductImage
@@ -2201,14 +2168,6 @@ components:
           type: string
           description: SKU
       description: Information about product parent
-    FeedProductPriceRange:
-      title: FeedProductPriceRange
-      type: object
-      properties:
-        maximumPrice:
-          $ref: '#/components/schemas/FeedPrice'
-        minimumPrice:
-          $ref: '#/components/schemas/FeedPrice'
     FeedProductShopperOption:
       title: FeedProductShopperOption
       type: object
@@ -2481,15 +2440,17 @@ components:
         - customerGroupCode
         - regular
         - updatedAt
+        - deleted
       properties:
         sku:
           type: string
           description: Product SKU
         websiteCode:
           type: string
-          description: Website
+          description: websiteCode must much `websiteCode` from Product Feed API
         customerGroupCode:
-          description: Customer Group
+          description: Each price item must be registered with 0 `customerGroupCode`. It will be used as the fallback price for any Customer Group withing the same `websiteCode`.
+            For example, if Shopper is assigned to "VIP" Customer Group, but Product doesn't have price in this group, default price will be used.
         regular:
           $ref: '#/components/schemas/FloatValue'
         updatedAt:
@@ -2523,6 +2484,7 @@ components:
         deleted:
           type: boolean
           default: false
+          description: To delete product price set to "true"
     ProductPriceParents:
       title: ProductPriceParents
       type: object
