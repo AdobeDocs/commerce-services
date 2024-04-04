@@ -11,7 +11,7 @@ keywords:
 
 The Adobe Commerce Reporting Export API allows you to access some of the raw data behind your Adobe Commerce Reporting dashboard.
 
-Before using the export API, make sure you [authenticate](index.md#authentication) your connection.
+Before using the export API, make sure you [authenticate](https://developer.adobe.com/commerce/services/reporting/#generating-authentication-token-for-the-export-api) your connection.
 
 ## Raw data exports
 
