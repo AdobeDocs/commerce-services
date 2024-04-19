@@ -79,6 +79,24 @@ query {
             value
             roles
         }
+        inputOptions {
+            id
+            title
+            required
+            type
+            markupAmount
+            suffix
+            sortOrder
+            range {
+                from
+                to
+            }
+            imageSize {
+                width
+                height
+            }
+            fileExtensions
+        }
         ... on SimpleProductView {
             price {
                 final {
@@ -237,6 +255,26 @@ query {
                         ]
                     }
                 ],
+                  "inputOptions": [
+                    {
+                    "id": "Y29uZmlndXJhYmxlLzIzNC8yNzg=",
+                    "title": "Input Option",
+                    "required": false,
+                    "type": "CUSTOM",
+                    "markupAmount": 12.45,
+                    "suffix": "suffix",
+                    "sortOrder": 1,
+                    "range": {
+                        "from": 1.01,
+                        "to": 12.01
+                    },
+                    "imageSize": {
+                        "width": 2,
+                        "height": 2
+                    },
+                    "fileExtensions": "fileExtensions"
+                    }
+                ],
                 "price": {
                     "final": {
                         "amount": {
@@ -332,6 +370,23 @@ query {
             roles
         }
         ... on ComplexProductView {
+            inputOptions {
+                id
+                title
+                required
+                type
+                markupAmount
+                suffix
+                sortOrder
+                range {
+                    from
+                    to
+                }
+                imageSize {
+                    width
+                    height
+                }
+                fileExtensions
             options {
                 id
                 title
@@ -369,7 +424,7 @@ query {
                                 roles
                             }
                         }
-                    }                    
+                    }
                 }
             }
             priceRange {
@@ -406,7 +461,7 @@ query {
             }
         }
     }
-}
+  }
 ```
 
 **Response:**
@@ -445,6 +500,26 @@ query {
                         "roles": []
                     }
                 ],
+                    "inputOptions": [
+                        {
+                        "id": "Y29uZmlndXJhYmxlLzIzNC8yNzg=",
+                        "title": "Input Option",
+                        "required": false,
+                        "type": "CUSTOM",
+                        "markupAmount": 12.45,
+                        "suffix": "suffix",
+                        "sortOrder": 1,
+                        "range": {
+                            "from": 1.01,
+                            "to": 12.01
+                        },
+                        "imageSize": {
+                            "width": 2,
+                            "height": 2
+                        },
+                        "fileExtensions": "fileExtensions"
+                        }
+                    ],
                 "attributes": [
                     {
                         "name": "climate",
