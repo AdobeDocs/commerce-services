@@ -107,7 +107,7 @@ Field | Data Type | Description
 
 ### ProductViewInputOption type
 
-Product input options provide a way for shoppers to customize a a product before adding it to a cart. They are based on a variation of a single SKU. For example, the shopper can provide a custom image or text to personalize a product. These input options can be associated with a price increase or decrease if a markdown amount is supplied.
+Product input options provide a way for shoppers to customize a product before adding it to a cart. When specified, the options create a variant of a single SKU. For example, the shopper can provide a custom image or text to personalize a product. A customization option can include an associated markdown amount that is applied to increase or decrease the product price.
 
 Field | Data Type | Description
 -- | -- | --
