@@ -182,7 +182,7 @@ Field | Data Type | Description
 `inStock` | Boolean | Indicates if the option is in stock.
 `isDefault` | Boolean | Indicates whether the option is the default.
 `product` | [`SimpleProductView`](#simpleproductview-type) | Details about a simple product.
-`quantity` | []`SimpleProductView`](#simpleproductview-type) | Default quantity of an option value.
+`quantity` | [`SimpleProductView`](#simpleproductview-type) | Default quantity of an option value.
 `title` | String | The display name of the option value.
 
 ### ProductViewOptionValueSwatch type
