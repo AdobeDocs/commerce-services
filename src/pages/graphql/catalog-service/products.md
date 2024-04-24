@@ -23,9 +23,14 @@ Use the Live Search [`productSearch` query](../live-search/product-search.md) to
 
 The `ProductView` output object is significantly different than the core `products` query `Products` output object. Key differences include:
 
-*  Products are either simple or complex. Simple, virtual, downloadable, and gift card products map to `SimpleProductView`. All other product types map to `ComplexProductView`. Simple products have defined prices. Complex products have price ranges. Since complex products are comprised of multiple simple products, they have access to simple product prices.
+* Products are either simple or complex. Simple, virtual, downloadable, and gift card products map to `SimpleProductView`. All other product types map to `ComplexProductView`.
 
-*  Merchant-defined attributes are exposed in a top-level container and indicate their storefront roles. Roles include Show on PDP, Show on PLP, and Show on Search Results.
+  * Simple products have defined prices.
+  * Complex products have price ranges. Since complex products are comprised of multiple simple products, they have access to simple product prices.
+
+* Both simple and complex products can have merchant-defined input options that allow shoppers to customize a product by adding text, date, an image, or a file, for example adding text for engraving. These options can have an associated markup that is applied to the product price. These options are exposed in a top-level `inputOptions` container ([`[ProductViewInputOption]`](#productviewinputoption-type)).
+
+*  Merchant-defined attributes are exposed in a top-level `attributes` container [`[ProductViewAttribute]`](#productviewattribute-type) and indicate their storefront roles. Roles include Show on PDP, Show on PLP, and Show on Search Results.
 
 *  Images are also accessible as a top-level container and can be filtered by their role. An image can have an `image`, `small_image`, or `thumbnail` role.
 
@@ -139,10 +144,10 @@ query {
                 "description": "<p>Make the most of your limited workout window with our Dual-Handle Cardio Ball. The 15-lb ball maximizes the effort-impact to your abdominal, upper arm and lower-body muscles. It features a handle on each side for a firm, secure grip.</p>\r\n<ul>\r\n<li>Durable plastic shell with sand fill.\r\n<li>Two handles.\r\n<li>15 lbs.\r\n</ul>",
                 "shortDescription": "",
                 "addToCartAllowed": true,
-                "url": "http://master-7rqtwti-ima6q5tyxltfe.eu-4.magentosite.cloud/dual-handle-cardio-ball.html",
+                "url": "http://example.com/dual-handle-cardio-ball.html",
                 "images": [
                     {
-                        "url": "http://master-7rqtwti-ima6q5tyxltfe.eu-4.magentosite.cloud/media/catalog/product/u/g/ug07-bk-0.jpg",
+                        "url": "http://example.com/media/catalog/product/u/g/ug07-bk-0.jpg",
                         "label": "Image",
                         "roles": [
                             "image",
@@ -151,7 +156,7 @@ query {
                         ]
                     },
                     {
-                        "url": "http://master-7rqtwti-ima6q5tyxltfe.eu-4.magentosite.cloud/media/catalog/product/u/g/ug07-bk-0_alt1.jpg",
+                        "url": "http://example.com/media/catalog/product/u/g/ug07-bk-0_alt1.jpg",
                         "label": "Image",
                         "roles": []
                     }
@@ -255,25 +260,63 @@ query {
                         ]
                     }
                 ],
-                  "inputOptions": [
+                "inputOptions": [
                     {
-                    "id": "Y29uZmlndXJhYmxlLzIzNC8yNzg=",
-                    "title": "Input Option",
-                    "required": false,
-                    "type": "CUSTOM",
-                    "markupAmount": 12.45,
-                    "suffix": "suffix",
-                    "sortOrder": 1,
-                    "range": {
-                        "from": 1.01,
-                        "to": 12.01
+                        "required": false,
+                        "id": "Y3VzdG9tLW9wdGlvbi8xOQ==",
+                        "title": "Customizable Option - area",
+                        "type": "area",
+                        "range": {
+                            "from": 0.0,
+                            "to": 255.0
+                        },
+                        "fileExtensions": "",
+                        "sortOrder": 1,
+                        "suffix": "test-e2e-configurable-smoke138330433-opt-area",
+                        "markupAmount": 126.0
                     },
-                    "imageSize": {
-                        "width": 2,
-                        "height": 2
+                    {
+                        "required": false,
+                        "id": "Y3VzdG9tLW9wdGlvbi8yMA==",
+                        "title": "Customizable Option - field",
+                        "type": "field",
+                        "range": {
+                            "from": 0.0,
+                            "to": 255.0
+                        },
+                        "fileExtensions": "",
+                        "sortOrder": 2,
+                        "suffix": "test-e2e-configurable-smoke138330433-opt-field",
+                        "markupAmount": 126.0
                     },
-                    "fileExtensions": "fileExtensions"
-                    }
+                    {
+                        "required": false,
+                        "id": "Y3VzdG9tLW9wdGlvbi8yMQ==",
+                        "title": "Customizable Option - file",
+                        "type": "file",
+                        "range": {
+                            "from": 0.0,
+                            "to": 0.0
+                        },
+                        "fileExtensions": "jpg, png",
+                        "sortOrder": 3,
+                        "suffix": "test-e2e-configurable-smoke138330433-opt-file",
+                        "markupAmount": 126.0
+                    },
+                    {
+                        "required": false,
+                        "id": "Y3VzdG9tLW9wdGlvbi8yMg==",
+                        "title": "Customizable Option - date",
+                        "type": "date",
+                        "range": {
+                            "from": 0.0,
+                            "to": 0.0
+                        },
+                        "fileExtensions": "",
+                        "sortOrder": 4,
+                        "suffix": "test-e2e-configurable-smoke138330433-opt-date",
+                        "markupAmount": 126.0
+                    },
                 ],
                 "price": {
                     "final": {
@@ -352,7 +395,7 @@ query {
     products(skus: ["MH07"]) {
         __typename
         id
-        sk
+        sku
         name
         description
         shortDescription
@@ -370,23 +413,24 @@ query {
             roles
         }
         ... on ComplexProductView {
-            inputOptions {
-                id
-                title
-                required
-                type
-                markupAmount
-                suffix
-                sortOrder
-                range {
-                    from
-                    to
-                }
-                imageSize {
-                    width
-                    height
-                }
-                fileExtensions
+        inputOptions {
+            id
+            title
+            required
+            type
+            markupAmount
+            suffix
+            sortOrder
+            range {
+                from
+                to
+            }
+            imageSize {
+                width
+                height
+            }
+            fileExtensions
+            }
             options {
                 id
                 title
@@ -478,10 +522,10 @@ query {
                 "description": "<p>Gray and black color blocking sets you apart as the Hero Hoodie keeps you warm on the bus, campus or cold mean streets. Slanted outsize front pockets keep your style real . . . convenient.</p>\r\n<p>&bull; Full-zip gray and black hoodie.<br />&bull; Ribbed hem.<br />&bull; Standard fit.<br />&bull; Drawcord hood cinch.<br />&bull; Water-resistant coating.</p>",
                 "shortDescription": "",
                 "addToCartAllowed": true,
-                "url": "http://master-7rqtwti-ima6q5tyxltfe.eu-4.magentosite.cloud/hero-hoodie.html",
+                "url": "http://example.com/hero-hoodie.html",
                 "images": [
                     {
-                        "url": "http://master-7rqtwti-ima6q5tyxltfe.eu-4.magentosite.cloud/media/catalog/product/m/h/mh07-gray_main_2.jpg",
+                        "url": "http://example.com/media/catalog/product/m/h/mh07-gray_main_2.jpg",
                         "label": "",
                         "roles": [
                             "image",
@@ -490,36 +534,102 @@ query {
                         ]
                     },
                     {
-                        "url": "http://master-7rqtwti-ima6q5tyxltfe.eu-4.magentosite.cloud/media/catalog/product/m/h/mh07-gray_alt1_2.jpg",
+                        "url": "http://example.com/media/catalog/product/m/h/mh07-gray_alt1_2.jpg",
                         "label": "",
                         "roles": []
                     },
                     {
-                        "url": "http://master-7rqtwti-ima6q5tyxltfe.eu-4.magentosite.cloud/media/catalog/product/m/h/mh07-gray_back_2.jpg",
+                        "url": "http://example.com/media/catalog/product/m/h/mh07-gray_back_2.jpg",
                         "label": "",
                         "roles": []
                     }
                 ],
-                    "inputOptions": [
-                        {
-                        "id": "Y29uZmlndXJhYmxlLzIzNC8yNzg=",
-                        "title": "Input Option",
+              "inputOptions": [
+                    {
                         "required": false,
-                        "type": "CUSTOM",
-                        "markupAmount": 12.45,
-                        "suffix": "suffix",
-                        "sortOrder": 1,
+                        "id": "Y3VzdG9tLW9wdGlvbi8xOQ==",
+                        "title": "Customizable Option - area",
+                        "type": "area",
                         "range": {
-                            "from": 1.01,
-                            "to": 12.01
+                            "from": 0.0,
+                            "to": 255.0
                         },
-                        "imageSize": {
-                            "width": 2,
-                            "height": 2
+                        "fileExtensions": "",
+                        "sortOrder": 1,
+                        "suffix": "test-e2e-configurable-smoke138330433-opt-area",
+                        "markupAmount": 126.0
+                    },
+                    {
+                        "required": false,
+                        "id": "Y3VzdG9tLW9wdGlvbi8yMA==",
+                        "title": "Customizable Option - field",
+                        "type": "field",
+                        "range": {
+                            "from": 0.0,
+                            "to": 255.0
                         },
-                        "fileExtensions": "fileExtensions"
-                        }
-                    ],
+                        "fileExtensions": "",
+                        "sortOrder": 2,
+                        "suffix": "test-e2e-configurable-smoke138330433-opt-field",
+                        "markupAmount": 126.0
+                    },
+                    {
+                        "required": false,
+                        "id": "Y3VzdG9tLW9wdGlvbi8yMQ==",
+                        "title": "Customizable Option - file",
+                        "type": "file",
+                        "range": {
+                            "from": 0.0,
+                            "to": 0.0
+                        },
+                        "fileExtensions": "jpg, png",
+                        "sortOrder": 3,
+                        "suffix": "test-e2e-configurable-smoke138330433-opt-file",
+                        "markupAmount": 126.0
+                    },
+                    {
+                        "required": false,
+                        "id": "Y3VzdG9tLW9wdGlvbi8yMg==",
+                        "title": "Customizable Option - date",
+                        "type": "date",
+                        "range": {
+                            "from": 0.0,
+                            "to": 0.0
+                        },
+                        "fileExtensions": "",
+                        "sortOrder": 4,
+                        "suffix": "test-e2e-configurable-smoke138330433-opt-date",
+                        "markupAmount": 126.0
+                    },
+                    {
+                        "required": false,
+                        "id": "Y3VzdG9tLW9wdGlvbi8yMw==",
+                        "title": "Customizable Option - date_time",
+                        "type": "date_time",
+                        "range": {
+                            "from": 0.0,
+                            "to": 0.0
+                        },
+                        "fileExtensions": "",
+                        "sortOrder": 5,
+                        "suffix": "test-e2e-configurable-smoke138330433-opt-date_time",
+                        "markupAmount": 126.0
+                    },
+                    {
+                        "required": false,
+                        "id": "Y3VzdG9tLW9wdGlvbi8yNA==",
+                        "title": "Customizable Option - time",
+                        "type": "time",
+                        "range": {
+                            "from": 0.0,
+                            "to": 0.0
+                        },
+                        "fileExtensions": "",
+                        "sortOrder": 6,
+                        "suffix": "test-e2e-configurable-smoke138330433-opt-time",
+                        "markupAmount": 126.0
+                    }
+                ],
                 "attributes": [
                     {
                         "name": "climate",
