@@ -28,9 +28,9 @@ The `ProductView` output object is significantly different than the core `produc
   * Simple products have defined prices.
   * Complex products have price ranges. Since complex products are comprised of multiple simple products, they have access to simple product prices.
 
-* Both simple and complex products can have merchant-defined input options that allow shoppers to customize a product by adding text, date, an image, or a file, for example adding text for engraving. These options can have an associated markup that is applied to the product price. These options are exposed in a top-level `inputOptions` container ([`[ProductViewInputOption]`](#productviewinputoption-type)).
+* Both simple and complex products can have merchant-defined input options that allow shoppers to customize a product by adding text, date, an image, or a file, for example adding text for engraving. These options can have an associated markup that is applied to the product price. These options are exposed in a top-level `inputOptions` container `[ProductViewInputOption]`.
 
-*  Merchant-defined attributes are exposed in a top-level `attributes` container [`[ProductViewAttribute]`](#productviewattribute-type) and indicate their storefront roles. Roles include Show on PDP, Show on PLP, and Show on Search Results.
+*  Merchant-defined attributes are exposed in a top-level `attributes` container `[ProductViewAttribute]` and indicate their storefront roles. Roles include Show on PDP, Show on PLP, and Show on Search Results.
 
 *  Images are also accessible as a top-level container and can be filtered by their role. An image can have an `image`, `small_image`, or `thumbnail` role.
 
