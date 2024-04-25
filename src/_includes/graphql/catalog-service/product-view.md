@@ -107,7 +107,7 @@ Field | Data Type | Description
 
 ### ProductViewInputOption type
 
-Product input options provide a way for shoppers to customize a product before adding it to a cart. A product definition can contain details about how the shopper enters customization details. A customizable option can include an associated markup that is applied to the product price. For additional information, see [Product settings - Customizable Options](https://experienceleague.adobe.com/en/docs/commerce-admin/catalog/products/settings/settings-advanced-custom-options).
+Product input options provide details about how a shopper can enter customization details for a product. For example, for product personalization the input options might provide the fields for the shopper to add an image or text for a monogram. The input option can include an associated `markupAmount` that is applied to the product price. For additional information, see [Product settings - Customizable Options](https://experienceleague.adobe.com/en/docs/commerce-admin/catalog/products/settings/settings-advanced-custom-options).
 
 Field | Data Type | Description
 -- | -- | --
