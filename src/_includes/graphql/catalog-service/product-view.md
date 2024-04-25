@@ -8,6 +8,7 @@ Field | Data Type | Description
 `externalId`| String | The external ID of the product.
 `id` | ID! | The product ID, generated as a composite key, unique per locale.
 `images(roles: [String])` | [`[ProductViewImage]`](#productviewimage-type`) | A list of images defined for the product.
+`inputOptions` | [`[ProductViewInputOption]`](#productviewinputoption-type) | A list of input options the shopper can supply to customize a product.
 `inStock` | Boolean | Indicates whether the product is in stock.
 `links(linkTypes: [String!])` | [`[ProductViewLink]`](#productviewlink-type) | A list of product links.
 `lowStock` | Boolean | Indicates whether the product stock is low.
@@ -15,7 +16,6 @@ Field | Data Type | Description
 `metaKeyword` | String | A comma-separated list of keywords that are visible only to search engines.
 `metaTitle` | String | A string that is displayed in the title bar and tab of the browser and in search results lists.
 `name` | String | Product name.
-`inputOptions` | [`[ProductViewInputOption]`](#productviewinputoption-type) | A list of input options the shopper can supply to customize a product.
 `shortDescription` | String | A summary of the product.
 `sku` | String | Product SKU.
 `url` | String | Canonical URL of the product.
