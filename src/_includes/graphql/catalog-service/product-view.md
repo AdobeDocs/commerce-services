@@ -93,8 +93,8 @@ The `ProductViewLink` type contains details about product links for related prod
 
 Field | Data Type | Description
 --- | --- | ---
-`product` | `ProductView!` | Details about the product in the link.
 `linkTypes` | [String!]! | Types of links for this product. Can be `crosssell`, `related`, and `upsell`.
+`product` | `ProductView!` | Details about the product in the link.
 
 ### ProductViewMoney type
 
@@ -107,7 +107,7 @@ Field | Data Type | Description
 
 ### ProductViewInputOption type
 
-Product input options provide a way for shoppers to customize a product before adding it to a cart. When specified, the options create a variant of a single SKU. For example, the shopper can provide a custom image or text to personalize a product. A customizable option can include an associated markdown amount that is applied to the product price.
+Product input options provide a way for shoppers to customize a product before adding it to a cart. A product definition can contain details about how the shopper enters customization details. A customizable option can include an associated markup that is applied to the product price. For additional information, see [Product settings - Customizable Options](https://experienceleague.adobe.com/en/docs/commerce-admin/catalog/products/settings/settings-advanced-custom-options).
 
 Field | Data Type | Description
 -- | -- | --
