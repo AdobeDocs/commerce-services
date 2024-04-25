@@ -9,10 +9,11 @@ keywords:
 
 # Catalog Service for Adobe Commerce
 
-The Catalog Service for Adobe Commerce extension contributes to a services-only GraphQL schema that contains queries that return specialized catalog data that is not available in the core schema. The queries in this schema allow Commerce merchants to quickly and fully render product-related content on the storefront, including product detail pages and product list pages.
+The Catalog Service for Adobe Commerce extension contributes to a services-only GraphQL schema that contains queries that return specialized catalog data that is not available in the [core GraphQL schema](https://developer.adobe.com/commerce/webapi/graphql/schema/). The queries in this schema allow Commerce merchants to quickly and fully render product-related content on the storefront, including product detail pages and product list pages.
 
 Catalog Service provides the following queries:
 
+*  [`categories`](categories.md)
 *  [`products`](products.md)
 *  [`refineProduct`](refine-product.md)
 

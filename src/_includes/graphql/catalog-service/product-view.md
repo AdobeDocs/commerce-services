@@ -3,13 +3,14 @@ The `ProductView` return object is an interface that can contain the following f
 Field | Data Type | Description
 --- | --- | ---
 `addToCartAllowed` | Boolean | Indicates whether the product can be added to the cart.
-`attributes(roles: [String])` | [ProductViewAttribute] | A list of merchant-defined attributes designated for the storefront.
+`attributes(roles: [String])` | [`[ProductViewAttribute]`](#productviewattribute-type) | A list of merchant-defined attributes designated for the storefront.
 `description` | String | The detailed description of the product.
 `externalId`| String | The external ID of the product.
 `id` | ID! | The product ID, generated as a composite key, unique per locale.
-`images(roles: [String])` | [ProductViewImage] | A list of images defined for the product.
+`images(roles: [String])` | [`[ProductViewImage]`](#productviewimage-type`) | A list of images defined for the product.
+`inputOptions` | [`[ProductViewInputOption]`](#productviewinputoption-type) | A list of input options the shopper can supply to customize a product.
 `inStock` | Boolean | Indicates whether the product is in stock.
-`links(linkTypes: [String!])` | [ProductViewLink] | A list of product links.
+`links(linkTypes: [String!])` | [`[ProductViewLink]`](#productviewlink-type) | A list of product links.
 `lowStock` | Boolean | Indicates whether the product stock is low.
 `metaDescription` | String | A brief overview of the product for search results listings.
 `metaKeyword` | String | A comma-separated list of keywords that are visible only to search engines.
@@ -27,20 +28,21 @@ The `ComplexProductView` type represents bundle, configurable, and group product
 Field | Data Type | Description
 --- | --- | ---
 `addToCartAllowed` | Boolean | Indicates whether the product can be added to the cart.
-`attributes(roles: [String])` | [ProductViewAttribute] | A list of merchant-defined attributes designated for the storefront.
+`attributes(roles: [String])` | [`[ProductViewAttribute]`](#productviewattribute-type) | A list of merchant-defined attributes designated for the storefront.
 `description` | String | The detailed description of the product.
 `externalId`| String | The external ID of the product.
 `id` | ID! | The product ID, generated as a composite key, unique per locale.
-`images(roles: [String])` | [ProductViewImage] | A list of images defined for the product.
+`images(roles: [String])` | [`[ProductViewImage]`](#productviewimage-type) | A list of images defined for the product.
+`inputOptions` | [`[ProductViewInputOption]`](#productviewinputoption-type) | A list of input options the shopper can supply to customize a product.
 `inStock` | Boolean | Indicates whether the product is in stock.
-`links(linkTypes: [String!])` | [ProductViewLink] | A list of product links.
+`links(linkTypes: [String!])` | [`[ProductViewLink]`](#productviewlink-type) | A list of product links.
 `lowStock` | Boolean | Indicates whether the product stock is low.
 `metaDescription` | String | A brief overview of the product for search results listings.
 `metaKeyword` | String | A comma-separated list of keywords that are visible only to search engines.
 `metaTitle` | String | A string that is displayed in the title bar and tab of the browser and in search results lists.
 `name` | String | Product name.
-`options` | [ProductViewOption] | A list of selectable options.
-`priceRange` | ProductViewPriceRange | A range of possible prices for a complex product.
+`options` | [`[ProductViewOption]`](#productviewoption-type) | A list of selectable options.
+`priceRange` | [`ProductViewPriceRange`](#productviewpricerange-type) | A range of possible prices for a complex product.
 `shortDescription` | String | A summary of the product.
 `sku` | String | Product SKU.
 `url` | String | Canonical URL of the product.
@@ -52,8 +54,8 @@ The `Price type` defines the price of a simple product or a part of a price rang
 
 Field | Data Type | Description
 --- | --- | ---
-`adjustments` | [PriceAdjustment] | A list of price adjustments.
-`amount` | ProductViewMoney | Contains the monetary value and currency code of a product.
+`adjustments` | [`[PriceAdjustment]`](#priceadjustment-type) | A list of price adjustments.
+`amount` | [`ProductViewMoney`](#productviewmoney-type) | Contains the monetary value and currency code of a product.
 
 ### PriceAdjustment type
 
@@ -91,8 +93,8 @@ The `ProductViewLink` type contains details about product links for related prod
 
 Field | Data Type | Description
 --- | --- | ---
-`product` | ProductView! | Details about the product in the link.
 `linkTypes` | [String!]! | Types of links for this product. Can be `crosssell`, `related`, and `upsell`.
+`product` | `ProductView!` | Details about the product in the link.
 
 ### ProductViewMoney type
 
@@ -103,9 +105,44 @@ Field | Data Type | Description
 `currency` | ProductViewCurrency | A three-letter currency code, such as USD or EUR.
 `value` | Float | A number expressing a monetary value.
 
+### ProductViewInputOption type
+
+Product input options provide details about how a shopper can enter customization details for a product. For example, for product personalization the input options might provide the fields for the shopper to add an image or text for a monogram. The input option can include an associated `markupAmount` that is applied to the product price. For additional information, see [Product settings - Customizable Options](https://experienceleague.adobe.com/en/docs/commerce-admin/catalog/products/settings/settings-advanced-custom-options).
+
+Field | Data Type | Description
+-- | -- | --
+`fileExtensions` | String | A comma separated list of accepted file types for the input option if it has an associated file, for example `png, jpg`.
+`id` | ID | The ID of the option value.
+`imageSize` | [`ProductViewInputOptionImageSize`](#productviewimagesize-type) | Dimensions of an image associated with the input option.
+`markupAmount` | Float | Amount to add or subtract from the product price when the option is configured.
+`range` |[`ProductViewInputOptionRange`](#productviewinputoptionrange-type)| Value limits associated with an input option, for example allowed characters or file size.
+`required` | Boolean | Indicates whether the option must be supplied.
+`sortOrder` | Int | Indicates the order in which the option is displayed if multiple input options are configured.
+`suffix` | String | SKU suffix added to the customized product.
+`title` | String | The display name of the option value.
+`type` | String | The type of control for entering the input option, for example `textfield`, `textarea`, `date`, `date_time`, `time`, `file`.
+
+### ProductViewInputOptionRange type
+
+Lists the value range associated with a `[ProductViewInputOption]`. For example, if the input option is a text field, the range represents the number of characters.
+
+Field | Data Type | Description
+-- | -- | --
+`from` | Float | Minimum value accepted for the option input.
+`to` | Float | Maximum value accepted for the option input.
+
+### ProductViewInputOptionImageSize type
+
+Lists the image dimensions for an image associated with a `[ProductViewInputOption]`.
+
+Field | Data Type | Description
+-- | -- | --
+`height` | Int | Height of image provided for an input option.
+`width` |  Int | Width of image provided for an input option.
+
 ### ProductViewOption type
 
-Product options provide a way to configure products by making selections of particular option values. Selecting one or many options will point to a specific simple product.
+Product options provide a way to configure products by making selections of particular option values predefined for the product. Selecting one or many options points to a specific simple product.
 
 Field | Data Type | Description
 --- | --- | ---
@@ -113,7 +150,7 @@ Field | Data Type | Description
 `multi` | Boolean | Indicates whether the option allows multiple choices.
 `required` | Boolean | Indicates whether the option must be selected.
 `title` | String | The display name of the option.
-`values` | [ProductViewOptionValue!] | List of available option values.
+`values` | [`[ProductViewOptionValue!]`](#productviewoptionvalue-Interface) | List of available option values.
 
 ### ProductViewOptionValue interface
 
@@ -144,8 +181,8 @@ Field | Data Type | Description
 `id` | ID | The ID of an option value.
 `inStock` | Boolean | Indicates if the option is in stock.
 `isDefault` | Boolean | Indicates whether the option is the default.
-`product` | SimpleProductView | Details about a simple product.
-`quantity` | SimpleProductView | Default quantity of an option value.
+`product` | [`SimpleProductView`](#simpleproductview-type) | Details about a simple product.
+`quantity` | [`SimpleProductView`](#simpleproductview-type) | Default quantity of an option value.
 `title` | String | The display name of the option value.
 
 ### ProductViewOptionValueSwatch type
@@ -186,19 +223,20 @@ The `SimpleProductView` type represents all product types, except bundle, config
 Field | Data Type | Description
 --- | --- | ---
 `addToCartAllowed` | Boolean | Indicates whether the product can be added to the cart.
-`attributes(roles: [String])` | [ProductViewAttribute] | A list of merchant-defined attributes designated for the storefront.
+`attributes(roles: [String])` | [`[ProductViewAttribute]`](#productviewattribute-type) | A list of merchant-defined attributes designated for the storefront.
 `description` | String | The detailed description of the product.
 `externalId`| String | The external ID of the product.
 `id` | ID! | The product ID, generated as a composite key, unique per locale.
-`images(roles: [String])` | [ProductViewImage] | A list of images defined for the product.
+`images(roles: [String])` | [`[ProductViewImage]`](#productviewimage-type) | A list of images defined for the product.
+`inputOptions` | [`[ProductViewInputOption]`](#productviewinputoption-type) | A list of input options the shopper can supply to customize a product.
 `inStock` | Boolean | Indicates whether the product is in stock.
-`links(linkTypes: [String!])` | [ProductViewLink] | A list of product links.
+`links(linkTypes: [String!])` | [`[ProductViewLink]`](#productviewlink-type) | A list of product links.
 `lowStock` | Boolean | Indicates whether the product stock is low.
 `metaDescription` | String | A brief overview of the product for search results listings.
 `metaKeyword` | String | A comma-separated list of keywords that are visible only to search engines.
 `metaTitle` | String | A string that is displayed in the title bar and tab of the browser and in search results lists.
 `name` | String | Product name.
-`price` | ProductViewPrice | Base product price view.
+`price` | [`ProductViewPrice`](#productviewprice-type) | Base product price view.
 `shortDescription` | String | A summary of the product.
 `sku` | String | Product SKU.
 `url` | String | Canonical URL of the product.
