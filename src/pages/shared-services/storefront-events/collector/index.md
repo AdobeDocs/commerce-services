@@ -28,20 +28,6 @@ To install the script as a dependency, run this command.
 npm install @adobe/magento-storefront-event-collector
 ```
 
-### Confirm SDK is Available
-
-If you used the CDN to install the script, you need to confirm the SDK asset has downloaded successfully. You can check if the download was successful by running the following code:
-
-```bash
-//Module Load
-import mse from "@adobe/magento-storefront-events-sdk";
-if(!mse) return;
-
-//AMD Load
-require(['magentoStorefrontEvents'], function (magentoStorefrontEvents) {
-        if(!magentoStorefrontEvents) return; 
-```
-
 ## Quick Start
 
 After loading the collector script, or importing the package as shown below, there is nothing else to configure.
