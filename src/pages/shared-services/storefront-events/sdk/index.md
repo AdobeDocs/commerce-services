@@ -42,6 +42,10 @@ require(['magentoStorefrontEvents'], function (magentoStorefrontEvents) {
         if(!magentoStorefrontEvents) return; 
 ```
 
+>[!NOTE]
+>
+>To avoid any issues, make sure you keep the script or bundled version up-to-date with the latest release.
+
 ## Quick Start
 
 Once imported, you have access to the four main functions of the Events SDK.
