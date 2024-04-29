@@ -28,6 +28,10 @@ To install the script as a dependency, run this command.
 npm install @adobe/magento-storefront-event-collector
 ```
 
+>[!NOTE]
+>
+>To avoid any issues, make sure you keep the script or bundled version up-to-date with the latest release.
+
 ## Quick Start
 
 After loading the collector script, or importing the package as shown below, there is nothing else to configure.
