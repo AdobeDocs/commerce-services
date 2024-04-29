@@ -27,6 +27,7 @@ To install the script as a dependency, run this command.
 ```bash
 npm install @adobe/magento-storefront-event-collector
 ```
+
 ### Confirm SDK is Available
 
 If you used the CDN to install the script, you need to confirm the SDK asset has downloaded successfully. You can check if the download was successful by running the following code:
