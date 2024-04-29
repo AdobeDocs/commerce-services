@@ -10,7 +10,7 @@ keywords:
 
 # Adobe Commerce Events SDK
 
-This package serves as the foundation for eventing on an [Adobe Commerce](https://business.adobe.com/products/magento/magento-commerce.html) storefront. It provides access to a common data layer, and an event publishing and subscription service. Handling these events is up to you, but we provide the [Adobe Commerce Event Collector](../collector/index.md) package that can listen for events and send them to Adobe Commerce for processing.
+This package serves as the foundation for eventing on an Adobe Commerce storefront. It provides access to a common data layer, and an event publishing and subscription service. Handling these events is up to you, but we provide the [Adobe Commerce Event Collector](../collector/index.md) package that can listen for events and send them to Adobe Commerce for processing.
 
 ## Installation
 
