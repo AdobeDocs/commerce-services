@@ -26,7 +26,7 @@ PERSIST_EXPORTED_FEED=1 bin/magento saas:resync --feed=products
 ```
 
 ### Profiling
-If the reindex process of specific feed takes an unreasonable amount of time, run the profiler to collect additional data that might be useful for the Support Team. To do so, pass the EXPORTER_PROFILER=1environment variable:
+If the reindex process of specific feed takes an unreasonable amount of time, run the profiler to collect additional data that might be useful for the Support Team. To do so, pass the EXPORTER_PROFILER=1 environment variable:
 
 ``` bash
 EXPORTER_PROFILER=1 bin/magento indexer:reindex catalog_data_exporter_products
