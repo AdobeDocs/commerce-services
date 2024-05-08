@@ -24,7 +24,7 @@ Currently, Commerce Data Exporter handles feeds in 2 modes
 #### Full sync (initial synchronization):
 After you [connect Adobe Commerce instance to Commerce Service](https://experienceleague.adobe.com/docs/commerce-merchant-services/user-guides/integration-services/saas.html?lang=en) you need to sync your data to Adobe Commerce Services.
 
-Please **NOTE:** The full resync is suitable only for onboarding phase and should not be used on regular basis since it adds extra load on Database.  [Partial sync](commerce-services/src/pages/catalog-data-export/workflow.md:16) that executed via crons automatically - should be used instead, to propagate changes.
+Please **NOTE:** The full resync is suitable only for onboarding phase and should not be used on regular basis since it adds extra load on Database. Partial sync that executed via crons automatically - should be used instead, to propagate changes.
 
 #### Partial sync (sync entity updates):
 When the Admin user updates some entity, for example, changing a product name from the Admin UI or updating product prices within Magento Import or with a custom solution, the Commerce Data Exporter will send updates to SaaS.
