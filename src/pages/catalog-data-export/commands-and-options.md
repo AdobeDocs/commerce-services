@@ -1,12 +1,14 @@
-<- [Back to overview page](commerce-data-export-overview.md)
+---
+title: Commands and options
+edition: ce
+description: Commands and options for the Commerce Data Export extension.
+keywords:
+  - Commerce Data Export
+  - Options
+  - Commands
+---
 
 # Commands and options
-
-### Entity feeds sync modes
-Currently, Commerce Data Exporter handles feeds in 2 modes
-
-- **Immediate export mode.** In this mode, data is collected and sent immediately to SaaS during 1 iteration. It helps to speedup delivering of entity updates to SaaS and reduce the storage size of feed tables.
-- **Legacy export mode.** In this mode, data is collected in 1 process. Later cron job sends collected data to SaaS. All legacy feeds will be suffixed with (legacy) text in logs.
 
 ### Feeds commands and options
 Feeds list:
@@ -26,3 +28,6 @@ Feeds list:
 - `bin/magento saas:resync --help` - get list of all available commands and options with their description.
 - `bin/magento saas:resync --feed='FEED_NAME'` - run full resync for products feed, feeds which already were in the exporter table with success code in the status field (for immediate export only) will not be resynchronized.
 - `bin/magento saas:resync --feed='FEED_NAME' --cleanup-feed` - **NOTE: this option shouldn't be used for regular export operations. Initial idea of this command is to resend all records to Adobe Commerce Services, for example: after environment was cleaned up** run full resync for products feed and cleanup all existing data in the feed table.
+- `bin/magento saas:resync --feed='FEED_NAME' --no-reindex` - behaviour of this option depends on the feed type:
+  - for legacy export feeds: will not truncate indexed data in the feeds table as well, but all data will be re-sent to Adobe Commerce Service.
+  - for immediate export feeds: option is obsolete for this type of feeds. When used, it will execute the same resynchronization process as if it were not used. This process does not truncate the index and only resynchronizes updates or items that previously failed.

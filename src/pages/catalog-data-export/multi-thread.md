@@ -1,5 +1,11 @@
-<- [Back to overview page](commerce-data-export-overview.md)
-
+---
+title: Multi-thread data export mode
+edition: ce
+description: Learn how to configure and use multi-thread data export mode in the Commerce Data Export extension.
+keywords:
+  - Commerce Data Export
+  - Multi-thread
+---
 # Multi-thread data export mode:
 The purpose of this mode is to speed up the export process by splitting the data into batches and processing them in parallel. **_The performance of data export should be aligned with the limit that is defined for a client at consumer side._**
 
@@ -13,7 +19,7 @@ _By default, all threads operate in single-thread mode, meaning there is no para
 Additionally, due to the default limits set by the Feed Ingestion Service, all clients are restricted to using only one thread._
 
 ### How to modify threadCount and batchSize?
-Multithreading is supported for all 3 ways (see details) to sync data to SaaS:
+Multithreading is supported for all 3 ways ([see details](commerce-services/src/pages/catalog-data-export/data-synchronization.md:16)) to sync data to SaaS:
 
 - full sync
 - partial sync
