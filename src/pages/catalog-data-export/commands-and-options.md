@@ -21,5 +21,5 @@ Feeds list:
 - `bin/magento saas:resync --feed='FEED_NAME'` - run full resync for products feed, feeds which already were in the exporter table with success code in the status field (for immediate export only) will not be resynchronized.
 - `bin/magento saas:resync --feed='FEED_NAME' --cleanup-feed` - **NOTE: this option shouldn't be used for regular export operations. Initial idea of this command is to resend all records to Adobe Commerce Services, for example: after environment was cleaned up** run full resync for products feed and cleanup all existing data in the feed table.
 - `bin/magento saas:resync --feed='FEED_NAME' --no-reindex` - behaviour of this option depends on the feed type:
-  - for immediate export feeds: will not truncate indexed data in the feeds table. Will only collect and send new data or items which were failed to be sent before.
   - for legacy export feeds: will not truncate indexed data in the feeds table as well, but all data will be re-sent to Adobe Commerce Service.
+  - for immediate export feeds: option is obsolete for this type of feeds. When used, it will execute the same resynchronization process as if it were not used. This process does not truncate the index and only resynchronizes updates or items that previously failed.
