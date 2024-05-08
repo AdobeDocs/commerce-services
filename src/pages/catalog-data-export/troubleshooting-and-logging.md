@@ -1,15 +1,41 @@
 <- [Back to overview page](commerce-data-export-overview.md)
 
 # Troubleshooting and logging
-If you see that some entities are not sent to SaaS or data exporter entities have any code different from _success_ (200) in the status field of the data exporter table. It makes sense to turn in extended logging and observe the logs after resync operation. To turn on extended logging, you need to put the `EXPORTER_EXTENDED_LOG=1` environment variable before `saas:resync` command.
+If you do not see expected data in Commerce Service, check if a problem occurred during the sync from the Adobe Commerce instance to the Commerce Service platform.
 
-_Example:_
-```shell
-EXPORTER_EXTENDED_LOG=1 bin/magento saas:resync --feed='products'
+There are two log files in the `var/log/` directory:
+
+`commerce-data-export-errors.log` - if an error happened during collecting phase
+`saas-export-errors.log` - if an error happened during transmitting phase
+
+Check feed payload
+It may be useful to see the feed payload that has been sent to the Commerce Service. This can be done by passing the environment variable EXPORTER_EXTENDED_LOG=1. The no-reindex flag means that only currently collected data is sent.
+
+``` bash
+EXPORTER_EXTENDED_LOG=1 bin/magento saas:resync --feed=products --no-reindex
 ```
-It will enable extended logging for the feed collecting and synchronization process.
+The payload is available in var/log/saas-export.log.
 
-When an entity update is detected or full resync is triggered this event will be logged in var/log/commerce-data-export.log  file
+### Preserve payload in feed index table
+Stating from `magento/module-data-exporter:103.0.0` immediate export feeds: product feed, price feeds, keep only the minimum required data in the index table.
+
+Preserving payload data in the index table is not recommended on production, but it may be useful on a developer instance. This is done by passing the PERSIST_EXPORTED_FEED=1 environment variable:
+
+``` bash
+PERSIST_EXPORTED_FEED=1 bin/magento saas:resync --feed=products
+```
+
+Profiling
+If the reindex process of specific feed takes an unreasonable amount of time, run the profiler to collect additional data that might be useful for the Support Team. To do so, pass the EXPORTER_PROFILER=1environment variable:
+
+``` bash
+EXPORTER_PROFILER=1 bin/magento indexer:reindex catalog_data_exporter_products
+```
+Profiler data is stored in var/log/commerce-data-export.log with the format:
+
+``` log 
+<Provider class name>, <# of processed entities>, <execution time im ms>, <memory consumption in Mb>
+```
 
 Each log record has the following structure (note JSON-based string is beautified for better readability)
 
@@ -68,4 +94,20 @@ Price feed full resync:
 [2024-03-05T21:00:53.995168+00:00] report.INFO: {"feed":"prices","operation":"full sync","status":"Complete","elapsed":"00:00:02 626 ms","pid":"14469","caller":"bin\/magento saas:resync --feed=prices"} [] []
 ```
 
-### TBD: Add NewRelic info
+### Troubleshooting and logs view via NewRelic
+If you store Adobe Commerce logs in the New Relic, it may be beneficial to add parsing rules to improve readability and query experience
+
+- login to NewRelic
+- Go to `Logs => Parsing`
+- Click `Create parsing rule`
+
+
+**Filter logs based on NRQL**
+`filePath LIKE '%commerce-data-export%.log'`
+
+**Parsing rule**
+`\[%{DATA:timestamp}\] report.%{DATA:logLevel} %{GREEDYDATA:feed:json}`
+
+After adding this rule you will be able to query by specific feed type, operation, etc
+For example:
+`feed.feed:"products" and feed.status:"Complete"`

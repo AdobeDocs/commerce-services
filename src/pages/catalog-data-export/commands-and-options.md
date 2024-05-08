@@ -2,12 +2,6 @@
 
 # Commands and options
 
-### Entity feeds sync modes
-Currently, Commerce Data Exporter handles feeds in 2 modes
-
-- **Immediate export mode.** In this mode, data is collected and sent immediately to SaaS during 1 iteration. It helps to speedup delivering of entity updates to SaaS and reduce the storage size of feed tables.
-- **Legacy export mode.** In this mode, data is collected in 1 process. Later cron job sends collected data to SaaS. All legacy feeds will be suffixed with (legacy) text in logs.
-
 ### Feeds commands and options
 Feeds list:
 - products: product data feed

@@ -13,7 +13,7 @@ _By default, all threads operate in single-thread mode, meaning there is no para
 Additionally, due to the default limits set by the Feed Ingestion Service, all clients are restricted to using only one thread._
 
 ### How to modify threadCount and batchSize?
-Multithreading is supported for all 3 ways (see details) to sync data to SaaS:
+Multithreading is supported for all 3 ways ([see details](commerce-services/src/pages/catalog-data-export/data-synchronization.md:16)) to sync data to SaaS:
 
 - full sync
 - partial sync
