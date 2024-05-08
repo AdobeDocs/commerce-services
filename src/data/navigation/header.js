@@ -21,6 +21,10 @@ module.exports = [
       path: "/reporting/",
     },
     {
+      title: "Commerce Data Export",
+      path: "/commerce-data-export/",
+    },
+    {
       title: "GraphQL",
       path: "/graphql/",
     },

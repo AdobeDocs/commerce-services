@@ -1,5 +1,11 @@
-<- [Back to overview page](commerce-data-export-overview.md)
-
+---
+title: Data Synchronization
+edition: ce
+description: Data Synchronization between Adobe Commerce and Adobe Commerce Services.
+keywords:
+  - Commerce Data Export
+  - Data Synchronization
+---
 # Data Synchronization
 
 #### Data Synchronization diagram:

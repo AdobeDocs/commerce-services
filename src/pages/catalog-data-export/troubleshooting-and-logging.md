@@ -1,5 +1,12 @@
-<- [Back to overview page](commerce-data-export-overview.md)
-
+---
+title: Troubleshooting and logging
+edition: ce
+description: Troubleshooting and logging for the Commerce Data Export extension.
+keywords:
+  - Commerce Data Export
+  - Troubleshooting
+  - Logging
+---
 # Troubleshooting and logging
 If you do not see expected data in Commerce Service, check if a problem occurred during the sync from the Adobe Commerce instance to the Commerce Service platform.
 

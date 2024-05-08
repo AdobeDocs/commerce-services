@@ -1,3 +1,11 @@
+---
+title: Commerce Data Export extension overview
+edition: ce
+description: Learn about the Commerce Data Export extension and its features.
+keywords:
+  - Commerce Data Export
+  - Extension overview
+---
 # Commerce Data Export extension overview
 
 The Commerce Data Export extension is a tool designed to facilitate the synchronization of data between Adobe Commerce and Adobe Commerce Services. It collects and exports various types of data, referred to as "feeds", which aggregate specific pieces of data. Depending on which Adobe Commerce Services are used following data exporter feeds will be available:  
