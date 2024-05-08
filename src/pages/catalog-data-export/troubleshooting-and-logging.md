@@ -12,12 +12,12 @@ Check feed payload
 It may be useful to see the feed payload that has been sent to the Commerce Service. This can be done by passing the environment variable EXPORTER_EXTENDED_LOG=1. The no-reindex flag means that only currently collected data is sent.
 
 ``` bash
-EXPORTER_EXTENDED_LOG=1 bin/magento saas:resync --feed=products --no-reindex
+EXPORTER_EXTENDED_LOG=1 bin/magento saas:resync --feed=products
 ```
 The payload is available in var/log/saas-export.log.
 
 ### Preserve payload in feed index table
-Stating from `magento/module-data-exporter:103.0.0` immediate export feeds: product feed, price feeds, keep only the minimum required data in the index table.
+Stating from `magento/module-data-exporter:103.3.0` immediate export feeds: all catalog and inventory stock status feeds, keep only the minimum required data in the index table.
 
 Preserving payload data in the index table is not recommended on production, but it may be useful on a developer instance. This is done by passing the PERSIST_EXPORTED_FEED=1 environment variable:
 
@@ -25,7 +25,7 @@ Preserving payload data in the index table is not recommended on production, but
 PERSIST_EXPORTED_FEED=1 bin/magento saas:resync --feed=products
 ```
 
-Profiling
+### Profiling
 If the reindex process of specific feed takes an unreasonable amount of time, run the profiler to collect additional data that might be useful for the Support Team. To do so, pass the EXPORTER_PROFILER=1environment variable:
 
 ``` bash
