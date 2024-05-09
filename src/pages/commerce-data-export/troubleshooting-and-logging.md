@@ -77,7 +77,7 @@ During full resync, by default, each 30 seconds progress track will be logged, h
     - "synced" < "processed" - feed table didn't detect any changes in the item, compared to the previously synced version. Such items will be ignored during sync.
     - "synced" > "processed"  - the same entity id (e.g. Product ID) can have multiple values in different scopes. For example, 1 product can be assigned to 5 websites. In this case you may have "1 processed" item and "5 synced" items
 
-Out-of-the-box extension provides the following operations you can see in logs file:
+Explanation of different operation types:
 
 | Operation                  | Description                                                                                                                                 | Caller example                                                                       |
 |----------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------|
