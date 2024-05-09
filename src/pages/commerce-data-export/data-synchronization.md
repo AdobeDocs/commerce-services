@@ -9,7 +9,6 @@ keywords:
 # Data Synchronization
 
 #### Data Synchronization diagram:
-[Diagram](https://lucid.app/lucidchart/a6818329-c0d3-46fa-95a2-fe0791a479a9/edit?viewport_loc=-248%2C-258%2C2322%2C1222%2C0_0&invitationId=inv_865c79fb-beb0-43d5-8d6f-0930f14215b5) 
 ![cde-diagram.png](../_images/cde-diagram.png)
 
 
