@@ -25,7 +25,8 @@ It will update the module to the specified version and also update specific depe
 ### Uninstallation
 In case if you don't need any of installed commerce data export modules, you can disable it by executing `magento:module:disable` command.
 Unnecessary functionality can be turned off by disabling modules that collects information and stores it in the feed tables (data-exporter) and module responsible for running indexers and sending data to Adobe Commerce Services (saas-export) related modules. Disabled feed will disappear from the list of feeds available for resync, no cron jobs will be executed for this feed. As well as all plugins from dependent Commerce Data Exporter extension will be turned off.
-For example, to disable the data feed responsible for exporting category permissions (if you don't use [Categories API](https://developer.adobe.com/commerce/services/graphql/catalog-service/categories/) it will be safely to disable these modules), you can use the following command:
+
+For example, there is a [Categories API](https://developer.adobe.com/commerce/services/graphql/catalog-service/categories/) that using categories permission feed data internally. If you don’t use this API it may be a good idea to do not export this data at all. You can do it by disabling data feed responsible for exporting category permissions
 ```shell script
 bin/magento module:disable Magento_CategoryPermissionDataExporter Magento_SaaSCategoryPermissions
 ```
