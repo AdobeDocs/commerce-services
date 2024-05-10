@@ -33,5 +33,5 @@ bin/magento module:disable Magento_SaaSCategory
 Disabling of specific data exporter module can be useful in case if you want to turn off all logic related to this exporter. In that case disable all feed related modules.
 For example, to disable the Adobe Commerce Services Product Price Data Exporter module, you need to turn off the following modules:
 ```shell script
-bin/magento module:disable Magento_SaaSPrice Magento_ProductPriceDataExporter 
+bin/magento module:disable Magento_CategoryPermissionDataExporter Magento_SaaSCategoryPermissions
 ```
