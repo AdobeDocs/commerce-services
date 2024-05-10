@@ -11,7 +11,7 @@ keywords:
 # Install, update, and uninstall Commerce Data Export extension
 
 ### Installation
-There is no separate installation required for the Commerce Data Export extension. Specific commerce data export extensions are included in the [Live Search](commerce-services/src/pages/live-search/index.md) and [Product Recommendations](commerce-services/src/pages/product-recommendations/index.md) packages.
+There is no separate installation required for the Commerce Data Export extension. Specific modules from Commerce Data Export extensions are included in Adobe Commerce Service extensions (e.g. [Live Search](commerce-services/src/pages/live-search/index.md, [Product Recommendations](commerce-services/src/pages/product-recommendations/index.md), etc.)
 
 ### Update
 If you want to update any of the commerce data export module, you can do it by execution following command:
