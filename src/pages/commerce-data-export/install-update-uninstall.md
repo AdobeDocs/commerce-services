@@ -31,7 +31,7 @@ Example for disabling the SaaS Category module:
 bin/magento module:disable Magento_SaaSCategory
 ```
 Disabling of specific data exporter module can be useful in case if you want to turn off all logic related to this exporter. In that case disable all feed related modules.
-For example, to disable the Adobe Commerce Services Product Price Data Exporter module, you need to turn off the following modules:
+For example, to disable the data feed responsible for exporting category permissions (if you don't use [Categories API](https://developer.adobe.com/commerce/services/graphql/catalog-service/categories/) it will be safely to disable these modules), you can use the following command:
 ```shell script
 bin/magento module:disable Magento_CategoryPermissionDataExporter Magento_SaaSCategoryPermissions
 ```
