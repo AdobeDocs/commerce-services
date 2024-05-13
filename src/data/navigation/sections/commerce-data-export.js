@@ -20,7 +20,7 @@ module.exports = [
     path: "/commerce-data-export/troubleshooting-and-logging"
   },
   {
-    title: "Pricing Index",
-    path: "/commerce-data-export/pricing-index"
+    title: "Install/Update/Uninstall instructions",
+    path: "/commerce-data-export/install-update-uninstall"
   }
 ];
