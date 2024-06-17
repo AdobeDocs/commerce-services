@@ -10,4 +10,4 @@ Catalog Service, Live Search, and Product Recommendations services contribute to
 
 The endpoint for all Storefront Service queries is `https://catalog-service.adobe.io/graphql`. You must also specify multiple HTTP headers, including an API key, with each call. Refer to the documentation for each query for details about the required headers.
 
-You can optionally use [API Mesh for Adobe Developer App Builder](https://developer.adobe.com/graphql-mesh-gateway/gateway/overview/) to integrate the core Commerce schema, the Storefront Services schema, and third-party APIs. API Mesh requires an [Adobe I/O Runtime](https://developer.adobe.com/runtime/docs/guides/) account.
+You can optionally use [API Mesh for Adobe Developer App Builder](https://developer.adobe.com/graphql-mesh-gateway/gateway/) to integrate the core Commerce schema, the Storefront Services schema, and third-party APIs. API Mesh requires an [Adobe I/O Runtime](https://developer.adobe.com/runtime/docs/guides/) account.

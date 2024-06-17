@@ -55,6 +55,8 @@ import Docs from '/src/_includes/graphql/catalog-service/headers.md'
 
 ## Example usage
 
+The [Commerce API playground](https://experienceleague.adobe.com/developer/commerce/storefront/playgrounds/commerce-services/) provides a sample `products` query that you can run against a live instance of Adobe Commerce with Luma sample data. Note that the responses may vary, depending on the configuration of the Commerce instance.
+
 ### Return details about a simple product
 
 The following query returns details about a simple product.
