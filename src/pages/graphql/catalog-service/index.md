@@ -17,7 +17,7 @@ Catalog Service provides the following queries:
 *  [`products`](products.md)
 *  [`refineProduct`](refine-product.md)
 
-It also extends the Live Search [`productSearch`](product-search.md) query to return product view data.
+It also extends the Live Search [`productSearch`](../live-search/product-search.md#catalog-service-productsearch-query) query to return product view data.
 
 You can optionally implement [API Mesh for Adobe Developer App Builder](https://developer.adobe.com/graphql-mesh-gateway/) to integrate the two Adobe Commerce GraphQL systems with private and third-party APIs and other software interfaces using Adobe Developer. The mesh can be configured to ensure calls routed to each endpoint contain the correct authorization information in the headers.
 

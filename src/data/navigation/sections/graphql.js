@@ -17,7 +17,7 @@ module.exports = [
       },
       {
         title: "productSearch query",
-        path: "/graphql/catalog-service/product-search.md",
+        path: "/graphql/live-search/product-search.md#catalog-service-productsearch-query",
       },
       {
         title: "refineProduct query",
