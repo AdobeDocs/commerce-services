@@ -158,8 +158,7 @@ Use the [`attributeMetadata` query](./attribute-metadata.md) to return a list of
 
 #### Filtering by categories
 
-Results can be filtered by categories defined in the Admin with the `categories` and `categoryPath` filters.
-They are slightly different in the type of facets returned:
+Results can be filtered by categories defined in the Admin with the `categories` and `categoryPath` filters. They are slightly different in the type of facets returned:
 
 `categories` is preferred when selecting from a category filter. Filtering on `categories` with "women/bottoms-women" and the phrase `pants`, the category facets returned are "promotions/pants-all", "women/bottoms-women/pants-women", and similar.
 
@@ -168,6 +167,10 @@ They are slightly different in the type of facets returned:
 A `phrase` attribute is required but it may be an empty string if you are filtering by `category` or `categoryPath`.
 
 Pinned categories are always returned, regardless of the filtered category.
+
+<InlineAlert variant="info" slots="text"/>
+
+For search merchandising rules to apply correctly, the `productSearch` query should sort by relevance or pass no sort variables at all. For category merchandising rules to apply correctly, the `productSearch` query should sort by `position`, filter on `categoryPath` for browsing a category page (otherwise, no category rules will be applied), and `phrase` should be "empty".
 
 ##### categoryPath
 
