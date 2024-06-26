@@ -1270,6 +1270,6 @@ Live Search contains information about the product within the [ProductInterface!
 
 ### Catalog Service fields
 
-import Docs from 'src/_includes/graphql/catalog-service/product-view.md'
+import Docs2 from '/src/_includes/graphql/catalog-service/product-view.md'
 
-<Docs />
+<Docs2 />
