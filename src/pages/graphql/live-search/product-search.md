@@ -18,7 +18,7 @@ Live Search uses the `productSearch` query to search for products instead of the
 
 <InlineAlert variant="info" slots="text" />
 
-The Catalog Service `productSearch` query uses Live Search to return details about the SKUs specified as input. [Learn more](#catalog-service-productsearch-query).
+The Catalog Service `productSearch` query uses Live Search to return details about the SKUs specified as input. [Learn more](#catalog-service).
 
 ## Syntax
 
@@ -415,7 +415,7 @@ Header name| Description
 
 This is an example of using Live Search to retrieve and filter results. The query uses the core `ProductInterface` to access product information. As a result, the query has a longer response time than using [Catalog Service](https://experienceleague.adobe.com/docs/commerce-merchant-services/catalog-service/guide-overview.html) to retrieve this information.
 
-For an example of using Live Search with Catalog Service, see [Catalog Service productSearch query](#catalog-service-productsearch-query). Other than returning the `productView` object, all other attributes are the same.
+For an example of using Live Search with Catalog Service, see [Catalog Service productSearch query](#catalog-service). Other than returning the `productView` object, all other attributes are the same.
 
 In the example below, there is no search `phrase` passed and results are filtered on the "women/bottoms-women" category. In the response, two categories are returned:
 
