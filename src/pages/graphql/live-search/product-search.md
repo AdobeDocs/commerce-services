@@ -12,14 +12,6 @@ keywords:
 
 This article discusses the `productSearch` query that is available in the Live Search and Catalog Service extension. While similar in structure and functionality, there are differences in what they output.
 
-## Construct a productSearch query
-
-Live Search uses the `productSearch` query to search for products instead of the `products` query, which is provided with Adobe Commerce and Magento Open Source. Although the two queries are functionally similar, they have different input requirements. The `products` query returns information that is relevant for layered navigation, while the `productSearch` query returns faceting data and other features that are specific to Live Search.
-
-<InlineAlert variant="info" slots="text" />
-
-The Catalog Service `productSearch` query uses Live Search to return details about the SKUs specified as input. [Learn more](#catalog-service).
-
 ## Syntax
 
 ```graphql
@@ -32,6 +24,14 @@ productSearch(
     filter: [SearchClauseInput!]
 ): ProductSearchResponse!
 ```
+
+## Construct a productSearch query
+
+Live Search uses the `productSearch` query to search for products instead of the `products` query, which is provided with Adobe Commerce and Magento Open Source. Although the two queries are functionally similar, they have different input requirements. The `products` query returns information that is relevant for layered navigation, while the `productSearch` query returns faceting data and other features that are specific to Live Search.
+
+<InlineAlert variant="info" slots="text" />
+
+The Catalog Service `productSearch` query uses Live Search to return details about the SKUs specified as input. [Learn more](#catalog-service).
 
 The `productSearch` query accepts the following fields as input:
 
@@ -61,8 +61,11 @@ Use the [`attributeMetadata` query](./attribute-metadata.md) to return a list of
 
 ### context
 
- The `context` object passes both the customer group code and user view history to the query.
- If no value is passed, the "Not Logged In" group is used.
+<InlineAlert variant="info" slots="text"/>
+
+The `context` object is only applicable to Live Search.
+
+The `context` object passes both the customer group code and user view history to the query. If no value is passed, the "Not Logged In" group is used.
 
  ```graphql
  context: {
@@ -272,7 +275,7 @@ facets {
 
 ### Items list
 
-The `items` object primarily provides details about each item returned. If Catalog Service is not installed, then you must specify the `product` field to return details about each item. The `product` field uses the [`ProductInterface`](https://developer.adobe.com/commerce/webapi/graphql/schema/products/interfaces/attributes/), which is defined in Adobe Commerce and Magento Open Source, to return details about the product. A typical query might return the product name, price, SKU, and image.
+The `items` object primarily provides details about each item returned. The structure of this object varies between Catalog Service and Live Search. For Catalog Service, specify a `ProductSearchItem.productView` object. For Live Search, specify a `ProductSearchItem.product` object
 
 #### ProductSearchItem.product (Live Search)
 
@@ -410,6 +413,10 @@ Header name| Description
 `Magento-Store-View-Code` | The code assigned to the active store view. For example, `default`.
 `Magento-Website-Code` | The code assigned to the website associated with the active store view. For example, `base`.
 `X-Api-Key` | This value must be set to `search_gql`.
+
+## Example usage
+
+In the following sections provide examples for using Live Search and Catalog Service.
 
 ### Live Search
 
