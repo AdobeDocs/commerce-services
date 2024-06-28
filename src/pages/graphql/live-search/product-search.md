@@ -376,10 +376,6 @@ items {
 }
 ```
 
-<InlineAlert variant="info" slots="text"/>
-
-The Catalog Service [products query](../catalog-service/products.md) describes the contents of the `ProductView` object.
-
 The `items` object can also optionally return highlighted text that shows the matching search terms.
 
 ### Other fields and objects
