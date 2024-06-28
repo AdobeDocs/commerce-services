@@ -393,7 +393,7 @@ Live Search:
 
 - `https://commerce.adobe.io/search/graphql`
 
-Catalog Service:
+Catalog Service and Product Recommendations:
 
 - Testing: `https://catalog-service-sandbox.adobe.io/graphql`
 - Production: `https://catalog-service.adobe.io/graphql`
