@@ -1194,6 +1194,26 @@ Field | Data Type | Description
 
 The `productSearchResponse` return object can contain the following fields:
 
+### Common fields
+
+#### ProductSearchItem data type
+
+The `ProductSearchItem` data type can contain the following fields:
+
+Field | Data Type | Description
+--- | --- | ---
+`appliedQueryRule` | AppliedQueryRule | The query rule type that was applied to this product, if any (in preview mode only, returns null otherwise). Possible values: `BOOST`, `BURY`, and `PIN`
+
+#### SearchResultPageInfo data type
+
+The `SearchResultPageInfo` data type can contain the following fields:
+
+Field | Data Type | Description
+--- | --- | ---
+`current_page` | Int | Specifies which page of results to return
+`page_size` | Int | Specifies the maximum number of items to return
+`total_pages` | Int | Specifies the total number of pages returned
+
 Field | Data Type | Description
 --- | --- | ---
 `facets` | [[Aggregation]](#aggregation-data-type) | Provides details about the static and dynamic facets relevant to the search
@@ -1250,26 +1270,6 @@ Field | Data Type | Description
 `max` | Float! | The maximum value
 `min` | Float! | The minimum value
 `title` | String! | The display text defining the bucket
-
-### Common fields
-
-#### ProductSearchItem data type
-
-The `ProductSearchItem` data type can contain the following fields:
-
-Field | Data Type | Description
---- | --- | ---
-`appliedQueryRule` | AppliedQueryRule | The query rule type that was applied to this product, if any (in preview mode only, returns null otherwise). Possible values: `BOOST`, `BURY`, and `PIN`
-
-#### SearchResultPageInfo data type
-
-The `SearchResultPageInfo` data type can contain the following fields:
-
-Field | Data Type | Description
---- | --- | ---
-`current_page` | Int | Specifies which page of results to return
-`page_size` | Int | Specifies the maximum number of items to return
-`total_pages` | Int | Specifies the total number of pages returned
 
 ### Live Search fields
 
