@@ -1196,6 +1196,63 @@ The `productSearchResponse` return object can contain the following fields:
 
 ### Common fields
 
+Field | Data Type | Description
+--- | --- | ---
+`facets` | [[Aggregation]](#aggregation-data-type) | Provides details about the static and dynamic facets relevant to the search
+`items` | [[ProductSearchItem]](#productsearchitem-data-type) | An array of products returned by the query
+`page_info` | [SearchResultPageInfo](#searchresultpageinfo-data-type) | Contains information for rendering pages of search results
+`related_terms` | [String] | Reserved for future use
+`suggestions` | [String] | An array of product URL keys that are similar to the search query. A maximum of five items are returned
+`total_count` | Int | The total number of items returned
+
+#### Aggregation data type
+
+Field | Data Type | Description
+--- | --- | ---
+`attribute` | String! | The attribute code of the filter item
+`buckets` | [[Bucket]!](#bucket-data-type) | A container that divides the data into manageable groups. For example, attributes that can have numeric values might have buckets that define price ranges
+`title` | String! | The filter name displayed in layered navigation
+`type` | AggregationType | Identifies the data type as one of the following: `INTELLIGENT`, `PINNED`, or `POPULAR`
+
+#### Bucket data type
+
+The `Bucket` object defines one field, `title`. However, the object has three implementations that can be used to provide greater detail.
+
+Field | Data Type | Description
+--- | --- | ---
+`title` | String! | A human-readable name of a bucket
+
+#### RangeBucket implementation
+
+Implement `RangeBucket` on numeric product fields.
+
+Field | Data Type | Description
+--- | --- | ---
+`count` | Int! | The number of items in the bucket
+`from` | Float! | The minimum amount in a price range
+`title` | String! | The display text defining the price range
+`to` | Float | The maximum amount in a price range
+
+#### ScalarBucket implementation
+
+Implement `ScalarBucket` on string and other scalar product fields.
+
+Field | Data Type | Description
+--- | --- | ---
+`count` | Int! | The number of items in the bucket
+`id` | ID! | An identifier that can be used for filtering and may contain non-human readable data
+`title` | String! | The display text that defines the scalar value
+
+#### StatsBucket implementation
+
+Implement `StatsBucket` to retrieve statistics across multiple buckets.
+
+Field | Data Type | Description
+--- | --- | ---
+`max` | Float! | The maximum value
+`min` | Float! | The minimum value
+`title` | String! | The display text defining the bucket
+
 #### ProductSearchItem data type
 
 The `ProductSearchItem` data type can contain the following fields:
@@ -1213,63 +1270,6 @@ Field | Data Type | Description
 `current_page` | Int | Specifies which page of results to return
 `page_size` | Int | Specifies the maximum number of items to return
 `total_pages` | Int | Specifies the total number of pages returned
-
-Field | Data Type | Description
---- | --- | ---
-`facets` | [[Aggregation]](#aggregation-data-type) | Provides details about the static and dynamic facets relevant to the search
-`items` | [[ProductSearchItem]](#productsearchitem-data-type) | An array of products returned by the query
-`page_info` | [SearchResultPageInfo](#searchresultpageinfo-data-type) | Contains information for rendering pages of search results
-`related_terms` | [String] | Reserved for future use
-`suggestions` | [String] | An array of product URL keys that are similar to the search query. A maximum of five items are returned
-`total_count` | Int | The total number of items returned
-
-### Aggregation data type
-
-Field | Data Type | Description
---- | --- | ---
-`attribute` | String! | The attribute code of the filter item
-`buckets` | [[Bucket]!](#bucket-data-type) | A container that divides the data into manageable groups. For example, attributes that can have numeric values might have buckets that define price ranges
-`title` | String! | The filter name displayed in layered navigation
-`type` | AggregationType | Identifies the data type as one of the following: `INTELLIGENT`, `PINNED`, or `POPULAR`
-
-### Bucket data type
-
-The `Bucket` object defines one field, `title`. However, the object has three implementations that can be used to provide greater detail.
-
-Field | Data Type | Description
---- | --- | ---
-`title` | String! | A human-readable name of a bucket
-
-### RangeBucket implementation
-
-Implement `RangeBucket` on numeric product fields.
-
-Field | Data Type | Description
---- | --- | ---
-`count` | Int! | The number of items in the bucket
-`from` | Float! | The minimum amount in a price range
-`title` | String! | The display text defining the price range
-`to` | Float | The maximum amount in a price range
-
-### ScalarBucket implementation
-
-Implement `ScalarBucket` on string and other scalar product fields.
-
-Field | Data Type | Description
---- | --- | ---
-`count` | Int! | The number of items in the bucket
-`id` | ID! | An identifier that can be used for filtering and may contain non-human readable data
-`title` | String! | The display text that defines the scalar value
-
-### StatsBucket implementation
-
-Implement `StatsBucket` to retrieve statistics across multiple buckets.
-
-Field | Data Type | Description
---- | --- | ---
-`max` | Float! | The maximum value
-`min` | Float! | The minimum value
-`title` | String! | The display text defining the bucket
 
 ### Live Search fields
 
