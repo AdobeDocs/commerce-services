@@ -88,7 +88,7 @@ $client = new RJMetrics\Client($myClientId, $myApiKey);
 ?>
 ```
 
-For more information, you can see the [documentation for Httpful](https://phphttpclient.com/) or [view the source on Github](https://github.com/RJMetrics/RJMetrics-php).
+For more information, you can [view the source on Github](https://github.com/RJMetrics/RJMetrics-php).
 
 ## Python
 
