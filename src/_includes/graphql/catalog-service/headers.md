@@ -13,4 +13,3 @@ Header | Description
 `Magento-Store-View-Code`| The code assigned to the active store view. For example, `default`.
 `Magento-Website-Code`| The code assigned to the website associated with the active store view. For example, `base`.
 `X-Api-Key` | Set this value to the [unique API key](https://experienceleague.adobe.com/en/docs/commerce-merchant-services/user-guides/integration-services/saas#genapikey) generated for your Commerce environment.
-
