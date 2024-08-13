@@ -1,7 +1,7 @@
 ---
 title: productSearch query
 edition: ee
-description: Describes how to construct and use the Live Search productSearch query.
+description: Describes how to construct and use the productSearch query in both Live Search and Catalog Service.
 keywords:
   - GraphQL
   - Services
@@ -10,7 +10,7 @@ keywords:
 
 # productSearch query
 
-Live Search uses the `productSearch` query to search for products instead of the `products` query, which is provided with Adobe Commerce and Magento Open Source. Although the two queries are functionally similar, they have different input requirements. The `products` query returns information that is relevant for layered navigation, while the `productSearch` query returns faceting data and other features that are specific to Live Search.
+This article discusses the `productSearch` query that is available in the Live Search and Catalog Service extension. While similar in structure and functionality, there are differences in what they output.
 
 ## Syntax
 
@@ -25,10 +25,18 @@ productSearch(
 ): ProductSearchResponse!
 ```
 
+## Construct a productSearch query
+
+Live Search uses the `productSearch` query to search for products instead of the `products` query, which is provided with Adobe Commerce and Magento Open Source. Although the two queries are functionally similar, they have different input requirements. The `products` query returns information that is relevant for layered navigation, while the `productSearch` query returns faceting data and other features that are specific to Live Search.
+
+<InlineAlert variant="info" slots="text" />
+
+The Catalog Service `productSearch` query uses Live Search to return details about the SKUs specified as input. [Learn more](#catalog-service).
+
 The `productSearch` query accepts the following fields as input:
 
 - `phrase` - The string of text to search for. This field is required but an empty string may be used if only filtering by `category` or `categoryPath`.
-- `context` - Query context that allows customized search results to be returned based on the customer group passed. This is used to get the view history of a SKU.
+- `context` - (Live Search only) Query context that allows customized search results to be returned based on the customer group passed. This is used to get the view history of a SKU.
 - `current_page` and `page_size`- These optional fields allow the search results to be broken down into smaller groups so that a limited number of items are returned at a time. The default value of `page_size` is `20`, and the default value for `current_page` is `1`. In the response, counting starts at page one.
 - `sort` - An object that defines one or more product attributes to use to sort the search results. The default sortable product attributes in Luma are `price`, `name`, and `position`. A product's position is assigned within a category.
 - `filter` - An object that defines one or more product attributes or categories used to narrow the search results. In the Luma theme, the `sku`, `price`, and `size` attributes are among the product attributes that can be used to filter query results.
@@ -53,8 +61,11 @@ Use the [`attributeMetadata` query](./attribute-metadata.md) to return a list of
 
 ### context
 
- The `context` object passes both the customer group code and user view history to the query.
- If no value is passed, the "Not Logged In" group is used.
+<InlineAlert variant="info" slots="text"/>
+
+The `context` object is only applicable to Live Search.
+
+The `context` object passes both the customer group code and user view history to the query. If no value is passed, the "Not Logged In" group is used.
 
  ```graphql
  context: {
@@ -113,11 +124,11 @@ sort: [
 ]
 ```
 
-## Filtering
+### Filtering
 
 The `filter` attribute is the part of the query that uses product attributes as facets or categories that are defined in the Admin. For example, to filter results by color, a color facet must be defined in Live Search, based on the existing `color` attribute.
 
-### Filtering by attributes
+#### Filtering by attributes
 
 An attribute filter consists of a product `attribute`, a comparison operator, and the value that is being searched for. Together, they help narrow down the search results, based on shopper input. For example, if you want to set up a filter for jackets based on size, you could set the product attribute to `size`. To filter on medium-sized jackets only, set the `eq` field to `M`. To filter on both medium- and large-sized jackets, set the `in` field to `["M", "L"]`. If an attribute is numeric, you can filter on it as a price range, such as between $50 and $100. To filter on a price range, set the `attribute` to `price`, and assign the `range` field with `from` and `to` values as `50` and `100`, respectively.
 
@@ -147,10 +158,9 @@ Only facets specified in Live Search are returned.
 
 Use the [`attributeMetadata` query](./attribute-metadata.md) to return a list of product attributes that can be used to define a filter.
 
-### Filtering by categories
+#### Filtering by categories
 
-Results can be filtered by categories defined in the Admin with the `categories` and `categoryPath` filters.
-They are slightly different in the type of facets returned:
+Results can be filtered by categories defined in the Admin with the `categories` and `categoryPath` filters. They are slightly different in the type of facets returned:
 
 `categories` is preferred when selecting from a category filter. Filtering on `categories` with "women/bottoms-women" and the phrase `pants`, the category facets returned are "promotions/pants-all", "women/bottoms-women/pants-women", and similar.
 
@@ -159,6 +169,10 @@ They are slightly different in the type of facets returned:
 A `phrase` attribute is required but it may be an empty string if you are filtering by `category` or `categoryPath`.
 
 Pinned categories are always returned, regardless of the filtered category.
+
+<InlineAlert variant="info" slots="text"/>
+
+For search merchandising rules to apply correctly, the `productSearch` query should sort by relevance or pass no sort variables at all. For category merchandising rules to apply correctly, the `productSearch` query should sort by `position`, filter on `categoryPath` for browsing a category page (otherwise, no category rules will be applied), and `phrase` should be "empty".
 
 #### categoryPath
 
@@ -195,8 +209,7 @@ filter: [
 ]
 ```
 
-Category filters can be used together.
-Here, the shopper navigates to "Womens -> Bottoms" and filters on "pants". This query returns both "Pants" and "Shorts" as facets in the layered navigation.
+Category filters can be used together. Here, the shopper navigates to "Womens -> Bottoms" and filters on "pants". This query returns both "Pants" and "Shorts" as facets in the layered navigation.
 
 ```graphql
 filter: [
@@ -215,7 +228,7 @@ filter: [
 ]
 ```
 
-## Interpret the results
+## Define query output
 
 The response to the `productSearch` query can contain details about each product returned and information about the ordering of the results.
 
@@ -262,7 +275,9 @@ facets {
 
 ### Items list
 
-The `items` object primarily provides details about each item returned. If Catalog Service is not installed, then you must specify the `product` field to return details about each item. The `product` field uses the [`ProductInterface`](https://developer.adobe.com/commerce/webapi/graphql/schema/products/interfaces/attributes/), which is defined in Adobe Commerce and Magento Open Source, to return details about the product. A typical query might return the product name, price, SKU, and image.
+The `items` object primarily provides details about each item returned. The structure of this object varies between Catalog Service and Live Search. For Catalog Service, specify a `ProductSearchItem.productView` object. For Live Search, specify a `ProductSearchItem.product` object
+
+#### ProductSearchItem.product (Live Search)
 
 The following snippet returns relevant information about each item when Catalog Service is not installed or used:
 
@@ -288,6 +303,8 @@ items {
     }
 }
 ```
+
+#### ProductSearchItem.productView (Catalog Service)
 
 If [Catalog Service](https://experienceleague.adobe.com/docs/commerce-merchant-services/catalog-service/guide-overview.html) is installed, you can optionally use the `productView` field instead of the `product` field to return product details. Catalog Service uses [Catalog Sync](https://experienceleague.adobe.com/docs/commerce-merchant-services/user-guides/data-services/catalog-sync.html) to manage product data, resulting in query responses with less latency than is possible with the `ProductInterface`. With Catalog Service, the structure of the pricing information varies, depending on whether the product is designated as a `SimpleProduct` (simple, downloadable, gift card) or as a `ComplexProduct` (configurable, grouped, or bundle).
 
@@ -359,10 +376,6 @@ items {
 }
 ```
 
-<InlineAlert variant="info" slots="text"/>
-
-The Catalog Service [products query](../catalog-service/products.md) describes the contents of the `ProductView` object.
-
 The `items` object can also optionally return highlighted text that shows the matching search terms.
 
 ### Other fields and objects
@@ -373,23 +386,39 @@ The query response can also contain the following top-level fields and objects:
 - `suggestions` - An array of strings that include the names of products and categories that exist in the catalog that are similar to the search query.
 - `total_count` - The number of products returned.
 
-## Endpoint
+## Endpoints
 
-`https://commerce.adobe.io/search/graphql`
+Live Search:
+
+- `https://commerce.adobe.io/search/graphql`
+
+Catalog Service and Product Recommendations:
+
+- Testing: `https://catalog-service-sandbox.adobe.io/graphql`
+- Production: `https://catalog-service.adobe.io/graphql`
 
 ## Required headers
 
 You must specify the following HTTP headers to run this query.
 
-import Docs from '/src/_includes/graphql/live-search-headers.md'
-
-<Docs />
+Header name| Description
+--- | ---
+`Magento-Customer-Group` | (**Catalog Service Only**) This value is available in the `customer_group_data_exporter` database table.
+`Magento-Environment-Id` | This value is displayed at **Stores** > **Configuration** > **Services** > **Magento Services** > **SaaS Environment** or can be obtained by running the `bin/magento config:show services_connector/services_id/environment_id` command.
+`Magento-Store-Code` | The code assigned to the store associated with the active store view. For example, `main_website_store`.
+`Magento-Store-View-Code` | The code assigned to the active store view. For example, `default`.
+`Magento-Website-Code` | The code assigned to the website associated with the active store view. For example, `base`.
+`X-Api-Key` | This value must be set to `search_gql`.
 
 ## Example usage
 
+In the following sections provide examples for using Live Search and Catalog Service.
+
+### Live Search
+
 This is an example of using Live Search to retrieve and filter results. The query uses the core `ProductInterface` to access product information. As a result, the query has a longer response time than using [Catalog Service](https://experienceleague.adobe.com/docs/commerce-merchant-services/catalog-service/guide-overview.html) to retrieve this information.
 
-For an example of using Live Search with Catalog Service, see [Catalog Service productSearch query](../catalog-service/product-search.md). Other than returning the `productView` object, all other attributes are the same.
+For an example of using Live Search with Catalog Service, see [Catalog Service productSearch query](#catalog-service). Other than returning the `productView` object, all other attributes are the same.
 
 In the example below, there is no search `phrase` passed and results are filtered on the "women/bottoms-women" category. In the response, two categories are returned:
 
@@ -848,6 +877,255 @@ If the `phrase` "pants" is added, only one category is returned and "shorts" are
 
 </details>
 
+### Catalog Service
+
+In the following example, the query returns information on the same products as the Live Search [`productSearch` items list](#items-list) example. However, it has been constructed to return item information inside the Catalog Service `productView` object instead of the core `product` object. Note that the pricing information varies, depending on the product type. For the sake of brevity, facet information is not shown.
+
+**Request:**
+
+```graphql
+{
+  productSearch(
+    phrase: "bag"
+    sort: [
+      {
+        attribute: "price"
+        direction: DESC }]
+    page_size: 9
+  ) {
+    page_info {
+      current_page
+      page_size
+      total_pages
+    }
+    items {
+      productView {
+        name
+        sku
+        ... on SimpleProductView {
+          price {
+            final {
+              amount {
+                value
+                currency
+              }
+            }
+            regular {
+              amount {
+                value
+                currency
+              }
+            }
+          }
+        }
+        ... on ComplexProductView {
+          options {
+            id
+            title
+            required
+            values {
+              id
+              title
+            }
+          }
+          priceRange {
+            maximum {
+              final {
+                amount {
+                  value
+                  currency
+                }
+              }
+              regular {
+                amount {
+                  value
+                  currency
+                }
+              }
+            }
+            minimum {
+              final {
+                amount {
+                  value
+                  currency
+                }
+              }
+              regular {
+                amount {
+                  value
+                  currency
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+<details>
+<summary><b>Response</b></summary>
+
+```json
+{
+  "data": {
+    "productSearch": {
+      "page_info": {
+        "current_page": 1,
+        "page_size": 9,
+        "total_pages": 3
+      },
+      "items": [
+        {
+          "productView": {
+            "name": "Impulse Duffle",
+            "sku": "24-UB02",
+            "price": {
+              "final": {
+                "amount": {
+                  "value": 74,
+                  "currency": "USD"
+                }
+              },
+              "regular": {
+                "amount": {
+                  "value": 74,
+                  "currency": "USD"
+                }
+              }
+            }
+          }
+        },
+        {
+          "productView": {
+            "name": "Fusion Backpack 567890",
+            "sku": "24-MB02",
+            "price": {
+              "final": {
+                "amount": {
+                  "value": 59,
+                  "currency": "USD"
+                }
+              },
+              "regular": {
+                "amount": {
+                  "value": 59,
+                  "currency": "USD"
+                }
+              }
+            }
+          }
+        },
+        {
+          "productView": {
+            "name": "Rival Field Messenger",
+            "sku": "24-MB06",
+            "price": {
+              "final": {
+                "amount": {
+                  "value": 45,
+                  "currency": "USD"
+                }
+              },
+              "regular": {
+                "amount": {
+                  "value": 45,
+                  "currency": "USD"
+                }
+              }
+            }
+          }
+        },
+        {
+          "productView": {
+            "name": "Push It Messenger Bag",
+            "sku": "24-WB04",
+            "price": {
+              "final": {
+                "amount": {
+                  "value": 45,
+                  "currency": "USD"
+                }
+              },
+              "regular": {
+                "amount": {
+                  "value": 45,
+                  "currency": "USD"
+                }
+              }
+            }
+          }
+        },
+        {
+          "productView": {
+            "name": "Overnight Duffle",
+            "sku": "24-WB07",
+            "price": {
+              "final": {
+                "amount": {
+                  "value": 45,
+                  "currency": "USD"
+                }
+              },
+              "regular": {
+                "amount": {
+                  "value": 45,
+                  "currency": "USD"
+                }
+              }
+            }
+          }
+        },
+        {
+          "productView": {
+            "name": "Wayfarer Messenger Bag 987",
+            "sku": "24-MB05",
+            "price": {
+              "final": {
+                "amount": {
+                  "value": 44,
+                  "currency": "USD"
+                }
+              },
+              "regular": {
+                "amount": {
+                  "value": 44,
+                  "currency": "USD"
+                }
+              }
+            }
+          }
+        },
+        {
+          "productView": {
+            "name": "Driven Backpack",
+            "sku": "24-WB03",
+            "price": {
+              "final": {
+                "amount": {
+                  "value": 36,
+                  "currency": "USD"
+                }
+              },
+              "regular": {
+                "amount": {
+                  "value": 36,
+                  "currency": "USD"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}
+```
+
+</details>
+
 ## Input fields
 
 The `productSearch` query accepts the following fields as input:
@@ -872,7 +1150,7 @@ Field | Data Type | Description
 `in` | [String] | An array of string values to filter on
 `range` | [SearchRangeInput](#searchrangeinput-data-type) | A range of numeric values to filter on
 
-#### SearchRangeInput data type
+### SearchRangeInput data type
 
 The `SearchRangeInput` object can contain the following fields:
 
@@ -910,7 +1188,9 @@ Field | Data Type | Description
 
 ## Output fields
 
-The `AttributeMetadataResponse` return object can contain the following fields:
+The `productSearchResponse` return object can contain the following fields:
+
+### Common fields
 
 Field | Data Type | Description
 --- | --- | ---
@@ -921,7 +1201,7 @@ Field | Data Type | Description
 `suggestions` | [String] | An array of product URL keys that are similar to the search query. A maximum of five items are returned
 `total_count` | Int | The total number of items returned
 
-### Aggregation data type
+#### Aggregation data type
 
 Field | Data Type | Description
 --- | --- | ---
@@ -930,7 +1210,7 @@ Field | Data Type | Description
 `title` | String! | The filter name displayed in layered navigation
 `type` | AggregationType | Identifies the data type as one of the following: `INTELLIGENT`, `PINNED`, or `POPULAR`
 
-### Bucket data type
+#### Bucket data type
 
 The `Bucket` object defines one field, `title`. However, the object has three implementations that can be used to provide greater detail.
 
@@ -969,17 +1249,15 @@ Field | Data Type | Description
 `min` | Float! | The minimum value
 `title` | String! | The display text defining the bucket
 
-### ProductSearchItem data type
+#### ProductSearchItem data type
 
 The `ProductSearchItem` data type can contain the following fields:
 
 Field | Data Type | Description
 --- | --- | ---
 `appliedQueryRule` | AppliedQueryRule | The query rule type that was applied to this product, if any (in preview mode only, returns null otherwise). Possible values: `BOOST`, `BURY`, and `PIN`
-`product` | [ProductInterface!](https://developer.adobe.com/commerce/webapi/graphql/schema/products/interfaces/attributes/) | Contains details about the product. Go to `productInterface` for more information.
-`productView` | ProductView | If Catalog Service is installed, contains details about the product view. The Catalog Service [`products` query](../catalog-service/products.md/) fully describes this object.
 
-### SearchResultPageInfo data type
+#### SearchResultPageInfo data type
 
 The `SearchResultPageInfo` data type can contain the following fields:
 
@@ -988,3 +1266,13 @@ Field | Data Type | Description
 `current_page` | Int | Specifies which page of results to return
 `page_size` | Int | Specifies the maximum number of items to return
 `total_pages` | Int | Specifies the total number of pages returned
+
+### Live Search fields
+
+Live Search contains information about the product within the [ProductInterface!](https://developer.adobe.com/commerce/webapi/graphql/schema/products/interfaces/attributes/) attribute.
+
+### Catalog Service fields
+
+import Docs2 from '/src/_includes/graphql/catalog-service/product-view.md'
+
+<Docs2 />
