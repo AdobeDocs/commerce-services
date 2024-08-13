@@ -35,7 +35,7 @@ You have to obtain:
 ## Register SaaS Project
 
 <div style="color:red; font-size:12pt">
-This section should describe the API necessary to obtain Testing/Production projects and Data Space ID for each project.
+This section describes the API necessary to obtain Testing and Production projects and the Data Space ID for each project.
 In the same section (since it's the same API) it makes sense to describe how customer can get corresponding entitlements for interested services (LS/Catalog Service, PRex,...)
 </div>
 
@@ -78,18 +78,15 @@ Data Solution Core SaaS Team (Troll Team may help here)
 
 # Data Ingestion API
 
-The Adobe Commerce Data Ingestion API allows you to sync your catalog data straight to the Adobe Commerce services platform, bypassing the need to go through your Commerce instance, saving time
-and processing power.
+The Adobe Commerce Data Ingestion API allows you to sync your catalog data straight to the Adobe Commerce services platform, bypassing the need to go through your Commerce instance, saving time and processing power.
 
-The Data Ingestion API allows customers with large and/or complex catalogs to send data to Adobe Commerce services directly.
+The Data Ingestion API allows customers with large or complex catalogs to send data to Adobe Commerce services directly.
 
-The Data Ingestion API decreases the time that it takes to process product changes by bypassing the Adobe Commerce instance and moving catalog data from a third-party Enterprise Resource
-Planning (ERP) directly to Adobe Commerce services.
+This direct connection decreases the time that it takes to process product changes because it bypasses the Adobe Commerce instance and moves catalog data from a third-party Enterprise Resource Planning (ERP) directly to Adobe Commerce services.
 
 ## API reference
 
-All requests to Data Ingestion API should go to `https://commerce.adobe.io/feeds` endpoint.
-Please check [API Reference](data-ingestion.md)
+Send all Data Ingestion API requests to the `https://commerce.adobe.io/feeds` endpoint. For details about using the API, see [API Reference](data-ingestion.md)
 
 ### Headers
 
@@ -105,7 +102,7 @@ Headers list should be present in each Data Ingestion API call
 
 ## Examples
 
-Let's check basic scenarios on how you may use Data Ingestion API
+Use the following examples to learn about the basic scenarios for using the Data Ingestion API.
 
 Example below demonstrate how you can create your Catalog in Commerce Services.
 This example will register 4 products, category tree, product attributes metadata and scopes in Commerce Services.
