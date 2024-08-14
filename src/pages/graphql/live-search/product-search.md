@@ -402,8 +402,8 @@ Catalog Service and Product Recommendations:
 You must specify the following HTTP headers to run this query.
 
 Header name| Description
---- | ---
-`Magento-Customer-Group` | (**Catalog Service Only**) This value is available in the `customer_group_data_exporter` database table.
+--- | -----
+`Magento-Customer-Group` | (**Catalog Service Only**) Specify the `customerGroupCode` for the API request. This code is the encrypted value of the `Customer Group Id` which determines the discount and tax class for pricing context. For B2B implementations, the Customer Group ID also determines the Shared catalog context. See the Catalog Service [products query](../catalog-service/products.md#required-headers) for details.
 `Magento-Environment-Id` | This value is displayed at **Stores** > **Configuration** > **Services** > **Magento Services** > **SaaS Environment** or can be obtained by running the `bin/magento config:show services_connector/services_id/environment_id` command.
 `Magento-Store-Code` | The code assigned to the store associated with the active store view. For example, `main_website_store`.
 `Magento-Store-View-Code` | The code assigned to the active store view. For example, `default`.
