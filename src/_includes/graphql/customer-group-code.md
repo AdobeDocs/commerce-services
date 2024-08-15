@@ -9,10 +9,10 @@ Customer Group | customerGroupCode
 **Wholesale** | `da4b9237bacccdf19c0760cab7aec4a8359010b0`
 **Retailer** |`77de68daecd823babbb58edb1c8e14d7106e83bb`
 
-For custom groups, use the encrypted value of the Id, `sha1(<customer_group_id>)`
+For custom groups, use the encrypted value of the ID, `sha1(<customer_group_id>)`.
 
-For B2B implementations, use the encrypted value of the `Customer Group Id` associated with the Shared Catalog, `sha1(<customer_group_id>)`.
+For B2B implementations, use the encrypted value of the customer group ID associated with the shared catalog, `sha1(<customer_group_id>)`.
 
 <InlineAlert variant="info" slots="text"/>
 
-Find a list of available Customer Group Ids from the Admin (**Customers** > **Customer Groups**). For details, see [Customer Groups](https://experienceleague.adobe.com/en/docs/commerce-admin/customers/customer-groups) and [Shared Catalogs](https://experienceleague.adobe.com/en/docs/commerce-admin/b2b/shared-catalogs/catalog-shared) in the _Merchant Guide_.
+Find a list of available customer group IDs from the Admin (**Customers** > **Customer Groups**). For details, see [Customer Groups](https://experienceleague.adobe.com/en/docs/commerce-admin/customers/customer-groups) and [Shared Catalogs](https://experienceleague.adobe.com/en/docs/commerce-admin/b2b/shared-catalogs/catalog-shared) in the _Merchant Guide_.
