@@ -1,4 +1,4 @@
-The Customer Group code is the encrypted value of the `Customer Group Id` which determines discounts and tax class for pricing context. For B2B implementations, the `Customer Group Id` also determines the Shared Catalog context.
+The customer group code is the encrypted value of the customer group ID, which determines discounts and tax class for pricing contexts. For B2B implementations, the customer group ID also determines the Shared Catalog context.
 
 Use one of the following codes for a default customer group based on your requirements.
 
@@ -9,7 +9,7 @@ Customer Group | Code
 **Wholesale** | `da4b9237bacccdf19c0760cab7aec4a8359010b0`
 **Retailer** |`77de68daecd823babbb58edb1c8e14d7106e83bb`
 
-For custom groups, the customer group code is the encrypted value of the ID, `sha1(<customer_group_id>)`.
+For merchant-defined groups, the customer group code is the encrypted value of the ID, `sha1(<customer_group_id>)`.
 
 For B2B implementations, the customer group code is the encrypted value of the customer group ID associated with the shared catalog, `sha1(<customer_group_id>)`.
 
