@@ -32,6 +32,12 @@ import Docs from '/src/_includes/graphql/catalog-service/headers.md'
 
 <Docs />
 
+###  Find the customerGroupCode
+
+import CustomerGroupCode from '/src/_includes/graphql/customer-group-code.md'
+
+<CustomerGroup />
+
 ## Example usage
 
 ### Return details about a partially selected complex product

@@ -44,6 +44,12 @@ import Headers from '/src/_includes/graphql/catalog-service/headers.md'
 
 <Headers />
 
+###  Find the customerGroupCode
+
+import CustomerGroup from '/src/_includes/graphql/customer-group-code.md'
+
+<CustomerGroup />
+
 ## Example usage
 
 The following query returns a category tree.
@@ -120,7 +126,6 @@ categories(ids: ["11"], roles: ["show_in_menu", "active"], subtree: {
       "urlKey":"jackets-men",
       "parentId":"12",
       "children":[
-         
       ]
    },
    {
@@ -136,7 +141,6 @@ categories(ids: ["11"], roles: ["show_in_menu", "active"], subtree: {
       "urlKey":"pants-men",
       "parentId":"13",
       "children":[
-         
       ]
    },
    {
@@ -152,7 +156,6 @@ categories(ids: ["11"], roles: ["show_in_menu", "active"], subtree: {
       "urlKey":"tanks-men",
       "parentId":"12",
       "children":[
-         
       ]
    },
    {
@@ -168,7 +171,6 @@ categories(ids: ["11"], roles: ["show_in_menu", "active"], subtree: {
       "urlKey":"hoodies-and-sweatshirts-men",
       "parentId":"12",
       "children":[
-         
       ]
    },
    {
@@ -184,7 +186,7 @@ categories(ids: ["11"], roles: ["show_in_menu", "active"], subtree: {
       "urlKey":"shorts-men",
       "parentId":"13",
       "children":[
-         
+
       ]
    }
 ]

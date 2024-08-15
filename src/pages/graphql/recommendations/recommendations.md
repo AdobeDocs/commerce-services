@@ -27,6 +27,12 @@ import Docs from '/src/_includes/graphql/catalog-service/headers.md'
 
 <Docs />
 
+###  Find the customerGroupCode
+
+import CustomerGroupCode from '/src/_includes/graphql/customer-group-code.md'
+
+<CustomerGroupCode />
+
 ## Syntax
 
 ```graphql

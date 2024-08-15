@@ -403,12 +403,18 @@ You must specify the following HTTP headers to run this query.
 
 Header name| Description
 --- | -----
-`Magento-Customer-Group` | (**Catalog Service Only**) Specify the `customerGroupCode` for the API request. This code is the encrypted value of the `Customer Group Id` which determines the discount and tax class for pricing context. For B2B implementations, the Customer Group ID also determines the Shared catalog context. See the Catalog Service [products query](../catalog-service/products.md#required-headers) for details.
+`Magento-Customer-Group` | (**Catalog Service Only**) Specify the [customerGroupCode](#find-the-customergroupcode) for the API request.
 `Magento-Environment-Id` | This value is displayed at **Stores** > **Configuration** > **Services** > **Magento Services** > **SaaS Environment** or can be obtained by running the `bin/magento config:show services_connector/services_id/environment_id` command.
 `Magento-Store-Code` | The code assigned to the store associated with the active store view. For example, `main_website_store`.
 `Magento-Store-View-Code` | The code assigned to the active store view. For example, `default`.
 `Magento-Website-Code` | The code assigned to the website associated with the active store view. For example, `base`.
 `X-Api-Key` | For Live Search queries, set this value to `search_gql`. For Catalog Service queries, set this value to the [unique API key](https://experienceleague.adobe.com/en/docs/commerce-merchant-services/user-guides/integration-services/saas#genapikey) generated for your Commerce environment.
+
+###  Find the customerGroupCode
+
+import CustomerGroupCode from '/src/_includes/graphql/customer-group-code.md'
+
+<CustomerGroupCode />
 
 ## Example usage
 
