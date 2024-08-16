@@ -46,9 +46,9 @@ import Headers from '/src/_includes/graphql/catalog-service/headers.md'
 
 ###  Find the customer group code
 
-import CustomerGroup from '/src/_includes/graphql/customer-group-code.md'
+import CustomerGroupCode from '/src/_includes/graphql/customer-group-code.md'
 
-<CustomerGroup />
+<CustomerGroupCode />
 
 ## Example usage
 
