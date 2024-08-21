@@ -57,7 +57,7 @@ import Docs from '/src/_includes/graphql/catalog-service/headers.md'
 
 import CustomerGroupCode from '/src/_includes/graphql/customer-group-code.md'
 
-<CustomerGroup />
+<CustomerGroupCode />
 
 ## Example usage
 
