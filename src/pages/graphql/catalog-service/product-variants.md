@@ -1,7 +1,7 @@
 ---
-title: products variants query
+title: variants query
 edition: ee
-description: Describes how to construct and use the Catalog Service product variants query to .
+description: "Describes how to construct and use the Catalog Service `variants` query to retrieve details about the variants available for a product."
 keywords:
   - GraphQL
   - Services
@@ -9,10 +9,9 @@ keywords:
 
 # variants query
 
-The `variants` query returns details about all variations of a product. Use cases for this query include:
+The `variants` query returns details about all variations of a product.
 
-- Show variant images on product detail (PDP) or product listing (PLP) pages without submitting multiple API requests.
-- Build SEO snippets to include the full list of offers (variants) for a product.
+The `variants` query is useful for showing variant images on product detail (PDP) or product listing (PLP) pages without submitting multiple API requests. It's also useful for building SEO snippets that include the full list of offers (variants) for a product.
 
 ## Pagination
 
@@ -45,14 +44,16 @@ import CustomerGroupCode from '/src/_includes/graphql/customer-group-code.md'
 
 ## Example usage
 
-The `variants` query requires one or more SKU values, one or more option ids, and page size as [input fields](#input-fields).
+The `variants` query requires one or more SKU values. Optionally, you can specify `optionIDs` to retrieve product options that the shopper has selected, and parameters to control pagination. See [Input fields](#input-fields).
 
-### Return all variant for a product
+### Return all variants for a product
 
-The following query returns details about all product variants for the specified SKU. In this case, only the SKU is specified. This query returns up to 100 results. If there are fewer than 100 variations, the `cursor` value returned is `null`.
+The following query returns details about all product variants for the specified SKU. This request returns the product sku and product name for each variant.
 
+This query uses the default pagination size (100).
 **Request:**
 
+```graphql
 query {
   variants(sku: "MH07") {
     variants {
@@ -64,6 +65,7 @@ query {
     cursor
   }
 }
+```
 
 **Response:**
 
@@ -169,12 +171,13 @@ query {
 }
 ```
 
-### Use pagination to return subsets of variants available for a product
+### Paginate product variant results
 
 The following query returns the first three variants available for product sku `MH07`.
 
 **Request:**
 
+```graphql
 query {
   variants(sku: "MH07" pageSize: 3) {
     variants {
@@ -189,6 +192,7 @@ query {
 
 **Response:**
 
+```json
 {
   "data": {
     "variants": {
@@ -216,6 +220,7 @@ query {
     }
   }
 }
+```
 
 Return the next set of results by running the same query using the `cursor` value returned in the previous query results. When there are no more results to return, the `cursor` returns the `null` value.
 
@@ -238,6 +243,7 @@ query {
 
 **Response:**
 
+```json
 {
   "data": {
     "variants": {
@@ -265,6 +271,7 @@ query {
     }
   }
 }
+```
 
 ## Input fields
 
@@ -286,11 +293,13 @@ The `ProductViewVariant` type lists the option values that define the product va
 | **Field**     | **Data Type**          | **Description**                                 |
 |---------------|------------------------|-------------------------------------------------|
 | `selections`  | `[String!]`            | List of option values that make up the variant. |
-| `product`     | `[[ProductView]](products.md#output-fields)`  | Provides information about the product corresponding to the variant.  The query returns product `sku` and `name` data by default. |
+| `product`     | [`[ProductView]`](products.md#output-fields)  | Provides information about the product corresponding to the variant.  The query returns product `sku` and `name` data by default. |
 
 ### ProductViewVariantResults
 
 `ProductViewVariantResults` returns the list of product variants based on the selection values.
 
-| `variants`    | `[ProductViewVariant]!`| List of product variants.   |
+| **Field**     | **Data Type**          | **Description**                                 |
+|---------------|------------------------|-------------------------------------------------|
+| `variants`    | [`[ProductViewVariant]!`](#productviewvariant)| List of product variants.   |
 | `cursor`      | `String`               | Cursor value to manage results pagination. Use this value as an input parameter to retrieve the next set of results. If there are no additional results available, the return value is `null`. |
