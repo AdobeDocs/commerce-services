@@ -158,7 +158,7 @@ query {
 
 ### Paginate query results
 
-The following query returns the SKU, name, and available images for all variants of the MH07 product. Setting the query pagination to `3` returns the first three variants.
+The following query returns the SKU, name, and available images for all variants of the MH07 product. Setting the query pagination to `3` fetches the first three results.
 
 **Request:**
 
