@@ -87,7 +87,7 @@ query {
             "name": "Hero Hoodie-L-Black",
             "images": [
               {
-                "url": "http://master-7rqtwti-ima6q5tyxltfe.eu-4.magentosite.cloud/media/catalog/product/m/h/mh07-black_main_2.jpg",
+                "url": "http://example.com/media/catalog/product/m/h/mh07-black_main_2.jpg",
                 "label": "",
                 "roles": [
                   "image",
@@ -111,7 +111,7 @@ query {
             "name": "Hero Hoodie-L-Gray",
             "images": [
               {
-                "url": "http://master-7rqtwti-ima6q5tyxltfe.eu-4.magentosite.cloud/media/catalog/product/m/h/mh07-gray_main_2.jpg",
+                "url": "http://example.com/media/catalog/product/m/h/mh07-gray_main_2.jpg",
                 "label": "",
                 "roles": [
                   "image",
@@ -120,12 +120,12 @@ query {
                 ]
               },
               {
-                "url": "http://master-7rqtwti-ima6q5tyxltfe.eu-4.magentosite.cloud/media/catalog/product/m/h/mh07-gray_alt1_2.jpg",
+                "url": "http://example.com/media/catalog/product/m/h/mh07-gray_alt1_2.jpg",
                 "label": "",
                 "roles": []
               },
               {
-                "url": "http://master-7rqtwti-ima6q5tyxltfe.eu-4.magentosite.cloud/media/catalog/product/m/h/mh07-gray_back_2.jpg",
+                "url": "http://example.com/media/catalog/product/m/h/mh07-gray_back_2.jpg",
                 "label": "",
                 "roles": []
               }
@@ -138,7 +138,7 @@ query {
             "name": "Hero Hoodie-L-Green",
             "images": [
               {
-                "url": "http://master-7rqtwti-ima6q5tyxltfe.eu-4.magentosite.cloud/media/catalog/product/m/h/mh07-green_main_2.jpg",
+                "url": "http://example.com/media/catalog/product/m/h/mh07-green_main_2.jpg",
                 "label": "",
                 "roles": [
                   "image",
@@ -208,7 +208,7 @@ query {
             "name": "Hero Hoodie-L-Black",
             "images": [
               {
-                "url": "http://master-7rqtwti-ima6q5tyxltfe.eu-4.magentosite.cloud/media/catalog/product/m/h/mh07-black_main_2.jpg",
+                "url": "http://example.com/media/catalog/product/m/h/mh07-black_main_2.jpg",
                 "label": "",
                 "roles": [
                   "image",
@@ -271,7 +271,7 @@ query {
             "name": "Hero Hoodie-L-Black",
             "images": [
               {
-                "url": "http://master-7rqtwti-ima6q5tyxltfe.eu-4.magentosite.cloud/media/catalog/product/m/h/mh07-black_main_2.jpg",
+                "url": "http://example.com/media/catalog/product/m/h/mh07-black_main_2.jpg",
                 "label": "",
                 "roles": [
                   "image",
