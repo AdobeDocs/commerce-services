@@ -48,16 +48,17 @@ import CustomerGroupCode from '/src/_includes/graphql/customer-group-code.md'
 
 The `variants` query requires one or more SKU values as input. Optionally, you can specify `optionIDs` and pagination controls. Specify `optionIDs` to retrieve variants based on product options such as size or color. See [Input fields](#input-fields).
 
-## Return variants by `optionId`
+## Return all variants using pagination
 
-This query returns the SKU, name, and images for all size large variants of product MH07. The `optionIDs` input parameter value is sourced from the [Return details about a complex product](products.md#return-details-about-a-complex-product) example in the products query.
+The following query returns the SKU, name, and available image information for all variants of the MH07 product. Setting the query pagination to `10` fetches the first ten results.
 
 **Request:**
 
 ```graphql
 query {
-  variants(sku: "MH07", optionIds: "Y29uZmlndXJhYmxlLzE4Ni8xNzg=") {
+  variants(sku: "MH07", pageSize: 10) {
     variants {
+      selections
       product {
         sku
         name
@@ -71,10 +72,9 @@ query {
     cursor
   }
 }
-
 ```
 
-**Response**
+**Response:**
 
 ```graphql
 {
@@ -82,6 +82,98 @@ query {
     "variants": {
       "variants": [
         {
+          "selections": [
+            "Y29uZmlndXJhYmxlLzkzLzU4",
+            "Y29uZmlndXJhYmxlLzE4Ni8xODM="
+          ],
+          "product": {
+            "sku": "MH07-31-Black",
+            "name": "Hero Hoodie28-31-Black",
+            "images": []
+          }
+        },
+        {
+          "selections": [
+            "Y29uZmlndXJhYmxlLzkzLzU5",
+            "Y29uZmlndXJhYmxlLzE4Ni8xODM="
+          ],
+          "product": {
+            "sku": "MH07-31-Blue",
+            "name": "Hero Hoodie28-31-Blue",
+            "images": []
+          }
+        },
+        {
+          "selections": [
+            "Y29uZmlndXJhYmxlLzE4Ni8xODM=",
+            "Y29uZmlndXJhYmxlLzkzLzYx"
+          ],
+          "product": {
+            "sku": "MH07-31-Gray",
+            "name": "Hero Hoodie28-31-Gray",
+            "images": []
+          }
+        },
+        {
+          "selections": [
+            "Y29uZmlndXJhYmxlLzkzLzYy",
+            "Y29uZmlndXJhYmxlLzE4Ni8xODM="
+          ],
+          "product": {
+            "sku": "MH07-31-Green",
+            "name": "Hero Hoodie28-31-Green",
+            "images": []
+          }
+        },
+        {
+          "selections": [
+            "Y29uZmlndXJhYmxlLzkzLzU4",
+            "Y29uZmlndXJhYmxlLzE4Ni8xODY="
+          ],
+          "product": {
+            "sku": "MH07-34-Black",
+            "name": "Hero Hoodie28-34-Black",
+            "images": []
+          }
+        },
+        {
+          "selections": [
+            "Y29uZmlndXJhYmxlLzE4Ni8xODY=",
+            "Y29uZmlndXJhYmxlLzkzLzU5"
+          ],
+          "product": {
+            "sku": "MH07-34-Blue",
+            "name": "Hero Hoodie28-34-Blue",
+            "images": []
+          }
+        },
+        {
+          "selections": [
+            "Y29uZmlndXJhYmxlLzkzLzYx",
+            "Y29uZmlndXJhYmxlLzE4Ni8xODY="
+          ],
+          "product": {
+            "sku": "MH07-34-Gray",
+            "name": "Hero Hoodie28-34-Gray",
+            "images": []
+          }
+        },
+        {
+          "selections": [
+            "Y29uZmlndXJhYmxlLzE4Ni8xODY=",
+            "Y29uZmlndXJhYmxlLzkzLzYy"
+          ],
+          "product": {
+            "sku": "MH07-34-Green",
+            "name": "Hero Hoodie28-34-Green",
+            "images": []
+          }
+        },
+        {
+          "selections": [
+            "Y29uZmlndXJhYmxlLzkzLzU4",
+            "Y29uZmlndXJhYmxlLzE4Ni8xNzg="
+          ],
           "product": {
             "sku": "MH07-L-Black",
             "name": "Hero Hoodie-L-Black",
@@ -99,13 +191,61 @@ query {
           }
         },
         {
+          "selections": [
+            "Y29uZmlndXJhYmxlLzE4Ni8xNzg=",
+            "Y29uZmlndXJhYmxlLzkzLzU5"
+          ],
           "product": {
             "sku": "MH07-L-Blue",
             "name": "Hero Hoodie28-L-Blue",
             "images": []
           }
-        },
+        }
+      ],
+      "cursor": "TUgwNy1MLUJsdWU6Ojo6OjoxMA=="
+    }
+  }
+}
+```
+
+#### Return results by `cursor` position
+
+Using the cursor value from the previous response ("TUgwNy1MLUJsdWU6Ojo6OjoxMA==") as input, run the same query to fetch the next set of results. When the last variant item is returned, the cursor value is `null`.
+
+**Request:**
+
+```graphql
+query {
+  variants(sku: "MH07", pageSize: 10 cursor: "TUgwNy1MLUJsdWU6Ojo6OjoxMA==") {
+    variants {
+      selections
+      product {
+        sku
+        name
+        images(roles: []) {
+          url
+          label
+          roles
+        }
+      }
+    }
+    cursor
+  }
+}
+```
+
+**Response:**
+
+```json
+{
+  "data": {
+    "variants": {
+      "variants": [
         {
+          "selections": [
+            "Y29uZmlndXJhYmxlLzkzLzYx",
+            "Y29uZmlndXJhYmxlLzE4Ni8xNzg="
+          ],
           "product": {
             "sku": "MH07-L-Gray",
             "name": "Hero Hoodie-L-Gray",
@@ -133,6 +273,303 @@ query {
           }
         },
         {
+          "selections": [
+            "Y29uZmlndXJhYmxlLzkzLzYy",
+            "Y29uZmlndXJhYmxlLzE4Ni8xNzg="
+          ],
+          "product": {
+            "sku": "MH07-L-Green",
+            "name": "Hero Hoodie-L-Green",
+            "images": [
+              {
+                "url": "http://example.com/media/catalog/product/m/h/mh07-green_main_2.jpg",
+                "label": "",
+                "roles": [
+                  "image",
+                  "small_image",
+                  "thumbnail"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "selections": [
+            "Y29uZmlndXJhYmxlLzkzLzU4",
+            "Y29uZmlndXJhYmxlLzE4Ni8xNzc="
+          ],
+          "product": {
+            "sku": "MH07-M-Black",
+            "name": "Hero Hoodie-M-Black",
+            "images": [
+              {
+                "url": "http://example.com/media/catalog/product/m/h/mh07-black_main_2.jpg",
+                "label": "",
+                "roles": [
+                  "image",
+                  "small_image",
+                  "thumbnail"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "selections": [
+            "Y29uZmlndXJhYmxlLzkzLzU5",
+            "Y29uZmlndXJhYmxlLzE4Ni8xNzc="
+          ],
+          "product": {
+            "sku": "MH07-M-Blue",
+            "name": "Hero Hoodie28-M-Blue",
+            "images": []
+          }
+        },
+        {
+          "selections": [
+            "Y29uZmlndXJhYmxlLzkzLzYx",
+            "Y29uZmlndXJhYmxlLzE4Ni8xNzc="
+          ],
+          "product": {
+            "sku": "MH07-M-Gray",
+            "name": "Hero Hoodie-M-Gray",
+            "images": [
+              {
+                "url": "http://example.com/media/catalog/product/m/h/mh07-gray_main_2.jpg",
+                "label": "",
+                "roles": [
+                  "image",
+                  "small_image",
+                  "thumbnail"
+                ]
+              },
+              {
+                "url": "http://example.com/media/catalog/product/m/h/mh07-gray_alt1_2.jpg",
+                "label": "",
+                "roles": []
+              },
+              {
+                "url": "http://example.com/media/catalog/product/m/h/mh07-gray_back_2.jpg",
+                "label": "",
+                "roles": []
+              }
+            ]
+          }
+        },
+        {
+          "selections": [
+            "Y29uZmlndXJhYmxlLzkzLzYy",
+            "Y29uZmlndXJhYmxlLzE4Ni8xNzc="
+          ],
+          "product": {
+            "sku": "MH07-M-Green",
+            "name": "Hero Hoodie-M-Green",
+            "images": [
+              {
+                "url": "http://example.com/media/catalog/product/m/h/mh07-green_main_2.jpg",
+                "label": "",
+                "roles": [
+                  "image",
+                  "small_image",
+                  "thumbnail"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "selections": [
+            "Y29uZmlndXJhYmxlLzkzLzU4",
+            "Y29uZmlndXJhYmxlLzE4Ni8xNzY="
+          ],
+          "product": {
+            "sku": "MH07-S-Black",
+            "name": "Hero Hoodie-S-Black",
+            "images": [
+              {
+                "url": "http://example.com/media/catalog/product/m/h/mh07-black_main_1.jpg",
+                "label": "",
+                "roles": [
+                  "image",
+                  "small_image",
+                  "thumbnail"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "selections": [
+            "Y29uZmlndXJhYmxlLzkzLzU5",
+            "Y29uZmlndXJhYmxlLzE4Ni8xNzY="
+          ],
+          "product": {
+            "sku": "MH07-S-Blue",
+            "name": "Hero Hoodie28-S-Blue",
+            "images": []
+          }
+        },
+        {
+          "selections": [
+            "Y29uZmlndXJhYmxlLzkzLzYx",
+            "Y29uZmlndXJhYmxlLzE4Ni8xNzY=",
+            "Y29uZmlndXJhYmxlLzkzLzUwOA=="
+          ],
+          "product": {
+            "sku": "MH07-S-Gray",
+            "name": "Hero Hoodie-S-Gray",
+            "images": [
+              {
+                "url": "http://example.com/media/catalog/product/m/h/mh07-gray_main_2.jpg",
+                "label": "",
+                "roles": [
+                  "image",
+                  "small_image",
+                  "thumbnail"
+                ]
+              },
+              {
+                "url": "http://example.com/media/catalog/product/m/h/mh07-gray_alt1_2.jpg",
+                "label": "",
+                "roles": []
+              },
+              {
+                "url": "http://example.com/media/catalog/product/m/h/mh07-gray_back_2.jpg",
+                "label": "",
+                "roles": []
+              }
+            ]
+          }
+        },
+        {
+          "selections": [
+            "Y29uZmlndXJhYmxlLzE4Ni8xNzY=",
+            "Y29uZmlndXJhYmxlLzkzLzYy"
+          ],
+          "product": {
+            "sku": "MH07-S-Green",
+            "name": "Hero Hoodie-S-Green",
+            "images": [
+              {
+                "url": "http://example.com/media/catalog/product/m/h/mh07-green_main_2.jpg",
+                "label": "",
+                "roles": [
+                  "image",
+                  "small_image",
+                  "thumbnail"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "cursor": "TUgwNy1TLUdyZWVuOjo6Ojo6MTA="
+    }
+  }
+}
+```
+
+## Return variants by `optionId`
+
+This query returns the SKU, name, and images for all size large variants of product MH07. The `optionIDs` input parameter value is sourced from the [Return details about a complex product](products.md#return-details-about-a-complex-product) example in the products query.
+
+**Request:**
+
+```graphql
+query {
+  variants(sku: "MH07", optionIds: "Y29uZmlndXJhYmxlLzE4Ni8xNzg=") {
+    variants {
+      selections
+      product {
+        sku
+        name
+        images(roles: []) {
+          url
+          label
+          roles
+        }
+      }
+    }
+    cursor
+  }
+}
+
+```
+
+**Response**
+
+{
+  "data": {
+    "variants": {
+      "variants": [
+        {
+          "selections": [
+            "Y29uZmlndXJhYmxlLzE4Ni8xNzg=",
+            "Y29uZmlndXJhYmxlLzkzLzU4"
+          ],
+          "product": {
+            "sku": "MH07-L-Black",
+            "name": "Hero Hoodie-L-Black",
+            "images": [
+              {
+                "url": "http://example.com/media/catalog/product/m/h/mh07-black_main_2.jpg",
+                "label": "",
+                "roles": [
+                  "image",
+                  "small_image",
+                  "thumbnail"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "selections": [
+            "Y29uZmlndXJhYmxlLzE4Ni8xNzg=",
+            "Y29uZmlndXJhYmxlLzkzLzU5"
+          ],
+          "product": {
+            "sku": "MH07-L-Blue",
+            "name": "Hero Hoodie28-L-Blue",
+            "images": []
+          }
+        },
+        {
+          "selections": [
+            "Y29uZmlndXJhYmxlLzE4Ni8xNzg=",
+            "Y29uZmlndXJhYmxlLzkzLzYx"
+          ],
+          "product": {
+            "sku": "MH07-L-Gray",
+            "name": "Hero Hoodie-L-Gray",
+            "images": [
+              {
+                "url": "http://example.com/media/catalog/product/m/h/mh07-gray_main_2.jpg",
+                "label": "",
+                "roles": [
+                  "image",
+                  "small_image",
+                  "thumbnail"
+                ]
+              },
+              {
+                "url": "http://example.com/media/catalog/product/m/h/mh07-gray_alt1_2.jpg",
+                "label": "",
+                "roles": []
+              },
+              {
+                "url": "http://example.com/media/catalog/product/m/h/mh07-gray_back_2.jpg",
+                "label": "",
+                "roles": []
+              }
+            ]
+          }
+        },
+        {
+          "selections": [
+            "Y29uZmlndXJhYmxlLzkzLzYy",
+            "Y29uZmlndXJhYmxlLzE4Ni8xNzg="
+          ],
           "product": {
             "sku": "MH07-L-Green",
             "name": "Hero Hoodie-L-Green",
@@ -154,140 +591,6 @@ query {
     }
   }
 }
-```
-
-### Paginate query results
-
-The following query returns the SKU, name, and available images for all variants of the MH07 product. Setting the query pagination to `3` fetches the first three results.
-
-**Request:**
-
-```graphql
-query {
-  variants(sku: "MH07", pageSize: 3) {
-    variants {
-      product {
-        sku
-        name
-        images(roles: []) {
-          url
-          label
-          roles
-        }
-      }
-    }
-    cursor
-  }
-}
-```
-
-**Response:**
-
-```json
-{
-  "data": {
-    "variants": {
-      "variants": [
-        {
-          "product": {
-            "sku": "MH07-34-Gray",
-            "name": "Hero Hoodie28-34-Gray",
-            "images": []
-          }
-        },
-        {
-          "product": {
-            "sku": "MH07-34-Green",
-            "name": "Hero Hoodie28-34-Green",
-            "images": []
-          }
-        },
-        {
-          "product": {
-            "sku": "MH07-L-Black",
-            "name": "Hero Hoodie-L-Black",
-            "images": [
-              {
-                "url": "http://example.com/media/catalog/product/m/h/mh07-black_main_2.jpg",
-                "label": "",
-                "roles": [
-                  "image",
-                  "small_image",
-                  "thumbnail"
-                ]
-              }
-            ]
-          }
-        }
-      ],
-      "cursor": "TUgwNy1MLUJsYWNrOjo6Ojo6Mw=="
-    }
-  }
-}
-```
-
-Using the cursor value from the previous response, run the same query to fetch the next set of results. When no more results are available, the cursor value is `null`.
-
-**Request:**
-
-```graphql
-query {
-  variants(sku: "MH07" pageSize: 3 cursor: "TUgwNy1MLUJsYWNrOjo6Ojo6Mw==") {
-    variants {
-      product {
-        sku
-        name
-      }
-    }
-    cursor
-  }
-}
-```
-
-**Response:**
-
-```json
-{
-  "data": {
-    "variants": {
-      "variants": [
-        {
-          "product": {
-            "sku": "MH07-34-Gray",
-            "name": "Hero Hoodie28-34-Gray",
-            "images": []
-          }
-        },
-        {
-          "product": {
-            "sku": "MH07-34-Green",
-            "name": "Hero Hoodie28-34-Green",
-            "images": []
-          }
-        },
-        {
-          "product": {
-            "sku": "MH07-L-Black",
-            "name": "Hero Hoodie-L-Black",
-            "images": [
-              {
-                "url": "http://example.com/media/catalog/product/m/h/mh07-black_main_2.jpg",
-                "label": "",
-                "roles": [
-                  "image",
-                  "small_image",
-                  "thumbnail"
-                ]
-              }
-            ]
-          }
-        }
-      ],
-      "cursor": "TUgwNy1MLUJsYWNrOjo6Ojo6Mw=="
-    }
-  }
-}
-```
 
 ## Input fields
 
@@ -295,7 +598,7 @@ You must specify a SKU value for the query.
 
 Field | Data type | Description
 --- | --- | ---
-`cursor` | String | Manages pagination of variant results. Include the `cursor` value returned in the results from a previous `variants` query to fetch the next set of results.
+`cursor` | String | Manages pagination of variant results. Include the `cursor` value returned in the results from a previous `variants` query to fetch the next set of results. See 
 `optionIds` | [String!] | A list of IDs assigned to the product options the shopper has selected, such as specific colors and sizes.
 `pageSize` | Int | Specifies the maximum number of results to return. . Default: 100.
 `sku` | String! |  The SKU of a complex product.
