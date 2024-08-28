@@ -11,11 +11,13 @@ keywords:
 
 The `variants` query returns details about all variations of a product.
 
-The `variants` query is useful for showing variant images on product detail (PDP) or product listing (PLP) pages without submitting multiple API requests. It's also useful for building SEO snippets that include the full list of offers (variants) for a product.
+The `variants` query is useful for showing variant images on product detail (PDP) or product listing (PLP) pages without submitting multiple API requests.
 
-## Pagination
+Query results are paginated with a default, maximum pagination size of 100. The query supports [cursor-based pagination](https://graphql.org/learn/pagination/#pagination-and-edges) as follows:
 
-Query results are paginated with a default (and maximum) pagination size of 100. Products are returned in ascending order by SKU value.
+- The initial query returns a cursor value marking the last item in the current page.
+- If all results are returned, the `cursor` value is `null`.
+- If more results are available, use the `cursor` value returned in subsequent queries to fetch additional results. For an example, see [Paginate product variant results](#paginate-product-variant-results).
 
 ## Syntax
 
@@ -44,32 +46,37 @@ import CustomerGroupCode from '/src/_includes/graphql/customer-group-code.md'
 
 ## Example usage
 
-The `variants` query requires one or more SKU values. Optionally, you can specify `optionIDs` to retrieve product options that the shopper has selected, and parameters to control pagination. See [Input fields](#input-fields).
+The `variants` query requires one or more SKU values. Optionally, you can specify `optionIDs` and pagination controls. Specify `optionIDs` to retrieve variants based on product options such as size or color. See [Input fields](#input-fields).
 
-### Return all variants for a product
+## Return variants by optionId
 
-The following query returns details about all product variants for the specified SKU. This request returns the product sku and product name for each variant.
+This query returns the SKU, name, and images for all size large variants of product MH07. The `optionIDs` input parameter value is sourced from the [Return details about a complex product](products.md#return-details-about-a-complex-product) example in the products query.
 
-This query uses the default pagination size (100).
 **Request:**
 
 ```graphql
 query {
-  variants(sku: "MH07") {
+  variants(sku: "MH07", optionIds: "Y29uZmlndXJhYmxlLzE4Ni8xNzg=") {
     variants {
       product {
         sku
         name
+        images(roles: []) {
+          url
+          label
+          roles
+        }
       }
     }
     cursor
   }
 }
+
 ```
 
-**Response:**
+**Response**
 
-```json
+```graphql
 {
   "data": {
     "variants": {
@@ -77,91 +84,69 @@ query {
         {
           "product": {
             "sku": "MH07-L-Black",
-            "name": "Hero Hoodie-L-Black"
+            "name": "Hero Hoodie-L-Black",
+            "images": [
+              {
+                "url": "http://master-7rqtwti-ima6q5tyxltfe.eu-4.magentosite.cloud/media/catalog/product/m/h/mh07-black_main_2.jpg",
+                "label": "",
+                "roles": [
+                  "image",
+                  "small_image",
+                  "thumbnail"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "product": {
+            "sku": "MH07-L-Blue",
+            "name": "Hero Hoodie28-L-Blue",
+            "images": []
           }
         },
         {
           "product": {
             "sku": "MH07-L-Gray",
-            "name": "Hero Hoodie-L-Gray"
+            "name": "Hero Hoodie-L-Gray",
+            "images": [
+              {
+                "url": "http://master-7rqtwti-ima6q5tyxltfe.eu-4.magentosite.cloud/media/catalog/product/m/h/mh07-gray_main_2.jpg",
+                "label": "",
+                "roles": [
+                  "image",
+                  "small_image",
+                  "thumbnail"
+                ]
+              },
+              {
+                "url": "http://master-7rqtwti-ima6q5tyxltfe.eu-4.magentosite.cloud/media/catalog/product/m/h/mh07-gray_alt1_2.jpg",
+                "label": "",
+                "roles": []
+              },
+              {
+                "url": "http://master-7rqtwti-ima6q5tyxltfe.eu-4.magentosite.cloud/media/catalog/product/m/h/mh07-gray_back_2.jpg",
+                "label": "",
+                "roles": []
+              }
+            ]
           }
         },
         {
           "product": {
             "sku": "MH07-L-Green",
-            "name": "Hero Hoodie-L-Green"
-          }
-        },
-        {
-          "product": {
-            "sku": "MH07-M-Black",
-            "name": "Hero Hoodie-M-Black"
-          }
-        },
-        {
-          "product": {
-            "sku": "MH07-M-Gray",
-            "name": "Hero Hoodie-M-Gray"
-          }
-        },
-        {
-          "product": {
-            "sku": "MH07-M-Green",
-            "name": "Hero Hoodie-M-Green"
-          }
-        },
-        {
-          "product": {
-            "sku": "MH07-S-Black",
-            "name": "Hero Hoodie-S-Black"
-          }
-        },
-        {
-          "product": {
-            "sku": "MH07-S-Gray",
-            "name": "Hero Hoodie-S-Gray"
-          }
-        },
-        {
-          "product": {
-            "sku": "MH07-S-Green",
-            "name": "Hero Hoodie-S-Green"
-          }
-        },
-        {
-          "product": {
-            "sku": "MH07-XL-Black",
-            "name": "Hero Hoodie-XL-Black"
-          }
-        },
-        {
-          "product": {
-            "sku": "MH07-XL-Gray",
-            "name": "Hero Hoodie-XL-Gray"
-          }
-        },
-        {
-          "product": {
-            "sku": "MH07-XL-Green",
-            "name": "Hero Hoodie-XL-Green"
-          }
-        },
-        {
-          "product": {
-            "sku": "MH07-XS-Black",
-            "name": "Hero Hoodie-XS-Black"
-          }
-        },
-        {
-          "product": {
-            "sku": "MH07-XS-Gray",
-            "name": "Hero Hoodie-XS-Gray"
-          }
-        },
-        {
-          "product": {
-            "sku": "MH07-XS-Green",
-            "name": "Hero Hoodie-XS-Green"
+            "name": "Hero Hoodie-L-Green",
+            "images": [
+              {
+                "url": "http://master-7rqtwti-ima6q5tyxltfe.eu-4.magentosite.cloud/media/catalog/product/m/h/mh07-green_main_2.jpg",
+                "label": "",
+                "roles": [
+                  "image",
+                  "small_image",
+                  "thumbnail"
+                ]
+              }
+            ]
           }
         }
       ],
@@ -171,24 +156,30 @@ query {
 }
 ```
 
-### Paginate product variant results
+### Paginate query results
 
-The following query returns the first three variants available for product sku `MH07`.
+The following query returns the SKU, name, and available images for all variants of the MH07 product. Setting the query pagination to `3` returns the first three variants.
 
 **Request:**
 
 ```graphql
 query {
-  variants(sku: "MH07" pageSize: 3) {
+  variants(sku: "MH07", pageSize: 3) {
     variants {
       product {
         sku
         name
+        images(roles: []) {
+          url
+          label
+          roles
+        }
       }
     }
     cursor
   }
 }
+```
 
 **Response:**
 
@@ -197,39 +188,51 @@ query {
   "data": {
     "variants": {
       "variants": [
+        {
+          "product": {
+            "sku": "MH07-34-Gray",
+            "name": "Hero Hoodie28-34-Gray",
+            "images": []
+          }
+        },
+        {
+          "product": {
+            "sku": "MH07-34-Green",
+            "name": "Hero Hoodie28-34-Green",
+            "images": []
+          }
+        },
         {
           "product": {
             "sku": "MH07-L-Black",
-            "name": "Hero Hoodie-L-Black"
-          }
-        },
-        {
-          "product": {
-            "sku": "MH07-L-Gray",
-            "name": "Hero Hoodie-L-Gray"
-          }
-        },
-        {
-          "product": {
-            "sku": "MH07-L-Green",
-            "name": "Hero Hoodie-L-Green"
+            "name": "Hero Hoodie-L-Black",
+            "images": [
+              {
+                "url": "http://master-7rqtwti-ima6q5tyxltfe.eu-4.magentosite.cloud/media/catalog/product/m/h/mh07-black_main_2.jpg",
+                "label": "",
+                "roles": [
+                  "image",
+                  "small_image",
+                  "thumbnail"
+                ]
+              }
+            ]
           }
         }
       ],
-      "cursor": "TUgwNy1MLUdyZWVuOjo6Ojo6Mw=="
+      "cursor": "TUgwNy1MLUJsYWNrOjo6Ojo6Mw=="
     }
   }
 }
 ```
 
-Return the next set of results by running the same query using the `cursor` value returned in the previous query results. When there are no more results to return, the `cursor` returns the `null` value.
+Using the cursor value from the previous response, run the same query to fetch the next set of results. When no more results are available, the cursor value is `null`.
 
-**Request**
+**Request:**
 
 ```graphql
-
 query {
-  variants(sku: "MH07" pageSize: 3 cursor: "TUgwNy1MLUdyZWVuOjo6Ojo6Mw==") {
+  variants(sku: "MH07" pageSize: 3 cursor: "TUgwNy1MLUJsYWNrOjo6Ojo6Mw==") {
     variants {
       product {
         sku
@@ -250,24 +253,37 @@ query {
       "variants": [
         {
           "product": {
-            "sku": "MH07-M-Black",
-            "name": "Hero Hoodie-M-Black"
+            "sku": "MH07-34-Gray",
+            "name": "Hero Hoodie28-34-Gray",
+            "images": []
           }
         },
         {
           "product": {
-            "sku": "MH07-M-Gray",
-            "name": "Hero Hoodie-M-Gray"
+            "sku": "MH07-34-Green",
+            "name": "Hero Hoodie28-34-Green",
+            "images": []
           }
         },
         {
           "product": {
-            "sku": "MH07-M-Green",
-            "name": "Hero Hoodie-M-Green"
+            "sku": "MH07-L-Black",
+            "name": "Hero Hoodie-L-Black",
+            "images": [
+              {
+                "url": "http://master-7rqtwti-ima6q5tyxltfe.eu-4.magentosite.cloud/media/catalog/product/m/h/mh07-black_main_2.jpg",
+                "label": "",
+                "roles": [
+                  "image",
+                  "small_image",
+                  "thumbnail"
+                ]
+              }
+            ]
           }
         }
       ],
-      "cursor": "TUgwNy1NLUdyZWVuOjo6Ojo6Mw=="
+      "cursor": "TUgwNy1MLUJsYWNrOjo6Ojo6Mw=="
     }
   }
 }
@@ -279,27 +295,32 @@ You must specify a SKU value for the query.
 
 Field | Data type | Description
 --- | --- | ---
-`optionIds` | [String!]! | A list of IDs assigned to the product options the shopper has selected, such as specific colors and sizes.
+`cursor` | String | Manages pagination of variant results. Include the `cursor` value returned in the results from a previous `variants` query to fetch the next set of results.
+`optionIds` | [String!] | A list of IDs assigned to the product options the shopper has selected, such as specific colors and sizes.
+`pageSize` | Int | Specifies the maximum number of results to return. . Default: 100.
 `sku` | String! |  The SKU of a complex product.
-`pageSize` | Int | Specifies the maximum number of results to return at once. Default: 100.
-`cursor` | String | Represents the cursor from the last item,  is the hash of the query params
-
-## Output fields
+`variants` | `[ProductViewVariant]` | Specifies the product information to return for each product variant.
 
 ### ProductViewVariant
 
 The `ProductViewVariant` type lists the option values that define the product variant.
 
-| **Field**     | **Data Type**          | **Description**                                 |
+| Field         | Data Type              | Description                                     |
 |---------------|------------------------|-------------------------------------------------|
+| `product`     | [`[ProductView]`](products.md#output-fields)  | Provides information about the product corresponding to the variant. The information returned by the `variants` query depends on which `[ProductView]` fields are included as `product` input values.|
 | `selections`  | `[String!]`            | List of option values that make up the variant. |
-| `product`     | [`[ProductView]`](products.md#output-fields)  | Provides information about the product corresponding to the variant.  The query returns product `sku` and `name` data by default. |
+
+## Output fields
+
+The `variants` query returns a `ProductViewVariantResults` object and a `cursor` value to manage pagination. The results object includes information about variants available for each SKU provided as input. The information returned depends on the `product` input fields included in the query.
 
 ### ProductViewVariantResults
 
-`ProductViewVariantResults` returns the list of product variants based on the selection values.
+`ProductViewVariantResults` returns the list of product variants with the requested information for each variant.
 
-| **Field**     | **Data Type**          | **Description**                                 |
+| Field     | Data Type          | Description                                 |
 |---------------|------------------------|-------------------------------------------------|
-| `variants`    | [`[ProductViewVariant]!`](#productviewvariant)| List of product variants.   |
-| `cursor`      | `String`               | Cursor value to manage results pagination. Use this value as an input parameter to retrieve the next set of results. If there are no additional results available, the return value is `null`. |
+| `cursor`      | `String`               | Returns the cursor for the last item in the current page of results. Use this cursor in the `variants` query to fetch the next set of results. If there are no more results, the cursor value is `null`. |
+| `variants`    | [`[ProductViewVariant]!`](#productviewvariant)| List of product variants. |
+
+import Docs2 from '/src/_includes/graphql/catalog-service/product-view.md'
