@@ -17,7 +17,7 @@ Query results are paginated with a default, maximum pagination size of 100. The 
 
 - The initial query returns a cursor value marking the last item in the current page.
 - If all results are returned, the `cursor` value is `null`.
-- If more results are available, use the `cursor` value returned in subsequent queries to fetch additional results. For an example, see [Paginate product variant results](#paginate-product-variant-results).
+- If more results are available, use the `cursor` value returned in subsequent queries to fetch additional results. For an example, see [Paginate product variant results](#paginate-query-results).
 
 ## Syntax
 
