@@ -598,7 +598,7 @@ You must specify a SKU value for the query.
 
 Field | Data type | Description
 --- | --- | ---
-`cursor` | String | Manages pagination of variant results. Include the `cursor` value returned in the results from a previous `variants` query to fetch the next set of results. See 
+`cursor` | String | Manages pagination of variant results. Include the `cursor` value returned in the results from a previous `variants` query to fetch the next set of results. See the [Return results by cursor position](#return-results-by-cursor-position) example.
 `optionIds` | [String!] | A list of IDs assigned to the product options the shopper has selected, such as specific colors and sizes.
 `pageSize` | Int | Specifies the maximum number of results to return. . Default: 100.
 `sku` | String! |  The SKU of a complex product.
