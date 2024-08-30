@@ -16,6 +16,7 @@ Catalog Service provides the following queries:
 *  [`categories`](categories.md)
 *  [`products`](products.md)
 *  [`refineProduct`](refine-product.md)
+*  [`variants`](product-variants.md)
 
 It also extends the Live Search [`productSearch`](../live-search/product-search.md#catalog-service) query to return product view data.
 
