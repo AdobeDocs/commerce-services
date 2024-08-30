@@ -607,7 +607,7 @@ Field | Data type | Description
 
 ## Output fields
 
-This query returns one `ProductViewVariantResults` object that contains the `cursor` field and a list of `ProductViewVariant` objects, one for each variant associated with the product SKU.
+This query returns a `ProductViewVariantResults` object, which contains the `cursor` field and a list of `ProductViewVariant` objects, one for each variant associated with the product SKU.
 
 | Field     | Data Type          | Description                                 |
 |---------------|------------------------|-------------------------------------------------|
