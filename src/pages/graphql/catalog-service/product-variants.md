@@ -76,7 +76,7 @@ query {
 
 **Response:**
 
-```graphql
+```json
 {
   "data": {
     "variants": {
@@ -210,7 +210,7 @@ query {
 
 #### Return results by `cursor` position
 
-Using the cursor value from the previous response ("TUgwNy1MLUJsdWU6Ojo6OjoxMA==") as input, run the same query to fetch the next set of results. When the last variant item is returned, the cursor value is `null`.
+Using the cursor value from the previous response (`TUgwNy1MLUJsdWU6Ojo6OjoxMA==`) as input, run the same query to fetch the next set of results. When the last variant item is returned, the cursor value is `null`.
 
 **Request:**
 
@@ -498,6 +498,7 @@ query {
 
 **Response**
 
+```json
 {
   "data": {
     "variants": {
@@ -591,6 +592,7 @@ query {
     }
   }
 }
+```
 
 ## Input fields
 
@@ -598,32 +600,28 @@ You must specify a SKU value for the query.
 
 Field | Data type | Description
 --- | --- | ---
-`cursor` | String | Manages pagination of variant results. Include the `cursor` value returned in the results from a previous `variants` query to fetch the next set of results. See the [Return results by cursor position](#return-results-by-cursor-position) example.
+`cursor` | String | Manages pagination of variant results. Include the `cursor` value returned in the results from a previous `variants` query to fetch the next set of results. See [Return results by cursor position](#return-results-by-cursor-position).(#return-results-by-cursor-position).(#return-results-by-cursor-position) example.
 `optionIds` | [String!] | A list of IDs assigned to the product options the shopper has selected, such as specific colors and sizes.
-`pageSize` | Int | Specifies the maximum number of results to return. . Default: 100.
+`pageSize` | Int | Specifies the maximum number of results to return. Default: 100.
 `sku` | String! |  The SKU of a complex product.
-`variants` | `[ProductViewVariant]` | Specifies the product information to return for each product variant.
-
-### ProductViewVariant
-
-The `ProductViewVariant` type lists the option values that define the product variant.
-
-| Field         | Data Type              | Description                                     |
-|---------------|------------------------|-------------------------------------------------|
-| `product`     | [`[ProductView]`](products.md#output-fields)  | Provides information about the product corresponding to the variant. The information returned by the `variants` query depends on which `[ProductView]` fields are included as `product` input values.|
-| `selections`  | `[String!]`            | List of option values that make up the variant. |
 
 ## Output fields
 
-The `variants` query returns a `ProductViewVariantResults` object and a `cursor` value to manage pagination. The results object includes information about variants available for each SKU provided as input. The information returned depends on the `product` input fields included in the query.
-
-### ProductViewVariantResults
-
-`ProductViewVariantResults` returns the list of product variants with the requested information for each variant.
+This query returns one `ProductViewVariantResults` object that contains the `cursor` field and a list of `ProductViewVariant` objects, one for each variant associated with the product SKU.
 
 | Field     | Data Type          | Description                                 |
 |---------------|------------------------|-------------------------------------------------|
 | `cursor`      | `String`               | Returns the cursor for the last item in the current page of results. Use this cursor in the `variants` query to fetch the next set of results. If there are no more results, the cursor value is `null`. |
-| `variants`    | [`[ProductViewVariant]!`](#productviewvariant)| List of product variants. |
+| `variants`    | `[ProductViewVariant]!`| List of product variants. |
+
+### ProductViewVariant type
+
+| Field         | Data Type              | Description                                     |
+|---------------|------------------------|-------------------------------------------------|
+| `product`     | [`[ProductView]`](#productview)  | Provides information about the product corresponding to the variant. The information returned by the `variants` query depends on which `[ProductView]` fields are included as `product` input values.|
+| `selections`  | `[String!]`            | List of option id values that define the variant. For example, the id value for color and size options for a clothing product. |
+| `variants`    | `[ProductViewVariant]!`| List of product variants. |
+
+### ProductView type
 
 import Docs2 from '/src/_includes/graphql/catalog-service/product-view.md'
