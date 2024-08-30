@@ -17,7 +17,7 @@ Query results are paginated with a default, maximum pagination size of 100. The 
 
 - The initial query returns a cursor value marking the last item in the current page.
 - If all results are returned, the `cursor` value is `null`.
-- If more results are available, use the `cursor` value returned in subsequent queries to fetch additional results. For an example, see [Paginate product variant results](#paginate-query-results).
+- If more results are available, use the `cursor` value returned in subsequent queries to fetch additional results. For an example, see [Paginate product variant results](#return-all-variants-using-pagination).
 
 ## Syntax
 
@@ -618,10 +618,10 @@ This query returns one `ProductViewVariantResults` object that contains the `cur
 
 | Field         | Data Type              | Description                                     |
 |---------------|------------------------|-------------------------------------------------|
-| `product`     | [`[ProductView]`](#productview)  | Provides information about the product corresponding to the variant. The information returned by the `variants` query depends on which `[ProductView]` fields are included as `product` input values.|
+| `product`     | [`ProductView`](#productview)  | Provides information about the product corresponding to the variant. The information returned by the `variants` query depends on which `[ProductView]` fields are included as `product` input values.|
 | `selections`  | `[String!]`            | List of option id values that define the variant. For example, the id value for color and size options for a clothing product. |
 | `variants`    | `[ProductViewVariant]!`| List of product variants. |
 
-### ProductView type
+### ProductView interface
 
 import Docs2 from '/src/_includes/graphql/catalog-service/product-view.md'
