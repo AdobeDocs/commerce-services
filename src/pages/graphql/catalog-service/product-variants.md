@@ -618,7 +618,7 @@ This query returns a `ProductViewVariantResults` object, which contains the `cur
 
 | Field         | Data Type              | Description                                     |
 |---------------|------------------------|-------------------------------------------------|
-| `product`     | [`ProductView`](#productview-interface)  | Provides information about the product corresponding to the variant. The information returned by the `variants` query depends on which `[ProductView]` fields are included as `product` input values.|
+| `product`     | [`ProductView`](#productview-interface)  | Provides information about the returned variant. |
 | `selections`  | `[String!]`            | List of option id values that define the variant. For example, the id value for color and size options for a clothing product. |
 | `variants`    | `[ProductViewVariant]!`| List of product variants. |
 
