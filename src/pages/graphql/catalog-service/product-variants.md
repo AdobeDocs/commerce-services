@@ -22,7 +22,7 @@ Query results are paginated with a default, maximum pagination size of 100. The 
 ## Syntax
 
 ```graphql
-variants(sku: String!, optionIds: [String!], pageSize: Int, cursor: String): [ProductViewVariantResults]
+variants(sku: String!, optionIds: [String!], pageSize: Int, cursor: String): ProductViewVariantResults
 ```
 
 ## Endpoints
