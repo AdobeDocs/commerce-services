@@ -46,7 +46,7 @@ import CustomerGroupCode from '/src/_includes/graphql/customer-group-code.md'
 
 ## Example usage
 
-The `variants` query requires one or more SKU values as input. Optionally, you can specify `optionIDs` and pagination controls. Specify `optionIDs` to retrieve variants based on product options such as size or color. See [Input fields](#input-fields).
+The `variants` query requires at least one SKU value as input. Optionally, you can specify `optionIDs` and pagination controls. Specify `optionIDs` to retrieve variants based on product options such as size or color. See [Input fields](#input-fields).
 
 ## Return all variants using pagination
 
