@@ -626,4 +626,3 @@ This query returns a `ProductViewVariantResults` object, which contains the `cur
 import Docs2 from '/src/_includes/graphql/catalog-service/product-view.md'
 
 <Docs2 />
-
