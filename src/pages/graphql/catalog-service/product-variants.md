@@ -22,7 +22,7 @@ Query results are paginated with a default, maximum pagination size of 100. The 
 ## Syntax
 
 ```graphql
-variants(sku: String!, optionIds: [String!], pageSize: Int, cursor: String): ProductViewVariantResults
+variants(sku: String!, optionIds: [String!], pageSize: Int, cursor: String): [ProductViewVariantResults]
 ```
 
 ## Endpoints
@@ -46,7 +46,7 @@ import CustomerGroupCode from '/src/_includes/graphql/customer-group-code.md'
 
 ## Example usage
 
-The `variants` query requires at least one SKU value as input. Optionally, you can specify `optionIDs` and pagination controls. Specify `optionIDs` to retrieve variants based on product options such as size or color. See [Input fields](#input-fields).
+The `variants` query requires one or more SKU values as input. Optionally, you can specify `optionIDs` and pagination controls. Specify `optionIDs` to retrieve variants based on product options such as size or color. See [Input fields](#input-fields).
 
 ## Return all variants using pagination
 
@@ -607,7 +607,7 @@ Field | Data type | Description
 
 ## Output fields
 
-This query returns a `ProductViewVariantResults` object, which contains the `cursor` field and a list of `ProductViewVariant` objects, one for each variant associated with the product SKU.
+This query returns one `ProductViewVariantResults` object that contains the `cursor` field and a list of `ProductViewVariant` objects, one for each variant associated with the product SKU.
 
 | Field     | Data Type          | Description                                 |
 |---------------|------------------------|-------------------------------------------------|
@@ -618,9 +618,12 @@ This query returns a `ProductViewVariantResults` object, which contains the `cur
 
 | Field         | Data Type              | Description                                     |
 |---------------|------------------------|-------------------------------------------------|
-| `product`     | [`ProductView`](#productview-interface)  | Provides information about the returned variant. |
-| `selections`  | `[String!]`            | List of option id values that define the variant. For example, the id value for color and size options for a clothing product.|
+| `product`     | [`ProductView`](#productview-interface)  | Provides information about the product corresponding to the variant. The information returned by the `variants` query depends on which `[ProductView]` fields are included as `product` input values.|
+| `selections`  | `[String!]`            | List of option id values that define the variant. For example, the id value for color and size options for a clothing product. |
+| `variants`    | `[ProductViewVariant]!`| List of product variants. |
 
 ### ProductView interface
 
 import Docs2 from '/src/_includes/graphql/catalog-service/product-view.md'
+
+<Docs2 />
