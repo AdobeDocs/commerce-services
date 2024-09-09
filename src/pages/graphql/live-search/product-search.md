@@ -166,21 +166,21 @@ Use the [`attributeMetadata` query](./attribute-metadata.md) to return a list of
 
 This feature is in beta.
 
-This beta adds two new filters to the filtering section of the `productSearch` query. These new filters let you search product attributes using `startsWith` and `contains` filters.
+This beta adds three new conditions to the filtering section of the `productSearch` query. These new conditions let you filter product attributes using `startsWith`, `contains`, and `endsWith`.
 
 - `contains` - Lets shoppers search for products containing specific attribute values.
 - `startsWith` - Lets shoppers search for products where the attribute value starts with a particular string.
-- `endsWith` - Technically this is not a separate, unique filter. The `endsWith` filter is accomplished by reversing the attribute value when you ingest the data. Then, you can use the `startsWith` filter on the specific attribute. An [example](#endswith-filter-example) below shows you how to search an attribute using the `endsWith` filter.
+- `endsWith` - Technically this is not a separate, unique condition. The `endsWith` condition is accomplished by reversing the attribute value when you ingest the data. Then, you can use the `startsWith` condition on the specific attribute. An [example](#endswith-filter-example) below shows you how to search an attribute using the `endsWith` condition.
 
-These new filters enhance the search query filtering mechanism to refine search results. These new filters do not affect the main search query.
+These new conditions enhance the search query filtering mechanism to refine search results. These new conditions do not affect the main search query.
 
-You can implement these new filters on your search results page. An example of how that might look is shown below:
+You can implement these new conditions on your search results page. An example of how that might look is shown below:
 
 ![Refine Search Results](../../_images/srch-in-srch.png)
 
-In this example, the shopper searches for "Motor". In the search results page, a new section appears where the shopper can further refine their search results. Notice there are specific product attributes that they can specify, such as "Manufacturer", "Part Number", "Description". From there, they can select to search within those attributes using the `contains`, `startsWith`, or `endsWith` filters.
+In this example, the shopper searches for "Motor". In the search results page, a new section appears where the shopper can further refine their search results. Notice there are specific product attributes that they can specify, such as "Manufacturer", "Part Number", "Description". From there, they can select to search within those attributes using the `contains`, `startsWith`, or `endsWith` conditions.
 
-In the next section, you learn how to enable these new `productSearch` filters.
+In the next section, you learn how to enable these new `productSearch` conditions.
 
 To enable these beta features:
 
@@ -190,7 +190,7 @@ To enable these beta features:
     composer require magento/module-live-search-search-types:"^1.0-beta"
     ```
 
-1. In the Admin, [set](https://experienceleague.adobe.com/en/docs/commerce-admin/catalog/product-attributes/product-attributes-add#step-5-describe-the-storefront-properties)a product attribute to be searchable and specify the search capability for that attribute, such as **Starts with** or **Contains**.
+1. In the Admin, [set](https://experienceleague.adobe.com/en/docs/commerce-admin/catalog/product-attributes/product-attributes-add#step-5-describe-the-storefront-properties) a product attribute to be searchable and specify the search capability for that attribute, such as **Starts with** or **Contains**. See the Admin guide for a list of [supported attributes](https://experienceleague.adobe.com/en/docs/commerce-admin/catalog/product-attributes/attributes-input-types).
 
     ![Specify search capability](../../_images/search-filters-admin.png)
 
@@ -199,8 +199,6 @@ To enable these beta features:
 <InlineAlert variant="info" slots="text"/>
 
 This functionality is not available in the [Adobe Commerce GraphQL API](https://developer.adobe.com/commerce/webapi/graphql/schema/products/queries/products/), PLP widgets, or the Live Search adapter extension.
-
-See the Admin guide for a list of [supported attributes](https://experienceleague.adobe.com/en/docs/commerce-admin/catalog/product-attributes/attributes-input-types).
 
 ##### startsWith condition example
 
@@ -230,7 +228,7 @@ filter: [
 
 ##### endsWith filter example
 
-To search an attribute value using `endsWith`, you must reverse the attribute value when you ingest the data. Then, you can use the `startsWith` filter on the specific attribute. For example:
+To search an attribute value using `endsWith`, you must reverse the attribute value when you ingest the data. Then, you can use the `startsWith` condition on the specific attribute. For example:
 
 ```graphql
 filter: [  
@@ -299,7 +297,7 @@ productSearch(
 )
 ```
 
-The following example shows how to search a particular attribute for "startsWith" but not search within the search result:
+The following example shows how to search a particular attribute for `startsWith` but not search within the search result:
 
 ```graphql
 productSearch(  
