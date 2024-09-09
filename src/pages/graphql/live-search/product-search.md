@@ -160,6 +160,169 @@ Only facets specified in Live Search are returned.
 
 Use the [`attributeMetadata` query](./attribute-metadata.md) to return a list of product attributes that can be used to define a filter.
 
+#### Filtering using startsWith and contains (Beta)
+
+<InlineAlert variant="info" slots="text"/>
+
+This feature is in beta.
+
+This beta adds two new filters to the filtering section of the `productSearch` query. These new filters let you search product attributes using `startsWith` and `contains` filters.
+
+- `contains` - Lets shoppers search for products containing specific attribute values.
+- `startsWith` - Lets shoppers search for products where the attribute value starts with a particular string.
+- `endsWith` - Technically this is not a separate, unique filter. The `endsWith` filter is accomplished by reversing the attribute value when you ingest the data. Then, you can use the `startsWith` filter on the specific attribute. An [example](#endswith-filter-example) below shows you how to search an attribute using the `endsWith` filter.
+
+These new filters enhance the search query filtering mechanism to refine search results. These new filters do not affect the main search query.
+
+You can implement these new filters on your search results page. An example of how that might look is shown below:
+
+![Refine Search Results](../../_images/srch-in-srch.png)
+
+In this example, the shopper searches for "Motor". In the search results page, a new section appears where the shopper can further refine their search results. Notice there are specific product attributes that they can specify, such as "Manufacturer", "Part Number", "Description". From there, they can select to search within those attributes using the `contains`, `startsWith`, or `endsWith` filters.
+
+In the next section, you learn how to enable these new `productSearch` filters.
+
+To enable these beta features:
+
+1. Run the following from the command line:
+
+    ```bash
+    composer require magento/module-live-search-search-types:"^1.0-beta"
+    ```
+
+1. In the Admin, [set](https://experienceleague.adobe.com/en/docs/commerce-admin/catalog/product-attributes/product-attributes-add#step-5-describe-the-storefront-properties)a product attribute to be searchable and specify the search capability for that attribute, such as **Starts with** or **Contains**.
+
+    ![Specify search capability](../../_images/search-filters-admin.png)
+
+1. Update your Live Search API calls to allow searching product attributes using the new `startsWith` and `contains` conditions. See below for examples.
+
+<InlineAlert variant="info" slots="text"/>
+
+This functionality is not available in the [Adobe Commerce GraphQL API](https://developer.adobe.com/commerce/webapi/graphql/schema/products/queries/products/), PLP widgets, or the Live Search adapter extension.
+
+See the Admin guide for a list of [supported attributes](https://experienceleague.adobe.com/en/docs/commerce-admin/catalog/product-attributes/attributes-input-types).
+
+##### startsWith condition example
+
+The following example shows how you can search the "manufacturer" product attribute using a `startsWith` value of "Sieme".
+
+```graphql
+filter: [  
+  {  
+    attribute: "manufacturer",  
+    startsWith: "Sieme"  
+  }  
+]
+```
+
+##### contains condition example
+
+The following example shows how you can search the "manufacturer" product attribute using a `contains` value of "auto".
+
+```graphql
+filter: [  
+  {  
+    attribute: "manufacturer",  
+    contains: "auto"  
+  }  
+]
+```
+
+##### endsWith filter example
+
+To search an attribute value using `endsWith`, you must reverse the attribute value when you ingest the data. Then, you can use the `startsWith` filter on the specific attribute. For example:
+
+```graphql
+filter: [  
+  {  
+    attribute: "part_number_reverse",  
+    startsWith: "3675-NP"  
+  }  
+]
+```
+
+**Example queries**
+
+The following example shows how to search within search results using "motor" as the search phrase and filtering on "manufacturer" that "startsWith" the term "Sieme":
+
+```graphql
+productSearch(  
+  phrase: "motor",  
+    filter: [  
+      {  
+        attribute: "manufacturer",  
+        startsWith: "Sieme"  
+      }  
+    ]  
+)
+```
+
+The following example shows how to search within search results using "motor" as the search phrase and filtering on "part_number" that "startsWith" the term "PE-123":
+
+```graphql
+productSearch(  
+  phrase: "motor",  
+    filter: [  
+      {  
+        attribute: "part_number",  
+        startsWith: "PE-123"  
+      }  
+    ]  
+)
+```
+
+The following example shows how to search within search results using "motor" as the search phrase and filtering on "manufacturer" that "endsWith" the term "PE-123":
+
+```graphql
+productSearch(  
+  phrase: "motor",  
+    filter: [  
+      {  
+        attribute: "reverse_part_number",  
+        startsWith: "321-EP"  
+      }  
+    ]  
+)
+```
+
+The following example shows how to search within search results using "motor" as the search phrase and filtering on "description" that "contains" the phrase "warranty included":
+
+```graphql
+productSearch(  
+  phrase: "motor",  
+    filter: [  
+      {  
+        attribute: "description",  
+        contains: "warranty included"  
+      }  
+    ]  
+)
+```
+
+The following example shows how to search a particular attribute for "startsWith" but not search within the search result:
+
+```graphql
+productSearch(  
+  phrase: "",  
+    filter: [  
+      {  
+        attribute: "part_number",  
+        startsWith: "PE-123"  
+      }  
+  ]  
+)
+```
+
+**Limitations**
+
+The following lists the limitations for this beta:
+
+- You can specify a maximum of 6 attributes to search using `startsWith` and `contains`.
+- A maximum of 1000 facets will be returned for each aggregation.
+- A maximum of 10,000 products can be paginated for any `productSearch` query.
+
+For additional Live Search boundaries and limits, see [boundaries and limits](https://experienceleague.adobe.com/en/docs/commerce-merchant-services/live-search/boundaries-limits) in the Live Search merchant guide.
+
 #### Filtering by categories
 
 Results can be filtered by categories defined in the Admin with the `categories` and `categoryPath` filters. They are slightly different in the type of facets returned:
