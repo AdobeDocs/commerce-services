@@ -174,23 +174,17 @@ This beta adds three new conditions to the filtering section of the `productSear
 
 These new conditions enhance the search query filtering mechanism to refine search results. These new conditions do not affect the main search query.
 
-You can implement these new conditions on your search results page. An example of how that might look is shown below:
+You can implement these new conditions on your search results page. For example, you can add a new section on the page where the shopper can further refine their search results. You can allow shoppers to select specific product attributes, such as "Manufacturer", "Part Number", "Description". From there, they can select to search within those attributes using the `contains`, `startsWith`, or `endsWith` conditions. See the Admin guide for a list of [attributes](https://experienceleague.adobe.com/en/docs/commerce-admin/catalog/product-attributes/attributes-input-types) that can be searched.
 
-![Refine Search Results](../../_images/srch-in-srch.png)
+In the next section, you learn how to enable these new filtering conditions.
 
-In this example, the shopper searches for "Motor". In the search results page, a new section appears where the shopper can further refine their search results. Notice there are specific product attributes that they can specify, such as "Manufacturer", "Part Number", "Description". From there, they can select to search within those attributes using the `contains`, `startsWith`, or `endsWith` conditions.
-
-In the next section, you learn how to enable these new `productSearch` conditions.
-
-To enable these beta features:
-
-1. Run the following from the command line:
+1. To install the beta, run the following from the command line:
 
     ```bash
     composer require magento/module-live-search-search-types:"^1.0-beta"
     ```
 
-1. In the Admin, [set](https://experienceleague.adobe.com/en/docs/commerce-admin/catalog/product-attributes/product-attributes-add#step-5-describe-the-storefront-properties) a product attribute to be searchable and specify the search capability for that attribute, such as **Starts with** or **Contains**. See the Admin guide for a list of [supported attributes](https://experienceleague.adobe.com/en/docs/commerce-admin/catalog/product-attributes/attributes-input-types).
+1. In the Admin, [set](https://experienceleague.adobe.com/en/docs/commerce-admin/catalog/product-attributes/product-attributes-add#step-5-describe-the-storefront-properties) a product attribute to be searchable and specify the search capability for that attribute, such as **Starts with** or **Contains**. You can specify a maximum of 6 attributes to search using `startsWith` or `contains`.
 
     ![Specify search capability](../../_images/search-filters-admin.png)
 
@@ -311,11 +305,11 @@ productSearch(
 )
 ```
 
-**Limitations**
+##### Limitations
 
 The following lists the limitations for this beta:
 
-- You can specify a maximum of 6 attributes to search using `startsWith` and `contains`.
+- You can specify a maximum of 6 attributes to search using `startsWith` or `contains`.
 - A maximum of 1000 facets will be returned for each aggregation.
 - A maximum of 10,000 products can be paginated for any `productSearch` query.
 
