@@ -170,11 +170,11 @@ This beta adds three new conditions to the filtering section of the `productSear
 
 - `contains` - Lets shoppers search for products containing specific attribute values.
 - `startsWith` - Lets shoppers search for products where the attribute value starts with a particular string.
-- `endsWith` - Technically this is not a separate, unique condition. The `endsWith` condition is accomplished by reversing the attribute value when you ingest the data. Then, you can use the `startsWith` condition on the specific attribute. An [example](#endswith-filter-example) below shows you how to search an attribute using the `endsWith` condition.
+- `endsWith` - Technically this is not a separate, unique condition. The `endsWith` condition reverses the attribute value when you ingest the data. Then, you can use the `startsWith` condition on the specific attribute. An [example](#endswith-filter-example) below shows you how to search an attribute using the `endsWith` condition.
 
 These new conditions enhance the search query filtering mechanism to refine search results. These new conditions do not affect the main search query.
 
-You can implement these new conditions on your search results page. For example, you can add a new section on the page where the shopper can further refine their search results. You can allow shoppers to select specific product attributes, such as "Manufacturer", "Part Number", "Description". From there, they can select to search within those attributes using the `contains`, `startsWith`, or `endsWith` conditions. See the Admin guide for a list of [attributes](https://experienceleague.adobe.com/en/docs/commerce-admin/catalog/product-attributes/attributes-input-types) that can be searched.
+You can implement these new conditions on your search results page. For example, you can add a new section on the page where the shopper can further refine their search results. You can allow shoppers to select specific product attributes, such as "Manufacturer", "Part Number", and "Description". From there, they search within those attributes using the `contains`, `startsWith`, or `endsWith` conditions. See the Admin guide for a list of searchable [attributes](https://experienceleague.adobe.com/en/docs/commerce-admin/catalog/product-attributes/attributes-input-types).
 
 In the next section, you learn how to enable these new filtering conditions.
 
@@ -184,11 +184,11 @@ In the next section, you learn how to enable these new filtering conditions.
     composer require magento/module-live-search-search-types:"^1.0-beta"
     ```
 
-1. In the Admin, [set](https://experienceleague.adobe.com/en/docs/commerce-admin/catalog/product-attributes/product-attributes-add#step-5-describe-the-storefront-properties) a product attribute to be searchable and specify the search capability for that attribute, such as **Starts with** or **Contains**. You can specify a maximum of 6 attributes to search using `startsWith` or `contains`.
+1. In the Admin, [set a product attribute](https://experienceleague.adobe.com/en/docs/commerce-admin/catalog/product-attributes/product-attributes-add#step-5-describe-the-storefront-properties) to be searchable and specify the search capability for that attribute, such as **Starts with** or **Contains**. You can specify a maximum of 6 attributes to search using `startsWith` or `contains`.
 
     ![Specify search capability](../../_images/search-filters-admin.png)
 
-1. Update your Live Search API calls to allow searching product attributes using the new `startsWith` and `contains` conditions. See below for examples.
+1. Update your Live Search API calls to allow searching product attributes using the new `startsWith` and `contains` conditions. See the following examples.
 
 <InlineAlert variant="info" slots="text"/>
 
@@ -307,11 +307,11 @@ productSearch(
 
 ##### Limitations
 
-The following lists the limitations for this beta:
+The beta has the following limitations:
 
 - You can specify a maximum of 6 attributes to search using `startsWith` or `contains`.
-- A maximum of 1000 facets will be returned for each aggregation.
-- A maximum of 10,000 products can be paginated for any `productSearch` query.
+- Each aggregation returnas a maximum of 1000 facets.
+- You can paginate a maximum of 10,000 products for any `productSearch` query.
 
 For additional Live Search boundaries and limits, see [boundaries and limits](https://experienceleague.adobe.com/en/docs/commerce-merchant-services/live-search/boundaries-limits) in the Live Search merchant guide.
 
