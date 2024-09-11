@@ -160,39 +160,20 @@ Only facets specified in Live Search are returned.
 
 Use the [`attributeMetadata` query](./attribute-metadata.md) to return a list of product attributes that can be used to define a filter.
 
-#### Filtering using startsWith and contains (Beta)
+#### Filtering using search capability
 
 <InlineAlert variant="info" slots="text"/>
 
 This feature is in beta.
 
-This beta adds three new conditions to the filtering section of the `productSearch` query. These new conditions let you filter product attributes using `startsWith`, `contains`, and `endsWith`.
+This beta adds two new conditions to the filtering section of the `productSearch` query. These new conditions let you filter product attributes using `contains` and `startsWith`.
 
 - `contains` - Lets shoppers search for products containing specific attribute values.
 - `startsWith` - Lets shoppers search for products where the attribute value starts with a particular string.
-- `endsWith` - Technically this is not a separate, unique condition. The `endsWith` condition reverses the attribute value when you ingest the data. Then, you can use the `startsWith` condition on the specific attribute. An [example](#endswith-filter-example) below shows you how to search an attribute using the `endsWith` condition.
-
-These new conditions enhance the search query filtering mechanism to refine search results. These new conditions do not affect the main search query.
-
-You can implement these new conditions on your search results page. For example, you can add a new section on the page where the shopper can further refine their search results. You can allow shoppers to select specific product attributes, such as "Manufacturer", "Part Number", and "Description". From there, they search within those attributes using the `contains`, `startsWith`, or `endsWith` conditions. See the Admin guide for a list of searchable [attributes](https://experienceleague.adobe.com/en/docs/commerce-admin/catalog/product-attributes/attributes-input-types).
-
-In the next section, you learn how to enable these new filtering conditions.
-
-1. To install the beta, run the following from the command line:
-
-    ```bash
-    composer require magento/module-live-search-search-types:"^1.0-beta"
-    ```
-
-1. In the Admin, [set a product attribute](https://experienceleague.adobe.com/en/docs/commerce-admin/catalog/product-attributes/product-attributes-add#step-5-describe-the-storefront-properties) to be searchable and specify the search capability for that attribute, such as **Starts with** or **Contains**. You can specify a maximum of 6 attributes to search using `startsWith` or `contains`.
-
-    ![Specify search capability](../../_images/search-filters-admin.png)
-
-1. Update your Live Search API calls to allow searching product attributes using the new `startsWith` and `contains` conditions. See the following examples.
-
-<InlineAlert variant="info" slots="text"/>
 
 This functionality is not available in the [Adobe Commerce GraphQL API](https://developer.adobe.com/commerce/webapi/graphql/schema/products/queries/products/), PLP widgets, or the Live Search adapter extension.
+
+For installation information, see the [Live Search guide](https://experienceleague.adobe.com/en/docs/commerce-merchant-services/live-search/install#install-the-live-search-beta) in the merchant documentation.
 
 ##### startsWith condition example
 
@@ -222,7 +203,7 @@ filter: [
 
 ##### endsWith filter example
 
-To search an attribute value using `endsWith`, you must reverse the attribute value when you ingest the data. Then, you can use the `startsWith` condition on the specific attribute. For example:
+To search an attribute value using `endsWith`, you must reverse the attribute value when you ingest the data. Then, you can use the `startsWith` condition on the specific attribute. In the following example, the part number is actually: `PN-5763`.
 
 ```graphql
 filter: [  
@@ -310,7 +291,7 @@ productSearch(
 The beta has the following limitations:
 
 - You can specify a maximum of 6 attributes to search using `startsWith` or `contains`.
-- Each aggregation returnas a maximum of 1000 facets.
+- Each aggregation returns a maximum of 1000 facets.
 - You can paginate a maximum of 10,000 products for any `productSearch` query.
 
 For additional Live Search boundaries and limits, see [boundaries and limits](https://experienceleague.adobe.com/en/docs/commerce-merchant-services/live-search/boundaries-limits) in the Live Search merchant guide.
@@ -544,12 +525,6 @@ The query response can also contain the following top-level fields and objects:
 - `total_count` - The number of products returned.
 
 ## Endpoints
-
-Live Search:
-
-- `https://commerce.adobe.io/search/graphql`
-
-Catalog Service and Product Recommendations:
 
 - Testing: `https://catalog-service-sandbox.adobe.io/graphql`
 - Production: `https://catalog-service.adobe.io/graphql`
@@ -1312,6 +1287,8 @@ Field | Data Type | Description
 `eq` | String | A string value to filter on
 `in` | [String] | An array of string values to filter on
 `range` | [SearchRangeInput](#searchrangeinput-data-type) | A range of numeric values to filter on
+`contains` | 
+`startsWith` | 
 
 ### SearchRangeInput data type
 
