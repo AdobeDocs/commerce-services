@@ -166,12 +166,19 @@ Use the [`attributeMetadata` query](./attribute-metadata.md) to return a list of
 
 This feature is in beta.
 
-This beta adds two new conditions to the filtering section of the `productSearch` query. These new conditions let you filter product attributes using `contains` and `startsWith`.
+This beta supports two new capabilities:
 
-- `contains` - Lets shoppers search for products containing specific attribute values.
-- `startsWith` - Lets shoppers search for products where the attribute value starts with a particular string.
+- **Layered search** - Ability to search within another search context. With this capability, you can undertake up to two layers of search for your search queries. For example:
+  
+  - **Layer 1 search** - Search for "motor" on "product_attribute_1".
+  - **Layer 2 search** - Search for "part number 123" on "product_attribute_2". In this example, "part number 123" is searched for within the results for "motor".
 
-This functionality is not available in the [Adobe Commerce GraphQL API](https://developer.adobe.com/commerce/webapi/graphql/schema/products/queries/products/), PLP widgets, or the Live Search adapter extension.
+- **startsWith search indexation** - Ability to search using `startsWith` indexation. This new capability allows you to:
+
+  - Let shoppers search for products where the attribute value starts with a particular string.
+  - Configure an ends with search so shoppers can search for products where the attribute value ends with a particular string. To enable an ends with search, the product attribute needs to be ingested in reverse and the API call should also be a reversed string.
+
+Refer to the following examples to learn how to implement these new search capabilities in your Live Search API.
 
 For installation information, see the [Live Search guide](https://experienceleague.adobe.com/en/docs/commerce-merchant-services/live-search/install#install-the-live-search-beta) in the merchant documentation.
 
@@ -190,7 +197,7 @@ filter: [
 
 ##### contains condition example
 
-The following example shows how you can search the "manufacturer" product attribute using a `contains` value of "auto".
+The following example shows how you can search the "manufacturer" product attribute using a `contains` value of "auto". The result of this query would match manufacturers named "ABC Auto Company" and "ABCauto" for example.
 
 ```graphql
 filter: [  
@@ -293,6 +300,7 @@ The beta has the following limitations:
 - You can specify a maximum of 6 attributes to search using `startsWith` or `contains`.
 - Each aggregation returns a maximum of 1000 facets.
 - You can paginate a maximum of 10,000 products for any `productSearch` query.
+- These new search capabilities are not available in PLP widgets or the Live Search adapter extension.
 
 For additional Live Search boundaries and limits, see [boundaries and limits](https://experienceleague.adobe.com/en/docs/commerce-merchant-services/live-search/boundaries-limits) in the Live Search merchant guide.
 
@@ -1287,8 +1295,8 @@ Field | Data Type | Description
 `eq` | String | A string value to filter on
 `in` | [String] | An array of string values to filter on
 `range` | [SearchRangeInput](#searchrangeinput-data-type) | A range of numeric values to filter on
-`contains` | 
-`startsWith` | 
+`contains` | String | A string that searches for products containing specific attribute values
+`startsWith` | String | A string that searches for products where the attribute value starts with a particular string
 
 ### SearchRangeInput data type
 
