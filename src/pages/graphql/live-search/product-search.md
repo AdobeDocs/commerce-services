@@ -166,17 +166,23 @@ Use the [`attributeMetadata` query](./attribute-metadata.md) to return a list of
 
 This feature is in beta.
 
-This beta supports two new capabilities:
+This beta supports three new capabilities:
 
 - **Layered search** - Ability to search within another search context. With this capability, you can undertake up to two layers of search for your search queries. For example:
   
   - **Layer 1 search** - Search for "motor" on "product_attribute_1".
   - **Layer 2 search** - Search for "part number 123" on "product_attribute_2". In this example, "part number 123" is searched for within the results for "motor".
 
+Layered search is available for both `startsWith` search indexation and `contains` search indexation as described below:
+
 - **startsWith search indexation** - Ability to search using `startsWith` indexation. This new capability allows:
 
   - Shoppers to search for products where the attribute value starts with a particular string.
-  - Merchants to configure an ends with search so shoppers can search for products where the attribute value ends with a particular string. To enable an ends with search, the product attribute needs to be ingested in reverse and the API call should also be a reversed string.
+  - Merchants to configure an "ends with" search so shoppers can search for products where the attribute value ends with a particular string. To enable an "ends with" search, the product attribute needs to be ingested in reverse and the API call should also be a reversed string.
+
+- **contains search indexation** - Ability to search an attribute using contains indexation. This new capability allows:
+
+    - Shoppers to search for a query within a larger string. For example, a shopper searches for the product number "PE-123" in the string "HAPE-123". Note: this search type is different from the existing [phrase search](https://developer.adobe.com/commerce/services/graphql/live-search/product-search/#phrase) as the phrase search does an autocomplete search. For example, given a product attribute with a value of "outdoor pants", a phrase search returns a search response for the phrase "out pan", but does not return a response for "oor ants". Contains search, however, does return a response for "oor ants".
 
 Refer to the following examples to learn how to implement these new search capabilities in your Live Search API.
 
@@ -297,8 +303,11 @@ productSearch(
 
 The beta has the following limitations:
 
-- You can specify a maximum of 6 attributes to search using `startsWith` or `contains`.
+- You can specify a maximum of six attributes to be enabled for **Contains** and six attributes to be enabled for **Starts with**.
 - Each aggregation returns a maximum of 1000 facets.
+- `startsWith` and `contains` both require a minimum of two characters in the search.
+- `startsWith` allows a maximum of 10 characters for search.
+- `contains` allows a maximum of 10 characters for search in the API query and up to the first 50 characters are indexed for a true `contains` search. However, if more than 10 characters are passed in, the search results are returned for an autocomplete search result and not a true `contains` search. In this situation, the autocomplete search is enabled on the entire attribute string and not just the first 50 characters.
 - You can paginate a maximum of 10,000 products for any `productSearch` query.
 - These new search capabilities are not available in PLP widgets or the Live Search adapter extension.
 
