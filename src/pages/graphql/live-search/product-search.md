@@ -168,21 +168,23 @@ This feature is in beta.
 
 This beta supports three new capabilities:
 
-- **Layered search** - Ability to search within another search context. With this capability, you can undertake up to two layers of search for your search queries. For example:
+- **Layered search** - Search within another search context - With this capability, you can undertake up to two layers of search for your search queries. For example:
   
   - **Layer 1 search** - Search for "motor" on "product_attribute_1".
-  - **Layer 2 search** - Search for "part number 123" on "product_attribute_2". In this example, "part number 123" is searched for within the results for "motor".
+  - **Layer 2 search** - Search for "part number 123" on "product_attribute_2". This example searches for "part number 123" within the results for "motor".
 
-Layered search is available for both `startsWith` search indexation and `contains` search indexation as described below:
+  Layered search is available for both `startsWith` search indexation and `contains` search indexation as described below:
 
-- **startsWith search indexation** - Ability to search using `startsWith` indexation. This new capability allows:
+- **startsWith search indexation** - Search using `startsWith` indexation. This new capability allows:
 
-  - Shoppers to search for products where the attribute value starts with a particular string.
-  - Merchants to configure an "ends with" search so shoppers can search for products where the attribute value ends with a particular string. To enable an "ends with" search, the product attribute needs to be ingested in reverse and the API call should also be a reversed string.
+  - Searching for products where the attribute value starts with a particular string.
+  - Configuring an "ends with" search so shoppers can search for products where the attribute value ends with a particular string. To enable an "ends with" search, the product attribute needs to be ingested in reverse and the API call should also be a reversed string.
 
-- **contains search indexation** - Ability to search an attribute using contains indexation. This new capability allows:
+- **contains search indexation** -Search an attribute using contains indexation. This new capability allows:
 
-    - Shoppers to search for a query within a larger string. For example, a shopper searches for the product number "PE-123" in the string "HAPE-123". Note: this search type is different from the existing [phrase search](https://developer.adobe.com/commerce/services/graphql/live-search/product-search/#phrase) as the phrase search does an autocomplete search. For example, given a product attribute with a value of "outdoor pants", a phrase search returns a search response for the phrase "out pan", but does not return a response for "oor ants". Contains search, however, does return a response for "oor ants".
+    - Searching for a query within a larger string. For example, if a shopper searches for the product number "PE-123" in the string "HAPE-123".
+
+        - Note: This search type is different from the existing [phrase search](https://developer.adobe.com/commerce/services/graphql/live-search/product-search/#phrase), which performs an autocomplete search. For example, if your product attribute value is "outdoor pants", a phrase search returns a response for "out pan", but does not return a response for "oor ants". A contains search, however, does return a response for "oor ants".
 
 Refer to the following examples to learn how to implement these new search capabilities in your Live Search API.
 
