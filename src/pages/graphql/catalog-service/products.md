@@ -67,6 +67,8 @@ The [Commerce API playground](https://experienceleague.adobe.com/developer/comme
 
 The following query returns details about a simple product.
 
+<CodeBlock slots="heading, code" repeat="2" languages="JSON" />
+
 **Request:**
 
 ```graphql
@@ -394,6 +396,8 @@ query {
 ### Return details about a complex product
 
 The following query returns details about a complex product.
+
+<CodeBlock slots="heading, code" repeat="2" languages="JSON" />
 
 **Request:**
 
