@@ -164,7 +164,7 @@ Use the [`attributeMetadata` query](./attribute-metadata.md) to return a list of
 
 <InlineAlert variant="info" slots="text"/>
 
-This feature is in beta.
+This feature is in beta. For installation information, see the [Live Search guide](https://experienceleague.adobe.com/en/docs/commerce-merchant-services/live-search/install#install-the-live-search-beta) in the merchant documentation.
 
 This beta supports three new capabilities:
 
@@ -187,8 +187,6 @@ This beta supports three new capabilities:
         - Note: This search type is different from the existing [phrase search](https://developer.adobe.com/commerce/services/graphql/live-search/product-search/#phrase), which performs an autocomplete search. For example, if your product attribute value is "outdoor pants", a phrase search returns a response for "out pan", but does not return a response for "oor ants". A contains search, however, does return a response for "oor ants".
 
 Refer to the following examples to learn how to implement these new search capabilities in your Live Search API.
-
-For installation information, see the [Live Search guide](https://experienceleague.adobe.com/en/docs/commerce-merchant-services/live-search/install#install-the-live-search-beta) in the merchant documentation.
 
 ##### startsWith condition example
 
