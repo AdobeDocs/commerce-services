@@ -54,6 +54,8 @@ import CustomerGroupCode from '/src/_includes/graphql/customer-group-code.md'
 
 The following query returns a category tree.
 
+<CodeBlock slots="heading, code" repeat="2" languages="JSON" />
+
 **Request:**
 
 ```graphql
