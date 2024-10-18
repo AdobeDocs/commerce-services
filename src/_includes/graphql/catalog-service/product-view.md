@@ -10,6 +10,7 @@ Field | Data Type | Description
 `images(roles: [String])` | [`[ProductViewImage]`](#productviewimage-type`) | A list of images defined for the product.
 `inputOptions` | [`[ProductViewInputOption]`](#productviewinputoption-type) | A list of input options the shopper can supply to customize a product.
 `inStock` | Boolean | Indicates whether the product is in stock.
+`lastModifiedAt` | DateTime | Date and time when the product was last updated.
 `links(linkTypes: [String!])` | [`[ProductViewLink]`](#productviewlink-type) | A list of product links.
 `lowStock` | Boolean | Indicates whether the product stock is low.
 `metaDescription` | String | A brief overview of the product for search results listings.
@@ -47,6 +48,7 @@ Field | Data Type | Description
 `sku` | String | Product SKU.
 `url` | String | Canonical URL of the product.
 `urlKey` | String | URL key of the product.
+`videos` | `[ProductViewVideo]`(#productviewvideo-type) | A list of videos linked to the product.
 
 ### Price type
 
@@ -215,6 +217,14 @@ Field | Data Type | Description
 --- | --- | ---
 `maximum` | ProductViewPrice | Maximum price.
 `minimum` | ProductViewPrice | Minimum price.
+
+### ProductViewVideo type
+
+Field | Data Type | Description
+--- | --- | ---
+`url` | String | The URL to link to the product video.
+`description` | String | Description of the product video.
+`title` | String | Title of the product video.
 
 ### SimpleProductView type
 
