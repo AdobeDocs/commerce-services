@@ -27,6 +27,24 @@ module.exports = [
     {
       title: "Storefront Services",
       path: "/graphql/",
+      menu: [
+                {
+          title: "Introduction",
+          path: "/graphql/"
+        },
+        {
+          title: "Catalog Service",
+          path: "/catalog-service/"
+        },
+        {
+          title: "Live Search",
+          path: "/live-search/"
+        },
+        {
+          title: "Product Recommendations",
+          path: "/recommendations/"
+        },
+      ]
     },
     {
       title: "Events",

@@ -1,6 +1,6 @@
 module.exports = [
   {
-    title: "Composable Catalog Data",
+    title: "Composable Catalog",
     path: "/composable-catalog/",
     pages: [
         {
