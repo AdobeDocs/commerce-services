@@ -5,7 +5,8 @@ description: Get information about using the REST API endpoints and operations p
 keywords:
   - REST
   - Services
-  - Products
+  - Backend Development
+  - Performance
 ---
 
 # Data Ingestion API Reference

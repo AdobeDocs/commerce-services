@@ -3,9 +3,11 @@ title: Data Ingestion API
 edition: ee
 description: Learn how to use the Data Ingestion GraphQL API to add and manage product data using the composable catalog data model.
 keywords:
-  - GraphQL
+keywords:
+  - REST
   - Services
-  - Products
+  - Backend Development
+  - Performance
 ---
 
 # Data Ingestion API
@@ -23,7 +25,7 @@ The Data Ingestion API is implemented as a REST (Representational State Transfer
 
 ## API reference
 
-Send all Data Ingestion API requests to the `https://commerce.adobe.io/feeds` endpoint. For details about using the API, see [API Reference](data-ingestion.md)
+Send all Data Ingestion API requests to the `https://commerce.adobe.io/feeds` endpoint. For details about using the API, see [API Reference](./api-references/index.md)
 
 ### Headers
 

@@ -1,7 +1,16 @@
 ---
 title: Composable Catalog Data Model
 edition: ee
-description: Backend developers learn about the composable catalog data model APIs available to create and manage catalog data, create and manage catalogs for multiple channels and regions, and configure merchandising capabilities. Frontend developers learn about the APIs to send catalog data to storefront services and use it to develop commerce storefront applications.
+description: Learn about the composable catalog data model APIs available to implement large, complex catalogs and integrate with storefront services to create optimized, highly performant ecommerce experiences.
+keywords:
+  - GraphQL
+  - REST
+  - Services
+  - Backend Development
+  - Search
+  - Recommendations
+  - Integration
+  - Storefront
 ---
 
 # Composable catalog data model overview

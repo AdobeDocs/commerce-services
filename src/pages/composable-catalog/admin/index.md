@@ -1,12 +1,13 @@
 ---
 title: Catalog administration APIs
 edition: ee
-description: Learn how to use the Catalog administration APIs to add and manage product data, configure live search and product recommendations and associated rules for product merchandising.
+description: Learn about using the Catalog administration APIs to manage product data and to configure live search and product recommendations and associated rules.
 
 keywords:
   - GraphQL
   - Services
-  - Products
+  - Backend development
+  - Configuration
 ---
 
 # Catalog administration APIs
