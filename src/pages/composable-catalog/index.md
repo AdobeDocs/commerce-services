@@ -1,7 +1,7 @@
 ---
 title: Composable Catalog Data Model
 edition: ee
-description: Learn about the composable catalog data model APIs available to implement large, complex catalogs and integrate with storefront services to create optimized, highly performant ecommerce experiences.
+description: Use the composable catalog data model to implement large, complex catalogs and integrate with storefront services to deliver highly performant, optimized ecommerce experiences.
 keywords:
   - GraphQL
   - REST

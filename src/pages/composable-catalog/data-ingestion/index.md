@@ -3,7 +3,6 @@ title: Data Ingestion API
 edition: ee
 description: Learn how to use the Data Ingestion GraphQL API to add and manage product data using the composable catalog data model.
 keywords:
-keywords:
   - REST
   - Services
   - Backend Development

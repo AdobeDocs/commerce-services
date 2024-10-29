@@ -6,7 +6,6 @@ keywords:
   - GraphQL
   - REST
   - Services
-  - Reference
 ---
 
 # API Reference
