@@ -4,6 +4,31 @@ module.exports = [
       path: "/",
     },
     {
+      title: "Composable Catalog",
+      menu: [
+                {
+          title: "Getting Started",
+          path: "/composable-catalog/"
+        },
+        {
+          title: "Data ingestion",
+          path: "/composable-catalog/data-ingestion/"
+        },
+        {
+          title: "Catalog management",
+          path: "/composable-catalog/admin/"
+        },
+        {
+          title: "Storefront integration",
+          path: "/composable-catalog/storefront-integration/"
+        },
+      ]
+    },
+    {
+      title: "Storefront Services",
+      path: "/graphql/",
+    },
+    {
       title: "Events",
       menu: [
         {
@@ -15,14 +40,6 @@ module.exports = [
           path: "/live-search/"
         }
       ]
-    },
-    {
-      title: "Reporting",
-      path: "/reporting/",
-    },
-    {
-      title: "GraphQL",
-      path: "/graphql/",
     },
     {
       title: "SDKs",
@@ -37,4 +54,8 @@ module.exports = [
         }
       ]
     },
+    {
+      title: "Reporting",
+      path: "/reporting/"
+   }
   ];
