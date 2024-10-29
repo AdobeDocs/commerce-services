@@ -19,8 +19,8 @@ module.exports = [
           path: "/composable-catalog/admin/"
         },
         {
-          title: "Storefront integration APIs",
-          path: "/composable-catalog/storefront-integration/"
+          title: "Storefront services APIs",
+          path: "/composable-catalog/storefront-services/"
         },
       ]
     },
