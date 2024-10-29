@@ -6,7 +6,7 @@ module.exports = [
     {
       title: "Composable Catalog",
       menu: [
-                {
+        {
           title: "Getting Started",
           path: "/composable-catalog/"
         },
@@ -26,24 +26,23 @@ module.exports = [
     },
     {
       title: "Storefront Services",
-      path: "/graphql/",
       menu: [
-                {
+        {
           title: "Introduction",
           path: "/graphql/"
         },
         {
           title: "Catalog Service",
-          path: "/catalog-service/"
+          path: "/graphql/catalog-service/"
         },
         {
           title: "Live Search",
-          path: "/live-search/"
+          path: "/graphql/live-search/"
         },
         {
           title: "Product Recommendations",
-          path: "/recommendations/"
-        },
+          path: "/graphql/recommendations/"
+        }
       ]
     },
     {
