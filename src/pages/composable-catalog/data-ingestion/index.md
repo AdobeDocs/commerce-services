@@ -1,5 +1,5 @@
 ---
-title: Data Ingestion
+title: Data Ingestion API
 edition: ee
 description: Learn how to use the Data Ingestion GraphQL API to add and manage product data using the composable catalog data model.
 keywords:
@@ -10,11 +10,16 @@ keywords:
 
 # Data Ingestion API
 
-The Adobe Commerce Data Ingestion API allows you to sync your catalog data straight to the Adobe Commerce services platform, bypassing the need to go through your Commerce instance, saving time and processing power.
-
-The Data Ingestion API allows customers with large or complex catalogs to send data to Adobe Commerce services directly.
+Developers setting up catalogs for merchants with large or complex product assortments use the Data Ingestion API to send catalog data to Commerce storefront services directly, bypassing the need to go through an Adobe Commerce instance, saving time and processing power.
 
 This direct connection decreases the time that it takes to process product changes because it bypasses the Adobe Commerce instance and moves catalog data from a third-party Enterprise Resource Planning (ERP) directly to Adobe Commerce services.
+
+The Data Ingestion API is implemented as a REST (Representational State Transfer) API endpoint to manage the following types of data.
+
+- Products <-- what is product?, how to create product
+- Product Variants <--what is variant, how to create product variants
+- Product Metadata <-- what client can manage, how to extend?
+- PriceBooks and Prices <-- what is price, how price connected to products, what is price book
 
 ## API reference
 

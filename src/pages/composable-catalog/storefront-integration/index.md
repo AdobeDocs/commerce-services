@@ -8,7 +8,7 @@ keywords:
   - Storefront
 ---
 
-# Storefront integration
+# Storefront integration APIs
 
 Frontend developers can use the storefront integration APIs to create commerce storefront experiences using the product data from the central data store configured on the backend. The Storefront integration APIs are implemented as a GraphQL (Graph Query Language) endpoint to retrieve the following types of data.
 

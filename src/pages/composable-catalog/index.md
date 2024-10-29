@@ -14,33 +14,6 @@ Developers can use composable catalog data model APIs to:
 - Configure distribution channels and locales to filter products into custom catalogs with customer-specific pricing and regional settings for language, currency, and units of measure.
 - Configure merchandising capabilities by setting up rules for search and product recommendations.
 
-## Data Ingestion API
+This guide provides API reference and usage information for developers and commerce site administrators responsible for storefront development, maintenance, and operations. For information about the composable catalog data model architecture and implementation, see the Composable Catalog Data Model user guide in _Experience League_.
 
-Developers setting up ecommerce catalogs use the Data Ingestion API to add and manage product data available for creating product catalogs. The Data Ingestion API is implemented as a REST (Representational State Transfer) API endpoint to manage the following types of data.
-
-- Products <-- what is product?, how to create product
-- Product Variants <--what is variant, how to create product variants
-- Product Metadata <-- what client can manage, how to extend?
-- PriceBooks and Prices <-- what is price, how price connected to products, what is price book
-
-### Catalog Management Admin APIs
-
-Developers creating ecommerce sites to sell to various businesses can use the Catalog Management Admin APIs to setup, configure, and manage catalogs and catalog tools for product discovery and merchandising. The Catalog Management APIs are implemented as a GraphQL (Graph Query Language) endpoint to manage the following types of data.
-
-- Channels (Scoping Service) - Schema - <-- what is channel ? examples
-- Policies (Scoping Service) - Schema - <-- what is policy? examples
-- Live Search Configuration (Search Admin Service) - Schema
-- Product Recommendations Configuration (Recommendations Admin Service) - Schema TBD
-- Merchandising configuration for search and recommendation rules
-
-## Storefront Integration APIs
-
-Frontend developers can use the Discovery APIs to create commerce storefronts using the product data from the central data store configured on the backend. The Catalog Management APIs are implemented as a GraphQL (Graph Query Language) endpoint to retrieve the following types of data.
-
-- Product Search query - <-- consolidated search api overview
-- Search metadata query - <-- supplementary search api (storefront)
-- Product Recommendations query -  <-- consolidated p-rex api overview
-- Product Query and Product View model - <-- what is product view
-- Simple Product View  <-- what is simple product view?
-- Complex Product View <-- what is complex product view? key differences between Complex and Simple
-- Refine Complex Product - how client can interact with options, consolidated api overview
+## Getting started

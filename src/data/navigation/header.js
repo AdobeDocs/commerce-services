@@ -11,15 +11,15 @@ module.exports = [
           path: "/composable-catalog/"
         },
         {
-          title: "Data ingestion",
+          title: "Data ingestion API",
           path: "/composable-catalog/data-ingestion/"
         },
         {
-          title: "Catalog management",
+          title: "Catalog administration APIs",
           path: "/composable-catalog/admin/"
         },
         {
-          title: "Storefront integration",
+          title: "Storefront integration APIs",
           path: "/composable-catalog/storefront-integration/"
         },
       ]
