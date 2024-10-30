@@ -29,7 +29,7 @@ This module requires Magento 2.3 or later.
     composer require magento/saas-export
     ```
 
-1. Follow the steps [here](https://devdocs.magento.com/extensions/install/#verify-the-extension) to verify and enable the module.
+1. Follow the steps [here](https://experienceleague.adobe.com/en/docs/commerce-operations/installation-guide/tutorials/extensions#verify-the-extension) to verify and enable the module.
 
 ## To Configure the Catalog SaaS Export Module using API Keys:
 
