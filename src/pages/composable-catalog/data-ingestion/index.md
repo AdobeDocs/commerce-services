@@ -24,7 +24,7 @@ The Data Ingestion API is implemented as a REST (Representational State Transfer
 
 ## API reference
 
-Send all Data Ingestion API requests to the `https://commerce.adobe.io/feeds` endpoint. For details about using the API, see [API Reference](./api-references/index.md)
+Send all Data Ingestion API requests to the `https://commerce.adobe.io/feeds` endpoint. For details about using the API, see [API Reference](../api-references/index.md)
 
 ### Headers
 
@@ -57,14 +57,15 @@ curl --location 'https://commerce.adobe.io/feeds/<API_ENDPOINT>/<DATA_SPACE_ID>'
 | Placeholder name | Description                                                                                                     |
 |------------------|-----------------------------------------------------------------------------------------------------------------|
 | API_ENDPOINT     | API endpoint retrieved from API reference for specific Data Ingestion API, for example: `metadata/v2/metadata`  |
-| DATA_SPACE_ID    | Data Space ID obtained in [this section](#register-saas-project)                                                |
-| API_KEY          | API_KEY obtained in [this section](#register-tenant-api-keys)                                                   |
-| JWT_TOKEN        | JWT token obtained in [this section](#obtain-a-jwt-token-for-your-request)                                      |
+| DATA_SPACE_ID    | Data Space ID obtained in this section.                                                |
+| API_KEY          | API_KEY obtained in this section.                                               |
+| JWT_TOKEN        | JWT token obtained in this section.                                     |
 | API_PAYLOAD      | API payload see in examples below                                                                               |
 
 ### Define product attributes and their characteristics
 
-API Reference: [Product Attributes Metadata API](./data-ingestion/data-ingestion/#tag/metadata/operation/PostV2ProductMetadata)
+API Reference: Product Attributes Metadata API <!--insert link-->
+
 API Payload:
 
 ```json

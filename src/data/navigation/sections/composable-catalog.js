@@ -8,12 +8,12 @@ module.exports = [
             path: "/composable-catalog/data-ingestion/",
         },
         {
-            title: "Catalog administration APIs",
+            title: "Catalog management APIs",
             path: "composable-catalog/admin/",
         },
         {
-            title: "Store services APIs",
-            path: "composable-catalog/storefront-integration/",
+            title: "Storefront APIs",
+            path: "composable-catalog/storefront/",
         },
         {
             title: "API References",

@@ -15,7 +15,7 @@ keywords:
 
 ## Endpoint
 
-Send all Data Ingestion API requests to the `https://commerce.adobe.io/feeds` endpoint. For details about using the API, see [API Reference](data-ingestion.md)
+Send all Data Ingestion API requests to the `https://commerce.adobe.io/feeds` endpoint. For details about using the API, see API Reference<!--Add link reference when available-->
 
 ## Headers
 
@@ -32,4 +32,4 @@ Headers list should be present in each Data Ingestion API call
 
 Insert the auto-generated REST API reference.
 
-Send all Data Ingestion API requests to the `https://commerce.adobe.io/feeds` endpoint. For details about using the API, see [API Reference](data-ingestion.md)
+Send all Data Ingestion API requests to the `https://commerce.adobe.io/feeds` endpoint. For details about using the API, see API Reference <!--Insert link when available-->
