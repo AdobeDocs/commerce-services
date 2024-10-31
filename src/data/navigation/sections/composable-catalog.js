@@ -1,18 +1,18 @@
 module.exports = [
   {
-    title: "Composable Catalog",
+    title: "Catalog Data Model",
     path: "/composable-catalog/",
     pages: [
         {
-            title: "Data ingestion APIs",
+            title: "Data ingestion API",
             path: "/composable-catalog/data-ingestion/",
         },
         {
-            title: "Catalog management APIs",
+            title: "Catalog management API",
             path: "composable-catalog/admin/",
         },
         {
-            title: "Storefront APIs",
+            title: "Merchandising API",
             path: "composable-catalog/storefront/",
         },
         {

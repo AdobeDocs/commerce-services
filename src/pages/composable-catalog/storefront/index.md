@@ -9,7 +9,7 @@ keywords:
   - Storefront
 ---
 
-# Storefront APIs
+# Merchandising API
 
 Frontend developers can use the storefront APIs to create commerce storefront experiences using the catalog data configured on the backend. The storefront APIs are implemented as a GraphQL (Graph Query Language) endpoint to retrieve the following types of data.
 

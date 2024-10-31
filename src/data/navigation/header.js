@@ -4,7 +4,7 @@ module.exports = [
       path: "/",
     },
     {
-      title: "Composable Catalog",
+      title: "Catalog Data Model",
       menu: [
         {
           title: "Getting Started",
@@ -15,11 +15,11 @@ module.exports = [
           path: "/composable-catalog/data-ingestion/"
         },
         {
-          title: "Catalog management APIs",
+          title: "Catalog management API",
           path: "/composable-catalog/admin/"
         },
         {
-          title: "Storefront APIs",
+          title: "Merchandising API",
           path: "/composable-catalog/storefront/"
         },
       ]
