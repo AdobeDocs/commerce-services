@@ -169,14 +169,13 @@ paths:
             application/json;charset=UTF-8:
               schema:
                 $ref: '#/components/schemas/403Response'
-  /v2/products/{DATA_SPACE_ID}:
-    post:
+  /api/v1/catalog/products/{DATA_SPACE_ID}:
+    put:
       tags:
         - products
       summary: Product Feed API
       description: >
-        Create a new Product entity in given `sku` and `scopes`. If product exists for the same SKU and scopes item will be ignored.
-        Suitable only for onboarding phase
+        Create a new or replace existing Product entity in given `sku` and `scopes`. If product with same data exists for the same SKU and scopes item will be ignored.
       operationId: ProductsPost
       parameters:
         - $ref: '#/components/parameters/DATA_SPACE_ID'
@@ -206,56 +205,95 @@ paths:
                   [
                     {
                       "sku": "red-pants",
-                      "scopes": {
-                        "locale": "English"
+                      "scope": {
+                        "locale": "en"
                       },
-                      "name": "Red pants",
-                      "slug": "red-pants",
-                      "status": "Enabled",
-                      "roles": [ "Catalog" ],
-                      "description": "This is a product description.",
-                      "shortDescription": "This is a short product description.",
-                      "metaAttributes": {
-                        "title": "Product Title",
-                        "keywords": "Product, Sale",
-                        "description": "This is a product of Red Pants!."
+                      "name": "red pants",
+                      "slug": "red-pants.html",
+                      "status": "ENABLED",
+                      "description": "long description about red pants",
+                      "shortDescription": "just pants",
+                      "roles": [
+                        "SEARCH",
+                        "CATALOG"
+                      ],
+                      "metaTags": {
+                        "title": " ",
+                        "description": "some seo stuff",
+                        "keywords": [
+                          "pants",
+                          "seo",
+                          "words"
+                        ]
                       },
                       "attributes": [
                         {
-                          "code": "color",
-                          "type": "STRING",
-                          "value": [ "Red" ]
+                          "code": "cost",
+                          "type": "NUMBER",
+                          "values": [
+                            "10.5"
+                          ]
                         },
                         {
-                          "code": "dealer",
+                          "code": "states",
                           "type": "ARRAY",
-                          "value": [ "dealer1", "dealer2", "dealer3" ]
+                          "values": [
+                            "TX",
+                            "CA",
+                            "NV"
+                          ]
                         }
                       ],
                       "images": [
                         {
-                          "url": "https://example.com/product-123.jpg",
-                          "label": "Product Image",
-                          "roles": [ "image" ]
+                          "url": "https://example.com",
+                          "label": "photo of my pants!",
+                          "roles": [
+                            "PDP",
+                            "plp"
+                          ]
                         }
                       ],
-                      "links": [],
+                      "links": [
+                        {
+                          "sku": "green-pants",
+                          "type": "related"
+                        }
+                      ],
                       "routes": [
                         {
-                          "path": "/products/product-123",
+                          "path": "red-pants"
+                        },
+                        {
+                          "path": "pants/red-pants",
                           "position": 1
                         }
                       ],
-                      "options": [],
-                      "createdAt": "2023-06-29 22:23:49",
-                      "modifiedAt": "2023-06-29 22:30:19"
-                    }
+                      "options": [
+                        {
+                          "id": "ABCDEFGHIJKLMNOPQRSTUVWXYZAB",
+                          "type": "SWATCH",
+                          "values": [
+                            {
+                              "id": "value-id",
+                              "sku": "produc1",
+                              "label": "value label",
+                              "colorHex": "#000000",
+                              "imageUrl": "https://example.com/image.png"
+                            }
+                          ],
+                          "label": "option label",
+                          "required": true,
+                          "defaultValueId": "no"
+                        }
+                      ]
+                    },
                   ]
-    put:
+    patch:
       tags:
         - products
       summary: Product Feed API
-      description: Replace Product entity for given `sku` and `scopes`
+      description: Update Product entity for given `sku` and `scopes`
       operationId: ProductsPut
       parameters:
         - $ref: '#/components/parameters/DATA_SPACE_ID'
@@ -279,561 +317,94 @@ paths:
                 $ref: '#/components/schemas/FeedProduct'
             examples:
               SimpleProductWithImages:
-                summary: Simple Product with images
-                description: Simple Product with images
+                summary: Update simple Product with images
+                description: Update simple Product with images
                 value:
                   [
                     {
                       "sku": "red-pants",
-                      "scopes": {
-                        "locale": "English"
+                      "scope": {
+                        "locale": "en"
                       },
-                      "name": "Red pants",
-                      "slug": "red-pants",
-                      "status": "Enabled",
-                      "roles": [ "Catalog" ],
-                      "description": "This is a product description.",
-                      "shortDescription": "This is a short product description.",
-                      "metaAttributes": {
-                        "title": "Product Title",
-                        "keywords": "Product, Sale",
-                        "description": "This is a product of Red Pants!."
+                      "name": "Updated - red pants",
+                      "slug": "updated - red-pants.html",
+                      "status": "DISABLED",
+                      "description": "Updated - long description about red pants",
+                      "shortDescription": "Updated - just pants",
+                      "roles": [
+                        "SEARCH"
+                      ],
+                      "metaTags": {
+                        "title": "Updated - Red",
+                        "description": "Updated - some seo stuff",
+                        "keywords": [
+                          "updated - pants",
+                          "updated - edited",
+                          "updated - edited"
+                        ]
                       },
                       "attributes": [
                         {
-                          "code": "color",
-                          "type": "STRING",
-                          "value": [ "Red" ]
+                          "code": "cost",
+                          "type": "NUMBER",
+                          "values": [
+                            "11.5"
+                          ]
                         },
                         {
-                          "code": "dealer",
+                          "code": "states",
                           "type": "ARRAY",
-                          "value": [ "dealer1", "dealer2", "dealer3" ]
+                          "values": [
+                            "TX",
+                            "CA",
+                            "OK",
+                            "HI"
+                          ]
                         }
                       ],
                       "images": [
                         {
-                          "url": "https://example.com/product-123.jpg",
-                          "label": "Product Image",
-                          "roles": [ "image" ]
+                          "url": "https://example.com",
+                          "label": "updated - photo of my pants!",
+                          "roles": [
+                            "PDP",
+                            "plp"
+                          ]
                         }
                       ],
-                      "links": [],
+                      "links": [
+                        {
+                          "sku": "gray-pants",
+                          "type": "related"
+                        }
+                      ],
                       "routes": [
                         {
-                          "path": "/products/product-123",
+                          "path": "updated-red-pants"
+                        },
+                        {
+                          "path": "updated-pants/red-pants",
                           "position": 1
                         }
                       ],
-                      "options": [],
-                      "createdAt": "2023-06-29 22:23:49",
-                      "modifiedAt": "2023-06-29 22:30:19"
-                    }
-                  ]
-    #              ConfigurableProduct:
-    #                description: Create a configurable product with 4 variants (2 attributes with 2 options each)
-    #                value:
-    #                  [
-    #                    {
-    #                      "sku": "Configurable Product",
-    #                      "websiteCode": "us",
-    #                      "storeCode": "us",
-    #                      "storeViewCode": "us_en",
-    #                      "name": "Configurable Product",
-    #                      "productId": 705,
-    #                      "type": "configurable",
-    #                      "metaDescription": "Configurable Product ",
-    #                      "metaKeyword": "Configurable Product",
-    #                      "metaTitle": "Configurable Product",
-    #                      "status": "Enabled",
-    #                      "taxClassId": "Taxable Goods",
-    #                      "createdAt": "2023-06-22 20:27:00",
-    #                      "updatedAt": "2023-06-22 20:27:19",
-    #                      "urlKey": "lp-configurable-product",
-    #                      "visibility": "Catalog, Search",
-    #                      "weightUnit": null,
-    #                      "currency": "USD",
-    #                      "buyable": true,
-    #                      "attributes": null,
-    #                      "categoryData": [
-    #                        {
-    #                          "categoryId": "3",
-    #                          "categoryPath": "demoCategory",
-    #                          "productPosition": 0
-    #                        }
-    #                      ],
-    #                      "optionsV2": [
-    #                        {
-    #                          "id": "color",
-    #                          "label": "Color",
-    #                          "sortOrder": 0,
-    #                          "type": "configurable",
-    #                          "values": [
-    #                            {
-    #                              "id": "Y29uZmlndXJhYmxlLzI3OS80Mg==",
-    #                              "label": "Red"
-    #                            },
-    #                            {
-    #                              "id": "Y29uZmlndXJhYmxlLzI3OS80NQ==",
-    #                              "label": "Green"
-    #                            }
-    #                          ]
-    #                        },
-    #                        {
-    #                          "id": "size",
-    #                          "label": "Size",
-    #                          "sortOrder": 1,
-    #                          "type": "configurable",
-    #                          "values": [
-    #                            {
-    #                              "id": "Y29uZmlndXJhYmxlLzUzNy80OA==",
-    #                              "label": "S"
-    #                            },
-    #                            {
-    #                              "id": "Y29uZmlndXJhYmxlLzUzNy81NA==",
-    #                              "label": "L"
-    #                            }
-    #                          ]
-    #                        }
-    #                      ],
-    #                      "inStock": true,
-    #                      "lowStock": false,
-    #                      "variants": [
-    #                        {
-    #                          "sku": "Configurable Product-Red-L"
-    #                        },
-    #                        {
-    #                          "sku": "Configurable Product-Red-S"
-    #                        },
-    #                        {
-    #                          "sku": "Configurable Product-Green-L"
-    #                        },
-    #                        {
-    #                          "sku": "Configurable Product-Green-S"
-    #                        }
-    #                      ],
-    #                      "parents": null,
-    #                      "url": "https://example.com/default/lp-configurable-product.html",
-    #                      #                      "urlRewrites": [
-    #                      #                        {
-    #                      #                          "url": "https://example.com/lp-configurable-product.html",
-    #                      #                          "parameters": [
-    #                      #                            {
-    #                      #                              "name": "id",
-    #                      #                              "value": "705"
-    #                      #                            }
-    #                      #                          ]
-    #                      #                        }
-    #                      #                      ],
-    #                      "modifiedAt": "2023-07-21 23:00:38"
-    #                    },
-    #                    {
-    #                      "sku": "Configurable Product-Green-S",
-    #                      "websiteCode": "us",
-    #                      "storeCode": "us",
-    #                      "storeViewCode": "us_en",
-    #                      "name": "Configurable Product-Green-S",
-    #                      "productId": 702,
-    #                      "type": "virtual",
-    #                      "metaDescription": "Configurable Product ",
-    #                      "metaKeyword": "Configurable Product",
-    #                      "metaTitle": "Configurable Product",
-    #                      "status": "Enabled",
-    #                      "taxClassId": "Taxable Goods",
-    #                      "createdAt": "2023-06-22 20:26:59",
-    #                      "updatedAt": "2023-06-22 20:36:50",
-    #                      "urlKey": "lp-configurable-product-green-s",
-    #                      "visibility": "Not Visible Individually",
-    #                      "weightUnit": null,
-    #                      "currency": "USD",
-    #                      "buyable": true,
-    #                      "attributes": [
-    #                        {
-    #                          "attributeCode": "color",
-    #                          "value": [
-    #                            "Green"
-    #                          ]
-    #                            #                          ,
-    #                            #                          "valueId": [
-    #                            #                            "45"
-    #                            #                          ]
-    #                        },
-    #                        {
-    #                          "attributeCode": "size",
-    #                          "value": [
-    #                            "S"
-    #                          ]
-    #                            #                          ,
-    #                            #                          "valueId": [
-    #                            #                            "48"
-    #                            #                          ]
-    #                        }
-    #                      ],
-    #                      "inStock": true,
-    #                      "lowStock": false,
-    #                      "parents": [
-    #                        {
-    #                          "sku": "Configurable Product",
-    #                          "productType": "configurable"
-    #                        }
-    #                      ],
-    #                      "url": "https://example.com/lp-configurable-product-green-s",
-    #                      "urlRewrites": null,
-    #                      "modifiedAt": "2023-07-21 23:00:38"
-    #                    },
-    #                    {
-    #                      "sku": "Configurable Product-Green-L",
-    #                      "websiteCode": "us",
-    #                      "storeCode": "us",
-    #                      "storeViewCode": "us_en",
-    #                      "name": "Configurable Product-Green-L",
-    #                      "productId": 699,
-    #                      "type": "virtual",
-    #                      "metaDescription": "Configurable Product ",
-    #                      "metaKeyword": "Configurable Product",
-    #                      "metaTitle": "Configurable Product",
-    #                      "status": "Enabled",
-    #                      "taxClassId": "Taxable Goods",
-    #                      "createdAt": "2023-06-22 20:26:59",
-    #                      "updatedAt": "2023-06-22 20:33:31",
-    #                      "urlKey": "lp-configurable-product-green-l",
-    #                      "visibility": "Not Visible Individually",
-    #                      "weightUnit": null,
-    #                      "currency": "USD",
-    #                      "buyable": true,
-    #                      "attributes": [
-    #                        {
-    #                          "attributeCode": "color",
-    #                          "value": [
-    #                            "Green"
-    #                          ]
-    #                            #                          ,
-    #                            #                          "valueId": [
-    #                            #                            "45"
-    #                            #                          ]
-    #                        },
-    #                        {
-    #                          "attributeCode": "size",
-    #                          "value": [
-    #                            "L"
-    #                          ]
-    #                            #                          ,
-    #                            #                          "valueId": [
-    #                            #                            "54"
-    #                            #                          ]
-    #                        }
-    #                      ],
-    #                      "inStock": true,
-    #                      "lowStock": false,
-    #                      "parents": [
-    #                        {
-    #                          "sku": "Configurable Product",
-    #                          "productType": "configurable"
-    #                        }
-    #                      ],
-    #                      "url": "https://example.com/lp-configurable-product-green-l/",
-    #                      "urlRewrites": null,
-    #                      "modifiedAt": "2023-07-21 23:00:38"
-    #                    },
-    #                    {
-    #                      "sku": "Configurable Product-Red-S",
-    #                      "websiteCode": "us",
-    #                      "storeCode": "us",
-    #                      "storeViewCode": "us_en",
-    #                      "name": "Configurable Product-Red-S",
-    #                      "productId": 696,
-    #                      "type": "virtual",
-    #                      "metaDescription": "Configurable Product ",
-    #                      "metaKeyword": "Configurable Product",
-    #                      "metaTitle": "Configurable Product",
-    #                      "status": "Enabled",
-    #                      "taxClassId": "Taxable Goods",
-    #                      "createdAt": "2023-06-22 20:26:59",
-    #                      "updatedAt": "2023-06-22 20:34:56",
-    #                      "urlKey": "lp-configurable-product-red-s",
-    #                      "visibility": "Not Visible Individually",
-    #                      "weightUnit": null,
-    #                      "currency": "USD",
-    #                      "buyable": true,
-    #                      "attributes": [
-    #                        {
-    #                          "attributeCode": "color",
-    #                          "value": [
-    #                            "Red"
-    #                          ]
-    #                            #                          ,
-    #                            #                          "valueId": [
-    #                            #                            "42"
-    #                            #                          ]
-    #                        },
-    #                        {
-    #                          "attributeCode": "size",
-    #                          "value": [
-    #                            "S"
-    #                          ]
-    #                            #                          ,
-    #                            #                          "valueId": [
-    #                            #                            "48"
-    #                            #                          ]
-    #                        }
-    #                      ],
-    #                      "inStock": true,
-    #                      "lowStock": false,
-    #                      "parents": [
-    #                        {
-    #                          "sku": "Configurable Product",
-    #                          "productType": "configurable"
-    #                        }
-    #                      ],
-    #                      "url": "https://example.com/lp-configurable-product-red-s",
-    #                      "urlRewrites": null,
-    #                      "modifiedAt": "2023-07-21 23:00:38"
-    #                    },
-    #                    {
-    #                      "sku": "Configurable Product-Red-L",
-    #                      "websiteCode": "us",
-    #                      "storeCode": "us",
-    #                      "storeViewCode": "us_en",
-    #                      "name": "Configurable Product-Red-L",
-    #                      "productId": 693,
-    #                      "type": "virtual",
-    #                      "metaDescription": "Configurable Product ",
-    #                      "metaKeyword": "Configurable Product",
-    #                      "metaTitle": "Configurable Product",
-    #                      "status": "Enabled",
-    #                      "taxClassId": "Taxable Goods",
-    #                      "createdAt": "2023-06-22 20:26:59",
-    #                      "updatedAt": "2023-06-22 20:30:26",
-    #                      "urlKey": "lp-configurable-product-red-l",
-    #                      "visibility": "Not Visible Individually",
-    #                      "weightUnit": null,
-    #                      "currency": "USD",
-    #                      "buyable": true,
-    #                      "attributes": [
-    #                        {
-    #                          "attributeCode": "color",
-    #                          "value": [
-    #                            "Red"
-    #                          ]
-    #                            #                          ,
-    #                            #                          "valueId": [
-    #                            #                            "42"
-    #                            #                          ]
-    #                        },
-    #                        {
-    #                          "attributeCode": "size",
-    #                          "value": [
-    #                            "L"
-    #                          ]
-    #                            #                          ,
-    #                            #                          "valueId": [
-    #                            #                            "54"
-    #                            #                          ]
-    #                        }
-    #                      ],
-    #                      "inStock": true,
-    #                      "lowStock": false,
-    #                      "parents": [
-    #                        {
-    #                          "sku": "Configurable Product",
-    #                          "productType": "configurable"
-    #                        }
-    #                      ],
-    #                      "url": "https://example.com/lp-configurable-product-red-l",
-    #                      "urlRewrites": null,
-    #                      "modifiedAt": "2023-07-21 23:00:37"
-    #                    }
-    #                  ]
-    #              BundleDynamicProduct:
-    #                description: Create a bundle dynamic product with 1 option and 2 selections
-    #                value:
-    #                  [
-    #                    {
-    #                      "sku": "es-bundle-dynamic-1",
-    #                      "websiteCode": "us",
-    #                      "storeCode": "us",
-    #                      "storeViewCode": "us_en",
-    #                      "name": "es-bundle-dynamic-1",
-    #                      "productId": 918,
-    #                      "type": "bundle",
-    #                      "priceView": "price_range",
-    #                      "metaDescription": "es-bundle-dynamic-1 ",
-    #                      "metaKeyword": "es-bundle-dynamic-1",
-    #                      "metaTitle": "es-bundle-dynamic-1",
-    #                      "status": "Enabled",
-    #                      "taxClassId": "Taxable Goods",
-    #                      "createdAt": "2023-07-21 14:22:11",
-    #                      "updatedAt": "2023-07-21 14:22:11",
-    #                      "urlKey": "es-bundle-dynamic-1",
-    #                      "visibility": "Catalog, Search",
-    #                      "weightType": "0",
-    #                      "currency": "USD",
-    #                      "buyable": true,
-    #                      "optionsV2": [
-    #                        {
-    #                          "id": "174",
-    #                          "label": "es-bundle-1",
-    #                          "sortOrder": 1,
-    #                          "required": true,
-    #                          "renderType": "select",
-    #                          "type": "bundle",
-    #                          "values": [
-    #                            {
-    #                              "id": "YnVuZGxlLzE3NC8zODQvMQ==",
-    #                              "label": "es-product-1",
-    #                              "sortOrder": 1,
-    #                              "isDefault": false,
-    #                              "qtyMutability": false,
-    #                              "qty": 1,
-    #                              "sku": "es-product-1",
-    #                              "price": 0,
-    #                              "priceType": "fixed"
-    #                            },
-    #                            {
-    #                              "id": "YnVuZGxlLzE3NC8zODcvMg==",
-    #                              "label": "es-product-2",
-    #                              "sortOrder": 2,
-    #                              "isDefault": false,
-    #                              "qtyMutability": false,
-    #                              "qty": 2,
-    #                              "sku": "es-product-2",
-    #                              "price": 0,
-    #                              "priceType": "fixed"
-    #                            }
-    #                          ]
-    #                        }
-    #                      ],
-    #                      "inStock": true,
-    #                      "lowStock": false,
-    #                      "url": "https://example.com/default/es-bundle-dynamic-1.html",
-    #                      #                      "urlRewrites": [
-    #                      #                          {
-    #                      #                              "url": "https://example.com/es-bundle-dynamic-1.html",
-    #                      #                              "parameters": [
-    #                      #                                  {
-    #                      #                                      "name": "id",
-    #                      #                                      "value": "918"
-    #                      #                                  }
-    #                      #                              ]
-    #                      #                          }
-    #                      #                      ],
-    #                      "modifiedAt": "2023-07-21 14:24:01"
-    #                    },
-    #                    {
-    #                      "sku": "es-product-1",
-    #                      "websiteCode": "us",
-    #                      "storeCode": "us",
-    #                      "storeViewCode": "us_en",
-    #                      "name": "es-product-1",
-    #                      "productId": 912,
-    #                      "type": "simple",
-    #                      "metaDescription": "es-product-1 ",
-    #                      "metaKeyword": "es-product-1",
-    #                      "metaTitle": "es-product-1",
-    #                      "status": "Enabled",
-    #                      "taxClassId": "Taxable Goods",
-    #                      "createdAt": "2023-07-21 14:18:53",
-    #                      "updatedAt": "2023-07-21 14:20:02",
-    #                      "urlKey": "es-product-1",
-    #                      "visibility": "Catalog, Search",
-    #                      "weightUnit": null,
-    #                      "currency": "USD",
-    #                      "buyable": true,
-    #                      "inStock": true,
-    #                      "lowStock": false,
-    #                      "parents": null,
-    #                      "url": "https://example.com/default/es-product-1.html",
-    #                      #                      "urlRewrites": [
-    #                      #                        {
-    #                      #                          "url": "https://example.com/es-product-1.html",
-    #                      #                          "parameters": [
-    #                      #                            {
-    #                      #                              "name": "id",
-    #                      #                              "value": "912"
-    #                      #                            }
-    #                      #                          ]
-    #                      #                        }
-    #                      #                      ],
-    #                      "modifiedAt": "2023-07-21 23:00:38"
-    #                    },
-    #                    {
-    #                      "sku": "es-product-2",
-    #                      "websiteCode": "us",
-    #                      "storeCode": "us",
-    #                      "storeViewCode": "us_en",
-    #                      "name": "es-product-2",
-    #                      "productId": 915,
-    #                      "type": "simple",
-    #                      "metaDescription": "es-product-2 ",
-    #                      "metaKeyword": "es-product-2",
-    #                      "metaTitle": "es-product-2",
-    #                      "status": "Enabled",
-    #                      "taxClassId": "Taxable Goods",
-    #                      "createdAt": "2023-07-21 14:20:44",
-    #                      "updatedAt": "2023-07-21 14:20:44",
-    #                      "urlKey": "es-product-2",
-    #                      "visibility": "Catalog, Search",
-    #                      "weightUnit": null,
-    #                      "currency": "USD",
-    #                      "buyable": true,
-    #                      "inStock": true,
-    #                      "lowStock": false,
-    #                      "parents": null,
-    #                      "url": "https://example.com/default/es-product-2.html",
-    #                      #                      "urlRewrites": [
-    #                      #                        {
-    #                      #                          "url": "https://example.com/es-product-2.html",
-    #                      #                          "parameters": [
-    #                      #                            {
-    #                      #                              "name": "id",
-    #                      #                              "value": "915"
-    #                      #                            }
-    #                      #                          ]
-    #                      #                        }
-    #                      #                      ],
-    #                      "modifiedAt": "2023-07-21 23:00:38"
-    #                    }
-    #                  ]
-    patch:
-      tags:
-        - products
-      summary: Product Feed API
-      description: >
-        Update specified products fields ony in Product Entity for given `sku` and `scopes`
-      operationId: ProductsPatch
-      parameters:
-        - $ref: '#/components/parameters/DATA_SPACE_ID'
-        - $ref: '#/components/parameters/ContentType'
-        - $ref: '#/components/parameters/xApiKey'
-        - $ref: '#/components/parameters/xGwSignature'
-        - $ref: '#/components/parameters/ContentEncoding'
-      responses:
-        '202':
-          $ref: '#/components/responses/AcceptedResponse'
-        '400':
-          $ref: '#/components/responses/InvalidItemsResponse'
-        '403':
-          $ref: '#/components/responses/UnauthorizedResponse'
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: array
-              items:
-                $ref: '#/components/schemas/FeedProduct'
-            examples:
-              SimpleProductWithImages:
-                summary: Update Product name
-                description: Update Product name
-                value:
-                  [
-                    {
-                      "sku": "red-pants",
-                      "scopes": {
-                        "locale": "English"
-                      },
-                      "name": "Red pants - discount!",
-                      "modifiedAt": "2023-06-29 22:30:19"
+                      "options": [
+                        {
+                          "id": "ABCDEFGHIJKLMNOPQRSTUVWXYZAB",
+                          "type": "SWATCH",
+                          "values": [
+                            {
+                              "id": "value-id",
+                              "sku": "product1",
+                              "label": "updeated - value label",
+                              "colorHex": "#000000",
+                              "imageUrl": "https://example.com/image.png"
+                            }
+                          ],
+                          "label": "updeated - option label",
+                          "required": false,
+                          "defaultValueId": "no"
+                        }
+                      ]
                     }
                   ]
     delete:
@@ -865,8 +436,8 @@ paths:
                 $ref: '#/components/schemas/FeedProduct'
             examples:
               SimpleProductWithImages:
-                summary: Update Product name
-                description: Update Product name
+                summary: Delete Product
+                description: Delete Product
                 value:
                   [
                     {
@@ -874,7 +445,7 @@ paths:
                       "scopes": {
                         "locale": "English"
                       },
-                      "name": "Red pants - discount!",
+                      "name": "Red pants",
                       "modifiedAt": "2023-06-29 22:30:19"
                     }
                   ]
@@ -1672,7 +1243,6 @@ components:
         - name
         - slug
         - status
-        - modifiedAt
       properties:
         sku:
           type: string
@@ -1690,32 +1260,36 @@ components:
         slug:
           type: string
           description: The URL key of the product
+          example: kangaroo-hoodie.html
+        description:
+          type: string
+          description: A description of the product
+          example: A kangaroo hoodie for all seasons
+        shortDescription:
+          type: string
+          description: A short description of the product
+          example: A hoodie for all seasons with a kangaroo pocket
         status:
           type: string
           description: Enabled (Product is visible on the storefront) / Disabled (Product is not visible on the storefront)
-          example: Enabled
+          example: ENABLED
           enum:
-            - Enabled
-            - Disabled
+            - ENABLED
+            - DISABLED
         roles:
           type: array
           description: >
             Storefront area where the product is visible. Empty list means product should not visible individually
-            * `Catalog`: Product is visible in the PLP (product listing page) and PDP (product detail page)
-            * `Search`: Product is visible in the SRP (search result page) and PDP (product detail page)
-          example: Catalog
+            * `CATALOG`: Product is visible in the PLP (product listing page) and PDP (product detail page)
+            * `SEARCH`: Product is visible in the SRP (search result page) and PDP (product detail page)
+            * `CATALOG, SEARCH`: Product is visible in the PLP, SRP, and PDP
+          example: [CATALOG]
           enum:
-            - Catalog
-            - Search
+            - CATALOG
+            - SEARCH
           items:
             type: string
-        description:
-          type: string
-          description: A description of the product
-        shortDescription:
-          type: string
-          description: A short description of the product
-        metaAttributes:
+        metaTags:
           type: object
           description: Meta attributes that will be specified in <meta> tags
           items:
@@ -1775,14 +1349,20 @@ components:
           type: string
           description: A meta title
         keywords:
-          type: string
+          type: array
           description: A meta keywords
+          items:
+            type: string
         description:
           type: string
           description: A meta description
     ProductAttribute:
       title: Product Attribute
       type: object
+      required:
+        - code
+        - type
+        - values
       properties:
         code:
           type: string
@@ -1801,7 +1381,7 @@ components:
             * `STRING`: Accept single string,e.g. "Great day, yall!"
             * `STRING`: Accept list of strings ,e.g. ["red", "green", "blue"]
             * `OBJECT`: Accept JSON object `"{"name": "swatch", "color": "red"}"`
-        value:
+        values:
           type: array
           description: A list of value(s) associated to a given type.
           items:
@@ -1809,17 +1389,21 @@ components:
     ProductRoutes:
       title: Routes
       type: object
+      required:
+        - path
       properties:
         path:
           type: string
           description: URL path
         position:
           type: integer
-          description: Position of a product in this path, default 0. QQ(? how this will be used on Storefront?
+          description: Position of a product in this path, default 0.
           format: int32
     ProductImage:
       title: Product Image
       type: object
+      required:
+        - url
       properties:
         url:
           type: string
@@ -1830,12 +1414,16 @@ components:
         roles:
           type: array
           description: >
-            roles associated with this image, for example: image for PDP, PLP etc. QQ(? Do we need to define all possible roles as ENUM llist?)
+            roles associated with this image, for example: image for PDP, PLP etc.
           items:
             type: string
     ProductOption:
       title: ProductOption
       type: object
+      required:
+        - id
+        - type
+        - values
       properties:
         id:
           type: string
@@ -1843,14 +1431,11 @@ components:
         label:
           type: string
           description: Option label
-        renderType:
-          type: string
-          description: Render type for the option
-        isRequired:
+        required:
           type: boolean
           description: Whether the option is required for selection
           example: false
-        defaultVaule:
+        defaultValueId:
           type: string
           description: Pre-selected value for the option
         type:
@@ -1872,6 +1457,9 @@ components:
     ProductOptionValue:
       title: ProductOptionValue
       type: object
+      required:
+        - id
+        - sku
       properties:
         id:
           type: string
@@ -1887,19 +1475,7 @@ components:
           description: Image URL of the option value
         sku:
           type: string
-          description: Product SKU assotiated to the option value
-    #       Bundle Product?
-    #        priceType:
-    #          type: string
-    #          description: The type of price
-    #        qty:
-    #          type: number
-    #          description: How many of the option value
-    #          format: float
-    #        qtyMutability:
-    #          type: boolean
-    #          description: Whether the quantity is mutable
-    #          example: false
+          description: Product SKU associated to the option value
     ProductOptionValueRange:
       title: ProductOptionValueRange
       type: object
@@ -1963,12 +1539,14 @@ components:
       properties:
         type:
           type: string
-          enum: [parent]
-          description: Product link type. Additionaly to predefined types, custom types can be used
+          enum: [parent]???
+          description: Product link type. Additionally to predefined types, custom types can be used
         sku:
           type: string
           description: SKU
-      description: Product assitioatiion
+          ??minLength: 1
+          ??pattern: ^(?!\s*$).+
+      description: Product association
     FeedProductVariantNew:
       title: FeedProductVariantNew
       required:
