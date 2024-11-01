@@ -17,14 +17,266 @@ tags:
   - name: price-books (TODO)
     description: Price Books Feed API
 paths:
+  /metadata/v2/metadata/{DATA_SPACE_ID}:
+    put:
+      tags:
+        - metadata
+      summary: Product Attributes Metadata API create
+      description: Register product attribute metadata. Product attributes allows you to define how product attributes will be displayed on Storefront, define search characteristics etc.
+      operationId: ProductMetadataPut
+      parameters:
+        - name: DATA_SPACE_ID
+          in: path
+          description: Data Space ID
+          required: true
+          style: simple
+          schema:
+            type: string
+        - name: Content-Type
+          in: header
+          required: true
+          schema:
+            type: string
+            enum: [application/json]
+        - name: x-api-key
+          in: header
+          required: true
+          schema:
+            type: string
+          description: Production public API key
+        - name: x-gw-signature
+          in: header
+          required: true
+          schema:
+            type: string
+          description: JWT generated for Production public API key
+        - name: Content-Encoding
+          in: header
+          required: false
+          schema:
+            type: string
+            enum: [gzip]
+          description: Use this header if the payload is compressed with gzip
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/FeedMetadata'
+            examples:
+              FeedWithMetadataInformation:
+                summary: Example of product attributes metadata feed
+                description: Enables the feed with product attribute information
+                value:
+                  [
+                    {
+                      "code": "name",
+                      "scope": {
+                        "locale": "En"
+                      },
+                      "label": "Product Name",
+                      "dataType": "BOOLEAN",
+                      "roles": [ "PDP" ],
+                      "filterable": false,
+                      "sortable": false,
+                      "searchable": true,
+                      "searchWeight": 55,
+                      "searchTypes": [ "AUTOCOMPLETE" ]
+                    }
+                  ]
+      responses:
+        '200':
+          description: Request accepted. Check the "invalidFeedItems" node for any invalid items that were not consumed
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/ProcessFeedResponse'
+        '400':
+          description: All feed items received were not valid. Check response body for errors
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/400ProcessFeedResponse'
+        '403':
+          description: Unauthorized request. Check the "x-api-key" value and ensure the JWT is not expired in "x-gw-signature"
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/403Response'
+    patch:
+      tags:
+        - metadata
+      summary: Product Attributes Metadata Patch API
+      description: Product attributes patch request allows you to update registered Product Attribute Metadata
+      operationId: ProductMetadataPatch
+      parameters:
+        - name: DATA_SPACE_ID
+          in: path
+          description: Data Space ID
+          required: true
+          style: simple
+          schema:
+            type: string
+        - name: Content-Type
+          in: header
+          required: true
+          schema:
+            type: string
+            enum: [ application/json ]
+        - name: x-api-key
+          in: header
+          required: true
+          schema:
+            type: string
+          description: Production public API key
+        - name: x-gw-signature
+          in: header
+          required: true
+          schema:
+            type: string
+          description: JWT generated for Production public API key
+        - name: Content-Encoding
+          in: header
+          required: false
+          schema:
+            type: string
+            enum: [ gzip ]
+          description: Use this header if the payload is compressed with gzip
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/FeedMetadata'
+            examples:
+              FeedWithMetadataInformation:
+                summary: Example of product attributes metadata feed
+                description: Enables the feed with product attribute information that needs to be updated
+                value:
+                  [
+                    {
+                      "code": "name",
+                      "scope": {
+                        "locale": "En"
+                      },
+                      "label": "Updated - Product Name",
+                      "dataType": "SELECT",
+                      "roles": [ "PDP", "PLP" ],
+                      "filterable": true,
+                      "sortable": true,
+                      "searchable": true,
+                      "searchWeight": 77,
+                      "searchTypes": [ "STARTS_WITH", "AUTOCOMPLETE" ]
+                    }
+                  ]
+      responses:
+        '200':
+          description: Request accepted. Check the "invalidFeedItems" node for any invalid items that were not consumed
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/ProcessFeedResponse'
+        '400':
+          description: All feed items received were not valid. Check response body for errors
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/400ProcessFeedResponse'
+        '403':
+          description: Unauthorized request. Check the "x-api-key" value and ensure the JWT is not expired in "x-gw-signature"
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/403Response'
+    delete:
+      tags:
+        - metadata
+      summary: Product Attributes Metadata Delete API.
+      description: Product attributes delete request allows to delete registered product attribute metadata.
+      operationId: ProductMetadataDelete
+      parameters:
+        - name: DATA_SPACE_ID
+          in: path
+          description: Data Space ID
+          required: true
+          style: simple
+          schema:
+            type: string
+        - name: Content-Type
+          in: header
+          required: true
+          schema:
+            type: string
+            enum: [ application/json ]
+        - name: x-api-key
+          in: header
+          required: true
+          schema:
+            type: string
+          description: Production public API key
+        - name: x-gw-signature
+          in: header
+          required: true
+          schema:
+            type: string
+          description: JWT generated for Production public API key
+        - name: Content-Encoding
+          in: header
+          required: false
+          schema:
+            type: string
+            enum: [ gzip ]
+          description: Use this header if the payload is compressed with gzip
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/FeedMetadata'
+            examples:
+              FeedWithMetadataInformation:
+                summary: Example of product attributes metadata delete feed
+                description: Marks registered product attribute metadata as deleted
+                value:
+                  [
+                    {
+                      "code": "name",
+                      "scope": {
+                        "locale": "En"
+                      }
+                    }
+                  ]
+      responses:
+        '200':
+          description: Request accepted. Check the "invalidFeedItems" node for any invalid items that were not consumed
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/ProcessFeedResponse'
+        '400':
+          description: All feed items received were not valid. Check response body for errors
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/400ProcessFeedResponse'
+        '403':
+          description: Unauthorized request. Check the "x-api-key" value and ensure the JWT is not expired in "x-gw-signature"
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/403Response'
+
   /api/v1/catalog/products/{DATA_SPACE_ID}:
     put:
       tags:
         - products
       summary: Product Feed API
       description: >
-        Create a new or replace existing Product entity in given `sku` and `scopes`. If product with same data exists for the same SKU and scopes item will be ignored.
-      operationId: ProductsPost
+        Create a new or replace existing Product entity in given `sku` and `scope`. If product with same data exists for the same SKU and scope item will be ignored.
+      operationId: ProductsPut
       parameters:
         - $ref: '#/components/parameters/DATA_SPACE_ID'
         - $ref: '#/components/parameters/ContentType'
@@ -141,8 +393,8 @@ paths:
       tags:
         - products
       summary: Product Feed API
-      description: Update Product entity for given `sku` and `scopes`
-      operationId: ProductsPut
+      description: Update Product entity for given `sku` and `scope`
+      operationId: ProductsPatch
       parameters:
         - $ref: '#/components/parameters/DATA_SPACE_ID'
         - $ref: '#/components/parameters/ContentType'
@@ -260,7 +512,7 @@ paths:
         - products
       summary: Product Feed API
       description: >
-        Delete Product entity for given `sku` and `scopes`
+        Delete Product entity for given `sku` and `scope`
       operationId: ProductsDelete
       parameters:
         - $ref: '#/components/parameters/DATA_SPACE_ID'
@@ -281,7 +533,7 @@ paths:
             schema:
               type: array
               items:
-                $ref: '#/components/schemas/FeedProduct'
+                $ref: '#/components/schemas/FeedProductDelete'
             examples:
               SimpleProductWithImages:
                 summary: Delete Product
@@ -290,11 +542,9 @@ paths:
                   [
                     {
                       "sku": "red-pants",
-                      "scopes": {
+                      "scope": {
                         "locale": "English"
-                      },
-                      "name": "Red pants",
-                      "modifiedAt": "2023-06-29 22:30:19"
+                      }
                     }
                   ]
 components:
@@ -409,12 +659,85 @@ components:
         message:
           type: string
           description: Error description
+    FeedMetadata:
+      title: FeedMetadata
+      description: Metadata information for a product attribute
+      required:
+        - code
+        - scope
+        - label
+        - dataType
+      type: object
+      properties:
+        code:
+          type: string
+          description: Attribute code
+        scope:
+          $ref: '#/components/schemas/Scope'
+        roles:
+          type: array
+          description: >
+              roles associated with this attribute, for example: attribute for PDP, PLP etc.
+          items:
+            type: string
+        label:
+          type: string
+          description: The attribute label
+          example: Attribute Name
+        dataType:
+          type: string
+          description: Data type
+          example: TEXT
+          enum:
+            - TEXT
+            - DECIMAL
+            - INTEGER
+            - BOOLEAN
+        filterable:
+          type: boolean
+          description: Whether the attribute is filterable or not
+          example: true
+        sortable:
+          type: boolean
+          description: Whether the attribute is sortable or not
+          example: true
+        searchable:
+          type: boolean
+          description: Whether the attribute is searchable or not
+          example: true
+        searchWeight:
+          type: number
+          description: The weight associated with the search
+          format: float
+        searchTypes:
+          type: array
+          description: >
+            Search types associated with this attribute, for example: autocomplete, starts_with etc.
+          items:
+            type: string
+            enum:
+              - AUTOCOMPLETE
+              - CONTAINS
+              - STARTS_WITH
+    FeedMetadataDelete:
+      title: Feed Metadata Delete
+      description: Delete metadata information for a product attribute
+      required:
+        - code
+        - scope
+      type: object
+      properties:
+        code:
+          type: string
+          description: Attribute code
+        scope:
+          $ref: '#/components/schemas/Scope'
     FeedProduct:
       title: Catalog Product payload
       type: object
       required:
         - sku
-        - scopes
+        - scope
         - name
         - slug
         - status
@@ -423,11 +746,8 @@ components:
           type: string
           description: Product unique identifier
           example: MH01
-        scopes:
-          type: object
-          description: Product scope
-          items:
-            $ref: '#/components/schemas/ProductScope'
+        scope:
+          $ref: '#/components/schemas/Scope'
         name:
           type: string
           description: Product name
@@ -494,20 +814,22 @@ components:
           description: Options associated with the product
           items:
             $ref: '#/components/schemas/ProductOption'
-        createdAt:
+    FeedProductDelete:
+      title: Catalog Product delete payload
+      type: object
+      required:
+        - sku
+        - scope
+      properties:
+        sku:
           type: string
-          description: Timestamp when the product was created
-          example: '2024-06-21 02:15:30'
-          format: yyyy-MM-dd HH:mm:ss
-        modifiedAt:
-          type: string
-          description: >
-            Timestamp when the product was last modified.
-            The new value must be greater than the previous value to accept product update
-          example: '2024-09-42 02:15:30'
-          format: yyyy-MM-dd HH:mm:ss
-    ProductScope:
-      title: Product Scope
+          description: Product unique identifier
+          example: MH01
+        scope:
+          $ref: '#/components/schemas/Scope'
+    Scope:
+      title: Scope
+      description: Scope of the entity. For example it's locale "English"
       type: object
       required:
         - locale
