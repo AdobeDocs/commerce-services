@@ -10,14 +10,14 @@ servers:
 tags:
   - name: products
     description: Product API to manage product data, prices, permissions
-  - name: metadata (TODO)
+  - name: metadata
     description: Product Metadata API
   - name: prices (TODO)
     description: Product Prices Feed API
   - name: price-books (TODO)
     description: Price Books Feed API
 paths:
-  /metadata/v2/metadata/{DATA_SPACE_ID}:
+  /api/v1/catalog/metadata/{DATA_SPACE_ID}:
     put:
       tags:
         - metadata
@@ -547,6 +547,238 @@ paths:
                       }
                     }
                   ]
+
+  /api/v1/pricebooks/{DATA_SPACE_ID}:
+    put:
+      tags:
+        - pricebooks
+      summary: Pricebooks API create
+      description: Register pricebooks. Pricebook allows you to define specific data for product prices
+      operationId: PricebooksPut
+      parameters:
+        - name: DATA_SPACE_ID
+          in: path
+          description: Data Space ID
+          required: true
+          style: simple
+          schema:
+            type: string
+        - name: Content-Type
+          in: header
+          required: true
+          schema:
+            type: string
+            enum: [ application/json ]
+        - name: x-api-key
+          in: header
+          required: true
+          schema:
+            type: string
+          description: Production public API key
+        - name: x-gw-signature
+          in: header
+          required: true
+          schema:
+            type: string
+          description: JWT generated for Production public API key
+        - name: Content-Encoding
+          in: header
+          required: false
+          schema:
+            type: string
+            enum: [ gzip ]
+          description: Use this header if the payload is compressed with gzip
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/FeedPricebook'
+            examples:
+              FeedWithPricebookInformation:
+                summary: Example of product price books feed
+                description: Enables the feed with product price books information
+                value:
+                  [
+                    {
+                      "priceBookId": "price-book-id",
+                      "name": "Price Book Name",
+                      "currency": "USD"
+                    }
+                  ]
+      responses:
+        '200':
+          description: Request accepted. Check the "invalidFeedItems" node for any invalid items that were not consumed
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/ProcessFeedResponse'
+        '400':
+          description: All feed items received were not valid. Check response body for errors
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/400ProcessFeedResponse'
+        '403':
+          description: Unauthorized request. Check the "x-api-key" value and ensure the JWT is not expired in "x-gw-signature"
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/403Response'
+    patch:
+      tags:
+        - pricebooks
+      summary: Pricebooks API update
+      description: Update registered pricebooks
+      operationId: PricebooksPatch
+      parameters:
+        - name: DATA_SPACE_ID
+          in: path
+          description: Data Space ID
+          required: true
+          style: simple
+          schema:
+            type: string
+        - name: Content-Type
+          in: header
+          required: true
+          schema:
+            type: string
+            enum: [ application/json ]
+        - name: x-api-key
+          in: header
+          required: true
+          schema:
+            type: string
+          description: Production public API key
+        - name: x-gw-signature
+          in: header
+          required: true
+          schema:
+            type: string
+          description: JWT generated for Production public API key
+        - name: Content-Encoding
+          in: header
+          required: false
+          schema:
+            type: string
+            enum: [ gzip ]
+          description: Use this header if the payload is compressed with gzip
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/FeedPricebook'
+            examples:
+              FeedWithPricebookInformation:
+                summary: Example of product price books feed to update
+                description: Update registered feed with product price books information
+                value:
+                  [
+                    {
+                      "priceBookId": "price-book-id",
+                      "name": "Updated - Price Book Name",
+                      "currency": "EUR"
+                    }
+                  ]
+      responses:
+        '200':
+          description: Request accepted. Check the "invalidFeedItems" node for any invalid items that were not consumed
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/ProcessFeedResponse'
+        '400':
+          description: All feed items received were not valid. Check response body for errors
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/400ProcessFeedResponse'
+        '403':
+          description: Unauthorized request. Check the "x-api-key" value and ensure the JWT is not expired in "x-gw-signature"
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/403Response'
+    delete:
+      tags:
+        - pricebooks
+      summary: Pricebooks API delete
+      description: Delete registered pricebooks.
+      operationId: PricebooksPut
+      parameters:
+        - name: DATA_SPACE_ID
+          in: path
+          description: Data Space ID
+          required: true
+          style: simple
+          schema:
+            type: string
+        - name: Content-Type
+          in: header
+          required: true
+          schema:
+            type: string
+            enum: [ application/json ]
+        - name: x-api-key
+          in: header
+          required: true
+          schema:
+            type: string
+          description: Production public API key
+        - name: x-gw-signature
+          in: header
+          required: true
+          schema:
+            type: string
+          description: JWT generated for Production public API key
+        - name: Content-Encoding
+          in: header
+          required: false
+          schema:
+            type: string
+            enum: [ gzip ]
+          description: Use this header if the payload is compressed with gzip
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/FeedPricebook'
+            examples:
+              FeedWithPricebookInformation:
+                summary: Example of product price books feed
+                description: Enables the feed with product price books information
+                value:
+                  [
+                    {
+                      "priceBookId": "price-book-id"w
+                    }
+                  ]
+      responses:
+        '200':
+          description: Request accepted. Check the "invalidFeedItems" node for any invalid items that were not consumed
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/ProcessFeedResponse'
+        '400':
+          description: All feed items received were not valid. Check response body for errors
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/400ProcessFeedResponse'
+        '403':
+          description: Unauthorized request. Check the "x-api-key" value and ensure the JWT is not expired in "x-gw-signature"
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/403Response'
+
 components:
   responses:
     AcceptedResponse:
@@ -827,6 +1059,21 @@ components:
           example: MH01
         scope:
           $ref: '#/components/schemas/Scope'
+    FeedPricebook:
+      title: FeedPricebook
+      type: object
+      properties:
+        priceBookId:
+          type: string
+          description: Price Book ID
+        name:
+          type: string
+          description: Price Book Name
+        currency:
+          type: string
+          description: Price Book Currency
+          minLength: 1
+          maxLength: 5
     Scope:
       title: Scope
       description: Scope of the entity. For example it's locale "English"
