@@ -708,7 +708,7 @@ paths:
         - pricebooks
       summary: Pricebooks API delete
       description: Delete registered pricebooks.
-      operationId: PricebooksPut
+      operationId: PricebooksDelete
       parameters:
         - name: DATA_SPACE_ID
           in: path
@@ -757,6 +757,252 @@ paths:
                   [
                     {
                       "priceBookId": "price-book-id"w
+                    }
+                  ]
+      responses:
+        '200':
+          description: Request accepted. Check the "invalidFeedItems" node for any invalid items that were not consumed
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/ProcessFeedResponse'
+        '400':
+          description: All feed items received were not valid. Check response body for errors
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/400ProcessFeedResponse'
+        '403':
+          description: Unauthorized request. Check the "x-api-key" value and ensure the JWT is not expired in "x-gw-signature"
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/403Response'
+
+  /api/v1/catalog/products/prices/{DATA_SPACE_ID}:
+    put:
+      tags:
+        - prices
+      summary: Prices API create
+      description: Register product prices. Prices API allows you to define product prices
+      operationId: PricesPut
+      parameters:
+        - name: DATA_SPACE_ID
+          in: path
+          description: Data Space ID
+          required: true
+          style: simple
+          schema:
+            type: string
+        - name: Content-Type
+          in: header
+          required: true
+          schema:
+            type: string
+            enum: [ application/json ]
+        - name: x-api-key
+          in: header
+          required: true
+          schema:
+            type: string
+          description: Production public API key
+        - name: x-gw-signature
+          in: header
+          required: true
+          schema:
+            type: string
+          description: JWT generated for Production public API key
+        - name: Content-Encoding
+          in: header
+          required: false
+          schema:
+            type: string
+            enum: [ gzip ]
+          description: Use this header if the payload is compressed with gzip
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/FeedPrices'
+            examples:
+              FeedWithPricebookInformation:
+                summary: Example of product price feed
+                description: Enables the feed with product price information
+                value:
+                  [
+                    {
+                      "sku": "product-sku-1",
+                      "priceBookId": "price-book-id-1",
+                      "regular": 10.5,
+                        "discounts": [
+                            {"code": "discount", "percentage": 20}
+                        ]
+                    },
+                    {
+                      "sku": "product-sku-2",
+                      "priceBookId": "price-book-id-2",
+                      "regular": 20.5,
+                      "discounts": [
+                        { "code": "fixed", "price": 10 }
+                      ]
+                    }
+                  ]
+      responses:
+        '200':
+          description: Request accepted. Check the "invalidFeedItems" node for any invalid items that were not consumed
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/ProcessFeedResponse'
+        '400':
+          description: All feed items received were not valid. Check response body for errors
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/400ProcessFeedResponse'
+        '403':
+          description: Unauthorized request. Check the "x-api-key" value and ensure the JWT is not expired in "x-gw-signature"
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/403Response'
+    patch:
+      tags:
+        - prices
+      summary: Prices API update
+      description: Update product prices allows you to change registered product prices
+      operationId: PricesPatch
+      parameters:
+        - name: DATA_SPACE_ID
+          in: path
+          description: Data Space ID
+          required: true
+          style: simple
+          schema:
+            type: string
+        - name: Content-Type
+          in: header
+          required: true
+          schema:
+            type: string
+            enum: [ application/json ]
+        - name: x-api-key
+          in: header
+          required: true
+          schema:
+            type: string
+          description: Production public API key
+        - name: x-gw-signature
+          in: header
+          required: true
+          schema:
+            type: string
+          description: JWT generated for Production public API key
+        - name: Content-Encoding
+          in: header
+          required: false
+          schema:
+            type: string
+            enum: [ gzip ]
+          description: Use this header if the payload is compressed with gzip
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/FeedPrices'
+            examples:
+              FeedWithProductPricesInformation:
+                summary: Example of product prices feed update
+                description: Updated the feed with product prices information
+                value:
+                  [
+                    {
+                      "sku": "product-sku-1",
+                      "priceBookId": "price-book-id-1",
+                      "regular": 11.5,
+                      "discounts": [
+                        { "code": "discount", "percentage": 30 }
+                      ]
+                    }
+                  ]
+      responses:
+        '200':
+          description: Request accepted. Check the "invalidFeedItems" node for any invalid items that were not consumed
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/ProcessFeedResponse'
+        '400':
+          description: All feed items received were not valid. Check response body for errors
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/400ProcessFeedResponse'
+        '403':
+          description: Unauthorized request. Check the "x-api-key" value and ensure the JWT is not expired in "x-gw-signature"
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/403Response'
+    delete:
+      tags:
+        - prices
+      summary: Prices API delete
+      description: Delete product prices allows you to mark registered product prices as deleted
+      operationId: PricesDelete
+      parameters:
+        - name: DATA_SPACE_ID
+          in: path
+          description: Data Space ID
+          required: true
+          style: simple
+          schema:
+            type: string
+        - name: Content-Type
+          in: header
+          required: true
+          schema:
+            type: string
+            enum: [ application/json ]
+        - name: x-api-key
+          in: header
+          required: true
+          schema:
+            type: string
+          description: Production public API key
+        - name: x-gw-signature
+          in: header
+          required: true
+          schema:
+            type: string
+          description: JWT generated for Production public API key
+        - name: Content-Encoding
+          in: header
+          required: false
+          schema:
+            type: string
+            enum: [ gzip ]
+          description: Use this header if the payload is compressed with gzip
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/FeedPricesDelete'
+            examples:
+              FeedWithProductPricesInformation:
+                summary: Example of product prices feed delete
+                description: Delete the feed with product prices information
+                value:
+                  [
+                    {
+                      "sku": "product-sku-1",
+                      "priceBookId": "price-book-id-1",
                     }
                   ]
       responses:
@@ -839,44 +1085,6 @@ components:
       description: Use this header if the payload is compressed with gzip
 
   schemas:
-    DiscountsFinalPrice:
-      title: Final Price
-      type: object
-      properties:
-        code:
-          type: object
-        price:
-          type: number
-          format: float
-    DiscountsPercentage:
-      title: Discount
-      type: object
-      properties:
-        code:
-          type: object
-        percentage:
-          type: number
-          format: float
-    FeedBreadcrumb:
-      title: FeedBreadcrumb
-      type: object
-      properties:
-        categoryId:
-          type: string
-          description: Category ID
-        categoryLevel:
-          type: integer
-          description: The category level
-          format: int32
-        categoryName:
-          type: string
-          description: The name of the category
-        categoryUrlKey:
-          type: string
-          description: The URL key for the category
-        categoryUrlPath:
-          type: string
-          description: The URL path to the category
     FeedItemFailedValidationResult:
       title: FeedItemFailedValidationResult
       type: object
@@ -1061,6 +1269,9 @@ components:
           $ref: '#/components/schemas/Scope'
     FeedPricebook:
       title: FeedPricebook
+      description: Price Book information
+      required:
+        - priceBookId
       type: object
       properties:
         priceBookId:
@@ -1074,6 +1285,64 @@ components:
           description: Price Book Currency
           minLength: 1
           maxLength: 5
+    FeedPrices:
+      title: FeedPrices
+      description: Product prices information
+      required:
+        - sku
+        - priceBookId
+        - regular
+      type: object
+      properties:
+        sku:
+          type: string
+          description: Product SKU
+        priceBookId:
+          type: string
+          description: Price Book ID
+        regular:
+          type: number
+          format: float
+          description: Regular price
+        discounts:
+          type: array
+          description: Active discounts
+          items:
+            oneOf:
+              - $ref: '#/components/schemas/DiscountsFinalPrice'
+              - $ref: '#/components/schemas/DiscountsPercentage'
+    FeedPricesDelete:
+      title: FeedPricesDelete
+      description: Delete product prices information
+      required:
+        - sku
+        - priceBookId
+      type: object
+      properties:
+        sku:
+          type: string
+          description: Product SKU
+        priceBookId:
+          type: string
+          description: Price Book ID
+    DiscountsFinalPrice:
+      title: Final Price
+      type: object
+      properties:
+        code:
+          type: object
+        price:
+          type: number
+          format: float
+    DiscountsPercentage:
+      title: Discount
+      type: object
+      properties:
+        code:
+          type: object
+        percentage:
+          type: number
+          format: float
     Scope:
       title: Scope
       description: Scope of the entity. For example it's locale "English"
