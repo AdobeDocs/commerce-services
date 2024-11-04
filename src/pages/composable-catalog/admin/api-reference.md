@@ -1,5 +1,5 @@
 ---
-title: Admin API Reference
+title: Using the Admin API
 edition: ee
 description: Learn about the Admin GraphQL APIs to create and manage catalogs and configure search and merchandising capabilities.
 keywords:
@@ -9,7 +9,9 @@ keywords:
   - Configuration
 ---
 
-# Admin API Reference
+# Using the Admin API
+
+Brief Overview of purpose, glossary, use cases with links to relevant ExL documentation that describes the role of Admin APIs in the larger CCDM context.
 
 ## Authentication
 
@@ -21,31 +23,30 @@ keywords:
 
 ### Channels & Policies
 
-
 Auto-generated reference
-
 
 Overview for collection of APIs behind the endpoint - API endpoints
 Query
 
-Channels - overview
+## Channels - overview
 
-The Channels query returns ... 
+The Channels query returns ...
 
-Get Channels query 
-
-Example Usage
-
+### Get Channels query
 
 Syntax
 Reference
 Example usage
 
+## Policies
 
-Get Policies
+Overview
 
+### Get Policies
 
-
+Syntax
+Reference
+Example usage
 
 ```json
 {
@@ -60,13 +61,26 @@ Get Policies
 }
 ```
 
+## Search configuration
 
-Policies
+Overview
 
-Search configuration
-Recommendations configuration
-Rules configuration
+### Query examples
 
+## Recommendations configuration
 
+Overview
 
-Insert the auto-generated GraphQL reference.
+### Query examples
+
+## Recommendations configuration
+
+Overview
+
+### Query examples
+
+## Rules configuration
+
+Overview
+
+### Query examples
