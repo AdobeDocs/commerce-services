@@ -1,17 +1,16 @@
 ---
-title: Commerce Services
-description: Review resources for working with Adobe Commerce services.
-keywords:
+title: Commerce Data Services
+description: Learn how about the developer tools available to manage and use Commerce catalog and event data programmatically.
   - Services
 ---
 
 <Hero slots="image, heading, text"/>
 
-![Commerce Services](_images/home-bg.jpeg)
+![Data Services](_images/home-bg.jpeg)
 
-# Commerce Services developer
+# Commerce Data Services Developer Tools
 
-Adobe provides a collection of services to help merchants support key components of their business. Learn how to programmatically interact with these services.
+A collection of tools to create, access, and manage Commerce data ...
 
 <Resources slots="heading, links"/>
 
@@ -23,29 +22,53 @@ Adobe provides a collection of services to help merchants support key components
 
 ## Overview
 
-This documentation provides resources for working with Adobe Commerce services.
+Learn how to use Commerce APIs and SDKs to integrate with third-party software and build headless applications.
 
 ## Discover
 
-Use these sections to learn about how to develop PHP extensions.
+Explore common tools and SDKs shared across Services for Adobe Commerce.
 
 <DiscoverBlock slots="heading, link, text"/>
 
-### Sections
+### Catalog Management, Administration, and Merchandising
 
-[Shared services](shared-services/)
+[Data Ingestion API](composable-catalog/data-ingestion/)
+
+Set up large, complex catalog assortments
+
+<DiscoverBlock slots="link, text"/>
+
+[Catalog Administration and Configuration](composable-catalog/admin)
+
+Setup and manage Commerce catalogs and merchandising tools.
+
+<DiscoverBlock slots="link, text"/>
+
+[Merchandising APIs](composable-catalog/merchandising)
+
+Retrieve data from the catalog data model and use it to create storefront experiences.
+
+<DiscoverBlock slots="link, text"/>
+
+[Storefront APIs](graphql/)
+
+Use Catalog Service, Live Search, and Product Recommendations APIs to retrieve data from the Commerce backend.
+
+### Shared services
+
+[Storefront Events SDK](shared-services/)
 
 Explore common tools and SDKs shared across Services for Adobe Commerce.
 
 <DiscoverBlock slots="link, text"/>
 
-[Live Search](live-search/)
+[Live Search Events](live-search/)
 
 Lists the events defined in the Adobe Commerce Event SDK that are applicable to Live Search.
 
 <DiscoverBlock slots="link, text"/>
 
-[Product Recommendations](product-recommendations/)
+[Product Recommendations SDK](product-recommendations/)
 
 Learn how to use the Product Recommendations SDK with Adobe Commerce to fetch recommendations programmatically in the browser.
 
