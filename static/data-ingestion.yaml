@@ -12,9 +12,9 @@ tags:
     description: Product API to manage product data, prices, permissions
   - name: metadata
     description: Product Metadata API
-  - name: prices (TODO)
+  - name: prices
     description: Product Prices Feed API
-  - name: price-books (TODO)
+  - name: price-books
     description: Price Books Feed API
 paths:
   /api/v1/catalog/metadata/{DATA_SPACE_ID}:
@@ -551,7 +551,7 @@ paths:
   /api/v1/pricebooks/{DATA_SPACE_ID}:
     put:
       tags:
-        - pricebooks
+        - price-books
       summary: Pricebooks API create
       description: Register pricebooks. Pricebook allows you to define specific data for product prices
       operationId: PricebooksPut
@@ -628,7 +628,7 @@ paths:
                 $ref: '#/components/schemas/403Response'
     patch:
       tags:
-        - pricebooks
+        - price-books
       summary: Pricebooks API update
       description: Update registered pricebooks
       operationId: PricebooksPatch
@@ -705,7 +705,7 @@ paths:
                 $ref: '#/components/schemas/403Response'
     delete:
       tags:
-        - pricebooks
+        - price-books
       summary: Pricebooks API delete
       description: Delete registered pricebooks.
       operationId: PricebooksDelete
@@ -756,7 +756,7 @@ paths:
                 value:
                   [
                     {
-                      "priceBookId": "price-book-id"w
+                      "priceBookId": "price-book-id"
                     }
                   ]
       responses:
