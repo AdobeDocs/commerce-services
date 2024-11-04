@@ -13,10 +13,10 @@ module.exports = [
         },
         {
             title: "Merchandising API",
-            path: "composable-catalog/storefront/",
+            path: "composable-catalog/merchandising/",
         },
         {
-            title: "API References",
+            title: "Reference",
             path: "composable-catalog/api-references/",
         },
     ]

@@ -5,7 +5,7 @@ description: Use the Catalog management APIs to manage product data and configur
 keywords:
   - GraphQL
   - Services
-  - Backend development
+  - Backend Development
   - Configuration
 ---
 
