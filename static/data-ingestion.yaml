@@ -275,7 +275,7 @@ paths:
         - products
       summary: Product Create API
       description: >
-        Create a new or replace existing Product entity in given `sku` and `scope`. If product with same data exists for the same SKU and scope item will be ignored.
+        Create or replace an existing Product entity within a specified  `sku` and `scope`. If a product with same data exists for the same SKU and scope item will be ignored.
       operationId: ProductsPut
       parameters:
         - $ref: '#/components/parameters/DATA_SPACE_ID'
