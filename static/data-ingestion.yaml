@@ -627,7 +627,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/400ProcessFeedResponse'
         '403':
-          description: Unauthorized request. Check the "x-api-key" value and ensure the JWT is not expired in "x-gw-signature"
+          description: Unauthorized request. Verify the ‘x-api-key’ and make sure that the JWT in ‘x-gw-signature’ is still valid.”
           content:
             application/json;charset=UTF-8:
               schema:
