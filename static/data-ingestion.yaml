@@ -9,20 +9,20 @@ servers:
 
 tags:
   - name: products
-    description: Product API to manage product data, prices, permissions
+    description: Product Feed API to manage product data
   - name: metadata
-    description: Product Metadata API
+    description: Product Attributes Metadata Feed API
   - name: prices
     description: Product Prices Feed API
   - name: price-books
     description: Price Books Feed API
 paths:
-  /api/v1/catalog/metadata/{DATA_SPACE_ID}:
+  /api/v1/catalog/products/metadata/{DATA_SPACE_ID}:
     put:
       tags:
         - metadata
-      summary: Product Attributes Metadata API create
-      description: Register product attribute metadata. Product attributes allows you to define how product attributes will be displayed on Storefront, define search characteristics etc.
+      summary: Product Attributes Metadata Create API
+      description: Create a new or replace existing Product Attribute Metadata entities. Product attributes allows you to define how product attributes will be displayed on Storefront, define search characteristics etc.
       operationId: ProductMetadataPut
       parameters:
         - name: DATA_SPACE_ID
@@ -87,13 +87,13 @@ paths:
                   ]
       responses:
         '200':
-          description: Request accepted. Check the "invalidFeedItems" node for any invalid items that were not consumed
+          description: All items in the request are accepted for further processing
           content:
             application/json;charset=UTF-8:
               schema:
                 $ref: '#/components/schemas/ProcessFeedResponse'
         '400':
-          description: All feed items received were not valid. Check response body for errors
+          description: Some of the received items are not valid. Check the "invalidFeedItems" node for errors
           content:
             application/json;charset=UTF-8:
               schema:
@@ -107,7 +107,7 @@ paths:
     patch:
       tags:
         - metadata
-      summary: Product Attributes Metadata Patch API
+      summary: Product Attributes Metadata Update API
       description: Product attributes patch request allows you to update registered Product Attribute Metadata
       operationId: ProductMetadataPatch
       parameters:
@@ -173,13 +173,13 @@ paths:
                   ]
       responses:
         '200':
-          description: Request accepted. Check the "invalidFeedItems" node for any invalid items that were not consumed
+          description: All items in the request are accepted for further processing
           content:
             application/json;charset=UTF-8:
               schema:
                 $ref: '#/components/schemas/ProcessFeedResponse'
         '400':
-          description: All feed items received were not valid. Check response body for errors
+          description: Some of the received items are not valid. Check the "invalidFeedItems" node for errors
           content:
             application/json;charset=UTF-8:
               schema:
@@ -193,7 +193,7 @@ paths:
     delete:
       tags:
         - metadata
-      summary: Product Attributes Metadata Delete API.
+      summary: Product Attributes Metadata Delete API
       description: Product attributes delete request allows to delete registered product attribute metadata.
       operationId: ProductMetadataDelete
       parameters:
@@ -251,13 +251,13 @@ paths:
                   ]
       responses:
         '200':
-          description: Request accepted. Check the "invalidFeedItems" node for any invalid items that were not consumed
+          description: All items in the request are accepted for further processing
           content:
             application/json;charset=UTF-8:
               schema:
                 $ref: '#/components/schemas/ProcessFeedResponse'
         '400':
-          description: All feed items received were not valid. Check response body for errors
+          description: Some of the received items are not valid. Check the "invalidFeedItems" node for errors
           content:
             application/json;charset=UTF-8:
               schema:
@@ -273,7 +273,7 @@ paths:
     put:
       tags:
         - products
-      summary: Product Feed API
+      summary: Product Create API
       description: >
         Create a new or replace existing Product entity in given `sku` and `scope`. If product with same data exists for the same SKU and scope item will be ignored.
       operationId: ProductsPut
@@ -299,8 +299,9 @@ paths:
                 $ref: '#/components/schemas/FeedProduct'
             examples:
               SimpleProductWithImages:
-                summary: Simple Product with images
-                description: Simple Product with images
+                summary: Create Simple Product
+                description: >
+                  Create Simple Product with required and optional fields
                 value:
                   [
                     {
@@ -379,7 +380,8 @@ paths:
                               "sku": "produc1",
                               "label": "value label",
                               "colorHex": "#000000",
-                              "imageUrl": "https://example.com/image.png"
+                              "imageUrl": "https://example.com/image.png",
+                              "qty": 10
                             }
                           ],
                           "label": "option label",
@@ -392,8 +394,9 @@ paths:
     patch:
       tags:
         - products
-      summary: Product Feed API
-      description: Update Product entity for given `sku` and `scope`
+      summary: Product Update API
+      description: > 
+        Update Product entity for given `sku` and `scope`. The "replace" strategy is used to update entity: the entire field will be replaced with new valueUpdate Product entity for given `sku` and `scope`
       operationId: ProductsPatch
       parameters:
         - $ref: '#/components/parameters/DATA_SPACE_ID'
@@ -417,8 +420,9 @@ paths:
                 $ref: '#/components/schemas/FeedProduct'
             examples:
               SimpleProductWithImages:
-                summary: Update simple Product with images
-                description: Update simple Product with images
+                summary: Update simple Product
+                description: >
+                  Update simple Product with changed values (name, roles, etc). This data will be replaced in existing product
                 value:
                   [
                     {
@@ -497,7 +501,8 @@ paths:
                               "sku": "product1",
                               "label": "updeated - value label",
                               "colorHex": "#000000",
-                              "imageUrl": "https://example.com/image.png"
+                              "imageUrl": "https://example.com/image.png",
+                              "qty": 5
                             }
                           ],
                           "label": "updeated - option label",
@@ -510,7 +515,7 @@ paths:
     delete:
       tags:
         - products
-      summary: Product Feed API
+      summary: Product Delete API
       description: >
         Delete Product entity for given `sku` and `scope`
       operationId: ProductsDelete
@@ -537,7 +542,8 @@ paths:
             examples:
               SimpleProductWithImages:
                 summary: Delete Product
-                description: Delete Product
+                description: >
+                  Delete Simple Product by given SKU and scope
                 value:
                   [
                     {
@@ -548,13 +554,13 @@ paths:
                     }
                   ]
 
-  /api/v1/pricebooks/{DATA_SPACE_ID}:
+  /api/v1/catalog/price-books/{DATA_SPACE_ID}:
     put:
       tags:
         - price-books
-      summary: Pricebooks API create
-      description: Register pricebooks. Pricebook allows you to define specific data for product prices
-      operationId: PricebooksPut
+      summary: Price Books Create API
+      description: Create a new or replace existing Price Book entities. Price books allows you to define a unique scope that is used to manage product price discounts across different customer tiers. PriceBook allows to define currency that will be used for all product prices within specified Price Book
+      operationId: PriceBooksPut
       parameters:
         - name: DATA_SPACE_ID
           in: path
@@ -598,24 +604,24 @@ paths:
             examples:
               FeedWithPricebookInformation:
                 summary: Example of product price books feed
-                description: Enables the feed with product price books information
+                description: Create Price Book "dealer-north" with "USD" currency
                 value:
                   [
                     {
-                      "priceBookId": "price-book-id",
-                      "name": "Price Book Name",
+                      "priceBookId": "dealer-north",
+                      "name": "Dealer North Price Book Name",
                       "currency": "USD"
                     }
                   ]
       responses:
         '200':
-          description: Request accepted. Check the "invalidFeedItems" node for any invalid items that were not consumed
+          description: All items in the request are accepted for further processing
           content:
             application/json;charset=UTF-8:
               schema:
                 $ref: '#/components/schemas/ProcessFeedResponse'
         '400':
-          description: All feed items received were not valid. Check response body for errors
+          description: Some of the received items are not valid. Check the "invalidFeedItems" node for errors
           content:
             application/json;charset=UTF-8:
               schema:
@@ -629,9 +635,9 @@ paths:
     patch:
       tags:
         - price-books
-      summary: Pricebooks API update
-      description: Update registered pricebooks
-      operationId: PricebooksPatch
+      summary: Price Books Update API
+      description: Update registered price books
+      operationId: PriceBooksPatch
       parameters:
         - name: DATA_SPACE_ID
           in: path
@@ -675,24 +681,24 @@ paths:
             examples:
               FeedWithPricebookInformation:
                 summary: Example of product price books feed to update
-                description: Update registered feed with product price books information
+                description: Update Price Book "dealer-north" with new name and currency (EUR)
                 value:
                   [
                     {
-                      "priceBookId": "price-book-id",
-                      "name": "Updated - Price Book Name",
+                      "priceBookId": "dealer-north",
+                      "name": "Updated - Dealer North Price Book Name",
                       "currency": "EUR"
                     }
                   ]
       responses:
         '200':
-          description: Request accepted. Check the "invalidFeedItems" node for any invalid items that were not consumed
+          description: All items in the request are accepted for further processing
           content:
             application/json;charset=UTF-8:
               schema:
                 $ref: '#/components/schemas/ProcessFeedResponse'
         '400':
-          description: All feed items received were not valid. Check response body for errors
+          description: Some of the received items are not valid. Check the "invalidFeedItems" node for errors
           content:
             application/json;charset=UTF-8:
               schema:
@@ -706,9 +712,9 @@ paths:
     delete:
       tags:
         - price-books
-      summary: Pricebooks API delete
-      description: Delete registered pricebooks.
-      operationId: PricebooksDelete
+      summary: Price Books Delete API
+      description: Delete registered price books.
+      operationId: PriceBooksDelete
       parameters:
         - name: DATA_SPACE_ID
           in: path
@@ -750,9 +756,9 @@ paths:
               items:
                 $ref: '#/components/schemas/FeedPricebook'
             examples:
-              FeedWithPricebookInformation:
-                summary: Example of product price books feed
-                description: Enables the feed with product price books information
+              DeleteExistingPricebook:
+                summary: Delete Price Book "dealer-north"
+                description: Delete existing "dealer-north" Price Book
                 value:
                   [
                     {
@@ -761,13 +767,13 @@ paths:
                   ]
       responses:
         '200':
-          description: Request accepted. Check the "invalidFeedItems" node for any invalid items that were not consumed
+          description: All items in the request are accepted for further processing
           content:
             application/json;charset=UTF-8:
               schema:
                 $ref: '#/components/schemas/ProcessFeedResponse'
         '400':
-          description: All feed items received were not valid. Check response body for errors
+          description: Some of the received items are not valid. Check the "invalidFeedItems" node for errors
           content:
             application/json;charset=UTF-8:
               schema:
@@ -783,8 +789,8 @@ paths:
     put:
       tags:
         - prices
-      summary: Prices API create
-      description: Register product prices. Prices API allows you to define product prices
+      summary: Prices Create API
+      description: Create a new or replace existing Product Price entities. Prices API allows you to define product prices
       operationId: PricesPut
       parameters:
         - name: DATA_SPACE_ID
@@ -827,7 +833,7 @@ paths:
               items:
                 $ref: '#/components/schemas/FeedPrices'
             examples:
-              FeedWithPricebookInformation:
+              FeedWithNewProductPrice:
                 summary: Example of product price feed
                 description: Enables the feed with product price information
                 value:
@@ -851,13 +857,13 @@ paths:
                   ]
       responses:
         '200':
-          description: Request accepted. Check the "invalidFeedItems" node for any invalid items that were not consumed
+          description: All items in the request are accepted for further processing
           content:
             application/json;charset=UTF-8:
               schema:
                 $ref: '#/components/schemas/ProcessFeedResponse'
         '400':
-          description: All feed items received were not valid. Check response body for errors
+          description: Some of the received items are not valid. Check the "invalidFeedItems" node for errors
           content:
             application/json;charset=UTF-8:
               schema:
@@ -871,8 +877,8 @@ paths:
     patch:
       tags:
         - prices
-      summary: Prices API update
-      description: Update product prices allows you to change registered product prices
+      summary: Prices Update API
+      description: Update Product Prices API allows you to change registered product prices
       operationId: PricesPatch
       parameters:
         - name: DATA_SPACE_ID
@@ -931,13 +937,13 @@ paths:
                   ]
       responses:
         '200':
-          description: Request accepted. Check the "invalidFeedItems" node for any invalid items that were not consumed
+          description: All items in the request are accepted for further processing
           content:
             application/json;charset=UTF-8:
               schema:
                 $ref: '#/components/schemas/ProcessFeedResponse'
         '400':
-          description: All feed items received were not valid. Check response body for errors
+          description: Some of the received items are not valid. Check the "invalidFeedItems" node for errors
           content:
             application/json;charset=UTF-8:
               schema:
@@ -951,8 +957,9 @@ paths:
     delete:
       tags:
         - prices
-      summary: Prices API delete
-      description: Delete product prices allows you to mark registered product prices as deleted
+      summary: Prices Delete API
+      description: >
+        Delete Product Prices API allows you to mark registered product prices as deleted
       operationId: PricesDelete
       parameters:
         - name: DATA_SPACE_ID
@@ -997,7 +1004,8 @@ paths:
             examples:
               FeedWithProductPricesInformation:
                 summary: Example of product prices feed delete
-                description: Delete the feed with product prices information
+                description: >
+                  Delete the feed with product prices information
                 value:
                   [
                     {
@@ -1007,13 +1015,13 @@ paths:
                   ]
       responses:
         '200':
-          description: Request accepted. Check the "invalidFeedItems" node for any invalid items that were not consumed
+          description: All items in the request are accepted for further processing
           content:
             application/json;charset=UTF-8:
               schema:
                 $ref: '#/components/schemas/ProcessFeedResponse'
         '400':
-          description: All feed items received were not valid. Check response body for errors
+          description: Some of the received items are not valid. Check the "invalidFeedItems" node for errors
           content:
             application/json;charset=UTF-8:
               schema:
