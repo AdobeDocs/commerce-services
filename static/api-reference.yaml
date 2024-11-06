@@ -8,19 +8,19 @@ servers:
     description: Production endpoint
 
 tags:
-  - name: Products
-    description: Product API to manage product data
   - name: Metadata
     description: Product Attributes Metadata API
+  - name: Products
+    description: Product API to manage product data
+  - name: Price Books
+    description: Price Books API
   - name: Prices
     description: Product Prices API
-  - name: Price-books
-    description: Price Books API
 paths:
   /v1/catalog/products/metadata/{DATA_SPACE_ID}:
     post:
       tags:
-        - metadata
+        - Metadata
       summary: Create product attributes metadata
       description: Create or replace existing product attribute metadata resources. Product attributes allows you to define how product attributes will be displayed on Storefront, define search characteristics etc.
       operationId: ProductMetadataPut
@@ -93,7 +93,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ProcessFeedResponse'
         '400':
-          description: Some of the received items are not valid. Check the "invalidFeedItems" node for errors
+          description: Request rejected. Some of the received items are not valid. Check the "invalidFeedItems" node for errors
           content:
             application/json;charset=UTF-8:
               schema:
@@ -106,7 +106,7 @@ paths:
                 $ref: '#/components/schemas/403Response'
     patch:
       tags:
-        - metadata
+        - Metadata
       summary: Update product attributes metadata
       description: Update existing product attribute metadata with new values.
       operationId: ProductMetadataPatch
@@ -179,7 +179,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ProcessFeedResponse'
         '400':
-          description: Some of the received items are not valid. Check the "invalidFeedItems" node for errors
+          description: Request rejected. Some of the received items are not valid. Check the "invalidFeedItems" node for errors
           content:
             application/json;charset=UTF-8:
               schema:
@@ -192,7 +192,7 @@ paths:
                 $ref: '#/components/schemas/403Response'
     delete:
       tags:
-        - metadata
+        - Metadata
       summary: Delete product attributes metadata
       description: Remove product attribute metadata resources from the catalog data.
       operationId: ProductMetadataDelete
@@ -272,7 +272,7 @@ paths:
   /v1/catalog/products/{DATA_SPACE_ID}:
     post:
       tags:
-        - products
+        - Products
       summary: Create products
       description: >
         Create a products, or update an existing products with a specified `sku` and `scope`. If a product with same data exists with the same SKU and scope, the product update request is ignored.
@@ -284,7 +284,7 @@ paths:
         - $ref: '#/components/parameters/xGwSignature'
         - $ref: '#/components/parameters/ContentEncoding'
       responses:
-        '202':
+        '200':
           $ref: '#/components/responses/AcceptedResponse'
         '400':
           $ref: '#/components/responses/InvalidItemsResponse'
@@ -355,12 +355,6 @@ paths:
                           ]
                         }
                       ],
-                      "links": [
-                        {
-                          "sku": "green-pants",
-                          "type": "related"
-                        }
-                      ],
                       "routes": [
                         {
                           "path": "red-pants"
@@ -369,31 +363,12 @@ paths:
                           "path": "pants/red-pants",
                           "position": 1
                         }
-                      ],
-                      "options": [
-                        {
-                          "id": "ABCDEFGHIJKLMNOPQRSTUVWXYZAB",
-                          "type": "SWATCH",
-                          "values": [
-                            {
-                              "id": "value-id",
-                              "sku": "produc1",
-                              "label": "value label",
-                              "colorHex": "#000000",
-                              "imageUrl": "https://example.com/images/image.png",
-                              "qty": 10
-                            }
-                          ],
-                          "label": "option label",
-                          "required": true,
-                          "defaultValueId": "no"
-                        }
                       ]
-                    },
+                    }
                   ]
     patch:
       tags:
-        - products
+        - Products
       summary: Update product
       description: >
         Update a product with a specified `sku` and `scope` to replace existing field data with the new data supplied in the request.
@@ -405,7 +380,7 @@ paths:
         - $ref: '#/components/parameters/xGwSignature'
         - $ref: '#/components/parameters/ContentEncoding'
       responses:
-        '202':
+        '200':
           $ref: '#/components/responses/AcceptedResponse'
         '400':
           $ref: '#/components/responses/InvalidItemsResponse'
@@ -476,12 +451,6 @@ paths:
                           ]
                         }
                       ],
-                      "links": [
-                        {
-                          "sku": "gray-pants",
-                          "type": "related"
-                        }
-                      ],
                       "routes": [
                         {
                           "path": "updated-red-pants"
@@ -490,31 +459,12 @@ paths:
                           "path": "updated-pants/red-pants",
                           "position": 1
                         }
-                      ],
-                      "options": [
-                        {
-                          "id": "ABCDEFGHIJKLMNOPQRSTUVWXYZAB",
-                          "type": "SWATCH",
-                          "values": [
-                            {
-                              "id": "value-id",
-                              "sku": "product1",
-                              "label": "updated - value label",
-                              "colorHex": "#000000",
-                              "imageUrl": "https://example.com/image.png",
-                              "qty": 5
-                            }
-                          ],
-                          "label": "updeated - option label",
-                          "required": false,
-                          "defaultValueId": "no"
-                        }
                       ]
                     }
                   ]
     delete:
       tags:
-        - products
+        - Products
       summary: Delete a product
       description: >
         Delete a product with a specified `sku` and `scope`.
@@ -526,7 +476,7 @@ paths:
         - $ref: '#/components/parameters/xGwSignature'
         - $ref: '#/components/parameters/ContentEncoding'
       responses:
-        '202':
+        '200':
           $ref: '#/components/responses/AcceptedResponse'
         '400':
           $ref: '#/components/responses/InvalidItemsResponse'
@@ -557,7 +507,7 @@ paths:
   /v1/catalog/price-books/{DATA_SPACE_ID}:
     post:
       tags:
-        - price-books
+        - Price Books
       summary: Create Price Books
       description: Create or replace existing Price Books.
         Each Price Book defines a unique scope that can be used to manage product price discounts across customer tiers.
@@ -628,7 +578,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ProcessFeedResponse'
         '400':
-          description: Some of the received items are not valid. Check the "invalidFeedItems" node for errors
+          description: Request rejected. Some of the received items are not valid. Check the "invalidFeedItems" node for errors
           content:
             application/json;charset=UTF-8:
               schema:
@@ -641,7 +591,7 @@ paths:
                 $ref: '#/components/schemas/403Response'
     patch:
       tags:
-        - price-books
+        - Price Books
       summary: Update Price Books
       description: Update existing Price Book by changing the name or currency used for pricing.
         To update currency for fallback Price Book, use the Price Book ID "main".
@@ -709,7 +659,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ProcessFeedResponse'
         '400':
-          description: Some of the received items are not valid. Check the "invalidFeedItems" node for errors
+          description: Request rejected. Some of the received items are not valid. Check the "invalidFeedItems" node for errors
           content:
             application/json;charset=UTF-8:
               schema:
@@ -722,7 +672,7 @@ paths:
                 $ref: '#/components/schemas/403Response'
     delete:
       tags:
-        - price-books
+        - Price Books
       summary: Delete Price Books
       description: Delete existing Price Books.
       operationId: PriceBooksDelete
@@ -784,7 +734,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ProcessFeedResponse'
         '400':
-          description: Some of the received items are not valid. Check the "invalidFeedItems" node for errors
+          description: Request rejected. Some of the received items are not valid. Check the "invalidFeedItems" node for errors
           content:
             application/json;charset=UTF-8:
               schema:
@@ -799,7 +749,7 @@ paths:
   /v1/catalog/products/prices/{DATA_SPACE_ID}:
     post:
       tags:
-        - prices
+        - Prices
       summary: Create prices
       description: Create or replace existing product prices.
         Each price must be defined at least with fallback Price Book Id "main". 
@@ -881,7 +831,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ProcessFeedResponse'
         '400':
-          description: Some of the received items are not valid. Check the "invalidFeedItems" node for errors
+          description: Request rejected. Some of the received items are not valid. Check the "invalidFeedItems" node for errors
           content:
             application/json;charset=UTF-8:
               schema:
@@ -894,7 +844,7 @@ paths:
                 $ref: '#/components/schemas/403Response'
     patch:
       tags:
-        - prices
+        - Prices
       summary: Update prices
       description: Update product prices API allows you to change registered product prices.
       operationId: PricesPatch
@@ -961,7 +911,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ProcessFeedResponse'
         '400':
-          description: Some of the received items are not valid. Check the "invalidFeedItems" node for errors
+          description: Request rejected. Some of the received items are not valid. Check the "invalidFeedItems" node for errors
           content:
             application/json;charset=UTF-8:
               schema:
@@ -974,7 +924,7 @@ paths:
                 $ref: '#/components/schemas/403Response'
     delete:
       tags:
-        - prices
+        - Prices
       summary: Delete prices
       description: >
         Delete existing product prices
@@ -1039,7 +989,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ProcessFeedResponse'
         '400':
-          description: Some of the received items are not valid. Check the "invalidFeedItems" node for errors
+          description: Request rejected. Some of the received items are not valid. Check the "invalidFeedItems" node for errors
           content:
             application/json;charset=UTF-8:
               schema:
@@ -1573,6 +1523,7 @@ components:
     400ProcessFeedResponse:
       title: Response payload
       type: object
+      description: asdasd
       properties:
         feedItemReceivedCount:
           type: integer
