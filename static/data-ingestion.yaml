@@ -8,21 +8,21 @@ servers:
     description: Production endpoint
 
 tags:
-  - name: products
+  - name: Products
     description: Product Feed API to manage product data
-  - name: metadata
+  - name: Metadata
     description: Product Attributes Metadata Feed API
-  - name: prices
+  - name: Prices
     description: Product Prices Feed API
-  - name: price-books
+  - name: Price-books
     description: Price Books Feed API
 paths:
   /api/v1/catalog/products/metadata/{DATA_SPACE_ID}:
     put:
       tags:
         - metadata
-      summary: Product Attributes Metadata Create API
-      description: Create a new or replace existing Product Attribute Metadata entities. Product attributes allows you to define how product attributes will be displayed on Storefront, define search characteristics etc.
+      summary: Create product attributes metadata
+      description: Create or replace existing product attribute metadata resources. Product attributes allows you to define how product attributes will be displayed on Storefront, define search characteristics etc.
       operationId: ProductMetadataPut
       parameters:
         - name: DATA_SPACE_ID
@@ -107,8 +107,8 @@ paths:
     patch:
       tags:
         - metadata
-      summary: Product Attributes Metadata Update API
-      description: Product attributes patch request allows you to update registered Product Attribute Metadata
+      summary: Update product attributes metadata
+      description: Product attributes patch request allows you to update registered product attributes metadata
       operationId: ProductMetadataPatch
       parameters:
         - name: DATA_SPACE_ID
@@ -153,7 +153,7 @@ paths:
             examples:
               FeedWithMetadataInformation:
                 summary: Example of product attributes metadata feed
-                description: Enables the feed with product attribute information that needs to be updated
+                description: Update existing product attribute metadata with new values.
                 value:
                   [
                     {
@@ -193,7 +193,7 @@ paths:
     delete:
       tags:
         - metadata
-      summary: Product Attributes Metadata Delete API
+      summary: Delete product attributes metadata
       description: Product attributes delete request allows to delete registered product attribute metadata.
       operationId: ProductMetadataDelete
       parameters:
@@ -273,9 +273,9 @@ paths:
     put:
       tags:
         - products
-      summary: Product Create API
+      summary: Create product
       description: >
-        Create a new or replace existing Product entity in given `sku` and `scope`. If product with same data exists for the same SKU and scope item will be ignored.
+        Create or replace existing product entity in given `sku` and `scope`. If product with same data exists for the same SKU and scope item will be ignored.
       operationId: ProductsPut
       parameters:
         - $ref: '#/components/parameters/DATA_SPACE_ID'
@@ -299,9 +299,9 @@ paths:
                 $ref: '#/components/schemas/FeedProduct'
             examples:
               SimpleProductWithImages:
-                summary: Create Simple Product
+                summary: Create simple product
                 description: >
-                  Create Simple Product with required and optional fields
+                  Create simple product with required and optional fields
                 value:
                   [
                     {
@@ -394,9 +394,9 @@ paths:
     patch:
       tags:
         - products
-      summary: Product Update API
+      summary: Update product
       description: > 
-        Update Product entity for given `sku` and `scope`. The "replace" strategy is used to update entity: the entire field will be replaced with new valueUpdate Product entity for given `sku` and `scope`
+        Update product entity for given `sku` and `scope`. The "replace" strategy is used to update entity: the entire field will be replaced with new valueUpdate Product entity for given `sku` and `scope`
       operationId: ProductsPatch
       parameters:
         - $ref: '#/components/parameters/DATA_SPACE_ID'
@@ -420,7 +420,7 @@ paths:
                 $ref: '#/components/schemas/FeedProduct'
             examples:
               SimpleProductWithImages:
-                summary: Update simple Product
+                summary: Update simple product
                 description: >
                   Update simple Product with changed values (name, roles, etc). This data will be replaced in existing product
                 value:
@@ -515,9 +515,9 @@ paths:
     delete:
       tags:
         - products
-      summary: Product Delete API
+      summary: Delete product
       description: >
-        Delete Product entity for given `sku` and `scope`
+        Delete product entity for given `sku` and `scope`
       operationId: ProductsDelete
       parameters:
         - $ref: '#/components/parameters/DATA_SPACE_ID'
@@ -541,9 +541,9 @@ paths:
                 $ref: '#/components/schemas/FeedProductDelete'
             examples:
               SimpleProductWithImages:
-                summary: Delete Product
+                summary: Delete product
                 description: >
-                  Delete Simple Product by given SKU and scope
+                  Delete simple product by given SKU and scope
                 value:
                   [
                     {
@@ -558,8 +558,8 @@ paths:
     put:
       tags:
         - price-books
-      summary: Price Books Create API
-      description: Create a new or replace existing Price Book entities. Price books allows you to define a unique scope that is used to manage product price discounts across different customer tiers. PriceBook allows to define currency that will be used for all product prices within specified Price Book
+      summary: Create price books
+      description: Create or replace existing price book entities. Price books allows you to define a unique scope that is used to manage product price discounts across different customer tiers. PriceBook allows to define currency that will be used for all product prices within specified Price Book
       operationId: PriceBooksPut
       parameters:
         - name: DATA_SPACE_ID
@@ -603,8 +603,8 @@ paths:
                 $ref: '#/components/schemas/FeedPricebook'
             examples:
               FeedWithPricebookInformation:
-                summary: Example of product price books feed
-                description: Create Price Book "dealer-north" with "USD" currency
+                summary: Create product price books
+                description: Create price book "dealer-north" with "USD" currency
                 value:
                   [
                     {
@@ -635,7 +635,7 @@ paths:
     patch:
       tags:
         - price-books
-      summary: Price Books Update API
+      summary: Update price books
       description: Update registered price books
       operationId: PriceBooksPatch
       parameters:
@@ -680,8 +680,8 @@ paths:
                 $ref: '#/components/schemas/FeedPricebook'
             examples:
               FeedWithPricebookInformation:
-                summary: Example of product price books feed to update
-                description: Update Price Book "dealer-north" with new name and currency (EUR)
+                summary: Update existing product price books
+                description: Update price book "dealer-north" with new name and currency (EUR)
                 value:
                   [
                     {
@@ -712,7 +712,7 @@ paths:
     delete:
       tags:
         - price-books
-      summary: Price Books Delete API
+      summary: Delete price books
       description: Delete registered price books.
       operationId: PriceBooksDelete
       parameters:
@@ -757,7 +757,7 @@ paths:
                 $ref: '#/components/schemas/FeedPricebook'
             examples:
               DeleteExistingPricebook:
-                summary: Delete Price Book "dealer-north"
+                summary: Delete price book "dealer-north"
                 description: Delete existing "dealer-north" Price Book
                 value:
                   [
@@ -789,8 +789,8 @@ paths:
     put:
       tags:
         - prices
-      summary: Prices Create API
-      description: Create a new or replace existing Product Price entities. Prices API allows you to define product prices
+      summary: Create prices
+      description: Create or replace existing product price entities. Prices API allows you to define product prices
       operationId: PricesPut
       parameters:
         - name: DATA_SPACE_ID
@@ -834,8 +834,8 @@ paths:
                 $ref: '#/components/schemas/FeedPrices'
             examples:
               FeedWithNewProductPrice:
-                summary: Example of product price feed
-                description: Enables the feed with product price information
+                summary: Create product price
+                description: Create new product price information
                 value:
                   [
                     {
@@ -877,8 +877,8 @@ paths:
     patch:
       tags:
         - prices
-      summary: Prices Update API
-      description: Update Product Prices API allows you to change registered product prices
+      summary: Update prices
+      description: Update product prices API allows you to change registered product prices
       operationId: PricesPatch
       parameters:
         - name: DATA_SPACE_ID
@@ -922,8 +922,8 @@ paths:
                 $ref: '#/components/schemas/FeedPrices'
             examples:
               FeedWithProductPricesInformation:
-                summary: Example of product prices feed update
-                description: Updated the feed with product prices information
+                summary: Product prices update
+                description: Update existing product prices for the given SKU (product-sku-1) and Price Book ID (price-book-id-1)
                 value:
                   [
                     {
@@ -957,9 +957,9 @@ paths:
     delete:
       tags:
         - prices
-      summary: Prices Delete API
+      summary: Delete prices
       description: >
-        Delete Product Prices API allows you to mark registered product prices as deleted
+        Delete existing product prices
       operationId: PricesDelete
       parameters:
         - name: DATA_SPACE_ID
@@ -1003,9 +1003,9 @@ paths:
                 $ref: '#/components/schemas/FeedPricesDelete'
             examples:
               FeedWithProductPricesInformation:
-                summary: Example of product prices feed delete
+                summary: Product prices delete
                 description: >
-                  Delete the feed with product prices information
+                  Delete the existing product prices information
                 value:
                   [
                     {
