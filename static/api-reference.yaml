@@ -1,0 +1,1648 @@
+openapi: 3.0.3
+info:
+  title: Data Ingestion API
+  description: Data Ingestion API for Adobe Commerce is responsible for ingesting data from Adobe Commerce into the Adobe Commerce SaaS Platform.
+  version: 1.0.0
+servers:
+  - url: https://commerce.adobe.io/api/
+    description: Production endpoint
+
+tags:
+  - name: Products
+    description: Product API to manage product data
+  - name: Metadata
+    description: Product Attributes Metadata API
+  - name: Prices
+    description: Product Prices API
+  - name: Price-books
+    description: Price Books API
+paths:
+  /v1/catalog/products/metadata/{DATA_SPACE_ID}:
+    post:
+      tags:
+        - metadata
+      summary: Create product attributes metadata
+      description: Create or replace existing product attribute metadata resources. Product attributes allows you to define how product attributes will be displayed on Storefront, define search characteristics etc.
+      operationId: ProductMetadataPut
+      parameters:
+        - name: DATA_SPACE_ID
+          in: path
+          description: Data Space ID
+          required: true
+          style: simple
+          schema:
+            type: string
+        - name: Content-Type
+          in: header
+          required: true
+          schema:
+            type: string
+            enum: [application/json]
+        - name: x-api-key
+          in: header
+          required: true
+          schema:
+            type: string
+          description: Production public API key
+        - name: x-gw-signature
+          in: header
+          required: true
+          schema:
+            type: string
+          description: JWT generated for Production public API key
+        - name: Content-Encoding
+          in: header
+          required: false
+          schema:
+            type: string
+            enum: [gzip]
+          description: Use this header if the payload is compressed with gzip
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/FeedMetadata'
+            examples:
+              FeedWithMetadataInformation:
+                summary: Example of product attributes metadata
+                description: Enables the with product attribute information
+                value:
+                  [
+                    {
+                      "code": "name",
+                      "scope": {
+                        "locale": "En"
+                      },
+                      "label": "Product Name",
+                      "dataType": "BOOLEAN",
+                      "roles": [ "PDP" ],
+                      "filterable": false,
+                      "sortable": false,
+                      "searchable": true,
+                      "searchWeight": 55,
+                      "searchTypes": [ "AUTOCOMPLETE" ]
+                    }
+                  ]
+      responses:
+        '200':
+          description: All items in the request are accepted for further processing
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/ProcessFeedResponse'
+        '400':
+          description: Some of the received items are not valid. Check the "invalidFeedItems" node for errors
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/400ProcessFeedResponse'
+        '403':
+          description: Unauthorized request. Verify the ‘x-api-key’ and make sure that the JWT in ‘x-gw-signature’ is still valid.”
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/403Response'
+    patch:
+      tags:
+        - metadata
+      summary: Update product attributes metadata
+      description: Update existing product attribute metadata with new values.
+      operationId: ProductMetadataPatch
+      parameters:
+        - name: DATA_SPACE_ID
+          in: path
+          description: Data Space ID
+          required: true
+          style: simple
+          schema:
+            type: string
+        - name: Content-Type
+          in: header
+          required: true
+          schema:
+            type: string
+            enum: [ application/json ]
+        - name: x-api-key
+          in: header
+          required: true
+          schema:
+            type: string
+          description: Production public API key
+        - name: x-gw-signature
+          in: header
+          required: true
+          schema:
+            type: string
+          description: JWT generated for Production public API key
+        - name: Content-Encoding
+          in: header
+          required: false
+          schema:
+            type: string
+            enum: [ gzip ]
+          description: Use this header if the payload is compressed with gzip
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/FeedMetadata'
+            examples:
+              FeedWithMetadataInformation:
+                summary: Example of product attributes metadata
+                description: Update existing product attribute metadata with new values.
+                value:
+                  [
+                    {
+                      "code": "name",
+                      "scope": {
+                        "locale": "En"
+                      },
+                      "label": "Updated - Product Name",
+                      "dataType": "SELECT",
+                      "roles": [ "PDP", "PLP" ],
+                      "filterable": true,
+                      "sortable": true,
+                      "searchable": true,
+                      "searchWeight": 77,
+                      "searchTypes": [ "STARTS_WITH", "AUTOCOMPLETE" ]
+                    }
+                  ]
+      responses:
+        '200':
+          description: All items in the request are accepted for further processing
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/ProcessFeedResponse'
+        '400':
+          description: Some of the received items are not valid. Check the "invalidFeedItems" node for errors
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/400ProcessFeedResponse'
+        '403':
+          description: Unauthorized request. Verify the ‘x-api-key’ and make sure that the JWT in ‘x-gw-signature’ is still valid.”
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/403Response'
+    delete:
+      tags:
+        - metadata
+      summary: Delete product attributes metadata
+      description: Remove product attribute metadata resources from the catalog data.
+      operationId: ProductMetadataDelete
+      parameters:
+        - name: DATA_SPACE_ID
+          in: path
+          description: Data Space ID
+          required: true
+          style: simple
+          schema:
+            type: string
+        - name: Content-Type
+          in: header
+          required: true
+          schema:
+            type: string
+            enum: [ application/json ]
+        - name: x-api-key
+          in: header
+          required: true
+          schema:
+            type: string
+          description: Production public API key
+        - name: x-gw-signature
+          in: header
+          required: true
+          schema:
+            type: string
+          description: JWT generated for Production public API key
+        - name: Content-Encoding
+          in: header
+          required: false
+          schema:
+            type: string
+            enum: [ gzip ]
+          description: Use this header if the payload is compressed with gzip
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/FeedMetadata'
+            examples:
+              FeedWithMetadataInformation:
+                summary: Delete product attributes metadata
+                description: Marks registered product attribute metadata as deleted
+                value:
+                  [
+                    {
+                      "code": "name",
+                      "scope": {
+                        "locale": "En"
+                      }
+                    }
+                  ]
+      responses:
+        '200':
+          description: All items in the request are accepted for further processing
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/ProcessFeedResponse'
+        '400':
+          description: Some received items are invalid. Check the ‘invalidFeedItems’ node for specific errors.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/400ProcessFeedResponse'
+        '403':
+          description: Unauthorized request. Verify the ‘x-api-key’ and make sure that the JWT in ‘x-gw-signature’ is still valid.”
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/403Response'
+
+  /v1/catalog/products/{DATA_SPACE_ID}:
+    post:
+      tags:
+        - products
+      summary: Create products
+      description: >
+        Create a products, or update an existing products with a specified `sku` and `scope`. If a product with same data exists with the same SKU and scope, the product update request is ignored.
+      operationId: ProductsPut
+      parameters:
+        - $ref: '#/components/parameters/DATA_SPACE_ID'
+        - $ref: '#/components/parameters/ContentType'
+        - $ref: '#/components/parameters/xApiKey'
+        - $ref: '#/components/parameters/xGwSignature'
+        - $ref: '#/components/parameters/ContentEncoding'
+      responses:
+        '202':
+          $ref: '#/components/responses/AcceptedResponse'
+        '400':
+          $ref: '#/components/responses/InvalidItemsResponse'
+        '403':
+          $ref: '#/components/responses/UnauthorizedResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/FeedProduct'
+            examples:
+              SimpleProductWithImages:
+                summary: Create a simple product
+                description: >
+                  Create a simple product with required and optional fields.
+                value:
+                  [
+                    {
+                      "sku": "red-pants",
+                      "scope": {
+                        "locale": "en"
+                      },
+                      "name": "red pants",
+                      "slug": "red-pants.html",
+                      "status": "ENABLED",
+                      "description": "long description about red pants",
+                      "shortDescription": "just pants",
+                      "roles": [
+                        "SEARCH",
+                        "CATALOG"
+                      ],
+                      "metaTags": {
+                        "title": " ",
+                        "description": "some seo stuff",
+                        "keywords": [
+                          "pants",
+                          "seo",
+                          "words"
+                        ]
+                      },
+                      "attributes": [
+                        {
+                          "code": "cost",
+                          "type": "NUMBER",
+                          "values": [
+                            "10.5"
+                          ]
+                        },
+                        {
+                          "code": "states",
+                          "type": "ARRAY",
+                          "values": [
+                            "TX",
+                            "CA",
+                            "NV"
+                          ]
+                        }
+                      ],
+                      "images": [
+                        {
+                          "url": "https://example.com/images/pants.jpg",
+                          "label": "photo of my pants!",
+                          "roles": [
+                            "PDP",
+                            "plp"
+                          ]
+                        }
+                      ],
+                      "links": [
+                        {
+                          "sku": "green-pants",
+                          "type": "related"
+                        }
+                      ],
+                      "routes": [
+                        {
+                          "path": "red-pants"
+                        },
+                        {
+                          "path": "pants/red-pants",
+                          "position": 1
+                        }
+                      ],
+                      "options": [
+                        {
+                          "id": "ABCDEFGHIJKLMNOPQRSTUVWXYZAB",
+                          "type": "SWATCH",
+                          "values": [
+                            {
+                              "id": "value-id",
+                              "sku": "produc1",
+                              "label": "value label",
+                              "colorHex": "#000000",
+                              "imageUrl": "https://example.com/images/image.png",
+                              "qty": 10
+                            }
+                          ],
+                          "label": "option label",
+                          "required": true,
+                          "defaultValueId": "no"
+                        }
+                      ]
+                    },
+                  ]
+    patch:
+      tags:
+        - products
+      summary: Update product
+      description: >
+        Update a product with a specified `sku` and `scope` to replace existing field data with the new data supplied in the request.
+      operationId: ProductsPatch
+      parameters:
+        - $ref: '#/components/parameters/DATA_SPACE_ID'
+        - $ref: '#/components/parameters/ContentType'
+        - $ref: '#/components/parameters/xApiKey'
+        - $ref: '#/components/parameters/xGwSignature'
+        - $ref: '#/components/parameters/ContentEncoding'
+      responses:
+        '202':
+          $ref: '#/components/responses/AcceptedResponse'
+        '400':
+          $ref: '#/components/responses/InvalidItemsResponse'
+        '403':
+          $ref: '#/components/responses/UnauthorizedResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/FeedProduct'
+            examples:
+              SimpleProductWithImages:
+                summary: Update a simple product
+                description: >
+                  Update simple Product with changed values (name, roles, etc). This data will be replaced in existing product
+                value:
+                  [
+                    {
+                      "sku": "red-pants",
+                      "scope": {
+                        "locale": "en"
+                      },
+                      "name": "Updated - red pants",
+                      "slug": "updated - red-pants.html",
+                      "status": "DISABLED",
+                      "description": "Updated - long description about red pants",
+                      "shortDescription": "Updated - just pants",
+                      "roles": [
+                        "SEARCH"
+                      ],
+                      "metaTags": {
+                        "title": "Updated - Red",
+                        "description": "Updated - some seo stuff",
+                        "keywords": [
+                          "updated - pants",
+                          "updated - edited",
+                          "updated - edited"
+                        ]
+                      },
+                      "attributes": [
+                        {
+                          "code": "cost",
+                          "type": "NUMBER",
+                          "values": [
+                            "11.5"
+                          ]
+                        },
+                        {
+                          "code": "states",
+                          "type": "ARRAY",
+                          "values": [
+                            "TX",
+                            "CA",
+                            "OK",
+                            "HI"
+                          ]
+                        }
+                      ],
+                      "images": [
+                        {
+                          "url": "https://example.com",
+                          "label": "updated - photo of my pants!",
+                          "roles": [
+                            "PDP",
+                            "plp"
+                          ]
+                        }
+                      ],
+                      "links": [
+                        {
+                          "sku": "gray-pants",
+                          "type": "related"
+                        }
+                      ],
+                      "routes": [
+                        {
+                          "path": "updated-red-pants"
+                        },
+                        {
+                          "path": "updated-pants/red-pants",
+                          "position": 1
+                        }
+                      ],
+                      "options": [
+                        {
+                          "id": "ABCDEFGHIJKLMNOPQRSTUVWXYZAB",
+                          "type": "SWATCH",
+                          "values": [
+                            {
+                              "id": "value-id",
+                              "sku": "product1",
+                              "label": "updated - value label",
+                              "colorHex": "#000000",
+                              "imageUrl": "https://example.com/image.png",
+                              "qty": 5
+                            }
+                          ],
+                          "label": "updeated - option label",
+                          "required": false,
+                          "defaultValueId": "no"
+                        }
+                      ]
+                    }
+                  ]
+    delete:
+      tags:
+        - products
+      summary: Delete a product
+      description: >
+        Delete a product with a specified `sku` and `scope`.
+      operationId: ProductsDelete
+      parameters:
+        - $ref: '#/components/parameters/DATA_SPACE_ID'
+        - $ref: '#/components/parameters/ContentType'
+        - $ref: '#/components/parameters/xApiKey'
+        - $ref: '#/components/parameters/xGwSignature'
+        - $ref: '#/components/parameters/ContentEncoding'
+      responses:
+        '202':
+          $ref: '#/components/responses/AcceptedResponse'
+        '400':
+          $ref: '#/components/responses/InvalidItemsResponse'
+        '403':
+          $ref: '#/components/responses/UnauthorizedResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/FeedProductDelete'
+            examples:
+              SimpleProductWithImages:
+                summary: Delete product
+                description: >
+                  Delete a simple product with a specified `sku` and `scope`.
+                value:
+                  [
+                    {
+                      "sku": "red-pants",
+                      "scope": {
+                        "locale": "English"
+                      }
+                    }
+                  ]
+
+  /v1/catalog/price-books/{DATA_SPACE_ID}:
+    post:
+      tags:
+        - price-books
+      summary: Create Price Books
+      description: Create or replace existing Price Books.
+        Each Price Book defines a unique scope that can be used to manage product price discounts across customer tiers.
+        Out of the box default Price Book with ID "main" has "USD" currency. In order to change the currency please use Update API.
+        You can also specify the currency to use for product prices in the specified Price Book.
+      operationId: PriceBooksPut
+      parameters:
+        - name: DATA_SPACE_ID
+          in: path
+          description: Data Space ID
+          required: true
+          style: simple
+          schema:
+            type: string
+        - name: Content-Type
+          in: header
+          required: true
+          schema:
+            type: string
+            enum: [ application/json ]
+        - name: x-api-key
+          in: header
+          required: true
+          schema:
+            type: string
+          description: Production public API key
+        - name: x-gw-signature
+          in: header
+          required: true
+          schema:
+            type: string
+          description: JWT generated for Production public API key
+        - name: Content-Encoding
+          in: header
+          required: false
+          schema:
+            type: string
+            enum: [ gzip ]
+          description: Use this header if the payload is compressed with gzip
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/FeedPricebook'
+            examples:
+              FeedWithPricebookInformation:
+                summary: Create a Price Books
+                description: Create a Price Book and specify the currency for prices.
+                value:
+                  [
+                    {
+                      "priceBookId": "dealer-north",
+                      "name": "Dealer North Price Book Name",
+                      "currency": "USD"
+                    },
+                    {
+                      "priceBookId": "VIP",
+                      "currency": "USD"
+                    }
+                  ]
+      responses:
+        '200':
+          description: All items in the request are accepted for further processing
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/ProcessFeedResponse'
+        '400':
+          description: Some of the received items are not valid. Check the "invalidFeedItems" node for errors
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/400ProcessFeedResponse'
+        '403':
+          description: Unauthorized request. Verify the ‘x-api-key’ and make sure that the JWT in ‘x-gw-signature’ is still valid.”
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/403Response'
+    patch:
+      tags:
+        - price-books
+      summary: Update Price Books
+      description: Update existing Price Book by changing the name or currency used for pricing.
+        To update currency for fallback Price Book, use the Price Book ID "main".
+      operationId: PriceBooksPatch
+      parameters:
+        - name: DATA_SPACE_ID
+          in: path
+          description: Data Space ID
+          required: true
+          style: simple
+          schema:
+            type: string
+        - name: Content-Type
+          in: header
+          required: true
+          schema:
+            type: string
+            enum: [ application/json ]
+        - name: x-api-key
+          in: header
+          required: true
+          schema:
+            type: string
+          description: Production public API key
+        - name: x-gw-signature
+          in: header
+          required: true
+          schema:
+            type: string
+          description: JWT generated for Production public API key
+        - name: Content-Encoding
+          in: header
+          required: false
+          schema:
+            type: string
+            enum: [ gzip ]
+          description: Use this header if the payload is compressed with gzip
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/FeedPricebook'
+            examples:
+              FeedWithPriceBookInformation:
+                summary: Update existing Price Book
+                description: Update the "dealer-north" and fallback "main" Price Books to change the currency.
+                value:
+                  [
+                    {
+                      "priceBookId": "dealer-north",
+                      "currency": "EUR"
+                    },
+                    {
+                      "priceBookId": "main",
+                      "currency": "EUR"
+                    }
+                  ]
+      responses:
+        '200':
+          description: All items in the request are accepted for further processing
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/ProcessFeedResponse'
+        '400':
+          description: Some of the received items are not valid. Check the "invalidFeedItems" node for errors
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/400ProcessFeedResponse'
+        '403':
+          description: Unauthorized request. Verify the ‘x-api-key’ and make sure that the JWT in ‘x-gw-signature’ is still valid.”
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/403Response'
+    delete:
+      tags:
+        - price-books
+      summary: Delete Price Books
+      description: Delete existing Price Books.
+      operationId: PriceBooksDelete
+      parameters:
+        - name: DATA_SPACE_ID
+          in: path
+          description: Data Space ID
+          required: true
+          style: simple
+          schema:
+            type: string
+        - name: Content-Type
+          in: header
+          required: true
+          schema:
+            type: string
+            enum: [ application/json ]
+        - name: x-api-key
+          in: header
+          required: true
+          schema:
+            type: string
+          description: Production public API key
+        - name: x-gw-signature
+          in: header
+          required: true
+          schema:
+            type: string
+          description: JWT generated for Production public API key
+        - name: Content-Encoding
+          in: header
+          required: false
+          schema:
+            type: string
+            enum: [ gzip ]
+          description: Use this header if the payload is compressed with gzip
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/FeedPricebook'
+            examples:
+              DeleteExistingPricebook:
+                summary: Delete Price Book "dealer-north"
+                description: Delete the "dealer-north" Price Book.
+                value:
+                  [
+                    {
+                      "priceBookId": "dealer-north"
+                    }
+                  ]
+      responses:
+        '200':
+          description: All items in the request are accepted for further processing
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/ProcessFeedResponse'
+        '400':
+          description: Some of the received items are not valid. Check the "invalidFeedItems" node for errors
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/400ProcessFeedResponse'
+        '403':
+          description: Unauthorized request. Verify the ‘x-api-key’ and make sure that the JWT in ‘x-gw-signature’ is still valid.”
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/403Response'
+
+  /v1/catalog/products/prices/{DATA_SPACE_ID}:
+    post:
+      tags:
+        - prices
+      summary: Create prices
+      description: Create or replace existing product prices.
+        Each price must be defined at least with fallback Price Book Id "main". 
+        Use this operation to define prices for product SKUs and define the pricing scope that identifies the Price Books and price tiers where the price is used.
+      operationId: PricesPut
+      parameters:
+        - name: DATA_SPACE_ID
+          in: path
+          description: Data Space ID
+          required: true
+          style: simple
+          schema:
+            type: string
+        - name: Content-Type
+          in: header
+          required: true
+          schema:
+            type: string
+            enum: [ application/json ]
+        - name: x-api-key
+          in: header
+          required: true
+          schema:
+            type: string
+          description: Production public API key
+        - name: x-gw-signature
+          in: header
+          required: true
+          schema:
+            type: string
+          description: JWT generated for Production public API key
+        - name: Content-Encoding
+          in: header
+          required: false
+          schema:
+            type: string
+            enum: [ gzip ]
+          description: Use this header if the payload is compressed with gzip
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/FeedPrices'
+            examples:
+              FeedWithNewProductPrice:
+                summary: Add product price information
+                description: Add product price information to the catalog data.
+                value:
+                  [
+                    {
+                      "sku": "red-pants",
+                      "priceBookId": "main",
+                      "regular": 20
+                    },
+                    {
+                      "sku": "red-pants",
+                      "priceBookId": "VIP",
+                      "regular": 19.9,
+                      "discounts": [
+                        { "code": "discount", "percentage": 10 }
+                      ]
+                    },
+                    {
+                      "sku": "red-pants",
+                      "priceBookId": "dealer-north",
+                      "regular": 20.5,
+                      "discounts": [
+                        { "code": "fixed", "price": 18 }
+                      ]
+                    }
+                  ]
+      responses:
+        '200':
+          description: All items in the request are accepted for further processing
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/ProcessFeedResponse'
+        '400':
+          description: Some of the received items are not valid. Check the "invalidFeedItems" node for errors
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/400ProcessFeedResponse'
+        '403':
+          description: Unauthorized request. Verify the ‘x-api-key’ and make sure that the JWT in ‘x-gw-signature’ is still valid.”
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/403Response'
+    patch:
+      tags:
+        - prices
+      summary: Update prices
+      description: Update product prices API allows you to change registered product prices.
+      operationId: PricesPatch
+      parameters:
+        - name: DATA_SPACE_ID
+          in: path
+          description: Data Space ID
+          required: true
+          style: simple
+          schema:
+            type: string
+        - name: Content-Type
+          in: header
+          required: true
+          schema:
+            type: string
+            enum: [ application/json ]
+        - name: x-api-key
+          in: header
+          required: true
+          schema:
+            type: string
+          description: Production public API key
+        - name: x-gw-signature
+          in: header
+          required: true
+          schema:
+            type: string
+          description: JWT generated for Production public API key
+        - name: Content-Encoding
+          in: header
+          required: false
+          schema:
+            type: string
+            enum: [ gzip ]
+          description: Use this header if the payload is compressed with gzip
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/FeedPrices'
+            examples:
+              FeedWithProductPricesInformation:
+                summary: Product prices update
+                description: Update existing product prices for the given SKU (red-pants) and Price Book ID (dealer-north)
+                value:
+                  [
+                    {
+                      "sku": "red-pants",
+                      "priceBookId": "dealer-north",
+                      "regular": 11.5,
+                      "discounts": [
+                        { "code": "discount", "percentage": 30 }
+                      ]
+                    }
+                  ]
+      responses:
+        '200':
+          description: All items in the request are accepted for further processing
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/ProcessFeedResponse'
+        '400':
+          description: Some of the received items are not valid. Check the "invalidFeedItems" node for errors
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/400ProcessFeedResponse'
+        '403':
+          description: Unauthorized request. Verify the ‘x-api-key’ and make sure that the JWT in ‘x-gw-signature’ is still valid.”
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/403Response'
+    delete:
+      tags:
+        - prices
+      summary: Delete prices
+      description: >
+        Delete existing product prices
+      operationId: PricesDelete
+      parameters:
+        - name: DATA_SPACE_ID
+          in: path
+          description: Data Space ID
+          required: true
+          style: simple
+          schema:
+            type: string
+        - name: Content-Type
+          in: header
+          required: true
+          schema:
+            type: string
+            enum: [ application/json ]
+        - name: x-api-key
+          in: header
+          required: true
+          schema:
+            type: string
+          description: Production public API key
+        - name: x-gw-signature
+          in: header
+          required: true
+          schema:
+            type: string
+          description: JWT generated for Production public API key
+        - name: Content-Encoding
+          in: header
+          required: false
+          schema:
+            type: string
+            enum: [ gzip ]
+          description: Use this header if the payload is compressed with gzip
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/FeedPricesDelete'
+            examples:
+              FeedWithProductPricesInformation:
+                summary: Product prices delete
+                description: >
+                  Delete the existing product prices information
+                value:
+                  [
+                    {
+                      "sku": "red-pants",
+                      "priceBookId": "dealer-north",
+                    }
+                  ]
+      responses:
+        '200':
+          description: All items in the request are accepted for further processing
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/ProcessFeedResponse'
+        '400':
+          description: Some of the received items are not valid. Check the "invalidFeedItems" node for errors
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/400ProcessFeedResponse'
+        '403':
+          description: Unauthorized request. Verify the ‘x-api-key’ and make sure that the JWT in ‘x-gw-signature’ is still valid.”
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/403Response'
+
+components:
+  responses:
+    AcceptedResponse:
+      description: All items accepted and will be processed asynchronously
+      content:
+        application/json;charset=UTF-8:
+          schema:
+            $ref: '#/components/schemas/ProcessFeedResponse'
+    InvalidItemsResponse:
+      description: One or all received items are not valid. Check the "invalidFeedItems" node for details
+      content:
+        application/json;charset=UTF-8:
+          schema:
+            $ref: '#/components/schemas/400ProcessFeedResponse'
+    UnauthorizedResponse:
+      description: Unauthorized request. Verify the "x-api-key" value is correct and ensure the JWT is not expired in "x-gw-signature"
+      content:
+        application/json;charset=UTF-8:
+          schema:
+            $ref: '#/components/schemas/403Response'
+  parameters:
+    DATA_SPACE_ID:
+      name: DATA_SPACE_ID
+      in: path
+      description: Data Space ID. See docs https://experienceleague.adobe.com/docs/commerce-admin/config/services/saas.html
+      required: true
+      style: simple
+      schema:
+        type: string
+    ContentType:
+      name: Content-Type
+      in: header
+      required: true
+      schema:
+        type: string
+        enum: [application/json]
+    xApiKey:
+      name: x-api-key
+      in: header
+      required: true
+      schema:
+        type: string
+      description: Production public API key
+    xGwSignature:
+      name: x-gw-signature
+      in: header
+      required: true
+      schema:
+        type: string
+      description: JWT generated for Production public API key
+    ContentEncoding:
+      name: Content-Encoding
+      in: header
+      required: false
+      schema:
+        type: string
+        enum: [gzip]
+      description: Use this header if the payload is compressed with gzip
+
+  schemas:
+    FeedItemFailedValidationResult:
+      title: FeedItemFailedValidationResult
+      type: object
+      properties:
+        code:
+          type: string
+          description: code name of invalid field
+        itemIndex:
+          type: integer
+          format: int32
+          description: Reference to the line item with invalid payload. Starting from 0
+        message:
+          type: string
+          description: Error description
+    FeedMetadata:
+      title: FeedMetadata
+      description: Metadata information for a product attribute
+      required:
+        - code
+        - scope
+        - label
+        - dataType
+      type: object
+      properties:
+        code:
+          type: string
+          description: Attribute code
+        scope:
+          $ref: '#/components/schemas/Scope'
+        roles:
+          type: array
+          description: >
+            roles associated with this attribute, for example: attribute for PDP, PLP etc.
+          items:
+            type: string
+        label:
+          type: string
+          description: The attribute label
+          example: Attribute Name
+        dataType:
+          type: string
+          description: Data type
+          example: TEXT
+          enum:
+            - TEXT
+            - DECIMAL
+            - INTEGER
+            - BOOLEAN
+        filterable:
+          type: boolean
+          description: Whether the attribute is filterable or not
+          example: true
+        sortable:
+          type: boolean
+          description: Whether the attribute is sortable or not
+          example: true
+        searchable:
+          type: boolean
+          description: Whether the attribute is searchable or not
+          example: true
+        searchWeight:
+          type: number
+          description: The weight associated with the search
+          format: float
+        searchTypes:
+          type: array
+          description: >
+            Search types associated with this attribute, for example: autocomplete, starts_with etc.
+          items:
+            type: string
+            enum:
+              - AUTOCOMPLETE
+              - CONTAINS
+              - STARTS_WITH
+    FeedMetadataDelete:
+      title: Metadata Delete
+      description: Delete metadata information for a product attribute
+      required:
+        - code
+        - scope
+      type: object
+      properties:
+        code:
+          type: string
+          description: Attribute code
+        scope:
+          $ref: '#/components/schemas/Scope'
+    FeedProduct:
+      title: Catalog Product payload
+      type: object
+      required:
+        - sku
+        - scope
+        - name
+        - slug
+        - status
+      properties:
+        sku:
+          type: string
+          description: Product unique identifier
+          example: MH01
+        scope:
+          $ref: '#/components/schemas/Scope'
+        name:
+          type: string
+          description: Product name
+          example: Kangaroo Hoodie
+        slug:
+          type: string
+          description: The URL key of the product
+          example: kangaroo-hoodie.html
+        description:
+          type: string
+          description: A description of the product
+          example: A kangaroo hoodie for all seasons
+        shortDescription:
+          type: string
+          description: A short description of the product
+          example: A hoodie for all seasons with a kangaroo pocket
+        status:
+          type: string
+          description: Enabled (Product is visible on the storefront) / Disabled (Product is not visible on the storefront)
+          example: ENABLED
+          enum:
+            - ENABLED
+            - DISABLED
+        roles:
+          type: array
+          description: >
+            Storefront area where the product is visible. Empty list means product should not visible individually
+            * `CATALOG`: Product is visible in the PLP (product listing page) and PDP (product detail page)
+            * `SEARCH`: Product is visible in the SRP (search result page) and PDP (product detail page)
+            * `CATALOG, SEARCH`: Product is visible in the PLP, SRP, and PDP
+          example: [CATALOG]
+          enum:
+            - CATALOG
+            - SEARCH
+          items:
+            type: string
+        metaTags:
+          type: object
+          description: Meta attributes that will be specified in <meta> tags
+          items:
+            $ref: '#/components/schemas/ProductMetaAttribute'
+        attributes:
+          type: array
+          description: A list of product attributes
+          items:
+            $ref: '#/components/schemas/ProductAttribute'
+        images:
+          type: array
+          description: A list of product images
+          items:
+            $ref: '#/components/schemas/ProductImage'
+        links:
+          type: array
+          description: List of linked SKUs
+          items:
+            $ref: '#/components/schemas/ProductLink'
+        routes:
+          type: array
+          description: List of product routes
+          items:
+            $ref: '#/components/schemas/ProductRoutes'
+        options:
+          type: array
+          description: Options associated with the product
+          items:
+            $ref: '#/components/schemas/ProductOption'
+    FeedProductDelete:
+      title: Catalog Product delete payload
+      type: object
+      required:
+        - sku
+        - scope
+      properties:
+        sku:
+          type: string
+          description: Product unique identifier
+          example: MH01
+        scope:
+          $ref: '#/components/schemas/Scope'
+    FeedPricebook:
+      title: FeedPricebook
+      description: Price Book information
+      required:
+        - priceBookId
+      type: object
+      properties:
+        priceBookId:
+          type: string
+          description: Price Book ID
+        name:
+          type: string
+          description: Price Book Name
+        currency:
+          type: string
+          description: Price Book Currency
+          minLength: 1
+          maxLength: 5
+    FeedPrices:
+      title: FeedPrices
+      description: Product prices information
+      required:
+        - sku
+        - priceBookId
+        - regular
+      type: object
+      properties:
+        sku:
+          type: string
+          description: Product SKU
+        priceBookId:
+          type: string
+          description: Price Book ID
+        regular:
+          type: number
+          format: float
+          description: Regular price
+        discounts:
+          type: array
+          description: Active discounts
+          items:
+            oneOf:
+              - $ref: '#/components/schemas/DiscountsFinalPrice'
+              - $ref: '#/components/schemas/DiscountsPercentage'
+    FeedPricesDelete:
+      title: FeedPricesDelete
+      description: Delete product prices information
+      required:
+        - sku
+        - priceBookId
+      type: object
+      properties:
+        sku:
+          type: string
+          description: Product SKU
+        priceBookId:
+          type: string
+          description: Price Book ID
+    DiscountsFinalPrice:
+      title: Final Price
+      type: object
+      properties:
+        code:
+          type: object
+        price:
+          type: number
+          format: float
+    DiscountsPercentage:
+      title: Discount
+      type: object
+      properties:
+        code:
+          type: object
+        percentage:
+          type: number
+          format: float
+    Scope:
+      title: Scope
+      description: Scope of the entity. For example it's locale "English"
+      type: object
+      required:
+        - locale
+      properties:
+        locale:
+          type: string
+          description: the single value that represents content locale, for example, English.
+          example: English
+    ProductMetaAttribute:
+      title: Meta Attributes
+      type: object
+      properties:
+        title:
+          type: string
+          description: A meta title
+        keywords:
+          type: array
+          description: A meta keywords
+          items:
+            type: string
+        description:
+          type: string
+          description: A meta description
+    ProductAttribute:
+      title: Product Attribute
+      type: object
+      required:
+        - code
+        - type
+        - values
+      properties:
+        code:
+          type: string
+          description: Product Attribute Code
+        type:
+          enum:
+            - BOOLEAN
+            - NUMBER
+            - STRING
+            - ARRAY
+            - OBJECT
+          description: >
+            Type of attribute value that will be applied on rendering pahse. Validation will be applied only on rendereing phase. Wrong values would be silently ignored
+            * `BOOLEAN`: Accept single value: "true" or false
+            * `Number`: Accept single number,e.g. "85", "0.42", etc.
+            * `STRING`: Accept single string,e.g. "Great day, yall!"
+            * `STRING`: Accept list of strings ,e.g. ["red", "green", "blue"]
+            * `OBJECT`: Accept JSON object `"{"name": "swatch", "color": "red"}"`
+        values:
+          type: array
+          description: A list of value(s) associated to a given type.
+          items:
+            type: string
+    ProductRoutes:
+      title: Routes
+      type: object
+      required:
+        - path
+      properties:
+        path:
+          type: string
+          description: URL path
+        position:
+          type: integer
+          description: Position of a product in this path, default 0.
+          format: int32
+    ProductImage:
+      title: Product Image
+      type: object
+      required:
+        - url
+      properties:
+        url:
+          type: string
+          description: Media resource URL
+        label:
+          type: string
+          description: Media resource label
+        roles:
+          type: array
+          description: >
+            roles associated with this image, for example: image for PDP, PLP etc.
+          items:
+            type: string
+    ProductOption:
+      title: ProductOption
+      type: object
+      required:
+        - id
+        - type
+        - values
+      properties:
+        id:
+          type: string
+          description: Product Option ID
+        label:
+          type: string
+          description: Option label
+        required:
+          type: boolean
+          description: Whether the option is required for selection
+          example: false
+        defaultValueId:
+          type: string
+          description: Pre-selected value for the option
+        type:
+          type: string
+          enum:
+            - CONFIGURABLE
+            - BUNDLE
+            - SWATCH
+          description: >
+            Option type. Additionally to prefedined types, custom types can be used
+            * `CONFIGURABLE`: Configurable product option
+            * `BUNDLE`: Bundle product option
+            * `SWATCH`: Swatch product option
+        values:
+          type: array
+          description: A list of option values
+          items:
+            $ref: '#/components/schemas/ProductOptionValue'
+    ProductOptionValue:
+      title: ProductOptionValue
+      type: object
+      required:
+        - id
+        - sku
+      properties:
+        id:
+          type: string
+          description: Option value ID. For "CONFIGURABLE" type, must be equal to the "attribute code"
+        label:
+          type: string
+          description: Option value label
+        colorHex:
+          type: string
+          description: A hex representation of the color of the option value
+        imageUrl:
+          type: string
+          description: Image URL of the option value
+        sku:
+          type: string
+          description: Product SKU associated to the option value
+    ProductLink:
+      title: Links
+      required:
+        - type
+        - sku
+      type: object
+      properties:
+        type:
+          type: string
+          description: Product link type. Additionally to predefined types, custom types can be used
+        sku:
+          type: string
+          description: SKU
+      description: Product association
+    ItemFailedValidationResult:
+      title: ItemFailedValidationResult
+      type: object
+      properties:
+        code:
+          type: string
+          description: Code of the validation error
+        itemIndex:
+          type: integer
+          description: Index of the conflicting item
+          format: int32
+        message:
+          type: string
+          description: Message of the validation error for the item
+        value:
+          type: string
+          description: The value supplied to the API
+    ProcessFeedResponse:
+      title: Response payload
+      type: object
+      properties:
+        feedItemReceivedCount:
+          type: integer
+          description: Number of valid items received and processed
+          format: int32
+        invalidFeedItems:
+          type: array
+          description: List of items that did not pass the validation. Fix the payload for invalid items before resubmitting
+          items:
+            $ref: '#/components/schemas/FeedItemFailedValidationResult'
+      example:
+        {
+          "feedItemReceivedCount": 2,
+          "invalidFeedItems": [
+            {
+              "itemIndex": 1,
+              "code": "{error code}",
+              "message": "{error message}"
+            }
+          ]
+        }
+    400ProcessFeedResponse:
+      title: Response payload
+      type: object
+      properties:
+        feedItemReceivedCount:
+          type: integer
+          description: 0 valid items
+          format: int32
+          default: 0
+        invalidFeedItems:
+          type: array
+          description: List of items that did not pass the validation. Fix the payload for invalid items before resubmitting
+          items:
+            $ref: '#/components/schemas/FeedItemFailedValidationResult'
+      example:
+        {
+          "feedItemReceivedCount": 0,
+          "invalidFeedItems": [
+            {
+              "itemIndex": 0,
+              "code": "{error code}",
+              "message": "{error message}"
+            },
+            {
+              "itemIndex": 1,
+              "code": "{error code}",
+              "message": "{error message}"
+            }
+          ]
+        }
+    403Response:
+      title: 403 Forbidden
+      type: object
+      oneOf:
+        - title: 403 Unauthorized - invalid JWT
+          type: object
+          properties:
+            error_code:
+              type: string
+              description: Error code
+            message:
+              type: string
+              description: Error message
+          example:
+            {
+              "error_code":"403053",
+              "message":"JWT is invalid"
+            }
+        - title: 403 Unauthorized
+          type: object
+          properties:
+            error:
+              type: object
+              properties:
+                code:
+                  type: string
+                  description: Error code
+                message:
+                  type: string
+                  description: Error message
+                details:
+                  type: object
+                  properties:
+                    error_code:
+                      type: string
+                      description: Error code
+          example:
+            {
+              "error": {
+                "code": "Forbidden",
+                "message": "Client ID is missing",
+                "details": {
+                  "error_code": "403000"
+                }
+              }
+            }
