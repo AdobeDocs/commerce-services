@@ -6,6 +6,7 @@ keywords:
   - GraphQL
   - REST
   - Services
+openAPISpec: /api-reference.yaml
 ---
 
 # API Reference
