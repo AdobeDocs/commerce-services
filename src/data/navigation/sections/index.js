@@ -6,4 +6,4 @@ const shared_services  = require("./shared_services");
 const graphql = require("./graphql");
 const composable_catalog = require("./composable-catalog");
 
-module.exports = [...live_search, ...product_recommendations, ...reporting, ...shared_services, ...graphql,...composable_catalog,];
+module.exports = [...composable_catalog, ...graphql,...product_recommendations, ...shared_services, ...reporting];

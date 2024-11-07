@@ -1,0 +1,21 @@
+# See https://docs.redoc.ly/cli/configuration/ for more information.
+organization: adobe-developers
+extends:
+    - minimal
+apis:
+  Data Ingestion@1.0:
+    root: src/openapi/data-ingestion-schema-v1.yaml
+    labels:
+      - main
+features.openapi:
+  pagination: section
+  hideHostname: true
+  sortPropsAlphabetically: true
+  pathInMiddlePanel: true
+  hideDownloadButton: false
+  hideTryItPanel: true
+  showExtensions: true
+  nativeScrollbars: true
+  ctrlFHijack: true
+  scrollYOffset: .site-nav
+  GATSBY_REDOCLY_KEY: ${{ secrets.REDOCLY_LICENSE_KEY }}
