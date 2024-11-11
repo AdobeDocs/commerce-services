@@ -57,10 +57,6 @@ module.exports = [
                 },
             ]
         },
-        {
-            title: "Reference",
-            path: "composable-catalog/api-references/",
-        },
     ]
   },
 ];
