@@ -1,7 +1,7 @@
 ---
-title: Using the Data Ingestion API
+title: Limits
 edition: ee
-description: Get information about using the REST API endpoints and operations provided by the data ingestion API.
+description: Get information about limits ...
 keywords:
   - REST
   - Services
