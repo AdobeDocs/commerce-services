@@ -11,4 +11,4 @@ openAPISpec: /api-reference.yaml
 
 # API Reference
 
-Insert auto-generated API reference content here.
+<RedoclyAPIBlock src="../../../openapi/data-ingestion-schema-v1.yaml" width="600px" disableSidebar hideTryItPanel />

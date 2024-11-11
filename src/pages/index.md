@@ -1,6 +1,6 @@
 ---
 title: Commerce Data Services
-description: Learn how about the developer tools available to manage and use Commerce catalog and event data programmatically.
+description: Learn how about the APIs and tools available to manage and use commerce catalog and event data programmatically.
   - Services
 ---
 
@@ -8,9 +8,9 @@ description: Learn how about the developer tools available to manage and use Com
 
 ![Data Services](_images/home-bg.jpeg)
 
-# Commerce Data Services Developer Tools
+# Commerce Data Services
 
-A collection of tools to create, access, and manage Commerce data ...
+A collection of APIs and tools to create, access, and manage product, catalog, and discovery data for ecommerce applications and storefronts.
 
 <Resources slots="heading, links"/>
 
@@ -26,35 +26,37 @@ Learn how to use Commerce APIs and SDKs to integrate with third-party software a
 
 ## Discover
 
-Explore common tools and SDKs shared across Services for Adobe Commerce.
+Explore APIs, common tools and SDKs shared across Services for Adobe Commerce.
 
 <DiscoverBlock slots="heading, link, text"/>
 
-### Catalog Management, Administration, and Merchandising
+### Composable Catalog Data Model
 
-[Data Ingestion API](composable-catalog/data-ingestion/)
+[Data Ingestion](composable-catalog/data-ingestion/)
 
-Set up large, complex catalog assortments
+Set up large, complex catalog assortments in a centralized data store.
 
 <DiscoverBlock slots="link, text"/>
 
 [Catalog Administration and Configuration](composable-catalog/admin)
 
-Setup and manage Commerce catalogs and merchandising tools.
+Set up and manage Commerce catalogs and merchandising tools.
 
 <DiscoverBlock slots="link, text"/>
 
-[Merchandising APIs](composable-catalog/merchandising)
+[Merchandising](composable-catalog/merchandising)
 
-Retrieve data from the catalog data model and use it to create storefront experiences.
+Retrieve product, search, and recommendations data from the catalog data model and use it to create storefront experiences.
+
+### Storefront APIs and Shared Services
 
 <DiscoverBlock slots="link, text"/>
 
 [Storefront APIs](graphql/)
 
-Use Catalog Service, Live Search, and Product Recommendations APIs to retrieve data from the Commerce backend.
+Retrieve product, search, and recommendations data from the Adobe Commerce backend and use it to create storefront experiences.
 
-### Shared services
+<DiscoverBlock slots="link, text"/>
 
 [Storefront Events SDK](shared-services/)
 

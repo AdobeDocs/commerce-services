@@ -1,5 +1,5 @@
 ---
-title: Catalog management APIs
+title: Catalog management and configuration APIs
 edition: ee
 description: Use the Catalog management APIs to manage product data and configure live search and product recommendations and associated rules.
 keywords:

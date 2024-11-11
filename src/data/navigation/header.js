@@ -1,6 +1,6 @@
 module.exports = [
     {
-      title: "Services",
+      title: "Data Services",
       path: "/",
     },
     {
@@ -25,42 +25,16 @@ module.exports = [
       ]
     },
     {
-      title: "Storefront Services",
-      menu: [
-        {
-          title: "Introduction",
-          path: "/graphql/"
-        },
-        {
-          title: "Catalog Service",
-          path: "/graphql/catalog-service/"
-        },
-        {
-          title: "Live Search",
-          path: "/graphql/live-search/"
-        },
-        {
-          title: "Product Recommendations",
-          path: "/graphql/recommendations/"
-        }
-      ]
+      title: "Storefront APIs",
+      path: "/graphql/"
     },
     {
-      title: "Events",
+      title: "Events and SDKs",
       menu: [
         {
-          title: "Storefront Events SDK",
-          path: "/shared-services/"
-        },
-        {
-          title: "Live Search",
+          title: "Live Search Events",
           path: "/live-search/"
-        }
-      ]
-    },
-    {
-      title: "SDKs",
-      menu: [
+        },
         {
           title: "Storefront Events SDK",
           path: "/shared-services/storefront-events/"
