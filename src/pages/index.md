@@ -1,6 +1,6 @@
 ---
 title: Commerce Data Services
-description: Learn how about the developer tools available to manage and use Commerce catalog and event data programmatically.
+description: Learn how about the APIs and tools available to manage and use commerce catalog and event data programmatically.
   - Services
 ---
 

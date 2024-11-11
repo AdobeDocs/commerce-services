@@ -32,7 +32,7 @@ module.exports = [
       title: "Events and SDKs",
       menu: [
         {
-          title: "Live Search",
+          title: "Live Search Events",
           path: "/live-search/"
         },
         {
