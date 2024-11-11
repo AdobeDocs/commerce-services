@@ -1,7 +1,7 @@
 ---
 title: Using the catalog management and configuration APIs
 edition: ee
-description: Get information about using GraphQL queries and mutations to manage channels, policies, and configuration for product catalog, search, and recommendations capabilities.
+description: Get information about using GraphQL queries and mutations to manage channels, policies, and configuration for search and recommendations capabilities.
 keywords:
   - GraphQL
   - Services
