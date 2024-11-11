@@ -19,4 +19,4 @@ features.openapi:
   showExtensions: true
   nativeScrollbars: true
   ctrlFHijack: true
-  scrollYOffset: .site-nav
+ scrollYOffset: .site-nav
