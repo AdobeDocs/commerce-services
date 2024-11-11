@@ -10,7 +10,7 @@ description: Learn how about the developer tools available to manage and use Com
 
 # Commerce Data Services
 
-A collection of developer tools to create, access, and manage Commerce data ...
+A collection of APIs and tools to create, access, and manage product, catalog, and discovery data for ecommerce applications and storefronts.
 
 <Resources slots="heading, links"/>
 
