@@ -17,7 +17,7 @@ Send all Data Ingestion requests to the `https://commerce.adobe.io/feeds` endpoi
 
 ## API reference
 
-Send all Data Ingestion API requests to the `https://commerce.adobe.io/feeds` endpoint. For details about using the API, see [API Reference](../api-references/index.md)
+Send all Data Ingestion API requests to the `https://commerce.adobe.io/feeds` endpoint. For details about using the API, see [API Reference](api-references.md)
 
 ### Headers
 
