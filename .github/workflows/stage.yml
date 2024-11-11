@@ -35,7 +35,7 @@
           shell: bash
           run: echo "branch=${GITHUB_REF#refs/heads/}" >> "$GITHUB_OUTPUT"
           id: get_branch
-  
+
     echo-state:
       needs: [set-state]
       runs-on: ubuntu-latest

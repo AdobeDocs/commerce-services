@@ -15,7 +15,6 @@ Send all API requests to the `TBD`.
 
 ## Authentication
 
-
 ## Headers
 
 Include the following headers in each API request.
