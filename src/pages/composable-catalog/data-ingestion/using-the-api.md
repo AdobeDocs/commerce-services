@@ -23,6 +23,7 @@ The Data Ingestion API is implemented as a REST (Representational State Transfer
 - PriceBooks and Prices <-- what is price, how price connected to products, what is price book?
 
 ## Endpoints
+
 Send all Data Ingestion requests to the `https://commerce.adobe.io/feeds` endpoint. For details about using the API, see the [API Reference](api-reference.md).
 
 ## Authentication
