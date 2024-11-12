@@ -7,7 +7,7 @@ apis:
     root: src/openapi/openapi/data-ingestion-schema-v1.yaml
     labels:
       - main
-  Data Ingestion@1.0:
+  Data Ingestion@1.0.0:
     root: src/openapi/data-ingestion-schema-v1.yaml
 features.openapi:
   pagination: section
