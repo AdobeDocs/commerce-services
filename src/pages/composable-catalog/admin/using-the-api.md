@@ -9,7 +9,7 @@ keywords:
   - Performance
 ---
 
-# Using the catalog management and configuration APIs
+# Getting started with catalog management and configuration
 
 Developers creating ecommerce sites to sell to various businesses can use the Catalog Management Admin APIs to setup, configure, and manage catalogs and catalog tools for product discovery and merchandising. The Catalog Management APIs are implemented as a GraphQL (Graph Query Language) endpoint to manage the following types of data.
 

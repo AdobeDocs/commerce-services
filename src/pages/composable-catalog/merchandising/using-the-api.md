@@ -1,5 +1,5 @@
 ---
-title: Using the Merchandising API
+title: Getting Started with the merchandising APIs
 edition: ee
 description: Get information about using the GraphQL queries, mutations, and types provided by the merchandising APIs.
 keywords:
@@ -9,7 +9,7 @@ keywords:
   - Performance
 ---
 
-# Using the merchandising API
+# Getting started with the merchandising APIs
 
 Frontend developers can use the storefront APIs to create commerce storefront experiences using the catalog data configured on the backend. The storefront APIs are implemented as a GraphQL (Graph Query Language) endpoint to retrieve the following types of data.
 
