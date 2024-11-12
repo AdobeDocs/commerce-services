@@ -10,7 +10,7 @@ servers:
 tags:
   - name: Metadata
     description: |
-      Product attributes metadata allows you to define how to display product attributes on the storefront, define search characteristics, and so on.
+      Product attributes metadata allows you to define how to display **product attributes** on the storefront, define search characteristics, and so on.
   - name: Products
     description: Product API to manage product data
   - name: Price books
