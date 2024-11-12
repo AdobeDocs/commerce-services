@@ -6,6 +6,7 @@ module.exports = [
         {
             title: "Data ingestion API",
             path: "/composable-catalog/data-ingestion/",
+            header: "true",
             pages: [
               {
                 title: "Using the API",
