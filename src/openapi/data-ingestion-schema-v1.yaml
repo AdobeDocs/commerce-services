@@ -28,9 +28,10 @@ paths:
       tags:
         - Metadata
       summary: Create product attributes metadata
-      description: |
+      description: |-
         Create or replace existing product attribute metadata resources.
-        To update existing product attribute metadata, use the [update product attributes metadata operation(operationID:ProductMetadataPatch).
+        
+        To update existing product attribute metadata, use the [update product attributes metadata operation](operationID:ProductMetadataPatch).
       operationId: ProductMetadataPut
       parameters:
         - name: DATA_SPACE_ID
@@ -288,9 +289,11 @@ paths:
       tags:
         - Products
       summary: Create products
-      description: |
-        Create products or update existing products with a specified `sku` and `scope`.
+      description: |-
+        Create products or replace existing products with a specified `sku` and `scope`.
         If a product with the same data exists with the same SKU and scope, the product update request is ignored.
+
+        To update existing product settings, use the [update products operation](operationID:ProductsPatch).
       operationId: ProductsPut
       parameters:
         - $ref: '#/components/parameters/DATA_SPACE_ID'
@@ -384,9 +387,9 @@ paths:
     patch:
       tags:
         - Products
-      summary: Update product
+      summary: Update products
       description: |
-        Update a product with a specified "sku" and "scope" to replace existing field data with the data supplied in the request.
+        Update products with a specified "sku" and "scope" to replace existing field data with the data supplied in the request.
       operationId: ProductsPatch
       parameters:
         - $ref: '#/components/parameters/DATA_SPACE_ID'
