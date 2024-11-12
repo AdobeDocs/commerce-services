@@ -1,5 +1,5 @@
 ---
-title: Using the Data Ingestion API
+title: Getting started with catalog data management
 edition: ee
 description: Get information about using the REST API endpoints and operations provided by the data ingestion API.
 keywords:
@@ -9,7 +9,7 @@ keywords:
   - Performance
 ---
 
-# Using the Data Ingestion API
+# Getting started with catalog data management
 
 Developers setting up catalogs for merchants with large or complex product assortments use the Data Ingestion API to send catalog data to Commerce storefront services directly, bypassing the need to go through an Adobe Commerce instance, saving time and processing power.
 
