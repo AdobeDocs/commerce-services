@@ -29,8 +29,8 @@ paths:
         - Metadata
       summary: Create product attributes metadata
       description: |
-        Create or replace existing product attribute metadata resources.
-        
+        Create or replace existing product attribute metadata resources
+
         To update existing product attribute metadata, use the [update product attributes metadata operation](#tag/ProductMetadataPatch).
       operationId: ProductMetadataPut
       parameters:
@@ -290,7 +290,7 @@ paths:
         - Products
       summary: Create products
       description: |
-        Create products or replace existing products with a specified `sku` and `scope`.
+        Create products or update existing products with a specified `sku` and `scope`.
         If a product with the same data exists with the same SKU and scope, the product update request is ignored.
 
         Use the update operation to modify values for an existing product.
@@ -529,8 +529,7 @@ paths:
       summary: Create price books
       description: |
          Create or replace existing price books.
-         
-         Use the update operation to modify values for existing price books.
+         Use the [update price books operation](operationId: PriceBooksPatch).
       operationId: PriceBooksPut
       parameters:
         - name: DATA_SPACE_ID
@@ -609,11 +608,11 @@ paths:
                 $ref: '#/components/schemas/403Response'
     patch:
       tags:
-        - Price Books
+        - Price books
       summary: Update price books
-      description: |-
-        Update existing price books to change the name or the currency used for pricing.
-        To update the currency for the default price book, use the price book id `main`.
+      description: |
+        Update an existing price book to change the name or the currency used for pricing.
+        To update currency for default price book, use the price book id `main`.
       operationId: PriceBooksPatch
       parameters:
         - name: DATA_SPACE_ID
@@ -657,7 +656,7 @@ paths:
                 $ref: '#/components/schemas/FeedPricebook'
             examples:
               FeedWithPriceBookInformation:
-                summary: Update an existing price book
+                summary: Update existing price books
                 description: Update the "dealer-north" and default "main" price books to change the currency.
                 value:
                   [
@@ -691,7 +690,7 @@ paths:
                 $ref: '#/components/schemas/403Response'
     delete:
       tags:
-        - Price Books
+        - Price books
       summary: Delete price books
       description: Delete existing price books.
       operationId: PriceBooksDelete
@@ -1119,7 +1118,7 @@ components:
           type: array
           description: |
             Roles associated with this attribute that determine how the attribute is used on the storefront.
-            For example, roles can be "Show on PDP", "Show on PLP", and "Show in Search Results".
+            For example, roles might "Show on PDP", "Show on PLP", and "Show in Search Results".
           items:
             type: string
         label:
@@ -1221,7 +1220,6 @@ components:
           type: array
           description: |
             Storefront area where the product is visible. An empty list means that it is not visible as a stand alone product.
-            
             - `CATALOG`: Product is visible in the PLP (product listing page) and PDP (product detail page)
             - `SEARCH`: Product is visible in the SRP (search result page) and PDP (product detail page)
             - `CATALOG, SEARCH`: Product is visible in the PLP, SRP, and PDP
@@ -1394,7 +1392,7 @@ components:
             - STRING
             - ARRAY
             - OBJECT
-          description: >
+          description: |
             Type of attribute value to be applied during the rendering phase. Validation occurs only when the code is rendered. Invalid values are ignored.
             - `BOOLEAN`: Accept single value: "true" or false
             - `Number`: Accept single number,e.g. "85", "0.42", etc.
