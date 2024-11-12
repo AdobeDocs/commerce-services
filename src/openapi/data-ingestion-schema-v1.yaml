@@ -384,9 +384,9 @@ paths:
     patch:
       tags:
         - Products
-      summary: Update product
+      summary: Update products
       description: |
-        Update a product with a specified "sku" and "scope" to replace existing field data with the data supplied in the request.
+        Update products with specified "sku" and "scope" to replace existing field data with the data supplied in the request.
       operationId: ProductsPatch
       parameters:
         - $ref: '#/components/parameters/DATA_SPACE_ID'
@@ -480,9 +480,9 @@ paths:
     delete:
       tags:
         - Products
-      summary: Delete a product
+      summary: Delete products
       description: >
-        Delete a product with a specified "sku" and "scope".
+        Delete products with specified "sku" and "scope".
       operationId: ProductsDelete
       parameters:
         - $ref: '#/components/parameters/DATA_SPACE_ID'
@@ -607,8 +607,8 @@ paths:
       tags:
         - Price Books
       summary: Update price books
-      description: |
-        Update an existing price book to change the name or the currency used for pricing.
+      description: |-
+        Update existing price books to change the name or the currency used for pricing.
         To update currency for default price book, use the price book id `main`.
       operationId: PriceBooksPatch
       parameters:
@@ -653,7 +653,7 @@ paths:
                 $ref: '#/components/schemas/FeedPricebook'
             examples:
               FeedWithPriceBookInformation:
-                summary: Update existing price book
+                summary: Update an existing price book
                 description: Update the "dealer-north" and default "main" price books to change the currency.
                 value:
                   [
