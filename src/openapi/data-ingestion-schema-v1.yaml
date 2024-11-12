@@ -10,7 +10,7 @@ servers:
 tags:
   - name: Metadata
     description: |
-      Product attributes metadata allows you to define how to display **product attributes** on the storefront, define search characteristics, and so on.
+      Product attributes metadata allows you to define how to display product attributes on the storefront, define search characteristics, and so on.
   - name: Products
     description: Product API to manage product data
   - name: Price books
@@ -386,7 +386,7 @@ paths:
         - Products
       summary: Update product
       description: |
-        Update a product with a specified ``sku`` and ``scope`` to replace existing field data with the data supplied in the request.
+        Update a product with a specified "sku" and "scope" to replace existing field data with the data supplied in the request.
       operationId: ProductsPatch
       parameters:
         - $ref: '#/components/parameters/DATA_SPACE_ID'
@@ -482,7 +482,7 @@ paths:
         - Products
       summary: Delete a product
       description: >
-        Delete a product with a specified ``sku`` and ``scope``.
+        Delete a product with a specified "sku" and "scope".
       operationId: ProductsDelete
       parameters:
         - $ref: '#/components/parameters/DATA_SPACE_ID'
@@ -605,7 +605,7 @@ paths:
                 $ref: '#/components/schemas/403Response'
     patch:
       tags:
-        - Price Books
+        - Price books
       summary: Update price books
       description: |
         Update an existing price book to change the name or the currency used for pricing.
@@ -674,7 +674,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ProcessFeedResponse'
         '400':
-          description: Request rejected. Some of the received items are invalid. Check the ``invalidFeedItems`` node for specific errors.
+          description: Request rejected. Some of the received items are invalid. Check the `invalidFeedItems` node for specific errors.
           content:
             application/json;charset=UTF-8:
               schema:
@@ -687,7 +687,7 @@ paths:
                 $ref: '#/components/schemas/403Response'
     delete:
       tags:
-        - Price Books
+        - Price books
       summary: Delete price books
       description: Delete existing price books.
       operationId: PriceBooksDelete
@@ -907,7 +907,7 @@ paths:
             examples:
               FeedWithProductPricesInformation:
                 summary: Product prices update
-                description: Update existing product prices for the given SKU (``red-pants``) and price book id (``dealer-north``).
+                description: Update existing product prices for the given SKU ("red-pants") and price book id ("dealer-north").
                 value:
                   [
                     {
@@ -1115,7 +1115,7 @@ components:
           type: array
           description: |
             Roles associated with this attribute that determine how the attribute is used on the storefront.
-            For example, roles might "Show on PDP", ``Show on PLP``, and ``Show in Search Results``.
+            For example, roles might "Show on PDP", "Show on PLP", and "Show in Search Results".
           items:
             type: string
         label:
