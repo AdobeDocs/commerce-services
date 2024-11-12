@@ -1391,11 +1391,11 @@ components:
             - OBJECT
           description: >
             Type of attribute value to be applied during the rendering phase. Validation occurs only when the code is rendered. Invalid values are ignored.
-            * `BOOLEAN`: Accept single value: "true" or false
-            * `Number`: Accept single number,e.g. "85", "0.42", etc.
-            * `STRING`: Accept single string,e.g. "Great day, yall!"
-            * `STRING`: Accept list of strings ,e.g. ["red", "green", "blue"]
-            * `OBJECT`: Accept JSON object `"{"name": "swatch", "color": "red"}"`
+            - `BOOLEAN`: Accept single value: "true" or false
+            - `Number`: Accept single number,e.g. "85", "0.42", etc.
+            - `STRING`: Accept single string,e.g. "Great day, yall!"
+            - `STRING`: Accept list of strings ,e.g. ["red", "green", "blue"]
+            - `OBJECT`: Accept JSON object `"{"name": "swatch", "color": "red"}"`
         values:
           type: array
           description: A list of value(s) associated with a specified attribute type.
