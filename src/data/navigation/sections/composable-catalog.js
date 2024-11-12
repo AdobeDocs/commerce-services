@@ -24,6 +24,7 @@ module.exports = [
         {
             title: "Catalog management API",
             path: "composable-catalog/admin/",
+            header: "true",
             pages: [
               {
                 title: "Using the API",
@@ -42,6 +43,7 @@ module.exports = [
         {
             title: "Merchandising API",
             path: "composable-catalog/merchandising/",
+            header: "true",
             pages: [
               {
                 title: "Using the API",

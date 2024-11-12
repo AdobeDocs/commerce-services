@@ -11,6 +11,18 @@ keywords:
 
 # Using the Data Ingestion API
 
+Developers setting up catalogs for merchants with large or complex product assortments use the Data Ingestion API to send catalog data to Commerce storefront services directly, bypassing the need to go through an Adobe Commerce instance, saving time and processing power.
+
+This direct connection decreases the time that it takes to process product changes because it bypasses the Adobe Commerce instance and moves catalog data from a third-party Enterprise Resource Planning (ERP) directly to Adobe Commerce services.
+
+The Data Ingestion API is implemented as a REST (Representational State Transfer) API endpoint to manage the following types of data.
+
+- Products <-- what is product?, how to create product
+- Product Variants <--what is variant, how to create product variants
+- Product Metadata <-- what client can manage, how to extend?
+- PriceBooks and Prices <-- what is price, how price connected to products, what is price book?
+
+## Endpoints
 Send all Data Ingestion requests to the `https://commerce.adobe.io/feeds` endpoint. For details about using the API, see the [API Reference](api-reference.md).
 
 ## Authentication
