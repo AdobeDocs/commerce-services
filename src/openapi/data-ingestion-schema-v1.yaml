@@ -19,7 +19,9 @@ tags:
 
           The catalog data model provides a default price book with id `main` and currency in US dollars (`USD`).
   - name: Prices
-    description: Product prices API
+    description: |
+      Define prices for product SKUs and define the pricing scope. The scope identifies the price books and price tiers where the price
+      is used.
 paths:
   /v1/catalog/products/metadata/{DATA_SPACE_ID}:
     post:
@@ -108,7 +110,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/400ProcessFeedResponse'
         '403':
-          description: Unauthorized request. Verify the ``x-api-key`` and make sure that the JWT in ``x-gw-signature`` is still valid.”
+          description: Unauthorized request. Verify the `x-api-key` and make sure that the JWT in `x-gw-signature` is still valid.
           content:
             application/json;charset=UTF-8:
               schema:
@@ -197,7 +199,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/400ProcessFeedResponse'
         '403':
-          description: Unauthorized request. Verify the ``x-api-key``and make sure that the JWT in ``x-gw-signature`` is still valid.”
+          description: Unauthorized request. Verify the `x-api-key` and make sure that the JWT in `x-gw-signature` is still valid.
           content:
             application/json;charset=UTF-8:
               schema:
@@ -275,7 +277,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/400ProcessFeedResponse'
         '403':
-          description: Unauthorized request. Verify the ‘x-api-key’ and make sure that the JWT in ‘x-gw-signature’ is still valid.”
+          description: Unauthorized request. Verify the ‘x-api-key’ and make sure that the JWT in ‘x-gw-signature’ is still valid.
           content:
             application/json;charset=UTF-8:
               schema:
@@ -287,7 +289,7 @@ paths:
         - Products
       summary: Create products
       description: |
-        Create products or update existing products with a specified ``sku`` and ``scope`.
+        Create products or update existing products with a specified `sku` and `scope`.
         If a product with the same data exists with the same SKU and scope, the product update request is ignored.
       operationId: ProductsPut
       parameters:
@@ -524,7 +526,7 @@ paths:
       summary: Create price books
       description: |
          Create or replace existing price books.
-         Use the [update price books operation](operationId:) PriceBooksPatch The catalog data model provides a default price book with id `main` and currency in US dollars (`USD`).
+         Use the [update price books operation](operationId: PriceBooksPatch).
       operationId: PriceBooksPut
       parameters:
         - name: DATA_SPACE_ID
@@ -596,7 +598,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/400ProcessFeedResponse'
         '403':
-          description: Unauthorized request. Verify the ``x-api-key`` and make sure that the JWT in ``x-gw-signature`` is still valid.”
+          description: Unauthorized request. Verify the `x-api-key` and make sure that the JWT in `x-gw-signature` is still valid.
           content:
             application/json;charset=UTF-8:
               schema:
@@ -604,10 +606,10 @@ paths:
     patch:
       tags:
         - Price Books
-      summary: Update Price Books
+      summary: Update price books
       description: |
         Update an existing price book to change the name or the currency used for pricing.
-        To update currency for default price book, use the price book id ``main``.
+        To update currency for default price book, use the price book id `main`.
       operationId: PriceBooksPatch
       parameters:
         - name: DATA_SPACE_ID
@@ -678,7 +680,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/400ProcessFeedResponse'
         '403':
-          description: Unauthorized request. Verify the ``x-api-key`` and make sure that the JWT in ``x-gw-signature`` is still valid.”
+          description: Unauthorized request. Verify the `x-api-key` and make sure that the JWT in `x-gw-signature` is still valid.
           content:
             application/json;charset=UTF-8:
               schema:
@@ -753,7 +755,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/400ProcessFeedResponse'
         '403':
-          description: Unauthorized request. Verify the ``x-api-key`` and make sure that the JWT in ``x-gw-signature`` is still valid.”
+          description: Unauthorized request. Verify the `x-api-key` and make sure that the JWT in `x-gw-signature` is still valid.
           content:
             application/json;charset=UTF-8:
               schema:
@@ -767,8 +769,7 @@ paths:
       description: |
         Create or replace existing product prices.
 
-        Use this operation to define prices for product SKUs and define the pricing scope.
-        The scope identifies the price books and price tiers where the price is used. A price must be associated with a least one price book.
+        A price must be associated with a least one price book. If you have not created any price books, use the default `main` price book.
       operationId: PricesPut
       parameters:
         - name: DATA_SPACE_ID
@@ -852,7 +853,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/400ProcessFeedResponse'
         '403':
-          description: Unauthorized request. Verify the ``x-api-key``and make sure that the JWT in ``x-gw-signature`` is still valid.”
+          description: Unauthorized request. Verify the `x-api-key` and make sure that the JWT in `x-gw-signature` is still valid.
           content:
             application/json;charset=UTF-8:
               schema:
@@ -935,7 +936,7 @@ paths:
                 $ref: '#/components/schemas/400ProcessFeedResponse'
         '403':
           description: |
-            Unauthorized request. Verify the ``x-api-key`` and make sure that the JWT in ``x-gw-signature`` is still valid.”
+            Unauthorized request. Verify the `x-api-key` and make sure that the JWT in `x-gw-signature` is still valid.
           content:
             application/json;charset=UTF-8:
               schema:
@@ -1013,7 +1014,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/400ProcessFeedResponse'
         '403':
-          description: Unauthorized request. Verify the ``x-api-key`` and make sure that the JWT in ``x-gw-signature`` is still valid.
+          description: Unauthorized request. Verify the `x-api-key` and make sure that the JWT in `x-gw-signature` is still valid.
           content:
             application/json;charset=UTF-8:
               schema:
@@ -1034,7 +1035,7 @@ components:
           schema:
             $ref: '#/components/schemas/400ProcessFeedResponse'
     UnauthorizedResponse:
-      description: Unauthorized request. Verify the "x-api-key" value is correct and ensure the JWT is not expired in ``x-gw-signature``.
+      description: Unauthorized request. Verify the `x-api-key` value is correct and ensure the JWT is not expired in `x-gw-signature`.
       content:
         application/json;charset=UTF-8:
           schema:
@@ -1114,7 +1115,7 @@ components:
           type: array
           description: |
             Roles associated with this attribute that determine how the attribute is used on the storefront.
-            For example, roles might `Show on PDP``, ``Show on PLP``, and `Show in Search Results`.
+            For example, roles might "Show on PDP", ``Show on PLP``, and ``Show in Search Results``.
           items:
             type: string
         label:
@@ -1216,9 +1217,9 @@ components:
           type: array
           description: >-
             Storefront area where the product is visible. An empty list means that it is not visible as a stand alone product.
-            * `CATALOG`: Product is visible in the PLP (product listing page) and PDP (product detail page)
-            * `SEARCH`: Product is visible in the SRP (search result page) and PDP (product detail page)
-            * `CATALOG, SEARCH`: Product is visible in the PLP, SRP, and PDP
+            - `CATALOG`: Product is visible in the PLP (product listing page) and PDP (product detail page)
+            - `SEARCH`: Product is visible in the SRP (search result page) and PDP (product detail page)
+            - `CATALOG, SEARCH`: Product is visible in the PLP, SRP, and PDP
           example: [CATALOG]
           enum:
             - CATALOG
