@@ -522,7 +522,7 @@ paths:
   /v1/catalog/price-books/{DATA_SPACE_ID}:
     post:
       tags:
-        - Price books
+        - Price Books
       summary: Create price books
       description: |
          Create or replace existing price books.
@@ -605,7 +605,7 @@ paths:
                 $ref: '#/components/schemas/403Response'
     patch:
       tags:
-        - Price books
+        - Price Books
       summary: Update price books
       description: |
         Update an existing price book to change the name or the currency used for pricing.
@@ -687,7 +687,7 @@ paths:
                 $ref: '#/components/schemas/403Response'
     delete:
       tags:
-        - Price books
+        - Price Books
       summary: Delete price books
       description: Delete existing price books.
       operationId: PriceBooksDelete
@@ -862,7 +862,7 @@ paths:
       tags:
         - Prices
       summary: Update prices
-      description: Change existing product prices.
+      description: Change existing product prices.`
       operationId: PricesPatch
       parameters:
         - name: DATA_SPACE_ID
