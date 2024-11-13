@@ -1115,7 +1115,7 @@ components:
           type: array
           description: |
             Roles associated with this attribute that determine how the attribute is used on the storefront.
-            For example, roles might "Show on PDP", "Show on PLP", and "Show in Search Results".
+            For example, roles can be "Show on PDP", "Show on PLP", and "Show in Search Results".
           items:
             type: string
         label:
@@ -1208,15 +1208,16 @@ components:
           type: string
           description: |
             Indicates whether the product is visible on the storefront.
-            The value is `Enabled` if it is visible, and `Disabled` if it is not visible.
+            The value is "Enabled" if it is visible, and "Disabled" if it is not visible.
           example: ENABLED
           enum:
             - ENABLED
             - DISABLED
         roles:
           type: array
-          description: >-
+          description: |
             Storefront area where the product is visible. An empty list means that it is not visible as a stand alone product.
+            
             - `CATALOG`: Product is visible in the PLP (product listing page) and PDP (product detail page)
             - `SEARCH`: Product is visible in the SRP (search result page) and PDP (product detail page)
             - `CATALOG, SEARCH`: Product is visible in the PLP, SRP, and PDP
