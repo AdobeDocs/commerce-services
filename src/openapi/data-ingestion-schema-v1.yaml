@@ -1,7 +1,16 @@
 openapi: 3.0.3
 info:
   title: Data Ingestion API
-  description: Learn how to use the Data Ingestion API to create and update data for Adobe Commerce catalog ingesting data into the Adobe Commerce SaaS Platform.
+  description: |
+    Learn how to use the Data Ingestion API to create and update data for Adobe Commerce catalog ingesting data into the Adobe Commerce SaaS Platform.
+
+    The following resource collections are offered by this API:
+
+      - Metadata - defines how to display product attributes on the storefront, define search characteristics, and so on
+      - Products - supports shopping for books until ready for converting to an order
+      - Price books - define a unique scope that can be used to manage product price discounts across customer tiers
+      - Prices - define the prices associated with product SKUs and assign the pricing scope where the price is used
+
   version: 1.0.0
 servers:
   - url: https://commerce.adobe.io/api/
@@ -15,7 +24,8 @@ tags:
     description: Product API to manage product data
   - name: Price Books
     description: |
-          Price books defines a unique scope that can be used to manage product price discounts across customer tiers.You can also specify the currency to use for product prices in the specified price book.
+          Price books defines a unique scope that can be used to manage product price discounts across customer tiers.
+          You can also specify the currency to use for product prices in the specified price book.
 
           The catalog data model provides a default price book with id `main` and currency in US dollars (`USD`).
   - name: Prices
@@ -89,12 +99,12 @@ paths:
                       },
                       "label": "Product Name",
                       "dataType": "BOOLEAN",
-                      "roles": [ "PDP" ],
+                      "roles": ["PDP"],
                       "filterable": false,
                       "sortable": false,
                       "searchable": true,
                       "searchWeight": 55,
-                      "searchTypes": [ "AUTOCOMPLETE" ]
+                      "searchTypes": ["AUTOCOMPLETE"]
                     }
                   ]
       responses:
@@ -139,7 +149,7 @@ paths:
           required: true
           schema:
             type: string
-            enum: [ application/json ]
+            enum: [application/json]
         - name: x-api-key
           in: header
           required: true
@@ -179,12 +189,12 @@ paths:
                       },
                       "label": "Updated - Product Name",
                       "dataType": "SELECT",
-                      "roles": [ "PDP", "PLP" ],
+                      "roles": ["PDP", "PLP"],
                       "filterable": true,
                       "sortable": true,
                       "searchable": true,
                       "searchWeight": 77,
-                      "searchTypes": [ "STARTS_WITH", "AUTOCOMPLETE" ]
+                      "searchTypes": ["STARTS_WITH", "AUTOCOMPLETE"]
                     }
                   ]
       responses:
@@ -225,7 +235,7 @@ paths:
           required: true
           schema:
             type: string
-            enum: [ application/json ]
+            enum: [application/json]
         - name: x-api-key
           in: header
           required: true
@@ -530,7 +540,7 @@ paths:
       summary: Create price books
       description: |
          Create or replace existing price books.
-         
+
          Use the update operation to modify values for existing price books.
       operationId: PriceBooksPut
       parameters:
@@ -546,7 +556,7 @@ paths:
           required: true
           schema:
             type: string
-            enum: [ application/json ]
+            enum: [application/json]
         - name: x-api-key
           in: header
           required: true
@@ -629,7 +639,7 @@ paths:
           required: true
           schema:
             type: string
-            enum: [ application/json ]
+            enum: [application/json]
         - name: x-api-key
           in: header
           required: true
@@ -709,7 +719,7 @@ paths:
           required: true
           schema:
             type: string
-            enum: [ application/json ]
+            enum: [application/json]
         - name: x-api-key
           in: header
           required: true
@@ -789,7 +799,7 @@ paths:
           required: true
           schema:
             type: string
-            enum: [ application/json ]
+            enum: [application/json]
         - name: x-api-key
           in: header
           required: true
@@ -1465,11 +1475,12 @@ components:
             - CONFIGURABLE
             - BUNDLE
             - SWATCH
-          description: >-
-            Option type. Indicates the product type the option can be assigned to. Merchants can define custom types in addition to the predefined values.
-            * `CONFIGURABLE`: Configurable product option
-            * `BUNDLE`: Bundle product option
-            * `SWATCH`: Swatch product option
+          description: |
+            Option type. Indicates the product type the option can be assigned to.
+            Merchants can define custom types in addition to the predefined values.
+            - `CONFIGURABLE`: Configurable product option
+            - `BUNDLE`: Bundle product option
+            - `SWATCH`: Swatch product option
         values:
           type: array
           description: A list of option values.
