@@ -1,7 +1,7 @@
 ---
 title: Store integration APIs
 edition: ee
-description: Use the storefront APIs to create commerce storefront browse and discovery experiences using catalag data stored in the backend.
+description: Use the storefront APIs to create commerce storefront browse and discovery experiences using catalog data stored in the backend.
 
 keywords:
   - GraphQL

@@ -3,12 +3,12 @@ organization: adobe-developers
 extends:
     - minimal
 apis:
-  Commerce(Admin)@2.4.7:
+  Data Ingestion@1.0:
     root: src/openapi/openapi/data-ingestion-schema-v1.yaml
     labels:
       - main
-  Data Ingestion@1.0:
-    root: src/openapi/data-ingetsion-schema-v1.yaml
+  Data Ingestion@1.0.0:
+    root: src/openapi/data-ingestion-schema-v1.yaml
 features.openapi:
   pagination: section
   hideHostname: true

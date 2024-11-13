@@ -16,7 +16,7 @@ A collection of APIs and tools to create, access, and manage product, catalog, a
 
 ## Resources
 
-*  [Services user guides](https://experienceleague.adobe.com/docs/commerce-merchant-services/user-guides/home.html)
+*  [Data Services user guides](https://experienceleague.adobe.com/docs/commerce-merchant-services/user-guides/home.html)
 *  [Commerce Admin user guide](https://experienceleague.adobe.com/docs/commerce-admin/user-guides/home.html)
 *  [GraphQL Developer Guide](https://developer.adobe.com/commerce/webapi/graphql/)
 
@@ -26,7 +26,7 @@ Learn how to use Commerce APIs and SDKs to integrate with third-party software a
 
 ## Discover
 
-Explore APIs, common tools and SDKs shared across Services for Adobe Commerce.
+Use Commerce APIs and SDKs to create and manage commerce catalog data and configuration and use it to create scalable, performant storefront experiences.
 
 <DiscoverBlock slots="heading, link, text"/>
 
@@ -34,7 +34,7 @@ Explore APIs, common tools and SDKs shared across Services for Adobe Commerce.
 
 [Data Ingestion](composable-catalog/data-ingestion/)
 
-Set up large, complex catalog assortments in a centralized data store.
+Set up large, complex catalog assortments by ingesting commerce catalog data from backend systems into a centralized datastore.
 
 <DiscoverBlock slots="link, text"/>
 
@@ -48,13 +48,13 @@ Set up and manage Commerce catalogs and merchandising tools.
 
 Retrieve product, search, and recommendations data from the catalog data model and use it to create storefront experiences.
 
-### Storefront APIs and Shared Services
+<DiscoverBlock slots="heading,link, text"/>
 
-<DiscoverBlock slots="link, text"/>
+### Storefront and Shared Services
 
 [Storefront APIs](graphql/)
 
-Retrieve product, search, and recommendations data from the Adobe Commerce backend and use it to create storefront experiences.
+Retrieve product, search, and recommendations data from Adobe Commerce and use it to create storefront experiences.
 
 <DiscoverBlock slots="link, text"/>
 

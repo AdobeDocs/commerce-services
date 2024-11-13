@@ -61,7 +61,6 @@ jobs:
         with:
           node-version-file: '.nvmrc'
           cache-dependency-path: 'yarn.lock'
-
       - name: Gatsby Cache
         uses: actions/cache@v3.3.2
         with:

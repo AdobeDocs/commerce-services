@@ -32,17 +32,17 @@ module.exports = [
       title: "Events and SDKs",
       menu: [
         {
-          title: "Live Search Events",
-          path: "/live-search/"
-        },
-        {
           title: "Storefront Events SDK",
           path: "/shared-services/storefront-events/"
         },
         {
           title: "Product Recommendations SDK",
           path: "/product-recommendations/"
-        }
+        },
+        {
+          title: "Live Search Events",
+          path: "/live-search/"
+        },
       ]
     },
     {

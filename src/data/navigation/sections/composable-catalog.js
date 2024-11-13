@@ -8,7 +8,7 @@ module.exports = [
             path: "/composable-catalog/data-ingestion/",
             pages: [
               {
-                title: "Using the API",
+                title: "Getting Started",
                 path: "/composable-catalog/data-ingestion/using-the-api.md"
                 },
                 {
@@ -24,9 +24,10 @@ module.exports = [
         {
             title: "Catalog management API",
             path: "composable-catalog/admin/",
+            header: "true",
             pages: [
               {
-                title: "Using the API",
+                title: "Getting Started",
                 path: "/composable-catalog/admin/using-the-api.md"
                 },
                 {
@@ -42,9 +43,10 @@ module.exports = [
         {
             title: "Merchandising API",
             path: "composable-catalog/merchandising/",
+            header: "true",
             pages: [
               {
-                title: "Using the API",
+                title: "Getting Started",
                 path: "/composable-catalog/merchandising/using-the-api.md"
                 },
                 {
