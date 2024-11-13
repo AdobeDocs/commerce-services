@@ -842,7 +842,7 @@ paths:
                       "priceBookId": "VIP",
                       "regular": 19.9,
                       "discounts": [
-                        { "code": "discount", "percentage": 10 }
+                        {"code": "discount", "percentage": 10}
                       ]
                     },
                     {
@@ -850,7 +850,7 @@ paths:
                       "priceBookId": "dealer-north",
                       "regular": 20.5,
                       "discounts": [
-                        { "code": "fixed", "price": 18 }
+                        {"code": "fixed", "price": 18}
                       ]
                     }
                   ]
@@ -892,7 +892,7 @@ paths:
           required: true
           schema:
             type: string
-            enum: [ application/json ]
+            enum: [application/json]
         - name: x-api-key
           in: header
           required: true
@@ -930,7 +930,7 @@ paths:
                       "priceBookId": "dealer-north",
                       "regular": 11.5,
                       "discounts": [
-                        { "code": "discount", "percentage": 30 }
+                        {"code": "discount", "percentage": 30}
                       ]
                     }
                   ]
@@ -976,7 +976,7 @@ paths:
           required: true
           schema:
             type: string
-            enum: [ application/json ]
+            enum: [application/json]
         - name: x-api-key
           in: header
           required: true
@@ -1061,6 +1061,7 @@ components:
       in: path
       description: |
         Data Space ID.
+
         For details, see [SaaS data space provisioning](https://experienceleague.adobe.com/en/docs/commerce-merchant-services/user-guides/integration-services/saas#saas-data-space-provisioning) in Adobe Experience League.
       required: true
       style: simple
@@ -1232,7 +1233,7 @@ components:
           type: array
           description: |
             Storefront area where the product is visible. An empty list means that it is not visible as a stand alone product.
-            
+
             - `CATALOG`: Product is visible in the PLP (product listing page) and PDP (product detail page)
             - `SEARCH`: Product is visible in the SRP (search result page) and PDP (product detail page)
             - `CATALOG, SEARCH`: Product is visible in the PLP, SRP, and PDP
