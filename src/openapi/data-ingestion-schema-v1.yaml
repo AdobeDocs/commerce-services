@@ -658,11 +658,7 @@ paths:
                 $ref: '#/components/schemas/FeedPricebook'
             examples:
               FeedWithPriceBookInformation:
-<<<<<<< HEAD
                 summary: Update existing price books
-=======
-                summary: Update an existing price book
->>>>>>> 9b7ceb3 (Update descriptions)
                 description: Update the "dealer-north" and default "main" price books to change the currency.
                 value:
                   [
