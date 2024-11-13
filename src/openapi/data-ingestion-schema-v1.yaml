@@ -13,13 +13,15 @@ tags:
       Product attributes metadata allows you to define how to display product attributes on the storefront, define search characteristics, and so on.
   - name: Products
     description: Product API to manage product data
-  - name: Price books
+  - name: Price Books
     description: >-
           Price books defines a unique scope that can be used to manage product price discounts across customer tiers. You can also specify the currency to use for product prices in the specified price book.
 
           The catalog data model provides a default price book with id `main` and currency in US dollars (`USD`).
   - name: Prices
-    description: Product prices API
+    description: |
+      Define prices for product SKUs and define the pricing scope. The scope identifies the price books and price tiers where the price
+      is used.
 paths:
   /v1/catalog/products/metadata/{DATA_SPACE_ID}:
     post:
@@ -28,7 +30,7 @@ paths:
       summary: Create product attributes metadata
       description: |
         Create or replace existing product attribute metadata resources.
-        To update existing product attribute metadata, use the [update product attributes metadata operation(operationID:ProductMetadataPatch).
+        To update existing product attribute metadata, use the [update product attributes metadata operation](#tag/ProductMetadataPatch).
       operationId: ProductMetadataPut
       parameters:
         - name: DATA_SPACE_ID
@@ -108,7 +110,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/400ProcessFeedResponse'
         '403':
-          description: Unauthorized request. Verify the ``x-api-key`` and make sure that the JWT in ``x-gw-signature`` is still valid.”
+          description: Unauthorized request. Verify the `x-api-key` and make sure that the JWT in `x-gw-signature` is still valid.
           content:
             application/json;charset=UTF-8:
               schema:
@@ -197,7 +199,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/400ProcessFeedResponse'
         '403':
-          description: Unauthorized request. Verify the ``x-api-key``and make sure that the JWT in ``x-gw-signature`` is still valid.”
+          description: Unauthorized request. Verify the `x-api-key` and make sure that the JWT in `x-gw-signature` is still valid.
           content:
             application/json;charset=UTF-8:
               schema:
@@ -275,7 +277,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/400ProcessFeedResponse'
         '403':
-          description: Unauthorized request. Verify the ‘x-api-key’ and make sure that the JWT in ‘x-gw-signature’ is still valid.”
+          description: Unauthorized request. Verify the ‘x-api-key’ and make sure that the JWT in ‘x-gw-signature’ is still valid.
           content:
             application/json;charset=UTF-8:
               schema:
@@ -287,7 +289,7 @@ paths:
         - Products
       summary: Create products
       description: |
-        Create products or update existing products with a specified ``sku`` and ``scope`.
+        Create products or update existing products with a specified `sku` and `scope`.
         If a product with the same data exists with the same SKU and scope, the product update request is ignored.
       operationId: ProductsPut
       parameters:
@@ -382,9 +384,9 @@ paths:
     patch:
       tags:
         - Products
-      summary: Update product
+      summary: Update products
       description: |
-        Update a product with a specified ``sku`` and ``scope`` to replace existing field data with the data supplied in the request.
+        Update products with specified "sku" and "scope" to replace existing field data with the data supplied in the request.
       operationId: ProductsPatch
       parameters:
         - $ref: '#/components/parameters/DATA_SPACE_ID'
@@ -478,9 +480,9 @@ paths:
     delete:
       tags:
         - Products
-      summary: Delete a product
+      summary: Delete products
       description: >
-        Delete a product with a specified ``sku`` and ``scope``.
+        Delete products with specified "sku" and "scope".
       operationId: ProductsDelete
       parameters:
         - $ref: '#/components/parameters/DATA_SPACE_ID'
@@ -520,11 +522,11 @@ paths:
   /v1/catalog/price-books/{DATA_SPACE_ID}:
     post:
       tags:
-        - Price books
+        - Price Books
       summary: Create price books
       description: |
          Create or replace existing price books.
-         Use the [update price books operation](operationId:) PriceBooksPatch The catalog data model provides a default price book with id `main` and currency in US dollars (`USD`).
+         Use the [update price books operation](operationId: PriceBooksPatch).
       operationId: PriceBooksPut
       parameters:
         - name: DATA_SPACE_ID
@@ -596,7 +598,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/400ProcessFeedResponse'
         '403':
-          description: Unauthorized request. Verify the ``x-api-key`` and make sure that the JWT in ``x-gw-signature`` is still valid.”
+          description: Unauthorized request. Verify the `x-api-key` and make sure that the JWT in `x-gw-signature` is still valid.
           content:
             application/json;charset=UTF-8:
               schema:
@@ -604,10 +606,10 @@ paths:
     patch:
       tags:
         - Price Books
-      summary: Update Price Books
-      description: |
-        Update an existing price book to change the name or the currency used for pricing.
-        To update currency for default price book, use the price book id ``main``.
+      summary: Update price books
+      description: |-
+        Update existing price books to change the name or the currency used for pricing.
+        To update currency for default price book, use the price book id `main`.
       operationId: PriceBooksPatch
       parameters:
         - name: DATA_SPACE_ID
@@ -651,7 +653,7 @@ paths:
                 $ref: '#/components/schemas/FeedPricebook'
             examples:
               FeedWithPriceBookInformation:
-                summary: Update existing Price Book
+                summary: Update an existing price book
                 description: Update the "dealer-north" and default "main" price books to change the currency.
                 value:
                   [
@@ -672,13 +674,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/ProcessFeedResponse'
         '400':
-          description: Request rejected. Some of the received items are invalid. Check the ``invalidFeedItems`` node for specific errors.
+          description: Request rejected. Some of the received items are invalid. Check the `invalidFeedItems` node for specific errors.
           content:
             application/json;charset=UTF-8:
               schema:
                 $ref: '#/components/schemas/400ProcessFeedResponse'
         '403':
-          description: Unauthorized request. Verify the ``x-api-key`` and make sure that the JWT in ``x-gw-signature`` is still valid.”
+          description: Unauthorized request. Verify the `x-api-key` and make sure that the JWT in `x-gw-signature` is still valid.
           content:
             application/json;charset=UTF-8:
               schema:
@@ -753,7 +755,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/400ProcessFeedResponse'
         '403':
-          description: Unauthorized request. Verify the ``x-api-key`` and make sure that the JWT in ``x-gw-signature`` is still valid.”
+          description: Unauthorized request. Verify the `x-api-key` and make sure that the JWT in `x-gw-signature` is still valid.
           content:
             application/json;charset=UTF-8:
               schema:
@@ -767,8 +769,7 @@ paths:
       description: |
         Create or replace existing product prices.
 
-        Use this operation to define prices for product SKUs and define the pricing scope.
-        The scope identifies the price books and price tiers where the price is used. A price must be associated with a least one price book.
+        A price must be associated with a least one price book. If you have not created any price books, use the default `main` price book.
       operationId: PricesPut
       parameters:
         - name: DATA_SPACE_ID
@@ -852,7 +853,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/400ProcessFeedResponse'
         '403':
-          description: Unauthorized request. Verify the ``x-api-key``and make sure that the JWT in ``x-gw-signature`` is still valid.”
+          description: Unauthorized request. Verify the `x-api-key` and make sure that the JWT in `x-gw-signature` is still valid.
           content:
             application/json;charset=UTF-8:
               schema:
@@ -906,7 +907,7 @@ paths:
             examples:
               FeedWithProductPricesInformation:
                 summary: Product prices update
-                description: Update existing product prices for the given SKU (``red-pants``) and price book id (``dealer-north``).
+                description: Update existing product prices for the given SKU ("red-pants") and price book id ("dealer-north").
                 value:
                   [
                     {
@@ -935,7 +936,7 @@ paths:
                 $ref: '#/components/schemas/400ProcessFeedResponse'
         '403':
           description: |
-            Unauthorized request. Verify the ``x-api-key`` and make sure that the JWT in ``x-gw-signature`` is still valid.”
+            Unauthorized request. Verify the `x-api-key` and make sure that the JWT in `x-gw-signature` is still valid.
           content:
             application/json;charset=UTF-8:
               schema:
@@ -1013,7 +1014,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/400ProcessFeedResponse'
         '403':
-          description: Unauthorized request. Verify the ``x-api-key`` and make sure that the JWT in ``x-gw-signature`` is still valid.
+          description: Unauthorized request. Verify the `x-api-key` and make sure that the JWT in `x-gw-signature` is still valid.
           content:
             application/json;charset=UTF-8:
               schema:
@@ -1034,7 +1035,7 @@ components:
           schema:
             $ref: '#/components/schemas/400ProcessFeedResponse'
     UnauthorizedResponse:
-      description: Unauthorized request. Verify the "x-api-key" value is correct and ensure the JWT is not expired in ``x-gw-signature``.
+      description: Unauthorized request. Verify the `x-api-key` value is correct and ensure the JWT is not expired in `x-gw-signature`.
       content:
         application/json;charset=UTF-8:
           schema:
@@ -1114,7 +1115,7 @@ components:
           type: array
           description: |
             Roles associated with this attribute that determine how the attribute is used on the storefront.
-            For example, roles might `Show on PDP``, ``Show on PLP``, and `Show in Search Results`.
+            For example, roles might "Show on PDP", "Show on PLP", and "Show in Search Results".
           items:
             type: string
         label:
@@ -1216,9 +1217,9 @@ components:
           type: array
           description: >-
             Storefront area where the product is visible. An empty list means that it is not visible as a stand alone product.
-            * `CATALOG`: Product is visible in the PLP (product listing page) and PDP (product detail page)
-            * `SEARCH`: Product is visible in the SRP (search result page) and PDP (product detail page)
-            * `CATALOG, SEARCH`: Product is visible in the PLP, SRP, and PDP
+            - `CATALOG`: Product is visible in the PLP (product listing page) and PDP (product detail page)
+            - `SEARCH`: Product is visible in the SRP (search result page) and PDP (product detail page)
+            - `CATALOG, SEARCH`: Product is visible in the PLP, SRP, and PDP
           example: [CATALOG]
           enum:
             - CATALOG
@@ -1390,11 +1391,11 @@ components:
             - OBJECT
           description: >
             Type of attribute value to be applied during the rendering phase. Validation occurs only when the code is rendered. Invalid values are ignored.
-            * `BOOLEAN`: Accept single value: "true" or false
-            * `Number`: Accept single number,e.g. "85", "0.42", etc.
-            * `STRING`: Accept single string,e.g. "Great day, yall!"
-            * `STRING`: Accept list of strings ,e.g. ["red", "green", "blue"]
-            * `OBJECT`: Accept JSON object `"{"name": "swatch", "color": "red"}"`
+            - `BOOLEAN`: Accept single value: "true" or false
+            - `Number`: Accept single number,e.g. "85", "0.42", etc.
+            - `STRING`: Accept single string,e.g. "Great day, yall!"
+            - `STRING`: Accept list of strings ,e.g. ["red", "green", "blue"]
+            - `OBJECT`: Accept JSON object `"{"name": "swatch", "color": "red"}"`
         values:
           type: array
           description: A list of value(s) associated with a specified attribute type.
