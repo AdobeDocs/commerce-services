@@ -423,7 +423,7 @@ info:
 
   description: Use the Catalog Management APIs to configure and manage catalogs and catalog tools for product discovery and merchandising. You can find examples of each query and mutation in the main <a href="https://developer.adobe.com/commerce/webapi/graphql/schema/" target="_blank">GraphQL documentation</a>.
   version: 1.0.0
-  title: GraphQL API for catalog management
+  title: Catalog management and rules API
   # This is non-standard and optional. If omitted, will use "title". Also, only relevant
   # when building non-embedded.
   x-htmlTitle: GraphQL API
