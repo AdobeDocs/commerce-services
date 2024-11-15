@@ -4,18 +4,18 @@ module.exports = [
       path: "/",
     },
     {
-      title: "Catalog Data Model",
+      title: "Composable Catalog Data Model",
       menu: [
         {
           title: "Getting Started",
           path: "/composable-catalog/"
         },
         {
-          title: "Data ingestion",
+          title: "Catalog data ingestion",
           path: "/composable-catalog/data-ingestion/"
         },
         {
-          title: "Catalog management",
+          title: "Catalog management and rules",
           path: "/composable-catalog/admin/"
         },
         {
