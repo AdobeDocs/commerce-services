@@ -16,7 +16,7 @@ spectaql:
   # Set to null to not write the output to the filesystem, making it only available via the API (default: public)
   #
   # Default: public
-  targetDir: static/graphql-api/admin-api
+  targetDir: ../../static/graphql-api/merchandising-api
 
   # Optional path to an image to use as the logo in the top-left of the output
   # logoFile: path/to/logo.png
@@ -115,7 +115,7 @@ introspection:
 
   # URL of the GraphQL endpoint to hit if you want to generate the documentation based on live Introspection Query results
   # NOTE: If not using introspection.url OR servers[], you need to provide x-url below
-  url: https://commerce-admin-router-qa.corp.ethos501-stage-va6.ethos.adobe.net/graphql
+  url: https://catalog-service-qa.adobe.io/graphql
 
   #
   #
@@ -124,7 +124,7 @@ introspection:
   # If using the "url" option above, any headers (such as Authorization) can be added here. This
   # can also be added via the CLI options
   # headers:
-  #   Authorization: Bearer s3cretT0k2n
+  x-api-key: storefront-catalog-apollo
 
   # Some helpful options for those who are an "SDL-first" shop and/or want to get your metadata into
   # SpectaQL during the SDL ingestion.
@@ -421,12 +421,11 @@ info:
   #
   ##############################################
 
-  description: Use the Catalog Management APIs to setup and manage catalogs and configure settings and rules for product discovery and merchandising.
-  version: 1.0.0
-  title: Catalog management and rules API
+  description: Use the Merchandising APIs to access rich view-model (read-only) catalog data to build product-related storefront experiences.
+  title: Merchandising API
   # This is non-standard and optional. If omitted, will use "title". Also, only relevant
   # when building non-embedded.
-  x-htmlTitle: Catalog management and rules
+  x-htmlTitle: Merchandising API
   # termsOfService: 'https://yoursite.com/terms'
   # contact:
   #   name: YourSite Support
@@ -439,8 +438,8 @@ info:
   # A non-standard array of items to display in your Introduction Area
   x-introItems:
     # Can be a Title (for the Nav panel) + URL to simply add a link to somewhere
-    - title: Catalog Management API Guide
-      url: https://developer-stage.adobe.com/commerce/services/composable-catalog/admin/
+    - title: Merchandising API Guide
+      url: https://developer-stage.adobe.com/commerce/services/composable-catalog/merchandising/
     # Can be a Title (for the Nav panel) + description (for the Content panel)
     # - title: Important thing 1
     #   description: Some important stuff we wanted you to know. Supports `markdown`
@@ -454,4 +453,3 @@ info:
 
   # If not using introspection.url OR servers[], you need to provide x-url
   # x-url: https://yoursite.com/graphql
-  
