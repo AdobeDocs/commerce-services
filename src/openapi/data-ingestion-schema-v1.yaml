@@ -30,7 +30,7 @@ tags:
           The catalog data model provides a default price book with id `main` and currency in US dollars (`USD`).
   - name: Prices
     description: |
-      Define prices for product SKUs and define the pricing scope. The scope identifies the price books and price tiers where the price
+      Define prices for product SKUs. The scope identifies the price books and price tiers where the price
       is used.
 paths:
   /v1/catalog/products/metadata/{DATA_SPACE_ID}:
@@ -47,7 +47,7 @@ paths:
         - name: DATA_SPACE_ID
           in: path
           description: |
-            The environment ID for the data space where commerce catalog data is stored.
+            The data space ID for the data space where commerce catalog data is stored.
             See [SaaS configuration](https://experienceleague.adobe.com/en/docs/commerce-merchant-services/user-guides/integration-services/saas#saasenv)
             in *Adobe Experience League*.
           required: true
@@ -95,7 +95,7 @@ paths:
                     {
                       "code": "name",
                       "scope": {
-                        "locale": "En"
+                        "locale": "en"
                       },
                       "label": "Product Name",
                       "dataType": "BOOLEAN",
@@ -136,7 +136,7 @@ paths:
         - name: DATA_SPACE_ID
           in: path
           description: |
-            The environment ID for the data space where commerce catalog data is stored.
+            The data space ID for the data space where commerce catalog data is stored.
 
             See [SaaS configuration](https://experienceleague.adobe.com/en/docs/commerce-merchant-services/user-guides/integration-services/saas#saasenv)
             in *Adobe Experience League*.
@@ -175,26 +175,25 @@ paths:
             schema:
               type: array
               items:
-                $ref: '#/components/schemas/FeedMetadata'
+                $ref: '#/components/schemas/FeedMetadataUpdate'
             examples:
               FeedWithMetadataInformation:
                 summary: Example of product attributes metadata
-                description: Update existing product attribute metadata with new values.
+                description: |
+                  Update existing product attribute metadata with new values.
+                  Please note, field with `array` type will replace existing data.
+                  Example bellow updates the following attributes:
+                  * `label` - change product attribute label.
+                  * `roles` - remove `PLP` role for product attribute (previously sent data should be send with PATCH request for `roles` field).
                 value:
                   [
                     {
                       "code": "name",
                       "scope": {
-                        "locale": "En"
+                        "locale": "en"
                       },
                       "label": "Updated - Product Name",
-                      "dataType": "SELECT",
-                      "roles": ["PDP", "PLP"],
-                      "filterable": true,
-                      "sortable": true,
-                      "searchable": true,
-                      "searchWeight": 77,
-                      "searchTypes": ["STARTS_WITH", "AUTOCOMPLETE"]
+                      "roles": ["PDP"]
                     }
                   ]
       responses:
@@ -261,7 +260,7 @@ paths:
             schema:
               type: array
               items:
-                $ref: '#/components/schemas/FeedMetadata'
+                $ref: '#/components/schemas/FeedMetadataDelete'
             examples:
               FeedWithMetadataInformation:
                 summary: Delete product attributes metadata
@@ -271,7 +270,7 @@ paths:
                     {
                       "code": "name",
                       "scope": {
-                        "locale": "En"
+                        "locale": "en"
                       }
                     }
                   ]
@@ -344,8 +343,8 @@ paths:
                       "description": "long description about red pants",
                       "shortDescription": "just pants",
                       "roles": [
-                        "SEARCH",
-                        "CATALOG"
+                        "PLP",
+                        "SRP"
                       ],
                       "metaTags": {
                         "title": " ",
@@ -369,8 +368,7 @@ paths:
                           "type": "ARRAY",
                           "values": [
                             "TX",
-                            "CA",
-                            "NV"
+                            "CA"
                           ]
                         }
                       ],
@@ -421,12 +419,17 @@ paths:
             schema:
               type: array
               items:
-                $ref: '#/components/schemas/FeedProduct'
+                $ref: '#/components/schemas/FeedProductUpdate'
             examples:
               SimpleProductWithImages:
                 summary: Update a simple product
-                description:
-                  Update the settings for a simple product with the values provided in the request.
+                description: |
+                  Update a simple product with the values provided in the request.
+                  Please note, field with `array` type will replace existing data.
+                  Example bellow updates the following attributes:
+                  * `name` - product name.
+                  * `metaTags.title` Title of the product detail page.
+                  * `attributes` - add new state `NM` to the `states` attribute (previously sent data should be send with PATCH request for `attributes` field).
                 value:
                   [
                     {
@@ -434,29 +437,16 @@ paths:
                       "scope": {
                         "locale": "en"
                       },
-                      "name": "Updated - red pants",
-                      "slug": "updated - red-pants.html",
-                      "status": "DISABLED",
-                      "description": "Updated - long description about red pants",
-                      "shortDescription": "Updated - just pants",
-                      "roles": [
-                        "SEARCH"
-                      ],
+                      "name": "Red pants - discounts!",
                       "metaTags": {
-                        "title": "Updated - Red",
-                        "description": "Updated - some seo stuff",
-                        "keywords": [
-                          "updated - pants",
-                          "updated - edited",
-                          "updated - edited"
-                        ]
+                        "title": "Updated - Red"
                       },
                       "attributes": [
                         {
                           "code": "cost",
                           "type": "NUMBER",
                           "values": [
-                            "11.5"
+                            "10.5"
                           ]
                         },
                         {
@@ -465,28 +455,8 @@ paths:
                           "values": [
                             "TX",
                             "CA",
-                            "OK",
-                            "HI"
+                            "NM"
                           ]
-                        }
-                      ],
-                      "images": [
-                        {
-                          "url": "https://example.com",
-                          "label": "updated - photo of my pants!",
-                          "roles": [
-                            "PDP",
-                            "plp"
-                          ]
-                        }
-                      ],
-                      "routes": [
-                        {
-                          "path": "updated-red-pants"
-                        },
-                        {
-                          "path": "updated-pants/red-pants",
-                          "position": 1
                         }
                       ]
                     }
@@ -528,7 +498,7 @@ paths:
                     {
                       "sku": "red-pants",
                       "scope": {
-                        "locale": "English"
+                        "locale": "en"
                       }
                     }
                   ]
@@ -704,7 +674,7 @@ paths:
       tags:
         - Price Books
       summary: Delete price books
-      description: Delete existing price books.
+      description: Delete existing price books. Please note, you cannot delete default price book with id `main`.
       operationId: PriceBooksDelete
       parameters:
         - name: DATA_SPACE_ID
@@ -784,7 +754,7 @@ paths:
       description: |
         Create or replace existing product prices.
 
-        A price must be associated with a least one price book. If you have not created any price books, use the default `main` price book.
+        A price must be associated with a least default price book with id `main`.
       operationId: PricesPut
       parameters:
         - name: DATA_SPACE_ID
@@ -918,7 +888,7 @@ paths:
             schema:
               type: array
               items:
-                $ref: '#/components/schemas/FeedPrices'
+                $ref: '#/components/schemas/FeedPricesUpdate'
             examples:
               FeedWithProductPricesInformation:
                 summary: Product prices update
@@ -928,7 +898,6 @@ paths:
                     {
                       "sku": "red-pants",
                       "priceBookId": "dealer-north",
-                      "regular": 11.5,
                       "discounts": [
                         {"code": "discount", "percentage": 30}
                       ]
@@ -1131,7 +1100,9 @@ components:
           type: array
           description: |
             Roles associated with this attribute that determine how the attribute is used on the storefront.
-            For example, roles can be "Show on PDP", "Show on PLP", and "Show in Search Results".
+            * `PDP`: Product attribute is visible on Product Detail Page.
+            * `PLP`: Product attribute is visible on Product Listing Page.
+            * `SRP`: Product attribute is visible on Search Results Page.
           items:
             type: string
         label:
@@ -1149,11 +1120,74 @@ components:
             - BOOLEAN
         filterable:
           type: boolean
-          description: Indicates whether the attribute can be used to filter data or results based on specific criteria.
+          description: Indicates whether the attribute can be used to filter products.
           example: true
         sortable:
           type: boolean
-          description: Indicates whether the attribute can be used to sort results or data.
+          description: Indicates whether the attribute can be used to sort products.
+          example: true
+        searchable:
+          type: boolean
+          description: Indicates whether the attribute value can be used in search queries to filter results.
+          example: true
+        searchWeight:
+          type: number
+          description: |
+            The weight associated with a searchable attribute.
+            Attributes with a greater weight are returned before attributes with a lower weight.
+          format: float
+        searchTypes:
+          type: array
+          description: >
+            Search types associated with this attribute, for example: `autocomplete`, `starts_with`, and so on.
+          items:
+            type: string
+            enum:
+              - AUTOCOMPLETE
+              - CONTAINS
+              - STARTS_WITH
+    FeedMetadataUpdate:
+      title: FeedMetadataUpdate
+      description: Metadata information for a product attribute.
+      required:
+        - code
+        - scope
+      type: object
+      properties:
+        code:
+          type: string
+          description: Attribute code
+        scope:
+          $ref: '#/components/schemas/Scope'
+        roles:
+          type: array
+          description: |
+            Roles associated with this attribute that determine how the attribute is used on the storefront.
+            * `PDP`: Product attribute is visible on Product Detail Page.
+            * `PLP`: Product attribute is visible on Product Listing Page.
+            * `SRP`: Product attribute is visible on Search Results Page.
+          items:
+            type: string
+        label:
+          type: string
+          description: Label for the attribute that is displayed in user interfaces.
+          example: Attribute Name
+        dataType:
+          type: string
+          description: Data type
+          example: TEXT
+          enum:
+            - TEXT
+            - DECIMAL
+            - INTEGER
+            - BOOLEAN
+        filterable:
+          type: boolean
+          description: Indicates whether the attribute can be used to filter products.
+          example: true
+        sortable:
+          type: boolean
+          description: Indicates whether the attribute can be used to sort products.
           example: true
         searchable:
           type: boolean
@@ -1176,7 +1210,7 @@ components:
               - CONTAINS
               - STARTS_WITH
     FeedMetadataDelete:
-      title: Delete metadata
+      title: Delete metadata attribute
       description: Delete metadata information for a product attribute.
       required:
         - code
@@ -1233,14 +1267,86 @@ components:
           type: array
           description: |
             Storefront area where the product is visible. An empty list means that it is not visible as a stand alone product.
-
-            - `CATALOG`: Product is visible in the PLP (product listing page) and PDP (product detail page)
-            - `SEARCH`: Product is visible in the SRP (search result page) and PDP (product detail page)
-            - `CATALOG, SEARCH`: Product is visible in the PLP, SRP, and PDP
-          example: [CATALOG]
+            * `PLP`: Product attribute is visible on Product Listing Page and Product Detail Page.
+            * `SRP`: Product attribute is visible on Search Results Page and Product Detail Page.
+          example: [PLP]
+          items:
+            type: string
+        metaTags:
+          type: object
+          description: Meta attributes that are specified in <meta> tags.
+          items:
+            $ref: '#/components/schemas/ProductMetaAttribute'
+        attributes:
+          type: array
+          description: A list of product attributes.
+          items:
+            $ref: '#/components/schemas/ProductAttribute'
+        images:
+          type: array
+          description: A list of product images.
+          items:
+            $ref: '#/components/schemas/ProductImage'
+        links:
+          type: array
+          description: A list of linked SKUs.
+          items:
+            $ref: '#/components/schemas/ProductLink'
+        routes:
+          type: array
+          description: A list of product routes.
+          items:
+            $ref: '#/components/schemas/ProductRoutes'
+        options:
+          type: array
+          description: Options associated with the product.
+          items:
+            $ref: '#/components/schemas/ProductOption'
+    FeedProductUpdate:
+      title: Catalog Product payload
+      type: object
+      required:
+        - sku
+        - scope
+      properties:
+        sku:
+          type: string
+          description: SKU (Stock Keeping Unit) is a unique identifier for a product.
+          example: MH01
+        scope:
+          $ref: '#/components/schemas/Scope'
+        name:
+          type: string
+          description: Product name
+          example: Kangaroo Hoodie
+        slug:
+          type: string
+          description: The URL key for the product.
+          example: kangaroo-hoodie.html
+        description:
+          type: string
+          description: The main description for the product
+          example: A kangaroo hoodie for all seasons
+        shortDescription:
+          type: string
+          description: A short description of the product
+          example: A hoodie for all seasons with a kangaroo pocket
+        status:
+          type: string
+          description: |
+            Indicates whether the product is visible on the storefront.
+            The value is "Enabled" if it is visible, and "Disabled" if it is not visible.
+          example: ENABLED
           enum:
-            - CATALOG
-            - SEARCH
+            - ENABLED
+            - DISABLED
+        roles:
+          type: array
+          description: |
+            Storefront area where the product is visible. An empty list means that it is not visible as a stand alone product.
+            * `PLP`: Product attribute is visible on Product Listing Page and Product Detail Page.
+            * `SRP`: Product attribute is visible on Search Results Page and Product Detail Page.
+          example: [PLP]
           items:
             type: string
         metaTags:
@@ -1311,6 +1417,31 @@ components:
         - sku
         - priceBookId
         - regular
+      type: object
+      properties:
+        sku:
+          type: string
+          description: Product SKU
+        priceBookId:
+          type: string
+          description: Price book id
+        regular:
+          type: number
+          format: float
+          description: Regular price
+        discounts:
+          type: array
+          description: Active discounts
+          items:
+            oneOf:
+              - $ref: '#/components/schemas/DiscountsFinalPrice'
+              - $ref: '#/components/schemas/DiscountsPercentage'
+    FeedPricesUpdate:
+      title: FeedPrices
+      description: Product price information.
+      required:
+        - sku
+        - priceBookId
       type: object
       properties:
         sku:
@@ -1411,7 +1542,7 @@ components:
             - `BOOLEAN`: Accept single value: "true" or false
             - `Number`: Accept single number,e.g. "85", "0.42", etc.
             - `STRING`: Accept single string,e.g. "Great day, yall!"
-            - `STRING`: Accept list of strings ,e.g. ["red", "green", "blue"]
+            - `ARRAY`: Accept list of strings ,e.g. ["red", "green", "blue"]
             - `OBJECT`: Accept JSON object `"{"name": "swatch", "color": "red"}"`
         values:
           type: array
@@ -1567,7 +1698,6 @@ components:
     400ProcessFeedResponse:
       title: Response payload
       type: object
-      description: asdasd
       properties:
         feedItemReceivedCount:
           type: integer
