@@ -421,12 +421,12 @@ info:
   #
   ##############################################
 
-  description: Use the Catalog Management APIs to setup and manage catalogs and configure settings and rules for product discovery and merchandising.
+  description: Use the Catalog management and rules API to set up and manage catalogs and to configure settings and rules for product discovery and merchandising.
   version: 1.0.0
   title: Catalog management and rules API
   # This is non-standard and optional. If omitted, will use "title". Also, only relevant
   # when building non-embedded.
-  x-htmlTitle: Catalog management and rules
+  x-htmlTitle: Catalog management and rules API
   # termsOfService: 'https://yoursite.com/terms'
   # contact:
   #   name: YourSite Support
@@ -439,7 +439,7 @@ info:
   # A non-standard array of items to display in your Introduction Area
   x-introItems:
     # Can be a Title (for the Nav panel) + URL to simply add a link to somewhere
-    - title: Catalog Management API Guide
+    - title: Catalog Management and Rules API Guide
       url: https://developer-stage.adobe.com/commerce/services/composable-catalog/admin/
     # Can be a Title (for the Nav panel) + description (for the Content panel)
     # - title: Important thing 1

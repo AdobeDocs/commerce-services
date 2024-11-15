@@ -16,7 +16,7 @@ spectaql:
   # Set to null to not write the output to the filesystem, making it only available via the API (default: public)
   #
   # Default: public
-  targetDir: ../../static/graphql-api/merchandising-api
+  targetDir: static/graphql-api/merchandising-api
 
   # Optional path to an image to use as the logo in the top-left of the output
   # logoFile: path/to/logo.png
@@ -111,12 +111,11 @@ introspection:
   # schemaFile: path/to/schema.gql
 
   # File containing Introspection Query response in JS module export, or JSON format
-  # introspectionFile: spectaql/schema-admin.json
+  introspectionFile: spectaql/merchandising-api-schema.json
 
   # URL of the GraphQL endpoint to hit if you want to generate the documentation based on live Introspection Query results
   # NOTE: If not using introspection.url OR servers[], you need to provide x-url below
-  url: https://catalog-service-qa.adobe.io/graphql
-
+  # https://catalog-service-qa.adobe.io/graphql
   #
   #
   ##############################################
@@ -124,7 +123,7 @@ introspection:
   # If using the "url" option above, any headers (such as Authorization) can be added here. This
   # can also be added via the CLI options
   # headers:
-  x-api-key: storefront-catalog-apollo
+  # x-api-key: storefront-catalog-apollo
 
   # Some helpful options for those who are an "SDL-first" shop and/or want to get your metadata into
   # SpectaQL during the SDL ingestion.
@@ -421,11 +420,11 @@ info:
   #
   ##############################################
 
-  description: Use the Merchandising APIs to access rich view-model (read-only) catalog data to build product-related storefront experiences.
-  title: Merchandising API
+  description: Use the product merchandising APIs to access rich view-model (read-only) catalog data to build product-related storefront experiences.
+  title: Product merchandising API
   # This is non-standard and optional. If omitted, will use "title". Also, only relevant
   # when building non-embedded.
-  x-htmlTitle: Merchandising API
+  x-htmlTitle: Product merchandising API
   # termsOfService: 'https://yoursite.com/terms'
   # contact:
   #   name: YourSite Support
@@ -438,7 +437,7 @@ info:
   # A non-standard array of items to display in your Introduction Area
   x-introItems:
     # Can be a Title (for the Nav panel) + URL to simply add a link to somewhere
-    - title: Merchandising API Guide
+    - title: Product Merchandising API Guide
       url: https://developer-stage.adobe.com/commerce/services/composable-catalog/merchandising/
     # Can be a Title (for the Nav panel) + description (for the Content panel)
     # - title: Important thing 1
