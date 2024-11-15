@@ -19,7 +19,7 @@ module.exports = [
           path: "/composable-catalog/admin/"
         },
         {
-          title: "Merchandising",
+          title: "Product merchandising",
           path: "/composable-catalog/merchandising/"
         },
       ]

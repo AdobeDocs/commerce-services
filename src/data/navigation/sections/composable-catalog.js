@@ -41,7 +41,7 @@ module.exports = [
             ]
         },
         {
-            title: "Merchandising API",
+            title: "Product merchandising API",
             path: "composable-catalog/merchandising/",
             header: "true",
             pages: [

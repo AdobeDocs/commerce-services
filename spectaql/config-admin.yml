@@ -421,7 +421,7 @@ info:
   #
   ##############################################
 
-  description: Use the Catalog management and rules API to set up and manage catalogs and to configure settings and rules for product discovery and merchandising.
+  description: Use the Catalog management and rules GraphQL API to set up and manage catalogs and to configure settings and rules for product discovery and merchandising.
   version: 1.0.0
   title: Catalog management and rules API
   # This is non-standard and optional. If omitted, will use "title". Also, only relevant
@@ -454,4 +454,3 @@ info:
 
   # If not using introspection.url OR servers[], you need to provide x-url
   # x-url: https://yoursite.com/graphql
-  

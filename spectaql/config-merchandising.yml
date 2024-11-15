@@ -420,7 +420,7 @@ info:
   #
   ##############################################
 
-  description: Use the product merchandising APIs to access rich view-model (read-only) catalog data to build product-related storefront experiences.
+  description: Use the product merchandising GraphQL API to access rich view-model (read-only) catalog data to build product-related storefront experiences.
   title: Product merchandising API
   # This is non-standard and optional. If omitted, will use "title". Also, only relevant
   # when building non-embedded.
