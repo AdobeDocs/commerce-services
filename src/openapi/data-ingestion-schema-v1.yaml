@@ -539,7 +539,7 @@ paths:
         - Price Books
       summary: Create price books
       description: |
-         Create or replace existing price books.
+         Create or replace existing price books. You cannot replace the default price book `main`.
 
          Use the update operation to modify values for existing price books.
       operationId: PriceBooksPut
@@ -624,7 +624,7 @@ paths:
       summary: Update price books
       description: |-
         Update existing price books to change the name or the currency used for pricing.
-        To update the currency for the default price book, use the price book id `main`.
+        You cannot update the default price book.
       operationId: PriceBooksPatch
       parameters:
         - name: DATA_SPACE_ID
@@ -704,7 +704,8 @@ paths:
       tags:
         - Price Books
       summary: Delete price books
-      description: Delete existing price books.
+      description: |-
+          Delete existing price books. You cannot delete the default price book.
       operationId: PriceBooksDelete
       parameters:
         - name: DATA_SPACE_ID
@@ -1296,6 +1297,7 @@ components:
         priceBookId:
           type: string
           description: Price book id
+          maxLength: 36
         name:
           type: string
           description: Price book name
