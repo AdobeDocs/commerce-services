@@ -7,6 +7,6 @@ keywords:
   - Services
   - Backend Development
   - Configuration
+frameSrc: /graphql-api/admin-api/index.html
 ---
 
-# API Reference
