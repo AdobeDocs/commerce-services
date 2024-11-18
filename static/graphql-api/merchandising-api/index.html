@@ -162,7 +162,7 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
             <div class="doc-copy">
               <div class="operation-description doc-copy-section">
                 <h5>Description</h5>
-                <p>Return a list of product attribute codes that can be used for sorting or filtering in a <code>productSearch</code> query</p>
+                <p>Returns a list of product attribute codes that you can use to sort or filter in a <code>productSearch</code> query.</p>
               </div>
             </div>
           </div>
@@ -170,7 +170,7 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
             <div class="doc-copy">
               <div class="operation-response doc-copy-section">
                 <h5>Response</h5>
-                <p> Returns an <a href="#definition-AttributeMetadataResponse"><code>AttributeMetadataResponse!</code></a>
+                <p> Returns an <a href="#definition-AttributeMetadataResponse"><code>AttributeMetadataResponse!</code></a>.
                 </p>
               </div>
             </div>
@@ -224,7 +224,7 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
             <div class="doc-copy">
               <div class="operation-response doc-copy-section">
                 <h5>Response</h5>
-                <p> Returns <a href="#definition-CategoryView"><code>[CategoryView]</code></a>
+                <p> Returns <a href="#definition-CategoryView"><code>[CategoryView]</code></a>.
                 </p>
               </div>
               <div class="operation-arguments doc-copy-section">
@@ -353,7 +353,7 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
             <div class="doc-copy">
               <div class="operation-description doc-copy-section">
                 <h5>Description</h5>
-                <p>Search products using Live Search</p>
+                <p>Search products using Live Search.</p>
               </div>
             </div>
           </div>
@@ -361,7 +361,7 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
             <div class="doc-copy">
               <div class="operation-response doc-copy-section">
                 <h5>Response</h5>
-                <p> Returns a <a href="#definition-ProductSearchResponse"><code>ProductSearchResponse!</code></a>
+                <p> Returns a <a href="#definition-ProductSearchResponse"><code>ProductSearchResponse!</code></a>.
                 </p>
               </div>
               <div class="operation-arguments doc-copy-section">
@@ -378,37 +378,37 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                       <td>
                         <span class="property-name"><code>context</code></span> - <span class="property-type"><a href="#definition-QueryContextInput"><code>QueryContextInput</code></a></span>
                       </td>
-                      <td> The query context </td>
+                      <td> The query context. </td>
                     </tr>
                     <tr>
                       <td>
                         <span class="property-name"><code>current_page</code></span> - <span class="property-type"><a href="#definition-Int"><code>Int</code></a></span>
                       </td>
-                      <td> Specifies which page of results to return. The default value is 1. Default = <code>1</code> </td>
+                      <td> Specifies which page of the results to return. Default = <code>1</code>. </td>
                     </tr>
                     <tr>
                       <td>
                         <span class="property-name"><code>filter</code></span> - <span class="property-type"><a href="#definition-SearchClauseInput"><code>[SearchClauseInput!]</code></a></span>
                       </td>
-                      <td> Identifies product attributes and conditions to filter on </td>
+                      <td> Identifies product attributes and conditions on which to filter. </td>
                     </tr>
                     <tr>
                       <td>
                         <span class="property-name"><code>page_size</code></span> - <span class="property-type"><a href="#definition-Int"><code>Int</code></a></span>
                       </td>
-                      <td> The maximum number of results to return at once. Default = <code>20</code> </td>
+                      <td> The maximum number of results to return at once. Default = <code>20</code>. </td>
                     </tr>
                     <tr>
                       <td>
                         <span class="property-name"><code>phrase</code></span> - <span class="property-type"><a href="#definition-String"><code>String!</code></a></span>
                       </td>
-                      <td> Phrase to search for in product catalog </td>
+                      <td> Phrase to search for in the product catalog. </td>
                     </tr>
                     <tr>
                       <td>
                         <span class="property-name"><code>sort</code></span> - <span class="property-type"><a href="#definition-ProductSearchSortInput"><code>[ProductSearchSortInput!]</code></a></span>
                       </td>
-                      <td> Attributes and direction to sort on </td>
+                      <td> Attributes and direction on which to sort. </td>
                     </tr>
                   </tbody>
                 </table>
@@ -674,37 +674,37 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                       <td>
                         <span class="property-name"><code>cartSkus</code></span> - <span class="property-type"><a href="#definition-String"><code>[String]</code></a></span>
                       </td>
-                      <td> SKUs of products in the cart </td>
+                      <td> A list of product SKUs in the cart. </td>
                     </tr>
                     <tr>
                       <td>
                         <span class="property-name"><code>category</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> Category currently being viewed </td>
+                      <td> The category currently being viewed. </td>
                     </tr>
                     <tr>
                       <td>
                         <span class="property-name"><code>currentSku</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> SKU of the product currently being viewed on PDP </td>
+                      <td> The product SKU currently being viewed on the product detail page. </td>
                     </tr>
                     <tr>
                       <td>
                         <span class="property-name"><code>pageType</code></span> - <span class="property-type"><a href="#definition-PageType"><code>PageType</code></a></span>
                       </td>
-                      <td> Type of page on which recommendations are requested </td>
+                      <td> The type of page on which recommendations are requested, such as Home, Category, Cart, and so on. </td>
                     </tr>
                     <tr>
                       <td>
                         <span class="property-name"><code>userPurchaseHistory</code></span> - <span class="property-type"><a href="#definition-PurchaseHistory"><code>[PurchaseHistory]</code></a></span>
                       </td>
-                      <td> User purchase history with timestamp </td>
+                      <td> The user purchase history with timestamp. </td>
                     </tr>
                     <tr>
                       <td>
                         <span class="property-name"><code>userViewHistory</code></span> - <span class="property-type"><a href="#definition-ViewHistory"><code>[ViewHistory]</code></a></span>
                       </td>
-                      <td> User view history with timestamp </td>
+                      <td> The user view history with timestamp. </td>
                     </tr>
                   </tbody>
                 </table>
@@ -788,7 +788,7 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
             <div class="doc-copy">
               <div class="operation-response doc-copy-section">
                 <h5>Response</h5>
-                <p> Returns a <a href="#definition-ProductView"><code>ProductView</code></a>
+                <p> Returns a <a href="#definition-ProductView"><code>ProductView</code></a>.
                 </p>
               </div>
               <div class="operation-arguments doc-copy-section">
@@ -939,7 +939,7 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
             <div class="doc-copy">
               <div class="operation-response doc-copy-section">
                 <h5>Response</h5>
-                <p> Returns a <a href="#definition-ProductViewVariantResults"><code>ProductViewVariantResults</code></a>
+                <p> Returns a <a href="#definition-ProductViewVariantResults"><code>ProductViewVariantResults</code></a>.
                 </p>
               </div>
               <div class="operation-arguments doc-copy-section">
@@ -1052,7 +1052,7 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
             <div class="doc-copy">
               <div class="definition-description doc-copy-section">
                 <h5>Description</h5>
-                <p>A bucket that contains information for each filterable option</p>
+                <p>A bucket that contains information for each filterable option.</p>
               </div>
               <div class="definition-properties doc-copy-section">
                 <h5>Fields</h5>
@@ -1067,22 +1067,22 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>attribute</code></span> - <span class="property-type"><a href="#definition-String"><code>String!</code></a></span>
                       </td>
-                      <td> The attribute code of the filter item </td>
+                      <td> The attribute code of the filter item. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>buckets</code></span> - <span class="property-type"><a href="#definition-Bucket"><code>[Bucket]!</code></a></span>
                       </td>
-                      <td> A container that divides the data into manageable groups. For example, attributes that can have numeric values might have buckets that define price ranges </td>
+                      <td> A container that divides the data into manageable groups. For example, attributes that can have numeric values might have buckets that define price ranges. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>title</code></span> - <span class="property-type"><a href="#definition-String"><code>String!</code></a></span>
                       </td>
-                      <td> The filter name displayed in layered navigation </td>
+                      <td> The filter name displayed in layered navigation. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>type</code></span> - <span class="property-type"><a href="#definition-AggregationType"><code>AggregationType</code></a></span>
                       </td>
-                      <td> Identifies the data type of the aggregation </td>
+                      <td> Identifies the data type of the aggregation. </td>
                     </tr>
                   </tbody>
                 </table>
@@ -1115,7 +1115,7 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
             <div class="doc-copy">
               <div class="definition-description doc-copy-section">
                 <h5>Description</h5>
-                <p>Identifies the data type of the aggregation</p>
+                <p>Identifies the data type of the aggregation.</p>
               </div>
               <div class="definition-properties doc-copy-section">
                 <h5>Values</h5>
@@ -1189,17 +1189,17 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>action_type</code></span> - <span class="property-type"><a href="#definition-AppliedQueryRuleActionType"><code>AppliedQueryRuleActionType</code></a></span>
                       </td>
-                      <td> An enum that defines the type of rule that was applied </td>
+                      <td> An enum that defines the type of rule that was applied. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>rule_id</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> The ID assigned to the rule </td>
+                      <td> The ID assigned to the rule. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>rule_name</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> The name of the applied rule </td>
+                      <td> The name of the applied rule. </td>
                     </tr>
                   </tbody>
                 </table>
@@ -1231,7 +1231,7 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
             <div class="doc-copy">
               <div class="definition-description doc-copy-section">
                 <h5>Description</h5>
-                <p>The type of rule that was applied to a product during search (optional)</p>
+                <p>The type of rule that was applied to a product during search (optional).</p>
               </div>
               <div class="definition-properties doc-copy-section">
                 <h5>Values</h5>
@@ -1290,7 +1290,7 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
             <div class="doc-copy">
               <div class="definition-description doc-copy-section">
                 <h5>Description</h5>
-                <p>Contains the output of the <code>attributeMetadata</code> query</p>
+                <p>Contains the output of the <code>attributeMetadata</code> query.</p>
               </div>
               <div class="definition-properties doc-copy-section">
                 <h5>Fields</h5>
@@ -1305,12 +1305,12 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>filterableInSearch</code></span> - <span class="property-type"><a href="#definition-FilterableInSearchAttribute"><code>[FilterableInSearchAttribute!]</code></a></span>
                       </td>
-                      <td> An array of product attributes that can be used for filtering in a <code>productSearch</code> query </td>
+                      <td> An array of product attributes that you can use to filter a <code>productSearch</code> query. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>sortable</code></span> - <span class="property-type"><a href="#definition-SortableAttribute"><code>[SortableAttribute!]</code></a></span>
                       </td>
-                      <td> An array of product attributes that can be used for sorting in a <code>productSearch</code> query </td>
+                      <td> An array of product attributes that you can use to sort a <code>productSearch</code> query. </td>
                     </tr>
                   </tbody>
                 </table>
@@ -1357,7 +1357,7 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
             <div class="doc-copy">
               <div class="definition-description doc-copy-section">
                 <h5>Description</h5>
-                <p>An interface for bucket contents</p>
+                <p>An interface for bucket contents.</p>
               </div>
               <div class="definition-properties definition-fields doc-copy-section">
                 <h5>Fields</h5>
@@ -1372,7 +1372,7 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>title</code></span> - <span class="property-type"><a href="#definition-String"><code>String!</code></a></span>
                       </td>
-                      <td> A human-readable name of a bucket </td>
+                      <td> A human-readable name of a bucket. </td>
                     </tr>
                   </tbody>
                 </table>
@@ -1432,7 +1432,7 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
             <div class="doc-copy">
               <div class="definition-description doc-copy-section">
                 <h5>Description</h5>
-                <p>Defines features of a bundle product</p>
+                <p>Defines features of a bundle product.</p>
               </div>
               <div class="definition-properties doc-copy-section">
                 <h5>Fields</h5>
@@ -1447,37 +1447,37 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>add_to_cart_allowed</code></span> - <span class="property-type"><a href="#definition-Boolean"><code>Boolean</code></a></span>
                       </td>
-                      <td> Boolean indicating whether a product can be added to cart. Field reserved for future use. Currently, will default to true </td>
+                      <td> A Boolean that indicates if a product can be added to a cart. Field reserved for future use. Currently, will default to true.</td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>attribute_set_id</code></span> - <span class="property-type"><a href="#definition-Int"><code>Int</code></a></span>
                       </td>
-                      <td> The attribute set assigned to the product </td>
+                      <td> The attribute set assigned to the product. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>canonical_url</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> Relative canonical URL </td>
+                      <td> The relative canonical URL. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>created_at</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> Timestamp indicating when the product was created </td>
+                      <td> A timestamp that indicates when the product was created. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>custom_attributes</code></span> - <span class="property-type"><a href="#definition-CustomAttribute"><code>[CustomAttribute]</code></a></span>
                       </td>
-                      <td> An array of custom product attributes </td>
+                      <td> An array of custom product attributes. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>description</code></span> - <span class="property-type"><a href="#definition-ComplexTextValue"><code>ComplexTextValue</code></a></span>
                       </td>
-                      <td> Detailed information about the product. The value can include simple HTML tags </td>
+                      <td> Detailed information about the product. The value can include simple HTML tags. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>gift_message_available</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> Indicates whether a gift message is available </td>
+                      <td> Indicates if a gift message is available. </td>
                     </tr>
                     <tr>
                       <td data-property-name="" class="definition-deprecated"><span class="property-name"><code>id</code></span> - <span class="property-type"><a href="#definition-Int"><code>Int</code></a></span>
@@ -1488,82 +1488,82 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>image</code></span> - <span class="property-type"><a href="#definition-ProductImage"><code>ProductImage</code></a></span>
                       </td>
-                      <td> The relative path to the main image on the product page </td>
+                      <td> The relative path to the main image on the product page. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>media_gallery</code></span> - <span class="property-type"><a href="#definition-MediaGalleryInterface"><code>[MediaGalleryInterface]</code></a></span>
                       </td>
-                      <td> An array of Media Gallery objects </td>
+                      <td> An array of Media Gallery objects. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>meta_description</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> A brief overview of the product for search results listings, maximum 255 characters </td>
+                      <td> A brief overview of the product for search results listings, maximum 255 characters. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>meta_keyword</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> A comma-separated list of keywords that are visible only to search engines </td>
+                      <td> A comma-separated list of keywords that are visible only to search engines. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>meta_title</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> A string that is displayed in the title bar and tab of the browser and in search results lists </td>
+                      <td> A string that is displayed in the title bar, browser tab, and in search results lists. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>name</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> The product name. Customers use this name to identify the product </td>
+                      <td> The product name. Customers use this name to identify the product. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>new_from_date</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> The beginning date for new product listings, and determines if the product is featured as a new product </td>
+                      <td> The beginning date for new product listings. This date determines if the product is featured as a new product. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>new_to_date</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> The end date for new product listings </td>
+                      <td> The end date for new product listings. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>price_range</code></span> - <span class="property-type"><a href="#definition-PriceRange"><code>PriceRange!</code></a></span>
                       </td>
-                      <td> A PriceRange object, indicating the range of prices for the product </td>
+                      <td> A PriceRange object that indicates the range of prices for the product. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>short_description</code></span> - <span class="property-type"><a href="#definition-ComplexTextValue"><code>ComplexTextValue</code></a></span>
                       </td>
-                      <td> A short description of the product. Its use depends on the theme </td>
+                      <td> A short description of the product. Its use depends on the theme. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>sku</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> A number or code assigned to a product to identify the product, options, price, and manufacturer </td>
+                      <td> A number or code assigned to a product to identify the product, options, price, and manufacturer. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>small_image</code></span> - <span class="property-type"><a href="#definition-ProductImage"><code>ProductImage</code></a></span>
                       </td>
-                      <td> The relative path to the small image, which is used on catalog pages </td>
+                      <td> The relative path to the small image, which is used on catalog pages. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>thumbnail</code></span> - <span class="property-type"><a href="#definition-ProductImage"><code>ProductImage</code></a></span>
                       </td>
-                      <td> The relative path to the product's thumbnail image </td>
+                      <td> The relative path to the product's thumbnail image. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>uid</code></span> - <span class="property-type"><a href="#definition-ID"><code>ID!</code></a></span>
                       </td>
-                      <td> The unique ID for a <code>ProductInterface</code> object </td>
+                      <td> The unique ID for a <code>ProductInterface</code> object. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>updated_at</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> Timestamp indicating when the product was updated </td>
+                      <td> A timestamp that indicates when the product was updated. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>weight</code></span> - <span class="property-type"><a href="#definition-Float"><code>Float</code></a></span>
                       </td>
-                      <td> The weight of the item, in units defined by the store </td>
+                      <td> The weight of the item in units defined by the store. </td>
                     </tr>
                   </tbody>
                 </table>
@@ -1616,7 +1616,7 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
             <div class="doc-copy">
               <div class="definition-description doc-copy-section">
                 <h5>Description</h5>
-                <p>Category view bucket for federation</p>
+                <p>Category view bucket for federation.</p>
               </div>
               <div class="definition-properties doc-copy-section">
                 <h5>Fields</h5>
@@ -1876,17 +1876,17 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>addToCartAllowed</code></span> - <span class="property-type"><a href="#definition-Boolean"><code>Boolean</code></a></span>
                       </td>
-                      <td> A flag stating if the product can be added to cart </td>
+                      <td> A flag that indicates if the product can be added to the cart. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>inStock</code></span> - <span class="property-type"><a href="#definition-Boolean"><code>Boolean</code></a></span>
                       </td>
-                      <td> A flag stating if the product is in stock </td>
+                      <td> A flag that indicates if the product is in stock. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>lowStock</code></span> - <span class="property-type"><a href="#definition-Boolean"><code>Boolean</code></a></span>
                       </td>
-                      <td> A flag stating if the product stock is low </td>
+                      <td> A flag that indicates if the product stock is low. </td>
                     </tr>
                     <tr class="row-has-field-arguments">
                       <td data-property-name=""><span class="property-name"><code>attributes</code></span> - <span class="property-type"><a href="#definition-ProductViewAttribute"><code>[ProductViewAttribute]</code></a></span>
@@ -1957,7 +1957,7 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>metaTitle</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> A string that is displayed in the title bar and tab of the browser and in search results lists. </td>
+                      <td> A string that is displayed in the title bar, browser tab, and in search results lists. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>name</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
@@ -1992,7 +1992,7 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>externalId</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> External Id </td>
+                      <td> External Id. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>url</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
@@ -2007,7 +2007,7 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                     <tr class="row-has-field-arguments">
                       <td data-property-name=""><span class="property-name"><code>links</code></span> - <span class="property-type"><a href="#definition-ProductViewLink"><code>[ProductViewLink]</code></a></span>
                       </td>
-                      <td> A list of product links </td>
+                      <td> A list of product links. </td>
                     </tr>
                     <tr class="row-field-arguments">
                       <td colspan="2">
@@ -2025,30 +2025,30 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                     <tr>
                       <td data-property-name="" class="definition-deprecated"><span class="property-name"><code>categories</code></span> - <span class="property-type"><a href="#definition-String"><code>[String]</code></a></span>
                       </td>
-                      <td> List of categories to which the product belongs <span class="deprecation-reason">This field is deprecated and will be removed after Feb 1, 2024.</span>
+                      <td> List of categories to which the product belongs. <span class="deprecation-reason">This field is deprecated and will be removed after Feb 1, 2024.</span>
                       </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>queryType</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> Indicates if the product was retrieved from the primary or the backup query </td>
+                      <td> Indicates if the product was retrieved from the primary or the backup query. </td>
                     </tr>
                     <tr>
                       <td data-property-name="" class="definition-deprecated"><span class="property-name"><code>rank</code></span> - <span class="property-type"><a href="#definition-Int"><code>Int</code></a></span>
                       </td>
-                      <td> Rank given to a product <span class="deprecation-reason">This field is deprecated and will be removed after Feb 1, 2024.</span>
+                      <td> Rank given to a product. <span class="deprecation-reason">This field is deprecated and will be removed after Feb 1, 2024.</span>
                       </td>
                     </tr>
                     <tr>
                       <td data-property-name="" class="definition-deprecated"><span class="property-name"><code>score</code></span> - <span class="property-type"><a href="#definition-Float"><code>Float</code></a></span>
                       </td>
-                      <td> Score indicating relevance of the product to the recommendation type <span class="deprecation-reason">This field is deprecated and will be removed after Feb 1, 2024.</span>
+                      <td> Score indicating relevance of the product to the recommendation type. <span class="deprecation-reason">This field is deprecated and will be removed after Feb 1, 2024.</span>
                       </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>visibility</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> Visibility setting of the product </td>
+                      <td> Visibility setting of the product. </td>
                     </tr>
                   </tbody>
                 </table>
@@ -2104,7 +2104,7 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
             <div class="doc-copy">
               <div class="definition-description doc-copy-section">
                 <h5>Description</h5>
-                <p>Text that can contain HTML tags</p>
+                <p>Text that can contain HTML tags.</p>
               </div>
               <div class="definition-properties doc-copy-section">
                 <h5>Fields</h5>
@@ -2119,7 +2119,7 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>html</code></span> - <span class="property-type"><a href="#definition-String"><code>String!</code></a></span>
                       </td>
-                      <td> Text that can contain HTML tags </td>
+                      <td> Text that can contain HTML tags. </td>
                     </tr>
                   </tbody>
                 </table>
@@ -2147,7 +2147,7 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
             <div class="doc-copy">
               <div class="definition-description doc-copy-section">
                 <h5>Description</h5>
-                <p>Basic features of a configurable product and its simple product variants</p>
+                <p>Basic features of a configurable product and its simple product variants.</p>
               </div>
               <div class="definition-properties doc-copy-section">
                 <h5>Fields</h5>
@@ -2162,37 +2162,37 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>add_to_cart_allowed</code></span> - <span class="property-type"><a href="#definition-Boolean"><code>Boolean</code></a></span>
                       </td>
-                      <td> Boolean indicating whether a product can be added to cart. Field reserved for future use. Currently, will default to true </td>
+                      <td> A Boolean that indicates if a product can be added to the cart. Field reserved for future use. Currently, will default to true. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>attribute_set_id</code></span> - <span class="property-type"><a href="#definition-Int"><code>Int</code></a></span>
                       </td>
-                      <td> The attribute set assigned to the product </td>
+                      <td> The attribute set assigned to the product. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>canonical_url</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> A relative canonical URL </td>
+                      <td> A relative canonical URL. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>created_at</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> Timestamp indicating when the product was created </td>
+                      <td> A timestamp that indicates when the product was created. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>custom_attributes</code></span> - <span class="property-type"><a href="#definition-CustomAttribute"><code>[CustomAttribute]</code></a></span>
                       </td>
-                      <td> An array of custom product attributes </td>
+                      <td> An array of custom product attributes. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>description</code></span> - <span class="property-type"><a href="#definition-ComplexTextValue"><code>ComplexTextValue</code></a></span>
                       </td>
-                      <td> Detailed information about the product. The value can include simple HTML tags </td>
+                      <td> Detailed information about the product. The value can include simple HTML tags. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>gift_message_available</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> Indicates whether a gift message is available </td>
+                      <td> Indicates if a gift message is available. </td>
                     </tr>
                     <tr>
                       <td data-property-name="" class="definition-deprecated"><span class="property-name"><code>id</code></span> - <span class="property-type"><a href="#definition-Int"><code>Int</code></a></span>
@@ -2203,82 +2203,82 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>image</code></span> - <span class="property-type"><a href="#definition-ProductImage"><code>ProductImage</code></a></span>
                       </td>
-                      <td> The relative path to the main image on the product page </td>
+                      <td> The relative path to the main image on the product page. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>media_gallery</code></span> - <span class="property-type"><a href="#definition-MediaGalleryInterface"><code>[MediaGalleryInterface]</code></a></span>
                       </td>
-                      <td> An array of Media Gallery objects </td>
+                      <td> An array of Media Gallery objects, </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>meta_description</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> A brief overview of the product for search results listings, maximum 255 characters </td>
+                      <td> A brief overview of the product for search results listings, maximum 255 characters. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>meta_keyword</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> A comma-separated list of keywords that are visible only to search engines </td>
+                      <td> A comma-separated list of keywords that are visible only to search engines. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>meta_title</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> A string that is displayed in the title bar and tab of the browser and in search results lists </td>
+                      <td> A string that is displayed in the title bar, browser tab, and in search results lists </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>name</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> The product name. Customers use this name to identify the product </td>
+                      <td> The product name. Customers use this name to identify the product. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>new_from_date</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> The beginning date for new product listings, and determines if the product is featured as a new product </td>
+                      <td> The beginning date for new product listings. This date determines if the product is featured as a new product. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>new_to_date</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> The end date for new product listings </td>
+                      <td> The end date for new product listings. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>price_range</code></span> - <span class="property-type"><a href="#definition-PriceRange"><code>PriceRange!</code></a></span>
                       </td>
-                      <td> A PriceRange object, indicating the range of prices for the product </td>
+                      <td> A PriceRange object that indicates the range of prices for the product. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>short_description</code></span> - <span class="property-type"><a href="#definition-ComplexTextValue"><code>ComplexTextValue</code></a></span>
                       </td>
-                      <td> A short description of the product. Its use depends on the theme </td>
+                      <td> A short description of the product. Its use depends on the theme. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>sku</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> A number or code assigned to a product to identify the product, options, price, and manufacturer </td>
+                      <td> A number or code assigned to a product to identify the product, options, price, and manufacturer. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>small_image</code></span> - <span class="property-type"><a href="#definition-ProductImage"><code>ProductImage</code></a></span>
                       </td>
-                      <td> The relative path to the small image, which is used on catalog pages </td>
+                      <td> The relative path to the small image, which is used on catalog pages. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>thumbnail</code></span> - <span class="property-type"><a href="#definition-ProductImage"><code>ProductImage</code></a></span>
                       </td>
-                      <td> The relative path to the product's thumbnail image </td>
+                      <td> The relative path to the product's thumbnail image. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>uid</code></span> - <span class="property-type"><a href="#definition-ID"><code>ID!</code></a></span>
                       </td>
-                      <td> The unique ID for a <code>ProductInterface</code> object </td>
+                      <td> The unique ID for a <code>ProductInterface</code> object. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>updated_at</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> Timestamp indicating when the product was updated </td>
+                      <td> A timestamp that indicates when the product was updated. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>weight</code></span> - <span class="property-type"><a href="#definition-Float"><code>Float</code></a></span>
                       </td>
-                      <td> The weight of the item, in units defined by the store </td>
+                      <td> The weight of the item, in units defined by the store. </td>
                     </tr>
                   </tbody>
                 </table>
@@ -3548,7 +3548,7 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
             <div class="doc-copy">
               <div class="definition-description doc-copy-section">
                 <h5>Description</h5>
-                <p>A product attribute defined by the merchant</p>
+                <p>A product attribute defined by the merchant.</p>
               </div>
               <div class="definition-properties doc-copy-section">
                 <h5>Fields</h5>
@@ -3563,12 +3563,12 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>code</code></span> - <span class="property-type"><a href="#definition-String"><code>String!</code></a></span>
                       </td>
-                      <td> The unique identifier for an attribute code </td>
+                      <td> The unique identifier for an attribute code. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>value</code></span> - <span class="property-type"><a href="#definition-String"><code>String!</code></a></span>
                       </td>
-                      <td> The value assigned to the custom attribute </td>
+                      <td> The value assigned to the custom attribute. </td>
                     </tr>
                   </tbody>
                 </table>
@@ -3599,7 +3599,7 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
             <div class="doc-copy">
               <div class="definition-description doc-copy-section">
                 <h5>Description</h5>
-                <p>An RFC-3339 compliant DateTime Scalar</p>
+                <p>An RFC-3339 compliant DateTime Scalar.</p>
               </div>
             </div>
             <div class="doc-examples">
@@ -3624,7 +3624,7 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
             <div class="doc-copy">
               <div class="definition-description doc-copy-section">
                 <h5>Description</h5>
-                <p>A product that the shopper downloads</p>
+                <p>A product that the shopper downloads.</p>
               </div>
               <div class="definition-properties doc-copy-section">
                 <h5>Fields</h5>
@@ -3639,37 +3639,37 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>add_to_cart_allowed</code></span> - <span class="property-type"><a href="#definition-Boolean"><code>Boolean</code></a></span>
                       </td>
-                      <td> Boolean indicating whether a product can be added to cart. Field reserved for future use. Currently, will default to true </td>
+                      <td> A Boolean that indicates if a product can be added to the cart. Field reserved for future use. Currently, will default to true. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>attribute_set_id</code></span> - <span class="property-type"><a href="#definition-Int"><code>Int</code></a></span>
                       </td>
-                      <td> The attribute set assigned to the product </td>
+                      <td> The attribute set assigned to the product. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>canonical_url</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> A relative canonical URL </td>
+                      <td> A relative canonical URL. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>created_at</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> Timestamp indicating when the product was created </td>
+                      <td> A timestamp that indicates when the product was created. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>custom_attributes</code></span> - <span class="property-type"><a href="#definition-CustomAttribute"><code>[CustomAttribute]</code></a></span>
                       </td>
-                      <td> An array of custom product attributes </td>
+                      <td> An array of custom product attributes. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>description</code></span> - <span class="property-type"><a href="#definition-ComplexTextValue"><code>ComplexTextValue</code></a></span>
                       </td>
-                      <td> Detailed information about the product. The value can include simple HTML tags </td>
+                      <td> Detailed information about the product. The value can include simple HTML tags. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>gift_message_available</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> Indicates whether a gift message is available. </td>
+                      <td> Indicates if a gift message is available. </td>
                     </tr>
                     <tr>
                       <td data-property-name="" class="definition-deprecated"><span class="property-name"><code>id</code></span> - <span class="property-type"><a href="#definition-Int"><code>Int</code></a></span>
@@ -3680,7 +3680,7 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>image</code></span> - <span class="property-type"><a href="#definition-ProductImage"><code>ProductImage</code></a></span>
                       </td>
-                      <td> The relative path to the main image on the product page </td>
+                      <td> The relative path to the main image on the product page. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>media_gallery</code></span> - <span class="property-type"><a href="#definition-MediaGalleryInterface"><code>[MediaGalleryInterface]</code></a></span>
@@ -3690,67 +3690,67 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>meta_description</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> A brief overview of the product for search results listings, maximum 255 characters </td>
+                      <td> A brief overview of the product for search results listings, maximum 255 characters. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>meta_keyword</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> A comma-separated list of keywords that are visible only to search engines </td>
+                      <td> A comma-separated list of keywords that are visible only to search engines. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>meta_title</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> A string that is displayed in the title bar and tab of the browser and in search results lists </td>
+                      <td> A string that is displayed in the title bar, browser tab, and in search results lists. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>name</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> The product name. Customers use this name to identify the product </td>
+                      <td> The product name. Customers use this name to identify the product. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>new_from_date</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> The beginning date for new product listings, and determines if the product is featured as a new product </td>
+                      <td> The beginning date for new product listings. This date determines if the product is featured as a new product. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>new_to_date</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> The end date for new product listings </td>
+                      <td> The end date for new product listings. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>price_range</code></span> - <span class="property-type"><a href="#definition-PriceRange"><code>PriceRange!</code></a></span>
                       </td>
-                      <td> A PriceRange object, indicating the range of prices for the product </td>
+                      <td> A PriceRange object that indicates the range of prices for the product. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>short_description</code></span> - <span class="property-type"><a href="#definition-ComplexTextValue"><code>ComplexTextValue</code></a></span>
                       </td>
-                      <td> A short description of the product. Its use depends on the theme </td>
+                      <td> A short description of the product. Its use depends on the theme. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>sku</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> A number or code assigned to a product to identify the product, options, price, and manufacturer </td>
+                      <td> A number or code assigned to a product to identify the product, options, price, and manufacturer. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>small_image</code></span> - <span class="property-type"><a href="#definition-ProductImage"><code>ProductImage</code></a></span>
                       </td>
-                      <td> The relative path to the small image, which is used on catalog pages </td>
+                      <td> The relative path to the small image, which is used on catalog pages. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>thumbnail</code></span> - <span class="property-type"><a href="#definition-ProductImage"><code>ProductImage</code></a></span>
                       </td>
-                      <td> The relative path to the product's thumbnail image </td>
+                      <td> The relative path to the product's thumbnail image. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>uid</code></span> - <span class="property-type"><a href="#definition-ID"><code>ID!</code></a></span>
                       </td>
-                      <td> The unique ID for a <code>ProductInterface</code> object </td>
+                      <td> The unique ID for a <code>ProductInterface</code> object. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>updated_at</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> Timestamp indicating when the product was updated </td>
+                      <td> A timestamp that indicates when the product was updated. </td>
                     </tr>
                   </tbody>
                 </table>
@@ -3802,7 +3802,7 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
             <div class="doc-copy">
               <div class="definition-description doc-copy-section">
                 <h5>Description</h5>
-                <p>Contains product attributes that can be used for filtering in a <code>productSearch</code> query</p>
+                <p>Contains product attributes that you can use to filter a <code>productSearch</code> query.</p>
               </div>
               <div class="definition-properties doc-copy-section">
                 <h5>Fields</h5>
@@ -3817,22 +3817,22 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>attribute</code></span> - <span class="property-type"><a href="#definition-String"><code>String!</code></a></span>
                       </td>
-                      <td> The unique identifier for an attribute code. This value should be in lowercase letters and without spaces </td>
+                      <td> The unique identifier for an attribute code. This value should be in lowercase letters and without spaces. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>frontendInput</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> Indicates how field rendered on storefront </td>
+                      <td> Indicates how fields are rendered on a storefront. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>label</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> The display name assigned to the attribute </td>
+                      <td> The display name assigned to the attribute. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>numeric</code></span> - <span class="property-type"><a href="#definition-Boolean"><code>Boolean</code></a></span>
                       </td>
-                      <td> Indicates whether this attribute has a numeric value, such as a price or integer </td>
+                      <td> Indicates if this attribute has a numeric value, such as a price or integer. </td>
                     </tr>
                   </tbody>
                 </table>
@@ -3865,7 +3865,7 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
             <div class="doc-copy">
               <div class="definition-description doc-copy-section">
                 <h5>Description</h5>
-                <p>A single FPT that can be applied to a product price</p>
+                <p>A single FPT that can be applied to a product price.</p>
               </div>
               <div class="definition-properties doc-copy-section">
                 <h5>Fields</h5>
@@ -3880,12 +3880,12 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>amount</code></span> - <span class="property-type"><a href="#definition-Money"><code>Money</code></a></span>
                       </td>
-                      <td> Amount of the FPT as a money object </td>
+                      <td> Amount of the FPT as a money object. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>label</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> The label assigned to the FPT to be displayed on the frontend </td>
+                      <td> The label assigned to the FPT to be displayed on the frontend. </td>
                     </tr>
                   </tbody>
                 </table>
@@ -3941,7 +3941,7 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
             <div class="doc-copy">
               <div class="definition-description doc-copy-section">
                 <h5>Description</h5>
-                <p>Defines properties of a gift card, including the minimum and maximum values and an array that contains the current and past values on the specific gift card</p>
+                <p>Defines properties of a gift card, including the minimum and maximum values and an array that contains the current and past values on the specific gift card.</p>
               </div>
               <div class="definition-properties doc-copy-section">
                 <h5>Fields</h5>
@@ -3956,37 +3956,37 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>add_to_cart_allowed</code></span> - <span class="property-type"><a href="#definition-Boolean"><code>Boolean</code></a></span>
                       </td>
-                      <td> Boolean indicating whether a product can be added to cart. Field reserved for future use. Currently, will default to true </td>
+                      <td> A Boolean that indicates fi a product can be added to the cart. Field reserved for future use. Currently, will default to true. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>attribute_set_id</code></span> - <span class="property-type"><a href="#definition-Int"><code>Int</code></a></span>
                       </td>
-                      <td> The attribute set assigned to the product </td>
+                      <td> The attribute set assigned to the product. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>canonical_url</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> Relative canonical URL </td>
+                      <td> Relative canonical URL. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>created_at</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> Timestamp indicating when the product was created </td>
+                      <td> A timestamp that indicates when the product was created. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>custom_attributes</code></span> - <span class="property-type"><a href="#definition-CustomAttribute"><code>[CustomAttribute]</code></a></span>
                       </td>
-                      <td> An array of custom product attributes </td>
+                      <td> An array of custom product attributes. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>description</code></span> - <span class="property-type"><a href="#definition-ComplexTextValue"><code>ComplexTextValue</code></a></span>
                       </td>
-                      <td> Detailed information about the product. The value can include simple HTML tags </td>
+                      <td> Detailed information about the product. The value can include simple HTML tags. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>gift_message_available</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> Indicates whether a gift message is available </td>
+                      <td> Indicates if a gift message is available. </td>
                     </tr>
                     <tr>
                       <td data-property-name="" class="definition-deprecated"><span class="property-name"><code>id</code></span> - <span class="property-type"><a href="#definition-Int"><code>Int</code></a></span>
@@ -3997,82 +3997,82 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>image</code></span> - <span class="property-type"><a href="#definition-ProductImage"><code>ProductImage</code></a></span>
                       </td>
-                      <td> The relative path to the main image on the product page </td>
+                      <td> The relative path to the main image on the product page. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>media_gallery</code></span> - <span class="property-type"><a href="#definition-MediaGalleryInterface"><code>[MediaGalleryInterface]</code></a></span>
                       </td>
-                      <td> An array of Media Gallery objects </td>
+                      <td> An array of Media Gallery objects. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>meta_description</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> A brief overview of the product for search results listings, maximum 255 characters </td>
+                      <td> A brief overview of the product for search results listings, maximum 255 characters. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>meta_keyword</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> A comma-separated list of keywords that are visible only to search engines </td>
+                      <td> A comma-separated list of keywords that are visible only to search engines. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>meta_title</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> A string that is displayed in the title bar and tab of the browser and in search results lists </td>
+                      <td> A string that is displayed in the title bar, browser tab, and in search results lists </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>name</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> The product name. Customers use this name to identify the product </td>
+                      <td> The product name. Customers use this name to identify the product. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>new_from_date</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> The beginning date for new product listings, and determines if the product is featured as a new product </td>
+                      <td> The beginning date for new product listings. This date determines if the product is featured as a new product. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>new_to_date</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> The end date for new product listings </td>
+                      <td> The end date for new product listings. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>price_range</code></span> - <span class="property-type"><a href="#definition-PriceRange"><code>PriceRange!</code></a></span>
                       </td>
-                      <td> A PriceRange object, indicating the range of prices for the product </td>
+                      <td> A PriceRange object that indicates the range of prices for the product. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>short_description</code></span> - <span class="property-type"><a href="#definition-ComplexTextValue"><code>ComplexTextValue</code></a></span>
                       </td>
-                      <td> A short description of the product. Its use depends on the theme </td>
+                      <td> A short description of the product. Its use depends on the theme. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>sku</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> A number or code assigned to a product to identify the product, options, price, and manufacturer </td>
+                      <td> A number or code assigned to a product to identify the product, options, price, and manufacturer. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>small_image</code></span> - <span class="property-type"><a href="#definition-ProductImage"><code>ProductImage</code></a></span>
                       </td>
-                      <td> The relative path to the small image, which is used on catalog pages </td>
+                      <td> The relative path to the small image, which is used on catalog pages. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>thumbnail</code></span> - <span class="property-type"><a href="#definition-ProductImage"><code>ProductImage</code></a></span>
                       </td>
-                      <td> The relative path to the product's thumbnail image </td>
+                      <td> The relative path to the product's thumbnail image. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>uid</code></span> - <span class="property-type"><a href="#definition-ID"><code>ID!</code></a></span>
                       </td>
-                      <td> The unique ID for a <code>ProductInterface</code> object </td>
+                      <td> The unique ID for a <code>ProductInterface</code> object. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>updated_at</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> Timestamp indicating when the product was updated </td>
+                      <td> A timestamp that indicates when the product was updated. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>weight</code></span> - <span class="property-type"><a href="#definition-Float"><code>Float</code></a></span>
                       </td>
-                      <td> The weight of the item, in units defined by the store </td>
+                      <td> The weight of the item, in units defined by the store. </td>
                     </tr>
                   </tbody>
                 </table>
@@ -4125,7 +4125,7 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
             <div class="doc-copy">
               <div class="definition-description doc-copy-section">
                 <h5>Description</h5>
-                <p>Consists of simple standalone products that are presented as a group</p>
+                <p>Consists of simple standalone products that are presented as a group.</p>
               </div>
               <div class="definition-properties doc-copy-section">
                 <h5>Fields</h5>
@@ -4140,37 +4140,37 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>add_to_cart_allowed</code></span> - <span class="property-type"><a href="#definition-Boolean"><code>Boolean</code></a></span>
                       </td>
-                      <td> Boolean indicating whether a product can be added to cart. Field reserved for future use. Currently, will default to true </td>
+                      <td> A Boolean that indicates if a product can be added to te cart. Field reserved for future use. Currently, will default to true. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>attribute_set_id</code></span> - <span class="property-type"><a href="#definition-Int"><code>Int</code></a></span>
                       </td>
-                      <td> The attribute set assigned to the product </td>
+                      <td> The attribute set assigned to the product. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>canonical_url</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> Relative canonical URL </td>
+                      <td> Relative canonical URL. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>created_at</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> Timestamp indicating when the product was created </td>
+                      <td> A timestamp that indicates when the product was created. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>custom_attributes</code></span> - <span class="property-type"><a href="#definition-CustomAttribute"><code>[CustomAttribute]</code></a></span>
                       </td>
-                      <td> An array of custom product attributes </td>
+                      <td> An array of custom product attributes. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>description</code></span> - <span class="property-type"><a href="#definition-ComplexTextValue"><code>ComplexTextValue</code></a></span>
                       </td>
-                      <td> Detailed information about the product. The value can include simple HTML tags </td>
+                      <td> Detailed information about the product. The value can include simple HTML tags. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>gift_message_available</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> Indicates whether a gift message is available </td>
+                      <td> Indicates if a gift message is available. </td>
                     </tr>
                     <tr>
                       <td data-property-name="" class="definition-deprecated"><span class="property-name"><code>id</code></span> - <span class="property-type"><a href="#definition-Int"><code>Int</code></a></span>
@@ -4181,82 +4181,82 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>image</code></span> - <span class="property-type"><a href="#definition-ProductImage"><code>ProductImage</code></a></span>
                       </td>
-                      <td> The relative path to the main image on the product page </td>
+                      <td> The relative path to the main image on the product page. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>media_gallery</code></span> - <span class="property-type"><a href="#definition-MediaGalleryInterface"><code>[MediaGalleryInterface]</code></a></span>
                       </td>
-                      <td> An array of Media Gallery objects </td>
+                      <td> An array of Media Gallery objects. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>meta_description</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> A brief overview of the product for search results listings, maximum 255 characters </td>
+                      <td> A brief overview of the product for search results listings, maximum 255 characters. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>meta_keyword</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> A comma-separated list of keywords that are visible only to search engines </td>
+                      <td> A comma-separated list of keywords that are visible only to search engines. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>meta_title</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> A string that is displayed in the title bar and tab of the browser and in search results lists </td>
+                      <td> A string that is displayed in the title bar, browser tab, and in search results lists. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>name</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> The product name. Customers use this name to identify the product </td>
+                      <td> The product name. Customers use this name to identify the product. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>new_from_date</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> The beginning date for new product listings, and determines if the product is featured as a new product </td>
+                      <td> The beginning date for new product listings. This date determines if the product is featured as a new product.  </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>new_to_date</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> The end date for new product listings </td>
+                      <td> The end date for new product listings. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>price_range</code></span> - <span class="property-type"><a href="#definition-PriceRange"><code>PriceRange!</code></a></span>
                       </td>
-                      <td> A PriceRange object, indicating the range of prices for the product </td>
+                      <td> A PriceRange object that indicates the range of prices for the product. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>short_description</code></span> - <span class="property-type"><a href="#definition-ComplexTextValue"><code>ComplexTextValue</code></a></span>
                       </td>
-                      <td> A short description of the product. Its use depends on the theme </td>
+                      <td> A short description of the product. Its use depends on the theme. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>sku</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> A number or code assigned to a product to identify the product, options, price, and manufacturer </td>
+                      <td> A number or code assigned to a product to identify the product, options, price, and manufacturer. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>small_image</code></span> - <span class="property-type"><a href="#definition-ProductImage"><code>ProductImage</code></a></span>
                       </td>
-                      <td> The relative path to the small image, which is used on catalog pages </td>
+                      <td> The relative path to the small image, which is used on catalog pages. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>thumbnail</code></span> - <span class="property-type"><a href="#definition-ProductImage"><code>ProductImage</code></a></span>
                       </td>
-                      <td> The relative path to the product's thumbnail image </td>
+                      <td> The relative path to the product's thumbnail image. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>uid</code></span> - <span class="property-type"><a href="#definition-ID"><code>ID!</code></a></span>
                       </td>
-                      <td> The unique ID for a <code>ProductInterface</code> object </td>
+                      <td> The unique ID for a <code>ProductInterface</code> object. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>updated_at</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> Timestamp indicating when the product was updated </td>
+                      <td> A timestamp that indicates when the product was updated. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>weight</code></span> - <span class="property-type"><a href="#definition-Float"><code>Float</code></a></span>
                       </td>
-                      <td> The weight of the item, in units defined by the store </td>
+                      <td> The weight of the item, in units defined by the store. </td>
                     </tr>
                   </tbody>
                 </table>
@@ -4309,7 +4309,7 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
             <div class="doc-copy">
               <div class="definition-description doc-copy-section">
                 <h5>Description</h5>
-                <p>An object that provides highlighted text for matched words</p>
+                <p>An object that provides highlighted text for matched words.</p>
               </div>
               <div class="definition-properties doc-copy-section">
                 <h5>Fields</h5>
@@ -4324,17 +4324,17 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>attribute</code></span> - <span class="property-type"><a href="#definition-String"><code>String!</code></a></span>
                       </td>
-                      <td> The product attribute that contains a match for the search phrase </td>
+                      <td> The product attribute that contains a match for the search phrase. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>matched_words</code></span> - <span class="property-type"><a href="#definition-String"><code>[String]!</code></a></span>
                       </td>
-                      <td> An array of strings </td>
+                      <td> An array of strings. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>value</code></span> - <span class="property-type"><a href="#definition-String"><code>String!</code></a></span>
                       </td>
-                      <td> The matched text, enclosed within emphasis tags </td>
+                      <td> The matched text enclosed within emphasis tags. </td>
                     </tr>
                   </tbody>
                 </table>
@@ -4441,7 +4441,7 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
             <div class="doc-copy">
               <div class="definition-description doc-copy-section">
                 <h5>Description</h5>
-                <p>Contains basic information about a product image or video</p>
+                <p>Contains basic information about a product image or video.</p>
               </div>
               <div class="definition-properties definition-fields doc-copy-section">
                 <h5>Fields</h5>
@@ -4456,22 +4456,22 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>disabled</code></span> - <span class="property-type"><a href="#definition-Boolean"><code>Boolean</code></a></span>
                       </td>
-                      <td> Whether the image is hidden from PDP gallery </td>
+                      <td> Indicates if the image is hidden from PDP gallery. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>label</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> The label of the product image or video </td>
+                      <td> The label of the product image or video. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>position</code></span> - <span class="property-type"><a href="#definition-Int"><code>Int</code></a></span>
                       </td>
-                      <td> The media item's position after it has been sorted </td>
+                      <td> The media item's position after it has been sorted. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>url</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> The URL of the product image or video </td>
+                      <td> The URL of the product image or video. </td>
                     </tr>
                   </tbody>
                 </table>
@@ -4521,7 +4521,7 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
             <div class="doc-copy">
               <div class="definition-description doc-copy-section">
                 <h5>Description</h5>
-                <p>A monetary value, including a numeric value and a currency code</p>
+                <p>A monetary value, including a numeric value and a currency code.</p>
               </div>
               <div class="definition-properties doc-copy-section">
                 <h5>Fields</h5>
@@ -4536,12 +4536,12 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>currency</code></span> - <span class="property-type"><a href="#definition-CurrencyEnum"><code>CurrencyEnum</code></a></span>
                       </td>
-                      <td> A three-letter currency code, such as USD or EUR </td>
+                      <td> A three-letter currency code, such as USD or EUR. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>value</code></span> - <span class="property-type"><a href="#definition-Float"><code>Float</code></a></span>
                       </td>
-                      <td> A number expressing a monetary value </td>
+                      <td> A number expressing a monetary value. </td>
                     </tr>
                   </tbody>
                 </table>
@@ -4569,7 +4569,7 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
             <div class="doc-copy">
               <div class="definition-description doc-copy-section">
                 <h5>Description</h5>
-                <p>Type of page on which recommendations are requested</p>
+                <p> The type of page on which recommendations are requested, such as Home, Category, Cart, and so on. </p>
               </div>
               <div class="definition-properties doc-copy-section">
                 <h5>Values</h5>
@@ -4649,7 +4649,7 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
             <div class="doc-copy">
               <div class="definition-description doc-copy-section">
                 <h5>Description</h5>
-                <p>Contains attributes specific to tangible products</p>
+                <p>Contains attributes specific to tangible products.</p>
               </div>
               <div class="definition-properties definition-fields doc-copy-section">
                 <h5>Fields</h5>
@@ -4664,7 +4664,7 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>weight</code></span> - <span class="property-type"><a href="#definition-Float"><code>Float</code></a></span>
                       </td>
-                      <td> The weight of the item, in units defined by the store </td>
+                      <td> The weight of the item in units defined by the store. </td>
                     </tr>
                   </tbody>
                 </table>
@@ -4828,7 +4828,7 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
             <div class="doc-copy">
               <div class="definition-description doc-copy-section">
                 <h5>Description</h5>
-                <p>Price range for a product. If the product has a single price, the minimum and maximum price will be the same</p>
+                <p>The price range for a product. If the product has a single price, the minimum and maximum price will be the same.</p>
               </div>
               <div class="definition-properties doc-copy-section">
                 <h5>Fields</h5>
@@ -4843,12 +4843,12 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>maximum_price</code></span> - <span class="property-type"><a href="#definition-ProductPrice"><code>ProductPrice</code></a></span>
                       </td>
-                      <td> The highest possible price for the product </td>
+                      <td> The highest possible price for the product. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>minimum_price</code></span> - <span class="property-type"><a href="#definition-ProductPrice"><code>ProductPrice!</code></a></span>
                       </td>
-                      <td> The lowest possible price for the product </td>
+                      <td> The lowest possible price for the product. </td>
                     </tr>
                   </tbody>
                 </table>
@@ -4879,7 +4879,7 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
             <div class="doc-copy">
               <div class="definition-description doc-copy-section">
                 <h5>Description</h5>
-                <p>A discount applied to a product price</p>
+                <p>A discount applied to a product price.</p>
               </div>
               <div class="definition-properties doc-copy-section">
                 <h5>Fields</h5>
@@ -4894,12 +4894,12 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>amount_off</code></span> - <span class="property-type"><a href="#definition-Float"><code>Float</code></a></span>
                       </td>
-                      <td> The actual value of the discount </td>
+                      <td> The actual value of the discount. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>percent_off</code></span> - <span class="property-type"><a href="#definition-Float"><code>Float</code></a></span>
                       </td>
-                      <td> The discount expressed a percentage </td>
+                      <td> The discount expressed a percentage. </td>
                     </tr>
                   </tbody>
                 </table>
@@ -4927,7 +4927,7 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
             <div class="doc-copy">
               <div class="definition-description doc-copy-section">
                 <h5>Description</h5>
-                <p>Product image information. Contains the image URL and label</p>
+                <p>The product image information. Contains the image URL and label.</p>
               </div>
               <div class="definition-properties doc-copy-section">
                 <h5>Fields</h5>
@@ -4942,22 +4942,22 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>disabled</code></span> - <span class="property-type"><a href="#definition-Boolean"><code>Boolean</code></a></span>
                       </td>
-                      <td> Whether the image is hidden from PDP gallery </td>
+                      <td> Indicates if the image is hidden from PDP gallery. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>label</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> The label of the product image or video </td>
+                      <td> The label of the product image or video. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>position</code></span> - <span class="property-type"><a href="#definition-Int"><code>Int</code></a></span>
                       </td>
-                      <td> The media item's position after it has been sorted </td>
+                      <td> The media item's position after it has been sorted. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>url</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> The URL of the product image or video </td>
+                      <td> The URL of the product image or video. </td>
                     </tr>
                   </tbody>
                 </table>
@@ -4990,7 +4990,7 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
             <div class="doc-copy">
               <div class="definition-description doc-copy-section">
                 <h5>Description</h5>
-                <p>Contains attributes that are common to all types of products</p>
+                <p>Contains attributes that are common to all types of products.</p>
               </div>
               <div class="definition-properties definition-fields doc-copy-section">
                 <h5>Fields</h5>
@@ -5005,37 +5005,37 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>add_to_cart_allowed</code></span> - <span class="property-type"><a href="#definition-Boolean"><code>Boolean</code></a></span>
                       </td>
-                      <td> Boolean indicating whether a product can be added to cart. Field reserved for future use. Currently, will default to true </td>
+                      <td> A Boolean that indicates if a product can be added to the cart. Field reserved for future use. Currently, will default to true </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>attribute_set_id</code></span> - <span class="property-type"><a href="#definition-Int"><code>Int</code></a></span>
                       </td>
-                      <td> The attribute set assigned to the product </td>
+                      <td> The attribute set assigned to the product. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>canonical_url</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> A relative canonical URL </td>
+                      <td> A relative canonical URL. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>created_at</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> Timestamp indicating when the product was created </td>
+                      <td> A timestamp that indicates when the product was created </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>custom_attributes</code></span> - <span class="property-type"><a href="#definition-CustomAttribute"><code>[CustomAttribute]</code></a></span>
                       </td>
-                      <td> An array of custom product attributes </td>
+                      <td> An array of custom product attributes. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>description</code></span> - <span class="property-type"><a href="#definition-ComplexTextValue"><code>ComplexTextValue</code></a></span>
                       </td>
-                      <td> Detailed information about the product. The value can include simple HTML tags </td>
+                      <td> Detailed information about the product. The value can include simple HTML tags. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>gift_message_available</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> Indicates whether a gift message is available </td>
+                      <td> Indicates if a gift message is available. </td>
                     </tr>
                     <tr>
                       <td data-property-name="" class="definition-deprecated"><span class="property-name"><code>id</code></span> - <span class="property-type"><a href="#definition-Int"><code>Int</code></a></span>
@@ -5046,77 +5046,77 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>image</code></span> - <span class="property-type"><a href="#definition-ProductImage"><code>ProductImage</code></a></span>
                       </td>
-                      <td> The relative path to the main image on the product page </td>
+                      <td> The relative path to the main image on the product page. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>media_gallery</code></span> - <span class="property-type"><a href="#definition-MediaGalleryInterface"><code>[MediaGalleryInterface]</code></a></span>
                       </td>
-                      <td> An array of Media Gallery objects </td>
+                      <td> An array of Media Gallery objects. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>meta_description</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> A brief overview of the product for search results listings, maximum 255 characters </td>
+                      <td> A brief overview of the product for search results listings, maximum 255 characters. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>meta_keyword</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> A comma-separated list of keywords that are visible only to search engines </td>
+                      <td> A comma-separated list of keywords that are visible only to search engines. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>meta_title</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> A string that is displayed in the title bar and tab of the browser and in search results lists </td>
+                      <td> A string that is displayed in the title bar, browser tab, and in search results lists. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>name</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> The product name. Customers use this name to identify the product </td>
+                      <td> The product name. Customers use this name to identify the product. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>new_from_date</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> The beginning date for new product listings, and determines if the product is featured as a new product </td>
+                      <td> The beginning date for new product listings. This date determines if the product is featured as a new product. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>new_to_date</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> The end date for new product listings </td>
+                      <td> The end date for new product listings. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>price_range</code></span> - <span class="property-type"><a href="#definition-PriceRange"><code>PriceRange!</code></a></span>
                       </td>
-                      <td> A PriceRange object, indicating the range of prices for the product </td>
+                      <td> A PriceRange object that indicates the range of prices for the product. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>short_description</code></span> - <span class="property-type"><a href="#definition-ComplexTextValue"><code>ComplexTextValue</code></a></span>
                       </td>
-                      <td> A short description of the product. Its use depends on the theme </td>
+                      <td> A short description of the product. Its use depends on the theme. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>sku</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> A number or code assigned to a product to identify the product, options, price, and manufacturer </td>
+                      <td> A number or code assigned to a product to identify the product, options, price, and manufacturer. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>small_image</code></span> - <span class="property-type"><a href="#definition-ProductImage"><code>ProductImage</code></a></span>
                       </td>
-                      <td> The relative path to the small image, which is used on catalog pages </td>
+                      <td> The relative path to the small image, which is used on catalog pages. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>thumbnail</code></span> - <span class="property-type"><a href="#definition-ProductImage"><code>ProductImage</code></a></span>
                       </td>
-                      <td> The relative path to the product's thumbnail image </td>
+                      <td> The relative path to the product's thumbnail image. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>uid</code></span> - <span class="property-type"><a href="#definition-ID"><code>ID!</code></a></span>
                       </td>
-                      <td> The unique ID for a <code>ProductInterface</code> object </td>
+                      <td> The unique ID for a <code>ProductInterface</code> object. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>updated_at</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> Timestamp indicating when the product was updated </td>
+                      <td> A timestamp that indicates when the product was updated. </td>
                     </tr>
                   </tbody>
                 </table>
@@ -5230,22 +5230,22 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>discount</code></span> - <span class="property-type"><a href="#definition-ProductDiscount"><code>ProductDiscount</code></a></span>
                       </td>
-                      <td> The price discount. Represents the difference between the regular and final price </td>
+                      <td> The price discount. Represents the difference between the regular and final price. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>final_price</code></span> - <span class="property-type"><a href="#definition-Money"><code>Money!</code></a></span>
                       </td>
-                      <td> The final price of the product after discounts applied </td>
+                      <td> The final price of the product after discounts applied. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>fixed_product_taxes</code></span> - <span class="property-type"><a href="#definition-FixedProductTax"><code>[FixedProductTax]</code></a></span>
                       </td>
-                      <td> The multiple FPTs that can be applied to a product price </td>
+                      <td> The multiple FPTs that can be applied to a product price. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>regular_price</code></span> - <span class="property-type"><a href="#definition-Money"><code>Money!</code></a></span>
                       </td>
-                      <td> The regular price of the product </td>
+                      <td> The regular price of the product. </td>
                     </tr>
                   </tbody>
                 </table>
@@ -5278,7 +5278,7 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
             <div class="doc-copy">
               <div class="definition-description doc-copy-section">
                 <h5>Description</h5>
-                <p>A single product returned by the query</p>
+                <p>A single product returned by the query.</p>
               </div>
               <div class="definition-properties doc-copy-section">
                 <h5>Fields</h5>
@@ -5293,22 +5293,22 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>applied_query_rule</code></span> - <span class="property-type"><a href="#definition-AppliedQueryRule"><code>AppliedQueryRule</code></a></span>
                       </td>
-                      <td> The query rule type that was applied to this product, if any (in preview mode only, returns null otherwise) </td>
+                      <td> The query rule type that was applied to this product, if any (in preview mode only, returns null otherwise). </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>highlights</code></span> - <span class="property-type"><a href="#definition-Highlight"><code>[Highlight]</code></a></span>
                       </td>
-                      <td> An object that provides highlighted text for matched words </td>
+                      <td> An object that provides highlighted text for matched words. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>product</code></span> - <span class="property-type"><a href="#definition-ProductInterface"><code>ProductInterface!</code></a></span>
                       </td>
-                      <td> Contains details about the product </td>
+                      <td> Contains details about the product. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>productView</code></span> - <span class="property-type"><a href="#definition-ProductView"><code>ProductView</code></a></span>
                       </td>
-                      <td> Contains a product view </td>
+                      <td> Contains a product view. </td>
                     </tr>
                   </tbody>
                 </table>
@@ -5341,7 +5341,7 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
             <div class="doc-copy">
               <div class="definition-description doc-copy-section">
                 <h5>Description</h5>
-                <p>Contains the output of a <code>productSearch</code> query</p>
+                <p>Contains the output of a <code>productSearch</code> query.</p>
               </div>
               <div class="definition-properties doc-copy-section">
                 <h5>Fields</h5>
@@ -5356,32 +5356,32 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>facets</code></span> - <span class="property-type"><a href="#definition-Aggregation"><code>[Aggregation]</code></a></span>
                       </td>
-                      <td> Details about the static and dynamic facets relevant to the search </td>
+                      <td> Details about the static and dynamic facets relevant to the search. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>items</code></span> - <span class="property-type"><a href="#definition-ProductSearchItem"><code>[ProductSearchItem]</code></a></span>
                       </td>
-                      <td> An array of products returned by the query </td>
+                      <td> An array of products returned by the query. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>page_info</code></span> - <span class="property-type"><a href="#definition-SearchResultPageInfo"><code>SearchResultPageInfo</code></a></span>
                       </td>
-                      <td> Information for rendering pages of search results </td>
+                      <td> Information for rendering pages of search results. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>related_terms</code></span> - <span class="property-type"><a href="#definition-String"><code>[String]</code></a></span>
                       </td>
-                      <td> An array of strings that might include merchant-defined synonyms </td>
+                      <td> An array of strings that can include merchant-defined synonyms. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>suggestions</code></span> - <span class="property-type"><a href="#definition-String"><code>[String]</code></a></span>
                       </td>
-                      <td> An array of strings that include the names of products and categories that exist in the catalog that are similar to the search query </td>
+                      <td> An array of strings that include the names of products and categories that exist in the catalog and that are similar to the search query. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>total_count</code></span> - <span class="property-type"><a href="#definition-Int"><code>Int</code></a></span>
                       </td>
-                      <td> The total number of products returned that matched the query </td>
+                      <td> The total number of products returned that matched the query. </td>
                     </tr>
                   </tbody>
                 </table>
@@ -5416,7 +5416,7 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
             <div class="doc-copy">
               <div class="definition-description doc-copy-section">
                 <h5>Description</h5>
-                <p>The product attribute to sort on</p>
+                <p>The product attribute on which to sort.</p>
               </div>
               <div class="definition-properties doc-copy-section">
                 <h5>Fields</h5>
@@ -5432,7 +5432,7 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                       <td>
                         <span class="property-name"><code>attribute</code></span> - <span class="property-type"><a href="#definition-String"><code>String!</code></a></span>
                       </td>
-                      <td> The attribute code of a product attribute </td>
+                      <td> The attribute code of a product attribute. </td>
                     </tr>
                     <tr>
                       <td>
@@ -5481,17 +5481,17 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>addToCartAllowed</code></span> - <span class="property-type"><a href="#definition-Boolean"><code>Boolean</code></a></span>
                       </td>
-                      <td> A flag stating if the product can be added to cart </td>
+                      <td> A flag that indicates if the product can be added to the cart. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>inStock</code></span> - <span class="property-type"><a href="#definition-Boolean"><code>Boolean</code></a></span>
                       </td>
-                      <td> A flag stating if the product is in stock </td>
+                      <td> A flag that indicates if the product is in stock. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>lowStock</code></span> - <span class="property-type"><a href="#definition-Boolean"><code>Boolean</code></a></span>
                       </td>
-                      <td> A flag stating if the product stock is low </td>
+                      <td> A flag that indicates if the product stock is low. </td>
                     </tr>
                     <tr class="row-has-field-arguments">
                       <td data-property-name=""><span class="property-name"><code>attributes</code></span> - <span class="property-type"><a href="#definition-ProductViewAttribute"><code>[ProductViewAttribute]</code></a></span>
@@ -5562,7 +5562,7 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>metaTitle</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> A string that is displayed in the title bar and tab of the browser and in search results lists. </td>
+                      <td> A string that is displayed in the title bar, browser tab, and in search results lists.</td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>name</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
@@ -5587,7 +5587,7 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>externalId</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> External Id </td>
+                      <td> External Id. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>url</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
@@ -5620,30 +5620,30 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                     <tr>
                       <td data-property-name="" class="definition-deprecated"><span class="property-name"><code>categories</code></span> - <span class="property-type"><a href="#definition-String"><code>[String]</code></a></span>
                       </td>
-                      <td> List of categories to which the product belongs <span class="deprecation-reason">This field is deprecated and will be removed after Feb 1, 2024.</span>
+                      <td> List of categories to which the product belongs. <span class="deprecation-reason">This field is deprecated and will be removed after Feb 1, 2024.</span>
                       </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>queryType</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> Indicates if the product was retrieved from the primary or the backup query </td>
+                      <td> Indicates if the product was retrieved from the primary or the backup query. </td>
                     </tr>
                     <tr>
                       <td data-property-name="" class="definition-deprecated"><span class="property-name"><code>rank</code></span> - <span class="property-type"><a href="#definition-Int"><code>Int</code></a></span>
                       </td>
-                      <td> Rank given to a product <span class="deprecation-reason">This field is deprecated and will be removed after Feb 1, 2024.</span>
+                      <td> Rank given to a product. <span class="deprecation-reason">This field is deprecated and will be removed after Feb 1, 2024.</span>
                       </td>
                     </tr>
                     <tr>
                       <td data-property-name="" class="definition-deprecated"><span class="property-name"><code>score</code></span> - <span class="property-type"><a href="#definition-Float"><code>Float</code></a></span>
                       </td>
-                      <td> Score indicating relevance of the product to the recommendation type <span class="deprecation-reason">This field is deprecated and will be removed after Feb 1, 2024.</span>
+                      <td> Score indicating relevance of the product to the recommendation type. <span class="deprecation-reason">This field is deprecated and will be removed after Feb 1, 2024.</span>
                       </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>visibility</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> Visibility setting of the product </td>
+                      <td> Visibility setting of the product. </td>
                     </tr>
                   </tbody>
                 </table>
@@ -7082,37 +7082,37 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>id</code></span> - <span class="property-type"><a href="#definition-ID"><code>ID</code></a></span>
                       </td>
-                      <td> The ID of an option value </td>
+                      <td> The ID of an option value. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>title</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> The display name of the option value </td>
+                      <td> The display name of the option value. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>required</code></span> - <span class="property-type"><a href="#definition-Boolean"><code>Boolean</code></a></span>
                       </td>
-                      <td> Wether this option is required or not </td>
+                      <td> Indicates if this option is required or not. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>type</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> The type of data entry </td>
+                      <td> The type of data entry. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>markupAmount</code></span> - <span class="property-type"><a href="#definition-Float"><code>Float</code></a></span>
                       </td>
-                      <td> Price markup or markdown </td>
+                      <td> Price markup or markdown. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>suffix</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> SKU suffix to add to the product </td>
+                      <td> SKU suffix to add to the product. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>sortOrder</code></span> - <span class="property-type"><a href="#definition-Int"><code>Int</code></a></span>
                       </td>
-                      <td> Sort order </td>
+                      <td> Sort order. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>range</code></span> - <span class="property-type"><a href="#definition-ProductViewInputOptionRange"><code>ProductViewInputOptionRange</code></a></span>
@@ -7380,12 +7380,12 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>multi</code></span> - <span class="property-type"><a href="#definition-Boolean"><code>Boolean</code></a></span>
                       </td>
-                      <td> Indicates whether the option allows multiple choices. </td>
+                      <td> Indicates if the option allows multiple choices. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>required</code></span> - <span class="property-type"><a href="#definition-Boolean"><code>Boolean</code></a></span>
                       </td>
-                      <td> Indicates whether the option must be selected. </td>
+                      <td> Indicates if the option must be selected. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>title</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
@@ -7590,7 +7590,7 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>isDefault</code></span> - <span class="property-type"><a href="#definition-Boolean"><code>Boolean</code></a></span>
                       </td>
-                      <td> States if the option value is default or not. </td>
+                      <td> Indicates if the option value is default or not. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>product</code></span> - <span class="property-type"><a href="#definition-SimpleProductView"><code>SimpleProductView</code></a></span>
@@ -7885,7 +7885,7 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>cursor</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> Pagination cursor </td>
+                      <td> Pagination cursor. </td>
                     </tr>
                   </tbody>
                 </table>
@@ -7916,7 +7916,7 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
             <div class="doc-copy">
               <div class="definition-description doc-copy-section">
                 <h5>Description</h5>
-                <p>Contains details about a product video</p>
+                <p>Contains details about a product video.</p>
               </div>
               <div class="definition-properties doc-copy-section">
                 <h5>Fields</h5>
@@ -7931,7 +7931,7 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>preview</code></span> - <span class="property-type"><a href="#definition-ProductViewImage"><code>ProductViewImage</code></a></span>
                       </td>
-                      <td> Preview image for the video </td>
+                      <td> Preview image for the video. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>url</code></span> - <span class="property-type"><a href="#definition-String"><code>String!</code></a></span>
@@ -8046,13 +8046,13 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                       <td>
                         <span class="property-name"><code>customerGroup</code></span> - <span class="property-type"><a href="#definition-String"><code>String!</code></a></span>
                       </td>
-                      <td> The customer group code. Field reserved for future use. Currently, passing this field will have no impact on search results, that is, the search results will be for "Not logged in" customer </td>
+                      <td> The customer group code. Field reserved for future use. Currently, passing this field will have no impact on search results, that is, the search results will be for "Not logged in" customer. </td>
                     </tr>
                     <tr>
                       <td>
                         <span class="property-name"><code>userViewHistory</code></span> - <span class="property-type"><a href="#definition-ViewHistoryInput"><code>[ViewHistoryInput!]</code></a></span>
                       </td>
-                      <td> User view history with timestamp </td>
+                      <td> User view history with timestamp. </td>
                     </tr>
                   </tbody>
                 </table>
@@ -8083,7 +8083,7 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
             <div class="doc-copy">
               <div class="definition-description doc-copy-section">
                 <h5>Description</h5>
-                <p>For use on numeric product fields</p>
+                <p>For use on numeric product fields.</p>
               </div>
               <div class="definition-properties doc-copy-section">
                 <h5>Fields</h5>
@@ -8098,22 +8098,22 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>count</code></span> - <span class="property-type"><a href="#definition-Int"><code>Int!</code></a></span>
                       </td>
-                      <td> The number of items in the bucket </td>
+                      <td> The number of items in the bucket. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>from</code></span> - <span class="property-type"><a href="#definition-Float"><code>Float!</code></a></span>
                       </td>
-                      <td> The minimum amount in a price range </td>
+                      <td> The minimum amount in a price range. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>title</code></span> - <span class="property-type"><a href="#definition-String"><code>String!</code></a></span>
                       </td>
-                      <td> The display text defining the price range </td>
+                      <td> The display text defining the price range. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>to</code></span> - <span class="property-type"><a href="#definition-Float"><code>Float</code></a></span>
                       </td>
-                      <td> The maximum amount in a price range </td>
+                      <td> The maximum amount in a price range. </td>
                     </tr>
                   </tbody>
                 </table>
@@ -8146,7 +8146,7 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
             <div class="doc-copy">
               <div class="definition-description doc-copy-section">
                 <h5>Description</h5>
-                <p>Recommendation Unit containing product and other details</p>
+                <p>Recommendation unit containing product and other details.</p>
               </div>
               <div class="definition-properties doc-copy-section">
                 <h5>Fields</h5>
@@ -8161,42 +8161,42 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>displayOrder</code></span> - <span class="property-type"><a href="#definition-Int"><code>Int</code></a></span>
                       </td>
-                      <td> Order in which recommendation units are displayed </td>
+                      <td> Order in which recommendation units are displayed. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>pageType</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> Page type </td>
+                      <td> Page type. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>productsView</code></span> - <span class="property-type"><a href="#definition-ProductView"><code>[ProductView]</code></a></span>
                       </td>
-                      <td> List of product view </td>
+                      <td> List of product view. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>storefrontLabel</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> Storefront label to be displayed on the storefront </td>
+                      <td> Storefront label to be displayed on the storefront. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>totalProducts</code></span> - <span class="property-type"><a href="#definition-Int"><code>Int</code></a></span>
                       </td>
-                      <td> Total products returned in recommedations </td>
+                      <td> Total products returned in recommedations. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>typeId</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> Type of recommendation </td>
+                      <td> Type of recommendation. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>unitId</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> Id of the preconfigured unit </td>
+                      <td> Id of the preconfigured unit. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>unitName</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> Name of the preconfigured unit </td>
+                      <td> Name of the preconfigured unit. </td>
                     </tr>
                   </tbody>
                 </table>
@@ -8248,12 +8248,12 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>results</code></span> - <span class="property-type"><a href="#definition-RecommendationUnit"><code>[RecommendationUnit]</code></a></span>
                       </td>
-                      <td> List of rec units with products recommended </td>
+                      <td> List of recommendation units with products recommended. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>totalResults</code></span> - <span class="property-type"><a href="#definition-Int"><code>Int</code></a></span>
                       </td>
-                      <td> total number of rec units for which recommendations are returned </td>
+                      <td> The total number of recommendation units for which recommendations are returned. </td>
                     </tr>
                   </tbody>
                 </table>
@@ -8281,7 +8281,7 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
             <div class="doc-copy">
               <div class="definition-description doc-copy-section">
                 <h5>Description</h5>
-                <p>For use on string and other scalar product fields</p>
+                <p>For use on string and other scalar product fields.</p>
               </div>
               <div class="definition-properties doc-copy-section">
                 <h5>Fields</h5>
@@ -8296,17 +8296,17 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>count</code></span> - <span class="property-type"><a href="#definition-Int"><code>Int!</code></a></span>
                       </td>
-                      <td> The number of items in the bucket </td>
+                      <td> The number of items in the bucket. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>id</code></span> - <span class="property-type"><a href="#definition-ID"><code>ID!</code></a></span>
                       </td>
-                      <td> An identifier that can be used for filtering. It may contain non-human readable data </td>
+                      <td> An identifier that can be used for filtering. It may contain non-human readable data. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>title</code></span> - <span class="property-type"><a href="#definition-String"><code>String!</code></a></span>
                       </td>
-                      <td> The display text for the scalar value </td>
+                      <td> The display text for the scalar value. </td>
                     </tr>
                   </tbody>
                 </table>
@@ -8334,7 +8334,7 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
             <div class="doc-copy">
               <div class="definition-description doc-copy-section">
                 <h5>Description</h5>
-                <p>A product attribute to filter on</p>
+                <p>A product attribute on which to filter.</p>
               </div>
               <div class="definition-properties doc-copy-section">
                 <h5>Fields</h5>
@@ -8350,37 +8350,37 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                       <td>
                         <span class="property-name"><code>attribute</code></span> - <span class="property-type"><a href="#definition-String"><code>String!</code></a></span>
                       </td>
-                      <td> The attribute code of a product attribute </td>
+                      <td> The attribute code of a product attribute. </td>
                     </tr>
                     <tr>
                       <td>
                         <span class="property-name"><code>eq</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> A string value to filter on </td>
+                      <td> A string value on which to filter.</td>
                     </tr>
                     <tr>
                       <td>
                         <span class="property-name"><code>in</code></span> - <span class="property-type"><a href="#definition-String"><code>[String]</code></a></span>
                       </td>
-                      <td> An array of string values to filter on </td>
+                      <td> An array of string values on which to filter.</td>
                     </tr>
                     <tr>
                       <td>
                         <span class="property-name"><code>range</code></span> - <span class="property-type"><a href="#definition-SearchRangeInput"><code>SearchRangeInput</code></a></span>
                       </td>
-                      <td> A range of numeric values to filter on </td>
+                      <td> A range of numeric values on which to filter.</td>
                     </tr>
                     <tr>
                       <td>
                         <span class="property-name"><code>startsWith</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> Attribute value should start with the specified string </td>
+                      <td> Indicates that the attribute value should start with the specified string. </td>
                     </tr>
                     <tr>
                       <td>
                         <span class="property-name"><code>contains</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> Attribute value should contain the specified string </td>
+                      <td> Indicates that the attribute value should contain the specified string. </td>
                     </tr>
                   </tbody>
                 </table>
@@ -8415,7 +8415,7 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
             <div class="doc-copy">
               <div class="definition-description doc-copy-section">
                 <h5>Description</h5>
-                <p>A range of numeric values for use in a search</p>
+                <p>A range of numeric values for use in a search.</p>
               </div>
               <div class="definition-properties doc-copy-section">
                 <h5>Fields</h5>
@@ -8431,13 +8431,13 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                       <td>
                         <span class="property-name"><code>from</code></span> - <span class="property-type"><a href="#definition-Float"><code>Float</code></a></span>
                       </td>
-                      <td> The minimum value to filter on. If not specified, the value of <code>0</code> is applied </td>
+                      <td> The minimum value on which to filter. If not specified, the value of <code>0</code> is applied. </td>
                     </tr>
                     <tr>
                       <td>
                         <span class="property-name"><code>to</code></span> - <span class="property-type"><a href="#definition-Float"><code>Float</code></a></span>
                       </td>
-                      <td> The maximum value to filter on </td>
+                      <td> The maximum value on which to filter.</td>
                     </tr>
                   </tbody>
                 </table>
@@ -8465,7 +8465,7 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
             <div class="doc-copy">
               <div class="definition-description doc-copy-section">
                 <h5>Description</h5>
-                <p>Provides navigation for the query response</p>
+                <p>Provides navigation for the query response.</p>
               </div>
               <div class="definition-properties doc-copy-section">
                 <h5>Fields</h5>
@@ -8480,17 +8480,17 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>current_page</code></span> - <span class="property-type"><a href="#definition-Int"><code>Int</code></a></span>
                       </td>
-                      <td> Specifies which page of results to return </td>
+                      <td> Specifies which page of results to return. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>page_size</code></span> - <span class="property-type"><a href="#definition-Int"><code>Int</code></a></span>
                       </td>
-                      <td> Specifies the maximum number of items to return </td>
+                      <td> Specifies the maximum number of items to return. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>total_pages</code></span> - <span class="property-type"><a href="#definition-Int"><code>Int</code></a></span>
                       </td>
-                      <td> Specifies the total number of pages returned </td>
+                      <td> Specifies the total number of pages returned. </td>
                     </tr>
                   </tbody>
                 </table>
@@ -8518,7 +8518,7 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
             <div class="doc-copy">
               <div class="definition-description doc-copy-section">
                 <h5>Description</h5>
-                <p>A simple product is tangible and is usually sold in single units or in fixed quantities</p>
+                <p>A simple product is tangible and is usually sold in single units or in fixed quantities.</p>
               </div>
               <div class="definition-properties doc-copy-section">
                 <h5>Fields</h5>
@@ -8533,22 +8533,22 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>add_to_cart_allowed</code></span> - <span class="property-type"><a href="#definition-Boolean"><code>Boolean</code></a></span>
                       </td>
-                      <td> Boolean indicating whether a product can be added to cart. Field reserved for future use. Currently, will default to true </td>
+                      <td> A Boolean that indicates if a product can be added to the cart. Field reserved for future use. Currently, will default to true. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>attribute_set_id</code></span> - <span class="property-type"><a href="#definition-Int"><code>Int</code></a></span>
                       </td>
-                      <td> The attribute set assigned to the product </td>
+                      <td> The attribute set assigned to the product. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>canonical_url</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> A relative canonical URL </td>
+                      <td> A relative canonical URL. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>created_at</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> Timestamp indicating when the product was created </td>
+                      <td> A timestamp that indicates when the product was created. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>custom_attributes</code></span> - <span class="property-type"><a href="#definition-CustomAttribute"><code>[CustomAttribute]</code></a></span>
@@ -8559,12 +8559,12 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>description</code></span> - <span class="property-type"><a href="#definition-ComplexTextValue"><code>ComplexTextValue</code></a></span>
                       </td>
-                      <td> Detailed information about the product. The value can include simple HTML tags </td>
+                      <td> Detailed information about the product. The value can include simple HTML tags. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>gift_message_available</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> Indicates whether a gift message is available </td>
+                      <td> Indicates if a gift message is available. </td>
                     </tr>
                     <tr>
                       <td data-property-name="" class="definition-deprecated"><span class="property-name"><code>id</code></span> - <span class="property-type"><a href="#definition-Int"><code>Int</code></a></span>
@@ -8575,82 +8575,82 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>image</code></span> - <span class="property-type"><a href="#definition-ProductImage"><code>ProductImage</code></a></span>
                       </td>
-                      <td> The relative path to the main image on the product page </td>
+                      <td> The relative path to the main image on the product page. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>media_gallery</code></span> - <span class="property-type"><a href="#definition-MediaGalleryInterface"><code>[MediaGalleryInterface]</code></a></span>
                       </td>
-                      <td> An array of Media Gallery objects </td>
+                      <td> An array of Media Gallery objects. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>meta_description</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> A brief overview of the product for search results listings, maximum 255 characters </td>
+                      <td> A brief overview of the product for search results listings, maximum 255 characters. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>meta_keyword</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> A comma-separated list of keywords that are visible only to search engines </td>
+                      <td> A comma-separated list of keywords that are visible only to search engines. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>meta_title</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> A string that is displayed in the title bar and tab of the browser and in search results lists </td>
+                      <td> A string that is displayed in the title bar, browser tab, and in search results lists.</td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>name</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> The product name. Customers use this name to identify the product </td>
+                      <td> The product name. Customers use this name to identify the product. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>new_from_date</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> The beginning date for new product listings, and determines if the product is featured as a new product </td>
+                      <td> The beginning date for new product listings. This date determines if the product is featured as a new product. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>new_to_date</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> The end date for new product listings </td>
+                      <td> The end date for new product listings. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>price_range</code></span> - <span class="property-type"><a href="#definition-PriceRange"><code>PriceRange!</code></a></span>
                       </td>
-                      <td> A PriceRange object, indicating the range of prices for the product </td>
+                      <td> A PriceRange object that indicates the range of prices for the product.</td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>short_description</code></span> - <span class="property-type"><a href="#definition-ComplexTextValue"><code>ComplexTextValue</code></a></span>
                       </td>
-                      <td> A short description of the product. Its use depends on the theme </td>
+                      <td> A short description of the product. Its use depends on the theme. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>sku</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> A number or code assigned to a product to identify the product, options, price, and manufacturer </td>
+                      <td> A number or code assigned to a product to identify the product, options, price, and manufacturer. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>small_image</code></span> - <span class="property-type"><a href="#definition-ProductImage"><code>ProductImage</code></a></span>
                       </td>
-                      <td> The relative path to the small image, which is used on catalog pages </td>
+                      <td> The relative path to the small image, which is used on catalog pages. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>thumbnail</code></span> - <span class="property-type"><a href="#definition-ProductImage"><code>ProductImage</code></a></span>
                       </td>
-                      <td> The relative path to the product's thumbnail image </td>
+                      <td> The relative path to the product's thumbnail image. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>uid</code></span> - <span class="property-type"><a href="#definition-ID"><code>ID!</code></a></span>
                       </td>
-                      <td> The unique ID for a <code>ProductInterface</code> object </td>
+                      <td> The unique ID for a <code>ProductInterface</code> object. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>updated_at</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> Timestamp indicating when the product was updated </td>
+                      <td>A timestamp that indicates when the product was updated.  </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>weight</code></span> - <span class="property-type"><a href="#definition-Float"><code>Float</code></a></span>
                       </td>
-                      <td> The weight of the item, in units defined by the store </td>
+                      <td> The weight of the item in units defined by the store. </td>
                     </tr>
                   </tbody>
                 </table>
@@ -8718,17 +8718,17 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>addToCartAllowed</code></span> - <span class="property-type"><a href="#definition-Boolean"><code>Boolean</code></a></span>
                       </td>
-                      <td> A flag stating if the product can be added to cart </td>
+                      <td> A flag that indicates if the product can be added to the cart. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>inStock</code></span> - <span class="property-type"><a href="#definition-Boolean"><code>Boolean</code></a></span>
                       </td>
-                      <td> A flag stating if the product is in stock </td>
+                      <td> A flag that indicates if the product is in stock. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>lowStock</code></span> - <span class="property-type"><a href="#definition-Boolean"><code>Boolean</code></a></span>
                       </td>
-                      <td> A flag stating if the product stock is low </td>
+                      <td> A flag that indicates if the product stock is low. </td>
                     </tr>
                     <tr class="row-has-field-arguments">
                       <td data-property-name=""><span class="property-name"><code>attributes</code></span> - <span class="property-type"><a href="#definition-ProductViewAttribute"><code>[ProductViewAttribute]</code></a></span>
@@ -8804,7 +8804,7 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>metaTitle</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> A string that is displayed in the title bar and tab of the browser and in search results lists. </td>
+                      <td> A string that is displayed in the title bar, browser tab, and in search results lists.</td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>name</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
@@ -8829,7 +8829,7 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>externalId</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> External Id </td>
+                      <td> External Id. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>url</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
@@ -8844,7 +8844,7 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                     <tr class="row-has-field-arguments">
                       <td data-property-name=""><span class="property-name"><code>links</code></span> - <span class="property-type"><a href="#definition-ProductViewLink"><code>[ProductViewLink]</code></a></span>
                       </td>
-                      <td> A list of product links </td>
+                      <td> A list of product links. </td>
                     </tr>
                     <tr class="row-field-arguments">
                       <td colspan="2">
@@ -8862,30 +8862,30 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                     <tr>
                       <td data-property-name="" class="definition-deprecated"><span class="property-name"><code>categories</code></span> - <span class="property-type"><a href="#definition-String"><code>[String]</code></a></span>
                       </td>
-                      <td> List of categories to which the product belongs <span class="deprecation-reason">This field is deprecated and will be removed after Feb 1, 2024.</span>
+                      <td> List of categories to which the product belongs. <span class="deprecation-reason">This field is deprecated and will be removed after Feb 1, 2024.</span>
                       </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>queryType</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> Indicates if the product was retrieved from the primary or the backup query </td>
+                      <td> Indicates if the product was retrieved from the primary or the backup query. </td>
                     </tr>
                     <tr>
                       <td data-property-name="" class="definition-deprecated"><span class="property-name"><code>rank</code></span> - <span class="property-type"><a href="#definition-Int"><code>Int</code></a></span>
                       </td>
-                      <td> Rank given to a product <span class="deprecation-reason">This field is deprecated and will be removed after Feb 1, 2024.</span>
+                      <td> Rank given to a product. <span class="deprecation-reason">This field is deprecated and will be removed after Feb 1, 2024.</span>
                       </td>
                     </tr>
                     <tr>
                       <td data-property-name="" class="definition-deprecated"><span class="property-name"><code>score</code></span> - <span class="property-type"><a href="#definition-Float"><code>Float</code></a></span>
                       </td>
-                      <td> Score indicating relevance of the product to the recommendation type <span class="deprecation-reason">This field is deprecated and will be removed after Feb 1, 2024.</span>
+                      <td> Score indicating relevance of the product to the recommendation type. <span class="deprecation-reason">This field is deprecated and will be removed after Feb 1, 2024.</span>
                       </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>visibility</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> Visibility setting of the product </td>
+                      <td> Visibility setting of the product. </td>
                     </tr>
                   </tbody>
                 </table>
@@ -8940,7 +8940,7 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
             <div class="doc-copy">
               <div class="definition-description doc-copy-section">
                 <h5>Description</h5>
-                <p>This enumeration indicates whether to return results in ascending or descending order</p>
+                <p>This enumeration indicates whether to return results in ascending or descending order.</p>
               </div>
               <div class="definition-properties doc-copy-section">
                 <h5>Values</h5>
@@ -8992,7 +8992,7 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
             <div class="doc-copy">
               <div class="definition-description doc-copy-section">
                 <h5>Description</h5>
-                <p>Contains product attributes that be used for sorting in a <code>productSearch</code> query</p>
+                <p>Contains product attributes that you can use to sort a <code>productSearch</code> query.</p>
               </div>
               <div class="definition-properties doc-copy-section">
                 <h5>Fields</h5>
@@ -9007,22 +9007,22 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>attribute</code></span> - <span class="property-type"><a href="#definition-String"><code>String!</code></a></span>
                       </td>
-                      <td> The unique identifier for an attribute code. This value should be in lowercase letters and without space </td>
+                      <td> The unique identifier for an attribute code. This value should be in lowercase letters and without spaces. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>frontendInput</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> Indicates how field rendered on storefront </td>
+                      <td> Indicates how fields are rendered on the storefront. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>label</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> The display name assigned to the attribute </td>
+                      <td> The display name assigned to the attribute. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>numeric</code></span> - <span class="property-type"><a href="#definition-Boolean"><code>Boolean</code></a></span>
                       </td>
-                      <td> Indicates whether this attribute has a numeric value, such as a price or integer </td>
+                      <td> Indicates if this attribute has a numeric value, such as a price or integer. </td>
                     </tr>
                   </tbody>
                 </table>
@@ -9055,7 +9055,7 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
             <div class="doc-copy">
               <div class="definition-description doc-copy-section">
                 <h5>Description</h5>
-                <p>For retrieving statistics across multiple buckets</p>
+                <p>Used to retrieve statistics across multiple buckets.</p>
               </div>
               <div class="definition-properties doc-copy-section">
                 <h5>Fields</h5>
@@ -9070,17 +9070,17 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>max</code></span> - <span class="property-type"><a href="#definition-Float"><code>Float!</code></a></span>
                       </td>
-                      <td> The maximum value </td>
+                      <td> The maximum value. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>min</code></span> - <span class="property-type"><a href="#definition-Float"><code>Float!</code></a></span>
                       </td>
-                      <td> The minimum value </td>
+                      <td> The minimum value. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>title</code></span> - <span class="property-type"><a href="#definition-String"><code>String!</code></a></span>
                       </td>
-                      <td> The display text for the bucket </td>
+                      <td> The display text for the bucket. </td>
                     </tr>
                   </tbody>
                 </table>
@@ -9357,7 +9357,7 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
             <div class="doc-copy">
               <div class="definition-description doc-copy-section">
                 <h5>Description</h5>
-                <p>A non-tangible product that does not require shipping and is not kept in inventory</p>
+                <p>A non-tangible product that does not require shipping and is not kept in inventory.</p>
               </div>
               <div class="definition-properties doc-copy-section">
                 <h5>Fields</h5>
@@ -9372,37 +9372,37 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>add_to_cart_allowed</code></span> - <span class="property-type"><a href="#definition-Boolean"><code>Boolean</code></a></span>
                       </td>
-                      <td> Boolean indicating whether a product can be added to cart. Field reserved for future use. Currently, will default to true </td>
+                      <td> A Boolean that indicates if a product can be added to the cart. Field reserved for future use. Currently, will default to true. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>attribute_set_id</code></span> - <span class="property-type"><a href="#definition-Int"><code>Int</code></a></span>
                       </td>
-                      <td> The attribute set assigned to the product </td>
+                      <td> The attribute set assigned to the product. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>canonical_url</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> Relative canonical URL </td>
+                      <td> Relative canonical URL. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>created_at</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> Timestamp indicating when the product was created </td>
+                      <td> A timestamp that indicates when the product was created. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>custom_attributes</code></span> - <span class="property-type"><a href="#definition-CustomAttribute"><code>[CustomAttribute]</code></a></span>
                       </td>
-                      <td> An array of custom product attributes </td>
+                      <td> An array of custom product attributes. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>description</code></span> - <span class="property-type"><a href="#definition-ComplexTextValue"><code>ComplexTextValue</code></a></span>
                       </td>
-                      <td> Detailed information about the product. The value can include simple HTML tags </td>
+                      <td> Detailed information about the product. The value can include simple HTML tags. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>gift_message_available</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> Indicates whether a gift message is available </td>
+                      <td> Indicates if a gift message is available. </td>
                     </tr>
                     <tr>
                       <td data-property-name="" class="definition-deprecated"><span class="property-name"><code>id</code></span> - <span class="property-type"><a href="#definition-Int"><code>Int</code></a></span>
@@ -9413,77 +9413,77 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>image</code></span> - <span class="property-type"><a href="#definition-ProductImage"><code>ProductImage</code></a></span>
                       </td>
-                      <td> The relative path to the main image on the product page </td>
+                      <td> The relative path to the main image on the product page. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>media_gallery</code></span> - <span class="property-type"><a href="#definition-MediaGalleryInterface"><code>[MediaGalleryInterface]</code></a></span>
                       </td>
-                      <td> An array of Media Gallery objects </td>
+                      <td> An array of Media Gallery objects. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>meta_description</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> A brief overview of the product for search results listings, maximum 255 characters </td>
+                      <td> A brief overview of the product for search results listings, maximum 255 characters. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>meta_keyword</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> A comma-separated list of keywords that are visible only to search engines </td>
+                      <td> A comma-separated list of keywords that are visible only to search engines. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>meta_title</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> A string that is displayed in the title bar and tab of the browser and in search results lists </td>
+                      <td> A string that is displayed in the title bar, browser tab, and in search results lists. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>name</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> The product name. Customers use this name to identify the product </td>
+                      <td> The product name. Customers use this name to identify the product. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>new_from_date</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> The beginning date for new product listings, and determines if the product is featured as a new product </td>
+                      <td> The beginning date for new product listings. This date determines if the product is featured as a new product. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>new_to_date</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> The end date for new product listings </td>
+                      <td> The end date for new product listings. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>price_range</code></span> - <span class="property-type"><a href="#definition-PriceRange"><code>PriceRange!</code></a></span>
                       </td>
-                      <td> A PriceRange object, indicating the range of prices for the product </td>
+                      <td> A PriceRange object that indicates the range of prices for the product. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>short_description</code></span> - <span class="property-type"><a href="#definition-ComplexTextValue"><code>ComplexTextValue</code></a></span>
                       </td>
-                      <td> A short description of the product. Its use depends on the theme </td>
+                      <td> A short description of the product. Its use depends on the theme. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>sku</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> A number or code assigned to a product to identify the product, options, price, and manufacturer </td>
+                      <td> A number or code assigned to a product to identify the product, options, price, and manufacturer. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>small_image</code></span> - <span class="property-type"><a href="#definition-ProductImage"><code>ProductImage</code></a></span>
                       </td>
-                      <td> The relative path to the small image, which is used on catalog pages </td>
+                      <td> The relative path to the small image, which is used on catalog pages. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>thumbnail</code></span> - <span class="property-type"><a href="#definition-ProductImage"><code>ProductImage</code></a></span>
                       </td>
-                      <td> The relative path to the product's thumbnail image </td>
+                      <td> The relative path to the product's thumbnail image. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>uid</code></span> - <span class="property-type"><a href="#definition-ID"><code>ID!</code></a></span>
                       </td>
-                      <td> The unique ID for a <code>ProductInterface</code> object </td>
+                      <td> The unique ID for a <code>ProductInterface</code> object. </td>
                     </tr>
                     <tr>
                       <td data-property-name=""><span class="property-name"><code>updated_at</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> Timestamp indicating when the product was updated </td>
+                      <td>A timestamp that indicates when the product was updated. </td>
                     </tr>
                   </tbody>
                 </table>
