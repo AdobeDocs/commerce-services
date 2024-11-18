@@ -12,6 +12,8 @@ keywords:
 
 This article discusses the `productSearch` query that is available in the Live Search and Catalog Service extension. While similar in structure and functionality, there are differences in what they output.
 
+See [Boundaries and Limits](https://experienceleague.adobe.com/en/docs/commerce-merchant-services/live-search/boundaries-limits) for the latest recommendations for creating performant queries.
+
 ## Syntax
 
 ```graphql
@@ -157,6 +159,159 @@ Only facets specified in Live Search are returned.
 <InlineAlert variant="info" slots="text"/>
 
 Use the [`attributeMetadata` query](./attribute-metadata.md) to return a list of product attributes that can be used to define a filter.
+
+#### Filtering using search capability
+
+<InlineAlert variant="info" slots="text"/>
+
+This feature is in beta. For installation information, see the [Live Search guide](https://experienceleague.adobe.com/en/docs/commerce-merchant-services/live-search/install#install-the-live-search-beta) in the merchant documentation.
+
+This beta supports three new capabilities:
+
+- **Layered search** - Search within another search context - With this capability, you can undertake up to two layers of search for your search queries. For example:
+  
+  - **Layer 1 search** - Search for "motor" on "product_attribute_1".
+  - **Layer 2 search** - Search for "part number 123" on "product_attribute_2". This example searches for "part number 123" within the results for "motor".
+
+  Layered search is available for both `startsWith` search indexation and `contains` search indexation as described below:
+
+- **startsWith search indexation** - Search using `startsWith` indexation. This new capability allows:
+
+  - Searching for products where the attribute value starts with a particular string.
+  - Configuring an "ends with" search so shoppers can search for products where the attribute value ends with a particular string. To enable an "ends with" search, the product attribute needs to be ingested in reverse and the API call should also be a reversed string.
+
+- **contains search indexation** -Search an attribute using contains indexation. This new capability allows:
+
+    - Searching for a query within a larger string. For example, if a shopper searches for the product number "PE-123" in the string "HAPE-123".
+
+        - Note: This search type is different from the existing [phrase search](https://developer.adobe.com/commerce/services/graphql/live-search/product-search/#phrase), which performs an autocomplete search. For example, if your product attribute value is "outdoor pants", a phrase search returns a response for "out pan", but does not return a response for "oor ants". A contains search, however, does return a response for "oor ants".
+
+Refer to the following examples to learn how to implement these new search capabilities in your Live Search API.
+
+##### startsWith condition example
+
+The following example shows how you can search the "manufacturer" product attribute using a `startsWith` value of "Sieme".
+
+```graphql
+filter: [  
+  {  
+    attribute: "manufacturer",  
+    startsWith: "Sieme"  
+  }  
+]
+```
+
+##### contains condition example
+
+The following example shows how you can search the "manufacturer" product attribute using a `contains` value of "auto". The result of this query would match manufacturers named "ABC Auto Company" and "ABCauto" for example.
+
+```graphql
+filter: [  
+  {  
+    attribute: "manufacturer",  
+    contains: "auto"  
+  }  
+]
+```
+
+##### endsWith filter example
+
+To search an attribute value using `endsWith`, you must reverse the attribute value when you ingest the data. Then, you can use the `startsWith` condition on the specific attribute. In the following example, the part number is actually: `PN-5763`.
+
+```graphql
+filter: [  
+  {  
+    attribute: "part_number_reverse",  
+    startsWith: "3675-NP"  
+  }  
+]
+```
+
+**Example queries**
+
+The following example shows how to search within search results using "motor" as the search phrase and filtering on "manufacturer" that "startsWith" the term "Sieme":
+
+```graphql
+productSearch(  
+  phrase: "motor",  
+    filter: [  
+      {  
+        attribute: "manufacturer",  
+        startsWith: "Sieme"  
+      }  
+    ]  
+)
+```
+
+The following example shows how to search within search results using "motor" as the search phrase and filtering on "part_number" that "startsWith" the term "PE-123":
+
+```graphql
+productSearch(  
+  phrase: "motor",  
+    filter: [  
+      {  
+        attribute: "part_number",  
+        startsWith: "PE-123"  
+      }  
+    ]  
+)
+```
+
+The following example shows how to search within search results using "motor" as the search phrase and filtering on "manufacturer" that "endsWith" the term "PE-123":
+
+```graphql
+productSearch(  
+  phrase: "motor",  
+    filter: [  
+      {  
+        attribute: "reverse_part_number",  
+        startsWith: "321-EP"  
+      }  
+    ]  
+)
+```
+
+The following example shows how to search within search results using "motor" as the search phrase and filtering on "description" that "contains" the phrase "warranty included":
+
+```graphql
+productSearch(  
+  phrase: "motor",  
+    filter: [  
+      {  
+        attribute: "description",  
+        contains: "warranty included"  
+      }  
+    ]  
+)
+```
+
+The following example shows how to search a particular attribute for `startsWith` but not search within the search result:
+
+```graphql
+productSearch(  
+  phrase: "",  
+    filter: [  
+      {  
+        attribute: "part_number",  
+        startsWith: "PE-123"  
+      }  
+  ]  
+)
+```
+
+##### Limitations
+
+The beta has the following limitations:
+
+- You can specify a maximum of six attributes to be enabled for **Contains** and six attributes to be enabled for **Starts with**.
+- Each aggregation returns a maximum of 1000 facets.
+- `startsWith` and `contains` both require a minimum of two characters in the search.
+- `startsWith` allows a maximum of 10 characters for search.
+- `contains` allows a maximum of 10 characters for search in the API query and up to the first 50 characters are indexed for a true `contains` search. However, if more than 10 characters are passed in, the search results are returned for an autocomplete search result and not a true `contains` search. In this situation, the autocomplete search is enabled on the entire attribute string and not just the first 50 characters.
+- You can paginate a maximum of 10,000 products for any `productSearch` query.
+- These new search capabilities are not available in PLP widgets or the Live Search adapter extension.
+
+For additional Live Search boundaries and limits, see [boundaries and limits](https://experienceleague.adobe.com/en/docs/commerce-merchant-services/live-search/boundaries-limits) in the Live Search merchant guide.
 
 #### Filtering by categories
 
@@ -388,12 +543,6 @@ The query response can also contain the following top-level fields and objects:
 
 ## Endpoints
 
-Live Search:
-
-- `https://commerce.adobe.io/search/graphql`
-
-Catalog Service and Product Recommendations:
-
 - Testing: `https://catalog-service-sandbox.adobe.io/graphql`
 - Production: `https://catalog-service.adobe.io/graphql`
 
@@ -402,13 +551,19 @@ Catalog Service and Product Recommendations:
 You must specify the following HTTP headers to run this query.
 
 Header name| Description
---- | ---
-`Magento-Customer-Group` | (**Catalog Service Only**) This value is available in the `customer_group_data_exporter` database table.
+--- | -----
+`Magento-Customer-Group` | (**Catalog Service Only**) Specify the [customer group code](#find-the-customer-group-code) for the API request.
 `Magento-Environment-Id` | This value is displayed at **Stores** > **Configuration** > **Services** > **Magento Services** > **SaaS Environment** or can be obtained by running the `bin/magento config:show services_connector/services_id/environment_id` command.
 `Magento-Store-Code` | The code assigned to the store associated with the active store view. For example, `main_website_store`.
 `Magento-Store-View-Code` | The code assigned to the active store view. For example, `default`.
 `Magento-Website-Code` | The code assigned to the website associated with the active store view. For example, `base`.
-`X-Api-Key` | This value must be set to `search_gql`.
+`X-Api-Key` | For Live Search queries, set this value to `search_gql`. For Catalog Service queries, set this value to the [unique API key](https://experienceleague.adobe.com/en/docs/commerce-merchant-services/user-guides/integration-services/saas#genapikey) generated for your Commerce environment.
+
+###  Find the customer group code
+
+import CustomerGroupCode from '/src/_includes/graphql/customer-group-code.md'
+
+<CustomerGroupCode />
 
 ## Example usage
 
@@ -1149,6 +1304,8 @@ Field | Data Type | Description
 `eq` | String | A string value to filter on
 `in` | [String] | An array of string values to filter on
 `range` | [SearchRangeInput](#searchrangeinput-data-type) | A range of numeric values to filter on
+`contains` | String | A string that searches for products containing specific attribute values
+`startsWith` | String | A string that searches for products where the attribute value starts with a particular string
 
 ### SearchRangeInput data type
 

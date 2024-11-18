@@ -53,6 +53,12 @@ import Docs from '/src/_includes/graphql/catalog-service/headers.md'
 
 <Docs />
 
+###  Find the customer group code
+
+import CustomerGroupCode from '/src/_includes/graphql/customer-group-code.md'
+
+<CustomerGroupCode />
+
 ## Example usage
 
 The [Commerce API playground](https://experienceleague.adobe.com/developer/commerce/storefront/playgrounds/commerce-services/) provides a sample `products` query that you can run against a live instance of Adobe Commerce with Luma sample data. Note that the responses may vary, depending on the configuration of the Commerce instance.
@@ -60,6 +66,8 @@ The [Commerce API playground](https://experienceleague.adobe.com/developer/comme
 ### Return details about a simple product
 
 The following query returns details about a simple product.
+
+<CodeBlock slots="heading, code" repeat="2" languages="JSON" />
 
 **Request:**
 
@@ -388,6 +396,8 @@ query {
 ### Return details about a complex product
 
 The following query returns details about a complex product.
+
+<CodeBlock slots="heading, code" repeat="2" languages="JSON" />
 
 **Request:**
 

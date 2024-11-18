@@ -10,12 +10,6 @@ Catalog Service, Live Search, and Product Recommendations services contribute to
 
 The endpoints for all Storefront Service queries are:
 
-Live Search:
-
-- `https://commerce.adobe.io/search/graphql`
-
-Catalog Service and Product Recommendations:
-
 - Testing: `https://catalog-service-sandbox.adobe.io/graphql`
 - Production: `https://catalog-service.adobe.io/graphql`
 

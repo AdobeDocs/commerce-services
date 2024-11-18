@@ -22,6 +22,10 @@ module.exports = [
       {
         title: "refineProduct query",
         path: "/graphql/catalog-service/refine-product.md"
+      },
+            {
+        title: "variants query",
+        path: "/graphql/catalog-service/product-variants.md"
       }
     ]
   },
