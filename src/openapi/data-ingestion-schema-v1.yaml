@@ -1,6 +1,6 @@
 openapi: 3.0.3
 info:
-  title: Data Ingestion API
+  title: Catalog Data Ingestion API
   description: |
     Learn how to use the Data Ingestion API to create and update data for Adobe Commerce catalog ingesting data into the Adobe Commerce SaaS Platform.
 
