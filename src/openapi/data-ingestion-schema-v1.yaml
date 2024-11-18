@@ -5,7 +5,7 @@ info:
      Use the Catalog data ingestion API to create and manage products and price books and directly integrate catalog data with the Commerce catalog service.
 
     This API provides the following resource collections to create and update catalog data:
-    
+
     - **Metadata**—define and manage product attribute display on the storefront, define search characteristics, and so on
     - **Products**—define and manage items to include in a commerce catalog. Each product can have multiple attributes including name, price, description, SKU, and images.
     - **Price books**—define and manage unique scopes that can be used to manage product price discounts across customer tiers
