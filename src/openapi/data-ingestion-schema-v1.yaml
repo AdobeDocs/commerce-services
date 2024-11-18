@@ -130,7 +130,9 @@ paths:
       tags:
         - Metadata
       summary: Update product attributes metadata
-      description: Update existing product attribute metadata with new values.
+      description: |
+        Update existing product attribute metadata with new values.
+        When the update is processed, the merge strategy is used to apply changes to `scalar` and `object` type fields. The replace strategy is used to apply changes for fields in an `array`.
       operationId: ProductMetadataPatch
       parameters:
         - name: DATA_SPACE_ID
@@ -183,8 +185,8 @@ paths:
                   Update existing product attribute metadata with new values.
                   Please note, field with `array` type will replace existing data.
                   Example bellow updates the following attributes:
-                  * `label` - change product attribute label.
-                  * `roles` - remove `PLP` role for product attribute (previously sent data should be send with PATCH request for `roles` field).
+                  * `label` - Change the product attribute label.
+                  * `roles` - Remove the `PLP` role for the product attribute.
                 value:
                   [
                     {
@@ -399,6 +401,8 @@ paths:
       summary: Update products
       description: |
         Update products with specified "sku" and "scope" to replace existing field data with the data supplied in the request.
+        When the update is processed, the merge strategy is used to apply changes to `scalar` and `object` type fields.
+        The replace strategy is used to apply changes for fields in an `array`.
       operationId: ProductsPatch
       parameters:
         - $ref: '#/components/parameters/DATA_SPACE_ID'
@@ -425,12 +429,12 @@ paths:
                 summary: Update a simple product
                 description: |
                   Update a simple product with the values provided in the request.
-                  Please note, field with `array` type will replace existing data.
-                  Example bellow updates the following attributes:
-                  * `name` - product name.
-                  * `metaTags.title` Title of the product detail page.
-                  * `attributes` - add new state `NM` to the `states` attribute (previously sent data should be send with PATCH request for `attributes` field).
-                value:
+                  When the update is processed, the merge strategy is used to apply changes to `scalar` and `object` type fields. The replace strategy is used to apply changes for fields in an `array`.
+                  
+                  In the example below, the following attributes are updated.
+                  * `name` - Change the product name.
+                  * `metaTags.title` - Change the title of the product detail page.
+                  * `attributes` - Add a new state, `NM` to the `states` attribute.
                   [
                     {
                       "sku": "red-pants",
@@ -594,6 +598,8 @@ paths:
       summary: Update price books
       description: |-
         Update existing price books to change the name or the currency used for pricing.
+        When the update is processed, the merge strategy is used to apply changes to `scalar` and `object` type fields. The replace strategy is used to apply changes for fields in an `array`.
+        
         To update the currency for the default price book, use the price book id `main`.
       operationId: PriceBooksPatch
       parameters:
@@ -674,7 +680,10 @@ paths:
       tags:
         - Price Books
       summary: Delete price books
-      description: Delete existing price books. Please note, you cannot delete default price book with id `main`.
+      description: |
+         Delete existing price books.
+         
+         Note that you cannot delete the default price book with id `main`.
       operationId: PriceBooksDelete
       parameters:
         - name: DATA_SPACE_ID
@@ -847,7 +856,9 @@ paths:
       tags:
         - Prices
       summary: Update prices
-      description: Change existing product prices.
+      description: |
+        Change existing product prices.
+        When the update is processed, the merge strategy is used to apply changes to `scalar` and `object` type fields. The replace strategy is used to apply changes for fields in an `array`.
       operationId: PricesPatch
       parameters:
         - name: DATA_SPACE_ID
