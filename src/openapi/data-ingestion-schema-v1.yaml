@@ -6,10 +6,10 @@ info:
 
     This API provides the following resource collections to create and update catalog data:
 
-      - Metadata - define and manage product attribute display on the storefront, define search characteristics, and so on
-      - Products - define and manage items to include in a commerce catalog. Each product can have multiple attributes including name, price, description, SKU, and images. These attributes define the product and provided detailed information to customers.
-      - Price books - define and manage unique scopes that can be used to manage product price discounts across customer tiers
-      - Prices - define and manage the prices associated with product SKUs and assign the pricing scope where the price is used
+      - **Metadata**—define and manage product attribute display on the storefront, define search characteristics, and so on
+      - **Products**—define and manage items to include in a commerce catalog. Each product can have multiple attributes including name, price, description, SKU, and images. These attributes define the product and provided detailed information to customers.
+      - **Price books**—define and manage unique scopes that can be used to manage product price discounts across customer tiers
+      - **Prices**—define and manage the prices associated with product SKUs and assign the pricing scope where the price is used
 
   version: 1.0.0
 servers:
