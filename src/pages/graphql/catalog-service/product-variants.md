@@ -52,6 +52,8 @@ The `variants` query requires one or more SKU values as input. Optionally, you c
 
 The following query returns the SKU, name, and available image information for all variants of the MH07 product. Setting the query pagination to `10` fetches the first ten results.
 
+<CodeBlock slots="heading, code" repeat="2" languages="JSON" />
+
 **Request:**
 
 ```graphql
@@ -211,6 +213,8 @@ query {
 #### Return results by `cursor` position
 
 Using the cursor value from the previous response (`TUgwNy1MLUJsdWU6Ojo6OjoxMA==`) as input, run the same query to fetch the next set of results. When the last variant item is returned, the cursor value is `null`.
+
+<CodeBlock slots="heading, code" repeat="2" languages="JSON" />
 
 **Request:**
 
@@ -472,6 +476,8 @@ query {
 ## Return variants by `optionId`
 
 This query returns the SKU, name, and images for all size large variants of product MH07. The `optionIDs` input parameter value is sourced from the [Return details about a complex product](products.md#return-details-about-a-complex-product) example in the products query.
+
+<CodeBlock slots="heading, code" repeat="2" languages="JSON, CURL, JSON" />
 
 **Request:**
 
