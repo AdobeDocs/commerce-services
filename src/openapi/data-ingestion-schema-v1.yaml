@@ -30,7 +30,7 @@ tags:
           The catalog data model provides a default price book with id `main` and currency in US dollars (`USD`).
   - name: Prices
     description: |
-      Define prices for product SKUs. The scope identifies the price books and price tiers where the price
+      Define prices for product SKUs. The scope identifies the price books and price tiers where the price is used.
       is used.
 paths:
   /v1/catalog/products/metadata/{DATA_SPACE_ID}:
