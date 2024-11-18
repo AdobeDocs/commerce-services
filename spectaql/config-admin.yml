@@ -115,8 +115,7 @@ introspection:
 
   # URL of the GraphQL endpoint to hit if you want to generate the documentation based on live Introspection Query results
   # NOTE: If not using introspection.url OR servers[], you need to provide x-url below
-  url: https://commerce-admin-router-qa.corp.ethos501-stage-va6.ethos.adobe.net/graphql
-
+  url: https://scoping-service.magento-ds.com/graphql
   #
   #
   ##############################################

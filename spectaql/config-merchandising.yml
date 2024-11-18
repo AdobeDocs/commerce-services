@@ -115,7 +115,7 @@ introspection:
 
   # URL of the GraphQL endpoint to hit if you want to generate the documentation based on live Introspection Query results
   # NOTE: If not using introspection.url OR servers[], you need to provide x-url below
-  # https://catalog-service-qa.adobe.io/graphql
+  url: https://catalog-service.adobe.io/graphql
   #
   #
   ##############################################
