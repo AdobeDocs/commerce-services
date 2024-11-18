@@ -430,7 +430,6 @@ paths:
                 description: |
                   Update a simple product with the values provided in the request.
                   When the update is processed, the merge strategy is used to apply changes to `scalar` and `object` type fields. The replace strategy is used to apply changes for fields in an `array`.
-
                   In the example below, the following attributes are updated.
                   * `name` - Change the product name.
                   * `metaTags.title` - Change the title of the product detail page.
@@ -682,7 +681,6 @@ paths:
       summary: Delete price books
       description: |
          Delete existing price books.
-
          Note that you cannot delete the default price book with id `main`.
       operationId: PriceBooksDelete
       parameters:
