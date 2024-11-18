@@ -13,6 +13,7 @@
           default: ''
   jobs:
     set-state:
+      if: ${{ github.ref == 'refs/heads/ccdm-publish-to-staging' }}
       runs-on: ubuntu-latest
       outputs:
         clean_cache: ${{ contains(github.event.inputs.clean, 'yes') }}
