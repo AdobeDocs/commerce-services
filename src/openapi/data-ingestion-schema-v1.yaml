@@ -754,7 +754,7 @@ paths:
       description: |
         Create or replace existing product prices.
 
-        A price must be associated with a least default price book with id `main`.
+        A price must be associated with at least the default price book with id `main`.
       operationId: PricesPut
       parameters:
         - name: DATA_SPACE_ID
