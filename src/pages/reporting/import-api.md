@@ -11,7 +11,7 @@ keywords:
 
 The Adobe Commerce Reporting Import API allows you to push arbitrary data into your data warehouse using REST.
 
-Before using the import API, make sure you [authenticate](index.md#authentication) your connection.
+Before using the import API, make sure you [authenticate](../reporting/index.md#authentication) your connection.
 
 ## Return Codes
 

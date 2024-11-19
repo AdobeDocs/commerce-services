@@ -17,6 +17,8 @@ Merchants must have both Product Recommendations and Catalog Service (v2.2.0+) i
 
 The `recommendations` query does not support the `alternateEnvironmentId` attribute.
 
+The [Commerce API playground](https://experienceleague.adobe.com/developer/commerce/storefront/playgrounds/commerce-services/) provides a sample `recommendations` query that you can run against a live instance of Adobe Commerce with Luma sample data. Note that the responses may vary, depending on the configuration of the Commerce instance.
+
 ## Required headers
 
 You must specify the following HTTP headers to run this query.
@@ -24,6 +26,12 @@ You must specify the following HTTP headers to run this query.
 import Docs from '/src/_includes/graphql/catalog-service/headers.md'
 
 <Docs />
+
+###  Find the customer group code
+
+import CustomerGroupCode from '/src/_includes/graphql/customer-group-code.md'
+
+<CustomerGroupCode />
 
 ## Syntax
 

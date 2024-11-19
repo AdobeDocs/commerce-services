@@ -19,9 +19,10 @@ You should construct the response of your query so that it contains both the `Co
 refineProduct(sku: String!, optionIds: [String!]!): ProductView
 ```
 
-## Endpoint
+## Endpoints
 
-`https://catalog-service.adobe.io/graphql`
+* Testing: `https://catalog-service-sandbox.adobe.io/graphql`
+* Production: `https://catalog-service.adobe.io/graphql`
 
 ## Required headers
 
@@ -31,11 +32,19 @@ import Docs from '/src/_includes/graphql/catalog-service/headers.md'
 
 <Docs />
 
+###  Find the customer group code
+
+import CustomerGroupCode from '/src/_includes/graphql/customer-group-code.md'
+
+<CustomerGroupCode />
+
 ## Example usage
 
 ### Return details about a partially selected complex product
 
 The following query returns details about the color options available for a medium-sized variant of product `MH12`. The value of the `optionIDs` input parameter is taken from the `products` query's [Return details about a complex product](products.md#return-details-about-a-complex-product) example.
+
+<CodeBlock slots="heading, code" repeat="2" languages="JSON" />
 
 **Request:**
 
@@ -169,6 +178,8 @@ query {
 ### Return details about a fully selected complex product
 
 In the following query, the shopper has selected options for both size and color. The response contains details about the corresponding simple product.
+
+<CodeBlock slots="heading, code" repeat="3" languages="JSON" />
 
 **Request:**
 

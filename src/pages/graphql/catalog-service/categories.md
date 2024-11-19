@@ -31,9 +31,10 @@ input Subtree {
 If using the `subtree` input, only one category `id` can be specified in the query.
 The `subtree` object allows you to specify how many levels of subcategories to return. Some sites may have a high number of subcategories, and returning the entire category tree could cause performance issues. It is recommended to keep `depth` to a maximum of 3 for the same reason.
 
-## Endpoint
+## Endpoints
 
-`https://catalog-service.adobe.io/graphql`
+* Testing: `https://catalog-service-sandbox.adobe.io/graphql`
+* Production: `https://catalog-service.adobe.io/graphql`
 
 ## Required headers
 
@@ -43,9 +44,17 @@ import Headers from '/src/_includes/graphql/catalog-service/headers.md'
 
 <Headers />
 
+###  Find the customer group code
+
+import CustomerGroupCode from '/src/_includes/graphql/customer-group-code.md'
+
+<CustomerGroupCode />
+
 ## Example usage
 
 The following query returns a category tree.
+
+<CodeBlock slots="heading, code" repeat="2" languages="JSON" />
 
 **Request:**
 
@@ -119,7 +128,6 @@ categories(ids: ["11"], roles: ["show_in_menu", "active"], subtree: {
       "urlKey":"jackets-men",
       "parentId":"12",
       "children":[
-         
       ]
    },
    {
@@ -135,7 +143,6 @@ categories(ids: ["11"], roles: ["show_in_menu", "active"], subtree: {
       "urlKey":"pants-men",
       "parentId":"13",
       "children":[
-         
       ]
    },
    {
@@ -151,7 +158,6 @@ categories(ids: ["11"], roles: ["show_in_menu", "active"], subtree: {
       "urlKey":"tanks-men",
       "parentId":"12",
       "children":[
-         
       ]
    },
    {
@@ -167,7 +173,6 @@ categories(ids: ["11"], roles: ["show_in_menu", "active"], subtree: {
       "urlKey":"hoodies-and-sweatshirts-men",
       "parentId":"12",
       "children":[
-         
       ]
    },
    {
@@ -183,7 +188,7 @@ categories(ids: ["11"], roles: ["show_in_menu", "active"], subtree: {
       "urlKey":"shorts-men",
       "parentId":"13",
       "children":[
-         
+
       ]
    }
 ]

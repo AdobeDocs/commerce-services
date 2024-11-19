@@ -11,13 +11,13 @@ keywords:
 
 The Adobe Commerce Reporting Export API allows you to access some of the raw data behind your Adobe Commerce Reporting dashboard.
 
-Before using the export API, make sure you [authenticate](index.md#authentication) your connection.
+Before using the export API, make sure you [authenticate](../reporting/index.md#authentication) your connection.
 
 ## Raw data exports
 
 <InlineAlert variant="info" slots="text" />
 
-You need a [raw data export](https://docs.magento.com/mbi/tutorials/export-raw-data.html) before calling the following methods.
+You need a [raw data export](https://experienceleague.adobe.com/en/docs/commerce-business-intelligence/mbi/tutorials/export-raw-data) before calling the following methods.
 
 ### List all available raw exports
 
@@ -149,7 +149,7 @@ The `POST /figure/:id/export/format=<FormatType>` call outputs the data used to 
 
 ![Export figure dialog](../_images/reporting/figure-id.png)
 
-If a figure was created using the [Visual Report Builder](https://docs.magento.com/mbi/data-user/reports/ess-rpt-build-visual.html), you can specify an output format of either `.csv` or `.json`. If a figure was created using the [SQL Report Builder](https://docs.magento.com/mbi/data-analyst/dev-reports/sql-rpt-bldr.html), you can specify an output format of `.csv` only.
+If a figure was created using the [Visual Report Builder](https://experienceleague.adobe.com/en/docs/commerce-business-intelligence/mbi/build/reports/ess-rpt-build-visual), you can specify an output format of either `.csv` or `.json`. If a figure was created using the [SQL Report Builder](https://experienceleague.adobe.com/en/docs/commerce-business-intelligence/mbi/analyze/sql/sql-rpt-bldr), you can specify an output format of `.csv` only.
 
 **Endpoint:**
 ​

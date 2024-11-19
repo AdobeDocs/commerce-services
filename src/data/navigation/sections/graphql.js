@@ -17,11 +17,15 @@ module.exports = [
       },
       {
         title: "productSearch query",
-        path: "/graphql/catalog-service/product-search.md",
+        path: "/graphql/live-search/product-search.md",
       },
       {
         title: "refineProduct query",
         path: "/graphql/catalog-service/refine-product.md"
+      },
+            {
+        title: "variants query",
+        path: "/graphql/catalog-service/product-variants.md"
       }
     ]
   },
