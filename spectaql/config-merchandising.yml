@@ -420,7 +420,9 @@ info:
   #
   ##############################################
 
-  description: Use the product merchandising GraphQL API to access rich view-model (read-only) catalog data to build product-related storefront experiences.
+  description: |
+     Use the product merchandising GraphQL API to access rich view-model (read-only) catalog data to build product-related storefront experiences.
+     For more information about the API, see the <a href="https://developer-stage.adobe.com/commerce/services/composable-catalog/merchandising/" target="_blank">developer documentation</a>.
   title: Product merchandising API
   # This is non-standard and optional. If omitted, will use "title". Also, only relevant
   # when building non-embedded.
@@ -437,8 +439,8 @@ info:
   # A non-standard array of items to display in your Introduction Area
   x-introItems:
     # Can be a Title (for the Nav panel) + URL to simply add a link to somewhere
-    - title: Product Merchandising API Guide
-      url: https://developer-stage.adobe.com/commerce/services/composable-catalog/merchandising/
+    # - title: Product Merchandising API Guide
+    # url: https://developer-stage.adobe.com/commerce/services/composable-catalog/merchandising/
     # Can be a Title (for the Nav panel) + description (for the Content panel)
     # - title: Important thing 1
     #   description: Some important stuff we wanted you to know. Supports `markdown`
