@@ -11,7 +11,7 @@
     "gatsby": "4.22.0",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
-    "spectaql": "^1.5.6"
+    "spectaql": "^3.0.2"
   },
   "devDependencies": {
     "remark-cli": "^10.0.1",
@@ -30,8 +30,8 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "test": "remark src/pages --quiet --frail",
-    "build:spectaql": "spectaql --target-dir static/graphql-api/ --target-file index.html spectaql/config.yml",
-    "dev:spectaql": "spectaql --development-mode-live spectaql/config.yml",
+    "build:spectaql": "spectaql --target-file index.html --config spectaql/config.yml",
+    "dev:spectaql": "spectaql --development-mode-live --config spectaql/config.yml",
     "lint": "docker run --rm -e RUN_LOCAL=true --env-file .github/super-linter.env -v \"$PWD\":/tmp/lint github/super-linter:slim-v4.10.1"
   },
   "packageManager": "yarn@3.2.4"
