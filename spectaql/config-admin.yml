@@ -420,7 +420,9 @@ info:
   #
   ##############################################
 
-  description: Use the Catalog management and rules GraphQL API to set up and manage catalogs and to configure settings and rules for product discovery and merchandising. You can find a more information about the API and examples in the [developer overview](https://developer-stage.adobe.com/commerce/services/composable-catalog/admin/).
+  description: |
+     Use the Catalog management and rules GraphQL API to set up and manage catalogs and to configure settings and rules for product discovery and merchandising.
+     For more information about the API, see the <a href="https://developer-stage.adobe.com/commerce/services/composable-catalog/admin/" target="_blank">developer documentation</a>.
   version: 1.0.0
   title: Catalog management and rules API
   # This is non-standard and optional. If omitted, will use "title". Also, only relevant
