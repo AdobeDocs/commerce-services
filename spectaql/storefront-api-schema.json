@@ -1800,6 +1800,12 @@
         "interfaces": null,
         "enumValues": [
           {
+            "name": "NONE",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "AED",
             "description": null,
             "isDeprecated": false,
