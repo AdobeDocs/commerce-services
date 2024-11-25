@@ -1,7 +1,7 @@
 ---
 title: Using the storefront API
 edition: ee
-description: Get information about using the GraphQL queries, mutations, and types provided by the storefront APIs to manage and deliver product data to commerce storefronts or applications.
+description: Learn how to use the storefront APIs to manage and deliver product data to commerce storefronts or applications in the context of CCDM.
 keywords:
   - GraphQL
   - Services
