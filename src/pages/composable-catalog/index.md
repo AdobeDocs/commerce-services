@@ -25,5 +25,3 @@ Developers can use composable catalog data model APIs to:
 - Integrate with storefront services to send required data to develop commerce frontend applications.
 
 This guide provides API reference and usage information for developers and commerce site administrators responsible for storefront development, maintenance, and operations. For information about the composable catalog data model architecture and implementation, see the Composable Catalog Data Model user guide in _Experience League_.
-
-## Getting started

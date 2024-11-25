@@ -423,7 +423,7 @@ info:
   description: |
      Use the storefront GraphQL API to access rich view-model (read-only) catalog data to build product-related storefront experiences.
      For more information about the API, see the <a href="https://developer-stage.adobe.com/commerce/services/composable-catalog/storefront-services/" target="_blank">developer documentation</a>.
-  title: Storefront services API
+  title: Storefront API
   # This is non-standard and optional. If omitted, will use "title". Also, only relevant
   # when building non-embedded.
   x-htmlTitle: Storefront API
@@ -439,7 +439,7 @@ info:
   # A non-standard array of items to display in your Introduction Area
   # x-introItems:
     # Can be a Title (for the Nav panel) + URL to simply add a link to somewhere
-    # - title: Storefront Services API Guide
+    # - title: Storefront API Guide
     # url: https://developer-stage.adobe.com/commerce/services/composable-catalog/storefront-services/
     # Can be a Title (for the Nav panel) + description (for the Content panel)
     # - title: Important thing 1

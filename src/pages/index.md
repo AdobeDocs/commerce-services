@@ -44,7 +44,7 @@ Set up and manage Commerce catalogs and configure settings for search and recomm
 
 <DiscoverBlock slots="link, text"/>
 
-[Storefront services](composable-catalog/storefront-services)
+[Storefront](composable-catalog/storefront-services)
 
 Retrieve product, search, and recommendations data from the catalog data model and use it to create storefront experiences.
 

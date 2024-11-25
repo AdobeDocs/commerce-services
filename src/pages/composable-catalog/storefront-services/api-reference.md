@@ -1,7 +1,7 @@
 ---
-title: Storefront Services API Reference
+title: Storefront API Reference
 edition: ee
-description: Get information about the storefront services APIs to retrieve product and catalog data to create storefront experiences.
+description: Get information about the storefront APIs to retrieve product and catalog data to create storefront experiences.
 keywords:
   - GraphQL
   - Services

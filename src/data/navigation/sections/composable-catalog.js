@@ -39,7 +39,7 @@ module.exports = [
             ]
         },
         {
-            title: "Storefront services API",
+            title: "Storefront API",
             path: "composable-catalog/storefront-services/",
             header: "true",
             pages: [
