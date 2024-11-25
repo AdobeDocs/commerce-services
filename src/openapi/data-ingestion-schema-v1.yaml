@@ -429,7 +429,9 @@ paths:
                 summary: Update a simple product
                 description: |
                   Update a simple product with the values provided in the request.
-                  When the update is processed, the merge strategy is used to apply changes to `scalar` and `object` type fields. The replace strategy is used to apply changes for fields in an `array`.
+                  On update, changes to `scalar` and `object` type fields are applied using the merge strategy.
+                  The replace strategy is used to apply changes for fields in an `array`.
+
                   In the example below, the following attributes are updated.
                   * `name` - Change the product name.
                   * `metaTags.title` - Change the title of the product detail page.
@@ -1040,7 +1042,8 @@ components:
       description: |
         Data Space ID.
 
-        For details, see [SaaS data space provisioning](https://experienceleague.adobe.com/en/docs/commerce-merchant-services/user-guides/integration-services/saas#saas-data-space-provisioning) in Adobe Experience League.
+        See [SaaS data space provisioning](https://experienceleague.adobe.com/en/docs/commerce-merchant-services/user-guides/integration-services/saas#saas-data-space-provisioning)
+        in Adobe Experience League.
       required: true
       style: simple
       schema:
