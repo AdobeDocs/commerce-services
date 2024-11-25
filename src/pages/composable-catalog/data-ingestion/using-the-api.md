@@ -11,7 +11,7 @@ keywords:
 
 # Using the data ingestion API
 
-Use the data ingestion API to create and manage product data for your ecommerce catalog. Data includes products, product attribute metadata 
+Use the data ingestion API to create and manage product data for your ecommerce catalog. Data includes products, product attribute metadata, prices books, and prices.
 
 ## Endpoints
 
