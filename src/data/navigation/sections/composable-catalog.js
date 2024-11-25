@@ -1,19 +1,21 @@
 module.exports = [
   {
-    title: "Catalog Data Model",
+    title: "Composable Catalog Data Model",
     path: "/composable-catalog/",
     pages: [
+        {   title: "Manage catalog data",
+            path: "/composable-catalog/manage-catalog-data.md"
+      },
+      {   title: "Set up and manage catalogs",
+            path: "/composable-catalog/manage-catalogs.md"
+        },
         {
-            title: "Data ingestion API",
+            title: "Catalog data ingestion API",
             path: "/composable-catalog/data-ingestion/",
             pages: [
               {
-                title: "Getting Started",
+                title: "Using the API",
                 path: "/composable-catalog/data-ingestion/using-the-api.md"
-                },
-                {
-                title: "Limits",
-                path: "/composable-catalog/data-ingestion/limits.md"
                 },
                {
                 title: "API Reference",
@@ -22,17 +24,13 @@ module.exports = [
             ]
         },
         {
-            title: "Catalog management API",
+            title: "Catalog management and rules API",
             path: "composable-catalog/admin/",
             header: "true",
             pages: [
               {
-                title: "Getting Started",
+                title: "Using the API",
                 path: "/composable-catalog/admin/using-the-api.md"
-                },
-                {
-                title: "Limits",
-                path: "/composable-catalog/admin/limits.md"
                 },
                {
                 title: "API Reference",
@@ -41,21 +39,17 @@ module.exports = [
             ]
         },
         {
-            title: "Merchandising API",
-            path: "composable-catalog/merchandising/",
+            title: "Storefront API",
+            path: "composable-catalog/storefront-services/",
             header: "true",
             pages: [
               {
-                title: "Getting Started",
-                path: "/composable-catalog/merchandising/using-the-api.md"
-                },
-                {
-                title: "Limits",
-                path: "/composable-catalog/merchandising/limits.md"
+                title: "Using the API",
+                path: "/composable-catalog/storefront-services/using-the-api.md"
                 },
                {
                 title: "API Reference",
-                path: "/composable-catalog/merchandising/api-reference.md"
+                path: "/composable-catalog/storefront-services/api-reference.md"
                 },
             ]
         },

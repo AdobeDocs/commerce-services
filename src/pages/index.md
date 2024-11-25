@@ -32,19 +32,19 @@ Use Commerce APIs and SDKs to create and manage commerce catalog data and config
 
 ### Composable Catalog Data Model
 
-[Data Ingestion](composable-catalog/data-ingestion/)
+[Catalog data ingestion](composable-catalog/data-ingestion/)
 
 Set up large, complex catalog assortments by ingesting commerce catalog data from backend systems into a centralized datastore.
 
 <DiscoverBlock slots="link, text"/>
 
-[Catalog Administration and Configuration](composable-catalog/admin)
+[Catalog management and rules](composable-catalog/admin)
 
-Set up and manage Commerce catalogs and merchandising tools.
+Set up and manage Commerce catalogs and configure settings for search and recommendations capabilities.
 
 <DiscoverBlock slots="link, text"/>
 
-[Merchandising](composable-catalog/merchandising)
+[Storefront](composable-catalog/storefront-services)
 
 Retrieve product, search, and recommendations data from the catalog data model and use it to create storefront experiences.
 

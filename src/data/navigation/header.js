@@ -1,26 +1,26 @@
 module.exports = [
     {
-      title: "Data Services",
+      title: "Commerce Data Services",
       path: "/",
     },
     {
-      title: "Catalog Data Model",
+      title: "Composable Catalog Data Model",
       menu: [
         {
-          title: "Getting Started",
+          title: "Overview",
           path: "/composable-catalog/"
         },
         {
-          title: "Data ingestion",
+          title: "Catalog data ingestion",
           path: "/composable-catalog/data-ingestion/"
         },
         {
-          title: "Catalog management",
+          title: "Catalog management and rules",
           path: "/composable-catalog/admin/"
         },
         {
-          title: "Merchandising",
-          path: "/composable-catalog/merchandising/"
+          title: "Storefront",
+          path: "/composable-catalog/storefront-services/"
         },
       ]
     },
