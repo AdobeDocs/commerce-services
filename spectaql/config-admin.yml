@@ -65,7 +65,7 @@ spectaql:
   #
   # Default: "default"
   # themeDir: ./spectaql/adobe-theme
-  # theme: spectaql
+  theme: spectaql
 
   # If you're embedding SpectaQL's output, and you've got something like a Nav Bar that
   # gets in the way, you can use this value to adjust the scroll offset
@@ -131,14 +131,14 @@ introspection:
     # Boolean indicating whether to enable and process the @spectaql directive
     #
     # Default: true
-    enable: true
+    enable: false
 
     # String indicating the name to use for the SpectaQL directive, e.g. "@spectaql"
     # This should be inconsequential in the end since it should be removed
     # from your resulting Schema by SpectaQL
     #
     # Default: 'spectaql'
-    directiveName: 'spectaql'
+    # directiveName: 'spectaql'
 
     # String indicating the name to use for the Type used in the "options" array that can be passed
     # to the SpectaQL directive.
@@ -146,7 +146,7 @@ introspection:
     # from your resulting Schema by SpectaQL
     #
     # Default: 'SpectaQLOption'
-    optionsTypeName: 'SpectaQLOption'
+    # optionsTypeName: 'SpectaQLOption'
 
   #
   #
@@ -438,7 +438,7 @@ info:
   #   url: 'https://www.apache.org/licenses/LICENSE-2.0.html'
 
   # A non-standard array of items to display in your Introduction Area
-  x-introItems:
+  # x-introItems:
     # Can be a Title (for the Nav panel) + URL to simply add a link to somewhere
     # - title: Catalog Management and Rules API Guide
     # url: https://developer-stage.adobe.com/commerce/services/composable-catalog/admin/
@@ -451,7 +451,7 @@ info:
 
   # If you really want to hide the "Documentation by" at the bottom of your output, you can do so here
   # Default: false
-  x-hidePoweredBy: false
+  # x-hidePoweredBy: false
 
   # If not using introspection.url OR servers[], you need to provide x-url
   # x-url: https://yoursite.com/graphql
