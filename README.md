@@ -73,6 +73,7 @@ To rebuild the GraphQL API references after any updates, use yarn to run the fol
 "dev:storefront-api": "spectaql --development-mode-live --config spectaql/config-storefront.yml",
 "build:graphql": "yarn run build:admin-api && yarn run build:storefront-api"
 ```
+
 For example, to rebuild the Catalog management and rules API, run the command:
 
 ```shell
