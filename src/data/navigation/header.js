@@ -1,13 +1,13 @@
 module.exports = [
     {
-      title: "Data Services",
+      title: "Commerce Data Services",
       path: "/",
     },
     {
       title: "Composable Catalog Data Model",
       menu: [
         {
-          title: "Getting Started",
+          title: "Overview",
           path: "/composable-catalog/"
         },
         {
@@ -19,8 +19,8 @@ module.exports = [
           path: "/composable-catalog/admin/"
         },
         {
-          title: "Product merchandising",
-          path: "/composable-catalog/merchandising/"
+          title: "Storefront services",
+          path: "/composable-catalog/storefront-services/"
         },
       ]
     },

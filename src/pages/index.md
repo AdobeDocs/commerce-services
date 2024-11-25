@@ -40,11 +40,11 @@ Set up large, complex catalog assortments by ingesting commerce catalog data fro
 
 [Catalog management and rules](composable-catalog/admin)
 
-Set up and manage Commerce catalogs and merchandising tools.
+Set up and manage Commerce catalogs and configure settings for search and recommendations capabilities.
 
 <DiscoverBlock slots="link, text"/>
 
-[Product merchandising](composable-catalog/merchandising)
+[Storefront services](composable-catalog/storefront-services)
 
 Retrieve product, search, and recommendations data from the catalog data model and use it to create storefront experiences.
 

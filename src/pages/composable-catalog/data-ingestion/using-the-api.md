@@ -1,5 +1,5 @@
 ---
-title: Getting started with catalog data management
+title: Using the data ingestion API
 edition: ee
 description: Get information about using the REST API endpoints and operations provided by the data ingestion API.
 keywords:
@@ -47,7 +47,7 @@ Headers list should be present in each Data Ingestion API call
 
 Use the following examples to learn about the basic scenarios for using the Data Ingestion API.
 
-Example below demonstrate how you can create your Catalog in Commerce Services.
+The Example below demonstrate how you can create your catalog in Commerce Services.
 This example will register 4 products, category tree, product attributes metadata and scopes in Commerce Services.
 
 Use the following template for API call:

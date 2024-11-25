@@ -1,5 +1,5 @@
 ---
-title: Store integration APIs
+title: Storefront APIs
 edition: ee
 description: Use the storefront APIs to create commerce storefront browse and discovery experiences using catalog data stored in the backend.
 
@@ -9,7 +9,7 @@ keywords:
   - Storefront
 ---
 
-# Merchandising API
+# Storefront API
 
 Frontend developers can use the storefront APIs to create commerce storefront experiences using the catalog data configured on the backend. The storefront APIs are implemented as a GraphQL (Graph Query Language) endpoint to retrieve the following types of data.
 

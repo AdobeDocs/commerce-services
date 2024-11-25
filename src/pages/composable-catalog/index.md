@@ -21,7 +21,7 @@ Developers can use composable catalog data model APIs to:
 
 - Add and manage catalog data in a central data store that can be used to merchandise and sell products in multiple business channels and locales. Data includes products, attributes, prices, assets, and inventory.
 - Configure distribution channels and locales to filter products into custom catalogs with customer-specific pricing and regional settings for language, currency, and units of measure.
-- Configure merchandising capabilities by setting up rules for search and product recommendations.
+- Configure storefront browse and discover capabilities by setting up rules for search and product recommendations.
 - Integrate with storefront services to send required data to develop commerce frontend applications.
 
 This guide provides API reference and usage information for developers and commerce site administrators responsible for storefront development, maintenance, and operations. For information about the composable catalog data model architecture and implementation, see the Composable Catalog Data Model user guide in _Experience League_.
