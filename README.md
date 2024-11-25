@@ -64,27 +64,38 @@ The GraphQL API reference is generated using an open-source tool [SpectaQL](http
 The resulting GraphQL API reference lives in the `static/graphql-api/` directory.
 It is embedded into the `/graphql/reference` page using the `frameSrc` feature on the DevSite.
 
-To rebuild the GraphQL API reference after any updates, run:
+To rebuild the GraphQL API references after any updates, use yarn to run the following build scripts as needed:
 
 ```shell
-yarn build:spectaql
+"build:admin-api": "spectaql --target-file index.html --config spectaql/config-admin.yml",
+"dev:admin-api": "spectaql --development-mode-live --config spectaql/config-admin.yml",
+"build:storefront-api": "spectaql --target-file index.html --config spectaql/config-storefront.yml",
+"dev:storefront-api": "spectaql --development-mode-live --config spectaql/config-storefront.yml",
+"build:graphql": "yarn run build:admin-api && yarn run build:storefront-api"
 ```
-
-To run SpectaQL in the development mode:
+For example, to rebuild the Catalog management and rules API, run the command:
 
 ```shell
-yarn dev:spectaql
+yarn build:admin-api
 ```
+
+The dev scripts run spectaql in development mode for a live preview of the updated output.
 
 ### How to get the schema
 
-The website in the public directory was generated for the Adobe Commerce with B2B instance from GraphQL Schema 'schema.json'. The schema was retrieved using the apollo-cli tool:
+The Spectaql configuration files for the CCDM GraphQL API references use the following endpoints to retrieve the schemas and generate the API reference:
 
-```shell
-npx apollo-cli download-schema $ENDPOINT_URL --output schema.json
-```
+- Catalog management and rules API: https://commerce-admin-router-qa.corp.ethos501-stage-va6.ethos.adobe.net/graphql
+- Storefront API: https://catalog-service-qa.adobe.io/graphql
 
-where `$ENDPOINT_URL` is a placeholder for the endpoint of a URL.
+If either of these endpoints change, be sure to update the Spectaql config file and rebuild the API reference guides.
+
+### Update the API References
+
+If a schema changes, rebuild and test the API reference locally.  Then, submit a PR with updates against the `ccdm-early-access` branch.
+After the PR is merged, someone from the documentation team will publish the changes to the documentation server.
+
+### Resources
 
 For more information about SpectaQL, refer to <https://github.com/anvilco/spectaql>.
 
