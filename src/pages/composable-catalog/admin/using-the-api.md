@@ -24,6 +24,8 @@ You must also specify multiple HTTP headers, including an API key, with each req
 
 ## Authentication
 
+Add authentication information here.
+
 ## Headers
 
 <!--Requires update for CCDM context-->

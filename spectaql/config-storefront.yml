@@ -421,12 +421,12 @@ info:
   ##############################################
 
   description: |
-     Use the storefront integration GraphQL API to access rich view-model (read-only) catalog data to build product-related storefront experiences.
+     Use the storefront GraphQL API to access rich view-model (read-only) catalog data to build product-related storefront experiences.
      For more information about the API, see the <a href="https://developer-stage.adobe.com/commerce/services/composable-catalog/storefront-services/" target="_blank">developer documentation</a>.
   title: Storefront services API
   # This is non-standard and optional. If omitted, will use "title". Also, only relevant
   # when building non-embedded.
-  x-htmlTitle: Storefront Services API
+  x-htmlTitle: Storefront API
   # termsOfService: 'https://yoursite.com/terms'
   # contact:
   #   name: YourSite Support
