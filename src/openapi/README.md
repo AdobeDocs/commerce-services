@@ -6,7 +6,7 @@ The Data Ingestion API Reference is embedded in the Composable Catalog Data Mode
 
 - The API reference generated from the schema is embedded in the [Data Ingestion API reference topic](https://github.com/AdobeDocs/commerce-services/edit/ccdm-early-access/src/pages/composable-catalog/data-ingestion/api-reference.md) using the `RedoclyAPIBlock` component. The component configuration includes:
 
-- **Schema path**—The `src` variable points to the schema file on the `ccdm-early-access branch`: `https://raw.githubusercontent.com/AdobeDocs/commerce-services/refs/heads/ccdm-early-access/src/openapi/data-ingestion-schema-v1.yaml`. If the schema is moved, update the `src` variable to point to the new location.
+- **Schema path**—The `src` variable points to the schema file on the `ccdm-early-access branch`. If the schema is moved, update the `src` variable to point to the new location.
   
 - **Redocly options**—These configuration options are used when generating the API reference on the documentation server. For details, see [RedoclyAPIBlock](https://github.com/adobe/aio-theme?tab=readme-ov-file#redoclyapiblock).
 
