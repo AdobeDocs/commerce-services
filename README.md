@@ -21,20 +21,7 @@ To build the site locally:
    yarn dev
    ```
 
-## Resources
-
-See the following resources to learn more about using the theme:
-
-- [Arranging content structure](https://github.com/adobe/aio-theme#content-structure)
-- [Linking to pages](https://github.com/adobe/aio-theme#links)
-- [Using assets](https://github.com/adobe/aio-theme#assets)
-- [Configuring global navigation](https://github.com/adobe/aio-theme#global-navigation)
-- [Configuring side navigation](https://github.com/adobe/aio-theme#side-navigation)
-- [Using content blocks](https://github.com/adobe/aio-theme#jsx-blocks)
-- [Writing enhanced Markdown](https://github.com/adobe/aio-theme#writing-enhanced-markdown)
-- [Deploying the site](https://github.com/adobe/aio-theme#deploy-to-azure-storage-static-websites) _(Adobe employees only)_
-
-If you have questions, open an issue and ask us. We look forward to hearing from you!
+**Tip:** When using `yarn`, you can clean up your directories and clear the cache with the command: `yarn clean && yarn cache clean`
 
 ## Resources
 
@@ -48,31 +35,41 @@ See the following resources to learn more about using the theme:
 - [Using content blocks](https://github.com/adobe/aio-theme#jsx-blocks)
 - [Writing enhanced Markdown](https://github.com/adobe/aio-theme#writing-enhanced-markdown)
 - [Deploying the site](https://github.com/adobe/aio-theme#deploy-to-azure-storage-static-websites) _(Adobe employees only)_
-- [Render OpenAPI spec](https://github.com/adobe/aio-theme?tab=readme-ov-file#openapi)
-- [Use RedoclyAPIBlock to render OpenAPI spec](https://github.com/adobe/aio-theme?tab=readme-ov-file#redoclyapiblock)
 
 If you have questions, open an issue and ask us. We look forward to hearing from you!
 
 ## GraphQL API reference generator
 
-The GraphQL API reference is generated using an open-source tool [SpectaQL](https://github.com/anvilco/spectaql). The data required for the generator is located at the `spectaql` directory:
+The GraphQL API reference is generated using [SpectaQL](https://github.com/anvilco/spectaql), an open source tool. The data required for the generator is located in the `spectaql` directory:
 
-- `adobe-theme`: [custom theme](https://github.com/anvilco/spectaql/blob/main/examples/themes/README.md).
-- `config.yml`: [configuration file](https://github.com/anvilco/spectaql#yaml-options).
-- `schema.json`: the GraphQL schema extracted from the Adobe Commerce (B2B) instance.
+- `config-admin.yml`: [configuration file to generate the CCDM Catalog management and rules API Reference](https://github.com/AdobeDocs/commerce-services/blob/ccdm-early-access/spectaql/config-admin.yml).
+- `config-storefront.yml`: [configuration file to generate the CCDM Storefront API Reference](https://github.com/AdobeDocs/commerce-services/blob/ccdm-early-access/spectaql/config-admin.yml).
 
-The resulting GraphQL API reference lives in the `static/graphql-api/` directory.
-It is embedded into the `/graphql/reference` page using the `frameSrc` feature on the DevSite.
+These configuration files include the endpoint for each API service.
 
-To rebuild the GraphQL API references after any updates, use yarn to run the following build scripts as needed:
+When you build the API reference, the build script uses live introspection to retrieve the GraphQL schemas and generate the API references. The configuration file also provides the introductory text for the Welcome topic, the API reference title, and other settings used when generating the references.
 
-```shell
-"build:admin-api": "spectaql --target-file index.html --config spectaql/config-admin.yml",
-"dev:admin-api": "spectaql --development-mode-live --config spectaql/config-admin.yml",
-"build:storefront-api": "spectaql --target-file index.html --config spectaql/config-storefront.yml",
-"dev:storefront-api": "spectaql --development-mode-live --config spectaql/config-storefront.yml",
-"build:graphql": "yarn run build:admin-api && yarn run build:storefront-api"
-```
+The resulting GraphQL API references are output to the `static/graphql-api/` directory.
+
+- `static/graphql/admin-api/index.html`
+- `static/graphql/storefront-api/index.html`
+
+The references are embedded in the API Reference page using the `frameSrc` feature supported by the Adobe I/O theme.
+
+- [Catalog management and rules API Reference](https://github.com/AdobeDocs/commerce-services/edit/ccdm-early-access/src/pages/composable-catalog/admin/api-reference.md) `frameSrc: /graphql-api/admin-api/index.html`
+
+- [Storefront API reference](https://github.com/AdobeDocs/commerce-services/edit/ccdm-early-access/src/pages/composable-catalog/storefront-services/api-reference.md) `frameSrc: /graphql-api/storefront-api/index.html`
+`
+
+To rebuild the GraphQL API references after any updates, use yarn locally to run the following build scripts as needed:
+
+Command | Description
+------- |------------
+`build:admin-api` | Regenerates the Catalog management and rules API reference
+`dev:admin-api` | Regenerates the Catalog management and rules API reference with a live preview of updated output
+`build:storefront-api` | Regenerates the Storefront API reference
+`dev:storefront-api` | Regenerates the Catalog management and rules API reference with a live preview of updated output
+`build:graphql` | Regenerates both references
 
 For example, to rebuild the Catalog management and rules API, run the command:
 
@@ -80,22 +77,24 @@ For example, to rebuild the Catalog management and rules API, run the command:
 yarn build:admin-api
 ```
 
-The dev scripts run spectaql in development mode for a live preview of the updated output.
-
 ### How to get the schema
 
-The Spectaql configuration files for the CCDM GraphQL API references use the following endpoints to retrieve the schemas and generate the API reference:
+The Spectaql configuration files for the CCDM GraphQL API references use the following endpoints to retrieve the schemas and generate the API references:
 
 - Catalog management and rules API: https://commerce-admin-router-qa.corp.ethos501-stage-va6.ethos.adobe.net/graphql
+
 - Storefront API: https://catalog-service-qa.adobe.io/graphql
 
-If either of these endpoints change, be sure to update the Spectaql config file and rebuild the API reference guides.
+If either of these endpoints change, update the live introspection URL in the Spectaql config file with the new endpoint.
 
 ### Update the API References
 
-If a schema changes, rebuild and test the API reference locally.  Then, submit a PR with updates against the `ccdm-early-access` branch.
-After the PR is merged, someone from the documentation team will publish the changes to the documentation server.
+If a schema changes, rebuild and test the API reference locally.  Then, submit a PR with updates against the `ccdm-early-access` branch. After the PR is merged, someone from the documentation team will publish the changes to the documentation server.
 
 ### Resources
 
 For more information about SpectaQL, refer to <https://github.com/anvilco/spectaql>.
+
+## REST API Reference Generator
+
+See [Generate the Data Ingestion API Reference](https://github.com/AdobeDocs/commerce-services/blob/ccdm-early-access/src/openapi/README.md).
