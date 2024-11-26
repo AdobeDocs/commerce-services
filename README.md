@@ -21,7 +21,7 @@ To build the site locally:
    yarn dev
    ```
 
-**Tip:** When using `yarn`, you can clean up your directories and clear the cache with the command: `yarn clean && yarn cache clean`
+**Tip:** When you encounter unexpected failures or delays, try to clean up the gatsby and yarn caches with the command: `yarn clean && yarn cache clean` for troubleshooting.
 
 ## Resources
 
@@ -42,8 +42,8 @@ If you have questions, open an issue and ask us. We look forward to hearing from
 
 The GraphQL API reference is generated using [SpectaQL](https://github.com/anvilco/spectaql), an open source tool. The data required for the generator is located in the `spectaql` directory:
 
-- `config-admin.yml`: [configuration file to generate the CCDM Catalog management and rules API Reference](https://github.com/AdobeDocs/commerce-services/blob/ccdm-early-access/spectaql/config-admin.yml).
-- `config-storefront.yml`: [configuration file to generate the CCDM Storefront API Reference](https://github.com/AdobeDocs/commerce-services/blob/ccdm-early-access/spectaql/config-admin.yml).
+- `config-admin.yml`: [configuration file to generate the CCDM Catalog management and rules API Reference](spectaql/config-admin.yml).
+- `config-storefront.yml`: [configuration file to generate the CCDM Storefront API Reference](spectaql/config-admin.yml).
 
 These configuration files include the endpoint for each API service.
 
@@ -56,9 +56,9 @@ The resulting GraphQL API references are output to the `static/graphql-api/` dir
 
 The references are embedded in the API Reference page using the `frameSrc` feature supported by the Adobe I/O theme.
 
-- [Catalog management and rules API Reference](https://github.com/AdobeDocs/commerce-services/edit/ccdm-early-access/src/pages/composable-catalog/admin/api-reference.md) `frameSrc: /graphql-api/admin-api/index.html`
+- [Catalog management and rules API Reference](src/pages/composable-catalog/admin/api-reference.md) `frameSrc: /graphql-api/admin-api/index.html`
 
-- [Storefront API reference](https://github.com/AdobeDocs/commerce-services/edit/ccdm-early-access/src/pages/composable-catalog/storefront-services/api-reference.md) `frameSrc: /graphql-api/storefront-api/index.html`
+- [Storefront API reference](src/pages/composable-catalog/storefront-services/api-reference.md) `frameSrc: /graphql-api/storefront-api/index.html`
 `
 
 To rebuild the GraphQL API references after any updates, use yarn locally to run the following build scripts as needed:
@@ -85,7 +85,7 @@ The Spectaql configuration files for the CCDM GraphQL API references use the fol
 
 - Storefront API: https://catalog-service-qa.adobe.io/graphql
 
-If either of these endpoints change, update the live introspection URL in the Spectaql config file with the new endpoint.
+If either of these endpoints change, update the live introspection URL in the corresponding config file in the `spectaql` directory with the new endpoint.
 
 ### Update the API References
 
@@ -97,4 +97,4 @@ For more information about SpectaQL, refer to <https://github.com/anvilco/specta
 
 ## REST API Reference Generator
 
-See [Generate the Data Ingestion API Reference](https://github.com/AdobeDocs/commerce-services/blob/ccdm-early-access/src/openapi/README.md).
+See [Generate the Data Ingestion API Reference](src/openapi/README.md).
