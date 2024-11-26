@@ -16,10 +16,10 @@ The generated schema is embedded in the [Data Ingestion API reference topic](htt
 1. To regenerate API reference locally and test changes you can use the following command.
 
    ```shell
-   npx @redocly/cli build-docs src/openapi/data-ingestion-schema-v1.yaml --config src/openapi/.redocly.yaml
+   npx @redocly/cli build-docs src/openapi/data-ingestion-schema-v1.yaml --config src/openapi/.redocly.yaml --output tmp/redoc-static.html
    ```
 
-   The generated API reference is output to `redoc-static.html`. Open the file in your browser to review the updates.
+   The generated API reference is output to `tmp/redoc-static.html`. Open the file in your browser to review the updates.
 
    **NOTE:** The @redocly/cli tool has limited functionality compared to the toolkit integrated in the website's infrastructure via RedoclyAPIBlock.
 
