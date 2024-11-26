@@ -1,14 +1,16 @@
 # Data Ingestion REST API Reference documenation
 
-The Data Ingestion API auto-generated API Reference is embedded into the Composable Catalog Data Model documentation using the [RedoclyAPIBlock](https://github.com/adobe/aio-theme?tab=readme-ov-file#redoclyapiblock) supported by the Adobe I/O theme. The path to the schema is included in the RedoclyAPIBlock configuration. It currently points to the schema file on the `ccdm-early-access` branch:  `https://raw.githubusercontent.com/AdobeDocs/commerce-services/refs/heads/ccdm-early-access/src/openapi/data-ingestion-schema-v1.yaml`. If the schema is moved to a new location, or a different branch 
+The Data Ingestion API Reference is embedded in the Composable Catalog Data Model documentation using the `RedoclyAPIBlock` component from the Adobe I/O theme. 
 
-The OpenAPI schema source file (`data-ingestion-schema-v1.yaml`) is maintained by engineering and currently resides in developer documentation source repository for Commerce Services.
+- The OpenAPI schema source file, `data-ingestion-schema-v1.yaml` file is maintained by engineering in the Commerce Services documentation repository.
 
-The API reference generated from the schema is embedded in the [Data Ingestion API reference topic](https://github.com/AdobeDocs/commerce-services/edit/ccdm-early-access/src/pages/composable-catalog/data-ingestion/api-reference.md) using the `RedoclyAPIBlock` component. The component configuration includes:
+- The API reference generated from the schema is embedded in the [Data Ingestion API reference topic](https://github.com/AdobeDocs/commerce-services/edit/ccdm-early-access/src/pages/composable-catalog/data-ingestion/api-reference.md) using the `RedoclyAPIBlock` component. The component configuration includes:
 
-- **Path to the schema to generate the reference**—Currently, the path points to the schema file on the `ccdm-early-access` branch:  `https://raw.githubusercontent.com/AdobeDocs/commerce-services/refs/heads/ccdm-early-access/src/openapi/data-ingestion-schema-v1.yaml`. If the schema is moved to a new location, or a different branch, update the path variable in the source file for the Data Ingestion API reference topic.
+- **Schema pathe**—The `src` variable points to the schema file on the `ccdm-early-access branch`: `https://raw.githubusercontent.com/AdobeDocs/commerce-services/refs/heads/ccdm-early-access/src/openapi/data-ingestion-schema-v1.yaml`. If the schema is moved, update the `src` variable to point to the new location.
   
-- **Redocly configuration options for generating the schema**—The options specified in the component configuration are used when generating the API reference on the documentation server. If you generate the schema locally, option settings are provided in the `.redocly.yaml` file. For option descriptions, see *[Configure Redoc] in the Redocly documentation.
+- **Redocly options**—These configuration options are used when generating the API reference on the documentation server. For details, see [RedoclyAPIBlock](https://github.com/adobe/aio-theme?tab=readme-ov-file#redoclyapiblock).
+
+**NOTE:** If you generate the schema locally, option settings are provided in the `.redocly.yaml` file. For details, see *[Configure Redoc] in the Redoc documentation.
   
 ## Update schema and regenerate documentation
 
