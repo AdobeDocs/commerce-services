@@ -21,7 +21,7 @@ To build the site locally:
    yarn dev
    ```
 
-**Tip:** When you encounter unexpected failures or delays, try to clean up the gatsby and yarn caches with the command: `yarn clean && yarn cache clean` for troubleshooting.
+**Tip:** If you encounter unexpected failures or delays, try to clean up the gatsby and yarn caches with the command: `yarn clean && yarn cache clean` for troubleshooting.
 
 ## Resources
 
