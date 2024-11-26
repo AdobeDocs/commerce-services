@@ -59,8 +59,6 @@ The references are embedded in the API Reference page using the `frameSrc` featu
 - [Catalog management and rules API Reference](src/pages/composable-catalog/admin/api-reference.md) `frameSrc: /graphql-api/admin-api/index.html`
 
 - [Storefront API reference](src/pages/composable-catalog/storefront-services/api-reference.md) `frameSrc: /graphql-api/storefront-api/index.html`
-`
-- [Storefront API reference](https://github.com/AdobeDocs/commerce-services/edit/ccdm-early-access/src/pages/composable-catalog/storefront-services/api-reference.md) `frameSrc: /graphql-api/storefront-api/index.html`
 
 ### Build commands
 
