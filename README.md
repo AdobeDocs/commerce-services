@@ -60,6 +60,9 @@ The references are embedded in the API Reference page using the `frameSrc` featu
 
 - [Storefront API reference](src/pages/composable-catalog/storefront-services/api-reference.md) `frameSrc: /graphql-api/storefront-api/index.html`
 `
+- [Storefront API reference](https://github.com/AdobeDocs/commerce-services/edit/ccdm-early-access/src/pages/composable-catalog/storefront-services/api-reference.md) `frameSrc: /graphql-api/storefront-api/index.html`
+
+### Build commands
 
 To rebuild the GraphQL API references after any updates, use yarn locally to run the following build scripts as needed:
 
@@ -90,6 +93,31 @@ If either of these endpoints change, update the live introspection URL in the co
 ### Update the API References
 
 If a schema changes, rebuild and test the API reference locally.  Then, submit a PR with updates against the `ccdm-early-access` branch. After the PR is merged, someone from the documentation team will publish the changes to the documentation server.
+
+## Update schema and regenerate documentation
+
+1. Create a branch from the `ccdm-early-access` branch.
+
+1. To regenerate an API reference locally and test changes in live preview, use either of the following commands:
+
+   ```shell
+   yarn `dev:admin-api`
+   ```
+
+   ```shell
+   yarn `dev:storefront-api`
+   ```
+
+1. Commit changes and push them to your remote branch.
+
+1. Create and submit a PR against the `ccdm-early-access` branch, and request review from the Commerce Documentation team.
+
+1. After updates are approved, a documentation team member merges the PR and publishes the updates to [developer-stage site](https://developer-stage.adobe.com/commerce/services/composable-catalog/) for Early Access customers.
+
+   View the published API references:
+
+   - [Catalog management and rules API Reference](https://developer-stage.adobe.com/commerce/services/composable-catalog/admin/api-reference/)
+   - [Storefront API Reference](https://developer-stage.adobe.com/commerce/services/composable-catalog/storefront-services/api-reference/)
 
 ### Resources
 
