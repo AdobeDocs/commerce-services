@@ -21,7 +21,7 @@ The generated schema is embedded in the [Data Ingestion API reference topic](htt
 
    The generated API reference is output to `redoc-static.html`. Open the file in your browser to review the updates.
 
-   **NOTE:** The @redocly/cli tool has limited functionality comparing to the toolkit integrated in the website's infrastructure via RedoclyAPIBlock.
+   **NOTE:** The @redocly/cli tool has limited functionality compared to the toolkit integrated in the website's infrastructure via RedoclyAPIBlock.
 
 1. After reviewing and testing changes, commit and push your changes.
 
