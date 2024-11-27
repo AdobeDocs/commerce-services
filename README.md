@@ -94,7 +94,7 @@ If a schema changes, rebuild and test the API reference locally.  Then, submit a
 
 For local builds, ensure that your environment has the following installed:
 
-- Node.js that matches the version set in the [.nvmrc](https://github.com/AdobeDocs/commerce-services/blob/main/.nvmrc) npm configuration file.
+- Node.js that matches the version set in the [.nvmrc](https://github.com/AdobeDocs/commerce-services/blob/main/.nvmrc) ([nvm](https://github.com/nvm-sh/nvm) configuration file).
 - Yarn
 
 ## Update schema and regenerate documentation
