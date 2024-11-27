@@ -10,11 +10,18 @@ The Data Ingestion API Reference is embedded in the [Data Ingestion API referenc
   
 ## Update schema and regenerate documentation
 
+For local builds, ensure that your environment has the following installed:
+
+- Node.js that matches the version set in the [.nvmrc](https://github.com/AdobeDocs/commerce-services/blob/main/.nvmrc) npm configuration file.
+- Yarn
+
+ ### Add, test, and submit updates** 
+
 1. Create a branch from the `ccdm-early-access` branch.
 
 1. Update the `openapi/data-ingestion-schema-v1.yaml`.
 
-1. Regenerate API reference locally to test changes:
+1. Regenerate the API reference locally to test changes:
 
    ```shell
    npx @redocly/cli build-docs src/openapi/data-ingestion-schema-v1.yaml --config src/openapi/.redocly.yaml --output tmp/redoc-static.html
