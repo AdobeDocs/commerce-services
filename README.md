@@ -92,6 +92,11 @@ If either of these endpoints change, update the live introspection URL in the co
 
 If a schema changes, rebuild and test the API reference locally.  Then, submit a PR with updates against the `ccdm-early-access` branch. After the PR is merged, someone from the documentation team will publish the changes to the documentation server.
 
+For local builds, ensure that your environment has the following installed:
+
+- Node.js that matches the version set in the [.nvmrc](https://github.com/AdobeDocs/commerce-services/blob/main/.nvmrc) npm configuration file.
+- Yarn
+
 ## Update schema and regenerate documentation
 
 1. Create a branch from the `ccdm-early-access` branch.
