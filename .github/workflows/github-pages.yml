@@ -20,7 +20,7 @@ jobs:
         run: yarn build
         env:
           NODE_OPTIONS: "--max-old-space-size=8192"
-          PREFIX_PATHS: false # works like --prefix-paths flag for 'gatsby build'
+          PREFIX_PATHS: ${{ !github.event.repository.private }} # If the repository is private or internal, the site will be built with no prefix path
           PATH_PREFIX: ${{ github.event.repository.name }}
           ADOBE_LAUNCH_SRC: ${{ secrets.AIO_ADOBE_LAUNCH_SRC }}
           ADOBE_LAUNCH_SRC_INCLUDE_IN_DEVELOPMENT: ${{ secrets.ADOBE_LAUNCH_SRC_INCLUDE_IN_DEVELOPMENT }}
