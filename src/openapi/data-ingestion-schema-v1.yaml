@@ -7,7 +7,7 @@ info:
     This API provides the following resource collections to create and update catalog data:
 
     - **Metadata**—define and manage product attribute display on the storefront, define search characteristics, and so on
-    - **Products**—define and manage items to include in a commerce catalog. Each product can have multiple attributes including name, price, description, SKU, and images.
+    - **Products**—define and manage items to include in a commerce catalog. Each product can have multiple attributes like name, description, SKU, images, etc.
     - **Price books**—define and manage unique scopes that can be used to manage product price discounts across customer tiers
     - **Prices**—define and manage the prices associated with product SKUs and assign the pricing scope where the price is used
 
@@ -302,10 +302,26 @@ paths:
         - Products
       summary: Create products
       description: |
+        <h3>Simple Products</h3>
         Create products or replace existing products with a specified `sku` and `scope`.
         If a product with the same data exists with the same SKU and scope, the product update request is ignored.
 
-        Use the update operation to modify values for an existing product.
+        Use the [update operation](#operation/ProductsPatch) to modify values for an existing product.
+        
+        <h3>Configurable Products</h3>
+        Configurable Product represents a product with multiple configurable options (e.g., "color", "size"). Unique intersection of option values, like "color green" and "size Large" defines a Product Variant - independent product with its own SKU, price, and inventory.
+        Configurable Product serves as a container for Product Variants.
+        
+        To create Configurable Product you need the following:
+        - [Product Attributes](#operation/ProductMetadataPut): Define the product attributes characteristics used to define a Configurable Product, such as "color", "size", etc.
+        - [Configurable Product](#operation/ProductsPut): Define Configurable Product. [Options](#operation/ProductsPut!path=options&t=request) is a required field. It defines the choices available for selection to shopper.
+        - [Product Variant](#operation/ProductsPut): Define Product Variant for given Configurable Product. ["Attributes"](#operation/ProductsPut!path=attributes) with ["variantReferenceId"](#operation/ProductsPut!path=attributes/variantReferenceId&t=request) and ["links"](#operation/ProductsPut!path=links&t=request) with type `VARIANT_OF` must be defined for Product Variant.
+        
+        Each Product Variant links back to the Configurable Product through its `variantReferenceId`, which corresponds to specific `options[].values[].id` in the Configurable Product.
+        
+        To unassign Product Variant from Configurable Product you may do one of the following:
+        - Using [Delete Product API](#operation/ProductsDelete) delete Product Variant
+        - Using [Update Product API](#operation/ProductsPatch) set ["variantReferenceId"](#operation/ProductsPut!path=attributes/variantReferenceId&t=request) to `null` and unassign Product Variant from Configurable Product by removing ["links"](#operation/ProductsPut!path=links&t=request) association
       operationId: ProductsPut
       parameters:
         - $ref: '#/components/parameters/DATA_SPACE_ID'
@@ -761,9 +777,15 @@ paths:
         - Prices
       summary: Create prices
       description: |
+        <h3>Simple Products</h3>
         Create or replace existing product prices.
 
         A price must be associated with at least the default price book with id `main`.
+        
+        <h3>Configurable Products</h3>
+        Configurable product price is calculated based on the price of the selected Product Variant.
+        Any price passed for Configurable Product SKU will be ignored.
+
       operationId: PricesPut
       parameters:
         - name: DATA_SPACE_ID
@@ -1311,7 +1333,7 @@ components:
             $ref: '#/components/schemas/ProductRoutes'
         options:
           type: array
-          description: Options associated with the product.
+          description: Composite products such as Configurable Product must define a list of product options available for selection to Shopper, e.g. "color", "size", etc.
           items:
             $ref: '#/components/schemas/ProductOption'
     FeedProductUpdate:
@@ -1378,7 +1400,9 @@ components:
             $ref: '#/components/schemas/ProductImage'
         links:
           type: array
-          description: A list of linked SKUs.
+          description: |
+            A list of linked SKUs. For Product Variant, this is required field that establishes a link between a Product Variant and the corresponding Configurable Product.
+            `VARIANT_OF` link type must be specified to establish connection to the SKU of the Configurable Product.
           items:
             $ref: '#/components/schemas/ProductLink'
         routes:
@@ -1558,9 +1582,14 @@ components:
             - `OBJECT`: Accept JSON object `"{"name": "swatch", "color": "red"}"`
         values:
           type: array
-          description: A list of value(s) associated with a specified attribute type.
+          description: A list of value(s) associated with a specified attribute code.
           items:
             type: string
+        variantReferenceId:
+          type: string
+          description: |
+            The Variant Reference ID establishes a link between a Product Variant and the corresponding [Option Value ID](#operation/ProductsPut!path=options/values/id&t=request) in a Configurable Product.
+            Variant reference ID must be defined only for Product that represent Variant of Configurable Product.
     ProductRoutes:
       title: Routes
       type: object
@@ -1602,32 +1631,30 @@ components:
       properties:
         id:
           type: string
-          description: Product Option ID
+          description: |
+            Product Option ID. For `CONFIGURABLE` or `SWATCH` option type, must be equal ["attribute code"](#operation/ProductsPut!path=attributes/code&t=request) used for Configurable Product, e.g. "color"
         label:
           type: string
           description: Option label
         required:
           type: boolean
-          description: Indicates whether selecting the option is required.
+          description: Indicates whether selecting the option is required by Shopper in order to add product to the Shopping Cart.
           example: false
         defaultValueId:
           type: string
-          description: Specifies the pre-selected value for the option.
+          description: Specifies the pre-selected value id of the current option.
         type:
           type: string
           enum:
             - CONFIGURABLE
-            - BUNDLE
             - SWATCH
           description: |
             Option type. Indicates the product type the option can be assigned to.
-            Merchants can define custom types in addition to the predefined values.
             - `CONFIGURABLE`: Configurable product option
-            - `BUNDLE`: Bundle product option
-            - `SWATCH`: Swatch product option
+            - `SWATCH`: Swatch product option. Must be used for color or text swatches attributes
         values:
           type: array
-          description: A list of option values.
+          description: A list of option values. Defines option values available to Shopper, for example "red" color or "Large" size
           items:
             $ref: '#/components/schemas/ProductOptionValue'
     ProductOptionValue:
@@ -1635,23 +1662,25 @@ components:
       type: object
       required:
         - id
-        - sku
       properties:
         id:
           type: string
-          description: Option value ID. For "CONFIGURABLE" type, must be equal to the "attribute code".
+          description: |
+            Option value ID.
+            For `CONFIGURABLE` or `SWATCH` must be equal ["variantReferenceId"](#operation/ProductsPut!path=attributes/variantReferenceId&t=request) defined in Product Variant.
         label:
           type: string
           description: Option value label
         colorHex:
           type: string
-          description: A hex representation of the color of the option value.
+          description: A hex representation of the color of the option value. Can be used for option with a SWATCH type.
         imageUrl:
           type: string
-          description: Image URL of the option value
-        sku:
-          type: string
-          description: Product SKU associated with the option value.
+          description: Image URL of the option value. Can be used for option with a SWATCH type.
+# Reason for hiding: it's relevant only for Bundle Product which is not yet supported by CCDM API
+#        sku:
+#          type: string
+#          description: Product SKU associated with the option value.
     ProductLink:
       title: Links
       required:
@@ -1661,10 +1690,12 @@ components:
       properties:
         type:
           type: string
-          description: Product link type. Merchants can define custom types in addition to the predefined values.
+          description: |
+            Product link type. Merchants can define custom types in addition to the predefined values.
+            `VARIANT_OF` link type must be specified to establish connection to the SKU of the Configurable Product.
         sku:
           type: string
-          description: SKU
+          description: Product SKU
       description: Product association
     ItemFailedValidationResult:
       title: ItemFailedValidationResult
