@@ -99,7 +99,7 @@ paths:
                       },
                       "label": "Product Name",
                       "dataType": "BOOLEAN",
-                      "roles": ["PDP"],
+                      "visibleIn": ["PRODUCT_DETAIL"],
                       "filterable": false,
                       "sortable": false,
                       "searchable": true,
@@ -186,7 +186,7 @@ paths:
                   Please note, field with `array` type will replace existing data.
                   Example bellow updates the following attributes:
                   * `label` - Change the product attribute label.
-                  * `roles` - Remove the `PLP` role for the product attribute.
+                  * `visibleIn` - Add `PRODUCT_LISTING` role to the product attribute.
                 value:
                   [
                     {
@@ -195,7 +195,7 @@ paths:
                         "locale": "en"
                       },
                       "label": "Updated - Product Name",
-                      "roles": ["PDP"]
+                      "visibleIn": ["PRODUCT_DETAIL", "PRODUCT_LISTING"]
                     }
                   ]
       responses:
@@ -359,9 +359,9 @@ paths:
                       "status": "ENABLED",
                       "description": "long description about red pants",
                       "shortDescription": "just pants",
-                      "roles": [
-                        "PLP",
-                        "SRP"
+                      "visibleIn": [
+                        "CATALOG",
+                        "SEARCH"
                       ],
                       "metaTags": {
                         "title": " ",
@@ -394,8 +394,11 @@ paths:
                           "url": "https://example.com/images/pants.jpg",
                           "label": "photo of my pants!",
                           "roles": [
-                            "PDP",
-                            "plp"
+                            "BASE",
+                            "SMALL"
+                          ],
+                          "customRoles": [
+                            "widget"
                           ]
                         }
                       ],
@@ -1129,15 +1132,20 @@ components:
           description: Attribute code
         scope:
           $ref: '#/components/schemas/Scope'
-        roles:
+        visibleIn:
           type: array
           description: |
-            Roles associated with this attribute that determine how the attribute is used on the storefront.
-            * `PDP`: Product attribute is visible on Product Detail Page.
-            * `PLP`: Product attribute is visible on Product Listing Page.
-            * `SRP`: Product attribute is visible on Search Results Page.
+            Determines how the attribute is used on the storefront.
+            * `PRODUCT_DETAIL`: Product attribute is visible on the Product Detail Page.
+            * `PRODUCT_LISTING`: Product attribute is visible on Product Listing Page.
+            * `SEARCH_RESULTS`: Product attribute is visible on Search Results Page.
+            * `PRODUCT_COMPARE`: Product attribute is visible on Product Compare Page.
           items:
-            type: string
+            enum:
+              - PRODUCT_DETAIL
+              - PRODUCT_LISTING
+              - SEARCH_RESULTS
+              - PRODUCT_COMPARE
         label:
           type: string
           description: Label for the attribute that is displayed in user interfaces.
@@ -1192,15 +1200,20 @@ components:
           description: Attribute code
         scope:
           $ref: '#/components/schemas/Scope'
-        roles:
+        visibleIn:
           type: array
           description: |
-            Roles associated with this attribute that determine how the attribute is used on the storefront.
-            * `PDP`: Product attribute is visible on Product Detail Page.
-            * `PLP`: Product attribute is visible on Product Listing Page.
-            * `SRP`: Product attribute is visible on Search Results Page.
+            Determines how the attribute is used on the storefront.
+            * `PRODUCT_DETAIL`: Product attribute is visible on the Product Detail Page.
+            * `PRODUCT_LISTING`: Product attribute is visible on Product Listing Page.
+            * `SEARCH_RESULTS`: Product attribute is visible on Search Results Page.
+            * `PRODUCT_COMPARE`: Product attribute is visible on Product Compare Page.
           items:
-            type: string
+            enum:
+              - PRODUCT_DETAIL
+              - PRODUCT_LISTING
+              - SEARCH_RESULTS
+              - PRODUCT_COMPARE
         label:
           type: string
           description: Label for the attribute that is displayed in user interfaces.
@@ -1296,15 +1309,17 @@ components:
           enum:
             - ENABLED
             - DISABLED
-        roles:
+        visibleIn:
           type: array
           description: |
             Storefront area where the product is visible. An empty list means that it is not visible as a stand alone product.
-            * `PLP`: Product attribute is visible on Product Listing Page and Product Detail Page.
-            * `SRP`: Product attribute is visible on Search Results Page and Product Detail Page.
-          example: [PLP]
+            * `CATALOG`: Product is visible on Product Listing Page and Product Detail Page.
+            * `SEARCH`: Product is visible on Search Results Page and Product Detail Page.
+          example: [CATALOG]
           items:
-            type: string
+            enum:
+              - CATALOG
+              - SEARCH
         metaTags:
           type: object
           description: Meta attributes that are specified in <meta> tags.
@@ -1373,15 +1388,17 @@ components:
           enum:
             - ENABLED
             - DISABLED
-        roles:
+        visibleIn:
           type: array
           description: |
             Storefront area where the product is visible. An empty list means that it is not visible as a stand alone product.
-            * `PLP`: Product attribute is visible on Product Listing Page and Product Detail Page.
-            * `SRP`: Product attribute is visible on Search Results Page and Product Detail Page.
-          example: [PLP]
+            * `CATALOG`: Product is visible on Product Listing Page and Product Detail Page.
+            * `SEARCH`: Product is visible on Search Results Page and Product Detail Page.
+          example: [CATALOG]
           items:
-            type: string
+            enum:
+              - CATALOG
+              - SEARCH
         metaTags:
           type: object
           description: Meta attributes that are specified in <meta> tags.
@@ -1616,8 +1633,22 @@ components:
           description: Media resource label
         roles:
           type: array
+          description: |
+            Roles associated with this image that determine how the image is used on the storefront.
+            - `BASE`: Product image is visible as a main image on the Product Detail Page.
+            - `SMALL`: Product image is visible as a main image on the Category or search result page or other product listing pages.
+            - `THUMBNAIL`: Thumbnail images appear in the thumbnail gallery, shopping cart, etc.
+            - `SWATCH`: A swatch can be used to illustrate the color, pattern, or texture.
+          items:
+            enum:
+              - BASE
+              - SMALL
+              - THUMBNAIL
+              - SWATCH
+        customRoles:
+          type: array
           description: >
-             Roles associated with this image that determine how the image is used on the storefront, for example image for PDP, PLP, and so on.
+             Custom image role. Merchants can define custom roles in addition to the predefined values.
           items:
             type: string
     ProductOption:
