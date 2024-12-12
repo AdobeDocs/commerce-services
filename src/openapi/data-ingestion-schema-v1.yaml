@@ -115,7 +115,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ProcessFeedResponse'
         '400':
-          description: Request rejected. Some of the received items are invalid. Check the "invalidFeedItems" node for specific errors.
+          description: Request rejected. Some of the received items are invalid. Check the "message" and "errors" fields for details.
           content:
             application/json;charset=UTF-8:
               schema:
@@ -1117,6 +1117,9 @@ components:
         message:
           type: string
           description: Error description
+        value:
+          type: string
+          description: Original value passed in the request.
     FeedMetadata:
       title: FeedMetadata
       description: Metadata information for a product attribute.
@@ -1748,53 +1751,51 @@ components:
       title: Response payload
       type: object
       properties:
-        feedItemReceivedCount:
+        status:
+          type: string
+          description: Request status.
+          default: ACCEPTED
+        acceptedCount:
           type: integer
-          description: The number of valid items received and processed.
+          description: The number of received and accepted items.
           format: int32
-        invalidFeedItems:
-          type: array
-          description: List of items that did not pass validation. Fix the payload for invalid items before resubmitting the request.
-          items:
-            $ref: '#/components/schemas/FeedItemFailedValidationResult'
       example:
         {
-          "feedItemReceivedCount": 2,
-          "invalidFeedItems": [
-            {
-              "itemIndex": 1,
-              "code": "{error code}",
-              "message": "{error message}"
-            }
-          ]
+          "status": "ACCEPTED",
+          "acceptedCount": 4
         }
     400ProcessFeedResponse:
       title: Response payload
       type: object
       properties:
-        feedItemReceivedCount:
-          type: integer
-          description: 0 valid items
-          format: int32
-          default: 0
-        invalidFeedItems:
+        status:
+          type: string
+          description: Request status.
+          default: FAILED
+        message:
+          type: string
+          description: Error summary
+        errors:
           type: array
           description: List of items that did not pass validation. Fix the payload for invalid items before resubmitting the request.
           items:
             $ref: '#/components/schemas/FeedItemFailedValidationResult'
       example:
         {
-          "feedItemReceivedCount": 0,
-          "invalidFeedItems": [
+          "status": "FAILED",
+          "message": "Items validation failed for 2 items",
+          "errors": [
             {
               "itemIndex": 0,
-              "code": "{error code}",
-              "message": "{error message}"
+              "code": "status",
+              "message": "status: does not have a value in the enumeration [\"ENABLED\", \"DISABLED\"]",
+              "value": "active"
             },
             {
               "itemIndex": 1,
-              "code": "{error code}",
-              "message": "{error message}"
+              "code": "scope",
+              "message": "required property 'scope' not found",
+              "value": ""
             }
           ]
         }
