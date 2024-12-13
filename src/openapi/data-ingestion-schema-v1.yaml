@@ -454,6 +454,7 @@ paths:
                   * `name` - Change the product name.
                   * `metaTags.title` - Change the title of the product detail page.
                   * `attributes` - Add a new state, `NM` to the `states` attribute.
+                value:
                   [
                     {
                       "sku": "red-pants",
@@ -1535,7 +1536,7 @@ components:
       type: object
       properties:
         code:
-          type: object
+          type: string
         price:
           type: number
           format: float
@@ -1544,7 +1545,7 @@ components:
       type: object
       properties:
         code:
-          type: object
+          type: string
         percentage:
           type: number
           format: float
