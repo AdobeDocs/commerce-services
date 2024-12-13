@@ -1489,7 +1489,7 @@ components:
           type: array
           description: Active discounts
           items:
-            oneOf:
+            anyOf:
               - $ref: '#/components/schemas/DiscountsFinalPrice'
               - $ref: '#/components/schemas/DiscountsPercentage'
     FeedPricesUpdate:
