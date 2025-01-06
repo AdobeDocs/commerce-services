@@ -787,7 +787,7 @@ paths:
         
         <h3>Configurable Products</h3>
         Configurable product price is calculated based on the price of the selected product variant.
-        Any price passed for a configurable product SKU will be ignored.
+        > Do not send prices for configurable products SKUs directly as it can cause incorrect price calculations for these products.
 
       operationId: PricesPut
       parameters:
