@@ -364,12 +364,11 @@ paths:
                         "SEARCH"
                       ],
                       "metaTags": {
-                        "title": " ",
-                        "description": "some seo stuff",
+                        "title": "Yoga pants ",
+                        "description": "Climb with Zeppelin Yoga Pant",
                         "keywords": [
                           "pants",
-                          "seo",
-                          "words"
+                          "yoga"
                         ]
                       },
                       "attributes": [
@@ -409,6 +408,196 @@ paths:
                         {
                           "path": "pants/red-pants",
                           "position": 1
+                        }
+                      ]
+                    }
+                  ]
+              ConfigurableProductWithVariants:
+                summary: Create a configurable product with 4 product variants
+                description: >
+                  Create a configurable product `pants` with 4 product variants: `pants-red-32`, `pants-red-44`, `pants-green-32` and `pants-green-44`.
+                value:
+                  [
+                    {
+                      "sku": "pants",
+                      "scope": {
+                        "locale": "en"
+                      },
+                      "name": "Yoga pants",
+                      "slug": "zeppelin-yoga-pant",
+                      "status": "ENABLED",
+                      "visibleIn": [
+                        "CATALOG"
+                      ],
+                      "options": [
+                        {
+                          "id": "color",
+                          "label": "Pants color",
+                          "required": true,
+                          "defaultValueId": "pants-color-red",
+                          "type": "SWATCH",
+                          "values": [
+                            {
+                              "id": "pants-color-red",
+                              "label": "Red",
+                              "colorHex": "#ff0000"
+                            },
+                            {
+                              "id": "pants-color-green",
+                              "label": "Green",
+                              "imageUrl": "https://www.example.com/media/catalog/product/green_main_1.jpg"
+                            }
+                          ]
+                        },
+                        {
+                          "id": "size",
+                          "label": "Pants size",
+                          "required": true,
+                          "defaultValueId": "pants-size-32",
+                          "type": "CONFIGURABLE",
+                          "values": [
+                            {
+                              "id": "pants-size-32",
+                              "label": "32"
+                            },
+                            {
+                              "id": "pants-size-44",
+                              "label": "44"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "sku": "pants-red-32",
+                      "scope": {
+                        "locale": "en"
+                      },
+                      "name": "Zeppelin Yoga Pant Red 32 size",
+                      "slug": "pants-red-32",
+                      "status": "ENABLED",
+                      "attributes": [
+                        {
+                          "code": "color",
+                          "type": "STRING",
+                          "values": [
+                            "Red Pants"
+                          ],
+                          "variantReferenceId": "pants-color-red"
+                        },
+                        {
+                          "code": "size",
+                          "type": "STRING",
+                          "values": [
+                            "32"
+                          ],
+                          "variantReferenceId": "pants-size-32"
+
+                        }
+                      ],
+                      "links": [
+                        {
+                          "type": "variant_of",
+                          "sku": "pants"
+                        }
+                      ]
+                    },
+                    {
+                      "sku": "pants-red-44",
+                      "scope": {
+                        "locale": "en"
+                      },
+                      "name": "Zeppelin Yoga Pant Red 44 size",
+                      "slug": "pants-red-44",
+                      "status": "ENABLED",
+                      "attributes": [
+                        {
+                          "code": "color",
+                          "type": "STRING",
+                          "values": [
+                            "Red Pants"
+                          ],
+                          "variantReferenceId": "pants-color-red"
+                        },
+                        {
+                          "code": "size",
+                          "type": "STRING",
+                          "values": [
+                            "44"
+                          ],
+                          "variantReferenceId": "pants-size-44"
+                        }
+                      ],
+                      "links": [
+                        {
+                          "type": "VARIANT_OF",
+                          "sku": "pants"
+                        }
+                      ]
+                    },
+                    {
+                      "sku": "pants-green-32",
+                      "scope": {
+                        "locale": "en"
+                      },
+                      "name": "Zeppelin Yoga Pant Green 32 size",
+                      "slug": "pants-green-32",
+                      "status": "ENABLED",
+                      "attributes": [
+                        {
+                          "code": "color",
+                          "type": "STRING",
+                          "values": [
+                            "Green Pants"
+                          ],
+                          "variantReferenceId": "pants-color-green"
+                        },
+                        {
+                          "code": "size",
+                          "type": "STRING",
+                          "values": [
+                            "32"
+                          ],
+                          "variantReferenceId": "pants-size-32"
+                        }
+                      ],
+                      "links": [
+                        {
+                          "type": "variant_of",
+                          "sku": "pants"
+                        }
+                      ]
+                    },
+                    {
+                      "sku": "pants-green-44",
+                      "scope": {
+                        "locale": "en"
+                      },
+                      "name": "Zeppelin Yoga Pant green 44 size",
+                      "slug": "pants-green-44",
+                      "status": "ENABLED",
+                      "attributes": [
+                        {
+                          "code": "color",
+                          "type": "STRING",
+                          "values": [
+                            "Green Pants"
+                          ],
+                          "variantReferenceId": "pants-color-green"
+                        },
+                        {
+                          "code": "size",
+                          "type": "STRING",
+                          "values": [
+                            "44"
+                          ],
+                          "variantReferenceId": "pants-size-44"
+                        }
+                      ],
+                      "links": [
+                        {
+                          "type": "variant_of",
+                          "sku": "pants"
                         }
                       ]
                     }
@@ -485,6 +674,41 @@ paths:
                       ]
                     }
                   ]
+              UnassignProductVariant:
+                summary: Unassign product variant `pants-red-32` from configurable product `pants`
+                description: |
+                  To unassign product variant `pants-red-32` from configurable product `pants` you need:
+                  * remove the `variantReferenceId` from the `attributes` field
+                  * remove the `links` association
+                value:
+                  [
+                    {
+                      "sku": "pants-red-32",
+                      "scope": {
+                        "locale": "en"
+                      },
+                      "attributes": [
+                        {
+                          "code": "color",
+                          "type": "STRING",
+                          "values": [
+                            "Red Pants"
+                          ],
+                          "variantReferenceId": null
+                        },
+                        {
+                          "code": "size",
+                          "type": "STRING",
+                          "values": [
+                            "32"
+                          ],
+                          "variantReferenceId": null
+
+                        }
+                      ],
+                      "links": null
+                    }
+                  ]
     delete:
       tags:
         - Products
@@ -513,7 +737,7 @@ paths:
               items:
                 $ref: '#/components/schemas/FeedProductDelete'
             examples:
-              SimpleProductWithImages:
+              DeleteSimpleProduct:
                 summary: Delete product
                 description: >
                   Delete a simple product with a specified `sku` and `scope`.
