@@ -18,7 +18,7 @@ The `attributeMetadata` query returns a list of product attribute codes that can
 
 ## Endpoint
 
-`https://commerce.adobe.io/search/graphql`
+`https://catalog-service.adobe.io/graphql`
 
 ## Required headers
 
