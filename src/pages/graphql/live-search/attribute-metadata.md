@@ -16,9 +16,10 @@ The `attributeMetadata` query returns a list of product attribute codes that can
 
 `attributeMetadata: AttributeMetadataResponse!`
 
-## Endpoint
+## Endpoints
 
-`https://catalog-service.adobe.io/graphql`
+- Testing: `https://catalog-service-sandbox.adobe.io/graphql`
+- Production: `https://catalog-service.adobe.io/graphql`
 
 ## Required headers
 
