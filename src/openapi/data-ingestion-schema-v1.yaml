@@ -1003,7 +1003,7 @@ paths:
       tags:
         - Prices
       summary: Create prices
-      description: >
+      description: |
         <h3>Simple Products</h3>
         Create or replace existing product prices.
 
