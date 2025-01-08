@@ -1003,15 +1003,15 @@ paths:
       tags:
         - Prices
       summary: Create prices
-      description: |
+      description: >
         <h3>Simple Products</h3>
         Create or replace existing product prices.
 
         A price must be associated with at least the default price book with id `main`.
         
         <h3>Configurable Products</h3>
-        Configurable product price is calculated based on the price of the selected product variant.
-        > Do not send prices for configurable products SKUs directly as it can cause incorrect price calculations for these products.
+        Because configurable product price is calculated based on the price of the selected product variant, you don't need to send price
+        data for configurable product skus. Sending price data for these skus can cause incorrect price calculations.
 
       operationId: PricesPut
       parameters:
