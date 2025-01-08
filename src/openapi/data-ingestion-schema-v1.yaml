@@ -1831,6 +1831,7 @@ components:
             type: string
         variantReferenceId:
           type: string
+          nullable: true
           description: |
             The variant reference ID establishes a link between a product variant and the corresponding [Option Value ID](#operation/ProductsPut!path=options/values/id&t=request) in a configurable product.
             Variant reference ID must be defined only for a product that represents a variant of a configurable product.
