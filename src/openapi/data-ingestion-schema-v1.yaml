@@ -413,9 +413,9 @@ paths:
                     }
                   ]
               ConfigurableProductWithVariants:
-                summary: Create a configurable product with 4 product variants
+                summary: Create a configurable product with four product variants
                 description: >
-                  Create a configurable product `pants` with 4 product variants: `pants-red-32`, `pants-red-44`, `pants-green-32` and `pants-green-44`.
+                  Create a configurable product `pants` with four product variants: `pants-red-32`, `pants-red-44`, `pants-green-32` and `pants-green-44`.
                 value:
                   [
                     {
