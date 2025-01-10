@@ -1,19 +1,12 @@
 ---
   name: Staging deployment
   on:
-    workflow_dispatch:
-      inputs:
-        clean:
-          description: 'Clean cache (yes|no)'
-          required: true
-          default: 'yes'
-        excludeSubfolder:
-          description: 'Exclude a subfolder from deletion'
-          required: false
-          default: ''
+    # Trigger the workflow on each push to ccdm-early-access
+    push:
+      branches:
+        - ccdm-early-access
   jobs:
     set-state:
-      if: ${{ github.ref == 'refs/heads/ccdm-early-access' }}
       runs-on: ubuntu-latest
       outputs:
         clean_cache: ${{ contains(github.event.inputs.clean, 'yes') }}
@@ -24,7 +17,7 @@
         - name: Checkout
           uses: actions/checkout@v4
         - name: Get pathPrefix
-          uses: actions/github-script@v6
+          uses: actions/github-script@v7
           id: get_path_prefix
           with:
             script: |

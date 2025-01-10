@@ -7,7 +7,7 @@ info:
     This API provides the following resource collections to create and update catalog data:
 
     - **Metadata**—define and manage product attribute display on the storefront, define search characteristics, and so on
-    - **Products**—define and manage items to include in a commerce catalog. Each product can have multiple attributes including name, price, description, SKU, and images.
+    - **Products**—define and manage items to include in a commerce catalog. Each product can have multiple attributes like name, description, SKU, images, etc.
     - **Price books**—define and manage unique scopes that can be used to manage product price discounts across customer tiers
     - **Prices**—define and manage the prices associated with product SKUs and assign the pricing scope where the price is used
 
@@ -99,7 +99,7 @@ paths:
                       },
                       "label": "Product Name",
                       "dataType": "BOOLEAN",
-                      "roles": ["PDP"],
+                      "visibleIn": ["PRODUCT_DETAIL"],
                       "filterable": false,
                       "sortable": false,
                       "searchable": true,
@@ -115,7 +115,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ProcessFeedResponse'
         '400':
-          description: Request rejected. Some of the received items are invalid. Check the "invalidFeedItems" node for specific errors.
+          description: Request rejected. Some of the received items are invalid. Check the "message" and "errors" fields for details.
           content:
             application/json;charset=UTF-8:
               schema:
@@ -186,7 +186,7 @@ paths:
                   Please note, field with `array` type will replace existing data.
                   Example bellow updates the following attributes:
                   * `label` - Change the product attribute label.
-                  * `roles` - Remove the `PLP` role for the product attribute.
+                  * `visibleIn` - Add `PRODUCT_LISTING` role to the product attribute.
                 value:
                   [
                     {
@@ -195,7 +195,7 @@ paths:
                         "locale": "en"
                       },
                       "label": "Updated - Product Name",
-                      "roles": ["PDP"]
+                      "visibleIn": ["PRODUCT_DETAIL", "PRODUCT_LISTING"]
                     }
                   ]
       responses:
@@ -302,10 +302,25 @@ paths:
         - Products
       summary: Create products
       description: |
+        <h3>Simple Products</h3>
         Create products or replace existing products with a specified `sku` and `scope`.
         If a product with the same data exists with the same SKU and scope, the product update request is ignored.
 
-        Use the update operation to modify values for an existing product.
+        Use the [update operation](#operation/ProductsPatch) to modify values for an existing product.
+        
+        <h3>Configurable Products</h3>
+        A configurable product is a product that offers multiple options, such as color and size. Each unique combination of these options, like 'color green' and 'size large,' defines a product variant. This variant is an independent product with its own SKU, price, and inventory. The configurable product acts as a container for these product variants.
+        
+        To create a configurable product, you need the following:
+        - [Product attributes](#operation/ProductMetadataPut): Define the product attributes used to define a configurable product, such as "color", "size", etc.
+        - [Configurable product](#operation/ProductsPut): Define the configurable product. [Options](#operation/ProductsPut!path=options&t=request) is a required field. It defines the choices that a shopper can select.
+        - [Product variant](#operation/ProductsPut): Define a product variant for a configurable product. ["Attributes"](#operation/ProductsPut!path=attributes) with ["variantReferenceId"](#operation/ProductsPut!path=attributes/variantReferenceId&t=request) and ["links"](#operation/ProductsPut!path=links&t=request) of type `VARIANT_OF` must be defined for product variants.
+        
+        Each product variant links back to the configurable product through its `variantReferenceId`, which corresponds to specific `options[].values[].id` in the configurable product.
+        
+        To unassign a product variant from a configurable product, do one of the following:
+        - Use [Delete Product API](#operation/ProductsDelete) to delete the product variant.
+        - Use [Update Product API](#operation/ProductsPatch) to set the ["variantReferenceId"](#operation/ProductsPut!path=attributes/variantReferenceId&t=request) to `null` and unassign the product variant from the configurable product by removing the ["links"](#operation/ProductsPut!path=links&t=request) association.
       operationId: ProductsPut
       parameters:
         - $ref: '#/components/parameters/DATA_SPACE_ID'
@@ -344,9 +359,9 @@ paths:
                       "status": "ENABLED",
                       "description": "long description about red pants",
                       "shortDescription": "just pants",
-                      "roles": [
-                        "PLP",
-                        "SRP"
+                      "visibleIn": [
+                        "CATALOG",
+                        "SEARCH"
                       ],
                       "metaTags": {
                         "title": " ",
@@ -379,8 +394,11 @@ paths:
                           "url": "https://example.com/images/pants.jpg",
                           "label": "photo of my pants!",
                           "roles": [
-                            "PDP",
-                            "plp"
+                            "BASE",
+                            "SMALL"
+                          ],
+                          "customRoles": [
+                            "widget"
                           ]
                         }
                       ],
@@ -436,6 +454,7 @@ paths:
                   * `name` - Change the product name.
                   * `metaTags.title` - Change the title of the product detail page.
                   * `attributes` - Add a new state, `NM` to the `states` attribute.
+                value:
                   [
                     {
                       "sku": "red-pants",
@@ -761,9 +780,15 @@ paths:
         - Prices
       summary: Create prices
       description: |
+        <h3>Simple Products</h3>
         Create or replace existing product prices.
 
         A price must be associated with at least the default price book with id `main`.
+        
+        <h3>Configurable Products</h3>
+        Configurable product price is calculated based on the price of the selected product variant.
+        > Do not send prices for configurable products SKUs directly as it can cause incorrect price calculations for these products.
+
       operationId: PricesPut
       parameters:
         - name: DATA_SPACE_ID
@@ -1093,6 +1118,9 @@ components:
         message:
           type: string
           description: Error description
+        value:
+          type: string
+          description: Original value passed in the request.
     FeedMetadata:
       title: FeedMetadata
       description: Metadata information for a product attribute.
@@ -1108,15 +1136,20 @@ components:
           description: Attribute code
         scope:
           $ref: '#/components/schemas/Scope'
-        roles:
+        visibleIn:
           type: array
           description: |
-            Roles associated with this attribute that determine how the attribute is used on the storefront.
-            * `PDP`: Product attribute is visible on Product Detail Page.
-            * `PLP`: Product attribute is visible on Product Listing Page.
-            * `SRP`: Product attribute is visible on Search Results Page.
+            Determines how the attribute is used on the storefront.
+            * `PRODUCT_DETAIL`: Product attribute is visible on the Product Detail Page.
+            * `PRODUCT_LISTING`: Product attribute is visible on Product Listing Page.
+            * `SEARCH_RESULTS`: Product attribute is visible on Search Results Page.
+            * `PRODUCT_COMPARE`: Product attribute is visible on Product Compare Page.
           items:
-            type: string
+            enum:
+              - PRODUCT_DETAIL
+              - PRODUCT_LISTING
+              - SEARCH_RESULTS
+              - PRODUCT_COMPARE
         label:
           type: string
           description: Label for the attribute that is displayed in user interfaces.
@@ -1171,15 +1204,20 @@ components:
           description: Attribute code
         scope:
           $ref: '#/components/schemas/Scope'
-        roles:
+        visibleIn:
           type: array
           description: |
-            Roles associated with this attribute that determine how the attribute is used on the storefront.
-            * `PDP`: Product attribute is visible on Product Detail Page.
-            * `PLP`: Product attribute is visible on Product Listing Page.
-            * `SRP`: Product attribute is visible on Search Results Page.
+            Determines how the attribute is used on the storefront.
+            * `PRODUCT_DETAIL`: Product attribute is visible on the Product Detail Page.
+            * `PRODUCT_LISTING`: Product attribute is visible on Product Listing Page.
+            * `SEARCH_RESULTS`: Product attribute is visible on Search Results Page.
+            * `PRODUCT_COMPARE`: Product attribute is visible on Product Compare Page.
           items:
-            type: string
+            enum:
+              - PRODUCT_DETAIL
+              - PRODUCT_LISTING
+              - SEARCH_RESULTS
+              - PRODUCT_COMPARE
         label:
           type: string
           description: Label for the attribute that is displayed in user interfaces.
@@ -1275,15 +1313,17 @@ components:
           enum:
             - ENABLED
             - DISABLED
-        roles:
+        visibleIn:
           type: array
           description: |
             Storefront area where the product is visible. An empty list means that it is not visible as a stand alone product.
-            * `PLP`: Product attribute is visible on Product Listing Page and Product Detail Page.
-            * `SRP`: Product attribute is visible on Search Results Page and Product Detail Page.
-          example: [PLP]
+            * `CATALOG`: Product is visible on Product Listing Page and Product Detail Page.
+            * `SEARCH`: Product is visible on Search Results Page and Product Detail Page.
+          example: [CATALOG]
           items:
-            type: string
+            enum:
+              - CATALOG
+              - SEARCH
         metaTags:
           type: object
           description: Meta attributes that are specified in <meta> tags.
@@ -1311,7 +1351,7 @@ components:
             $ref: '#/components/schemas/ProductRoutes'
         options:
           type: array
-          description: Options associated with the product.
+          description: Composite products, such as configurable products, must provide a list of product options that a shopper can select (for example, "color", "size", etc.).
           items:
             $ref: '#/components/schemas/ProductOption'
     FeedProductUpdate:
@@ -1352,15 +1392,17 @@ components:
           enum:
             - ENABLED
             - DISABLED
-        roles:
+        visibleIn:
           type: array
           description: |
             Storefront area where the product is visible. An empty list means that it is not visible as a stand alone product.
-            * `PLP`: Product attribute is visible on Product Listing Page and Product Detail Page.
-            * `SRP`: Product attribute is visible on Search Results Page and Product Detail Page.
-          example: [PLP]
+            * `CATALOG`: Product is visible on Product Listing Page and Product Detail Page.
+            * `SEARCH`: Product is visible on Search Results Page and Product Detail Page.
+          example: [CATALOG]
           items:
-            type: string
+            enum:
+              - CATALOG
+              - SEARCH
         metaTags:
           type: object
           description: Meta attributes that are specified in <meta> tags.
@@ -1378,7 +1420,9 @@ components:
             $ref: '#/components/schemas/ProductImage'
         links:
           type: array
-          description: A list of linked SKUs.
+          description: |
+            A list of linked SKUs. For product variants, this is a required field that establishes a link between a product variant and the corresponding configurable product.
+            `VARIANT_OF` link type must be specified to establish a connection to the configurable product SKU.
           items:
             $ref: '#/components/schemas/ProductLink'
         routes:
@@ -1445,7 +1489,7 @@ components:
           type: array
           description: Active discounts
           items:
-            oneOf:
+            anyOf:
               - $ref: '#/components/schemas/DiscountsFinalPrice'
               - $ref: '#/components/schemas/DiscountsPercentage'
     FeedPricesUpdate:
@@ -1470,7 +1514,7 @@ components:
           type: array
           description: Active discounts
           items:
-            oneOf:
+            anyOf:
               - $ref: '#/components/schemas/DiscountsFinalPrice'
               - $ref: '#/components/schemas/DiscountsPercentage'
     FeedPricesDelete:
@@ -1492,7 +1536,7 @@ components:
       type: object
       properties:
         code:
-          type: object
+          type: string
         price:
           type: number
           format: float
@@ -1501,7 +1545,7 @@ components:
       type: object
       properties:
         code:
-          type: object
+          type: string
         percentage:
           type: number
           format: float
@@ -1558,9 +1602,14 @@ components:
             - `OBJECT`: Accept JSON object `"{"name": "swatch", "color": "red"}"`
         values:
           type: array
-          description: A list of value(s) associated with a specified attribute type.
+          description: A list of value(s) associated with a specified attribute code.
           items:
             type: string
+        variantReferenceId:
+          type: string
+          description: |
+            The variant reference ID establishes a link between a product variant and the corresponding [Option Value ID](#operation/ProductsPut!path=options/values/id&t=request) in a configurable product.
+            Variant reference ID must be defined only for a product that represents a variant of a configurable product.
     ProductRoutes:
       title: Routes
       type: object
@@ -1588,8 +1637,22 @@ components:
           description: Media resource label
         roles:
           type: array
+          description: |
+            Roles associated with this image that determine how the image is used on the storefront.
+            - `BASE`: Product image is visible as a main image on the Product Detail Page.
+            - `SMALL`: Product image is visible as a main image on the Category or search result page or other product listing pages.
+            - `THUMBNAIL`: Thumbnail images appear in the thumbnail gallery, shopping cart, etc.
+            - `SWATCH`: A swatch can be used to illustrate the color, pattern, or texture.
+          items:
+            enum:
+              - BASE
+              - SMALL
+              - THUMBNAIL
+              - SWATCH
+        customRoles:
+          type: array
           description: >
-             Roles associated with this image that determine how the image is used on the storefront, for example image for PDP, PLP, and so on.
+             Custom image role. Merchants can define custom roles in addition to the predefined values.
           items:
             type: string
     ProductOption:
@@ -1602,32 +1665,30 @@ components:
       properties:
         id:
           type: string
-          description: Product Option ID
+          description: |
+            Product option ID. For `CONFIGURABLE` or `SWATCH` option types, this ID must be match the ["attribute code"](#operation/ProductsPut!path=attributes/code&t=request) used for the configurable product (for example, "color").
         label:
           type: string
           description: Option label
         required:
           type: boolean
-          description: Indicates whether selecting the option is required.
+          description: Indicates whether selecting the option is required by a shopper to add a product to the shopping cart.
           example: false
         defaultValueId:
           type: string
-          description: Specifies the pre-selected value for the option.
+          description: Specifies the pre-selected value id of the current option.
         type:
           type: string
           enum:
             - CONFIGURABLE
-            - BUNDLE
             - SWATCH
           description: |
             Option type. Indicates the product type the option can be assigned to.
-            Merchants can define custom types in addition to the predefined values.
             - `CONFIGURABLE`: Configurable product option
-            - `BUNDLE`: Bundle product option
-            - `SWATCH`: Swatch product option
+            - `SWATCH`: Swatch product option. Must be used for color or text swatches attributes
         values:
           type: array
-          description: A list of option values.
+          description: A list of option values. Defines option values available to shoppers (for example, "red" color or "large" size).
           items:
             $ref: '#/components/schemas/ProductOptionValue'
     ProductOptionValue:
@@ -1635,23 +1696,25 @@ components:
       type: object
       required:
         - id
-        - sku
       properties:
         id:
           type: string
-          description: Option value ID. For "CONFIGURABLE" type, must be equal to the "attribute code".
+          description: |
+            Option value ID.
+            For `CONFIGURABLE` or `SWATCH` option types, this ID must match the ["variantReferenceId"](#operation/ProductsPut!path=attributes/variantReferenceId&t=request) defined in the product variant.
         label:
           type: string
           description: Option value label
         colorHex:
           type: string
-          description: A hex representation of the color of the option value.
+          description: A hex representation of the color of the option value. Can be used for option with a SWATCH type.
         imageUrl:
           type: string
-          description: Image URL of the option value
-        sku:
-          type: string
-          description: Product SKU associated with the option value.
+          description: Image URL of the option value. Can be used for option with a SWATCH type.
+# Reason for hiding: it's relevant only for Bundle Product which is not yet supported by CCDM API
+#        sku:
+#          type: string
+#          description: Product SKU associated with the option value.
     ProductLink:
       title: Links
       required:
@@ -1661,10 +1724,12 @@ components:
       properties:
         type:
           type: string
-          description: Product link type. Merchants can define custom types in addition to the predefined values.
+          description: |
+            Product link type. Merchants can define custom types in addition to the predefined values.
+            `VARIANT_OF` link type must be specified to establish a connection to the configurable product SKU.
         sku:
           type: string
-          description: SKU
+          description: Product SKU
       description: Product association
     ItemFailedValidationResult:
       title: ItemFailedValidationResult
@@ -1687,53 +1752,51 @@ components:
       title: Response payload
       type: object
       properties:
-        feedItemReceivedCount:
+        status:
+          type: string
+          description: Request status.
+          default: ACCEPTED
+        acceptedCount:
           type: integer
-          description: The number of valid items received and processed.
+          description: The number of received and accepted items.
           format: int32
-        invalidFeedItems:
-          type: array
-          description: List of items that did not pass validation. Fix the payload for invalid items before resubmitting the request.
-          items:
-            $ref: '#/components/schemas/FeedItemFailedValidationResult'
       example:
         {
-          "feedItemReceivedCount": 2,
-          "invalidFeedItems": [
-            {
-              "itemIndex": 1,
-              "code": "{error code}",
-              "message": "{error message}"
-            }
-          ]
+          "status": "ACCEPTED",
+          "acceptedCount": 4
         }
     400ProcessFeedResponse:
       title: Response payload
       type: object
       properties:
-        feedItemReceivedCount:
-          type: integer
-          description: 0 valid items
-          format: int32
-          default: 0
-        invalidFeedItems:
+        status:
+          type: string
+          description: Request status.
+          default: FAILED
+        message:
+          type: string
+          description: Error summary
+        errors:
           type: array
           description: List of items that did not pass validation. Fix the payload for invalid items before resubmitting the request.
           items:
             $ref: '#/components/schemas/FeedItemFailedValidationResult'
       example:
         {
-          "feedItemReceivedCount": 0,
-          "invalidFeedItems": [
+          "status": "FAILED",
+          "message": "Items validation failed for 2 items",
+          "errors": [
             {
               "itemIndex": 0,
-              "code": "{error code}",
-              "message": "{error message}"
+              "code": "status",
+              "message": "status: does not have a value in the enumeration [\"ENABLED\", \"DISABLED\"]",
+              "value": "active"
             },
             {
               "itemIndex": 1,
-              "code": "{error code}",
-              "message": "{error message}"
+              "code": "scope",
+              "message": "required property 'scope' not found",
+              "value": ""
             }
           ]
         }

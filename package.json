@@ -30,7 +30,6 @@
     "serve": "NODE_OPTIONS='--max-old-space-size=8192' gatsby serve",
     "clean": "gatsby clean",
     "test": "remark src/pages --quiet --frail",
-    "lint": "docker run --rm -e RUN_LOCAL=true --env-file .github/super-linter.env -v \"$PWD\":/tmp/lint github/super-linter:slim-v5",
     "build:admin-api": "spectaql --target-file index.html --config spectaql/config-admin.yml",
     "dev:admin-api": "spectaql --development-mode-live --config spectaql/config-admin.yml",
     "build:storefront-api": "spectaql --target-file index.html --config spectaql/config-storefront.yml",
