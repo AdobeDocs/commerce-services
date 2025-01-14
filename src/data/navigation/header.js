@@ -1,31 +1,35 @@
 module.exports = [
     {
-      title: "Services",
+      title: "Commerce Data Services",
       path: "/",
     },
     {
-      title: "Events",
+      title: "Composable Catalog Data Model",
       menu: [
         {
-          title: "Storefront Events SDK",
-          path: "/shared-services/"
+          title: "Overview",
+          path: "/composable-catalog/"
         },
         {
-          title: "Live Search",
-          path: "/live-search/"
-        }
+          title: "Catalog data ingestion",
+          path: "/composable-catalog/data-ingestion/"
+        },
+        {
+          title: "Catalog management and rules",
+          path: "/composable-catalog/admin/"
+        },
+        {
+          title: "Storefront",
+          path: "/composable-catalog/storefront-services/"
+        },
       ]
     },
     {
-      title: "Reporting",
-      path: "/reporting/",
+      title: "Storefront APIs",
+      path: "/graphql/"
     },
     {
-      title: "GraphQL",
-      path: "/graphql/",
-    },
-    {
-      title: "SDKs",
+      title: "Events and SDKs",
       menu: [
         {
           title: "Storefront Events SDK",
@@ -34,7 +38,15 @@ module.exports = [
         {
           title: "Product Recommendations SDK",
           path: "/product-recommendations/"
-        }
+        },
+        {
+          title: "Live Search Events",
+          path: "/live-search/"
+        },
       ]
     },
+    {
+      title: "Reporting",
+      path: "/reporting/"
+   }
   ];
