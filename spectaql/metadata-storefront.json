@@ -1,0 +1,11 @@
+{
+    "OBJECT": {
+        "Query": {
+            "fields": {
+                "categories": {
+                    "documentation": { "undocumented": true }
+                }
+            }
+        }
+    }
+}
