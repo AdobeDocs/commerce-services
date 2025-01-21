@@ -217,7 +217,8 @@ paths:
             application/json;charset=UTF-8:
               schema:
                 $ref: '#/components/schemas/403Response'
-    delete:
+  /v1/catalog/products/metadata/{DATA_SPACE_ID}/delete:
+    post:
       tags:
         - Metadata
       summary: Delete product attributes metadata.
@@ -709,7 +710,8 @@ paths:
                       "links": []
                     }
                   ]
-    delete:
+  /v1/catalog/products/{DATA_SPACE_ID}/delete:
+    post:
       tags:
         - Products
       summary: Delete products
@@ -920,7 +922,8 @@ paths:
             application/json;charset=UTF-8:
               schema:
                 $ref: '#/components/schemas/403Response'
-    delete:
+  /v1/catalog/price-books/{DATA_SPACE_ID}/delete:
+    post:
       tags:
         - Price Books
       summary: Delete price books
@@ -1185,7 +1188,8 @@ paths:
             application/json;charset=UTF-8:
               schema:
                 $ref: '#/components/schemas/403Response'
-    delete:
+  /v1/catalog/products/prices/{DATA_SPACE_ID}/delete:
+    post:
       tags:
         - Prices
       summary: Delete prices
