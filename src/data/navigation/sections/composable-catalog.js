@@ -53,6 +53,9 @@ module.exports = [
                 },
             ]
         },
+        { title: "Set up and manage catalogs",
+          path: "/composable-catalog/ccdm-use-case.md"
+      },
     ]
   },
 ];
