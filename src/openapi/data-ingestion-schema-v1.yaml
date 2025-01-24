@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   title: Catalog Data Ingestion API
   description: |
-    Use the Catalog data ingestion API to create and manage products and price books and directly integrate catalog data with the Commerce catalog service.
+   The Catalog Data Ingestion API allows you to create and manage products and price books and directly integrate catalog data with the Commerce catalog service.
 
     This API provides the following resource collections to create and update catalog data:
 
@@ -19,12 +19,12 @@ servers:
 tags:
   - name: Metadata
     description: |
-      Product attributes metadata allows you to define how to display product attributes on the storefront, define search characteristics, and so on.
+      Product attribute metadata allows you to define how to display product attributes on the storefront, define search characteristics, and so on.
   - name: Products
     description: Product API to manage product data
   - name: Price Books
     description: |
-          Price books defines a unique scope that can be used to manage product price discounts across customer tiers.
+          Price books define a unique scope that can be used to manage product price discounts across customer tiers.
           You can also specify the currency to use for product prices in the specified price book.
 
           The catalog data model provides a default price book with id `main` and currency in US dollars (`USD`).
@@ -37,7 +37,7 @@ paths:
     post:
       tags:
         - Metadata
-      summary: Create product attributes metadata
+      summary: Create product attribute metadata.
       description: |
         Create or replace existing product attribute metadata resources.
 
@@ -98,7 +98,7 @@ paths:
                         "locale": "en"
                       },
                       "label": "Product Name",
-                      "dataType": "BOOLEAN",
+                      "dataType": "TEXT",
                       "visibleIn": ["PRODUCT_DETAIL"],
                       "filterable": false,
                       "sortable": false,
@@ -129,7 +129,7 @@ paths:
     patch:
       tags:
         - Metadata
-      summary: Update product attributes metadata
+      summary: Update product attribute metadata.
       description: |
         Update existing product attribute metadata with new values.
         When the update is processed, the merge strategy is used to apply changes to `scalar` and `object` type fields. The replace strategy is used to apply changes for fields in an `array`.
@@ -180,10 +180,10 @@ paths:
                 $ref: '#/components/schemas/FeedMetadataUpdate'
             examples:
               FeedWithMetadataInformation:
-                summary: Example of product attributes metadata
+                summary: Example of product attribute metadata
                 description: |
                   Update existing product attribute metadata with new values.
-                  Please note, field with `array` type will replace existing data.
+                  Note that fields with the `array` type will replace existing data.
                   Example bellow updates the following attributes:
                   * `label` - Change the product attribute label.
                   * `visibleIn` - Add `PRODUCT_LISTING` role to the product attribute.
@@ -266,7 +266,7 @@ paths:
                 $ref: '#/components/schemas/FeedMetadataDelete'
             examples:
               FeedWithMetadataInformation:
-                summary: Delete product attributes metadata
+                summary: Delete product attribute metadata.
                 description: Marks existing product attribute metadata as deleted.
                 value:
                   [
@@ -301,7 +301,7 @@ paths:
     post:
       tags:
         - Products
-      summary: Create products
+      summary: Create products.
       description: |
         <h3>Simple Products</h3>
         Create products or replace existing products with a specified `sku` and `scope`.
@@ -345,7 +345,7 @@ paths:
                 $ref: '#/components/schemas/FeedProduct'
             examples:
               SimpleProductWithImages:
-                summary: Create a simple product
+                summary: Create a simple product.
                 description: >
                   Create a simple product with required and optional fields.
                 value:
@@ -414,7 +414,7 @@ paths:
                     }
                   ]
               ConfigurableProductWithVariants:
-                summary: Create a configurable product with four product variants
+                summary: Create a configurable product with four product variants.
                 description: >
                   Create a configurable product `pants` with four product variants: `pants-red-32`, `pants-red-44`, `pants-green-32` and `pants-green-44`.
                 value:
@@ -606,7 +606,7 @@ paths:
     patch:
       tags:
         - Products
-      summary: Update products
+      summary: Update products.
       description: |
         Update products with specified "sku" and "scope" to replace existing field data with the data supplied in the request.
         When the update is processed, the merge strategy is used to apply changes to `scalar` and `object` type fields.
@@ -634,7 +634,7 @@ paths:
                 $ref: '#/components/schemas/FeedProductUpdate'
             examples:
               SimpleProductWithImages:
-                summary: Update a simple product
+                summary: Update a simple product.
                 description: |
                   Update a simple product with the values provided in the request.
                   On update, changes to `scalar` and `object` type fields are applied using the merge strategy.
@@ -676,7 +676,7 @@ paths:
                     }
                   ]
               UnassignProductVariant:
-                summary: Unassign product variant `pants-red-32` from configurable product `pants`
+                summary: Unassign product variant `pants-red-32` from configurable product `pants`.
                 description: |
                   To unassign product variant `pants-red-32` from configurable product `pants` you need:
                   * remove the `variantReferenceId` from the `attributes` field
@@ -714,7 +714,7 @@ paths:
     post:
       tags:
         - Products
-      summary: Delete products
+      summary: Delete products.
       description: >
         Delete products with specified "sku" and "scope".
       operationId: ProductsDelete
@@ -740,7 +740,7 @@ paths:
                 $ref: '#/components/schemas/FeedProductDelete'
             examples:
               DeleteSimpleProduct:
-                summary: Delete product
+                summary: Delete product.
                 description: >
                   Delete a simple product with a specified `sku` and `scope`.
                 value:
@@ -757,7 +757,7 @@ paths:
     post:
       tags:
         - Price Books
-      summary: Create price books
+      summary: Create price books.
       description: |
          Create or replace existing price books.
 
@@ -805,7 +805,7 @@ paths:
                 $ref: '#/components/schemas/FeedPricebook'
             examples:
               FeedWithPricebookInformation:
-                summary: Create a price book
+                summary: Create a price book.
                 description: Create a price book and specify the currency for prices.
                 value:
                   [
@@ -841,7 +841,7 @@ paths:
     patch:
       tags:
         - Price Books
-      summary: Update price books
+      summary: Update price books.
       description: |-
         Update existing price books to change the name or the currency used for pricing.
         When the update is processed, the merge strategy is used to apply changes to `scalar` and `object` type fields. The replace strategy is used to apply changes for fields in an `array`.
@@ -890,7 +890,7 @@ paths:
                 $ref: '#/components/schemas/FeedPricebook'
             examples:
               FeedWithPriceBookInformation:
-                summary: Update existing price books
+                summary: Update existing price books.
                 description: Update the "dealer-north" and default "main" price books to change the currency.
                 value:
                   [
@@ -926,7 +926,7 @@ paths:
     post:
       tags:
         - Price Books
-      summary: Delete price books
+      summary: Delete price books.
       description: |
          Delete existing price books.
          Note that you cannot delete the default price book with id `main`.
@@ -973,7 +973,7 @@ paths:
                 $ref: '#/components/schemas/FeedPricebook'
             examples:
               DeleteExistingPricebook:
-                summary: Delete price book "dealer-north"
+                summary: Delete price book "dealer-north".
                 description: Delete the "dealer-north" price book.
                 value:
                   [
@@ -1005,7 +1005,7 @@ paths:
     post:
       tags:
         - Prices
-      summary: Create prices
+      summary: Create prices.
       description: |
         <h3>Simple Products</h3>
         Create or replace existing product prices.
@@ -1059,7 +1059,7 @@ paths:
                 $ref: '#/components/schemas/FeedPrices'
             examples:
               FeedWithNewProductPrice:
-                summary: Add product price information
+                summary: Add product price information.
                 description: Add product price information to the catalog data.
                 value:
                   [
@@ -1107,7 +1107,7 @@ paths:
     patch:
       tags:
         - Prices
-      summary: Update prices
+      summary: Update prices.
       description: |
         Change existing product prices.
         When the update is processed, the merge strategy is used to apply changes to `scalar` and `object` type fields. The replace strategy is used to apply changes for fields in an `array`.
@@ -1154,7 +1154,7 @@ paths:
                 $ref: '#/components/schemas/FeedPricesUpdate'
             examples:
               FeedWithProductPricesInformation:
-                summary: Product prices update
+                summary: Product prices update.
                 description: Update existing product prices for the given SKU ("red-pants") and price book id ("dealer-north").
                 value:
                   [
@@ -1192,7 +1192,7 @@ paths:
     post:
       tags:
         - Prices
-      summary: Delete prices
+      summary: Delete prices.
       description: >
         Delete existing product prices
       operationId: PricesDelete
@@ -1238,7 +1238,7 @@ paths:
                 $ref: '#/components/schemas/FeedPricesDelete'
             examples:
               FeedWithProductPricesInformation:
-                summary: Product prices delete
+                summary: Product prices delete.
                 description: >
                   Delete the existing product prices information
                 value:
@@ -1824,7 +1824,7 @@ components:
           description: |
             Type of attribute value to be applied during the rendering phase. Validation occurs only when the code is rendered. Invalid values are ignored.
             - `BOOLEAN`: Accept single value: "true" or false
-            - `Number`: Accept single number,e.g. "85", "0.42", etc.
+            - `NUMBER`: Accept single number,e.g. "85", "0.42", etc.
             - `STRING`: Accept single string,e.g. "Great day, yall!"
             - `ARRAY`: Accept list of strings ,e.g. ["red", "green", "blue"]
             - `OBJECT`: Accept JSON object `"{"name": "swatch", "color": "red"}"`
@@ -2004,7 +2004,7 @@ components:
           default: FAILED
         message:
           type: string
-          description: Error summary
+          description: Error summary.
         errors:
           type: array
           description: List of items that did not pass validation. Fix the payload for invalid items before resubmitting the request.
