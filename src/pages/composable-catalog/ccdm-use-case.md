@@ -47,9 +47,11 @@ To demonstrate an end-to-end workflow using CCDM, this use-case has the followin
 
 In the code samples below, you define the products, channels, and policies, then make API calls using the [Storefront API](./admin/using-the-api.md).
 
-### SKU one data ingestion: Motor part 1 (Brand A, USA)
+### Create product details
 
-The following code sample provides the details of a product called "Motor Part 1".
+In this section, you add two products: "Motor Part 1" and "Motor Part 2" directly to Commerce SaaS data storage. In the code samples below, you submit a [Create products](https://developer-stage.adobe.com/commerce/services/composable-catalog/data-ingestion/api-reference/#operation/ProductsPut) request using the Data Ingestion API.
+
+The following code sample adds the product "Motor Part 1" with an attribute called "Brand A" and the country set as "USA".
 
 ```json
 {
@@ -118,9 +120,7 @@ The following code sample provides the details of a product called "Motor Part 1
 }
 ```
 
-### SKU two data ingestion: Motor part 2 (Brand B, UK)
-
-The following code sample provides the details of a product called "Motor Part 2".
+The following code sample adds the product "Motor Part 2" with an attribute called "Brand B" and the country set as "UK".
 
 ```json
 {
@@ -189,9 +189,11 @@ The following code sample provides the details of a product called "Motor Part 2
 }
 ```
 
-### Channel: Definition
+### Define the channel and policies
 
-Create a channel for `Company A` by using the `createChannel` GraphQL mutation from the Catalog Management API.  This code sample creates the channel with  policy specific details.
+In this section, you create a channel for `Company A` using the `createChannel` GraphQL mutation from the Catalog Management API. There are two policies for this channel: one for the location ("USA" and "UK") and one for the brand ("Brand A" and "Brand B").
+
+This first code sample creates the channel.
 
 ```json
 {
@@ -212,9 +214,7 @@ Create a channel for `Company A` by using the `createChannel` GraphQL mutation f
 }
 ```
 
-### Policy one: Location definition
-
-This code sample creates a new policy specific to location.
+Now you define the location policy for this channel.
 
 ```json
 {
@@ -249,9 +249,7 @@ This code sample creates a new policy specific to location.
 }
 ```
 
-### Policy two: Brand definition
-
-This code sample creates an additional policy specific to the brand.
+Now you define the brand policy for this channel.
 
 ```json
 {
@@ -288,7 +286,7 @@ This code sample creates an additional policy specific to the brand.
 
 ### Storefront API call – 1: Retrieve SKU for Brand A and location USA
 
-In this API call, you retrieve the SKU for `Brand A` where location is `USA`.
+In this API call, you retrieve the SKU for `Brand A` where location is `USA`. The brand and location (`AC-Policy-Brand` and `AC-Policy-Country`) are passed in as headers. Learn [more](https://developer-stage.adobe.com/commerce/services/composable-catalog/storefront-services/using-the-api/#headers) about the headers used in CCDM.
 
 The following lists the sample headers:
 
@@ -297,15 +295,11 @@ The following lists the sample headers:
 - `Magento-Store-Code`: `main_website_store`
 - `AC-Locale`: `default`
 - `AC-Price-Book-Id`: `base`
-- **`AC-Channel-Id`: `channelId-1`**
+- `AC-Channel-Id`: `channelId-1`
 - `AC-Policy-State`: `AC-Policy-Country`
 - `X-Api-Key`: `search_gql`
-- **`AC-Policy-Country`: `USA`**
-- **`AC-Policy-Brand`: `Brand A`**
-
->[!INFO]
->
->In the above headers, `AC-Channel-Id`, `AC-Policy-Country`, and `AC-Policy-Brand` are concepts unique to CCDM.
+- `AC-Policy-Country`: `USA`
+- `AC-Policy-Brand`: `Brand A`
 
 #### Request
 
@@ -459,7 +453,7 @@ Here are the variables specified in the request:
 
 ### Storefront API call – 2: Retrieve SKU for Brand B and location UK
 
-In this API call, you retrieve the SKU for `Brand B` where location is `UK`.
+In this API call, you retrieve the SKU for `Brand B` where location is `UK`. The brand and location (`AC-Policy-Brand` and `AC-Policy-Country`) are passed in as headers. Learn [more](https://developer-stage.adobe.com/commerce/services/composable-catalog/storefront-services/using-the-api/#headers) about the headers used in CCDM.
 
 The following lists the sample headers:
 
@@ -468,15 +462,11 @@ The following lists the sample headers:
 - `Magento-Store-Code`: `main_website_store`
 - `AC-Locale`: `default`
 - `AC-Price-Book-Id`: `base`
-- **`AC-Channel-Id`: `channelId-1`**
+- `AC-Channel-Id`: `channelId-1`
 - `AC-Policy-State`: `AC-Policy-Brand`
 - `X-Api-Key`: `search_gql`
-- **`AC-Policy-Brand`: `Brand B`**
-- **`AC-Policy-Country`: `UK`**
-
->[!INFO]
->
->In the above headers, `AC-Channel-Id`, `AC-Policy-Country`, and `AC-Policy-Brand` are concepts unique to CCDM.
+- `AC-Policy-Brand`: `Brand B`
+- `AC-Policy-Country`: `UK`
 
 #### Request
 
