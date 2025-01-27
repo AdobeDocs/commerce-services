@@ -28,8 +28,8 @@ To demonstrate an end-to-end workflow using CCDM, this use-case has the followin
   - The channel is linked to two policies.
 
 - Two Policies
-  - Policy one - Location: Defines the catalog projection for `locations` where a particular SKU is aimed to be sold. For example: `UK`, `USA`.
-  - Policy two - Brand: Defines the catalog projection for `brands` to which different SKUs belong. For example: `Brand A`, `Brand B`.
+  - Policy one - Location: Defines the catalog projection for `locations`. This projection can be used to specify a target geographic market for selling specified SKUs. For example: `UK`, `USA`.
+  - Policy two - Brand: Defines the catalog projection for `brands`. This projection can be used to specify one or more brands associated with each product SKU, for example `Brand A`, `Brand B`.
 
 - SKUs
   - The example uses two SKUs:
@@ -191,7 +191,7 @@ The following code sample provides the details of a product called "Motor Part 2
 
 ### Channel: Definition
 
-This code sample creates a new channel with specific details.
+Create a channel for `Company A` by using the `createChannel` GraphQL mutation from the Catalog Management API.  This code sample creates the channel with  policy specific details.
 
 ```json
 {
