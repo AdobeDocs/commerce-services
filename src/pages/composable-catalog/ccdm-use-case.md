@@ -284,7 +284,7 @@ Now you define the brand policy for this channel.
 }
 ```
 
-### 3. Retrieve SKU for Brand A and location is USA using Storefront API
+### 3. Retrieve SKU for Brand A where location is USA using Storefront API
 
 In this API call, you retrieve the SKU for `Brand A` where location is `USA`. The brand and location (`AC-Policy-Brand` and `AC-Policy-Country`) are passed in as headers. Learn [more](https://developer-stage.adobe.com/commerce/services/composable-catalog/storefront-services/using-the-api/#headers) about the headers used in CCDM.
 
@@ -451,7 +451,7 @@ Here are the variables specified in the request:
 }
 ```
 
-### 4. Retrieve SKU for Brand B and location is UK using Storefront API
+### 4. Retrieve SKU for Brand B where location is UK using Storefront API
 
 In this API call, you retrieve the SKU for `Brand B` where location is `UK`. The brand and location (`AC-Policy-Brand` and `AC-Policy-Country`) are passed in as headers. Learn [more](https://developer-stage.adobe.com/commerce/services/composable-catalog/storefront-services/using-the-api/#headers) about the headers used in CCDM.
 
