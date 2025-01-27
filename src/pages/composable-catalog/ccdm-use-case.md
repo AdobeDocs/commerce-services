@@ -47,7 +47,7 @@ To demonstrate an end-to-end workflow using CCDM, this use-case has the followin
 
 In the code samples below, you define the products, channels, and policies, then make API calls using the [Storefront API](./admin/using-the-api.md).
 
-### Create product details
+### 1. Create product details
 
 In this section, you add two products: "Motor Part 1" and "Motor Part 2" directly to Commerce SaaS data storage. In the code samples below, you submit a [Create products](https://developer-stage.adobe.com/commerce/services/composable-catalog/data-ingestion/api-reference/#operation/ProductsPut) request using the Data Ingestion API.
 
@@ -189,7 +189,7 @@ The following code sample adds the product "Motor Part 2" with an attribute call
 }
 ```
 
-### Define the channel and policies
+### 2. Define the channel and policies
 
 In this section, you create a channel for `Company A` using the `createChannel` GraphQL mutation from the Catalog Management API. There are two policies for this channel: one for the location ("USA" and "UK") and one for the brand ("Brand A" and "Brand B").
 
@@ -284,7 +284,7 @@ Now you define the brand policy for this channel.
 }
 ```
 
-### Storefront API call – 1: Retrieve SKU for Brand A and location USA
+### 3. Retrieve SKU for Brand A and location is USA using Storefront API
 
 In this API call, you retrieve the SKU for `Brand A` where location is `USA`. The brand and location (`AC-Policy-Brand` and `AC-Policy-Country`) are passed in as headers. Learn [more](https://developer-stage.adobe.com/commerce/services/composable-catalog/storefront-services/using-the-api/#headers) about the headers used in CCDM.
 
@@ -451,7 +451,7 @@ Here are the variables specified in the request:
 }
 ```
 
-### Storefront API call – 2: Retrieve SKU for Brand B and location UK
+### 4. Retrieve SKU for Brand B and location is UK using Storefront API
 
 In this API call, you retrieve the SKU for `Brand B` where location is `UK`. The brand and location (`AC-Policy-Brand` and `AC-Policy-Country`) are passed in as headers. Learn [more](https://developer-stage.adobe.com/commerce/services/composable-catalog/storefront-services/using-the-api/#headers) about the headers used in CCDM.
 
