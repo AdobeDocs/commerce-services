@@ -15,7 +15,7 @@ Use the data ingestion API to create and manage product data for your ecommerce 
 
 ## Endpoints
 
-Send all Data Ingestion requests to the `https://commerce.adobe.io/feeds` endpoint. For details about using the API, see the [API Reference](api-reference.md).
+Send all Data Ingestion requests to the `https://catalog-service.adobe.io/feeds` endpoint. For details about using the API, see the [API Reference](api-reference.md).
 
 ## Authentication
 
@@ -42,7 +42,7 @@ This example will register 4 products, category tree, product attributes metadat
 Use the following template for API call:
 
 ```shell
-curl --location 'https://commerce.adobe.io/api/<API_ENDPOINT>/<DATA_SPACE_ID>' \
+curl --location 'https://catalog-service.adobe.io/api/<API_ENDPOINT>/<DATA_SPACE_ID>' \
 --header 'Content-Type:  application/json' \
 --header 'x-api-key: <API_KEY>' \
 --header 'x-gw-signature: <JWT_TOKEN>' \

@@ -13,7 +13,7 @@ info:
 
   version: 1.0.0
 servers:
-  - url: https://commerce.adobe.io/api/
+  - url: https://catalog-service.adobe.io/api/
     description: Production endpoint
 
 tags:
