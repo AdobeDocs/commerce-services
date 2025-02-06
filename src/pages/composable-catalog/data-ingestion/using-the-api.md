@@ -15,7 +15,7 @@ Use the data ingestion API to create and manage product data for your ecommerce 
 
 ## Endpoints
 
-Send all Data Ingestion requests to the `https://catalog-service.adobe.io/feeds` endpoint. For details about using the API, see the [API Reference](api-reference.md).
+Send all Data Ingestion requests to the `https://commerce.adobe.io/api` endpoint. For details about using the API, see the [API Reference](api-reference.md).
 
 ## Authentication
 
