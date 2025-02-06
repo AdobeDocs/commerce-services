@@ -51,7 +51,7 @@ In the steps below, you use CCDM APIs to add the product, channel, and policy da
 
 ## Step 1. Add products to your catalog
 
-Add two simple products, "Motor Part 1" and "Motor Part 2", directly to Commerce SaaS data storage by submitting a [createProducts](https://developer-stage.adobe.com/commerce/services/composable-catalog/data-ingetion/api-reference/#operation/ProductsPost) request using the Data Ingestion API.
+Add two simple products, "Motor Part 1" and "Motor Part 2", directly to Commerce SaaS data storage by submitting a [createProducts](https://developer-stage.adobe.com/commerce/services/composable-catalog/data-ingestion/api-reference/#operation/ProductsPost) request using the Data Ingestion API.
 
 Send the product requests to the following endpoint:
 
@@ -59,7 +59,7 @@ Send the product requests to the following endpoint:
 
 The `_environment_id` is the [SaaS data space ID](https://experienceleague.adobe.com/en/docs/commerce-merchant-services/user-guides/integration-services/saas#saasenv) where catalog services data is stored.
 
-Include the [required headers and path parameters](https://developer-stage.adobe.com/commerce/services/composable-catalog/data-ingestion/api-reference/#operation/ProductsPost) in the request.
+Include the [required headers and path parameters](https://developer-stage.adobe.com/commerce/services/composable-catalog/data-ingestion/using-the-api/#headers) in the request.
 
 ### Create Motor Part 1 product
 
@@ -71,7 +71,7 @@ Add the simple product *Motor Part 1* with two attribute codes, `Brand` set to *
 
 **Headers**
 
-Include the [required headers and path parameters](https://developer-stage.adobe.com/commerce/services/composable-catalog/data-ingestion/api-reference/#operation/ProductsPost) in the request.
+Include the [required headers and path parameters](https://developer-stage.adobe.com/commerce/services/composable-catalog/data-ingestion/using-the-api/#headers) in the request.
 
 **Payload**
 
