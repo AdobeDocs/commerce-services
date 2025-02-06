@@ -58,10 +58,10 @@ The following Headers list should be present in each Data Ingestion API call.
 
 | Header name        | Required | Description                                                                                                                                                                                                                        |
 |--------------------|----------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `Content-Encoding` | No       | Use this header only if the payload is compressed with gzip. Accepted value: `gzip`                                                                                                                                                |
 | `Content-Type`     | Yes      | Media type of the resource. Accepted value: `application/json`                                                                                                                                                                     |
 | `x-api-key`        | Yes      | [Public API Key](https://experienceleague.adobe.com/en/docs/commerce-merchant-services/user-guides/integration-services/saas#genapikey)                             |
 | `x-gw-signature`   | Yes      | [JSON Web token generated for Public API key](https://developer.adobe.com/developer-console/docs/guides/authentication/JWT/#creating-a-json-web-token). |
-| `Content-Encoding` | No       | Use this header only if the payload is compressed with gzip. Accepted value: `gzip`                                                                                                                                                |
 
 ## Examples
 

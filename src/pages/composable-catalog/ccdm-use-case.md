@@ -24,7 +24,7 @@ Before you begin, review [set up and manage catalogs](manage-catalogs.md) to und
 
 ## Let's get started
 
-To demonstrate an end-to-end workflow using CCDM, this use case is based on the following components:
+This use case demonstrates an end-to-end workflow for using CCDM based on the following components:
 
 - One Channel
 
@@ -51,7 +51,7 @@ In the steps below, you use CCDM APIs to add the product, channel, and policy da
 
 ## Step 1. Add products to your catalog
 
-Add two simple base products, "Motor Part 1" and "Motor Part 2", directly to Commerce SaaS data storage by submitting a [Create products](https://developer-stage.adobe.com/commerce/services/composable-catalog/data-ingetion/api-reference/#operation/ProductsPut) request using the Data Ingestion API.
+Add two simple products, "Motor Part 1" and "Motor Part 2", directly to Commerce SaaS data storage by submitting a [createProducts](https://developer-stage.adobe.com/commerce/services/composable-catalog/data-ingetion/api-reference/#operation/ProductsPost) request using the Data Ingestion API.
 
 Send the product requests to the following endpoint:
 
@@ -59,7 +59,7 @@ Send the product requests to the following endpoint:
 
 The `_environment_id` is the [SaaS data space ID](https://experienceleague.adobe.com/en/docs/commerce-merchant-services/user-guides/integration-services/saas#saasenv) where catalog services data is stored.
 
-Include the [required headers and path parameters](https://developer-stage.adobe.com/commerce/services/composable-catalog/data-ingestion/api-reference/#operation/ProductsPut) in the request.
+Include the [required headers and path parameters](https://developer-stage.adobe.com/commerce/services/composable-catalog/data-ingestion/api-reference/#operation/ProductsPost) in the request.
 
 ### Create Motor Part 1 product
 
@@ -71,7 +71,7 @@ Add the simple product *Motor Part 1* with two attribute codes, `Brand` set to *
 
 **Headers**
 
-Include the [required headers and path parameters](https://developer-stage.adobe.com/commerce/services/composable-catalog/data-ingestion/api-reference/#operation/ProductsPut) in the request.
+Include the [required headers and path parameters](https://developer-stage.adobe.com/commerce/services/composable-catalog/data-ingestion/api-reference/#operation/ProductsPost) in the request.
 
 **Payload**
 
@@ -461,7 +461,7 @@ The following lists the sample headers:
 - `Content-Type`: `application/json`
 - `AC-Environment-Id`: `123`
 - `Magento-Store-Code`: `main_website_store`
-- `AC-Locale`: `default`
+- `AC-Scope-Locale`: `default`
 - `AC-Price-Book-Id`: `base`
 - `AC-Channel-Id`: `channelId-1`
 - `AC-Policy-State`: `AC-Policy-Country`
@@ -632,7 +632,7 @@ The following lists the sample headers:
 - `Content-Type`: `application/json`
 - `AC-Environment-Id`: `123`
 - `Magento-Store-Code`: `main_website_store`
-- `AC-Locale`: `default`
+- `AC-Scope-Locale`: `default`
 - `AC-Price-Book-Id`: `base`
 - `AC-Channel-Id`: `channelId-1`
 - `AC-Policy-State`: `AC-Policy-Brand`
