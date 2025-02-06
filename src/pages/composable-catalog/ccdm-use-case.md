@@ -1,7 +1,8 @@
 ---
-title: Use the Composable Catalog Data Model to store and retrieve catalog data more efficiently to deliver more performant storefront experiences.
+title: Use the Composable Catalog Data Model
 edition: ee
-description: Implement the Composable Catalog Data Model for your storefront by following an end-to-end example.
+description: Learn how to use the Composable Catalog Data Model to store and retrieve catalog data more efficiently and deliver more performant storefront experiences.
+
 keywords:
   - GraphQL
   - Services

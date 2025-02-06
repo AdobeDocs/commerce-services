@@ -1,7 +1,7 @@
 ---
 title: Catalog management APIs
 edition: ee
-description: Use the Catalog management APIs to set up the channels, policies, and scopes for your manage product data and configure live search and product recommendations and associated rules.
+description: Use the Catalog management APIs to set up the channels, policies, and scopes for commerce catalogs.
 keywords:
   - GraphQL
   - Services
