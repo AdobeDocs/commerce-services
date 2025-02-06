@@ -50,9 +50,6 @@
                 "recommendations": {
                     "documentation": { "undocumented": true }
                 },
-                "scopes": {
-                    "documentation": { "undocumented": true }
-                },
                 "storeConfiguration": {
                     "documentation": { "undocumented": true }
                 },
