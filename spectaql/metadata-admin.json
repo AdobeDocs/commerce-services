@@ -1,0 +1,108 @@
+{
+    "OBJECT": {
+        "Query": {
+            "fields": { 
+                "analytics": {
+                    "documentation": { "undocumented": true }
+                },
+                "catalogStorefront": {
+                    "documentation": { "undocumented": true }
+                },
+                "categories": {
+                    "documentation": { "undocumented": true }
+                },
+                "categoriesByName": {
+                    "documentation": { "undocumented": true }
+                },
+                "categoryRuleDetail": {
+                    "documentation": { "undocumented": true }
+                },
+                "categoryRules": {
+                    "documentation": { "undocumented": true }
+                },
+                "categoryRulesDeleteCount": {
+                    "documentation": { "undocumented": true }
+                },
+                "categoryTreeByPath": {
+                    "documentation": { "undocumented": true }
+                },
+                "defaultQueryRule": {
+                    "documentation": { "undocumented": true }
+                },
+                "eventing": {
+                    "documentation": { "undocumented": true }
+                },
+                "facetsConfiguration": {
+                    "documentation": { "undocumented": true }
+                },
+                "livesearch": {
+                    "documentation": { "undocumented": true }
+                },
+                "pageUnits": {
+                    "documentation": { "undocumented": true }
+                },
+                "productAttributeMetadata": {
+                    "documentation": { "undocumented": true }
+                },
+                "queryRules": {
+                    "documentation": { "undocumented": true }
+                },
+                "recommendations": {
+                    "documentation": { "undocumented": true }
+                },
+                "scopes": {
+                    "documentation": { "undocumented": true }
+                },
+                "storeConfiguration": {
+                    "documentation": { "undocumented": true }
+                },
+                "subCategoryOverrides": {
+                    "documentation": { "undocumented": true }
+                },
+                "synonyms": {
+                    "documentation": { "undocumented": true }
+                },
+                "unit": {
+                    "documentation": { "undocumented": true }
+                },
+                "units": {
+                    "documentation": { "undocumented": true }
+                }
+            }
+        },
+        "Mutation": {
+            "fields": {
+                "batchUnits": {
+                    "documentation": { "undocumented": true }
+                },
+                "categoryRule": {
+                    "documentation": { "undocumented": true }
+                },
+                "createUnit": {
+                    "documentation": { "undocumented": true }
+                },
+                "deleteCategoryRule": {
+                    "documentation": { "undocumented": true }
+                },
+                "deleteUnit": {
+                    "documentation": { "undocumented": true }
+                },
+                "facetsConfiguration": {
+                    "documentation": { "undocumented": true }
+                },
+                "queryRules": {
+                    "documentation": { "undocumented": true }
+                },
+                "storeConfiguration": {
+                    "documentation": { "undocumented": true }
+                },
+                "synonyms": {
+                    "documentation": { "undocumented": true }
+                },
+                "updateUnit": {
+                    "documentation": { "undocumented": true }
+                }
+            }
+        }
+    }
+}
