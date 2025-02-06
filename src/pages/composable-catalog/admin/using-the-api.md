@@ -13,11 +13,11 @@ keywords:
 
 ## Endpoint
 
-The storefront API endpoints for all storefront API operations are:
+Send all Catalog Management API requests to the following endpoint:
 
 https://commerce.adobe.io/admin/graphql
 
-You must also specify multiple HTTP headers, including an API key, with each request.
+You must also specify multiple HTTP headers, including an API key, with each request. See the [API Reference](https://developer-stage.adobe.com/commerce/services/composable-catalog/admin/api-reference/) for details.
 
 ## Authentication
 
