@@ -3,12 +3,12 @@ module.exports = [
     title: "Composable Catalog Data Model",
     path: "/composable-catalog/",
     pages: [
-        {   title: "Manage catalog data",
-            path: "/composable-catalog/manage-catalog-data.md"
-      },
       {   title: "Set up and manage catalogs",
             path: "/composable-catalog/manage-catalogs.md"
-        },
+      },
+      { title: "CCDM use case",
+          path: "/composable-catalog/ccdm-use-case.md"
+      },
         {
             title: "Catalog data ingestion API",
             path: "/composable-catalog/data-ingestion/",
