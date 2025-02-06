@@ -363,7 +363,7 @@
                 "facetsConfiguration": {
                     "documentation": { "undocumented": true }
                 },
-                "livesearch": {
+                "liveSearch": {
                     "documentation": { "undocumented": true }
                 },
                 "pageUnits": {
@@ -381,7 +381,7 @@
                 "storeConfiguration": {
                     "documentation": { "undocumented": true }
                 },
-                "subCategoryOverrides": {
+                "subcategoryOverrides": {
                     "documentation": { "undocumented": true }
                 },
                 "synonyms": {
