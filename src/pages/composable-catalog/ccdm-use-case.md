@@ -51,23 +51,82 @@ In the steps below, you use CCDM APIs to add the product, channel, and policy da
 
 ## Step 1. Add products to your catalog
 
-Add two simple products, "Motor Part 1" and "Motor Part 2", directly to Commerce SaaS data storage by submitting a [createProducts](https://developer-stage.adobe.com/commerce/services/composable-catalog/data-ingestion/api-reference/#operation/ProductsPost) request using the Data Ingestion API.
+Add two simple products, "Motor Part 1" and "Motor Part 2" and the product attribute metadata to define the search and display characteristics for the brand and country attributes.
 
-Send the product requests to the following endpoint:
+### Add product attribute metadata
 
-`POST commerce.adobe.io/feeds/products/api/v1/catalog/_environment_id`
+Create the metadata to define the search characteristics and filters for displaying *location* and *brand* attributes on the storefront by submitting a [Create product attribute metadata](https://developer-stage.adobe.com/commerce/services/composable-catalog/data-ingestion/api-reference/#operation/ProductMetadataPut) POST request.
 
-The `_environment_id` is the [SaaS data space ID](https://experienceleague.adobe.com/en/docs/commerce-merchant-services/user-guides/integration-services/saas#saasenv) where catalog services data is stored.
+**Endpoint**
 
-Include the [required headers and path parameters](https://developer-stage.adobe.com/commerce/services/composable-catalog/data-ingestion/using-the-api/#headers) in the request.
+`commerce.adobe.io/api/v1/catalog/products/metadata/<_data_space_id>`
 
-### Create Motor Part 1 product
+Include the [required headers](https://developer-stage.adobe.com/commerce/services/composable-catalog/data-ingestion/using-the-api/#headers) in the request.
+
+**Payload**
+
+```json
+[
+  {
+      "code": "brand",
+      "scope": {
+          "locale": "en-US"
+      },
+      "label": "Brand",
+      "dataType": "TEXT",
+      "visibleIn": [
+          "PRODUCT_DETAIL",
+          "PRODUCT_LISTING",
+          "SEARCH_RESULTS",
+          "PRODUCT_COMPARE"
+      ],
+      "filterable": true,
+      "sortable": false,
+      "searchable": true,
+      "searchWeight": 55,
+      "searchTypes": [
+          "AUTOCOMPLETE",
+          "CONTAINS",
+          "STARTS_WITH"
+      ]
+  },
+  {
+      "code": "country",
+      "scope": {
+          "locale": "en-US"
+      },
+      "label": "Country",
+      "dataType": "TEXT",
+      "visibleIn": [
+          "PRODUCT_DETAIL",
+          "PRODUCT_LISTING",
+          "SEARCH_RESULTS",
+          "PRODUCT_COMPARE"
+      ],
+      "filterable": true,
+      "sortable": false,
+      "searchable": true,
+      "searchWeight": 55,
+      "searchTypes": [
+          "AUTOCOMPLETE",
+          "CONTAINS",
+          "STARTS_WITH"
+      ]
+  }
+]
+```
+
+### Add products
+
+Add products by submitting a [createProducts](https://developer-stage.adobe.com/commerce/services/composable-catalog/data-ingestion/api-reference/#operation/ProductsPost) POST request using the Data Ingestion API.
+
+#### Create Motor Part 1 product
 
 Add the simple product *Motor Part 1* with two attribute codes, `Brand` set to *Brand A*, and `Country` set to *USA* by sending the following payload in the Create products request.
 
 **Endpoint**
 
-`POST commerce.adobe.io/api/products/v1/catalog/_environment_id`
+`commerce.adobe.io/api/v1/catalog/products/{DATA_SPACE_ID}`
 
 **Headers**
 
@@ -142,7 +201,7 @@ Include the [required headers and path parameters](https://developer-stage.adobe
 }
 ```
 
-### Create Motor Part 2 product
+#### Create Motor Part 2 product
 
 Add the product *Motor Part 2* with two attribute codes, `Brand` set to *Brand B*, and `Country` set to *UK* by sending the following payload in the createProducts request.
 
@@ -441,7 +500,7 @@ mutation CreateChannel {
 }
 ```
 
-## Step 4. Retrieve SKUs
+## Step 3. Retrieve SKUs
 
 Use the Storefront GraphQL API [productSearch](https://developer-stage.adobe.com/commerce/services/graphql-api/storefront-api/index.html#query-productSearch) query to retrieve the SKUs you created.
 

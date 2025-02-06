@@ -52,6 +52,11 @@ public class JwtGenerator {
 }
 ```
 
+## Paths
+
+| Header name        | Required | Description                                                                                                                                                                                                                        |
+DATA_SPACE_ID | Yes | The data space ID for the data space where commerce catalog data is stored. See [SaaS configuration](https://experienceleague.adobe.com/en/docs/commerce-merchant-services/user-guides/integration-services/saas#saasenv) in *Adobe Experience League*.
+
 ## Headers
 
 The following Headers list should be present in each Data Ingestion API call.

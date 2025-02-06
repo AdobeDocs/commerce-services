@@ -20,6 +20,8 @@ Production | https://catalog-service.adobe.io/graphql
 
 You must also specify multiple HTTP headers, including an API key, with each request.
 
+You must also specify multiple HTTP headers, including an API key, with each request. See the [API Reference](https://developer-stage.adobe.com/commerce/services/composable-catalog/storefront-services/api-reference/) for details.
+
 ### Headers
 
 When making requests to the storefront API, you must include specific HTTP headers to ensure proper authentication and data retrieval. These headers provide necessary information, such as the channel ID, locale, price book, and optional price book and policy headers that tailor the API response to your needs.
