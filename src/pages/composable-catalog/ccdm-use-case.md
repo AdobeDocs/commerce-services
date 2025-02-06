@@ -1,7 +1,7 @@
 ---
-title: Use the [!DNL Composable Catalog Data Model] to provides a more efficient way to store data in the SaaS Catalog Service. 
+title: Use the [!DNL Composable Catalog Data Model] to store product and catalog data more efficiently in the SaaS Catalog.
 edition: ee
-description: Learn how to implement the [!DNL Composable Catalog Data Model] in your storefront by following an end-to-end example.
+description: Implement the Composable Catalog Data Model for your storefront by following an end-to-end example.
 keywords:
   - GraphQL
   - Services
@@ -9,49 +9,70 @@ keywords:
   - Performance
 ---
 
-# Learn how to implement the [!DNL Composable Catalog Data Model] in your storefront by following an end-to-end example.
+# Using the composable catalog data model with your storefront
 
-This use-case demonstrates how a company with a single base catalog can use CCDM to:
+Learn how a company with a single base catalog can use the composable catalog data model (CCDM) APIs to add product data, define catalogs using projections, and retrieve the catalog data for display in a headless storefront.
 
-- Support products across two geographical markets and two different brands.
-- Attain operational efficiency by not duplicating their product catalog across different websites.
-- Limit product visibility on the websites based on the geographical market and the brand of the product.
+This end-to-end use case demonstrates how a company with a single base catalog can use CCDM to:
+
+- Support products across two geographical markets and two distinct brands.
+- Enhance operational efficiency by avoiding duplication of product catalogs across multiple websites.
+- Control product visibility on websites based on geographical market and brand specifications.
 
 Before you begin, see [set up and manage catalogs](manage-catalogs.md) to make sure you are familiar with the concepts of channels and policies.
 
 ## Let's get started
 
-To demonstrate an end-to-end workflow using CCDM, this use-case has the following conditions:
+The scenario for this use case creates a this use case is based on the following components.
 
 - One Channel
-  - The channel is linked to a single scope (locale: `en`).
-  - The channel is linked to two policies.
+
+  The `Company A` channel is linked to a single scope (locale: `en`) and two policies.
 
 - Two Policies
-  - Policy one - Location: Defines the catalog projection for `locations`. This projection can be used to specify a target geographic market for selling specified SKUs. For example: `UK`, `USA`.
-  - Policy two - Brand: Defines the catalog projection for `brands`. This projection can be used to specify one or more brands associated with each product SKU, for example `Brand A`, `Brand B`.
+  - The **Location** policy (*Policy 1*) that defines the catalog projection for `locations`. This projection can be used to specify a target geographic market for selling specified SKUs. For example: `UK`, `USA`.
+  - The **Brand** policy (*Policy 2*) defines the catalog projection for `brands`. This projection can be used to specify one or more brands associated with each product SKU, for example `Brand A`, `Brand B`.
 
-- SKUs
-  - The example uses two SKUs:
-    - Motor part one belongs to `Brand A` and is aimed to be sold in `USA`.
-    - Motor part two belongs to `Brand B` and is aimed to be sold in `UK`.
-  - The values of brands and locations are product attributes of each SKU.
-  - The SKUs do not have any knowledge of a Channel or Policy.
+- Two products SKUs
+  - `Motor part 1` belongs to `Brand A` and is aimed to be sold in `USA`.
+  - `Motor part 2` belongs to `Brand B` and is aimed to be sold in `UK`.
+  - The values for brand and location are product attributes of each SKU.
+  - The product specification does not include any `Channel` or `Policy` values. When retrieving products using the Storefront API, Channel and Policy values are passed in using API headers.
 
 - Storefront APIs
   - A catalog service API endpoint is used to represent how data will be retrieved using CCDM concepts.
-  - Pay close attention to the API headers. The CCDM concepts are implemented at the API headers.
-  - Two API calls are represented
+  - Pay close attention to the API headers. The CCDM concepts for filtering products using channels and policies are implemented through the API headers.
+  - Two Storefront API calls are represented:
     - API Call one: Returns a SKU for `Brand A` and `USA` combination.
     - API Call two: Returns a SKU for `Brand B` and `UK` combination.
 
 In the code samples below, you define the products, channels, and policies, then make API calls using the [Storefront API](./admin/using-the-api.md).
 
-### 1. Create product details
+## Step 1. Add products to your catalog
 
-In this section, you add two products: "Motor Part 1" and "Motor Part 2" directly to Commerce SaaS data storage. In the code samples below, you submit a [Create products](https://developer-stage.adobe.com/commerce/services/composable-catalog/data-ingestion/api-reference/#operation/ProductsPut) request using the Data Ingestion API.
+Add two products, "Motor Part 1" and "Motor Part 2", directly to Commerce SaaS data storage by submitting a [Create products](https://developer-stage.adobe.com/commerce/services/composable-catalog/data-ingetion/api-reference/#operation/ProductsPut) request using the Data Ingestion API.
 
-The following code sample adds the product "Motor Part 1" with an attribute called "Brand A" and the country set as "USA".
+Send the product requests to the following endpoint:
+
+`POST commerce.adobe.io/feeds/products/api/v1/catalog/_environment_id`
+
+The `_environment_id` is the [SaaS data space ID](https://experienceleague.adobe.com/en/docs/commerce-merchant-services/user-guides/integration-services/saas#saasenv) where catalog services data is stored.
+
+Include the [required headers and path parameters](https://developer-stage.adobe.com/commerce/services/composable-catalog/data-ingestion/api-reference/#operation/ProductsPut) in the request.
+
+### Create Motor Part 1 product
+
+Add the product *Motor Part 1* with two attribute codes, `Brand` set to *Brand A*, and `Country` set to *USA* by sending the following payload in the Create products request.
+
+**Endpoint**
+
+`POST commerce.adobe.io/feeds/products/api/v1/catalog/_environment_id`
+
+**Headers**
+
+Include the [required headers and path parameters](https://developer-stage.adobe.com/commerce/services/composable-catalog/data-ingestion/api-reference/#operation/ProductsPut) in the request.
+
+**Payload**
 
 ```json
 {
@@ -70,7 +91,7 @@ The following code sample adds the product "Motor Part 1" with an attribute call
   ],
   "metaTags": {
     "title": " ",
-    "description": "SEO opt",
+    "description": "SEO optimization",
     "keywords": [
       "motor",
       "part"
@@ -85,7 +106,7 @@ The following code sample adds the product "Motor Part 1" with an attribute call
       ]
     },
     {
-      "code": "country",
+      "code": "Country",
       "type": "ARRAY",
       "values": [
         "USA"
@@ -113,14 +134,18 @@ The following code sample adds the product "Motor Part 1" with an attribute call
       "path": "motor-part"
     },
     {
-      "path": "pants/motor-part",
+      "path": "auto/motor-part",
       "position": 1
     }
   ]
 }
 ```
 
-The following code sample adds the product "Motor Part 2" with an attribute called "Brand B" and the country set as "UK".
+### Create Motor Part 2 product
+
+Add the product *Motor Part 2* with two attribute codes, `Brand` set to *Brand B*, and `Country` set to *UK* by sending the following payload in the Createroducts request.
+
+**Payload**
 
 ```json
 {
@@ -139,7 +164,7 @@ The following code sample adds the product "Motor Part 2" with an attribute call
   ],
   "metaTags": {
     "title": " ",
-    "description": "SEO opt",
+    "description": "SEO optimization",
     "keywords": [
       "motor",
       "part"
@@ -182,111 +207,256 @@ The following code sample adds the product "Motor Part 2" with an attribute call
       "path": "motor-part"
     },
     {
-      "path": "pants/motor-part",
+      "path": "auto/motor-part",
       "position": 1
     }
   ]
 }
 ```
 
-### 2. Define the channel and policies
+## Step 2. Define the channel and policies
 
-In this section, you create a channel for `Company A` using the `createChannel` GraphQL mutation from the Catalog Management API. There are two policies for this channel: one for the location ("USA" and "UK") and one for the brand ("Brand A" and "Brand B").
+In this step, create a channel for `Company A` using the [CreateChannelRequest](https://developer-stage.adobe.com/commerce/services/graphql-api/admin-api/index.html#definition-CreateChannelRequest) GraphQL mutation from the Catalog Management API.
 
-This first code sample creates the channel.
+Assign two policies to the channel: a `Location Policy` with "USA" and "UK" as locations, and a `Brand Policy` with "Brand A" and "Brand B".
 
-```json
-{
-  "data": {
-    "createChannel": {
-      "name": "Company A",
-      "policyIds": [
-        "policyId-1",
-        "policyId-2"
-      ],
-      "scopes": [
-        {
-          "locale": "en"
-        }
-      ]
+Send GraphQL requests for channels and policies to the following endpoint:
+
+- Test: `https://scoping-service-stage.magento-ds.com/graphql`
+- Production: `https://scoping-service.magento-ds.com/graphql`
+
+You must create the policies before you can assign them to a channel.
+
+### Create policies
+
+Use the [createPolicy](https://developer-stage.adobe.com/commerce/services/graphql-api/admin-api/index.html#definition-CreatePolicyRequest) GraphQL mutation from the Catalog Management API to define the location and brand policies.
+
+The query response returns a `PolicyId` value that is required when you assign the policy to a channel.
+
+#### Location policy
+
+**Request**
+
+```graphql
+mutation CreatePolicy {
+  createPolicy(policyRequest: {
+    name: "Location policy",
+    mandatory: true,
+    actions: [
+      {
+        triggers: [
+          {
+            name: "AC-Policy-Country",
+            transportType: HTTP_HEADER
+          }
+        ],
+        filters: [
+          {
+            attribute: "country",
+            valueSource: TRIGGER,
+            value: "AC-Policy-Country",
+            actionFilterOperator: EQUALS,
+            enabled: true
+          }
+        ]
+      }
+    ]
+  }) {
+    name
+    policyId
+    mandatory
+    actions {
+      triggers {
+        name
+        transportType
+      }
+      filters {
+        attribute
+        valueSource
+        value
+        actionFilterOperator
+        enabled
+      }
     }
+    createdAt
+    updatedAt
   }
 }
 ```
 
-Now you define the location policy for this channel.
+**Response**
 
-```json
+```graphql
 {
   "data": {
-    "createPolicy": {
-      "name": "Location Policy",
-      "policyId": "policyId-1",
-      "mandatory": true,
-      "actions": [
-        {
-          "triggers": [
-            {
-              "name": "AC-Policy-Country",
-              "transportType": "HTTP_HEADER"
-            }
+      "createPolicy": {
+          "policyId": "56a6908f-eyx3-59c3-sye8-574509e6y45 39c8106d",
+          "name": "Location policy",
+          "mandatory": true,
+          "actions": [
+              {
+                  "triggers": [
+                      {
+                          "transportType": "HTTP_HEADER",
+                          "name": "AC-Policy-Country"
+                      }
+                  ],
+                  "filters": [
+                      {
+                          "attribute": "country",
+                          "actionFilterOperator": "EQUALS",
+                          "value": "AC-Policy-Country",
+                          "enabled": true,
+                          "valueSource": "TRIGGER"
+                      }
+                  ]
+              }
           ],
-          "filters": [
-            {
-              "attribute": "country",
-              "valueSource": "TRIGGER",
-              "value": "AC-Policy-Country",
-              "actionFilterOperator": "EQUALS",
-              "enabled": true
-            }
-          ]
-        }
-      ],
-      "createdAt": "2024-11-19T18:37:16.762186664",
-      "updatedAt": "2024-11-19T18:37:16.762186664"
-    }
+          "createdAt": "2024-11-12T12:00:16.146157",
+          "updatedAt": "2024-11-12T12:00:16.146157"
+      }
+  },
+  "extensions": {
+      "request-id": "bbcdcbc79b5d873b"
   }
 }
 ```
 
-Now you define the brand policy for this channel.
+#### Brand policy
 
-```json
+**Request**
+
+```graphql
+mutation CreatePolicy {
+  createPolicy(policyRequest: {
+    name: "Brand policy",
+    mandatory: true,
+    actions: [
+      {
+        triggers: [
+          {
+            name: "AC-Policy-Brand",
+            transportType: HTTP_HEADER
+          }
+        ],
+        filters: [
+          {
+            attribute: "brand",
+            valueSource: TRIGGER,
+            value: "AC-Policy-Brand",
+            actionFilterOperator: EQUALS,
+            enabled: true
+          }
+        ]
+      }
+    ]
+  }) {
+    name
+    policyId
+    mandatory
+    actions {
+      triggers {
+        name
+        transportType
+      }
+      filters {
+        attribute
+        valueSource
+        value
+        actionFilterOperator
+        enabled
+      }
+    }
+    createdAt
+    updatedAt
+  }
+}
+```
+
+**Response**
+
+```graphql
 {
   "data": {
-    "createPolicy": {
-      "name": "Brand Policy",
-      "policyId": "policyId-2",
-      "mandatory": true,
-      "actions": [
-        {
-          "triggers": [
-            {
-              "name": "AC-Policy-Brand",
-              "transportType": "HTTP_HEADER"
-            }
+      "createPolicy": {
+          "policyId": "39c8106d-aab2-49b2-aac3-177608d4e567",
+          "name": "Brand policy",
+          "mandatory": true,
+          "actions": [
+              {
+                  "triggers": [
+                      {
+                          "transportType": "HTTP_HEADER",
+                          "name": "AC-Policy-Brand"
+                      }
+                  ],
+                  "filters": [
+                      {
+                          "attribute": "country",
+                          "actionFilterOperator": "EQUALS",
+                          "value": "AC-Policy-Country",
+                          "enabled": true,
+                          "valueSource": "TRIGGER"
+                      }
+                  ]
+              }
           ],
-          "filters": [
-            {
-              "attribute": "brand",
-              "valueSource": "TRIGGER",
-              "value": "AC-Policy-Brand",
-              "actionFilterOperator": "EQUALS",
-              "enabled": true
-            }
-          ]
-        }
-      ],
-      "createdAt": "2024-11-19T18:37:46.955184559",
-      "updatedAt": "2024-11-19T18:37:46.955184559"
+          "createdAt": "2024-11-12T12:00:16.146157",
+          "updatedAt": "2024-11-12T12:00:16.146157"
+      }
+  },
+  "extensions": {
+      "request-id": "bbcdcbc79b5d6788b"
+  }
+}
+```
+
+### Create channel
+
+Create a channel and assign the policies for location filtering and brand filtering. Use the policy IDs returned in the `createPolicy` request to assign the policies.
+
+Pass the [required headers](https://developer-stage.adobe.com/commerce/services/composable-catalog/admin/using-the-api/#headers) for the request.
+
+**Request**
+
+```graphql
+mutation CreateChannel {
+  createChannel(channelRequest: {
+    name: "Company A",
+    scopes: [
+      {
+        locale: "en"
+      }
+    ],
+    policyIds: [
+      "56a6908f-eyx3-59c3-sye8-574509e6y45","39c8106d-aab2-49b2-aac3-177608d4e56",
+    ]
+  }) {
+    name
+    policyIds
+    scopes {
+      locale
     }
   }
 }
 ```
 
-### 3. Retrieve SKU for Brand A where location is USA using Storefront API
+## Step 4. Retrieve SKUs
 
-In this API call, you retrieve the SKU for `Brand A` where location is `USA`. The brand and location (`AC-Policy-Brand` and `AC-Policy-Country`) are passed in as headers. Learn [more](https://developer-stage.adobe.com/commerce/services/composable-catalog/storefront-services/using-the-api/#headers) about the headers used in CCDM.
+Use the Storefront GraphQL API [productSearch](https://developer-stage.adobe.com/commerce/services/graphql-api/storefront-api/index.html#query-productSearch) query to retrieve the SKUs you created.
+
+<InlineAlert variant="info" slots="text"/>
+
+Send GraphQL requests for Storefront APIs to the following endpoints:
+
+- Test: `https://catalog-service-sandbox.adobe.io/graphql`
+- Production: `https://catalog-service.adobe.io/graphql`
+
+### Retrieve SKU for Brand `A`
+
+Retrieve the SKU you created for `Brand A` where location is `USA`. Use the search phrase `Motor parts`, and specify a page size to limit results.
+
+The brand and location (`AC-Policy-Brand` and `AC-Policy-Country`) are passed in using [Storefront API headers](https://developer-stage.adobe.com/commerce/services/composable-catalog/storefront-services/using-the-api/#header).
 
 The following lists the sample headers:
 
@@ -297,7 +467,7 @@ The following lists the sample headers:
 - `AC-Price-Book-Id`: `base`
 - `AC-Channel-Id`: `channelId-1`
 - `AC-Policy-State`: `AC-Policy-Country`
-- `X-Api-Key`: `search_gql`
+- `X-Api-Key`: `***************`
 - `AC-Policy-Country`: `USA`
 - `AC-Policy-Brand`: `Brand A`
 
@@ -351,7 +521,7 @@ query getProductSearchDetails(
 }
 ```
 
-Here are the variables specified in the request:
+Here are the variable values to specify in the request:
 
 ```json
 {
@@ -362,7 +532,9 @@ Here are the variables specified in the request:
 }
 ```
 
-#### Response: A single SKU: Motor Part 1
+#### Response
+
+The response returns the product details for a single SKU, `Motor Part 1`.
 
 ```graphql
 {
@@ -451,9 +623,11 @@ Here are the variables specified in the request:
 }
 ```
 
-### 4. Retrieve SKU for Brand B where location is UK using Storefront API
+### Retrieve SKU for Brand B
 
-In this API call, you retrieve the SKU for `Brand B` where location is `UK`. The brand and location (`AC-Policy-Brand` and `AC-Policy-Country`) are passed in as headers. Learn [more](https://developer-stage.adobe.com/commerce/services/composable-catalog/storefront-services/using-the-api/#headers) about the headers used in CCDM.
+Retrieve the SKU you created for `Brand B` where location is `UK`. Use the search phrase `Motor parts`, and specify a page size to limit results.
+
+The brand and location (`AC-Policy-Brand` and `AC-Policy-Country`) are passed in using the [Storefront API headers](https://developer-stage.adobe.com/commerce/services/composable-catalog/storefront-services/using-the-api/#header).
 
 The following lists the sample headers:
 
@@ -527,7 +701,9 @@ Here are the variables specified in the request:
 }
 ```
 
-#### Response: A single SKU: Motor Part 2
+#### Response
+
+The response returns the product details for a single SKU, `Motor Part 2`.
 
 ```graphql
 {

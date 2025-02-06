@@ -8,7 +8,10 @@ module.exports = [
       },
       {   title: "Set up and manage catalogs",
             path: "/composable-catalog/manage-catalogs.md"
-        },
+      },
+      { title: "CCDM use case",
+          path: "/composable-catalog/ccdm-use-case.md"
+      },
         {
             title: "Catalog data ingestion API",
             path: "/composable-catalog/data-ingestion/",
@@ -53,9 +56,6 @@ module.exports = [
                 },
             ]
         },
-        { title: "CCDM Use-Case",
-          path: "/composable-catalog/ccdm-use-case.md"
-      },
     ]
   },
 ];
