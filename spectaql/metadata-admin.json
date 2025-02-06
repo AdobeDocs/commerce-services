@@ -1,5 +1,333 @@
 {
     "OBJECT": {
+        "MyType": {
+            "fields": {
+                "ActionType": {
+                    "documentation": { "undocumented": true }
+                },
+                "AnalyticsInput": {
+                    "documentation": { "undocumented": true }
+                },
+                "AnalyticsTypes": {
+                    "documentation": { "undocumented": true }
+                },
+                "BatchUnitResponse": {
+                    "documentation": { "undocumented": true }
+                },
+                "CategoriesResponse": {
+                    "documentation": { "undocumented": true }
+                },
+                "Category": {
+                    "documentation": { "undocumented": true }
+                },
+                "CategoryRule": {
+                    "documentation": { "undocumented": true }
+                },
+                "CategoryRuleDetail": {
+                    "documentation": { "undocumented": true }
+                },
+                "CategoryRuleInput": {
+                    "documentation": { "undocumented": true }
+                },
+                "CategoryRulesDeleteCount": {
+                    "documentation": { "undocumented": true }
+                },
+                "CategoryRulesMutationResponse": {
+                    "documentation": { "undocumented": true }
+                },
+                "CategoryRulesQueryResponse": {
+                    "documentation": { "undocumented": true }
+                },
+                "ConditionRequest": {
+                    "documentation": { "undocumented": true }
+                },
+                "ConditionResponse": {
+                    "documentation": { "undocumented": true }
+                },
+                "CountFromTo": {
+                    "documentation": { "undocumented": true }
+                },
+                "CreateUnitRequest": {
+                    "documentation": { "undocumented": true }
+                },
+                "CustomOperatorRequest": {
+                    "documentation": { "undocumented": true }
+                },
+                "CustomOperatorResponse": {
+                    "documentation": { "undocumented": true }
+                },
+                "CustomOperatorType": {
+                    "documentation": { "undocumented": true }
+                },
+                "DefaultQueryRule": {
+                    "documentation": { "undocumented": true }
+                },
+                "defaultQueryRuleQueryResponse": {
+                    "documentation": { "undocumented": true }
+                },
+                "Event": {
+                    "documentation": { "undocumented": true }
+                },
+                "EventAction": {
+                    "documentation": { "undocumented": true }
+                },
+                "EventActionInput": {
+                    "documentation": { "undocumented": true }
+                },
+                "EventCounts": {
+                    "documentation": { "undocumented": true }
+                },
+                "EventInput": {
+                    "documentation": { "undocumented": true }
+                },
+                "EventTargetType": {
+                    "documentation": { "undocumented": true }
+                },
+                "Eventing": {
+                    "documentation": { "undocumented": true }
+                },
+                "FacetAggregationRange": {
+                    "documentation": { "undocumented": true }
+                },
+                "FacetAggregationRangeInput": {
+                    "documentation": { "undocumented": true }
+                },
+                "FacetConfigAggregationType": {
+                    "documentation": { "undocumented": true }
+                },
+                "FacetConfigDisplayType": {
+                    "documentation": { "undocumented": true }
+                },
+                "FacetConfigurationInput": {
+                    "documentation": { "undocumented": true }
+                },
+                "FacetConfigurationResponse": {
+                    "documentation": { "undocumented": true }
+                },
+                "FacetValuesSortType": {
+                    "documentation": { "undocumented": true }
+                },
+                "FacetsConfigurationMutationResponse": {
+                    "documentation": { "undocumented": true }
+                },
+                "FacetsConfigurationQueryResponse": {
+                    "documentation": { "undocumented": true }
+                },
+                "FilterRuleRequest": {
+                    "documentation": { "undocumented": true }
+                },
+                "FilterRuleResponse": {
+                    "documentation": { "undocumented": true }
+                },
+                "FilterRuleType": {
+                    "documentation": { "undocumented": true }
+                },
+                "IndexLanguageConfiguration": {
+                    "documentation": { "undocumented": true }
+                },
+                "IndexLanguageConfigurationInput": {
+                    "documentation": { "undocumented": true }
+                },
+                "IsOperatorRequest": {
+                    "documentation": { "undocumented": true }
+                },
+                "IsOperatorResponse": {
+                    "documentation": { "undocumented": true }
+                },
+                "IsOperatorType": {
+                    "documentation": { "undocumented": true }
+                },
+                "JoinOperatorType": {
+                    "documentation": { "undocumented": true }
+                },
+                "Language": {
+                    "documentation": { "undocumented": true }
+                },
+                "LanguageAnalyzer": {
+                    "documentation": { "undocumented": true }
+                },
+                "LanguageAnalyzerInput": {
+                    "documentation": { "undocumented": true }
+                },
+                "LiveSearch": {
+                    "documentation": { "undocumented": true }
+                },
+                "ManualPriceBucketConfiguration": {
+                    "documentation": { "undocumented": true }
+                },
+                "ManualPriceBucketConfigurationInput": {
+                    "documentation": { "undocumented": true }
+                },
+                "MetadataBooleanCondition": {
+                    "documentation": { "undocumented": true }
+                },
+                "MetadataBooleanFieldFilterEnum": {
+                    "documentation": { "undocumented": true }
+                },
+                "MetadataBooleanFilter": {
+                    "documentation": { "undocumented": true }
+                },
+                "MetadataFilterOperatorEnum": {
+                    "documentation": { "undocumented": true }
+                },
+                "Metrics": {
+                    "documentation": { "undocumented": true }
+                },
+                "MultiSelectOperator": {
+                    "documentation": { "undocumented": true }
+                },
+                "NumericOperatorRequest": {
+                    "documentation": { "undocumented": true }
+                },
+                "NumericOperatorResponse": {
+                    "documentation": { "undocumented": true }
+                },
+                "NumericOperatorType": {
+                    "documentation": { "undocumented": true }
+                },
+                "OperatorRequest": {
+                    "documentation": { "undocumented": true }
+                },
+                "OperatorResponse": {
+                    "documentation": { "undocumented": true }
+                },
+                "PopularSkuResponse": {
+                    "documentation": { "undocumented": true }
+                },
+                "Price": {
+                    "documentation": { "undocumented": true }
+                },
+                "PriceBucketConfiguration": {
+                    "documentation": { "undocumented": true }
+                },
+                "PriceBucketConfigurationInput": {
+                    "documentation": { "undocumented": true }
+                },
+                "PriceBucketType": {
+                    "documentation": { "undocumented": true }
+                },
+                "PriceWrapper": {
+                    "documentation": { "undocumented": true }
+                },
+                "ProductAttributeMetadataQueryResponse": {
+                    "documentation": { "undocumented": true }
+                },
+                "ProductAttributeMetadataResponse": {
+                    "documentation": { "undocumented": true }
+                },
+                "QueryCondition": {
+                    "documentation": { "undocumented": true }
+                },
+                "QueryConditionGroup": {
+                    "documentation": { "undocumented": true }
+                },
+                "QueryConditionGroupInput": {
+                    "documentation": { "undocumented": true }
+                },
+                "QueryConditionInput": {
+                    "documentation": { "undocumented": true }
+                },
+                "QueryConditionType": {
+                    "documentation": { "undocumented": true }
+                },
+                "QueryRule": {
+                    "documentation": { "undocumented": true }
+                },
+                "QueryRuleInput": {
+                    "documentation": { "undocumented": true }
+                },
+                "QueryRulesMutationResponse": {
+                    "documentation": { "undocumented": true }
+                },
+                "QueryRulesQueryResponse": {
+                    "documentation": { "undocumented": true }
+                },
+                "RankingType": {
+                    "documentation": { "undocumented": true }
+                },
+                "Recommendations": {
+                    "documentation": { "undocumented": true }
+                },
+                "RuleStatusType": {
+                    "documentation": { "undocumented": true }
+                },
+                "RuleType": {
+                    "documentation": { "undocumented": true }
+                },
+                "SearchAnalyticsQueryResponse": {
+                    "documentation": { "undocumented": true }
+                },
+                "SearchMerchandisingRule": {
+                    "documentation": { "undocumented": true }
+                },
+                "SearchMerchandisingRuleInput": {
+                    "documentation": { "undocumented": true }
+                },
+                "StoreConfiguration": {
+                    "documentation": { "undocumented": true }
+                },
+                "StoreConfigurationInput": {
+                    "documentation": { "undocumented": true }
+                },
+                "StoreConfigurationMutationResponse": {
+                    "documentation": { "undocumented": true }
+                },
+                "StoreConfigurationQueryResponse": {
+                    "documentation": { "undocumented": true }
+                },
+                "SubcategoryOverridesQueryResponse": {
+                    "documentation": { "undocumented": true }
+                },
+                "SummaryResponse": {
+                    "documentation": { "undocumented": true }
+                },
+                "SynonymsGroup": {
+                    "documentation": { "undocumented": true }
+                },
+                "SynonymsInput": {
+                    "documentation": { "undocumented": true }
+                },
+                "SynonymsMutationResponse": {
+                    "documentation": { "undocumented": true }
+                },
+                "SynonymsQueryResponse": {
+                    "documentation": { "undocumented": true }
+                },
+                "SynonymsType": {
+                    "documentation": { "undocumented": true }
+                },
+                "Timeframe": {
+                    "documentation": { "undocumented": true }
+                },
+                "TimeframeInput": {
+                    "documentation": { "undocumented": true }
+                },
+                "TrendingWindow": {
+                    "documentation": { "undocumented": true }
+                },
+                "UniqueSearchesResponse": {
+                    "documentation": { "undocumented": true }
+                },
+                "UnitPageType": {
+                    "documentation": { "undocumented": true }
+                },
+                "UnitResponse": {
+                    "documentation": { "undocumented": true }
+                },
+                "UnitStatus": {
+                    "documentation": { "undocumented": true }
+                },
+                "UnitType": {
+                    "documentation": { "undocumented": true }
+                },
+                "UpdateUnitRequest": {
+                    "documentation": { "undocumented": true }
+                },
+                "ZeroResultsResponse": {
+                    "documentation": { "undocumented": true }
+                }
+            }
+        },
         "Query": {
             "fields": { 
                 "analytics": {
