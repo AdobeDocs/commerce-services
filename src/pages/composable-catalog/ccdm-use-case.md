@@ -780,4 +780,3 @@ The response returns the product details for a single SKU, `Motor Part 2`.
   }
 }
 ```
-
