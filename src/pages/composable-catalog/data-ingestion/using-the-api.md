@@ -87,3 +87,4 @@ curl --location 'https://commerce.adobe.io/api/<API_ENDPOINT>/<DATA_SPACE_ID>' \
 | API_KEY          | API_KEY obtained in this section.                                               |
 | JWT_TOKEN        | JWT token obtained in this section.                                     |
 | API_PAYLOAD      | API payload see examples in [CCDM use case](../ccdm-use-case.md)                                                                              |
+
