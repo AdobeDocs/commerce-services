@@ -1,5 +1,5 @@
 ---
-title: Use the [!DNL Composable Catalog Data Model] to store product and catalog data more efficiently in the SaaS Catalog.
+title: Use the Composable Catalog Data Model to store and retrieve catalog data more efficiently to deliver more performant storefront experiences.
 edition: ee
 description: Implement the Composable Catalog Data Model for your storefront by following an end-to-end example.
 keywords:
@@ -19,11 +19,11 @@ This end-to-end use case demonstrates how a company with a single base catalog c
 - Enhance operational efficiency by avoiding duplication of product catalogs across multiple websites.
 - Control product visibility on websites based on geographical market and brand specifications.
 
-Before you begin, see [set up and manage catalogs](manage-catalogs.md) to make sure you are familiar with the concepts of channels and policies.
+Before you begin, review [set up and manage catalogs](manage-catalogs.md) to understand the channel and policy concepts.
 
 ## Let's get started
 
-The scenario for this use case creates a this use case is based on the following components.
+To demonstrate an end-to-end workflow using CCDM, this use case is based on the following components:
 
 - One Channel
 
@@ -46,11 +46,11 @@ The scenario for this use case creates a this use case is based on the following
     - API Call one: Returns a SKU for `Brand A` and `USA` combination.
     - API Call two: Returns a SKU for `Brand B` and `UK` combination.
 
-In the code samples below, you define the products, channels, and policies, then make API calls using the [Storefront API](./admin/using-the-api.md).
+In the steps below, you use CCDM APIs to add the product, channel, and policy data to the SaaS data space for your project. Then, you use the the [Storefront API](./admin/using-the-api.md) to retrieve the data using the brand, and policy filters.
 
 ## Step 1. Add products to your catalog
 
-Add two products, "Motor Part 1" and "Motor Part 2", directly to Commerce SaaS data storage by submitting a [Create products](https://developer-stage.adobe.com/commerce/services/composable-catalog/data-ingetion/api-reference/#operation/ProductsPut) request using the Data Ingestion API.
+Add two simple base products, "Motor Part 1" and "Motor Part 2", directly to Commerce SaaS data storage by submitting a [Create products](https://developer-stage.adobe.com/commerce/services/composable-catalog/data-ingetion/api-reference/#operation/ProductsPut) request using the Data Ingestion API.
 
 Send the product requests to the following endpoint:
 
@@ -62,11 +62,11 @@ Include the [required headers and path parameters](https://developer-stage.adobe
 
 ### Create Motor Part 1 product
 
-Add the product *Motor Part 1* with two attribute codes, `Brand` set to *Brand A*, and `Country` set to *USA* by sending the following payload in the Create products request.
+Add the simple product *Motor Part 1* with two attribute codes, `Brand` set to *Brand A*, and `Country` set to *USA* by sending the following payload in the Create products request.
 
 **Endpoint**
 
-`POST commerce.adobe.io/feeds/products/api/v1/catalog/_environment_id`
+`POST commerce.adobe.io/api/products/v1/catalog/_environment_id`
 
 **Headers**
 
@@ -143,7 +143,7 @@ Include the [required headers and path parameters](https://developer-stage.adobe
 
 ### Create Motor Part 2 product
 
-Add the product *Motor Part 2* with two attribute codes, `Brand` set to *Brand B*, and `Country` set to *UK* by sending the following payload in the Createroducts request.
+Add the product *Motor Part 2* with two attribute codes, `Brand` set to *Brand B*, and `Country` set to *UK* by sending the following payload in the createProducts request.
 
 **Payload**
 
@@ -222,8 +222,7 @@ Assign two policies to the channel: a `Location Policy` with "USA" and "UK" as l
 
 Send GraphQL requests for channels and policies to the following endpoint:
 
-- Test: `https://scoping-service-stage.magento-ds.com/graphql`
-- Production: `https://scoping-service.magento-ds.com/graphql`
+`http://commerce.adobe.io/admin/graphql`
 
 You must create the policies before you can assign them to a channel.
 
@@ -445,11 +444,9 @@ mutation CreateChannel {
 
 Use the Storefront GraphQL API [productSearch](https://developer-stage.adobe.com/commerce/services/graphql-api/storefront-api/index.html#query-productSearch) query to retrieve the SKUs you created.
 
-<InlineAlert variant="info" slots="text"/>
-
 Send GraphQL requests for Storefront APIs to the following endpoints:
 
-- Test: `https://catalog-service-sandbox.adobe.io/graphql`
+- Sandbox: `https://catalog-service-sandbox.adobe.io/graphql`
 - Production: `https://catalog-service.adobe.io/graphql`
 
 ### Retrieve SKU for Brand `A`
@@ -783,3 +780,4 @@ The response returns the product details for a single SKU, `Motor Part 2`.
   }
 }
 ```
+

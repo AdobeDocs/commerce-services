@@ -17,7 +17,7 @@ This direct connection decreases the time that it takes to process product chang
 
 The Data Ingestion API is implemented as a REST (Representational State Transfer) API endpoint to manage the following types of data.
 
-- Products <-- what is product?, how to create product
-- Product Variants <--what is variant, how to create product variants
-- Product Metadata <-- what client can manage, how to extend?
-- PriceBooks and Prices <-- what is price, how price connected to products, what is price book?
+- Products
+- Product Variants
+- Product Metadata
+- PriceBooks and Prices

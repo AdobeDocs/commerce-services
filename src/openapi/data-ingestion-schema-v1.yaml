@@ -13,7 +13,7 @@ info:
 
   version: 1.0.0
 servers:
-  - url: https://catalog-service.adobe.io/api/
+  - url: https://commerce.adobe.io/api/
     description: Production endpoint
 
 tags:
@@ -308,21 +308,21 @@ paths:
         If a product with the same data exists with the same SKU and scope, the product update request is ignored.
 
         Use the [update operation](#operation/ProductsPatch) to modify values for an existing product.
-        
+
         <h3>Configurable Products</h3>
         A configurable product is a product that offers multiple options, such as color and size. Each unique combination of these options, like 'color green' and 'size large,' defines a product variant. This variant is an independent product with its own SKU, price, and inventory. The configurable product acts as a container for these product variants.
-        
+
         To create a configurable product, you need the following:
         - [Product attributes](#operation/ProductMetadataPut): Define the product attributes used to define a configurable product, such as "color", "size", etc.
-        - [Configurable product](#operation/ProductsPut): Define the configurable product. [Options](#operation/ProductsPut!path=options&t=request) is a required field. It defines the choices that a shopper can select.
-        - [Product variant](#operation/ProductsPut): Define a product variant for a configurable product. ["Attributes"](#operation/ProductsPut!path=attributes) with ["variantReferenceId"](#operation/ProductsPut!path=attributes/variantReferenceId&t=request) and ["links"](#operation/ProductsPut!path=links&t=request) of type `VARIANT_OF` must be defined for product variants.
-        
+        - [Configurable product](#operation/ProductsPost): Define the configurable product. [Options](#operation/ProductsPost!path=options&t=request) is a required field. It defines the choices that a shopper can select.
+        - [Product variant](#operation/ProductsPost): Define a product variant for a configurable product. ["Attributes"](#operation/ProductsPost!path=attributes) with ["variantReferenceId"](#operation/ProductsPost!path=attributes/variantReferenceId&t=request) and ["links"](#operation/ProductsPost!path=links&t=request) of type `VARIANT_OF` must be defined for product variants.
+
         Each product variant links back to the configurable product through its `variantReferenceId`, which corresponds to specific `options[].values[].id` in the configurable product.
-        
+
         To unassign a product variant from a configurable product, do one of the following:
         - Use [Delete Product API](#operation/ProductsDelete) to delete the product variant.
-        - Use [Update Product API](#operation/ProductsPatch) to set the ["variantReferenceId"](#operation/ProductsPut!path=attributes/variantReferenceId&t=request) to `null` and unassign the product variant from the configurable product by removing the ["links"](#operation/ProductsPut!path=links&t=request) association.
-      operationId: ProductsPut
+        - Use [Update Product API](#operation/ProductsPatch) to set the ["variantReferenceId"](#operation/ProductsPost!path=attributes/variantReferenceId&t=request) to `null` and unassign the product variant from the configurable product by removing the ["links"](#operation/ProductsPost!path=links&t=request) association.
+      operationId: ProductsPost
       parameters:
         - $ref: '#/components/parameters/DATA_SPACE_ID'
         - $ref: '#/components/parameters/ContentType'
@@ -1837,7 +1837,7 @@ components:
           type: string
           nullable: true
           description: |
-            The variant reference ID establishes a link between a product variant and the corresponding [Option Value ID](#operation/ProductsPut!path=options/values/id&t=request) in a configurable product.
+            The variant reference ID establishes a link between a product variant and the corresponding [Option Value ID](#operation/ProductsPost!path=options/values/id&t=request) in a configurable product.
             Variant reference ID must be defined only for a product that represents a variant of a configurable product.
     ProductRoutes:
       title: Routes
@@ -1895,7 +1895,7 @@ components:
         id:
           type: string
           description: |
-            Product option ID. For `CONFIGURABLE` or `SWATCH` option types, this ID must be match the ["attribute code"](#operation/ProductsPut!path=attributes/code&t=request) used for the configurable product (for example, "color").
+            Product option ID. For `CONFIGURABLE` or `SWATCH` option types, this ID must be match the ["attribute code"](#operation/ProductsPost!path=attributes/code&t=request) used for the configurable product (for example, "color").
         label:
           type: string
           description: Option label
@@ -1930,7 +1930,7 @@ components:
           type: string
           description: |
             Option value ID.
-            For `CONFIGURABLE` or `SWATCH` option types, this ID must match the ["variantReferenceId"](#operation/ProductsPut!path=attributes/variantReferenceId&t=request) defined in the product variant.
+            For `CONFIGURABLE` or `SWATCH` option types, this ID must match the ["variantReferenceId"](#operation/ProductsPost!path=attributes/variantReferenceId&t=request) defined in the product variant.
         label:
           type: string
           description: Option value label

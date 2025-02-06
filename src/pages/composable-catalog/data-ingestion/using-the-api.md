@@ -19,11 +19,42 @@ Send all Data Ingestion requests to the `https://commerce.adobe.io/api` endpoint
 
 ## Authentication
 
-Add authentication information here.
+To interact with the Data Ingestion API, the consumer must authenticate by generating a JWT token signed with the public API key from your Commerce account at https://account.magento.com.
 
-### Headers
+For instructions on generating the public API key, see [Generate the production and sandbox keys](https://experienceleague.adobe.com/en/docs/commerce-merchant-services/user-guides/integration-services/saas#genapikey)
 
-Headers list should be present in each Data Ingestion API call
+### Generate JWT token
+
+Use the following java code to generate a JWT token signed with the private key associated with your public API key.
+
+**JwtGenerator.java**
+
+```java
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+import java.security.PrivateKey;
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
+import java.util.Date;
+
+public class JwtGenerator {
+
+    public String generateJwt(PrivateKey privateKey) {
+
+        Instant now = Instant.now();
+
+        return Jwts.builder()
+                   .setIssuedAt(Date.from(now))
+                   .setExpiration(Date.from(now.plus(5L, ChronoUnit.MINUTES)))
+                   .signWith(privateKey, SignatureAlgorithm.RS256)
+                   .compact();
+    }
+}
+```
+
+## Headers
+
+The following Headers list should be present in each Data Ingestion API call.
 
 | Header name        | Required | Description                                                                                                                                                                                                                        |
 |--------------------|----------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -42,7 +73,7 @@ This example will register 4 products, category tree, product attributes metadat
 Use the following template for API call:
 
 ```shell
-curl --location 'https://catalog-service.adobe.io/api/<API_ENDPOINT>/<DATA_SPACE_ID>' \
+curl --location 'https://commerce.adobe.io/api/<API_ENDPOINT>/<DATA_SPACE_ID>' \
 --header 'Content-Type:  application/json' \
 --header 'x-api-key: <API_KEY>' \
 --header 'x-gw-signature: <JWT_TOKEN>' \
@@ -55,4 +86,4 @@ curl --location 'https://catalog-service.adobe.io/api/<API_ENDPOINT>/<DATA_SPACE
 | DATA_SPACE_ID    | Data Space ID obtained in this section.                                                |
 | API_KEY          | API_KEY obtained in this section.                                               |
 | JWT_TOKEN        | JWT token obtained in this section.                                     |
-| API_PAYLOAD      | API payload see in examples below                                                                               |
+| API_PAYLOAD      | API payload see examples in [CCDM use case](../ccdm-use-case.md)                                                                              |

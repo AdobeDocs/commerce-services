@@ -3,9 +3,6 @@ module.exports = [
     title: "Composable Catalog Data Model",
     path: "/composable-catalog/",
     pages: [
-        {   title: "Manage catalog data",
-            path: "/composable-catalog/manage-catalog-data.md"
-      },
       {   title: "Set up and manage catalogs",
             path: "/composable-catalog/manage-catalogs.md"
       },

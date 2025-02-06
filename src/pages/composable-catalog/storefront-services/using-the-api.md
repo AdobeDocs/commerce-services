@@ -11,18 +11,14 @@ keywords:
 
 # Using the storefront API
 
-The storefront API endpoints for all storefront API operations operations are:
+Send all Storefront API requests to the following endpoints:
 
 Environment | URL
 ----------- | ---
-Testing | https://catalog-service-sandbox.adobe.io/graphql
+Sandbox    | https://catalog-service-sandbox.adobe.io/graphql
 Production | https://catalog-service.adobe.io/graphql
 
 You must also specify multiple HTTP headers, including an API key, with each request.
-
-## Authentication
-
-Add authentication information here.
 
 ### Headers
 
@@ -36,5 +32,5 @@ Header name| Description
 `AC-Scope-Locale`: | Required. The locale (language or geography) scope to filter products for display or update, for example `en_US`. Use the [channels query](https://developer-stage.adobe.com/commerce/services/graphql-api/admin-api/index.html#query-channels) to retrieve the locale IDs available for each channel.
 `AC-Price-Book-ID` | Optional. Defines how prices are calculated for a specific channel. Use if the merchant uses price books to calculate pricing. CCDM provides a default price book `main` with currency in US dollars.
 `AC-Policy-{*}` | Optional. The trigger name configured for a policy that sets data access filters to restrict product access based on request attributes and context. Examples include POS physical stores, marketplaces, or advertisement pipelines like Google, Meta, or Instagram. Use the [policies query](https://developer-stage.adobe.com/commerce/services/graphql-api/admin-api/index.html#query-policies) to retrieve the [policy trigger names](https://developer-stage.adobe.com/commerce/services/graphql-api/admin-api/index.html#definition-TriggerResponse) available for each policy. You can specify multiple policy headers per request. Example: `AC-Policy-Country`.
-`Magento-Environment-ID`| Required. Specify the environment id for the data space where commerce data is stored. Retrieve the SaaS data space id from Commerce Admin at **Stores** > **Configuration** > **Services** > **Magento Services** > **SaaS Environment**, or using the Commerce CLI command `bin/magento config:show services_connector/services_id/environment_id` command. <!--If no Commerce backend, how do you get the data space environment ID?-->
-`X-Api-Key` | Production public API key.
+`AC-Environment-ID`| Required. Specify the environment id for the data space where commerce data is stored. Retrieve the SaaS data space id from Commerce Admin at **Stores** > **Configuration** > **Services** > **Magento Services** > **SaaS Environment**, or using the Commerce CLI command `bin/magento config:show services_connector/services_id/environment_id` command. <!--If no Commerce backend, how do you get the data space environment ID?-->
+`X-Api-Key` | Production [Public API Key](https://experienceleague.adobe.com/en/docs/commerce-merchant-services/user-guides/integration-services/saas#genapikey)|
