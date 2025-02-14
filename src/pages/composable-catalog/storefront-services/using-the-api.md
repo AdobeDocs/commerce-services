@@ -48,7 +48,7 @@ curl --request POST \
 --header 'AC-Channel-ID:  <CHANNEL_ID>'  \
 --header 'AC-Environment-ID: <DATA_SPACE_ID>' \
 --header 'AC-Policy-<POLICY_NAME>: <POLICY_VALUE>' \
---header 'AC-Price-Book-ID-<PRICEBOK_ID>' \
+--header 'AC-Price-Book-ID-<PRICEBOOK_ID>' \
 --header 'AC-Scope-Locale: <LOCALE_VALUE>' \
 --header 'x-api-key: <API_KEY>' \
 --data '<API_PAYLOAD>'
@@ -56,7 +56,7 @@ curl --request POST \
 
 | Placeholder name | Description                                                                                                     |
 |------------------|-----------------------------------------------------------------------------------------------------------------|
-| CHANNEL_ID     | The ID for the channel products will be sold through. Use the [channels query](https://developer-stage.adobe.com/commerce/services/graphql-api/admin-api/index) to retrieve available IDs.|
+| CHANNEL_ID     | The ID for the channel products will be sold through. Use the [channels query](https://developer-stage.adobe.com/commerce/services/graphql-api/admin-api/index.html#query-channels) to retrieve available IDs.|
 | DATA_SPACE_ID    | [SaaS Data Space ID](https://experienceleague.adobe.com/en/docs/commerce-merchant-services/user-guides/integration-services/saas#saas-data-space-provisioning) where your catalog data is stored.                                               |
 | POLICY_NAME: POLICY_VALUE | When used, the policy trigger name and value that sets data access filters to restrict product access based on request attributes. Use the [policies query](https://developer-stage.adobe.com/commerce/services/graphql-api/admin-api/index.html#query-policies) to retrieve available policies.                    |
 | PRICE_BOOK_ID    | When used, the price book ID used to retrieve the pricing schedule for a SKU. |
