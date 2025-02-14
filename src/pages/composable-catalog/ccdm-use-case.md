@@ -1,7 +1,7 @@
 ---
-title: Use the Composable Catalog Data Model
+title: Create a composable catalog for your storefront
 edition: ee
-description: Learn how to use the Composable Catalog Data Model to store and retrieve catalog data more efficiently and deliver more performant storefront experiences.
+description: An end-to-end tutorial that demonstrates how to create a composable catalog that supports a single base catalog which can deliver catalog projections based on geographic locations and brand.
 
 keywords:
   - GraphQL
@@ -10,13 +10,14 @@ keywords:
   - Performance
 ---
 
-# Using the composable catalog data model with your storefront
+# Using the composable catalog with your storefront
 
 Learn how a company with a single base catalog can use the composable catalog data model (CCDM) APIs to add product data, define catalogs using projections, and retrieve the catalog data for display in a headless storefront.
 
 This end-to-end use case demonstrates how a company with a single base catalog can use CCDM to:
 
 - Support products across two geographical markets and two distinct brands.
+- Support pricing by customer segment
 - Enhance operational efficiency by avoiding duplication of product catalogs across multiple websites.
 - Control product visibility on websites based on geographical market and brand specifications.
 
@@ -28,15 +29,14 @@ This use case demonstrates an end-to-end workflow for using CCDM based on the fo
 
 - One Channel
 
-  The `Company A` channel is linked to a single scope (locale: `en`) and two policies.
+  A distribution channel for `Zenith Automotive` is linked to a single scope, (locale: `en-US`) and two policies.
 
-- Two Policies
   - The **Location** policy (*Policy 1*) that defines the catalog projection for `locations`. This projection can be used to specify a target geographic market for selling specified SKUs. For example: `UK`, `USA`.
-  - The **Brand** policy (*Policy 2*) defines the catalog projection for `brands`. This projection can be used to specify one or more brands associated with each product SKU, for example `Brand A`, `Brand B`.
+  - The **Brand** policy (*Policy 2*) defines the catalog projection for `brands`. This projection can be used to specify one or more brands associated with each product SKU, for example `Aurora`, `Bolt`.
 
 - Two products SKUs
-  - `Motor part 1` belongs to `Brand A` and is aimed to be sold in `USA`.
-  - `Motor part 2` belongs to `Brand B` and is aimed to be sold in `UK`.
+  - `Aurora Prism battery` belongs to `Aurora` and is aimed to be sold in `USA`.
+  - `Bolt Atlas battery` belongs to `Bolt` and is aimed to be sold in `UK`.
   - The values for brand and location are product attributes of each SKU.
   - The product specification does not include any `Channel` or `Policy` values. When retrieving products using the Storefront API, Channel and Policy values are passed in using API headers.
 
@@ -44,247 +44,253 @@ This use case demonstrates an end-to-end workflow for using CCDM based on the fo
   - A catalog service API endpoint is used to represent how data will be retrieved using CCDM concepts.
   - Pay close attention to the API headers. The CCDM concepts for filtering products using channels and policies are implemented through the API headers.
   - Two Storefront API calls are represented:
-    - API Call one: Returns a SKU for `Brand A` and `USA` combination.
-    - API Call two: Returns a SKU for `Brand B` and `UK` combination.
+    - API Call one: Returns a SKU for `Aurora` and `USA` combination.
+    - API Call two: Returns a SKU for `Bolt` and `UK` combination.
 
-In the steps below, you use CCDM APIs to add the product, channel, and policy data to the SaaS data space for your project. Then, you use the the [Storefront API](./admin/using-the-api.md) to retrieve the data using the brand, and policy filters.
+In the steps below, you use CCDM APIs to add the product, channel, and policy data to the SaaS data space for your project. Then, you use the the [Storefront API](./admin/using-the-api.md) to retrieve the product data based on brand and location attributes.
 
 ## Step 1. Add products to your catalog
 
-Add two simple products, "Motor Part 1" and "Motor Part 2" and the product attribute metadata to define the search and display characteristics for the brand and country attributes.
+Add two simple products, "Aurora Prism battery" and "Bolt Atlas battery" and the product attribute metadata to define the search and display characteristics for the brand and country attributes.
 
 ### Add product attribute metadata
 
 Create the metadata to define the search characteristics and filters for displaying *location* and *brand* attributes on the storefront by submitting a [Create product attribute metadata](https://developer-stage.adobe.com/commerce/services/composable-catalog/data-ingestion/api-reference/#operation/ProductMetadataPut) POST request.
 
-**Endpoint**
+**Request**
 
-`commerce.adobe.io/api/v1/catalog/products/metadata/<_data_space_id>`
+```shell
+curl --request POST \
+  --url https://commerce.adobe.io/api/v1/catalog/products/metadata/42005e59-9689-444a-9205-ef6033ca0267 \
+  --header 'Content-Type: application/json' \
+  --header 'x-api-key: 284a0cc2b16c4f9194c922cbdb03ead8' \
+  --header 'x-gw-signature: <JWT_TOKEN>' \
+  --data '[
+    {
+        "code": "brand",
+        "scope": {
+            "locale": "en-US"
+        },
+        "label": "Brand",
+        "dataType": "TEXT",
+        "visibleIn": [
+            "PRODUCT_DETAIL",
+            "PRODUCT_LISTING",
+            "SEARCH_RESULTS",
+            "PRODUCT_COMPARE"
+        ],
+        "filterable": true,
+        "sortable": false,
+        "searchable": true,
+        "searchWeight": 55,
+        "searchTypes": [
+            "AUTOCOMPLETE",
+            "CONTAINS",
+            "STARTS_WITH"
+        ]
+    },
+    {
+        "code": "country",
+        "scope": {
+            "locale": "en-US"
+        },
+        "label": "Country",
+        "dataType": "TEXT",
+        "visibleIn": [
+            "PRODUCT_DETAIL",
+            "PRODUCT_LISTING",
+            "SEARCH_RESULTS",
+            "PRODUCT_COMPARE"
+        ],
+        "filterable": true,
+        "sortable": false,
+        "searchable": true,
+        "searchWeight": 55,
+        "searchTypes": [
+            "AUTOCOMPLETE",
+            "CONTAINS",
+            "STARTS_WITH"
+        ]
+    }
+]'
+```
 
-Include the [required headers](https://developer-stage.adobe.com/commerce/services/composable-catalog/data-ingestion/using-the-api/#headers) in the request.
-
-**Payload**
+#### Response
 
 ```json
-[
-  {
-      "code": "brand",
-      "scope": {
-          "locale": "en-US"
-      },
-      "label": "Brand",
-      "dataType": "TEXT",
-      "visibleIn": [
-          "PRODUCT_DETAIL",
-          "PRODUCT_LISTING",
-          "SEARCH_RESULTS",
-          "PRODUCT_COMPARE"
-      ],
-      "filterable": true,
-      "sortable": false,
-      "searchable": true,
-      "searchWeight": 55,
-      "searchTypes": [
-          "AUTOCOMPLETE",
-          "CONTAINS",
-          "STARTS_WITH"
-      ]
-  },
-  {
-      "code": "country",
-      "scope": {
-          "locale": "en-US"
-      },
-      "label": "Country",
-      "dataType": "TEXT",
-      "visibleIn": [
-          "PRODUCT_DETAIL",
-          "PRODUCT_LISTING",
-          "SEARCH_RESULTS",
-          "PRODUCT_COMPARE"
-      ],
-      "filterable": true,
-      "sortable": false,
-      "searchable": true,
-      "searchWeight": 55,
-      "searchTypes": [
-          "AUTOCOMPLETE",
-          "CONTAINS",
-          "STARTS_WITH"
-      ]
-  }
-]
+test
+
 ```
 
 ### Add products
 
 Add products by submitting a [createProducts](https://developer-stage.adobe.com/commerce/services/composable-catalog/data-ingestion/api-reference/#operation/ProductsPost) POST request using the Data Ingestion API.
 
-#### Create Motor Part 1 product
+#### Create Aurora product
 
-Add the simple product *Motor Part 1* with two attribute codes, `Brand` set to *Brand A*, and `Country` set to *USA* by sending the following payload in the Create products request.
+Add the simple product *Aurora Prism Battery* with two attribute codes, `Brand` set to *Aurora*, and `Country` set to *USA* by sending the following payload in the Create products request.
 
-**Endpoint**
+**Create product request**
 
-`commerce.adobe.io/api/v1/catalog/products/{DATA_SPACE_ID}`
-
-**Headers**
-
-Include the [required headers and path parameters](https://developer-stage.adobe.com/commerce/services/composable-catalog/data-ingestion/using-the-api/#headers) in the request.
-
-**Payload**
-
-```json
-{
-  "sku": "simple_product_1",
-  "scope": {
-    "locale": "en"
-  },
-  "name": "Motor Part 1",
-  "slug": "motor-part",
-  "status": "ENABLED",
-  "description": "Motor part sold only in USA",
-  "shortDescription": "motor part",
-  "roles": [
-    "SEARCH",
-    "CATALOG"
-  ],
-  "metaTags": {
-    "title": " ",
-    "description": "SEO optimization",
-    "keywords": [
-      "motor",
-      "part"
-    ]
-  },
-  "attributes": [
-    {
-      "code": "Brand",
-      "type": "STRING",
-      "values": [
-        "Brand A"
-      ]
-    },
-    {
-      "code": "Country",
-      "type": "ARRAY",
-      "values": [
-        "USA"
-      ]
-    }
-  ],
-  "images": [
-    {
-      "url": "https://example.com",
-      "label": "photo of my motor",
-      "roles": [
-        "PDP",
-        "PLP"
-      ]
-    }
-  ],
-  "links": [
-    {
-      "sku": "motor-part",
-      "type": "related"
-    }
-  ],
-  "routes": [
-    {
-      "path": "motor-part"
-    },
-    {
-      "path": "auto/motor-part",
-      "position": 1
-    }
-  ]
-}
+```shell
+curl --request POST \
+  --url https://commerce.adobe.io/api/v1/catalog/products/<DATA_SPACE_ID> \
+  --header 'Content-Type: application/json' \
+  --header 'x-api-key: <API_KEY>' \
+  --header 'x-gw-signature: <JWT_TOKEN>' \
+  --data '[
+        {
+        "sku": "aurora_prism_battery",
+        "scope": {
+            "locale": "en-US"
+        },
+        "name": "Aurora prism battery",
+        "slug": "vehicle-battery",
+        "status": "ENABLED",
+        "description": "Vehicle battery sold only in USA",
+        "shortDescription": "battery",
+        "roles": [
+            "SEARCH",
+            "CATALOG"
+        ],
+        "metaTags": {
+            "title": " ",
+            "description": "Zenith Automotive Vehicles and Parts",
+            "keywords": [
+                "motor",
+                "part"
+            ]
+        },
+        "attributes": [
+            {
+                "code": "Brand",
+                "type": "STRING",
+                "values": [
+                    "Aurora"
+                ]
+            },
+            {
+                "code": "Country",
+                "type": "ARRAY",
+                "values": [
+                    "USA"
+                ]
+            }
+        ],
+        "images": [
+            {
+                "url": "https://picsum.photos/300/200",
+                "label": "aurora prism battery photo",
+                "roles": [
+                    "PDP",
+                    "PLP"
+                ]
+            }
+        ],
+        "links": [
+            {
+                "sku": "aurora-prism-2025",
+                "type": "related"
+            }
+        ],
+        "routes": [
+            {
+                "path": "aurora-prism-battery"
+            },
+            {
+                "path": "vehicles/aurora-prism/parts",
+                "position": 1
+            }
+        ]
+        }
+]'
 ```
 
-#### Create Motor Part 2 product
+#### Create Bolt product
 
-Add the product *Motor Part 2* with two attribute codes, `Brand` set to *Brand B*, and `Country` set to *UK* by sending the following payload in the createProducts request.
+Add the product *Bolt Atlas battery with two attribute codes, `Brand` set to *Bolt*, and `Country` set to *UK* by sending the following payload in the createProducts request.
 
-**Payload**
+**Create product request**
 
-```json
-{
-  "sku": "simple_product_2",
-  "scope": {
-    "locale": "en"
-  },
-  "name": "Motor Part 2",
-  "slug": "motor-part",
-  "status": "ENABLED",
-  "description": "Motor part sold only in UK",
-  "shortDescription": "motor part",
-  "roles": [
-    "SEARCH",
-    "CATALOG"
-  ],
-  "metaTags": {
-    "title": " ",
-    "description": "SEO optimization",
-    "keywords": [
-      "motor",
-      "part"
-    ]
-  },
-  "attributes": [
-    {
-      "code": "Brand",
-      "type": "STRING",
-      "values": [
-        "Brand B"
-      ]
-    },
-    {
-      "code": "country",
-      "type": "ARRAY",
-      "values": [
-        "UK"
-      ]
-    }
-  ],
-  "images": [
-    {
-      "url": "https://example.com",
-      "label": "photo of my motor",
-      "roles": [
-        "PDP",
-        "PLP"
-      ]
-    }
-  ],
-  "links": [
-    {
-      "sku": "motor-part",
-      "type": "related"
-    }
-  ],
-  "routes": [
-    {
-      "path": "motor-part"
-    },
-    {
-      "path": "auto/motor-part",
-      "position": 1
-    }
-  ]
-}
+```shell
+curl --request POST \
+  --url https://commerce.adobe.io/api/v1/catalog/products/<DATA_SPACE_ID> \
+  --header 'Content-Type: application/json' \
+  --header 'x-api-key: <API_KEY>' \
+  --header 'x-gw-signature: <JWT_TOKEN>' \
+  --data '[
+        {
+        "sku": "bolt_atlas_battery",
+        "scope": {
+            "locale": "en-US"
+        },
+        "name": "Bolt Atlas battery",
+        "slug": "vehicle-battery",
+        "status": "ENABLED",
+        "description": "Vehicle battery sold only in UK",
+        "shortDescription": "battery",
+        "roles": [
+            "SEARCH",
+            "CATALOG"
+        ],
+        "metaTags": {
+            "title": " ",
+            "description": "Zenith Automotive Vehicles and Parts",
+            "keywords": [
+                "motor",
+                "part"
+            ]
+        },
+        "attributes": [
+            {
+                "code": "Brand",
+                "type": "STRING",
+                "values": [
+                    "Bolt"
+                ]
+            },
+            {
+                "code": "Country",
+                "type": "ARRAY",
+                "values": [
+                    "UK"
+                ]
+            }
+        ],
+        "images": [
+            {
+                "url": "https://picsum.photos/300/200",
+                "label": "bolt atlas battery photo",
+                "roles": [
+                    "PDP",
+                    "PLP"
+                ]
+            }
+        ],
+        "links": [
+            {
+                "sku": "bolt-atlas-2025",
+                "type": "related"
+            }
+        ],
+        "routes": [
+            {
+                "path": "bolt-atlas-battery"
+            },
+            {
+                "path": "vehicles/bolt-atlas/parts",
+                "position": 1
+            }
+        ]
+        }
+]'
 ```
 
 ## Step 2. Define the channel and policies
 
 In this step, create a channel for `Company A` using the [CreateChannelRequest](https://developer-stage.adobe.com/commerce/services/graphql-api/admin-api/index.html#definition-CreateChannelRequest) GraphQL mutation from the Catalog Management API.
 
-Assign two policies to the channel: a `Location Policy` with "USA" and "UK" as locations, and a `Brand Policy` with "Brand A" and "Brand B".
-
-Send GraphQL requests for channels and policies to the following endpoint:
-
-`http://commerce.adobe.io/admin/graphql`
-
-You must create the policies before you can assign them to a channel.
+Assign two policies to the channel: a `Location Policy` with "USA" and "UK" as locations, and a `Brand Policy` with "Aurora" and "Bolt".
 
 ### Create policies
 
@@ -294,9 +300,21 @@ The query response returns a `PolicyId` value that is required when you assign t
 
 #### Location policy
 
-**Request**
+**cURL Request**
 
-```graphql
+```shell
+curl --request POST \
+  --url http://commerce.adobe.io/admin/graphql \
+  --header 'Content-Type: application/json' \
+  --header 'AC-Environment-Id: <DATA_SPACE_ID>' \
+  --header 'x-api-key: <API_KEY>' \
+  --header 'x-gw-signature: <JWT_TOKEN>' \
+  --data '{"query":"mutation createPolicy {\n\tcreatePolicy(\n\t\tpolicyRequest: {\n\t\t\tname: \"Location Policy\"\n\t\t\tmandatory: true\n\t\t\tactions: [\n\t\t\t\t{\n\t\t\t\t\ttriggers: [\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\tname: \"AC-Policy-Country\",\n\t\t\t\t\t\t\ttransportType: HTTP_HEADER\n\t\t\t\t\t\t}\n\t\t\t\t\t]\n\t\t\t\t\tfilters: [\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\tattribute: \"country\",\n\t\t\t\t\t\t\tvalueSource: TRIGGER,\n\t\t\t\t\t\t\tvalue: \"AC-Policy-Country\"\n\t\t\t\t\t\t\tactionFilterOperator: EQUALS,\n\t\t\t\t\t\t\tenabled: true\n\t\t\t\t\t\t}\n\t\t\t\t\t]\n\t\t\t\t}\n\t\t\t]\n\t\t}\n\t) {\n\t\tname\n\t\tpolicyId\n\t\tmandatory\n\t\tactions {\n\t\t\ttriggers {\n\t\t\t\tname\n\t\t\t\ttransportType\n\t\t\t}\n\t\t\tfilters {\n\t\t\t\tattribute\n\t\t\t\tvalueSource\n\t\t\t\tvalue\n\t\t\t\tactionFilterOperator\n\t\t\t\tenabled\n\t\t\t}\n\t\t}\n\t\tcreatedAt\n\t\tupdatedAt\n\t}\n}\n","operationName":"createPolicy"}'
+```
+
+**Payload**
+
+```graphl
 mutation CreatePolicy {
   createPolicy(policyRequest: {
     name: "Location policy",
@@ -349,7 +367,7 @@ mutation CreatePolicy {
 {
   "data": {
       "createPolicy": {
-          "policyId": "56a6908f-eyx3-59c3-sye8-574509e6y45 39c8106d",
+          "policyId": "56a6908f-eyx3-59c3-sye8-574509e6y45",
           "name": "Location policy",
           "mandatory": true,
           "actions": [
@@ -383,7 +401,20 @@ mutation CreatePolicy {
 
 #### Brand policy
 
-**Request**
+**cURL Request**
+
+```shell
+curl --request POST \
+  --url http://commerce.adobe.io/admin/graphql \
+  --header 'Content-Type: application/json' \
+  --header 'AC-Environment-Id: <DATA_SPACE_ID>' \
+  --header 'x-api-key: <API_KEY>' \
+  --header 'x-gw-signature: <JWT_TOKEN>' \
+  --data '{"query":"mutation createPolicy {\n\tcreatePolicy(\n\t\tpolicyRequest: {\n\t\t\tname: \"Brand Policy\"\n\t\t\tmandatory: true\n\t\t\tactions: [\n\t\t\t\t{\n\t\t\t\t\ttriggers: [\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\tname: \"AC-Policy-Brand\",\n\t\t\t\t\t\t\ttransportType: HTTP_HEADER\n\t\t\t\t\t\t}\n\t\t\t\t\t]\n\t\t\t\t\tfilters: [\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\tattribute: \"brand\",\n\t\t\t\t\t\t\tvalueSource: TRIGGER,\n\t\t\t\t\t\t\tvalue: \"AC-Policy-Brand\"\n\t\t\t\t\t\t\tactionFilterOperator: EQUALS,\n\t\t\t\t\t\t\tenabled: true\n\t\t\t\t\t\t}\n\t\t\t\t\t]\n\t\t\t\t}\n\t\t\t]\n\t\t}\n\t) {\n\t\tname\n\t\tpolicyId\n\t\tmandatory\n\t\tactions {\n\t\t\ttriggers {\n\t\t\t\tname\n\t\t\t\ttransportType\n\t\t\t}\n\t\t\tfilters {\n\t\t\t\tattribute\n\t\t\t\tvalueSource\n\t\t\t\tvalue\n\t\t\t\tactionFilterOperator\n\t\t\t\tenabled\n\t\t\t}\n\t\t}\n\t\tcreatedAt\n\t\tupdatedAt\n\t}\n}\n","operationName":"createPolicy"}'
+
+```
+
+**Payload**
 
 ```graphql
 mutation CreatePolicy {
@@ -474,29 +505,43 @@ mutation CreatePolicy {
 
 Create a channel and assign the policies for location filtering and brand filtering. Use the policy IDs returned in the `createPolicy` request to assign the policies.
 
-Pass the [required headers](https://developer-stage.adobe.com/commerce/services/composable-catalog/admin/using-the-api/#headers) for the request.
+**cURL Request**
 
-**Request**
+```shell
+curl --request POST \
+  --url http://commerce.adobe.io/admin/graphql \
+  --header 'Content-Type: application/json'  \
+  --header 'AC-Environment-Id: <DATA_SPACE_ID>' \
+  --header 'x-api-key: <API_KEY>' \
+  --header 'x-gw-signature: <JWT_TOKEN>' \
+  --data '{"query":"mutation {\n    createChannel(\n        channelRequest: {\n            name: \"Zenith Automotive\",\n            scopes: [\n                { locale: \"en_US\" }\n            ]\n            policyIds : [\n                \"56a6908f-eyx3-59c3-sye8-574509e6y45\",\n                \"39c8106d-aab2-49b2-aac3-177608d4e567\",\n            ]\n        }\n    ) {\n        channelId\n        name\n        scopes {\n          locale\n        }\n        policyIds\n        createdAt\n        updatedAt\n    }\n}"}'
+```
+
+**Payload**
 
 ```graphql
-mutation CreateChannel {
-  createChannel(channelRequest: {
-    name: "Company A",
-    scopes: [
-      {
-        locale: "en"
-      }
-    ],
-    policyIds: [
-      "56a6908f-eyx3-59c3-sye8-574509e6y45","39c8106d-aab2-49b2-aac3-177608d4e56",
-    ]
-  }) {
-    name
-    policyIds
-    scopes {
-      locale
+mutation {
+    createChannel(
+        channelRequest: {
+            name: "Zenith Automotive",
+            scopes: [
+                { locale: "en_US" }
+            ]
+            policyIds : [
+                "56a6908f-eyx3-59c3-sye8-574509e6y45",
+                "39c8106d-aab2-49b2-aac3-177608d4e567",
+            ]
+        }
+    ) {
+        channelId
+        name
+        scopes {
+          locale
+        }
+        policyIds
+        createdAt
+        updatedAt
     }
-  }
 }
 ```
 
@@ -509,24 +554,29 @@ Send GraphQL requests for Storefront APIs to the following endpoints:
 - Sandbox: `https://catalog-service-sandbox.adobe.io/graphql`
 - Production: `https://catalog-service.adobe.io/graphql`
 
-### Retrieve SKU for Brand `A`
+<InlineAlert variant="info" slots="text"/>
 
-Retrieve the SKU you created for `Brand A` where location is `USA`. Use the search phrase `Motor parts`, and specify a page size to limit results.
+When you submit requests using Storefront API, use the Adobe Commerce API key for your production environment to authenticate to both sandbox and production endpoints.
+
+### Retrieve SKU for the `Aurora` brand
+
+Retrieve the SKU you created for `Aurora` where location is `USA`. Use the search phrase `Zenith Automotive Vehicles and Parts`, and specify a page size to limit results.
 
 The brand and location (`AC-Policy-Brand` and `AC-Policy-Country`) are passed in using [Storefront API headers](https://developer-stage.adobe.com/commerce/services/composable-catalog/storefront-services/using-the-api/#header).
 
-The following lists the sample headers:
+The following lists the request headers:
 
-- `Content-Type`: `application/json`
-- `AC-Environment-Id`: `123`
-- `Magento-Store-Code`: `main_website_store`
-- `AC-Scope-Locale`: `default`
-- `AC-Price-Book-Id`: `base`
-- `AC-Channel-Id`: `channelId-1`
-- `AC-Policy-State`: `AC-Policy-Country`
-- `X-Api-Key`: `***************`
-- `AC-Policy-Country`: `USA`
-- `AC-Policy-Brand`: `Brand A`
+```shell
+  --url https://catalog-service.adobe.io/graphql \
+  --header 'AC-Channel-Id: add68f2b-8343-45c1-b2ae-63644471f606' \
+  --header 'AC-Environment-Id: <DATA_SPACE_ID>' \
+  --header -AC-Policy-Brand: Aurora'
+  --header 'AC-Policy-Country: USA'
+  --header 'AC-Price-Book-Id: base' \
+  --header 'AC-Scope-Locale: en-US' \
+  --header 'Content-Type: application/json' \
+  --header 'X-Api-Key: <API_KEY>' \
+```
 
 #### Request
 
@@ -582,7 +632,7 @@ Here are the variable values to specify in the request:
 
 ```json
 {
-  "phrase": "Motor parts",
+  "phrase": "Zenith Automotive Vehicles and Parts",
   "filter": [],
   "sort": [],
   "pageSize": 100
@@ -591,7 +641,7 @@ Here are the variable values to specify in the request:
 
 #### Response
 
-The response returns the product details for a single SKU, `Motor Part 1`.
+The response returns the product details for a single SKU, `Aurora Prism battery`.
 
 ```graphql
 {
@@ -601,12 +651,12 @@ The response returns the product details for a single SKU, `Motor Part 1`.
       "items": [
         {
           "productView": {
-            "sku": "simple_product_1",
-            "name": "Motor Part 1",
+            "sku": "aurora_prism_battery",
+            "name": "Aurora Prism battery",
             "images": [
               {
-                "url": "https://example.com",
-                "label": "photo of my motor",
+                "url": "https://picsum.photos/300/200",
+                "label": "aurora prism battery photo",
                 "roles": [
                   "PDP",
                   "PLP"
@@ -615,7 +665,7 @@ The response returns the product details for a single SKU, `Motor Part 1`.
             ],
             "links": [
               {
-                "sku": "motor-part",
+                "sku": "aurora-prism-2025",
                 "type": "related"
               }
             ],
@@ -624,7 +674,7 @@ The response returns the product details for a single SKU, `Motor Part 1`.
                 "code": "Brand",
                 "type": "STRING",
                 "values": [
-                  "Brand A"
+                  "Aurora"
                 ]
               },
               {
@@ -635,16 +685,19 @@ The response returns the product details for a single SKU, `Motor Part 1`.
                 ]
               }
             ],
-            "description": "Motor part sold only in USA",
-            "shortDescription": "motor part",
+            "description": "Zenith Automotive Vehicles and Parts",
+            "shortDescription": "battery",
             "routes": [
               {
-                "path": "motor-part"
+                "path": "aurora-prism-battery"
               },
               {
-                "path": "pants/motor-part",
+                "path": "vehicles/aurora-prism/parts",
                 "position": 1
               }
+              {
+              "path": "aurora-prism-battery"
+            },
             ],
             "roles": [
               "SEARCH",
@@ -652,7 +705,7 @@ The response returns the product details for a single SKU, `Motor Part 1`.
             ],
             "metaTags": {
               "title": " ",
-              "description": "SEO opt",
+              "description": "Zenith Automotive Vehicles and Parts",
               "keywords": [
                 "motor",
                 "part"
@@ -680,24 +733,25 @@ The response returns the product details for a single SKU, `Motor Part 1`.
 }
 ```
 
-### Retrieve SKU for Brand B
+### Retrieve SKU for the Bolt brand
 
-Retrieve the SKU you created for `Brand B` where location is `UK`. Use the search phrase `Motor parts`, and specify a page size to limit results.
+Retrieve the SKU you created for `Bolt` where location is `UK`. Use the search phrase `Motor parts`, and specify a page size to limit results.
 
 The brand and location (`AC-Policy-Brand` and `AC-Policy-Country`) are passed in using the [Storefront API headers](https://developer-stage.adobe.com/commerce/services/composable-catalog/storefront-services/using-the-api/#header).
 
-The following lists the sample headers:
+The following lists the request headers:
 
-- `Content-Type`: `application/json`
-- `AC-Environment-Id`: `123`
-- `Magento-Store-Code`: `main_website_store`
-- `AC-Scope-Locale`: `default`
-- `AC-Price-Book-Id`: `base`
-- `AC-Channel-Id`: `channelId-1`
-- `AC-Policy-State`: `AC-Policy-Brand`
-- `X-Api-Key`: `search_gql`
-- `AC-Policy-Brand`: `Brand B`
-- `AC-Policy-Country`: `UK`
+```shell
+  --url https://catalog-service.adobe.io/graphql \
+  --header 'AC-Channel-Id: add68f2b-8343-45c1-b2ae-63644471f606' \
+  --header 'AC-Environment-Id: <DATA_SPACE_ID>' \
+  --header -AC-Policy-Brand: Bolt' \
+  --header 'AC-Policy-Country: UK' \
+  --header 'AC-Price-Book-Id: base' \
+  --header 'AC-Scope-Locale: en-US' \
+  --header 'Content-Type: application/json' \
+  --header 'X-Api-Key: <API-KEY>' \
+```
 
 #### Request
 
@@ -751,7 +805,7 @@ Here are the variables specified in the request:
 
 ```json
 {
-  "phrase": "Motor parts",
+  "phrase": "Zenith Automotive Vehicles and Parts",
   "filter": [],
   "sort": [],
   "pageSize": 100
@@ -760,7 +814,7 @@ Here are the variables specified in the request:
 
 #### Response
 
-The response returns the product details for a single SKU, `Motor Part 2`.
+The response returns the product details for a single SKU, `Bolt Atlas battery`.
 
 ```graphql
 {
@@ -770,12 +824,12 @@ The response returns the product details for a single SKU, `Motor Part 2`.
       "items": [
         {
           "productView": {
-            "sku": "simple_product_2",
-            "name": "Motor Part 2",
+            "sku": "bolt_atlas_battery",
+            "name": "Bolt Atlas battery",
             "images": [
               {
-                "url": "https://example.com",
-                "label": "photo of my motor",
+                "url": "https://picsum.photos/400/200",
+                "label": "Bolt Atlas Battery photo",
                 "roles": [
                   "PDP",
                   "PLP"
@@ -784,7 +838,7 @@ The response returns the product details for a single SKU, `Motor Part 2`.
             ],
             "links": [
               {
-                "sku": "motor-part",
+                "sku": "bolt-atlas-2025",
                 "type": "related"
               }
             ],
@@ -793,25 +847,42 @@ The response returns the product details for a single SKU, `Motor Part 2`.
                 "code": "Brand",
                 "type": "STRING",
                 "values": [
-                  "Brand B"
+                  "Bolt"
                 ]
               },
               {
-                "code": "country",
+                "code": "Country",
                 "type": "ARRAY",
                 "values": [
                   "UK"
                 ]
               }
             ],
-            "description": "Motor part sold only in UK",
-            "shortDescription": "motor part",
+            "description": "Vehicle battery sold only in UK",
+            "shortDescription": "battery",
+
+             "images": [
+            {
+                "url": "https://picsum.photos/300/200",
+                "label": "bolt atlas battery photo",
+                "roles": [
+                    "PDP",
+                    "PLP"
+                ]
+            }
+        ],
+        "links": [
+            {
+                "sku": "bolt-atlas-2025",
+                "type": "related"
+            }
+        ],
             "routes": [
               {
-                "path": "motor-part"
+                "path": "bolt-atlas-battery"
               },
               {
-                "path": "pants/motor-part",
+                "path": "vehicles/bolt-atlas/parts",
                 "position": 1
               }
             ],

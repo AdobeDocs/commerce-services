@@ -13,11 +13,11 @@ keywords:
 
 ## Endpoint
 
-Send all Catalog Management API requests to the following endpoint:
+Send all Catalog Management API requests to this endpoint: https://commerce.adobe.io/admin/graphql
 
-https://commerce.adobe.io/admin/graphql
+<InlineAlert variant="info" slots="text"/>
 
-You must also specify multiple HTTP headers, including an API key, with each request. See the [API Reference](https://developer-stage.adobe.com/commerce/services/composable-catalog/admin/api-reference/) for details.
+For sample requests and examples using the API, see the [API Reference](api-reference.md) and the [tutorial](../ccdm-use-case.md).
 
 ## Authentication
 
@@ -56,11 +56,27 @@ public class JwtGenerator {
 
 ## Headers
 
-<!--Requires update for CCDM context-->
+Include the following headers in each GraphQL request.
 
 | Header name        | Required | Description                                                                                                                                                                                                                        |
 |--------------------|----------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|`AC-Environment-Id` | Yes | Specify the environment id for the data space where commerce data is stored. Retrieve SaaS data space id from Commerce Admin at **Stores** > **Configuration** > **Services** > **Magento Services** > **SaaS Environment**, or using the Commerce CLI command `bin/magento config:show services_connector/services_id/environment_id` command. |
+|`AC-Environment-Id` | Yes | Specify the environment id for the data space where commerce data is stored. Retrieve the [SaaS data space id](https://experienceleague.adobe.com/en/docs/commerce-merchant-services/user-guides/integration-services/saas#saas-data-space-provisioning) from the Commerce Admin at **Stores** > **Configuration** > **Services** > **Magento Services** > **SaaS Environment**, or using the Commerce CLI command `bin/magento config:show services_connector/services_id/environment_id` command. |
 | `Content-Type`     | Yes      | Media type of the resource. Accepted value: `application/json`                                                                                      |
-| `x-api-key`        | Yes      | [Public API Key](https://experienceleague.adobe.com/en/docs/commerce-merchant-services/user-guides/integration-services/saas#genapikey)                             |
+| `x-api-key`        | Yes      | Use the [public API Key](https://experienceleague.adobe.com/en/docs/commerce-merchant-services/user-guides/integration-services/saas#genapikey) for your production environment when submitting Catalog Management API requests.                             |
 | `x-gw-signature`   | Yes      | [JSON Web token generated for Public API key](#generate-jwt-token) |
+
+## Request template
+
+Use the following template for each GraphQL query request, replacing the request type based 
+
+```shell
+curl --request POST \
+  --url https://commerce.adobe.io/admin/graphql \
+  --header "AC-Environment-Id: <DATA_SPACE_ID>" \
+  --header "Content-Type: application/json" \
+  --header "x-api-key: <API_KEY>" \
+  --header "x-gw-signature: <JWT_TOKEN>" \
+  --data 'API_PAYLOAD'
+```
+
+For sample requests, see the [tutorial](../ccdm-use-case.md).
