@@ -91,7 +91,7 @@ curl --request POST \
 | Placeholder name | Description                                                                                                     |
 |------------------|-----------------------------------------------------------------------------------------------------------------|
 | API_ENDPOINT     | Endpoint for specific Data Ingestion API, for example: `/api/v1/catalog/products/prices/`  |
-| DATA_SPACE_ID    | [SaaS Data Space ID](#paths).                                               |
+| DATA_SPACE_ID    | [SaaS Data Space ID](#path-parameters).                                               |
 | API_KEY          | [Public API_KEY for Adobe Commerce account](#authentication).                              |
 | JWT_TOKEN        | [JWT token generated from Commerce API key.](#generate-jwt-token)                                     |
 | API_PAYLOAD      | API payload see examples in the [tutorial](../ccdm-use-case.md)                                                                              |

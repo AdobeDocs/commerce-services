@@ -17,7 +17,14 @@ Send all Storefront API requests to this endpoint: https://catalog-service.adobe
 
 For sample requests and examples using the API, see the [API Reference](api-reference.md) and the [tutorial](../ccdm-use-case.md).
 
-### Headers
+## Authentication
+
+To interact with the Storefront Services API, you need the public API Key generated from your  https://account.magento.com. See [Generate production and sandbox keys](https://experienceleague.adobe.com/en/docs/commerce-merchant-services/user-guides/integration-services/saas#genapikey).
+
+For instructions on generating the public API key, see [Generate the production and sandbox keys](https://experienceleague.adobe.com/en/docs/commerce-merchant-services/user-guides/integration-services/saas#genapikey)
+
+
+## Headers
 
 When making requests to the storefront API, you must include specific HTTP headers to ensure proper authentication and data retrieval. These headers provide necessary information, such as the channel ID, locale, price book, and optional price book and policy headers that tailor the API response to your needs.
 
