@@ -94,6 +94,6 @@ curl --request POST \
 | DATA_SPACE_ID    | [SaaS Data Space ID](#paths).                                               |
 | API_KEY          | [Public API_KEY for Adobe Commerce account](#authentication).                              |
 | JWT_TOKEN        | [JWT token generated from Commerce API key.](#generate-jwt-token)                                     |
-| API_PAYLOAD      | API payload see examples in [CCDM use case](../ccdm-use-case.md)                                                                              |
+| API_PAYLOAD      | API payload see examples in the [tutorial](../ccdm-use-case.md)                                                                              |
 
 For sample requests, see the [tutorial](../ccdm-use-case.md).

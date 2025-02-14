@@ -56,6 +56,6 @@ curl --request POST \
 | PRICE_BOOK_ID    | When used, the price book ID used to retrieve the pricing schedule for a SKU. |
 | LOCALE_VALUE | The locale (language or geography) scope to filter products for display or update. |
 | API_KEY          | Adobe Commerce [API_KEY](#authentication). Use the value for the production public key.                              |
-| API_PAYLOAD      | API payload see examples in [CCDM use case](../ccdm-use-case.md)
+| API_PAYLOAD      | API payload see examples in the [tutorial](../ccdm-use-case.md)
 
 For sample requests, see the [tutorial](../ccdm-use-case.md).

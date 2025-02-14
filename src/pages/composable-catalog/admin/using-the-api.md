@@ -67,7 +67,7 @@ Include the following headers in each GraphQL request.
 
 ## Request template
 
-Use the following template for each GraphQL query request, replacing the request type based 
+Use the following template for each GraphQL query request, replacing the request type based and placeholders as required.
 
 ```shell
 curl --request POST \
