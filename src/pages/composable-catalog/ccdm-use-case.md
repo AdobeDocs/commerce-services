@@ -1,7 +1,12 @@
 ---
 title: Create a composable catalog for your storefront
 edition: ee
+<<<<<<< HEAD
 description: Tutorial to create a composable catalog that supports a single base catalog which can deliver catalog projections based on geographic locations and brand.
+=======
+description: An end-to-end tutorial that demonstrates how to create a composable catalog that supports a single base catalog which can deliver catalog projections based on geographic locations and brand.
+
+>>>>>>> 5de9423 (Updates based on review feedback)
 keywords:
   - GraphQL
   - Services
@@ -60,9 +65,15 @@ Create the metadata to define the search characteristics and filters for display
 
 ```shell
 curl --request POST \
+<<<<<<< HEAD
   --url https://commerce.adobe.io/<DATA_SPACE_ID>/api/v1/catalog/products/metadata \
   --header 'Content-Type: application/json' \
   --header 'x-api-key: <API_KEY>' \
+=======
+  --url https://commerce.adobe.io/api/v1/catalog/products/metadata/42005e59-9689-444a-9205-ef6033ca0267 \
+  --header 'Content-Type: application/json' \
+  --header 'x-api-key: 284a0cc2b16c4f9194c922cbdb03ead8' \
+>>>>>>> 5de9423 (Updates based on review feedback)
   --header 'x-gw-signature: <JWT_TOKEN>' \
   --data '[
     {
@@ -112,6 +123,16 @@ curl --request POST \
         ]
     }
 ]'
+<<<<<<< HEAD
+=======
+```
+
+#### Response
+
+```json
+test
+
+>>>>>>> 5de9423 (Updates based on review feedback)
 ```
 
 ### Add products
@@ -126,7 +147,11 @@ Add the simple product *Aurora Prism Battery* with two attribute codes, `Brand` 
 
 ```shell
 curl --request POST \
+<<<<<<< HEAD
   --url https://commerce.adobe.io/<DATA_SPACE_ID>/api/v1/catalog/products \
+=======
+  --url https://commerce.adobe.io/api/v1/catalog/products/<DATA_SPACE_ID> \
+>>>>>>> 5de9423 (Updates based on review feedback)
   --header 'Content-Type: application/json' \
   --header 'x-api-key: <API_KEY>' \
   --header 'x-gw-signature: <JWT_TOKEN>' \
@@ -149,7 +174,11 @@ curl --request POST \
             "title": " ",
             "description": "Zenith Automotive Vehicles and Parts",
             "keywords": [
+<<<<<<< HEAD
                 "battery",
+=======
+                "motor",
+>>>>>>> 5de9423 (Updates based on review feedback)
                 "part"
             ]
         },
@@ -200,13 +229,21 @@ curl --request POST \
 
 #### Create Bolt product
 
+<<<<<<< HEAD
 Add the product *Bolt Atlas Battery* with two attribute codes, `Brand` set to *Bolt*, and `Country` set to *UK* by sending the following payload in the [createProducts](https://developer-stage.adobe.com/commerce/services/composable-catalog/data-ingestion/api-reference/#operation/ProductsPost) request.
+=======
+Add the product *Bolt Atlas battery with two attribute codes, `Brand` set to *Bolt*, and `Country` set to *UK* by sending the following payload in the createProducts request.
+>>>>>>> 5de9423 (Updates based on review feedback)
 
 **Create product request**
 
 ```shell
 curl --request POST \
+<<<<<<< HEAD
   --url https://commerce.adobe.io/<DATA_SPACE_ID>/api/v1/catalog/products \
+=======
+  --url https://commerce.adobe.io/api/v1/catalog/products/<DATA_SPACE_ID> \
+>>>>>>> 5de9423 (Updates based on review feedback)
   --header 'Content-Type: application/json' \
   --header 'x-api-key: <API_KEY>' \
   --header 'x-gw-signature: <JWT_TOKEN>' \
@@ -229,7 +266,11 @@ curl --request POST \
             "title": " ",
             "description": "Zenith Automotive Vehicles and Parts",
             "keywords": [
+<<<<<<< HEAD
                 "battery",
+=======
+                "motor",
+>>>>>>> 5de9423 (Updates based on review feedback)
                 "part"
             ]
         },
@@ -403,6 +444,10 @@ curl --request POST \
   --header 'x-api-key: <API_KEY>' \
   --header 'x-gw-signature: <JWT_TOKEN>' \
   --data '{"query":"mutation createPolicy {\n\tcreatePolicy(\n\t\tpolicyRequest: {\n\t\t\tname: \"Brand Policy\"\n\t\t\tmandatory: true\n\t\t\tactions: [\n\t\t\t\t{\n\t\t\t\t\ttriggers: [\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\tname: \"AC-Policy-Brand\",\n\t\t\t\t\t\t\ttransportType: HTTP_HEADER\n\t\t\t\t\t\t}\n\t\t\t\t\t]\n\t\t\t\t\tfilters: [\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\tattribute: \"brand\",\n\t\t\t\t\t\t\tvalueSource: TRIGGER,\n\t\t\t\t\t\t\tvalue: \"AC-Policy-Brand\"\n\t\t\t\t\t\t\tactionFilterOperator: EQUALS,\n\t\t\t\t\t\t\tenabled: true\n\t\t\t\t\t\t}\n\t\t\t\t\t]\n\t\t\t\t}\n\t\t\t]\n\t\t}\n\t) {\n\t\tname\n\t\tpolicyId\n\t\tmandatory\n\t\tactions {\n\t\t\ttriggers {\n\t\t\t\tname\n\t\t\t\ttransportType\n\t\t\t}\n\t\t\tfilters {\n\t\t\t\tattribute\n\t\t\t\tvalueSource\n\t\t\t\tvalue\n\t\t\t\tactionFilterOperator\n\t\t\t\tenabled\n\t\t\t}\n\t\t}\n\t\tcreatedAt\n\t\tupdatedAt\n\t}\n}\n","operationName":"createPolicy"}'
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5de9423 (Updates based on review feedback)
 ```
 
 **Payload**
@@ -505,7 +550,11 @@ curl --request POST \
   --header 'AC-Environment-Id: <DATA_SPACE_ID>' \
   --header 'x-api-key: <API_KEY>' \
   --header 'x-gw-signature: <JWT_TOKEN>' \
+<<<<<<< HEAD
   --data '{"query":"mutation {\n    createChannel(\n        channelRequest: {\n            name: \"Zenith Automotive\",\n            scopes: [\n                { locale: \"en-US\" }\n            ]\n            policyIds : [\n                \"56a6908f-eyx3-59c3-sye8-574509e6y45\",\n                \"39c8106d-aab2-49b2-aac3-177608d4e567\",\n            ]\n        }\n    ) {\n        channelId\n        name\n        scopes {\n          locale\n        }\n        policyIds\n        createdAt\n        updatedAt\n    }\n}"}'
+=======
+  --data '{"query":"mutation {\n    createChannel(\n        channelRequest: {\n            name: \"Zenith Automotive\",\n            scopes: [\n                { locale: \"en_US\" }\n            ]\n            policyIds : [\n                \"56a6908f-eyx3-59c3-sye8-574509e6y45\",\n                \"39c8106d-aab2-49b2-aac3-177608d4e567\",\n            ]\n        }\n    ) {\n        channelId\n        name\n        scopes {\n          locale\n        }\n        policyIds\n        createdAt\n        updatedAt\n    }\n}"}'
+>>>>>>> 5de9423 (Updates based on review feedback)
 ```
 
 **Payload**
@@ -516,7 +565,11 @@ mutation {
         channelRequest: {
             name: "Zenith Automotive",
             scopes: [
+<<<<<<< HEAD
                 { locale: "en-US" }
+=======
+                { locale: "en_US" }
+>>>>>>> 5de9423 (Updates based on review feedback)
             ]
             policyIds : [
                 "56a6908f-eyx3-59c3-sye8-574509e6y45",
@@ -532,6 +585,7 @@ mutation {
         policyIds
         createdAt
         updatedAt
+<<<<<<< HEAD
     }
 }
 ```
@@ -558,6 +612,8 @@ mutation {
                 "updatedAt": "2024-12-16T21:17:00.793"
             }
         ]
+=======
+>>>>>>> 5de9423 (Updates based on review feedback)
     }
 }
 ```
@@ -581,6 +637,7 @@ Retrieve the SKU you created for `Aurora` where location is `USA`. Use the searc
 
 The brand and location (`AC-Policy-Brand` and `AC-Policy-Country`) are passed in using [Storefront API headers](https://developer-stage.adobe.com/commerce/services/composable-catalog/storefront-services/using-the-api/#header).
 
+<<<<<<< HEAD
 Use the following headers in the request:
 
 ```text
@@ -592,6 +649,20 @@ AC-Price-Book-Id: 'base'
 AC-Scope-Locale: 'en-US'
 Content-Type: 'application/json'
 X-Api-Key: '<API-KEY>'
+=======
+The following lists the request headers:
+
+```shell
+  --url https://catalog-service.adobe.io/graphql \
+  --header 'AC-Channel-Id: add68f2b-8343-45c1-b2ae-63644471f606' \
+  --header 'AC-Environment-Id: <DATA_SPACE_ID>' \
+  --header -AC-Policy-Brand: Aurora'
+  --header 'AC-Policy-Country: USA'
+  --header 'AC-Price-Book-Id: base' \
+  --header 'AC-Scope-Locale: en-US' \
+  --header 'Content-Type: application/json' \
+  --header 'X-Api-Key: <API_KEY>' \
+>>>>>>> 5de9423 (Updates based on review feedback)
 ```
 
 #### Request
@@ -751,6 +822,7 @@ The response returns the product details for a single SKU, `Aurora Prism battery
 
 ### Retrieve SKU for the Bolt brand
 
+<<<<<<< HEAD
 Retrieve the SKU you created for `Bolt` where location is `UK`. Use the search phrase `Zenith Automotive Vehicles and Parts`, and specify a page size to limit results.
 
 The brand and location (`AC-Policy-Brand` and `AC-Policy-Country`) are passed in using the [Storefront API headers](https://developer-stage.adobe.com/commerce/services/composable-catalog/storefront-services/using-the-api/#header).
@@ -766,6 +838,24 @@ AC-Price-Book-Id: 'base'
 AC-Scope-Locale: 'en-US'
 Content-Type: 'application/json'
 X-Api-Key: '<API-KEY>'
+=======
+Retrieve the SKU you created for `Bolt` where location is `UK`. Use the search phrase `Motor parts`, and specify a page size to limit results.
+
+The brand and location (`AC-Policy-Brand` and `AC-Policy-Country`) are passed in using the [Storefront API headers](https://developer-stage.adobe.com/commerce/services/composable-catalog/storefront-services/using-the-api/#header).
+
+The following lists the request headers:
+
+```shell
+  --url https://catalog-service.adobe.io/graphql \
+  --header 'AC-Channel-Id: add68f2b-8343-45c1-b2ae-63644471f606' \
+  --header 'AC-Environment-Id: <DATA_SPACE_ID>' \
+  --header -AC-Policy-Brand: Bolt' \
+  --header 'AC-Policy-Country: UK' \
+  --header 'AC-Price-Book-Id: base' \
+  --header 'AC-Scope-Locale: en-US' \
+  --header 'Content-Type: application/json' \
+  --header 'X-Api-Key: <API-KEY>' \
+>>>>>>> 5de9423 (Updates based on review feedback)
 ```
 
 #### Request

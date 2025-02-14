@@ -17,9 +17,13 @@ Send all Storefront API requests to this endpoint: https://catalog-service.adobe
 
 For sample requests and examples using the API, see the [API Reference](api-reference.md) and the [tutorial](../ccdm-use-case.md).
 
+<<<<<<< HEAD
 ## Authentication
 
 To interact with the Storefront Services API, you need the production, public API key generated from your Commerce account at https://account.magento.com.
+=======
+### Headers
+>>>>>>> 5de9423 (Updates based on review feedback)
 
 For instructions on creating keys, see [Generate production and sandbox keys](https://experienceleague.adobe.com/en/docs/commerce-merchant-services/user-guides/integration-services/saas#genapikey).
 
@@ -32,6 +36,7 @@ Include the following headers in GraphQL requests as needed.
 Header name| Description
 --- | ---
 `AC-Channel-ID` | Required. The id for the channel that products will be sold through. For example, in the automotive industry, the channel could be dealers. In the manufacturing industry, the channel could be a manufacturing location for suppliers. Use the [channels query](https://developer-stage.adobe.com/commerce/services/graphql-api/admin-api/index.html#query-channels) to retrieve the list of available channels with the channel id.
+<<<<<<< HEAD
 `AC-Environment-ID`| Required. Specify the environment ID for the data space where commerce data is stored. Retrieve the [SaaS data space ID] from Commerce Admin at **Stores** > **Configuration** > **Services** > **Magento Services** > **SaaS Environment**, or using the Commerce CLI command `bin/magento config:show services_connector/services_id/environment_id` command.
 `AC-Policy-{*}` | Optional. The trigger name configured for a policy that sets data access filters to restrict product access based on request attributes and context. Examples include POS physical stores, marketplaces, or advertisement pipelines like Google, Meta, or Instagram. Use the [policies query](https://developer-stage.adobe.com/commerce/services/graphql-api/admin-api/index.html#query-policies) to retrieve the [policy trigger names](https://developer-stage.adobe.com/commerce/services/graphql-api/admin-api/index.html#definition-TriggerResponse) available for each policy. You can specify multiple policy headers per request. Example: `AC-Policy-Country`.
 `AC-Price-Book-ID` | Optional. Defines how prices are calculated for a specific channel. Use if the merchant uses price books to calculate pricing. CCDM provides a default price book `main` with currency in US dollars.
@@ -49,6 +54,25 @@ curl --request POST \
 --header 'AC-Environment-ID: <DATA_SPACE_ID>' \
 --header 'AC-Policy-<POLICY_NAME>: <POLICY_VALUE>' \
 --header 'AC-Price-Book-ID-<PRICEBOOK_ID>' \
+=======
+`AC-Environment-ID`| Required. Specify the environment id for the data space where commerce data is stored. Retrieve the [SaaS data space id] from Commerce Admin at **Stores** > **Configuration** > **Services** > **Magento Services** > **SaaS Environment**, or using the Commerce CLI command `bin/magento config:show services_connector/services_id/environment_id` command.
+`AC-Policy-{*}` | Optional. The trigger name configured for a policy that sets data access filters to restrict product access based on request attributes and context. Examples include POS physical stores, marketplaces, or advertisement pipelines like Google, Meta, or Instagram. Use the [policies query](https://developer-stage.adobe.com/commerce/services/graphql-api/admin-api/index.html#query-policies) to retrieve the [policy trigger names](https://developer-stage.adobe.com/commerce/services/graphql-api/admin-api/index.html#definition-TriggerResponse) available for each policy. You can specify multiple policy headers per request. Example: `AC-Policy-Country`.
+`AC-Price-Book-ID` | Optional. Defines how prices are calculated for a specific channel. Use if the merchant uses price books to calculate pricing. CCDM provides a default price book `main` with currency in US dollars.
+`AC-Scope-Locale`: | Required. The locale (language or geography) scope to filter products for display or update, for example `en_US`. Use the [channels query](https://developer-stage.adobe.com/commerce/services/graphql-api/admin-api/index.html#query-channels) to retrieve the locale IDs available for each channel.
+`X-Api-Key` | Use the [Public API Key](https://experienceleague.adobe.com/en/docs/commerce-merchant-services/user-guides/integration-services/saas#genapikey) for your production environment to submit Storefront API requests to both sandbox and production endpoints |
+
+## Request template
+
+Use the following template for GraphQL requests using [cURL](https://curl.se/). Use required headers, and any optional headers needed for a request. Replace placeholders with required values.
+
+```shell
+curl --request POST \
+-- url 'https://catalog-service.adobe.io/graphql' \
+--header 'AC-Channel-ID:  <CHANNEL_ID>'  \
+--header 'AC-Environment-ID: <DATA_SPACE_ID>' \
+--header 'AC-Policy-<POLICY_NAME>: <POLICY_VALUE>' \
+--header 'AC-Price-Book-ID-<PRICEBOK_ID>' \
+>>>>>>> 5de9423 (Updates based on review feedback)
 --header 'AC-Scope-Locale: <LOCALE_VALUE>' \
 --header 'x-api-key: <API_KEY>' \
 --data '<API_PAYLOAD>'
@@ -56,12 +80,22 @@ curl --request POST \
 
 | Placeholder name | Description                                                                                                     |
 |------------------|-----------------------------------------------------------------------------------------------------------------|
+<<<<<<< HEAD
 | CHANNEL_ID     | The ID for the channel products will be sold through. Use the [channels query](https://developer-stage.adobe.com/commerce/services/graphql-api/admin-api/index.html#query-channels) to retrieve available IDs.|
+=======
+| CHANNEL_ID     | The ID for the channel products will be sold through. Use the [channels query](https://developer-stage.adobe.com/commerce/services/graphql-api/admin-api/index) to retrieve available IDs.|
+>>>>>>> 5de9423 (Updates based on review feedback)
 | DATA_SPACE_ID    | [SaaS Data Space ID](https://experienceleague.adobe.com/en/docs/commerce-merchant-services/user-guides/integration-services/saas#saas-data-space-provisioning) where your catalog data is stored.                                               |
 | POLICY_NAME: POLICY_VALUE | When used, the policy trigger name and value that sets data access filters to restrict product access based on request attributes. Use the [policies query](https://developer-stage.adobe.com/commerce/services/graphql-api/admin-api/index.html#query-policies) to retrieve available policies.                    |
 | PRICE_BOOK_ID    | When used, the price book ID used to retrieve the pricing schedule for a SKU. |
 | LOCALE_VALUE | The locale (language or geography) scope to filter products for display or update. |
 | API_KEY          | Adobe Commerce [API_KEY](#authentication). Use the value for the production public key.                              |
+<<<<<<< HEAD
 | API_PAYLOAD      | API payload. See examples in the [tutorial](../ccdm-use-case.md)
 
 For sample requests, see the [tutorial](../ccdm-use-case.md).
+=======
+| API_PAYLOAD      | API payload see examples in [CCDM use case](../ccdm-use-case.md)
+
+For sample requests, see the [CCDM tutorial](../ccdm-use-case.md).
+>>>>>>> 5de9423 (Updates based on review feedback)

@@ -23,7 +23,7 @@ For sample requests and examples using the API, see the [API Reference](api-refe
 
 ## Authentication
 
-To interact with the Data Ingestion API, the consumer must authenticate by generating a JWT token signed with the public API key from your Commerce account at https://account.magento.com.
+To interact with the Data Ingestion API, the consumer must authenticate by generating a JWT token signed with the public API key from your Adobe Commerce account at https://account.magento.com.
 
 For instructions on generating the public API key, see [Generate the production and sandbox keys](https://experienceleague.adobe.com/en/docs/commerce-merchant-services/user-guides/integration-services/saas#genapikey)
 
