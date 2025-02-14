@@ -62,7 +62,7 @@ Include the following path parameter in each API request.
 
 | Parameter name | Required | Description |
 |---|---|---|
-DATA_SPACE_ID | Yes | The data space ID for the data space where commerce catalog data is stored. See [SaaS configuration](https://experienceleague.adobe.com/en/docs/commerce-merchant-services/user-guides/integration-services/saas#saasenv) in *Adobe Experience League*.
+DATA_SPACE_ID | Yes | The data space ID for the data space where commerce catalog data is stored. See [SaaS configuration](https://experienceleague.adobe.com/en/docs/commerce-merchant-services/user-guides/integration-services/saas#saasenv).
 
 ## Header parameters
 

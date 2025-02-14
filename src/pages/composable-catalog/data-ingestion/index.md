@@ -17,7 +17,7 @@ This direct connection decreases the time that it takes to process product chang
 
 The Data Ingestion API is implemented as a REST (Representational State Transfer) API endpoint to manage the following types of data.
 
-- **Product**—A product is any item or service offered for sale through online channels. Products can be physical goods, digital downloads, or services. They are the core elements of your catalog. In the context of the Composable Catalog Data Model (CCDM), products are categorized into different types. Currently the following types are supported:
+- **Product**—A product is any item or service offered for sale through online channels. Products can be physical goods, digital downloads, or services. They are the core elements of your catalog. In the context of the Composable Catalog Data Model (CCDM), products are categorized into different types. Currently, the following types are supported:
 
   - Simple Products: Basic items with no variations, for example a single t-shirt in one size and color.
   - Configurable Products: Items with multiple options or variations, for example a t-shirt available in different sizes and colors.
