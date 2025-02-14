@@ -1,51 +1,76 @@
 ---
-title: Commerce Services
-description: Review resources for working with Adobe Commerce services.
-keywords:
+title: Commerce Data Services
+description: Learn how about the APIs and tools available to manage and use commerce catalog and event data programmatically.
   - Services
 ---
 
 <Hero slots="image, heading, text"/>
 
-![Commerce Services](_images/home-bg.jpeg)
+![Data Services](_images/home-bg.jpeg)
 
-# Commerce Services developer
+# Commerce Data Services
 
-Adobe provides a collection of services to help merchants support key components of their business. Learn how to programmatically interact with these services.
+A collection of APIs and tools to create, access, and manage product, catalog, and discovery data for ecommerce applications and storefronts.
 
 <Resources slots="heading, links"/>
 
 ## Resources
 
-*  [Services user guides](https://experienceleague.adobe.com/docs/commerce-merchant-services/user-guides/home.html)
+*  [Data Services user guides](https://experienceleague.adobe.com/docs/commerce-merchant-services/user-guides/home.html)
 *  [Commerce Admin user guide](https://experienceleague.adobe.com/docs/commerce-admin/user-guides/home.html)
 *  [GraphQL Developer Guide](https://developer.adobe.com/commerce/webapi/graphql/)
 
 ## Overview
 
-This documentation provides resources for working with Adobe Commerce services.
+Learn how to use Commerce APIs and SDKs to integrate with third-party software and build headless applications.
 
 ## Discover
 
-Use these sections to learn about how to develop PHP extensions.
+Use Commerce APIs and SDKs to create and manage commerce catalog data and configuration and use it to create scalable, performant storefront experiences.
 
 <DiscoverBlock slots="heading, link, text"/>
 
-### Sections
+### Composable Catalog Data Model
 
-[Shared services](shared-services/)
+[Catalog data ingestion](composable-catalog/data-ingestion/)
+
+Set up large, complex catalog assortments by ingesting commerce catalog data from backend systems into a centralized datastore.
+
+<DiscoverBlock slots="link, text"/>
+
+[Catalog management and rules](composable-catalog/admin)
+
+Set up and manage Commerce catalogs and configure settings for search and recommendations capabilities.
+
+<DiscoverBlock slots="link, text"/>
+
+[Storefront](composable-catalog/storefront-services)
+
+Retrieve product, search, and recommendations data from the catalog data model and use it to create storefront experiences.
+
+<DiscoverBlock slots="heading,link, text"/>
+
+### Storefront and Shared Services
+
+[Storefront APIs](graphql/)
+
+Retrieve product, search, and recommendations data from Adobe Commerce and use it to create storefront experiences.
+
+<DiscoverBlock slots="link, text"/>
+
+[Storefront Events SDK](shared-services/)
 
 Explore common tools and SDKs shared across Services for Adobe Commerce.
 
 <DiscoverBlock slots="link, text"/>
 
-[Live Search](live-search/)
+[Live Search Events](live-search/)
 
 Lists the events defined in the Adobe Commerce Event SDK that are applicable to Live Search.
 
 <DiscoverBlock slots="link, text"/>
 
-[Product Recommendations](product-recommendations/)
+[Product Recommendations SDK](product-recommendations/)
 
 Learn how to use the Product Recommendations SDK with Adobe Commerce to fetch recommendations programmatically in the browser.
 
