@@ -562,7 +562,6 @@ mutation {
 }
 ```
 
-
 ## Step 3. Retrieve SKUs
 
 Use the Storefront GraphQL API [productSearch](https://developer-stage.adobe.com/commerce/services/graphql-api/storefront-api/index.html#query-productSearch) query to retrieve the SKUs you created.
