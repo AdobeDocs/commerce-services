@@ -23,7 +23,6 @@ To interact with the Storefront Services API, you need the public API Key genera
 
 For instructions on generating the public API key, see [Generate the production and sandbox keys](https://experienceleague.adobe.com/en/docs/commerce-merchant-services/user-guides/integration-services/saas#genapikey)
 
-
 ## Headers
 
 When making requests to the storefront API, you must include specific HTTP headers to ensure proper authentication and data retrieval. These headers provide necessary information, such as the channel ID, locale, price book, and optional price book and policy headers that tailor the API response to your needs.
