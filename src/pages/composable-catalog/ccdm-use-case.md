@@ -536,6 +536,33 @@ mutation {
 }
 ```
 
+**Response**
+
+```json
+{
+    "data": {
+        "channels": [
+            {
+                "name": "Zenith Automotive",
+                "channelId": "b726c1e9-2842-4ab5-9b19-ca65c23bbb3b",
+                "scopes": [
+                    {
+                        "locale": "en-US"
+                    }
+                ],
+                "policyIds": [
+                    "56a6908f-eyx3-59c3-sye8-574509e6y45",
+                    "39c8106d-aab2-49b2-aac3-177608d4e567",
+                ],
+                "createdAt": "2024-12-04T19:18:46.075",
+                "updatedAt": "2024-12-16T21:17:00.793"
+            }
+        ]
+    }
+}
+```
+
+
 ## Step 3. Retrieve SKUs
 
 Use the Storefront GraphQL API [productSearch](https://developer-stage.adobe.com/commerce/services/graphql-api/storefront-api/index.html#query-productSearch) query to retrieve the SKUs you created.
@@ -555,18 +582,17 @@ Retrieve the SKU you created for `Aurora` where location is `USA`. Use the searc
 
 The brand and location (`AC-Policy-Brand` and `AC-Policy-Country`) are passed in using [Storefront API headers](https://developer-stage.adobe.com/commerce/services/composable-catalog/storefront-services/using-the-api/#header).
 
-The following lists the request headers:
+Use the following headers in the request:
 
-```shell
-  --url https://catalog-service.adobe.io/graphql \
-  --header 'AC-Channel-Id: add68f2b-8343-45c1-b2ae-63644471f606' \
-  --header 'AC-Environment-Id: <DATA_SPACE_ID>' \
-  --header -AC-Policy-Brand: Aurora' \
-  --header 'AC-Policy-Country: USA' \
-  --header 'AC-Price-Book-Id: base' \
-  --header 'AC-Scope-Locale: en-US' \
-  --header 'Content-Type: application/json' \
-  --header 'X-Api-Key: <API_KEY>' \
+```text
+AC-Channel-Id: 'b726c1e9-2842-4ab5-9b19-ca65c23bbb3b'
+AC-Environment-Id: '<DATA_SPACE_ID>'
+AC-Policy-Brand: 'Aurora'
+AC-Policy-Country: 'US'
+AC-Price-Book-Id: 'base'
+AC-Scope-Locale: 'en-US'
+Content-Type: 'application/json'
+X-Api-Key: '<API-KEY>'
 ```
 
 #### Request
@@ -730,18 +756,17 @@ Retrieve the SKU you created for `Bolt` where location is `UK`. Use the search p
 
 The brand and location (`AC-Policy-Brand` and `AC-Policy-Country`) are passed in using the [Storefront API headers](https://developer-stage.adobe.com/commerce/services/composable-catalog/storefront-services/using-the-api/#header).
 
-The following lists the request headers:
+Use the following headers in the request:
 
-```shell
-  --url https://catalog-service.adobe.io/graphql \
-  --header 'AC-Channel-Id: add68f2b-8343-45c1-b2ae-63644471f606' \
-  --header 'AC-Environment-Id: <DATA_SPACE_ID>' \
-  --header -AC-Policy-Brand: Bolt' \
-  --header 'AC-Policy-Country: UK' \
-  --header 'AC-Price-Book-Id: base' \
-  --header 'AC-Scope-Locale: en-US' \
-  --header 'Content-Type: application/json' \
-  --header 'X-Api-Key: <API-KEY>' \
+```text
+AC-Channel-Id: 'b726c1e9-2842-4ab5-9b19-ca65c23bbb3b'
+AC-Environment-Id: '<DATA_SPACE_ID>'
+AC-Policy-Brand: 'Bolt'
+AC-Policy-Country: 'UK'
+AC-Price-Book-Id: 'base'
+AC-Scope-Locale: 'en-US'
+Content-Type: 'application/json'
+X-Api-Key: '<API-KEY>'
 ```
 
 #### Request
