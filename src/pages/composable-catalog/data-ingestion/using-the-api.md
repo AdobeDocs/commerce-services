@@ -23,7 +23,7 @@ For sample requests and examples using the API, see the [API Reference](api-refe
 
 ## Authentication
 
-To interact with the Data Ingestion API, the consumer must authenticate by generating a JWT token signed with the public API key from your Adobe Commerce account at https://account.magento.com.
+To interact with the Data Ingestion API, the consumer must authenticate by generating a JWT token signed with the public API key from your Commerce account at https://account.magento.com.
 
 For instructions on generating the public API key, see [Generate the production and sandbox keys](https://experienceleague.adobe.com/en/docs/commerce-merchant-services/user-guides/integration-services/saas#genapikey)
 
@@ -66,7 +66,7 @@ DATA_SPACE_ID | Yes | The data space ID for the data space where commerce catalo
 
 ## Header parameters
 
-The following headers list should be present in each Data Ingestion API call.
+Include the following headers in REST API requests.
 
 | Header name        | Required | Description                                                                                                                                                                                                                        |
 |--------------------|----------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -81,7 +81,7 @@ Use the following template to submit requests using [cURL](https://curl.se/).
 
 ```shell
 curl --request POST \
-  --url 'https://commerce.adobe.io/api/<API_ENDPOINT>/<DATA_SPACE_ID>' \
+  --url https://commerce.adobe.io/api/<API_ENDPOINT>/<DATA_SPACE_ID> \
   --header 'Content-Type:  application/json' \
   --header 'x-api-key: <API_KEY>' \
   --header 'x-gw-signature: <JWT_TOKEN>' \

@@ -56,7 +56,7 @@ public class JwtGenerator {
 
 ## Headers
 
-Include the following headers in each GraphQL request.
+Include the following headers in GraphQL requests.
 
 | Header name        | Required | Description                                                                                                                                                                                                                        |
 |--------------------|----------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|

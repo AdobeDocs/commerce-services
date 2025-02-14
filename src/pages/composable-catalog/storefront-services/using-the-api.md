@@ -19,15 +19,15 @@ For sample requests and examples using the API, see the [API Reference](api-refe
 
 ## Authentication
 
-To interact with the Storefront Services API, you need the public API Key generated from your  https://account.magento.com. See [Generate production and sandbox keys](https://experienceleague.adobe.com/en/docs/commerce-merchant-services/user-guides/integration-services/saas#genapikey).
+To interact with the Storefront Services API, you need the production, public API key generated from your Commerce account at https://account.magento.com.
 
-For instructions on generating the public API key, see [Generate the production and sandbox keys](https://experienceleague.adobe.com/en/docs/commerce-merchant-services/user-guides/integration-services/saas#genapikey)
+For instructions on creating keys, see [Generate production and sandbox keys](https://experienceleague.adobe.com/en/docs/commerce-merchant-services/user-guides/integration-services/saas#genapikey).
 
 ## Headers
 
-When making requests to the storefront API, you must include specific HTTP headers to ensure proper authentication and data retrieval. These headers provide necessary information, such as the channel ID, locale, price book, and optional price book and policy headers that tailor the API response to your needs.
+When making requests to the storefront API, you must include specific HTTP headers to ensure proper authentication and data retrieval. These headers provide necessary information, such as the channel ID, locale, and optional policy and price book headers that tailor the API response to your needs.
 
-The following table describes **required** (fixed form) headers:
+Include the following headers in GraphQL requests as needed.
 
 Header name| Description
 --- | ---
@@ -44,7 +44,7 @@ Use the following template for GraphQL requests using [cURL](https://curl.se/). 
 
 ```shell
 curl --request POST \
--- url 'https://catalog-service.adobe.io/graphql' \
+-- url https://catalog-service.adobe.io/graphql \
 --header 'AC-Channel-ID:  <CHANNEL_ID>'  \
 --header 'AC-Environment-ID: <DATA_SPACE_ID>' \
 --header 'AC-Policy-<POLICY_NAME>: <POLICY_VALUE>' \
@@ -62,6 +62,6 @@ curl --request POST \
 | PRICE_BOOK_ID    | When used, the price book ID used to retrieve the pricing schedule for a SKU. |
 | LOCALE_VALUE | The locale (language or geography) scope to filter products for display or update. |
 | API_KEY          | Adobe Commerce [API_KEY](#authentication). Use the value for the production public key.                              |
-| API_PAYLOAD      | API payload see examples in the [tutorial](../ccdm-use-case.md)
+| API_PAYLOAD      | API payload. See examples in the [tutorial](../ccdm-use-case.md)
 
 For sample requests, see the [tutorial](../ccdm-use-case.md).
