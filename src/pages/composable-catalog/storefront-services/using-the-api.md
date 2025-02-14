@@ -40,7 +40,7 @@ Header name| Description
 
 ## Request template
 
-Use the following template for GraphQL requests using [cURL](https://curl.se/). Use required headers, and any optional headers needed for a request. Replace placeholders with required values.
+Use the following template for GraphQL requests using [cURL](https://curl.se/). Use required and optional headers as needed. Replace placeholders with required values.
 
 ```shell
 curl --request POST \

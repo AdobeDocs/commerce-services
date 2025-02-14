@@ -60,9 +60,9 @@ Create the metadata to define the search characteristics and filters for display
 
 ```shell
 curl --request POST \
-  --url https://commerce.adobe.io/api/v1/catalog/products/metadata/42005e59-9689-444a-9205-ef6033ca0267 \
+  --url https://commerce.adobe.io/api/v1/catalog/products/metadata/<DATA_SPACE_ID> \
   --header 'Content-Type: application/json' \
-  --header 'x-api-key: 284a0cc2b16c4f9194c922cbdb03ead8' \
+  --header 'x-api-key: <API_KEY>' \
   --header 'x-gw-signature: <JWT_TOKEN>' \
   --data '[
     {
@@ -114,13 +114,6 @@ curl --request POST \
 ]'
 ```
 
-#### Response
-
-```json
-test
-
-```
-
 ### Add products
 
 Add products by submitting a [createProducts](https://developer-stage.adobe.com/commerce/services/composable-catalog/data-ingestion/api-reference/#operation/ProductsPost) POST request using the Data Ingestion API.
@@ -156,7 +149,7 @@ curl --request POST \
             "title": " ",
             "description": "Zenith Automotive Vehicles and Parts",
             "keywords": [
-                "motor",
+                "battery",
                 "part"
             ]
         },
@@ -207,7 +200,7 @@ curl --request POST \
 
 #### Create Bolt product
 
-Add the product *Bolt Atlas battery with two attribute codes, `Brand` set to *Bolt*, and `Country` set to *UK* by sending the following payload in the createProducts request.
+Add the product *Bolt Atlas Battery* with two attribute codes, `Brand` set to *Bolt*, and `Country` set to *UK* by sending the following payload in the [createProducts](https://developer-stage.adobe.com/commerce/services/composable-catalog/data-ingestion/api-reference/#operation/ProductsPost) request.
 
 **Create product request**
 
@@ -236,7 +229,7 @@ curl --request POST \
             "title": " ",
             "description": "Zenith Automotive Vehicles and Parts",
             "keywords": [
-                "motor",
+                "battery",
                 "part"
             ]
         },
@@ -287,7 +280,7 @@ curl --request POST \
 
 ## Step 2. Define the channel and policies
 
-In this step, create a channel for `Company A` using the [CreateChannelRequest](https://developer-stage.adobe.com/commerce/services/graphql-api/admin-api/index.html#definition-CreateChannelRequest) GraphQL mutation from the Catalog Management API.
+In this step, create a channel for `Zenith Automotive` using the [Create channel](https://developer-stage.adobe.com/commerce/services/graphql-api/admin-api/index.html#mutation-createChannel) GraphQL mutation from the Catalog Management API.
 
 Assign two policies to the channel: a `Location Policy` with "USA" and "UK" as locations, and a `Brand Policy` with "Aurora" and "Bolt".
 
@@ -410,7 +403,6 @@ curl --request POST \
   --header 'x-api-key: <API_KEY>' \
   --header 'x-gw-signature: <JWT_TOKEN>' \
   --data '{"query":"mutation createPolicy {\n\tcreatePolicy(\n\t\tpolicyRequest: {\n\t\t\tname: \"Brand Policy\"\n\t\t\tmandatory: true\n\t\t\tactions: [\n\t\t\t\t{\n\t\t\t\t\ttriggers: [\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\tname: \"AC-Policy-Brand\",\n\t\t\t\t\t\t\ttransportType: HTTP_HEADER\n\t\t\t\t\t\t}\n\t\t\t\t\t]\n\t\t\t\t\tfilters: [\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\tattribute: \"brand\",\n\t\t\t\t\t\t\tvalueSource: TRIGGER,\n\t\t\t\t\t\t\tvalue: \"AC-Policy-Brand\"\n\t\t\t\t\t\t\tactionFilterOperator: EQUALS,\n\t\t\t\t\t\t\tenabled: true\n\t\t\t\t\t\t}\n\t\t\t\t\t]\n\t\t\t\t}\n\t\t\t]\n\t\t}\n\t) {\n\t\tname\n\t\tpolicyId\n\t\tmandatory\n\t\tactions {\n\t\t\ttriggers {\n\t\t\t\tname\n\t\t\t\ttransportType\n\t\t\t}\n\t\t\tfilters {\n\t\t\t\tattribute\n\t\t\t\tvalueSource\n\t\t\t\tvalue\n\t\t\t\tactionFilterOperator\n\t\t\t\tenabled\n\t\t\t}\n\t\t}\n\t\tcreatedAt\n\t\tupdatedAt\n\t}\n}\n","operationName":"createPolicy"}'
-
 ```
 
 **Payload**
@@ -513,7 +505,7 @@ curl --request POST \
   --header 'AC-Environment-Id: <DATA_SPACE_ID>' \
   --header 'x-api-key: <API_KEY>' \
   --header 'x-gw-signature: <JWT_TOKEN>' \
-  --data '{"query":"mutation {\n    createChannel(\n        channelRequest: {\n            name: \"Zenith Automotive\",\n            scopes: [\n                { locale: \"en_US\" }\n            ]\n            policyIds : [\n                \"56a6908f-eyx3-59c3-sye8-574509e6y45\",\n                \"39c8106d-aab2-49b2-aac3-177608d4e567\",\n            ]\n        }\n    ) {\n        channelId\n        name\n        scopes {\n          locale\n        }\n        policyIds\n        createdAt\n        updatedAt\n    }\n}"}'
+  --data '{"query":"mutation {\n    createChannel(\n        channelRequest: {\n            name: \"Zenith Automotive\",\n            scopes: [\n                { locale: \"en-US\" }\n            ]\n            policyIds : [\n                \"56a6908f-eyx3-59c3-sye8-574509e6y45\",\n                \"39c8106d-aab2-49b2-aac3-177608d4e567\",\n            ]\n        }\n    ) {\n        channelId\n        name\n        scopes {\n          locale\n        }\n        policyIds\n        createdAt\n        updatedAt\n    }\n}"}'
 ```
 
 **Payload**
@@ -524,7 +516,7 @@ mutation {
         channelRequest: {
             name: "Zenith Automotive",
             scopes: [
-                { locale: "en_US" }
+                { locale: "en-US" }
             ]
             policyIds : [
                 "56a6908f-eyx3-59c3-sye8-574509e6y45",
@@ -569,8 +561,8 @@ The following lists the request headers:
   --url https://catalog-service.adobe.io/graphql \
   --header 'AC-Channel-Id: add68f2b-8343-45c1-b2ae-63644471f606' \
   --header 'AC-Environment-Id: <DATA_SPACE_ID>' \
-  --header -AC-Policy-Brand: Aurora'
-  --header 'AC-Policy-Country: USA'
+  --header -AC-Policy-Brand: Aurora' \
+  --header 'AC-Policy-Country: USA' \
   --header 'AC-Price-Book-Id: base' \
   --header 'AC-Scope-Locale: en-US' \
   --header 'Content-Type: application/json' \
@@ -706,7 +698,7 @@ The response returns the product details for a single SKU, `Aurora Prism battery
               "title": " ",
               "description": "Zenith Automotive Vehicles and Parts",
               "keywords": [
-                "motor",
+                "battery",
                 "part"
               ]
             },
@@ -734,7 +726,7 @@ The response returns the product details for a single SKU, `Aurora Prism battery
 
 ### Retrieve SKU for the Bolt brand
 
-Retrieve the SKU you created for `Bolt` where location is `UK`. Use the search phrase `Motor parts`, and specify a page size to limit results.
+Retrieve the SKU you created for `Bolt` where location is `UK`. Use the search phrase `Zenith Automotive Vehicles and Parts`, and specify a page size to limit results.
 
 The brand and location (`AC-Policy-Brand` and `AC-Policy-Country`) are passed in using the [Storefront API headers](https://developer-stage.adobe.com/commerce/services/composable-catalog/storefront-services/using-the-api/#header).
 

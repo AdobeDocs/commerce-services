@@ -81,7 +81,7 @@ Use the following template to submit requests using [cURL](https://curl.se/).
 
 ```shell
 curl --request POST \
-  --url https://commerce.adobe.io/api/<API_ENDPOINT>/<DATA_SPACE_ID> \
+  --url https://commerce.adobe.io/api/v1/<API_ENDPOINT>/<DATA_SPACE_ID> \
   --header 'Content-Type:  application/json' \
   --header 'x-api-key: <API_KEY>' \
   --header 'x-gw-signature: <JWT_TOKEN>' \
