@@ -6,7 +6,7 @@ module.exports = [
       {   title: "Set up and manage catalogs",
             path: "/composable-catalog/manage-catalogs.md"
       },
-      { title: "CCDM use case",
+      { title: "Tutorial",
           path: "/composable-catalog/ccdm-use-case.md"
       },
         {
@@ -24,7 +24,7 @@ module.exports = [
             ]
         },
         {
-            title: "Catalog management and rules API",
+            title: "Catalog management API",
             path: "composable-catalog/admin/",
             header: "true",
             pages: [

@@ -15,7 +15,11 @@ Use the data ingestion API to create and manage product data for your ecommerce 
 
 ## Endpoints
 
-Send all Data Ingestion requests to the `https://commerce.adobe.io/api` endpoint. For details about using the API, see the [API Reference](api-reference.md).
+Send all Data Ingestion requests to this endpoint: `https://commerce.adobe.io/api`
+
+<InlineAlert variant="info" slots="text"/>
+
+For sample requests and examples using the API, see the [API Reference](api-reference.md) and the [tutorial](../ccdm-use-case.md).
 
 ## Authentication
 
@@ -52,43 +56,44 @@ public class JwtGenerator {
 }
 ```
 
-## Paths
+## Path parameters
 
-| Header name        | Required | Description                                                                                                                                                                                                                        |
-DATA_SPACE_ID | Yes | The data space ID for the data space where commerce catalog data is stored. See [SaaS configuration](https://experienceleague.adobe.com/en/docs/commerce-merchant-services/user-guides/integration-services/saas#saasenv) in *Adobe Experience League*.
+Include the following path parameter in each API request.
 
-## Headers
+| Parameter name | Required | Description |
+|---|---|---|
+DATA_SPACE_ID | Yes | The data space ID for the data space where commerce catalog data is stored. See [SaaS configuration](https://experienceleague.adobe.com/en/docs/commerce-merchant-services/user-guides/integration-services/saas#saasenv).
 
-The following Headers list should be present in each Data Ingestion API call.
+## Header parameters
+
+Include the following headers in REST API requests.
 
 | Header name        | Required | Description                                                                                                                                                                                                                        |
 |--------------------|----------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `Content-Encoding` | No       | Use this header only if the payload is compressed with gzip. Accepted value: `gzip`                                                                                                                                                |
 | `Content-Type`     | Yes      | Media type of the resource. Accepted value: `application/json`                                                                                                                                                                     |
-| `x-api-key`        | Yes      | [Public API Key](https://experienceleague.adobe.com/en/docs/commerce-merchant-services/user-guides/integration-services/saas#genapikey)                             |
+| `x-api-key`        | Yes      | Use the public [API Key](https://experienceleague.adobe.com/en/docs/commerce-merchant-services/user-guides/integration-services/saas#genapikey) for your production environment when submitting Data Ingestion API requests.                            |
 | `x-gw-signature`   | Yes      | [JSON Web token generated for Public API key](https://developer.adobe.com/developer-console/docs/guides/authentication/JWT/#creating-a-json-web-token). |
 
-## Examples
+## Request template
 
-Use the following examples to learn about the basic scenarios for using the Data Ingestion API.
-
-The Example below demonstrate how you can create your catalog in Commerce Services.
-This example will register 4 products, category tree, product attributes metadata and scopes in Commerce Services.
-
-Use the following template for API call:
+Use the following template to submit requests using [cURL](https://curl.se/).
 
 ```shell
-curl --location 'https://commerce.adobe.io/api/<API_ENDPOINT>/<DATA_SPACE_ID>' \
---header 'Content-Type:  application/json' \
---header 'x-api-key: <API_KEY>' \
---header 'x-gw-signature: <JWT_TOKEN>' \
---data '<API_PAYLOAD>'
+curl --request POST \
+  --url https://commerce.adobe.io/api/v1/<API_ENDPOINT>/<DATA_SPACE_ID> \
+  --header 'Content-Type:  application/json' \
+  --header 'x-api-key: <API_KEY>' \
+  --header 'x-gw-signature: <JWT_TOKEN>' \
+  --data '<API_PAYLOAD>'
 ```
 
 | Placeholder name | Description                                                                                                     |
 |------------------|-----------------------------------------------------------------------------------------------------------------|
-| API_ENDPOINT     | API endpoint retrieved from API reference for specific Data Ingestion API, for example: `metadata/v2/metadata`  |
-| DATA_SPACE_ID    | Data Space ID obtained in this section.                                                |
-| API_KEY          | API_KEY obtained in this section.                                               |
-| JWT_TOKEN        | JWT token obtained in this section.                                     |
-| API_PAYLOAD      | API payload see examples in [CCDM use case](../ccdm-use-case.md)                                                                              |
+| API_ENDPOINT     | Endpoint for specific Data Ingestion API, for example: `/api/v1/catalog/products/prices/`  |
+| DATA_SPACE_ID    | [SaaS Data Space ID](#path-parameters).                                               |
+| API_KEY          | [Public API_KEY for Adobe Commerce account](#authentication).                              |
+| JWT_TOKEN        | [JWT token generated from Commerce API key](#generate-jwt-token)                                     |
+| API_PAYLOAD      | API payload see examples in the [tutorial](../ccdm-use-case.md)                                                                              |
+
+For sample requests, see the [tutorial](../ccdm-use-case.md).
