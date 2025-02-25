@@ -10,7 +10,8 @@
     "@adobe/gatsby-theme-aio": "4.14.19",
     "gatsby": "4.22.0",
     "react": "^17.0.0",
-    "react-dom": "^17.0.0"
+    "react-dom": "^17.0.0",
+    "spectaql": "^3.0.2"
   },
   "devDependencies": {
     "remark-cli": "^12.0.1",
@@ -28,7 +29,12 @@
     "build": "NODE_OPTIONS='--max-old-space-size=8192' gatsby build",
     "serve": "NODE_OPTIONS='--max-old-space-size=8192' gatsby serve",
     "clean": "gatsby clean",
-    "test": "remark src/pages --quiet --frail"
+    "test": "remark src/pages --quiet --frail",
+    "build:admin-api": "spectaql --target-file index.html --config spectaql/config-admin.yml",
+    "dev:admin-api": "spectaql --development-mode-live --config spectaql/config-admin.yml",
+    "build:storefront-api": "spectaql --target-file index.html --config spectaql/config-storefront.yml",
+    "dev:storefront-api": "spectaql --development-mode-live --config spectaql/config-storefront.yml",
+    "build:graphql": "yarn run build:admin-api && yarn run build:storefront-api"
   },
   "packageManager": "yarn@3.2.4"
 }
