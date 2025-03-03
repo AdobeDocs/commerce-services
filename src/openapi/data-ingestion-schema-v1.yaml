@@ -33,7 +33,7 @@ tags:
       Define prices for product SKUs. The scope identifies the price books and price tiers where the price is used.
       is used.
 paths:
-  /v1/catalog/products/metadata/{DATA_SPACE_ID}:
+  /{DATA_SPACE_ID}/v1/catalog/products/metadata:
     post:
       tags:
         - Metadata
@@ -217,7 +217,7 @@ paths:
             application/json;charset=UTF-8:
               schema:
                 $ref: '#/components/schemas/403Response'
-  /v1/catalog/products/metadata/{DATA_SPACE_ID}/delete:
+  /{DATA_SPACE_ID}/v1/catalog/products/metadata/delete:
     post:
       tags:
         - Metadata
@@ -297,7 +297,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/403Response'
 
-  /v1/catalog/products/{DATA_SPACE_ID}:
+  /{DATA_SPACE_ID}/v1/catalog/products:
     post:
       tags:
         - Products
@@ -710,7 +710,7 @@ paths:
                       "links": []
                     }
                   ]
-  /v1/catalog/products/{DATA_SPACE_ID}/delete:
+  /{DATA_SPACE_ID}/v1/catalog/products/delete:
     post:
       tags:
         - Products
@@ -753,7 +753,7 @@ paths:
                     }
                   ]
 
-  /v1/catalog/price-books/{DATA_SPACE_ID}:
+  /{DATA_SPACE_ID}/v1/catalog/price-books:
     post:
       tags:
         - Price Books
@@ -922,7 +922,7 @@ paths:
             application/json;charset=UTF-8:
               schema:
                 $ref: '#/components/schemas/403Response'
-  /v1/catalog/price-books/{DATA_SPACE_ID}/delete:
+  /{DATA_SPACE_ID}/v1/catalog/price-books/delete:
     post:
       tags:
         - Price Books
@@ -1001,7 +1001,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/403Response'
 
-  /v1/catalog/products/prices/{DATA_SPACE_ID}:
+  /{DATA_SPACE_ID}/v1/catalog/products/prices:
     post:
       tags:
         - Prices
@@ -1188,7 +1188,7 @@ paths:
             application/json;charset=UTF-8:
               schema:
                 $ref: '#/components/schemas/403Response'
-  /v1/catalog/products/prices/{DATA_SPACE_ID}/delete:
+  /{DATA_SPACE_ID}/v1/catalog/products/prices/delete:
     post:
       tags:
         - Prices
