@@ -60,7 +60,7 @@ Create the metadata to define the search characteristics and filters for display
 
 ```shell
 curl --request POST \
-  --url https://commerce.adobe.io/<DATA_SPACE_ID>/api/v1/catalog/products/metadata \
+  --url https://commerce.adobe.io/api/v1/catalog/products/metadata/<DATA_SPACE_ID> \
   --header 'Content-Type: application/json' \
   --header 'x-api-key: <API_KEY>' \
   --header 'x-gw-signature: <JWT_TOKEN>' \
@@ -126,7 +126,7 @@ Add the simple product *Aurora Prism Battery* with two attribute codes, `Brand` 
 
 ```shell
 curl --request POST \
-  --url https://commerce.adobe.io/<DATA_SPACE_ID>/api/v1/catalog/products \
+  --url https://commerce.adobe.io/api/v1/catalog/products/<DATA_SPACE_ID> \
   --header 'Content-Type: application/json' \
   --header 'x-api-key: <API_KEY>' \
   --header 'x-gw-signature: <JWT_TOKEN>' \
@@ -206,7 +206,7 @@ Add the product *Bolt Atlas Battery* with two attribute codes, `Brand` set to *B
 
 ```shell
 curl --request POST \
-  --url https://commerce.adobe.io/<DATA_SPACE_ID>/api/v1/catalog/products \
+  --url https://commerce.adobe.io/api/v1/catalog/products/<DATA_SPACE_ID> \
   --header 'Content-Type: application/json' \
   --header 'x-api-key: <API_KEY>' \
   --header 'x-gw-signature: <JWT_TOKEN>' \
