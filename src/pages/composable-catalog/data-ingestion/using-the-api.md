@@ -15,7 +15,7 @@ Use the data ingestion API to create and manage product data for your ecommerce 
 
 ## Endpoints
 
-Send all Data Ingestion requests to this endpoint: `https://commerce.adobe.io/api`
+Send all Data Ingestion requests for Adobe to this endpoint: `https://commerce.adobe.io`
 
 <InlineAlert variant="info" slots="text"/>
 
@@ -81,7 +81,7 @@ Use the following template to submit requests using [cURL](https://curl.se/).
 
 ```shell
 curl --request POST \
-  --url https://commerce.adobe.io/api/v1/<API_ENDPOINT>/<DATA_SPACE_ID> \
+  --url https://commerce.adobe.io/<DATA_SPACE_ID>/<API_ENDPOINT>
   --header 'Content-Type:  application/json' \
   --header 'x-api-key: <API_KEY>' \
   --header 'x-gw-signature: <JWT_TOKEN>' \
