@@ -13,7 +13,7 @@ info:
 
   version: 1.0.0
 servers:
-  - url: https://commerce.adobe.io/api/
+  - url: https://commerce.adobe.io/<DATA_SPACE_ID>/api/
     description: Production endpoint
 
 tags:
@@ -33,7 +33,7 @@ tags:
       Define prices for product SKUs. The scope identifies the price books and price tiers where the price is used.
       is used.
 paths:
-  /{DATA_SPACE_ID}/v1/catalog/products/metadata:
+  /v1/catalog/products/metadata:
     post:
       tags:
         - Metadata
@@ -217,7 +217,7 @@ paths:
             application/json;charset=UTF-8:
               schema:
                 $ref: '#/components/schemas/403Response'
-  /{DATA_SPACE_ID}/v1/catalog/products/metadata/delete:
+  /v1/catalog/products/metadata/delete:
     post:
       tags:
         - Metadata
@@ -297,7 +297,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/403Response'
 
-  /{DATA_SPACE_ID}/v1/catalog/products:
+  /v1/catalog/products:
     post:
       tags:
         - Products
@@ -710,7 +710,7 @@ paths:
                       "links": []
                     }
                   ]
-  /{DATA_SPACE_ID}/v1/catalog/products/delete:
+  /v1/catalog/products/delete:
     post:
       tags:
         - Products
@@ -753,7 +753,7 @@ paths:
                     }
                   ]
 
-  /{DATA_SPACE_ID}/v1/catalog/price-books:
+  /v1/catalog/price-books:
     post:
       tags:
         - Price Books
@@ -922,7 +922,7 @@ paths:
             application/json;charset=UTF-8:
               schema:
                 $ref: '#/components/schemas/403Response'
-  /{DATA_SPACE_ID}/v1/catalog/price-books/delete:
+  /v1/catalog/price-books/delete:
     post:
       tags:
         - Price Books
@@ -1001,7 +1001,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/403Response'
 
-  /{DATA_SPACE_ID}/v1/catalog/products/prices:
+  /v1/catalog/products/prices:
     post:
       tags:
         - Prices
@@ -1188,7 +1188,7 @@ paths:
             application/json;charset=UTF-8:
               schema:
                 $ref: '#/components/schemas/403Response'
-  /{DATA_SPACE_ID}/v1/catalog/products/prices/delete:
+  /v1/catalog/products/prices/delete:
     post:
       tags:
         - Prices

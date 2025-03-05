@@ -15,7 +15,7 @@ Use the data ingestion API to create and manage product data for your ecommerce 
 
 ## Endpoints
 
-Send all Data Ingestion requests to this endpoint: `https://commerce.adobe.io/api`
+Send all Data Ingestion requests to this endpoint: `https://commerce.adobe.io/<DATA_SPACE_ID>/api`
 
 <InlineAlert variant="info" slots="text"/>
 
@@ -81,19 +81,19 @@ Use the following template to submit requests using [cURL](https://curl.se/).
 
 ```shell
 curl --request POST \
-  --url https://commerce.adobe.io/api/v1/<API_ENDPOINT>/<DATA_SPACE_ID> \
+  --url https://commerce.adobe.io/<DATA_SPACE_ID>/api/<API_ENDPOINT> \
   --header 'Content-Type:  application/json' \
   --header 'x-api-key: <API_KEY>' \
   --header 'x-gw-signature: <JWT_TOKEN>' \
   --data '<API_PAYLOAD>'
 ```
 
-| Placeholder name | Description                                                                                                     |
-|------------------|-----------------------------------------------------------------------------------------------------------------|
-| API_ENDPOINT     | Endpoint for specific Data Ingestion API, for example: `/{DATA_SPACE_ID}/v1/catalog/products/prices`  |
+| Placeholder name | Description                                                                                                    |
+|------------------|----------------------------------------------------------------------------------------------------------------|
+| API_ENDPOINT     | Endpoint for specific Data Ingestion API, for example: `/v1/catalog/products/prices`  |
 | DATA_SPACE_ID    | [SaaS Data Space ID](#path-parameters).                                               |
-| API_KEY          | [Public API_KEY for Adobe Commerce account](#authentication).                              |
-| JWT_TOKEN        | [JWT token generated from Commerce API key](#generate-jwt-token)                                     |
-| API_PAYLOAD      | API payload see examples in the [tutorial](../ccdm-use-case.md)                                                                              |
+| API_KEY          | [Public API_KEY for Adobe Commerce account](#authentication).                             |
+| JWT_TOKEN        | [JWT token generated from Commerce API key](#generate-jwt-token)                                    |
+| API_PAYLOAD      | API payload see examples in the [tutorial](../ccdm-use-case.md)                                                                             |
 
 For sample requests, see the [tutorial](../ccdm-use-case.md).
