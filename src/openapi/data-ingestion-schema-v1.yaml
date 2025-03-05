@@ -14,7 +14,7 @@ info:
   version: 1.0.0
 servers:
   - url: https://commerce.adobe.io/<DATA_SPACE_ID>/api/
-    description: Production endpoint
+    description: Production endpoint. The DATA_SPACE_ID value is the  ID for the data space where commerce catalog data is stored. See [SaaS configuration](https://experienceleague.adobe.com/en/docs/commerce-merchant-services/user-guides/integration-services/saas#saasenv) in Adobe Experience League.
 
 tags:
   - name: Metadata
