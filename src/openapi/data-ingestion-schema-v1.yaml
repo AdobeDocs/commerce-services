@@ -13,8 +13,8 @@ info:
 
   version: 1.0.0
 servers:
-  - url: https://commerce.adobe.io/api/
-    description: Production endpoint
+  - url: https://commerce.adobe.io/<DATA_SPACE_ID>/api/
+    description: Production endpoint. The DATA_SPACE_ID value is the  ID for the data space where commerce catalog data is stored. See [SaaS configuration](https://experienceleague.adobe.com/en/docs/commerce-merchant-services/user-guides/integration-services/saas#saasenv) in Adobe Experience League.
 
 tags:
   - name: Metadata
@@ -33,7 +33,7 @@ tags:
       Define prices for product SKUs. The scope identifies the price books and price tiers where the price is used.
       is used.
 paths:
-  /v1/catalog/products/metadata/{DATA_SPACE_ID}:
+  /v1/catalog/products/metadata:
     post:
       tags:
         - Metadata
@@ -44,16 +44,6 @@ paths:
         To update existing product attribute metadata, use the update operation.
       operationId: ProductMetadataPut
       parameters:
-        - name: DATA_SPACE_ID
-          in: path
-          description: |
-            The data space ID for the data space where commerce catalog data is stored.
-            See [SaaS configuration](https://experienceleague.adobe.com/en/docs/commerce-merchant-services/user-guides/integration-services/saas#saasenv)
-            in *Adobe Experience League*.
-          required: true
-          style: simple
-          schema:
-            type: string
         - name: Content-Type
           in: header
           required: true
@@ -135,17 +125,6 @@ paths:
         When the update is processed, the merge strategy is used to apply changes to `scalar` and `object` type fields. The replace strategy is used to apply changes for fields in an `array`.
       operationId: ProductMetadataPatch
       parameters:
-        - name: DATA_SPACE_ID
-          in: path
-          description: |
-            The data space ID for the data space where commerce catalog data is stored.
-
-            See [SaaS configuration](https://experienceleague.adobe.com/en/docs/commerce-merchant-services/user-guides/integration-services/saas#saasenv)
-            in *Adobe Experience League*.
-          required: true
-          style: simple
-          schema:
-            type: string
         - name: Content-Type
           in: header
           required: true
@@ -217,7 +196,7 @@ paths:
             application/json;charset=UTF-8:
               schema:
                 $ref: '#/components/schemas/403Response'
-  /v1/catalog/products/metadata/{DATA_SPACE_ID}/delete:
+  /v1/catalog/products/metadata/delete:
     post:
       tags:
         - Metadata
@@ -225,13 +204,6 @@ paths:
       description: Remove product attribute metadata resources from the catalog data.
       operationId: ProductMetadataDelete
       parameters:
-        - name: DATA_SPACE_ID
-          in: path
-          description: Data Space ID
-          required: true
-          style: simple
-          schema:
-            type: string
         - name: Content-Type
           in: header
           required: true
@@ -297,7 +269,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/403Response'
 
-  /v1/catalog/products/{DATA_SPACE_ID}:
+  /v1/catalog/products:
     post:
       tags:
         - Products
@@ -324,7 +296,6 @@ paths:
         - Use [Update Product API](#operation/ProductsPatch) to set the ["variantReferenceId"](#operation/ProductsPost!path=attributes/variantReferenceId&t=request) to `null` and unassign the product variant from the configurable product by removing the ["links"](#operation/ProductsPost!path=links&t=request) association.
       operationId: ProductsPost
       parameters:
-        - $ref: '#/components/parameters/DATA_SPACE_ID'
         - $ref: '#/components/parameters/ContentType'
         - $ref: '#/components/parameters/xApiKey'
         - $ref: '#/components/parameters/xGwSignature'
@@ -613,7 +584,6 @@ paths:
         The replace strategy is used to apply changes for fields in an `array`.
       operationId: ProductsPatch
       parameters:
-        - $ref: '#/components/parameters/DATA_SPACE_ID'
         - $ref: '#/components/parameters/ContentType'
         - $ref: '#/components/parameters/xApiKey'
         - $ref: '#/components/parameters/xGwSignature'
@@ -710,7 +680,7 @@ paths:
                       "links": []
                     }
                   ]
-  /v1/catalog/products/{DATA_SPACE_ID}/delete:
+  /v1/catalog/products/delete:
     post:
       tags:
         - Products
@@ -719,7 +689,6 @@ paths:
         Delete products with specified "sku" and "scope".
       operationId: ProductsDelete
       parameters:
-        - $ref: '#/components/parameters/DATA_SPACE_ID'
         - $ref: '#/components/parameters/ContentType'
         - $ref: '#/components/parameters/xApiKey'
         - $ref: '#/components/parameters/xGwSignature'
@@ -753,7 +722,7 @@ paths:
                     }
                   ]
 
-  /v1/catalog/price-books/{DATA_SPACE_ID}:
+  /v1/catalog/price-books:
     post:
       tags:
         - Price Books
@@ -764,13 +733,6 @@ paths:
          Use the update operation to modify values for existing price books.
       operationId: PriceBooksPut
       parameters:
-        - name: DATA_SPACE_ID
-          in: path
-          description: Data Space ID
-          required: true
-          style: simple
-          schema:
-            type: string
         - name: Content-Type
           in: header
           required: true
@@ -849,13 +811,6 @@ paths:
         To update the currency for the default price book, use the price book id `main`.
       operationId: PriceBooksPatch
       parameters:
-        - name: DATA_SPACE_ID
-          in: path
-          description: Data Space ID
-          required: true
-          style: simple
-          schema:
-            type: string
         - name: Content-Type
           in: header
           required: true
@@ -922,7 +877,7 @@ paths:
             application/json;charset=UTF-8:
               schema:
                 $ref: '#/components/schemas/403Response'
-  /v1/catalog/price-books/{DATA_SPACE_ID}/delete:
+  /v1/catalog/price-books/delete:
     post:
       tags:
         - Price Books
@@ -932,13 +887,6 @@ paths:
          Note that you cannot delete the default price book with id `main`.
       operationId: PriceBooksDelete
       parameters:
-        - name: DATA_SPACE_ID
-          in: path
-          description: Data Space ID
-          required: true
-          style: simple
-          schema:
-            type: string
         - name: Content-Type
           in: header
           required: true
@@ -1001,7 +949,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/403Response'
 
-  /v1/catalog/products/prices/{DATA_SPACE_ID}:
+  /v1/catalog/products/prices:
     post:
       tags:
         - Prices
@@ -1018,13 +966,6 @@ paths:
 
       operationId: PricesPut
       parameters:
-        - name: DATA_SPACE_ID
-          in: path
-          description: Data Space ID
-          required: true
-          style: simple
-          schema:
-            type: string
         - name: Content-Type
           in: header
           required: true
@@ -1113,13 +1054,6 @@ paths:
         When the update is processed, the merge strategy is used to apply changes to `scalar` and `object` type fields. The replace strategy is used to apply changes for fields in an `array`.
       operationId: PricesPatch
       parameters:
-        - name: DATA_SPACE_ID
-          in: path
-          description: Data Space ID
-          required: true
-          style: simple
-          schema:
-            type: string
         - name: Content-Type
           in: header
           required: true
@@ -1188,7 +1122,7 @@ paths:
             application/json;charset=UTF-8:
               schema:
                 $ref: '#/components/schemas/403Response'
-  /v1/catalog/products/prices/{DATA_SPACE_ID}/delete:
+  /v1/catalog/products/prices/delete:
     post:
       tags:
         - Prices
@@ -1197,13 +1131,6 @@ paths:
         Delete existing product prices
       operationId: PricesDelete
       parameters:
-        - name: DATA_SPACE_ID
-          in: path
-          description: Data Space ID
-          required: true
-          style: simple
-          schema:
-            type: string
         - name: Content-Type
           in: header
           required: true
