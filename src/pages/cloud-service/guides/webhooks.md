@@ -16,7 +16,7 @@ To create a webhook, make a `POST` request to the `/V1/webhooks/subscribe` endpo
 |---|---|---|---|---|
 | `hook_name` | String | A hook name that is unique within a batch. | true        | Not applicable     |
 | `url` | String | The HTTP endpoint to send the request for processing. | true        | Not applicable     |
-| `webhook_method` | String | The HTTP method, such as POST or PUT, that invokes the hook. | false       | POST    |
+| `webhook_method` | String | The webhook code name. The value must be in the form `<type>.<webhook_name>`, where `type` is either `observer` or `plugin`, and `webhook_name` matches a valid Commerce event name. | false       | POST    |
 | `webhook_type` | String | Specifies whether to execute the webhook `before` or `after` the original action. | true | Not applicable |
 | `batch_name` | String | A unique name for the batch. This value must contain English alphanumeric characters and underscores (_) only.| true | Not applicable |
 
@@ -30,7 +30,7 @@ To create a webhook, make a `POST` request to the `/V1/webhooks/subscribe` endpo
     "batch_name": "add_product",
     "batch_order": 100,
     "hook_name": "validate_product",
-    "url": "{env:APP_URL}/validate-product-add",
+    "url": "https://<host>.com/validate-product-add",
     "priority": 100,
     "required": true,
     "timeout": 2000,

@@ -8,6 +8,10 @@ module.exports = [
     path: "/cloud-service/guides/rest/",
     pages: [
       {
+        title: "REST overview",
+        path: "/cloud-service/guides/rest/",
+      },
+      {
         title: "REST authentication",
         path: "/cloud-service/guides/rest/rest-auth/",
       },
