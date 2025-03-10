@@ -1,6 +1,7 @@
 ---
 title: Custom attributes in Adobe Commerce as a Cloud Service
 description: Learn about custom attributes Commerce Cloud Service.
+noIndex: true
 ---
 
 # Custom attributes in Adobe Commerce as a Cloud Service

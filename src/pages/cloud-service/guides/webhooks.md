@@ -1,7 +1,9 @@
 ---
 title: Webhooks in Adobe Commerce as a Cloud Service
 description: Learn about webhooks Commerce Cloud Service.
+noIndex: true
 ---
+
 # Webhooks in Adobe Commerce as a Cloud Service
 
 Webhooks allow developers to trigger calls to external systems synchronously when an Adobe Commerce event occurs.

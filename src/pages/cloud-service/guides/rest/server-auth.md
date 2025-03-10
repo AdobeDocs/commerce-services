@@ -1,6 +1,7 @@
 ---
 title: Server-to-Server authentication
 description: Learn about Server-to-Server Authentication in Adobe Commerce as a Cloud Service.
+noIndex: true
 ---
 
 # Server-to-server authentication

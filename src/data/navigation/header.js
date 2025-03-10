@@ -29,22 +29,12 @@ module.exports = [
     ],
   },
   {
-    title: "Tutorials",
-    menu: [
-      {
-        title: "Commerce as a Cloud Service",
-        description: "Learn how to implement specific use cases using the cloud service APIs.",
-        path: "/cloud-service/tutorials/",
-      },
-    ],
-  },
-  {
     title: "API Reference",
     menu: [
       {
         title: "ACCS - Admin REST API",
         description: "View the reference documentation for the Admin REST API.",
-        path: "/reference/cloud-service/reference",
+        path: "/cloud-service/guides/rest/reference",
       },
       {
         title: "ACCS - GraphQL Schema",

@@ -4,6 +4,7 @@ description: Learn how to use the REST API for Adobe Commerce as a Cloud Service
 keywords:
   - REST
   - Services
+noIndex: true
 ---
 
 # Rest overview
