@@ -1,7 +1,7 @@
 ---
-title: Cloud Service GraphQL Reference
+title: Cloud Service GraphQL API Reference
 edition: ee
-description: Learn about the Commerce GraphQL APIs.
+description: Learn about the Adobe Commerce as a Cloud Service GraphQL APIs.
 keywords:
   - GraphQL
   - Services
