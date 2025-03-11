@@ -1,6 +1,7 @@
 ---
 title: User authentication
 description: Learn about REST API authentication in Adobe Commerce as a Cloud Service.
+noIndex: true
 ---
 
 # User authentication
