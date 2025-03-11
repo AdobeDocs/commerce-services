@@ -1,36 +1,36 @@
 module.exports = [
   {
     title: "Introduction",
-    path: "/cloud-service/guides/",
+    path: "/cloud/guides/",
   },
   {
     title: "REST",
-    path: "/cloud-service/guides/rest/",
+    path: "/cloud/guides/rest/",
     pages: [
       {
         title: "REST overview",
-        path: "/cloud-service/guides/rest/",
+        path: "/cloud/guides/rest/",
       },
       {
         title: "REST authentication",
-        path: "/cloud-service/guides/rest/rest-auth/",
+        path: "/cloud/guides/rest/rest-auth/",
       },
       {
         title: "User authentication",
-        path: "/cloud-service/guides/rest/user-auth/",
+        path: "/cloud/guides/rest/user-auth/",
       },
       {
         title: "Server-to-server authentication",
-        path: "/cloud-service/guides/rest/server-auth/",
+        path: "/cloud/guides/rest/server-auth/",
       },
     ]
   },
   {
     title: "Custom attributes",
-    path: "/cloud-service/guides/custom-attributes/",
+    path: "/cloud/guides/custom-attributes/",
   },
   {
     title: "Webhooks",
-    path: "/cloud-service/guides/webhooks/",
+    path: "/cloud/guides/webhooks/",
   },
 ];

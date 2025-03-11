@@ -9,7 +9,7 @@ module.exports = [
       {
         title: "Commerce as a Cloud Service",
         description: "Learn the basics of using the Commerce as a Cloud Service APIs.",
-        path: "/cloud-service/guides/",
+        path: "/cloud/guides/",
       },
       {
         title: "Catalog Service",
@@ -34,12 +34,12 @@ module.exports = [
       {
         title: "ACCS - Admin REST API",
         description: "View the reference documentation for the Admin REST API.",
-        path: "/cloud-service/guides/rest/reference",
+        path: "/cloud/guides/rest/reference",
       },
       {
         title: "ACCS - GraphQL Schema",
         description: "View the reference documentation for the GraphQL Schema.",
-        path: "/reference/cloud-service/core-graphql",
+        path: "/reference/cloud/core-graphql",
       },
     ],
   },
