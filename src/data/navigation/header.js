@@ -34,12 +34,12 @@ module.exports = [
       {
         title: "ACCS - Admin REST API",
         description: "View the reference documentation for the Admin REST API.",
-        path: "/cloud/guides/rest/reference",
+        path: "/reference/cloud/rest/",
       },
       {
         title: "ACCS - GraphQL Schema",
         description: "View the reference documentation for the GraphQL Schema.",
-        path: "/reference/cloud/core-graphql",
+        path: "/reference/cloud/graphql/",
       },
     ],
   },
