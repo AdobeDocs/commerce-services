@@ -111,7 +111,7 @@ introspection:
   # schemaFile: path/to/schema.gql
 
   # File containing Introspection Query response in JS module export, or JSON format
-  introspectionFile: static/graphql/source/schema-admin.json
+  introspectionFile: static/graphql/source/graphqlschema.json
 
   # URL of the GraphQL endpoint to hit if you want to generate the documentation based on live Introspection Query results
   # NOTE: If not using introspection.url OR servers[], you need to provide x-url below
@@ -421,7 +421,7 @@ info:
   ##############################################
 
   description: |
-     Use the Adobe Commerce as a Cloud Service GraphQL API to interact with your Commerce storefront.
+     The Adobe Commerce as a Cloud Service GraphQL API Adobe provides a single endpoint for both Commerce Foundation and Merchandising Services GraphQL resources. This supergraph functionally allows you to interact with all Adobe Commerce GraphQL APIs as if they were a single API. The Adobe Commerce as a Cloud Service GraphQL API is a single endpoint for both Commerce Foundation and Merchandising Services GraphQL resources. This supergraph functionally allows you to interact with all Adobe Commerce GraphQL APIs as if they were a single API.
   version: 1.0.0
   title: Adobe Commerce as a Cloud Service GraphQL API
   # This is non-standard and optional. If omitted, will use "title". Also, only relevant
