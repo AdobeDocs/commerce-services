@@ -421,7 +421,7 @@ info:
   ##############################################
 
   description: |
-     The Adobe Commerce as a Cloud Service GraphQL API Adobe provides a single endpoint for both Commerce Foundation and Merchandising Services GraphQL resources. This supergraph functionally allows you to interact with all Adobe Commerce GraphQL APIs as if they were a single API. The Adobe Commerce as a Cloud Service GraphQL API is a single endpoint for both Commerce Foundation and Merchandising Services GraphQL resources. This supergraph functionally allows you to interact with all Adobe Commerce GraphQL APIs as if they were a single API.
+     The Adobe Commerce as a Cloud Service GraphQL API provides a single endpoint for both Commerce Foundation and <a href="https://developer.adobe.com/commerce/services/graphql/">Merchandising Services</a> GraphQL resources. This supergraph functionally allows you to interact with all Adobe Commerce GraphQL APIs as if they were a single API.
   version: 1.0.0
   title: Adobe Commerce as a Cloud Service GraphQL API
   # This is non-standard and optional. If omitted, will use "title". Also, only relevant
