@@ -18,7 +18,7 @@ This guide provides practical steps for implementing Server-to-Server integratio
 
 ## Prerequisites
 
-Before starting implementation, make sure the following prerequisites have been met:
+Before starting implementation, ensure you have:
 
 - Access to [Adobe Developer Console](https://developer.adobe.com/console)
 - An Adobe Organization Admin account
@@ -33,11 +33,11 @@ Before starting implementation, make sure the following prerequisites have been 
 
 ### 1. Generate services credentials
 
-If you have already completed the [Server Authentication Setup](/rest/authentication/server-to-server.md) as mentioned in prerequisites, you can skip this step. Otherwise, follow these steps:
+If you have already completed the [Server Authentication Setup](/rest/authentication/server-to-server.md), as mentioned in prerequisites, you can skip this step. Otherwise, follow these steps:
 
-1. Navigate to your project in Adobe Developer Console.
+1. Navigate to your project in the Adobe Developer Console.
 2. Add OAuth Server-to-Server credentials to your project.
-3. Provide a credential name (helps identify the credential in the Adobe Admin Console).
+3. Provide a credential name to help identify the credential in the Adobe Admin Console.
 4. Make a note of the following:
    - Client ID
    - Client Secret
@@ -47,7 +47,7 @@ If you have already completed the [Server Authentication Setup](/rest/authentica
 
 1. Create an `.env` file with the following contents:
 
-   ```plaintext
+   ```yaml
    IMS_CLIENT_ID=your_client_id
    IMS_CLIENT_SECRET=your_client_secret
    IMS_ORG_ID=your_org_id
@@ -57,7 +57,7 @@ If you have already completed the [Server Authentication Setup](/rest/authentica
 
 ### 3. Implement token generation
 
-Below is an example implementation using JavaScript/Node.js. You can implement similar logic in your preferred programming language.
+The following example implementation uses JavaScript and Node.js. You can implement similar logic in your preferred programming language.
 
 ```javascript
 // tokenManager.js
@@ -110,7 +110,7 @@ class TokenManager {
 
 ### 4. Create an API Client
 
-Below is an example implementation of an API client using JavaScript/Node.js. You can implement similar logic in your preferred programming language while following the same principles.
+The following API client example uses JavaScript and Node.js. You can implement similar logic in your preferred programming language while following the same principles.
 
 ```javascript
 // accsClient.js
@@ -170,7 +170,7 @@ class ACCSApiClient {
 
 ### 5. Usage example
 
-Below is an example implementation showing how to use the API client with JavaScript/Node.js. You can adapt this example to your preferred programming language and specific use case.
+The following example implementation demonstrates how to use the API client with JavaScript and Node.js. You can adapt this example to your preferred programming language and specific use case.
 
 ```javascript
 // example-usage.js
@@ -198,7 +198,7 @@ async function main() {
 
 ### Security
 
-Store all sensitive credentials and secrets in a secure environment variable system or dedicated secrets management service, never in your codebase. Implement regular client secret rotation to minimize security risks. Use environment variables for all configuration values to maintain flexibility across different environments. Maintain comprehensive error logs with appropriate security context while being careful not to expose sensitive information.
+Store all sensitive credentials and secrets in a secure environment variable system or in a dedicated secrets management service. Never store sensitive credentials or secrets in your codebase. Implement regular client secret rotation to minimize security risks. Use environment variables for all configuration values to maintain flexibility across different environments. Maintain comprehensive error logs with appropriate security context while being careful not to expose sensitive information.
 
 ### Performance
 
@@ -207,3 +207,4 @@ Implement token caching to reuse valid access tokens until they approach expirat
 ### Monitoring
 
 Set up comprehensive logging for API response times to track performance trends and identify potential issues early. Implement monitoring for token refresh events to detect authentication-related problems.
+
