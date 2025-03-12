@@ -171,7 +171,7 @@ async function main() {
   const client = new ACCSApiClient();
   
   try {
-    // Example API call using a real Magento REST API endpoint
+    // Example API call using a real ACCS REST API endpoint
     const response = await client.request('GET', '/rest/V1/products');
     console.log('Products:', response);
 
