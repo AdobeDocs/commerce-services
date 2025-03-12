@@ -1,6 +1,6 @@
 ---
 title: Server-to-server integration
-description: Learn how to implement a server-to-server integration with Adobe Commerce as a Cloud Service.
+description: Learn how to implement a server-to-server integration with the Adobe Commerce as a Cloud Service REST API.
 keywords:
   - REST
   - Services
@@ -9,7 +9,7 @@ noIndex: true
 
 # Server-to-server integration
 
-This guide provides practical steps for implementing Server-to-Server (S2S) integration with Adobe Commerce Cloud Services (ACCS) APIs using OAuth Server-to-Server authentication. S2S integration enables automated system-to-system communication without user intervention, ideal for:
+This guide provides practical steps for implementing Server-to-Server integration with Adobe Commerce Cloud Services REST APIs using OAuth server-to-server authentication. This type of integration enables automated system-to-system communication without user intervention, which is ideal for to following use cases:
 
 - Background processes and automated tasks
 - Data synchronization services
@@ -18,7 +18,7 @@ This guide provides practical steps for implementing Server-to-Server (S2S) inte
 
 ## Prerequisites
 
-Before starting implementation, ensure you have:
+Before starting implementation, make sure the following prerequisites have been met:
 
 - Access to [Adobe Developer Console](https://developer.adobe.com/console)
 - An Adobe Organization Admin account
@@ -29,31 +29,33 @@ Before starting implementation, ensure you have:
   - SSL/TLS support
   - JSON parsing capabilities
 
-## Implementation Steps
+## Implementation steps
 
-### 1. Set Up OAuth Server-to-Server Credential
+### 1. Generate services credentials
 
 If you have already completed the [Server Authentication Setup](/rest/authentication/server-to-server.md) as mentioned in prerequisites, you can skip this step. Otherwise, follow these steps:
 
-1. Navigate to your project in Adobe Developer Console
-2. Add OAuth Server-to-Server credentials to your project
-3. Provide a credential name (helps identify the credential in Adobe Admin Console)
-4. Note down:
+1. Navigate to your project in Adobe Developer Console.
+2. Add OAuth Server-to-Server credentials to your project.
+3. Provide a credential name (helps identify the credential in the Adobe Admin Console).
+4. Make a note of the following:
    - Client ID
    - Client Secret
    - Organization ID
 
-### 2. Configure Your Environment
+### 2. Configure your environment
 
-Create a `.env` file (add to .gitignore):
+1. Create an `.env` file with the following contents:
 
-```plaintext
-IMS_CLIENT_ID=your_client_id
-IMS_CLIENT_SECRET=your_client_secret
-IMS_ORG_ID=your_org_id
-```
+   ```plaintext
+   IMS_CLIENT_ID=your_client_id
+   IMS_CLIENT_SECRET=your_client_secret
+   IMS_ORG_ID=your_org_id
+   ```
 
-### 3. Implement Token Generation
+1. Add the `.env.` file to your project's `.gitignore` file.
+
+### 3. Implement token generation
 
 Below is an example implementation using JavaScript/Node.js. You can implement similar logic in your preferred programming language.
 
@@ -106,7 +108,7 @@ class TokenManager {
 }
 ```
 
-### 4. Create ACCS API Client
+### 4. Create an API Client
 
 Below is an example implementation of an API client using JavaScript/Node.js. You can implement similar logic in your preferred programming language while following the same principles.
 
@@ -166,7 +168,7 @@ class ACCSApiClient {
 }
 ```
 
-### 5. Usage Example
+### 5. Usage example
 
 Below is an example implementation showing how to use the API client with JavaScript/Node.js. You can adapt this example to your preferred programming language and specific use case.
 
@@ -192,7 +194,7 @@ async function main() {
 }
 ```
 
-## Best Practices
+## Best practices
 
 ### Security
 

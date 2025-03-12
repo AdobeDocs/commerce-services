@@ -73,7 +73,7 @@ grant_type=client_credentials
 
 ## Next steps
 
-Once you've configured authentication, see our [Server-to-Server Integration Guide](./s2s-integration.md) for a practical step-by-step guide with code examples on how to implement S2S integration with Adobe Commerce as a Cloud Service Rest API.
+Once you've configured authentication, see [Server-to-Server integration](/rest/integtation/index.md) for a practical step-by-step guide with code examples on how to implement this type of integration with the Adobe Commerce as a Cloud Service Rest API.
 
 ## Security considerations
 
