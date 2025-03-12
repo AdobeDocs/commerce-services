@@ -1,6 +1,9 @@
 ---
 title: Commerce Cloud and Data Services
 description: Learn how about the APIs and tools available to manage and use commerce catalog and event data programmatically.
+keywords:
+  - GraphQL
+  - REST
   - Services
 hideBreadcrumbNav: true
 ---
@@ -11,69 +14,67 @@ hideBreadcrumbNav: true
 
 # Commerce Cloud and Data Services
 
-A collection of APIs and tools to create, access, and manage product, catalog, and discovery data for ecommerce applications and storefronts.
+A collection of APIs and tools to integrate with third-party services, manage catalog data, and build headless ecommerce applications.
 
 <Resources slots="heading, links"/>
 
 ## Resources
 
-*  [Commerce as a Cloud Service user guide](https://experienceleague.adobe.com/docs/commerce-merchant-services/user-guides/home.html)
-*  [Data Services user guides](https://experienceleague.adobe.com/docs/commerce-merchant-services/user-guides/home.html)
-*  [Commerce Admin user guide](https://experienceleague.adobe.com/docs/commerce-admin/user-guides/home.html)
-
-## Overview
-
-Learn how to use Commerce APIs and SDKs to integrate with third-party software and build headless applications.
-
-## Discover
-
-Use Commerce APIs and SDKs to create and manage commerce catalog data and configuration and use it to create scalable, performant storefront experiences.
+*  [Cloud Service User Guide](https://experienceleague.adobe.com/docs/commerce/cloud-service/overview)
+*  [Merchandising Services User Guides](https://experienceleague.adobe.com/en/docs/commerce/user-guides/home)
+*  [Commerce Admin User Guides](https://experienceleague.adobe.com/en/docs/commerce-admin/user-guides/home)
 
 <DiscoverBlock slots="heading, link, text"/>
 
-### Commerce as a Cloud Service
+## Commerce as a Cloud Service
 
-[Custom attributes](cloud-service/guides/custom-attributes.md)
+[REST & GraphQL API](cloud/guides/index.md)
 
-Learn how to extend the core data model with custom attributes.
+Integrate with third-party services and build headless applications.
 
 <DiscoverBlock slots="link, text"/>
 
-[Webhooks](cloud-service/guides/webhooks.md)
+[Custom attributes](cloud/guides/custom-attributes.md)
+
+Add custom attributes to core data model entities with REST and GraphQL APIs.
+
+<DiscoverBlock slots="link, text"/>
+
+[Webhooks](cloud/guides/rest/webhooks.md)
 
 Subscribe to webhooks to trigger external calls when Adobe Commerce events occur.
 
-<DiscoverBlock slots="heading,link, text"/>
+<DiscoverBlock slots="heading, link, text"/>
 
-### Storefront and Shared Services
+## Merchandising Services
 
 [Storefront APIs](graphql/)
 
-Retrieve product, search, and recommendations data from Adobe Commerce and use it to create storefront experiences.
+Retrieve product, search, and recommendations data and use it to create storefront experiences.
 
 <DiscoverBlock slots="link, text"/>
 
 [Storefront Events SDK](shared-services/)
 
-Explore common tools and SDKs shared across Services for Adobe Commerce.
+Explore common tools and SDKs shared across Merchandising Services.
 
 <DiscoverBlock slots="link, text"/>
 
 [Live Search Events](live-search/)
 
-Lists the events defined in the Adobe Commerce Event SDK that are applicable to Live Search.
+Learn about the events defined in the Adobe Commerce Event SDK that are applicable to Live Search.
 
 <DiscoverBlock slots="link, text"/>
 
 [Product Recommendations SDK](product-recommendations/)
 
-Learn how to use the Product Recommendations SDK with Adobe Commerce to fetch recommendations programmatically in the browser.
+Dynamically fetch and display personalized product recommendations in your storefront experience.
 
 <DiscoverBlock slots="link, text"/>
 
 [Commerce Reporting API](reporting/)
 
-Learn how to import data into your Commerce data warehouse and export raw data from your Commerce Reporting dashboards.
+Import data into your Commerce data warehouse and export raw data from your Commerce Reporting dashboards.
 
 ## Contributing to this documentation
 

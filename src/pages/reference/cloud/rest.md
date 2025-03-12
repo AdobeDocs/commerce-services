@@ -1,6 +1,7 @@
 ---
-title: Admin API for Cloud Service
-description: Learn how to use the Admin API for Adobe Commerce as a Cloud Service.
+title: Cloud Service REST API Reference
+description: Learn about Adobe Commerce as a Cloud Service REST API.
+edition: ee
 keywords:
   - REST
   - Services

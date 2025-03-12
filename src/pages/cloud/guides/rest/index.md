@@ -9,21 +9,21 @@ noIndex: true
 
 # Rest overview
 
-The Adobe Commerce as a Cloud Service REST API serves as a critical tool for extending and integrating commerce functionalities, but the endpoints available differ significantly from the REST APIs for Adobe Commerce on Cloud and on-premises deployments of Adobe Commerce.
+The Adobe Commerce as a Cloud Service REST API serves as a critical tool for extending and integrating commerce functionalities, but the endpoints available differ significantly from the REST APIs for Adobe Commerce on Cloud and on-premises deployments.
 
 The following key differences are important to consider when planning your REST API integrations with Adobe Commerce as a Cloud Service:
 
 ## Endpoints
 
-Primarily the Cloud Service REST API differs in that it includes a smaller subset of endpoints. Specifically, the Guest and Customer REST APIs that are available in Adobe Commerce on Cloud and on-premises deployments are not available in Adobe Commerce as a Cloud Service. However, access to similar functionality remains available in the [GraphQL API](../../reference/core-graphql.md).
+Primarily the Cloud Service REST API differs in that it includes a smaller subset of endpoints. Specifically, the Guest and Customer REST APIs that are available in Adobe Commerce on Cloud and on-premises deployments are not available in Adobe Commerce as a Cloud Service. However, access to similar functionality remains available in the [GraphQL API](/reference/cloud/graphql.md).
 
-For more information on what endpoints are available, refer to the [API reference](./reference.md).
+For more information on what endpoints are available, refer to the [API reference](/reference/cloud/rest.md).
 
 ## Authentication
 
 In previous versions of Adobe Commerce, you would use authentication tokens to authorize your requests to the REST API. In Adobe Commerce as a Cloud Service, you must use Adobe Identity Management Service (IMS) to authenticate your requests.
 
-The authentication system supports both [interactive user-based workflows](./user-auth.md) and automated [server-to-server integrations](./server-auth.md), ensuring secure and appropriate access for different use cases. Both of these authentication methods require every request to be signed with an IMS Access Token.
+The authentication system supports both [interactive user-based workflows](./authentication/user.md) and automated [server-to-server integrations](./authentication/server-to-server.md), ensuring secure and appropriate access for different use cases. Both of these authentication methods require every request to be signed with an IMS Access Token.
 
 ## URL structure
 
@@ -59,7 +59,7 @@ Events and webhooks work slightly differently compared to other versions of Adob
 
 <InlineAlert variant="info" slots="text"/>
 
-For other extensibility ideas, review our topics on [webhooks](../webhooks.md) and [custom attributes](../custom-attributes.md).
+For other extensibility ideas, review our topics on [webhooks](../rest/webhooks.md) and [custom attributes](../custom-attributes.md).
 
 Addtionally, because Adobe Commerce as a Cloud Service is preconfigured with extensibility in mind, you do not need to add or configure the integration in the Adobe Commerce Admin.
 
@@ -122,7 +122,7 @@ You can request new [webhooks](#request-a-new-event-or-webhook) in the Commerce 
 
 If you require an event or webhook for your use case that is not currently supported, make a request in the Commerce Admin:
 
-1. Navigate to [!UICONTROL **System**] > [!UICONTROL **Events**] > [!UICONTROL **Events List**] or [!UICONTROL **System**] > [!UICONTROL **Webhooks**] > [!UICONTROL **Webhooks List**] .
-1. Click [!UICONTROL **Request a new event**] or [!UICONTROL **Request a new webhook**].
+1. Navigate to **System** > **Events** > **Events List** or **System** > **Webhooks** > **Webhooks List** .
+1. Click **Request a new event** or **Request a new webhook**.
 1. Complete the form.
-1. Click [!UICONTROL **Submit**].
+1. Click **Submit**.
