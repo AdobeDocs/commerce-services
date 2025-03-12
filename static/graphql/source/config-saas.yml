@@ -111,7 +111,7 @@ introspection:
   # schemaFile: path/to/schema.gql
 
   # File containing Introspection Query response in JS module export, or JSON format
-  introspectionFile: static/graphql/source/graphqlschema.json
+  introspectionFile: static/graphql/source/cloud-service-graphql.json
 
   # URL of the GraphQL endpoint to hit if you want to generate the documentation based on live Introspection Query results
   # NOTE: If not using introspection.url OR servers[], you need to provide x-url below
