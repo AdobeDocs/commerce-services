@@ -168,7 +168,10 @@ The Adobe Commerce as a Cloud Service REST API contains the following endpoints.
 /V1/eav/attribute-sets/:attributeSetId    | DELETE |
 /V1/eav/attribute-sets/:attributeSetId    | PUT |
 /V1/eav/attribute-sets/list    | GET |
-/V1/eventing/eventSubscribe    | POST |
+/V1/eventing/eventSubscribe:name    | POST |
+/V1/eventing/eventUnsubscribe:name    | POST |
+/V1/eventing/getEventProviders    | GET |
+/V1/eventing/getEventSubscriptions    | GET |
 /V1/eventing/updateConfiguration    | PUT |
 /V1/gift-wrappings    | POST |
 /V1/gift-wrappings    | GET |
@@ -246,6 +249,14 @@ The Adobe Commerce as a Cloud Service REST API contains the following endpoints.
 /V1/negotiableQuoteTemplate/draft    | POST |
 /V1/negotiableQuoteTemplate/request    | POST |
 /V1/negotiableQuoteTemplate/submitToCustomer    | POST |
+/V1/oope_payment_method/:code | GET |
+/V1/oope_payment_method | GET |
+/V1/oope_payment_method | POST |
+/V1/oope_shipping_carrier | GET |
+/V1/oope_shipping_carrier/:code | GET |
+/V1/oope_shipping_carrier | POST |
+/V1/oope_shipping_carrier | PUT |
+/V1/oope_shipping_carrier/:code | DELETE |
 /V1/order/:orderId/invoice    | POST |
 /V1/order/:orderId/refund    | POST |
 /V1/order/:orderId/ship    | POST |
@@ -424,6 +435,9 @@ The Adobe Commerce as a Cloud Service REST API contains the following endpoints.
 /V1/tfa/user-providers/:userId    | PUT |
 /V1/transactions    | GET |
 /V1/transactions/:id    | GET |
+/V1/webhooks/list | GET |
+/V1/webhooks/subscribe | POST |
+/V1/webhooks/unsubscribe | POST |
 /V2/carts/:cartId/coupons    | GET |
 /V2/carts/:cartId/coupons    | POST |
 /V2/carts/:cartId/coupons    | PUT |
