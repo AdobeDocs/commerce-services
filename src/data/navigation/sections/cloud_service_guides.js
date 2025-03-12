@@ -22,6 +22,10 @@ module.exports = [
         ],
       },
       {
+        title: "Integration",
+        path: "/cloud/guides/rest/integration/",
+      },
+      {
         title: "Webhooks",
         path: "/cloud/guides/rest/webhooks/",
       },

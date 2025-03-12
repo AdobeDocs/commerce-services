@@ -19,7 +19,7 @@ Before implementing server-to-server authentication, you must have the following
 - Access to Adobe Developer Console for creating I/O Management API credentials
 - A properly configured service with appropriate security settings
 
-## Implementation steps
+## Authentication steps
 
 ### 1. Generate service credentials
 
@@ -70,6 +70,10 @@ grant_type=client_credentials
   1. Network issues
   1. Authentication failures
   1. Rate limiting
+
+## Next steps
+
+Once you've configured authentication, see [Server-to-Server integration](/rest/integtation/index.md) for a practical step-by-step guide with code examples on how to implement this type of integration with the Adobe Commerce as a Cloud Service Rest API.
 
 ## Security considerations
 

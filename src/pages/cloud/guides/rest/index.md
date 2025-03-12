@@ -23,7 +23,7 @@ For more information on what endpoints are available, refer to the [API referenc
 
 In previous versions of Adobe Commerce, you would use authentication tokens to authorize your requests to the REST API. In Adobe Commerce as a Cloud Service, you must use Adobe Identity Management Service (IMS) to authenticate your requests.
 
-The authentication system supports both [interactive user-based workflows](./authentication/user.md) and automated [server-to-server integrations](./authentication/server-to-server.md), ensuring secure and appropriate access for different use cases. Both of these authentication methods require every request to be signed with an IMS Access Token.
+The authentication system supports both [interactive user-based workflows](./authentication/user.md) and automated [server-to-server integrations](./authentication/server-to-server.md), ensuring secure and appropriate access for different use cases. Both of these authentication methods require every request to be signed with an IMS Access Token. For a practical implementation guide with code examples for server-to-server integration, see our [Server-to-Server Integration Guide](./integration/index.md).
 
 ## URL structure
 
