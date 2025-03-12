@@ -1,6 +1,9 @@
 ---
 title: Webhooks in Adobe Commerce as a Cloud Service
 description: Learn about webhooks Commerce Cloud Service.
+keywords:
+  - REST
+  - Services
 noIndex: true
 ---
 
@@ -16,9 +19,9 @@ To create a webhook, make a `POST` request to the `/V1/webhooks/subscribe` endpo
 
 | Attribute | Type   | Description  | Is required | Default |
 |---|---|---|---|---|
-| `hook_name` | String | A hook name that is unique within a batch. | true        | Not applicable     |
+| `hook_name` | String | A hook name that is unique within a batch. This value must contain English alphanumeric characters and underscores (_) only.| true        | Not applicable     |
 | `url` | String | The HTTP endpoint to send the request for processing. | true        | Not applicable     |
-| `webhook_method` | String | The webhook code name. The value must be in the form `<type>.<webhook_name>`, where `type` is either `observer` or `plugin`, and `webhook_name` matches a valid Commerce event name. | false       | POST    |
+| `webhook_method` | String | The webhook code name. The value must be in the form `<type>.<webhook_name>`, where `type` is either `observer` or `plugin`, and `webhook_name` matches a valid [Commerce webhook name](index.md#webhooks). | true       | Not applicable    |
 | `webhook_type` | String | Specifies whether to execute the webhook `before` or `after` the original action. | true | Not applicable |
 | `batch_name` | String | A unique name for the batch. This value must contain English alphanumeric characters and underscores (_) only.| true | Not applicable |
 

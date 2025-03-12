@@ -9,21 +9,21 @@ noIndex: true
 
 # Rest overview
 
-The Adobe Commerce as a Cloud Service REST API serves as a critical tool for extending and integrating commerce functionalities, but the endpoints available differ significantly from the REST APIs for Adobe Commerce on Cloud and on-premises deployments of Adobe Commerce.
+The Adobe Commerce as a Cloud Service REST API serves as a critical tool for extending and integrating commerce functionalities, but the endpoints available differ significantly from the REST APIs for Adobe Commerce on Cloud and on-premises deployments.
 
 The following key differences are important to consider when planning your REST API integrations with Adobe Commerce as a Cloud Service:
 
 ## Endpoints
 
-Primarily the Cloud Service REST API differs in that it includes a smaller subset of endpoints. Specifically, the Guest and Customer REST APIs that are available in Adobe Commerce on Cloud and on-premises deployments are not available in Adobe Commerce as a Cloud Service. However, access to similar functionality remains available in the [GraphQL API](../../reference/core-graphql.md).
+Primarily the Cloud Service REST API differs in that it includes a smaller subset of endpoints. Specifically, the Guest and Customer REST APIs that are available in Adobe Commerce on Cloud and on-premises deployments are not available in Adobe Commerce as a Cloud Service. However, access to similar functionality remains available in the [GraphQL API](/reference/cloud/graphql.md).
 
-For more information on what endpoints are available, refer to the [API reference](./reference.md).
+For more information on what endpoints are available, refer to the [API reference](/reference/cloud/rest.md).
 
 ## Authentication
 
 In previous versions of Adobe Commerce, you would use authentication tokens to authorize your requests to the REST API. In Adobe Commerce as a Cloud Service, you must use Adobe Identity Management Service (IMS) to authenticate your requests.
 
-The authentication system supports both [interactive user-based workflows](./user-auth.md) and automated [server-to-server integrations](./server-auth.md), ensuring secure and appropriate access for different use cases. Both of these authentication methods require every request to be signed with an IMS Access Token. For a practical implementation guide with code examples for server-to-server integration, see our [Server-to-Server Integration Guide](./s2s-integration.md).
+The authentication system supports both [interactive user-based workflows](./authentication/user.md) and automated [server-to-server integrations](./authentication/server-to-server.md), ensuring secure and appropriate access for different use cases. Both of these authentication methods require every request to be signed with an IMS Access Token. For a practical implementation guide with code examples for server-to-server integration, see our [Server-to-Server Integration Guide](./s2s-integration.md).
 
 ## URL structure
 
@@ -59,7 +59,7 @@ Events and webhooks work slightly differently compared to other versions of Adob
 
 <InlineAlert variant="info" slots="text"/>
 
-For other extensibility ideas, review our topics on [webhooks](../webhooks.md) and [custom attributes](../custom-attributes.md).
+For other extensibility ideas, review our topics on [webhooks](../rest/webhooks.md) and [custom attributes](../custom-attributes.md).
 
 Addtionally, because Adobe Commerce as a Cloud Service is preconfigured with extensibility in mind, you do not need to add or configure the integration in the Adobe Commerce Admin.
 
@@ -86,9 +86,9 @@ Addtionally, because Adobe Commerce as a Cloud Service is preconfigured with ext
   * observer.sales_order_shipment_track_save_after
   * observer.sales_order_creditmemo_save_after
   * observer.sales_order_status_history_save_after
-  * plugin.magento.sales.api.order_management.place
-  * plugin.magento.sales.api.order_repository.save
-  * plugin.magento.sales_rule.api.rule_repository.save
+  * plugin.sales.api.order_management.place
+  * plugin.sales.api.order_repository.save
+  * plugin.sales_rule.api.rule_repository.save
 
 <InlineAlert variant="info" slots="text"/>
 
@@ -105,13 +105,14 @@ Adobe Commerce as a Cloud Service is limited to the following webhooks:
 * observer.catalog_product_save_after
 * observer.catalog_product_save_before
 * observer.sales_order_place_before
-* plugin.magento.customer.api.address_repository.save
-* plugin.magento.sales.api.order_management.place
-* plugin.magento.quote.api.guest_coupon_management.set
-* plugin.magento.tax.api.tax_calculation.calculate_tax
-* plugin.magento.quote.api.shipment_estimation.estimate_by_extended_address
-* plugin.magento.gift_card_account.api.gift_card_account_management.check_gift_card
-* plugin.magento.out_of_process_shipping_methods.api.shipping_rate_repository.get_rates
+* plugin.customer.api.address_repository.save
+* plugin.sales.api.order_management.place
+* plugin.quote.api.guest_coupon_management.set
+* plugin.tax.api.tax_calculation.calculate_tax
+* plugin.quote.api.shipment_estimation.estimate_by_extended_address
+* plugin.gift_card_account.api.gift_card_account_management.check_gift_card
+* plugin.out_of_process_payment_methods.api.payment_method_filter.get_list
+* plugin.out_of_process_shipping_methods.api.shipping_rate_repository.get_rates
 
 <InlineAlert variant="info" slots="text"/>
 
@@ -121,7 +122,7 @@ You can request new [webhooks](#request-a-new-event-or-webhook) in the Commerce 
 
 If you require an event or webhook for your use case that is not currently supported, make a request in the Commerce Admin:
 
-1. Navigate to [!UICONTROL **System**] > [!UICONTROL **Events**] > [!UICONTROL **Events List**] or [!UICONTROL **System**] > [!UICONTROL **Webhooks**] > [!UICONTROL **Webhooks List**] .
-1. Click [!UICONTROL **Request a new event**] or [!UICONTROL **Request a new webhook**].
+1. Navigate to **System** > **Events** > **Events List** or **System** > **Webhooks** > **Webhooks List** .
+1. Click **Request a new event** or **Request a new webhook**.
 1. Complete the form.
-1. Click [!UICONTROL **Submit**].
+1. Click **Submit**.

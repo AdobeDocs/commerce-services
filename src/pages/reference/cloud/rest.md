@@ -1,6 +1,7 @@
 ---
-title: Admin API for Cloud Service
-description: Learn how to use the Admin API for Adobe Commerce as a Cloud Service.
+title: Cloud Service REST API Reference
+description: Learn about Adobe Commerce as a Cloud Service REST API.
+edition: ee
 keywords:
   - REST
   - Services
@@ -106,6 +107,7 @@ The Adobe Commerce as a Cloud Service REST API contains the following endpoints.
 /V1/company/role/:roleId    | GET |
 /V1/company/role/:roleId    | DELETE |
 /V1/company/role/:roleId/users    | GET |
+/V1/company/setCustomAttributes | POST |
 /V1/companyCredits/    | GET |
 /V1/companyCredits/:creditId    | GET |
 /V1/companyCredits/:creditId/decreaseBalance    | POST |
@@ -237,6 +239,7 @@ The Adobe Commerce as a Cloud Service REST API contains the following endpoints.
 /V1/negotiableQuote/draft    | POST |
 /V1/negotiableQuote/pricesUpdated    | POST |
 /V1/negotiableQuote/request    | POST |
+/V1/negotiableQuote/setCustomAttributes | POST |
 /V1/negotiableQuote/submitToCustomer    | POST |
 /V1/negotiableQuoteTemplate/:templateId    | PUT |
 /V1/negotiableQuoteTemplate/decline    | POST |
