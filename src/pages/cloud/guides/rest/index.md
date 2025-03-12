@@ -31,7 +31,7 @@ The URL structure for your REST endpoints will be slightly different in Adobe Co
 
 Cloud Service URLs use the following format:
 
-`https://<cell-identifier>.api.commerce.adobe.com/<tenant-id>/<endpoint>`
+`https://<server>.api.commerce.adobe.com/<tenant-id>/<endpoint>`
 
 ## Extensibility
 
