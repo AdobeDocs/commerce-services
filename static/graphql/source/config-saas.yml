@@ -380,7 +380,7 @@ servers:
 
   # same format as for OpenAPI Specification https://swagger.io/specification/#server-object
 
-  - url: https://<your store>/graphql
+  - url: https://<cell-identifier>.api.commerce.adobe.com/<tenant-id>/<endpoint>/graphql
     description: Production Server
     # Indicates to use this server's URL as the typical GraphQL request base in the documentation
     # If no server entries have this indicator, the first server's URL will be used.
@@ -422,7 +422,7 @@ info:
 
   description: |
      The Adobe Commerce as a Cloud Service GraphQL API provides a single endpoint for both Commerce Foundation and <a href="https://developer.adobe.com/commerce/services/graphql/">Merchandising Services</a> GraphQL resources. This supergraph functionally allows you to interact with all Adobe Commerce GraphQL APIs as if they were a single API.
-  version: 1.0.0
+  # version: 1.0.0
   title: Adobe Commerce as a Cloud Service GraphQL API
   # This is non-standard and optional. If omitted, will use "title". Also, only relevant
   # when building non-embedded.
