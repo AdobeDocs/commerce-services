@@ -1,6 +1,13 @@
-# Server-to-Server Integration Guide
+---
+title: Server-to-server integration
+description: Learn how to implement a server-to-server integration with Adobe Commerce as a Cloud Service.
+keywords:
+  - REST
+  - Services
+noIndex: true
+---
 
-## Overview
+# Server-to-server integration
 
 This guide provides practical steps for implementing Server-to-Server (S2S) integration with Adobe Commerce Cloud Services (ACCS) APIs using OAuth Server-to-Server authentication. S2S integration enables automated system-to-system communication without user intervention, ideal for:
 
@@ -15,7 +22,7 @@ Before starting implementation, ensure you have:
 
 - Access to [Adobe Developer Console](https://developer.adobe.com/console)
 - An Adobe Organization Admin account
-- Completed the [Server Authentication Setup](./server-auth.md)
+- Completed the [Server Authentication Setup](/rest/authentication/server-to-server.md)
 - A development environment with:
   - HTTP client library
   - Environment variables or secure secrets management
@@ -26,7 +33,7 @@ Before starting implementation, ensure you have:
 
 ### 1. Set Up OAuth Server-to-Server Credential
 
-If you have already completed the [Server Authentication Setup](./server-auth.md) as mentioned in prerequisites, you can skip this step. Otherwise, follow these steps:
+If you have already completed the [Server Authentication Setup](/rest/authentication/server-to-server.md) as mentioned in prerequisites, you can skip this step. Otherwise, follow these steps:
 
 1. Navigate to your project in Adobe Developer Console
 2. Add OAuth Server-to-Server credentials to your project
