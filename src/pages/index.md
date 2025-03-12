@@ -40,7 +40,7 @@ Add custom attributes to core data model entities with REST and GraphQL APIs.
 
 <DiscoverBlock slots="link, text"/>
 
-[Webhooks](cloud/guides/webhooks.md)
+[Webhooks](cloud/guides/rest/webhooks.md)
 
 Subscribe to webhooks to trigger external calls when Adobe Commerce events occur.
 
