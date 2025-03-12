@@ -86,9 +86,9 @@ Addtionally, because Adobe Commerce as a Cloud Service is preconfigured with ext
   * observer.sales_order_shipment_track_save_after
   * observer.sales_order_creditmemo_save_after
   * observer.sales_order_status_history_save_after
-  * plugin.magento.sales.api.order_management.place
-  * plugin.magento.sales.api.order_repository.save
-  * plugin.magento.sales_rule.api.rule_repository.save
+  * plugin.sales.api.order_management.place
+  * plugin.sales.api.order_repository.save
+  * plugin.sales_rule.api.rule_repository.save
 
 <InlineAlert variant="info" slots="text"/>
 
@@ -105,13 +105,14 @@ Adobe Commerce as a Cloud Service is limited to the following webhooks:
 * observer.catalog_product_save_after
 * observer.catalog_product_save_before
 * observer.sales_order_place_before
-* plugin.magento.customer.api.address_repository.save
-* plugin.magento.sales.api.order_management.place
-* plugin.magento.quote.api.guest_coupon_management.set
-* plugin.magento.tax.api.tax_calculation.calculate_tax
-* plugin.magento.quote.api.shipment_estimation.estimate_by_extended_address
-* plugin.magento.gift_card_account.api.gift_card_account_management.check_gift_card
-* plugin.magento.out_of_process_shipping_methods.api.shipping_rate_repository.get_rates
+* plugin.customer.api.address_repository.save
+* plugin.sales.api.order_management.place
+* plugin.quote.api.guest_coupon_management.set
+* plugin.tax.api.tax_calculation.calculate_tax
+* plugin.quote.api.shipment_estimation.estimate_by_extended_address
+* plugin.gift_card_account.api.gift_card_account_management.check_gift_card
+* plugin.out_of_process_payment_methods.api.payment_method_filter.get_list
+* plugin.out_of_process_shipping_methods.api.shipping_rate_repository.get_rates
 
 <InlineAlert variant="info" slots="text"/>
 
