@@ -31,7 +31,7 @@ The URL structure for your REST endpoints will be slightly different in Adobe Co
 
 Cloud Service URLs use the following format:
 
-`https://<cell-identifier>.api.commerce.adobe.com/<tenant-id>/<endpoint>`
+`https://<server>.api.commerce.adobe.com/<tenant-id>/<endpoint>`
 
 ## Extensibility
 
@@ -113,16 +113,3 @@ Adobe Commerce as a Cloud Service is limited to the following webhooks:
 * plugin.gift_card_account.api.gift_card_account_management.check_gift_card
 * plugin.out_of_process_payment_methods.api.payment_method_filter.get_list
 * plugin.out_of_process_shipping_methods.api.shipping_rate_repository.get_rates
-
-<InlineAlert variant="info" slots="text"/>
-
-You can request new [webhooks](#request-a-new-event-or-webhook) in the Commerce Admin.
-
-#### Request a new event or webhook
-
-If you require an event or webhook for your use case that is not currently supported, make a request in the Commerce Admin:
-
-1. Navigate to **System** > **Events** > **Events List** or **System** > **Webhooks** > **Webhooks List** .
-1. Click **Request a new event** or **Request a new webhook**.
-1. Complete the form.
-1. Click **Submit**.
