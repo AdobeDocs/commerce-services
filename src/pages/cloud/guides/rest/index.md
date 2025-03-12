@@ -90,10 +90,6 @@ Addtionally, because Adobe Commerce as a Cloud Service is preconfigured with ext
   * plugin.sales.api.order_repository.save
   * plugin.sales_rule.api.rule_repository.save
 
-<InlineAlert variant="info" slots="text"/>
-
-You can request new [events](#request-a-new-event-or-webhook) in the Commerce Admin.
-
 #### Webhooks
 
 Registering webhooks works differently between platforms. Instead of using the `webhooks.xml` file, you can register webhooks in the Commerce Admin or by using the REST API.
