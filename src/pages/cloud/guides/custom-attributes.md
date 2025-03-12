@@ -1,6 +1,10 @@
 ---
 title: Custom attributes in Adobe Commerce as a Cloud Service
 description: Learn about custom attributes Commerce Cloud Service.
+keywords:
+  - GraphQL
+  - REST
+  - Services
 noIndex: true
 ---
 

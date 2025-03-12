@@ -1,6 +1,9 @@
 ---
 title: Commerce Cloud and Data Services
 description: Learn how about the APIs and tools available to manage and use commerce catalog and event data programmatically.
+keywords:
+  - GraphQL
+  - REST
   - Services
 hideBreadcrumbNav: true
 ---

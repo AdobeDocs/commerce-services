@@ -1,6 +1,9 @@
 ---
 title: Webhooks in Adobe Commerce as a Cloud Service
 description: Learn about webhooks Commerce Cloud Service.
+keywords:
+  - REST
+  - Services
 noIndex: true
 ---
 

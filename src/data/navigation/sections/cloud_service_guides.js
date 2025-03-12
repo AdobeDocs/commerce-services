@@ -12,11 +12,11 @@ module.exports = [
         path: "/cloud/guides/rest/authentication/",
         pages: [
           {
-            title: "User authentication",
+            title: "User",
             path: "/cloud/guides/rest/authentication/user/",
           },
           {
-            title: "Server-to-server authentication",
+            title: "Server-to-server",
             path: "/cloud/guides/rest/authentication/server-to-server/",
           },
         ],
