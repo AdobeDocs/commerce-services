@@ -23,7 +23,7 @@ For more information on what endpoints are available, refer to the [API referenc
 
 In previous versions of Adobe Commerce, you would use authentication tokens to authorize your requests to the REST API. In Adobe Commerce as a Cloud Service, you must use Adobe Identity Management Service (IMS) to authenticate your requests.
 
-The authentication system supports both [interactive user-based workflows](./user-auth.md) and automated [server-to-server integrations](./server-auth.md), ensuring secure and appropriate access for different use cases. Both of these authentication methods require every request to be signed with an IMS Access Token.
+The authentication system supports both [interactive user-based workflows](./authentication/user.md) and automated [server-to-server integrations](./authentication/server-to-server.md), ensuring secure and appropriate access for different use cases. Both of these authentication methods require every request to be signed with an IMS Access Token.
 
 ## URL structure
 
@@ -59,7 +59,7 @@ Events and webhooks work slightly differently compared to other versions of Adob
 
 <InlineAlert variant="info" slots="text"/>
 
-For other extensibility ideas, review our topics on [webhooks](../webhooks.md) and [custom attributes](../custom-attributes.md).
+For other extensibility ideas, review our topics on [webhooks](../rest/webhooks.md) and [custom attributes](../custom-attributes.md).
 
 Addtionally, because Adobe Commerce as a Cloud Service is preconfigured with extensibility in mind, you do not need to add or configure the integration in the Adobe Commerce Admin.
 

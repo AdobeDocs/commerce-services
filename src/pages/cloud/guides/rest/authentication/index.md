@@ -8,7 +8,7 @@ noIndex: true
 
 Adobe Commerce as a Cloud Service REST API authentication is handled through Adobe's Identity Management Service (IMS), providing secure access to Commerce functionality through standardized OAuth 2.0 protocols. This authentication system supports both interactive user-based workflows and automated server-to-server integrations, ensuring secure and appropriate access for different use cases.
 
-## [User authentication with SUSI UI](./user-auth.md)
+## [User authentication with SUSI UI](./user.md)
 
 The User Authentication flow leverages Adobe's Secure User Sign-In (SUSI) interface to authenticate Commerce administrators. This method is ideal when API operations need to be executed within the context of a specific admin user's permissions. The authentication process provides a secure, OAuth-based workflow where users authenticate through Adobe's login interface, ensuring credentials are never directly handled by your application.
 
@@ -20,7 +20,7 @@ Key benefits of this approach include:
 - Built-in token refresh capabilities for extended sessions
 - Compliance with OAuth 2.0 security standards
 
-## [Server-to-server authentication](./server-auth.md)
+## [Server-to-server authentication](./server-to-server.md)
 
 Server-to-Server authentication enables automated systems to interact with Commerce APIs without user intervention. This method uses technical account credentials to obtain access tokens directly, making it perfect for background processes, scheduled tasks, and system integrations that need to operate independently.
 
@@ -47,8 +47,8 @@ Key benefits of this approach include:
 
 For detailed implementation guides, see:
 
-- [User Authentication Guide](./user-auth.md)
-- [Server-to-Server Authentication Guide](./server-auth.md)
+- [User Authentication Guide](./user.md)
+- [Server-to-Server Authentication Guide](./server-to-server.md)
 
 **Access tokens**
 
@@ -68,7 +68,7 @@ The following permission scopes are required for Adobe Commerce as a Cloud Servi
 - `additional_info.roles`
 - `additional_info.projectedProductContext`
 
-These are provided as a comma-separated list when building your [authorization URL](./user-auth.md#2-authorization-flow).
+These are provided as a comma-separated list when building your [authorization URL](./user.md#2-authorization-flow).
 
 ```bash
 `AdobeID,openid,email,profile,additional_info.roles,additional_info.projectedProductContext`
