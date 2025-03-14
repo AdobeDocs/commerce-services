@@ -38,7 +38,7 @@ To obtain your credentials:
 **Access token request**:
 
 ```http
-POST https://ims-na1-stg1.adobelogin.com/ims/token/v3
+POST https://ims-na1.adobelogin.com/ims/token/v3
 Content-Type: application/x-www-form-urlencoded
 
 grant_type=client_credentials
@@ -73,7 +73,7 @@ grant_type=client_credentials
 
 ## Next steps
 
-Once you've configured authentication, see [Server-to-Server integration](/rest/integtation/index.md) for a practical step-by-step guide with code examples on how to implement this type of integration with the Adobe Commerce as a Cloud Service Rest API.
+Once you've configured authentication, see [Server-to-Server integration](/rest/integration/index.md) for a practical step-by-step guide with code examples on how to implement this type of integration with the Adobe Commerce as a Cloud Service Rest API.
 
 ## Security considerations
 
