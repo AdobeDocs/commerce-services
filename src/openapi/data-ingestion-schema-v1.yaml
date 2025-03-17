@@ -296,10 +296,10 @@ paths:
         - Use [Update Product API](#operation/ProductsPatch) to set the ["variantReferenceId"](#operation/ProductsPost!path=attributes/variantReferenceId&t=request) to `null` and unassign the product variant from the configurable product by removing the ["links"](#operation/ProductsPost!path=links&t=request) association.
 
         <h3>Bundle Products</h3>
-        A bundle product is a composite product that allows combining several simple products into a single sellable unit. Products inside the bundle can be grouped into logical categories, such as `tops`, `bottoms`, and `accessories`. Each group can have multiple items, and shoppers can select items from each group to create a customized bundle.
+        A bundle product combines several simple products into one sellable unit. Items within the bundle can be categorized into logical categories like`tops`, `bottoms`, and `accessories`. Each group can have multiple items, and shoppers can select items from each group to create a customized bundle.
 
         To create a bundle product, you need the following:
-        - [Bundle product](#operation/ProductsPost): Define the bundle product. [Bundles](#operation/ProductsPost!path=bundles&t=request) is a required field. It defines the groups and items that are part of the bundle.
+        - [Bundle product](#operation/ProductsPost): Define the bundle product. [Bundles](#operation/ProductsPost!path=bundles&t=request) is a required field that defines the groups and items included in the bundle.
         - [Simple products](#operation/ProductsPost): Define the simple products that are included in the bundle. Each simple product must be created separately using the create product API. In the field ["links"](#operation/ProductsPost!path=links&t=request), the type `IN_BUNDLE` must be defined for simple products that belong to bundle products with reference to it.
 
         To update a bundle product, do one of the following:
@@ -2199,7 +2199,8 @@ components:
           type: string
           description: |
             Product link type. Merchants can define custom types in addition to the predefined values.
-            `VARIANT_OF` link type must be specified to establish a connection to the configurable product SKU.
+            - `VARIANT_OF` link type must be specified to establish a connection to the configurable product SKU.
+            - `IN_BUNDLE` link type must be specified to establish a connection to the bundle product SKU.
         sku:
           type: string
           description: Product SKU
