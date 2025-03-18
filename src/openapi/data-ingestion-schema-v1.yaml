@@ -192,8 +192,8 @@ paths:
           description: All items in the request are accepted for further processing.
           content:
             application/json;charset=UTF-8:
-             schema:
-              $ref: '#/components/schemas/ProcessFeedResponse'
+              schema:
+                $ref: '#/components/schemas/ProcessFeedResponse'
         '400':
           description: Request rejected. Some of the received items are invalid. Check the "message" and "errors" fields for details.
           content:
