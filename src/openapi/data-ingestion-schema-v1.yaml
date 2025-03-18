@@ -13,7 +13,7 @@ info:
 
   version: 1.0.0
 servers:
-  - url: https://commerce.adobe.io/<DATA_SPACE_ID>/a
+  - url: https://commerce.adobe.io/<DATA_SPACE_ID>/api
     description: Production endpoint. The DATA_SPACE_ID value is the  ID for the data space where commerce catalog data is stored. See [SaaS configuration](https://experienceleague.adobe.com/en/docs/commerce-merchant-services/user-guides/integration-services/saas#saasenv) in Adobe Experience League.
 
 tags:
@@ -22,7 +22,7 @@ tags:
       Manage product attribute definitions including display settings, search behavior, and filtering capabilities.
       These settings control how product attributes appear and function throughout the storefront.
 
-      Product attribute metadata is used to define how product attributes are displayed on the storefront.
+      Product attribute metadata specifies how product attributes are displayed on the storefront.
       For example, you can define a product attribute as searchable, filterable, and sortable.
       You can also define the search type for a product attribute, such as autocomplete or exact match.
   - name: Products
@@ -34,10 +34,12 @@ tags:
           The catalog data model provides a default price book with id `main` and currency in US dollars (`USD`).
   - name: Prices
     description: |
-       Manage product SKU prices across different price books and customer tiers. Define regular prices and special discounts for specific customer segments or markets.
-       Define prices for product SKUs. The scope identifies the price books and price tiers where the price is used.
+       Manage product SKU prices across different price books and customer tiers. Define regular prices and
+       special discounts for specific customer segments or markets. The scope identifies the price books and price
+       tiers where the price is used.
 
-       <strong>Note:</strong> You cannot define prices for configurable products. Prices for configurable products are calculated based on the price of the selected product variant.
+       <strong>Note:</strong> You cannot define prices for configurable products. Prices for configurable products
+        are calculated based on the price of the selected product variant.
 
 paths:
   /v1/catalog/products/metadata:
@@ -363,7 +365,7 @@ paths:
     post:
       tags:
         - Products
-      summary: Create products or replace products
+      summary: Create or replace products
       description: |
         You can create different types of products, such as simple products and configurable products.
 

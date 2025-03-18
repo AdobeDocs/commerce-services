@@ -69,7 +69,7 @@ Command | Description
 `build:admin-api` | Regenerates the Channels and Policies API reference
 `dev:admin-api` | Regenerates the Channels and Policies API reference with a live preview of updated output
 `build:storefront-api` | Regenerates the Storefront API reference
-`dev:storefront-api` | Regenerates the Channels and Policies reference with a live preview of updated output
+`dev:storefront-api` | Regenerates the Storefront API reference with a live preview of updated output
 `build:graphql` | Regenerates both references
 
 For example, to rebuild the Catalog management and rules API, run the command:
@@ -82,7 +82,7 @@ yarn build:admin-api
 
 The Spectaql configuration files for the Merchandising Services GraphQL API references use the following endpoints to retrieve the schemas and generate the API references:
 
-- Catalog management and rules API: https://commerce-admin-router-qa.corp.ethos501-stage-va6.ethos.adobe.net/graphql
+- Channels and Policies API: https://commerce-admin-router-qa.corp.ethos501-stage-va6.ethos.adobe.net/graphql
 
 - Storefront API: https://catalog-service-qa.adobe.io/graphql
 

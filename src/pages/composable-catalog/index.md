@@ -31,8 +31,7 @@ Together, these components enable the creation of custom catalogs that power sto
 
 ## Custom catalogs
 
-
-Composable catalogs are a key feature of Merchandising Services, created by combining product data with product context to tailor catalogs to specific business needs. Custom catalogs can:
+Custom catalogs are a key feature of Merchandising Services, created by combining product data with product context to tailor catalogs to specific business needs. Custom catalogs can:
 
 - Support various business models (B2B, B2C, D2C).
 - Power storefront experiences across web, mobile, and in-store channels.
