@@ -20,7 +20,7 @@ A collection of APIs and tools to integrate with third-party services, manage ca
 
 ## Resources
 
-*  [Cloud Service User Guide](https://experienceleague.adobe.com/docs/commerce/cloud-service/overview)
+*  [Cloud Service User Guide](https://experienceleague.adobe.com/en/docs/commerce/cloud-service/overview)
 *  [Merchandising Services User Guides](https://experienceleague.adobe.com/en/docs/commerce/user-guides/home)
 *  [Commerce Admin User Guides](https://experienceleague.adobe.com/en/docs/commerce-admin/user-guides/home)
 
