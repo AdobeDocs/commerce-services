@@ -55,6 +55,7 @@ paths:
           - `name`
           - `description`
           - `shortDescription`
+          - `price`
 
         Also, you can define metadata for custom attributes.
 
@@ -62,7 +63,8 @@ paths:
           - Each product attribute requires a unique `code` and `scope`.
           - Use the `dataType` field to define the data type for the product attribute.
           - Use the `visibleIn` field to define where the product attribute is displayed on the storefront.
-          - Use the `filterable`, `sortable`, and `searchable` fields to define how the product attribute is used for filtering, sorting, and searching.
+          - Use the `filterable`, `sortable`, and `searchable` fields to define how the product attribute
+            is used for filtering, sorting, and searching.
           - Use the `searchWeight` field to define the search weight for the product attribute.
           - Use the `searchTypes` field to define the search type for the product attribute.
 
@@ -187,6 +189,26 @@ paths:
                       "searchTypes": [
                         "AUTOCOMPLETE"
                       ]
+                    },
+                    {
+                      "code": "price",
+                      "scope": {
+                        "locale": "en"
+                      },
+                      "label": "Price",
+                      "dataType": "DECIMAL",
+                      "visibleIn": [
+                        "PRODUCT_DETAIL",
+                        "PRODUCT_LISTING",
+                        "SEARCH_RESULTS",
+                        "PRODUCT_COMPARE"
+                      ],
+                      "filterable": true,
+                      "sortable": true,
+                      "searchable": false,
+                      "searchWeight": 1,
+                      "searchTypes": [
+                      ]
                     }
                   ]
       responses:
@@ -194,8 +216,8 @@ paths:
           description: All items in the request are accepted for further processing.
           content:
             application/json;charset=UTF-8:
-              schema:
-                $ref: '#/components/schemas/ProcessFeedResponse'
+             schema:
+              $ref: '#/components/schemas/ProcessFeedResponse'
         '400':
           description: Request rejected. Some of the received items are invalid. Check the "message" and "errors" fields for details.
           content:
@@ -909,7 +931,8 @@ paths:
       summary: Update price books.
       description: |-
         Update existing price books to change the name or the currency used for pricing.
-        When the update is processed, the merge strategy is used to apply changes to `scalar` and `object` type fields. The replace strategy is used to apply changes for fields in an `array`.
+        When the update is processed, the merge strategy is used to apply changes to `scalar`
+        and `object` type fields. The replace strategy is used to apply changes for fields in an `array`.
 
         To update the currency for the default price book, use the price book id `main`.
       operationId: PriceBooksPatch
@@ -1062,7 +1085,7 @@ paths:
         Create or replace existing product prices.
 
         A price must be associated with at least the default price book with id `main`.
-        
+
         <h3>Configurable Products</h3>
         Because configurable product price is calculated based on the price of the selected product variant, you don't need to send price
         data for configurable product skus. Sending price data for these skus can cause incorrect price calculations.
