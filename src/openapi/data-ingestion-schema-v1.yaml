@@ -372,7 +372,8 @@ paths:
          - Products must have A defined scope, for example `locale`.
          - Add values for the required `name`, `slug`, and `status` fields.
          - Define optional fields such as descriptions, images, and custom attributes as needed.
-         - Use the `links` field to define relationships between products, such as linking a product variant to its parent configurable product.
+         - Use the `links` field to define relationships between products, such as linking a product variant to its parent
+         configurable product.
          - You can create multiple products in a single request. also create product variants for configurable products.
 
         <h3>Simple Products</h3>

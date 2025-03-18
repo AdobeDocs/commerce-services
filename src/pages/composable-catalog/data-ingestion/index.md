@@ -49,7 +49,7 @@ Each product type has its own set of attributes and configurations to help you m
 
 For example, if you're selling a t-shirt, the product variants might include different sizes (small, medium, large) and colors (red, blue, green). Each combination of size and color represents a unique product variant
 
-See [Product APIs](https://developer-stage.adobe.com/commerce/services/composable-catalog/data-ingestion/api-reference/#tag/Products) in the API reference for more information.
+For details, see [Product APIs](https://developer-stage.adobe.com/commerce/services/composable-catalog/data-ingestion/api-reference/#tag/Products) in the API reference.
 
 ## Price books and prices
 
@@ -57,6 +57,6 @@ In Merchandising Services, a product SKU and its price are decoupled. This decou
 
 **Price books** are collections of prices for a specific set of products. Price books allow you to manage and organize prices for different customer segments, regions, or sales channels. You can create multiple price books to accommodate various pricing strategies and customer groups. Each price book has an associated currency. Merchandising Services includes a default price book with a default currency in US dollars, which is used when no other price book is specified.
 
-**Prices** are the monetary values assigned to products within a price book. To create prices for each product SKU, specify the associated price books and define the pricing schedule (regular and discount prices) for each price book.
+**Prices** are the monetary values assigned to products within a price book. To create prices for each product SKU, specify the associated price books and define the pricing schedule for each price book.
 
 See [Price book](https://developer-stage.adobe.com/commerce/services/composable-catalog/data-ingestion/api-reference/#tag/Price-Books) and [Prices](https://developer-stage.adobe.com/commerce/services/composable-catalog/data-ingestion/api-reference/#tag/Price-Books) in the API reference for more information.

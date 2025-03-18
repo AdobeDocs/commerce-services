@@ -1,5 +1,5 @@
 ---
-title: Merchandising Services powered by  Data Model
+title: Merchandising Services powered by Channels and Policies
 edition: ee
 description: Use the Merchandising Services powered by Channels and Polices to implement large, complex catalogs and develop highly performant storefront experiences.
 keywords:
@@ -16,6 +16,7 @@ keywords:
 # Merchandising Services powered by Channels and Policies overview
 
 This guide offers API reference and usage information for developers and commerce site administrators involved in storefront development, maintenance, and operations.
+
 ## Overview
 
 Merchandising Services powered by Channels and Policies offers a set of APIs that enable developers to implement large, complex catalogs and develop highly performant storefront experiences. Merchandising Services provides a data model that separates product data from product context, allowing businesses to compose custom catalogs for different business models, such as B2B, B2C, and D2C and to manage the catalogs in a way that aligns with their go-to-market strategies.
@@ -28,9 +29,8 @@ Merchandising Services powered by Channels and Policies offers a set of APIs tha
 
 Together, these components enable the creation of custom catalogs that power storefront experiences.
 
-## Composable catalogs
+## Custom catalogs
 
-Composable catalogs are a key feature of Merchandising Services. They are created by combining product data with product context to create a catalog that is tailored to specific business needs. Custom catalogs can:
 
 Composable catalogs are a key feature of Merchandising Services, created by combining product data with product context to tailor catalogs to specific business needs. Custom catalogs can:
 
