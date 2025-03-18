@@ -46,15 +46,27 @@ Subscribe to webhooks to trigger external calls when Adobe Commerce events occur
 
 <DiscoverBlock slots="heading, link, text"/>
 
-## Merchandising Services
+## SaaS Catalog Services
 
-[Storefront APIs](graphql/)
+[Catalog Service API](graphql/catalog-service/)
 
-Retrieve product, search, and recommendations data and use it to create storefront experiences.
+Deliver product-related content to frontend applications.
 
 <DiscoverBlock slots="link, text"/>
 
-[Storefront Events SDK](shared-services/)
+[Live Search API](graphql/live-search/)
+
+Retrieve and filter search results using product faceting and other data.
+
+<DiscoverBlock slots="link, text"/>
+
+[Product Recommendations API](graphql/recommendations/)
+
+Retrieve recommended products based on a provided SKU.
+
+<DiscoverBlock slots="link, text"/>
+
+[Storefront Events SDK](shared-services/storefront-events/)
 
 Explore common tools and SDKs shared across Merchandising Services.
 
