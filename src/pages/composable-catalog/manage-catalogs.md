@@ -27,4 +27,4 @@ Using the channel, policy, and scope resources available with the Merchandising 
 
   Example: Locale scopes such as `en_US` or `es_ES`, and scopes like 'brand' and 'market' that can be introduced to meet unique business use cases.
 
-For details, see the [Channels and Policies API Reference](../admin/index.md)
+For details, see the [Channels and Policies API Reference](https://developer-stage.adobe.com/commerce/services/composable-catalog/admin/api-reference/)
