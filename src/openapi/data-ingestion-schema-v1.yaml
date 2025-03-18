@@ -50,7 +50,7 @@ paths:
       description: |
         To ensure product data is indexed for discovery, create or replace existing product attribute metadata resources before creating products.
 
-        For each Commerce project, you must define metadata for the following attributes for each scope, for example `locale`):
+        For each Commerce project, you must define metadata for the following attributes for each scope (`locale`):
           - `sku`
           - `name`
           - `description`
