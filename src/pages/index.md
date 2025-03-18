@@ -50,13 +50,13 @@ Subscribe to webhooks to trigger external calls when Adobe Commerce events occur
 
 [Catalog Service API](graphql/catalog-service/)
 
-Render product-related on product detail and product list pages.
+Deliver product-related content to frontend applications.
 
 <DiscoverBlock slots="link, text"/>
 
 [Live Search API](graphql/live-search/)
 
-Retrieve and filter search results using product faceting and other data specific to the Live Search service.
+Retrieve and filter search results using product faceting and other data.
 
 <DiscoverBlock slots="link, text"/>
 
