@@ -6,32 +6,41 @@ info:
 
     This API provides the following resource collections to create and update catalog data:
 
-    - **Metadata**—define and manage product attribute display on the storefront, define search characteristics, and so on
-    - **Products**—define and manage items to include in a commerce catalog. Each product can have multiple attributes like name, description, SKU, images, etc.
-    - **Price books**—define and manage unique scopes that can be used to manage product price discounts across customer tiers
-    - **Prices**—define and manage the prices associated with product SKUs and assign the pricing scope where the price is used
+    - **Metadata**—define and manage product attribute metadata including display settings, search characteristics, filtering options, and sorting rules.
+    - **Products**—define and manage catalog items with their attributes (name, description, SKU, images, and variants).
+    - **Price books**—define and manage pricing scopes for different customer tiers and markets.
+    - **Prices**—define and manage product SKU prices and their associated price books.
 
   version: 1.0.0
 servers:
-  - url: https://commerce.adobe.io/<DATA_SPACE_ID>/api/
+  - url: https://commerce.adobe.io/<DATA_SPACE_ID>/api
     description: Production endpoint. The DATA_SPACE_ID value is the  ID for the data space where commerce catalog data is stored. See [SaaS configuration](https://experienceleague.adobe.com/en/docs/commerce-merchant-services/user-guides/integration-services/saas#saasenv) in Adobe Experience League.
 
 tags:
   - name: Metadata
     description: |
-      Product attribute metadata allows you to define how to display product attributes on the storefront, define search characteristics, and so on.
+      Manage product attribute definitions including display settings, search behavior, and filtering capabilities.
+      These settings control how product attributes appear and function throughout the storefront.
+
+      Product attribute metadata specifies how product attributes are displayed on the storefront.
+      For example, you can define a product attribute as searchable, filterable, and sortable.
+      You can also define the search type for a product attribute, such as autocomplete or exact match.
   - name: Products
-    description: Product API to manage product data
+    description: Create and manage product data including simple products, configurable products, and their variants. Control product visibility, attributes, images, and pricing
   - name: Price Books
     description: |
-          Price books define a unique scope that can be used to manage product price discounts across customer tiers.
-          You can also specify the currency to use for product prices in the specified price book.
+          Define pricing scopes to manage product prices across different customer tiers and markets. Each price book can have its own currency and discount rules.
 
           The catalog data model provides a default price book with id `main` and currency in US dollars (`USD`).
   - name: Prices
     description: |
-      Define prices for product SKUs. The scope identifies the price books and price tiers where the price is used.
-      is used.
+       Manage product SKU prices across different price books and customer tiers. Define regular prices and
+       special discounts for specific customer segments or markets. The scope identifies the price books and price
+       tiers where the price is used.
+
+       <strong>Note:</strong> You cannot define prices for configurable products. Prices for configurable products
+        are calculated based on the price of the selected product variant.
+
 paths:
   /v1/catalog/products/metadata:
     post:
@@ -39,9 +48,28 @@ paths:
         - Metadata
       summary: Create product attribute metadata.
       description: |
-        Create or replace existing product attribute metadata resources.
+        To ensure product data is indexed for discovery, create or replace existing product attribute metadata resources before creating products.
+
+        For each Commerce project, you must define metadata for the following attributes for each scope (`locale`):
+          - `sku`
+          - `name`
+          - `description`
+          - `shortDescription`
+          - `price`
+
+        Also, you can define metadata for custom attributes.
+
+        When creating product attribute metadata:
+          - Each product attribute requires a unique `code` and `scope`.
+          - Use the `dataType` field to define the data type for the product attribute.
+          - Use the `visibleIn` field to define where the product attribute is displayed on the storefront.
+          - Use the `filterable`, `sortable`, and `searchable` fields to define how the product attribute
+            is used for filtering, sorting, and searching.
+          - Use the `searchWeight` field to define the search weight for the product attribute.
+          - Use the `searchTypes` field to define the search type for the product attribute.
 
         To update existing product attribute metadata, use the update operation.
+
       operationId: ProductMetadataPut
       parameters:
         - name: Content-Type
@@ -78,10 +106,33 @@ paths:
                 $ref: '#/components/schemas/FeedMetadata'
             examples:
               FeedWithMetadataInformation:
-                summary: Example of product attributes metadata
-                description: Add product attribute information to a product.
+                summary: Create product attributes metadata
+                description: |
+                  Creates searchable text attributes. This example defines metadata for the required attributes
+                  with recommended default values.
                 value:
                   [
+                    {
+                      "code": "sku",
+                      "scope": {
+                        "locale": "en"
+                      },
+                      "label": "Product Name",
+                      "dataType": "TEXT",
+                      "visibleIn": [
+                          "PRODUCT_DETAIL",
+                          "PRODUCT_LISTING",
+                          "SEARCH_RESULTS",
+                          "PRODUCT_COMPARE"
+                        ],
+                        "filterable": true,
+                        "sortable": false,
+                        "searchable": true,
+                        "searchWeight": 1,
+                        "searchTypes": [
+                            "AUTOCOMPLETE"
+                        ]
+                      },
                     {
                       "code": "name",
                       "scope": {
@@ -89,12 +140,75 @@ paths:
                       },
                       "label": "Product Name",
                       "dataType": "TEXT",
-                      "visibleIn": ["PRODUCT_DETAIL"],
+                      "visibleIn": [
+                          "PRODUCT_DETAIL",
+                          "PRODUCT_LISTING",
+                          "SEARCH_RESULTS",
+                          "PRODUCT_COMPARE"
+                        ],
+                        "filterable": false,
+                        "sortable": true,
+                        "searchable": true,
+                        "searchWeight": 1,
+                        "searchTypes": [
+                            "AUTOCOMPLETE"
+                        ]
+                      },
+                    {
+                      "code": "description",
+                      "scope": {
+                        "locale": "en"
+                      },
+                      "label": "Product Description",
+                      "dataType": "TEXT",
+                      "visibleIn": [
+                        "PRODUCT_DETAIL"
+                      ],
+                      "filterable": false,
+                      "sortable": false,
+                      "searchable": false,
+                      "searchWeight": 1,
+                      "searchTypes": [
+                        "AUTOCOMPLETE"
+                      ]
+                    },
+                    {
+                      "code": "shortDescription",
+                      "scope": {
+                        "locale": "en"
+                      },
+                      "label": "Product Short Description",
+                      "dataType": "TEXT",
+                      "visibleIn": [
+                        "PRODUCT_DETAIL"
+                      ],
                       "filterable": false,
                       "sortable": false,
                       "searchable": true,
-                      "searchWeight": 55,
-                      "searchTypes": ["AUTOCOMPLETE"]
+                      "searchWeight": 1,
+                      "searchTypes": [
+                        "AUTOCOMPLETE"
+                      ]
+                    },
+                    {
+                      "code": "price",
+                      "scope": {
+                        "locale": "en"
+                      },
+                      "label": "Price",
+                      "dataType": "DECIMAL",
+                      "visibleIn": [
+                        "PRODUCT_DETAIL",
+                        "PRODUCT_LISTING",
+                        "SEARCH_RESULTS",
+                        "PRODUCT_COMPARE"
+                      ],
+                      "filterable": true,
+                      "sortable": true,
+                      "searchable": false,
+                      "searchWeight": 1,
+                      "searchTypes": [
+                      ]
                     }
                   ]
       responses:
@@ -102,20 +216,20 @@ paths:
           description: All items in the request are accepted for further processing.
           content:
             application/json;charset=UTF-8:
-              schema:
-                $ref: '#/components/schemas/ProcessFeedResponse'
+             schema:
+              $ref: '#/components/schemas/ProcessFeedResponse'
         '400':
           description: Request rejected. Some of the received items are invalid. Check the "message" and "errors" fields for details.
           content:
             application/json;charset=UTF-8:
-              schema:
-                $ref: '#/components/schemas/400ProcessFeedResponse'
+             schema:
+              $ref: '#/components/schemas/400ProcessFeedResponse'
         '403':
           description: Unauthorized request. Verify the `x-api-key` and make sure that the JWT in `x-gw-signature` is still valid.
           content:
             application/json;charset=UTF-8:
-              schema:
-                $ref: '#/components/schemas/403Response'
+             schema:
+              $ref: '#/components/schemas/403Response'
     patch:
       tags:
         - Metadata
@@ -273,8 +387,19 @@ paths:
     post:
       tags:
         - Products
-      summary: Create products.
+      summary: Create or replace products
       description: |
+        You can create different types of products, such as simple products and configurable products.
+
+        When creating products:
+         - Each product requires a unique SKU identifier.
+         - Products must have a defined scope, for example `locale`.
+         - Add values for the required `name`, `slug`, and `status` fields.
+         - Define optional fields such as descriptions, images, and custom attributes as needed.
+         - Use the `links` field to define relationships between products, such as linking a product variant to its parent
+         configurable product.
+         - You can create multiple products in a single request, and also create product variants for configurable products in the same request.
+
         <h3>Simple Products</h3>
         Create products or replace existing products with a specified `sku` and `scope`.
         If a product with the same data exists with the same SKU and scope, the product update request is ignored.
@@ -806,8 +931,9 @@ paths:
       summary: Update price books.
       description: |-
         Update existing price books to change the name or the currency used for pricing.
-        When the update is processed, the merge strategy is used to apply changes to `scalar` and `object` type fields. The replace strategy is used to apply changes for fields in an `array`.
-        
+        When the update is processed, the merge strategy is used to apply changes to `scalar`
+        and `object` type fields. The replace strategy is used to apply changes for fields in an `array`.
+
         To update the currency for the default price book, use the price book id `main`.
       operationId: PriceBooksPatch
       parameters:
@@ -959,7 +1085,7 @@ paths:
         Create or replace existing product prices.
 
         A price must be associated with at least the default price book with id `main`.
-        
+
         <h3>Configurable Products</h3>
         Because configurable product price is calculated based on the price of the selected product variant, you don't need to send price
         data for configurable product skus. Sending price data for these skus can cause incorrect price calculations.

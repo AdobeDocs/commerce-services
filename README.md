@@ -42,8 +42,8 @@ If you have questions, open an issue and ask us. We look forward to hearing from
 
 The GraphQL API reference is generated using [SpectaQL](https://github.com/anvilco/spectaql), an open source tool. The data required for the generator is located in the `spectaql` directory:
 
-- `config-admin.yml`: [configuration file to generate the CCDM Catalog management and rules API Reference](spectaql/config-admin.yml).
-- `config-storefront.yml`: [configuration file to generate the CCDM Storefront API Reference](spectaql/config-admin.yml).
+- `config-admin.yml`: [configuration file to generate the Channels and Policies API Reference](spectaql/config-admin.yml).
+- `config-storefront.yml`: [configuration file to generate the Merchandising Services Storefront API Reference](spectaql/config-admin.yml).
 
 These configuration files include the endpoint for each API service.
 
@@ -56,7 +56,7 @@ The resulting GraphQL API references are output to the `static/graphql-api/` dir
 
 The references are embedded in the API Reference page using the `frameSrc` feature supported by the Adobe I/O theme.
 
-- [Catalog management and rules API Reference](src/pages/composable-catalog/admin/api-reference.md) `frameSrc: /graphql-api/admin-api/index.html`
+- [Channels and Policies API Reference](src/pages/composable-catalog/admin/api-reference.md) `frameSrc: /graphql-api/admin-api/index.html`
 
 - [Storefront API reference](src/pages/composable-catalog/storefront-services/api-reference.md) `frameSrc: /graphql-api/storefront-api/index.html`
 
@@ -66,10 +66,10 @@ To rebuild the GraphQL API references after any updates, use yarn locally to run
 
 Command | Description
 ------- |------------
-`build:admin-api` | Regenerates the Catalog management and rules API reference
-`dev:admin-api` | Regenerates the Catalog management and rules API reference with a live preview of updated output
+`build:admin-api` | Regenerates the Channels and Policies API reference
+`dev:admin-api` | Regenerates the Channels and Policies API reference with a live preview of updated output
 `build:storefront-api` | Regenerates the Storefront API reference
-`dev:storefront-api` | Regenerates the Catalog management and rules API reference with a live preview of updated output
+`dev:storefront-api` | Regenerates the Storefront API reference with a live preview of updated output
 `build:graphql` | Regenerates both references
 
 For example, to rebuild the Catalog management and rules API, run the command:
@@ -80,9 +80,9 @@ yarn build:admin-api
 
 ### How to get the schema
 
-The Spectaql configuration files for the CCDM GraphQL API references use the following endpoints to retrieve the schemas and generate the API references:
+The Spectaql configuration files for the Merchandising Services GraphQL API references use the following endpoints to retrieve the schemas and generate the API references:
 
-- Catalog management and rules API: https://commerce-admin-router-qa.corp.ethos501-stage-va6.ethos.adobe.net/graphql
+- Channels and Policies API: https://commerce-admin-router-qa.corp.ethos501-stage-va6.ethos.adobe.net/graphql
 
 - Storefront API: https://catalog-service-qa.adobe.io/graphql
 
@@ -119,7 +119,7 @@ For local builds, ensure that your environment has the following installed:
 
    View the published API references:
 
-   - [Catalog management and rules API Reference](https://developer-stage.adobe.com/commerce/services/composable-catalog/admin/api-reference/)
+   - [Channels and Policies API Reference](https://developer-stage.adobe.com/commerce/services/composable-catalog/admin/api-reference/)
    - [Storefront API Reference](https://developer-stage.adobe.com/commerce/services/composable-catalog/storefront-services/api-reference/)
 
 ### Resources
