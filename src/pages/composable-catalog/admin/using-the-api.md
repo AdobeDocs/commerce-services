@@ -17,7 +17,7 @@ Send all Channels and Policies API requests to this endpoint: https://commerce.a
 
 <InlineAlert variant="info" slots="text"/>
 
-For sample requests and examples using the API, see the [API Reference](api-reference.md) and the [tutorial](../ccdm-use-case.md).
+For sample requests and examples using the API, see the [API Reference](api-reference.md) and the [tutorial](cdm-use-case.md).
 
 ## Authentication
 
