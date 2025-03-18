@@ -1,59 +1,80 @@
 ---
-title: Commerce Services
-description: Review resources for working with Adobe Commerce services.
+title: Commerce Cloud and Data Services
+description: Learn how about the APIs and tools available to manage and use commerce catalog and event data programmatically.
 keywords:
+  - GraphQL
+  - REST
   - Services
+hideBreadcrumbNav: true
 ---
 
 <Hero slots="image, heading, text"/>
 
-![Commerce Services](_images/home-bg.jpeg)
+![Commerce Cloud and Data Services](_images/pipeline-illustration.png)
 
-# Commerce Services developer
+# Commerce Cloud and Data Services
 
-Adobe provides a collection of services to help merchants support key components of their business. Learn how to programmatically interact with these services.
+A collection of APIs and tools to integrate with third-party services, manage catalog data, and build headless ecommerce applications.
 
 <Resources slots="heading, links"/>
 
 ## Resources
 
-*  [Services user guides](https://experienceleague.adobe.com/docs/commerce-merchant-services/user-guides/home.html)
-*  [Commerce Admin user guide](https://experienceleague.adobe.com/docs/commerce-admin/user-guides/home.html)
-*  [GraphQL Developer Guide](https://developer.adobe.com/commerce/webapi/graphql/)
-
-## Overview
-
-This documentation provides resources for working with Adobe Commerce services.
-
-## Discover
-
-Use these sections to learn about how to develop PHP extensions.
+*  [Cloud Service User Guide](https://experienceleague.adobe.com/en/docs/commerce/cloud-service/overview)
+*  [Merchandising Services User Guides](https://experienceleague.adobe.com/en/docs/commerce/user-guides/home)
+*  [Commerce Admin User Guides](https://experienceleague.adobe.com/en/docs/commerce-admin/user-guides/home)
 
 <DiscoverBlock slots="heading, link, text"/>
 
-### Sections
+## Commerce as a Cloud Service
 
-[Shared services](shared-services/)
+[REST & GraphQL API](cloud/guides/index.md)
 
-Explore common tools and SDKs shared across Services for Adobe Commerce.
-
-<DiscoverBlock slots="link, text"/>
-
-[Live Search](live-search/)
-
-Lists the events defined in the Adobe Commerce Event SDK that are applicable to Live Search.
+Integrate with third-party services and build headless applications.
 
 <DiscoverBlock slots="link, text"/>
 
-[Product Recommendations](product-recommendations/)
+[Custom attributes](cloud/guides/custom-attributes.md)
 
-Learn how to use the Product Recommendations SDK with Adobe Commerce to fetch recommendations programmatically in the browser.
+Add custom attributes to core data model entities with REST and GraphQL APIs.
+
+<DiscoverBlock slots="link, text"/>
+
+[Webhooks](cloud/guides/rest/webhooks.md)
+
+Subscribe to webhooks to trigger external calls when Adobe Commerce events occur.
+
+<DiscoverBlock slots="heading, link, text"/>
+
+## Merchandising Services
+
+[Storefront APIs](graphql/)
+
+Retrieve product, search, and recommendations data and use it to create storefront experiences.
+
+<DiscoverBlock slots="link, text"/>
+
+[Storefront Events SDK](shared-services/)
+
+Explore common tools and SDKs shared across Merchandising Services.
+
+<DiscoverBlock slots="link, text"/>
+
+[Live Search Events](live-search/)
+
+Learn about the events defined in the Adobe Commerce Event SDK that are applicable to Live Search.
+
+<DiscoverBlock slots="link, text"/>
+
+[Product Recommendations SDK](product-recommendations/)
+
+Dynamically fetch and display personalized product recommendations in your storefront experience.
 
 <DiscoverBlock slots="link, text"/>
 
 [Commerce Reporting API](reporting/)
 
-Learn how to import data into your Commerce data warehouse and export raw data from your Commerce Reporting dashboards.
+Import data into your Commerce data warehouse and export raw data from your Commerce Reporting dashboards.
 
 ## Contributing to this documentation
 
