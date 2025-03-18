@@ -26,3 +26,5 @@ Using the channel, policy, and scope resources available with the Merchandising 
 * **Scope**—Specifies the language and geography (locale) for catalogs. Scope is set at the SKU level during data ingestion. When used, the `locale` scope is required. A channel must define at least one locale.
 
   Example: Locale scopes such as `en_US` or `es_ES`, and scopes like 'brand' and 'market' that can be introduced to meet unique business use cases.
+
+For details, see the [Channels and Policies API Reference](../admin/index.md)

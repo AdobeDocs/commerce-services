@@ -32,7 +32,7 @@ Metadata is require to index product data for discovery. Therefore, create metad
 
 You can also define custom metadata for additional product attributes. For example, you can define a `brand` attribute to allow product discovery and filtering by brand name.
 
-See [Metadata APIs](https://developer-stage.adobe.com/commerce/services/composable-catalog/data-ingestion/api-reference/#tag/Metadata] in the API reference for more information.
+For details, see [Metadata APIs](https://developer-stage.adobe.com/commerce/services/composable-catalog/data-ingestion/api-reference/#tag/Metadata) in the API reference.
 
 ## Products
 
@@ -59,4 +59,4 @@ In Merchandising Services, a product SKU and its price are decoupled. This decou
 
 **Prices** are the monetary values assigned to products within a price book. To create prices for each product SKU, specify the associated price books and define the pricing schedule for each price book.
 
-See [Price book](https://developer-stage.adobe.com/commerce/services/composable-catalog/data-ingestion/api-reference/#tag/Price-Books) and [Prices](https://developer-stage.adobe.com/commerce/services/composable-catalog/data-ingestion/api-reference/#tag/Price-Books) in the API reference for more information.
+For details, see [Price book](https://developer-stage.adobe.com/commerce/services/composable-catalog/data-ingestion/api-reference/#tag/Price-Books) and [Prices](https://developer-stage.adobe.com/commerce/services/composable-catalog/data-ingestion/api-reference/#tag/Price-Books) in the API reference.

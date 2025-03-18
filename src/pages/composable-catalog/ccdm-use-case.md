@@ -280,13 +280,13 @@ curl --request POST \
 
 ## Step 2. Define the channel and policies
 
-In this step, create a channel for `Zenith Automotive` using the [Create channel](https://developer-stage.adobe.com/commerce/services/graphql-api/admin-api/index.html#mutation-createChannel) GraphQL mutation from the Catalog Management API.
+In this step, create a channel for `Zenith Automotive` using the [Create channel](https://developer-stage.adobe.com/commerce/services/graphql-api/admin-api/index.html#mutation-createChannel) GraphQL mutation from the Channels and Policies API.
 
 Assign two policies to the channel: a `Location Policy` with "USA" and "UK" as locations, and a `Brand Policy` with "Aurora" and "Bolt".
 
 ### Create policies
 
-Use the [createPolicy](https://developer-stage.adobe.com/commerce/services/graphql-api/admin-api/index.html#definition-CreatePolicyRequest) GraphQL mutation from the Catalog Management API to define the location and brand policies.
+Use the [createPolicy](https://developer-stage.adobe.com/commerce/services/graphql-api/admin-api/index.html#definition-CreatePolicyRequest) GraphQL mutation from the Channels and Policies API to define the location and brand policies.
 
 The query response returns a `PolicyId` value that is required when you assign the policy to a channel.
 
@@ -306,7 +306,7 @@ curl --request POST \
 
 **Payload**
 
-```graphl
+```graphql
 mutation CreatePolicy {
   createPolicy(policyRequest: {
     name: "Location policy",
