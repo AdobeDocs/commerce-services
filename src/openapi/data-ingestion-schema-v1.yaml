@@ -398,7 +398,7 @@ paths:
          - Define optional fields such as descriptions, images, and custom attributes as needed.
          - Use the `links` field to define relationships between products, such as linking a product variant to its parent
          configurable product.
-         - You can create multiple products in a single request. also create product variants for configurable products.
+         - You can create multiple products in a single request, and also create product variants for configurable products in the same request.
 
         <h3>Simple Products</h3>
         Create products or replace existing products with a specified `sku` and `scope`.
