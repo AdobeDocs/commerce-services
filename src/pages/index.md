@@ -56,7 +56,7 @@ Render product-related on product detail and product list pages.
 
 [Live Search API](graphql/live-search/)
 
-Retrieve product faceting data that is specific to the Live Search service.
+Retrieve and filter search results using product faceting and other data specific to the Live Search service.
 
 <DiscoverBlock slots="link, text"/>
 
