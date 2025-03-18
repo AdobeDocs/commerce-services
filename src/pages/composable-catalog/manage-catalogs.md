@@ -13,7 +13,7 @@ keywords:
 
 An ecommerce product catalog benefits from reflecting the company's business structure as closely as possible. Businesses need to sell different products and different prices depending on geographic market, distribution channel, customer segment, and other variables.
 
-Using the channel, policy, and scope resources available with the Merchandising Services, you can create catalog variations instantly to adapt to these scenarios without requiring extensive development work.
+Using the channel, policy, and scope resources available with the Merchandising Services Channels and Policies API, you can create catalog variations instantly to adapt to these scenarios without requiring extensive development work.
 
 * **Channel**—Distribution channel of products a business wants to sell through. A channel is the highest-level abstraction which encapsulates scopes and policies.
 
@@ -27,4 +27,4 @@ Using the channel, policy, and scope resources available with the Merchandising 
 
   Example: Locale scopes such as `en_US` or `es_ES`, and scopes like 'brand' and 'market' that can be introduced to meet unique business use cases.
 
-For details, see the [Channels and Policies API Reference](https://developer-stage.adobe.com/commerce/services/composable-catalog/admin/api-reference/)
+For details, see the [Channels and Policies API Reference](https://developer-stage.adobe.com/commerce/services/composable-catalog/admin/api-reference/).

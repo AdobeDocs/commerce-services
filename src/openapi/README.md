@@ -7,7 +7,7 @@ The Data Ingestion API Reference is embedded in the [Data Ingestion API referenc
   - **Redocly options**—Configuration options that control the functionality of the generated API reference. For details, see [RedoclyAPIBlock](https://github.com/adobe/aio-theme?tab=readme-ov-file#redoclyapiblock).
 
 **NOTE:** If you generate the schema locally, configuration options are provided in the `.redocly.yaml` file. For details, see *[Configure Redoc](https://redocly.com/docs/redoc/config)* in the Redoc documentation.
-  
+
 ## Update schema and regenerate documentation
 
 1. Create a branch from the `ccdm-early-access` branch.

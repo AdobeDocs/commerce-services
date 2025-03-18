@@ -13,11 +13,11 @@ info:
 
   version: 1.0.0
 servers:
-  - url: https://commerce.adobe.io/<DATA_SPACE_ID>/api
+  - url: https://na1-sandbox.api.commerce.adobe.com/<tenantId>
     description: |-
-      Production endpoint. The DATA_SPACE_ID value is the ID for the data space where commerce catalog data is stored.
-      See [SaaS configuration](https://experienceleague.adobe.com/en/docs/commerce/user-guides/integration-services/saas#saasenv) in Adobe Experience League.
-
+      Sandbox endpoint. The `tenantId` is your Adobe Experience Cloud tenant ID. It is a subdomain of your Experience
+      Cloud URL. For example, if your Experience Cloud URL is https://experience.adobe.com/#/@my-cloud-instance/cloud-manager/landing.html or
+      `mycloudinstance`.marketing.adobe.com, the tenant ID is `mycloudinstance`.
 tags:
   - name: Metadata
     description: |
@@ -85,13 +85,15 @@ paths:
           required: true
           schema:
             type: string
-          description: Production public API key
-        - name: x-gw-signature
+          description:  Client ID generated for the API integration.
+        - name: Authorization
           in: header
           required: true
           schema:
             type: string
-          description: JWT generated for Production public API key
+          description: |
+            OAUTH 2.0 access token generated from the Client ID and Client Secret for the
+            API integration.
         - name: Content-Encoding
           in: header
           required: false
@@ -227,7 +229,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/400ProcessFeedResponse'
         '403':
-          description: Unauthorized request. Verify the `x-api-key` and make sure that the JWT in `x-gw-signature` is still valid.
+          description: Unauthorized request. Verify the `x-api-key` and make sure that the bearer token in `Authorization` is still valid.
           content:
             application/json;charset=UTF-8:
               schema:
@@ -252,13 +254,15 @@ paths:
           required: true
           schema:
             type: string
-          description: Production public API key
-        - name: x-gw-signature
+          description:  Client ID generated for the API integration.
+        - name: Authorization
           in: header
           required: true
           schema:
             type: string
-          description: JWT generated for Production public API key.
+          description: |
+            OAUTH 2.0 access token generated from the Client ID and Client Secret for the
+            API integration.
         - name: Content-Encoding
           in: header
           required: false
@@ -307,7 +311,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/400ProcessFeedResponse'
         '403':
-          description: Unauthorized request. Verify the `x-api-key` and make sure that the JWT in `x-gw-signature` is still valid.
+          description: Unauthorized request. Verify the `x-api-key` and make sure that the bearer access token in `Authorization` is still valid.
           content:
             application/json;charset=UTF-8:
               schema:
@@ -331,13 +335,15 @@ paths:
           required: true
           schema:
             type: string
-          description: Production public API key.
-        - name: x-gw-signature
+          description:  Client ID generated for the API integration.
+        - name: Authorization
           in: header
           required: true
           schema:
             type: string
-          description: JWT generated for Production public API key.
+          description: |
+            OAUTH 2.0 access token generated from the Client ID and Client Secret for the
+            API integration.
         - name: Content-Encoding
           in: header
           required: false
@@ -402,13 +408,13 @@ paths:
          configurable product.
          - You can create multiple products in a single request, and also create product variants for configurable products in the same request.
 
-        <h3>Simple Products</h3>
+        <h3>Simple Products</h3><a name="simple"></a>
         Create products or replace existing products with a specified `sku` and `scope`.
         If a product with the same data exists with the same SKU and scope, the product update request is ignored.
 
         Use the [update operation](#operation/ProductsPatch) to modify values for an existing product.
 
-        <h3>Configurable Products</h3>
+        <h3>Configurable Products</h3><a name="configurable"></a>
         A configurable product is a product that offers multiple options, such as color and size. Each unique combination of these options,
         like 'color green' and 'size large,' defines a product variant. This variant is an independent product with its own SKU, price, and
         inventory. The configurable product acts as a container for these product variants.
@@ -416,25 +422,25 @@ paths:
         To create a configurable product, you need the following:
         - [Product attributes](#operation/ProductMetadataPut): Define the product attributes used to define a configurable product, such as "color", "size", etc.
         - [Configurable product](#operation/ProductsPost): Define the configurable product. [Configurations](#operation/ProductsPost!path=configurations&t=request) is a required field. It defines the choices that a shopper can select.
-        - [Product variant](#operation/ProductsPost): Define a product variant for a configurable product. ["Attributes"](#operation/ProductsPost!path=attributes) with ["variantReferenceId"](#operation/ProductsPost!path=attributes/variantReferenceId&t=request) and ["links"](#operation/ProductsPost!path=links&t=request) of type `VARIANT_OF` must be defined for product variants.
+        - [Product variant](#operation/ProductsPost): Define a product variant for a configurable product. [`Attributes`](#operation/ProductsPost!path=attributes) with ["variantReferenceId"](#operation/ProductsPost!path=attributes/variantReferenceId&t=request) and ["links"](#operation/ProductsPost!path=links&t=request) of type `VARIANT_OF` must be defined for product variants.
 
         Each product variant links back to the configurable product through its `variantReferenceId`, which corresponds to specific `configurations[].values[].variantReferenceId` in the configurable product.
 
         To unassign a product variant from a configurable product, do one of the following:
-        - Use [Delete Product API](#operation/ProductsDelete) to delete the product variant.
-        - Use [Update Product API](#operation/ProductsPatch) to set the ["variantReferenceId"](#operation/ProductsPost!path=attributes/variantReferenceId&t=request) to `null` and unassign the product variant from the configurable product by removing the ["links"](#operation/ProductsPost!path=links&t=request) association.
+        - Use the [Delete Product API](#operation/ProductsDelete) to delete the product variant.
+        - Use the [Update Product API](#operation/ProductsPatch) to set the [`variantReferenceId``](#operation/ProductsPost!path=attributes/variantReferenceId&t=request) to `null` and unassign the product variant from the configurable product by removing the ["links"](#operation/ProductsPost!path=links&t=request) association.
 
-        <h3>Bundle Products</h3>
+        <h3>Bundle Products</h3><a =name="bundle"></a>
         A bundle product combines several simple products into one sellable unit. Items within the bundle can be categorized into logical categories (groups) like`tops`, `bottoms`, and `accessories`.
         Each group can have multiple items, and shoppers can select items from each group to create a customized bundle.
 
         To create a bundle product, you need the following:
-        - [Bundle product](#operation/ProductsPost): Define the bundle product. [Bundles](#operation/ProductsPost!path=bundles&t=request) is a required field that defines the groups and items included in the bundle.
-        - [Simple products](#operation/ProductsPost): Define the simple products that are included in the bundle. Each simple product must be created separately using the create product API.
+        - **Bundle product:** Define the bundle product. [Bundles](#operation/ProductsPost!path=bundles&t=request) is a required field that defines the groups and items included in the bundle.
+        - **[Simple products](#simple):** Define the simple products that are included in the bundle. Each simple product must be created separately using the create product API.
         In the field ["links"](#operation/ProductsPost!path=links&t=request), the type `IN_BUNDLE` must be defined for simple products that belong to bundle products with reference to it.
 
         <strong>Note:</strong> A simple product can be included only once in each bundle. If the same item is specified in multiple groups, the API returns a `Duplicate SKU found in bundle items` error.
-        
+
         To update a bundle product, do one of the following:
         - Use [Update Product API](#operation/ProductsPatch) to modify the groups and items in the bundle.
         - Use [Delete Product API](#operation/ProductsDelete) to remove items from the bundle.
@@ -1143,13 +1149,15 @@ paths:
           required: true
           schema:
             type: string
-          description: Production public API key
-        - name: x-gw-signature
+          description:  Client ID generated for the API integration.
+        - name: Authorization
           in: header
           required: true
           schema:
             type: string
-          description: JWT generated for Production public API key
+          description: |
+            OAUTH 2.0 access token generated from the Client ID and Client Secret for the
+            API integration.
         - name: Content-Encoding
           in: header
           required: false
@@ -1194,7 +1202,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/400ProcessFeedResponse'
         '403':
-          description: Unauthorized request. Verify the `x-api-key` and make sure that the JWT in `x-gw-signature` is still valid.
+          description: |
+            Unauthorized request. Verify the `x-api-key` and make sure that the bearer access token in `Authorization` is still valid.
           content:
             application/json;charset=UTF-8:
               schema:
@@ -1222,13 +1231,15 @@ paths:
           required: true
           schema:
             type: string
-          description: Production public API key.
-        - name: x-gw-signature
+          description:  Client ID generated for the API integration.
+        - name: Authorization
           in: header
           required: true
           schema:
             type: string
-          description: JWT generated for Production public API key.
+          description: |
+            OAUTH 2.0 access token generated from the Client ID and Client Secret for the
+            API integration.
         - name: Content-Encoding
           in: header
           required: false
@@ -1272,7 +1283,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/400ProcessFeedResponse'
         '403':
-          description: Unauthorized request. Verify the `x-api-key` and make sure that the JWT in `x-gw-signature` is still valid.
+          description: Unauthorized request. Verify the `x-api-key` and make sure that the bearer access token in `Authorization` is still valid.
           content:
             application/json;charset=UTF-8:
               schema:
@@ -1298,13 +1309,15 @@ paths:
           required: true
           schema:
             type: string
-          description: Production public API key.
-        - name: x-gw-signature
+          description:  Client ID generated for the API integration.
+        - name: Authorization
           in: header
           required: true
           schema:
             type: string
-          description: JWT generated for Production public API key.
+          description: |
+            OAUTH 2.0 access token generated from the Client ID and Client Secret for the
+            API integration.
         - name: Content-Encoding
           in: header
           required: false
@@ -1343,7 +1356,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/400ProcessFeedResponse'
         '403':
-          description: Unauthorized request. Verify the `x-api-key` and make sure that the JWT in `x-gw-signature` is still valid.
+          description: Unauthorized request. Verify the `x-api-key` and make sure that the bearer access token in `Authorization` is still valid.
           content:
             application/json;charset=UTF-8:
               schema:
@@ -1377,13 +1390,15 @@ paths:
           required: true
           schema:
             type: string
-          description: Production public API key
-        - name: x-gw-signature
+          description:  Client ID generated for the API integration.
+        - name: Authorization
           in: header
           required: true
           schema:
             type: string
-          description: JWT generated for Production public API key
+          description: |
+            OAUTH 2.0 access token generated from the Client ID and Client Secret for the
+            API integration.
         - name: Content-Encoding
           in: header
           required: false
@@ -1440,7 +1455,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/400ProcessFeedResponse'
         '403':
-          description: Unauthorized request. Verify the `x-api-key` and make sure that the JWT in `x-gw-signature` is still valid.
+          description: Unauthorized request. Verify the `x-api-key` and make sure that the bearer access token in `Authorization` is still valid.
           content:
             application/json;charset=UTF-8:
               schema:
@@ -1465,13 +1480,15 @@ paths:
           required: true
           schema:
             type: string
-          description: Production public API key
-        - name: x-gw-signature
+          description: Client ID generated for the API integration.
+        - name: Authorization
           in: header
           required: true
           schema:
             type: string
-          description: JWT generated for Production public API key.
+          description: |
+            OAUTH 2.0 access token generated from the Client ID and Client Secret for the
+            API integration.
         - name: Content-Encoding
           in: header
           required: false
@@ -1517,7 +1534,7 @@ paths:
                 $ref: '#/components/schemas/400ProcessFeedResponse'
         '403':
           description: |
-            Unauthorized request. Verify the `x-api-key` and make sure that the JWT in `x-gw-signature` is still valid.
+            Unauthorized request. Verify the `x-api-key` and make sure that the bearer access token in `Authorization` is still valid.
           content:
             application/json;charset=UTF-8:
               schema:
@@ -1542,13 +1559,15 @@ paths:
           required: true
           schema:
             type: string
-          description: Production public API key
-        - name: x-gw-signature
+          description:  Client ID generated for the API integration.
+        - name: Authorization
           in: header
           required: true
           schema:
             type: string
-          description: JWT generated for Production public API key
+          description: |
+            OAUTH 2.0 access token generated from the Client ID and Client Secret for the
+            API integration.
         - name: Content-Encoding
           in: header
           required: false
@@ -1589,7 +1608,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/400ProcessFeedResponse'
         '403':
-          description: Unauthorized request. Verify the `x-api-key` and make sure that the JWT in `x-gw-signature` is still valid.
+          description: |
+            Unauthorized request. Verify the `x-api-key` and make sure that the bearer access token in `Authorization` is still valid.
           content:
             application/json;charset=UTF-8:
               schema:
@@ -1610,24 +1630,13 @@ components:
           schema:
             $ref: '#/components/schemas/400ProcessFeedResponse'
     UnauthorizedResponse:
-      description: Unauthorized request. Verify the `x-api-key` value is correct and ensure the JWT is not expired in `x-gw-signature`.
+      description: |
+          Unauthorized request. Verify the `x-api-key` and make sure that the bearer access token in `Authorization` is still valid.
       content:
         application/json;charset=UTF-8:
           schema:
             $ref: '#/components/schemas/403Response'
   parameters:
-    DATA_SPACE_ID:
-      name: DATA_SPACE_ID
-      in: path
-      description: |
-        Data Space ID.
-
-        See [SaaS data space provisioning](https://experienceleague.adobe.com/en/docs/commerce/user-guides/integration-services/saas#saas-data-space-provisioning)
-        in Adobe Experience League.
-      required: true
-      style: simple
-      schema:
-        type: string
     ContentType:
       name: Content-Type
       in: header
@@ -1641,9 +1650,9 @@ components:
       required: true
       schema:
         type: string
-      description: Production public API key
+      description: OAUTH 2.0 access token generated from the Client ID and Client Secret for the API integration.
     xGwSignature:
-      name: x-gw-signature
+      name: Authorization
       in: header
       required: true
       schema:

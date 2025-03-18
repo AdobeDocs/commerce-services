@@ -13,9 +13,11 @@ keywords:
 
 Use the data ingestion API to create and manage product data for your ecommerce catalog. Data includes products, product attribute metadata, prices books, and prices.
 
-## Endpoints
+## URL structure
 
-Send all Data Ingestion requests to this endpoint: `https://commerce.adobe.io/<DATA_SPACE_ID>/api`
+The URL structure for Data Ingestion API requests uses the following format:
+
+Send all Data Ingestion requests to this URL: `https://na1-sandbox.api.commerce.adobe.com/<tenantId>/<endpoint>`
 
 <InlineAlert variant="info" slots="text"/>
 
@@ -23,77 +25,65 @@ For sample requests and examples using the API, see the [API Reference](api-refe
 
 ## Authentication
 
-To interact with the Data Ingestion API, the consumer must authenticate by generating a JWT token signed with the public API key from your Commerce account at https://account.magento.com.
+Every API request must include the following credentials in the request header.
 
-For instructions on generating the public API key, see [Generate the production and sandbox keys](https://experienceleague.adobe.com/en/docs/commerce/user-guides/integration-services/saas#genapikey)
+- `x-api-key: <clientId>`
 
-### Generate JWT token
+  The client ID from the Adobe developer project for the API integration.
 
-Use the following java code to generate a JWT token signed with the private key associated with your public API key.
+- `Authorization: Bearer <bearerToken>`
 
-**JwtGenerator.java**
+  An OAUTH 2.0 bearer access token is a type of authentication token that, when included in the Authorization header of an HTTP request, grants access to protected resources in Adobe APIs. The token is valid for 24 hours. When it expires, you use the Adobe developer project credentials to generate a new one.
 
-```java
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
-import java.security.PrivateKey;
-import java.time.Instant;
-import java.time.temporal.ChronoUnit;
-import java.util.Date;
+<br></br>
 
-public class JwtGenerator {
+<details>
+      <summary><b>Get credentials and bearer access tokens</b></summary>
 
-    public String generateJwt(PrivateKey privateKey) {
+import IMSAuth from '/src/_includes/ccdm/initial-auth-for-api-access.md'
 
-        Instant now = Instant.now();
+<IMSAuth />
 
-        return Jwts.builder()
-                   .setIssuedAt(Date.from(now))
-                   .setExpiration(Date.from(now.plus(5L, ChronoUnit.MINUTES)))
-                   .signWith(privateKey, SignatureAlgorithm.RS256)
-                   .compact();
-    }
-}
-```
+</details>
 
-## Path parameters
+### Get a new access token
 
-Include the following path parameter in each API request.
+import GetBearerToken from '/src/_includes/ccdm/initial-auth-for-api-access.md'
 
-| Parameter name | Required | Description |
-|---|---|---|
-DATA_SPACE_ID | Yes | The data space ID for the data space where commerce catalog data is stored. See [SaaS configuration](https://experienceleague.adobe.com/en/docs/commerce/user-guides/integration-services/saas#saasenv).
+<GetBearerToken />
 
 ## Header parameters
 
 Include the following headers in REST API requests.
 
-| Header name        | Required | Description                                                                                                                                                                                                                        |
-|--------------------|----------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `Content-Encoding` | No       | Use this header only if the payload is compressed with gzip. Accepted value: `gzip`                                                                                                                                                |
-| `Content-Type`     | Yes      | Media type of the resource. Accepted value: `application/json`                                                                                                                                                                     |
-| `x-api-key`        | Yes      | Use the public [API Key](https://experienceleague.adobe.com/en/docs/commerce/user-guides/integration-services/saas#genapikey) for your production environment when submitting Data Ingestion API requests.                            |
-| `x-gw-signature`   | Yes      | [JSON Web token generated for Public API key](https://developer.adobe.com/developer-console/docs/guides/authentication/JWT/#creating-a-json-web-token). |
+| Header name  | Required | Description |
+|--------------|----------|-------------|
+| `Content-Encoding` | No  | Use this header only if the payload is compressed with gzip. Accepted value: `gzip`.                                                                           |
+| `Content-Type`  | Yes   | Media type of the resource. Accepted value: `application/json`. |
+| `Authorization: Bearer <bearerToken>`  | Yes  | Bearer access token generated using credentials from the Adobe developer project for the API integration.                            |
+| `x-api-key`  | Yes  | Use the Client ID generated for the API integration. |
 
 ## Request template
 
-Use the following template to submit requests using [cURL](https://curl.se/).
+Use the following template to submit requests using [cURL](https://curl.se/) replacing the placeholders as required.
 
 ```shell
 curl --request POST \
-  --url https://commerce.adobe.io/<DATA_SPACE_ID>/api/<API_ENDPOINT> \
+  --url https://na1-sandbox.api.commerce.adobe.com/<tenantId>/<endpoint> \
   --header 'Content-Type:  application/json' \
-  --header 'x-api-key: <API_KEY>' \
-  --header 'x-gw-signature: <JWT_TOKEN>' \
-  --data '<API_PAYLOAD>'
+  --header 'x-api-key: <clientId>' \
+  --header 'Authorization: Bearer <bearerToken>' \
+  --data '<apiPayload>'
 ```
 
 | Placeholder name | Description                                                                                                    |
 |------------------|----------------------------------------------------------------------------------------------------------------|
-| API_ENDPOINT     | Endpoint for specific Data Ingestion API, for example: `/v1/catalog/products/prices`  |
-| DATA_SPACE_ID    | [SaaS Data Space ID](#path-parameters).                                               |
-| API_KEY          | [Public API_KEY for Adobe Commerce account](#authentication).                             |
-| JWT_TOKEN        | [JWT token generated from Commerce API key](#generate-jwt-token)                                    |
-| API_PAYLOAD      | API payload see examples in the [tutorial](../ccdm-use-case.md)                                                                             |
+| endpoint         | Endpoint for specific Data Ingestion API, for example: `/v1/catalog/products/prices`  |
+| bearerToken        | Bearer token generated from IMS credentials. See [Authentication](#authentication)                                    |
+| apiPayload      | API payload see examples in the [tutorial](../ccdm-use-case.md)                                                                             |
 
 For sample requests, see the [tutorial](../ccdm-use-case.md).
+
+## Limitations
+
+The Data Ingestion API has the following limitations and boundaries:
