@@ -46,7 +46,7 @@ Subscribe to webhooks to trigger external calls when Adobe Commerce events occur
 
 <DiscoverBlock slots="heading, link, text"/>
 
-## Merchandising Services
+## SaaS Catalog Services
 
 [Storefront APIs](graphql/)
 
@@ -54,7 +54,7 @@ Retrieve product, search, and recommendations data and use it to create storefro
 
 <DiscoverBlock slots="link, text"/>
 
-[Storefront Events SDK](shared-services/)
+[Storefront Events SDK](shared-services/storefront-events/)
 
 Explore common tools and SDKs shared across Merchandising Services.
 
