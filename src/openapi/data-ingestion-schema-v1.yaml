@@ -6,8 +6,8 @@ info:
 
     This API provides the following resource collections to create and update catalog data:
 
-    - **Metadata**—define and manage product attribute metadata including displays settings, search characteristics, filtering options, and sorting rules.
-    - **Products**—define and manage catalog items with their attributes (name, description, SKU, images, and variants.
+    - **Metadata**—define and manage product attribute metadata including display settings, search characteristics, filtering options, and sorting rules.
+    - **Products**—define and manage catalog items with their attributes (name, description, SKU, images, and variants).
     - **Price books**—define and manage pricing scopes for different customer tiers and markets.
     - **Prices**—define and manage product SKU prices and their associated price books.
 
@@ -56,7 +56,7 @@ paths:
           - `description`
           - `shortDescription`
 
-        Also, you can also define metadata for custom attributes.
+        Also, you can define metadata for custom attributes.
 
         When creating product attribute metadata:
           - Each product attribute requires a unique `code` and `scope`.
@@ -371,7 +371,7 @@ paths:
 
         When creating products:
          - Each product requires a unique SKU identifier.
-         - Products must have A defined scope, for example `locale`.
+         - Products must have a defined scope, for example `locale`.
          - Add values for the required `name`, `slug`, and `status` fields.
          - Define optional fields such as descriptions, images, and custom attributes as needed.
          - Use the `links` field to define relationships between products, such as linking a product variant to its parent

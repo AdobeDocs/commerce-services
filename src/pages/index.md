@@ -46,7 +46,7 @@ Set up and manage channels and policies for composable catalogs.
 
 [Storefront APIs with Channels and Policies](composable-catalog/storefront-services)
 
-Retrieve product, search, and recommendations data from the Merchandising Services data store and use it to create storefront experiences.
+Retrieve product, search, and recommendations data from Merchandising Services and use it to create storefront experiences.
 
 <DiscoverBlock slots="heading,link, text"/>
 

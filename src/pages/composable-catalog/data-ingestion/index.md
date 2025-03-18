@@ -23,7 +23,7 @@ Metadata defines the characteristics and behavior of a product attribute. It inc
 
 For example, you can define a product attribute as searchable, filterable, and sortable. You can also specify the search type for a product attribute, such as autocomplete or exact match.
 
-Metadata is require to index product data for discovery. Therefore, create metadata before you create products. For each Commerce project, you must define metadata for the following attributes for each scope, for example `locale`):
+Metadata is require to index product data for discovery. Therefore, create metadata before you create products. For each Commerce project, you must define metadata for the following attributes for each scope (`locale`):
 
 - `sku`
 - `name`
