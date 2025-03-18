@@ -11,9 +11,9 @@ keywords:
 
 # Using the composable catalog with your storefront
 
-Learn how a company with a single base catalog can use the composable catalog data model (CCDM) APIs to add product data, define catalogs using projections, and retrieve the catalog data for display in a headless storefront.
+Learn how a company with a single base catalog can use the Merchandising Services powered by Channels and Policies APIs to add product data, define catalogs using projections, and retrieve the catalog data for display in a headless storefront.
 
-This end-to-end use case demonstrates how a company with a single base catalog can use CCDM to:
+This end-to-end use case demonstrates how a company with a single base catalog can use Merchandising Services to:
 
 - Support products across two geographical markets and two distinct brands.
 - Support pricing by customer segment
@@ -24,7 +24,7 @@ Before you begin, review [set up and manage catalogs](manage-catalogs.md) to und
 
 ## Let's get started
 
-This use case demonstrates an end-to-end workflow for using CCDM based on the following components:
+This use case demonstrates an end-to-end workflow for using Merchandising Services based on the following components:
 
 - One Channel
 
@@ -40,13 +40,13 @@ This use case demonstrates an end-to-end workflow for using CCDM based on the fo
   - The product specification does not include any `Channel` or `Policy` values. When retrieving products using the Storefront API, Channel and Policy values are passed in using API headers.
 
 - Storefront APIs
-  - A catalog service API endpoint is used to represent how data will be retrieved using CCDM concepts.
-  - Pay close attention to the API headers. The CCDM concepts for filtering products using channels and policies are implemented through the API headers.
+  - A catalog service API endpoint is used to represent how data will be retrieved using Merchandising Services concepts.
+  - Pay close attention to the API headers. The Merchandising Services concepts for filtering products using channels and policies are implemented through the API headers.
   - Two Storefront API calls are represented:
     - API Call one: Returns a SKU for `Aurora` and `USA` combination.
     - API Call two: Returns a SKU for `Bolt` and `UK` combination.
 
-In the steps below, you use CCDM APIs to add the product, channel, and policy data to the SaaS data space for your project. Then, you use the the [Storefront API](./admin/using-the-api.md) to retrieve the product data based on brand and location attributes.
+In the steps below, you use Merchandising Services APIs to add the product, channel, and policy data to the SaaS data space for your project. Then, you use the the [Storefront API](./admin/using-the-api.md) to retrieve the product data based on brand and location attributes.
 
 ## Step 1. Add products to your catalog
 

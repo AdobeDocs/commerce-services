@@ -30,7 +30,7 @@ Use Commerce APIs and SDKs to create and manage commerce catalog data and config
 
 <DiscoverBlock slots="heading, link, text"/>
 
-### Composable Catalog Data Model
+### Merchandising Services powered by Channels and Policies
 
 [Catalog data ingestion](composable-catalog/data-ingestion/)
 
@@ -38,19 +38,19 @@ Set up large, complex catalog assortments by ingesting commerce catalog data fro
 
 <DiscoverBlock slots="link, text"/>
 
-[Catalog management and rules](composable-catalog/admin)
+[Channels and Policies API](composable-catalog/admin)
 
-Set up and manage Commerce catalogs and configure settings for search and recommendations capabilities.
+Set up and manage channels and policies for composable catalogs.
 
 <DiscoverBlock slots="link, text"/>
 
-[Storefront](composable-catalog/storefront-services)
+[Storefront APIs with Channels and Policies](composable-catalog/storefront-services)
 
-Retrieve product, search, and recommendations data from the catalog data model and use it to create storefront experiences.
+Retrieve product, search, and recommendations data from the Merchandising Services data store and use it to create storefront experiences.
 
 <DiscoverBlock slots="heading,link, text"/>
 
-### Storefront and Shared Services
+### SaaS Catalog Services
 
 [Storefront APIs](graphql/)
 

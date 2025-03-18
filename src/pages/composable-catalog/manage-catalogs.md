@@ -13,7 +13,7 @@ keywords:
 
 An ecommerce product catalog benefits from reflecting the company's business structure as closely as possible. Businesses need to sell different products and different prices depending on geographic market, distribution channel, customer segment, and other variables.
 
-Using the channel, policy, and scope resources available with the Composable Catalog Data Model (CCDM), you can create catalog variations instantly to adapt to these scenarios without requiring extensive development work.
+Using the channel, policy, and scope resources available with the Merchandising Services, you can create catalog variations instantly to adapt to these scenarios without requiring extensive development work.
 
 * **Channel**—Distribution channel of products a business wants to sell through. A channel is the highest-level abstraction which encapsulates scopes and policies.
 

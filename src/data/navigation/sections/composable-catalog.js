@@ -1,6 +1,6 @@
 module.exports = [
   {
-    title: "Composable Catalog Data Model",
+    title: "Merchandising Services powered by Channels and Policies",
     path: "/composable-catalog/",
     pages: [
       {   title: "Set up and manage catalogs",

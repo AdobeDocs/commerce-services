@@ -4,7 +4,7 @@ module.exports = [
       path: "/",
     },
     {
-      title: "Composable Catalog Data Model",
+      title: "Merchandising Services powered by Channels and Policies",
       menu: [
         {
           title: "Overview",

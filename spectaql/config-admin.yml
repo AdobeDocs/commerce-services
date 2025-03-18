@@ -440,7 +440,7 @@ info:
   # A non-standard array of items to display in your Introduction Area
   # x-introItems:
     # Can be a Title (for the Nav panel) + URL to simply add a link to somewhere
-    # - title: Catalog Management and Rules API Guide
+    # - title: Channels and Policies Guide
     # url: https://developer-stage.adobe.com/commerce/services/composable-catalog/admin/
     # Can be a Title (for the Nav panel) + description (for the Content panel)
     # - title: Important thing 1
