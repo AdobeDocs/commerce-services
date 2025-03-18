@@ -51,4 +51,4 @@ Developers can use Merchandising Services APIs to manage product data and produc
 
 **[Channels and Policies API](admin/index.md)**—GraphQL API to manage product context, including distribution channels, locales, and policies. Product context is used to filter products into custom catalogs with customer-specific pricing and regional settings for language, currency, and units of measure.
 
-**[Storefront API](storefront-services/api-reference.md)**—GraphQL API to access rich view-model (read-only) catalog data to build product-related storefront experiences. The Storefront API is designed to be used by frontend applications to access catalog data.
+**[Storefront API](../../../static/graphql-api/admin-api/index.html)**—GraphQL API to access rich view-model (read-only) catalog data to build product-related storefront experiences. The Storefront API is designed to be used by frontend applications to access catalog data.
