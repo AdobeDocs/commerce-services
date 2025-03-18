@@ -48,9 +48,21 @@ Subscribe to webhooks to trigger external calls when Adobe Commerce events occur
 
 ## SaaS Catalog Services
 
-[Storefront APIs](graphql/)
+[Catalog Service API](graphql/catalog-service/)
 
-Retrieve product, search, and recommendations data and use it to create storefront experiences.
+Render product-related on product detail and product list pages.
+
+<DiscoverBlock slots="link, text"/>
+
+[Live Search API](graphql/live-search/)
+
+Retrieve product faceting data that is specific to the Live Search service.
+
+<DiscoverBlock slots="link, text"/>
+
+[Product Recommendations API](graphql/recommendations/)
+
+Retrieve recommended products based on a provided SKU.
 
 <DiscoverBlock slots="link, text"/>
 
