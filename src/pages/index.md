@@ -16,7 +16,7 @@ A collection of APIs and tools to create, access, and manage product, catalog, a
 
 ## Resources
 
-*  [Data Services user guides](https://experienceleague.adobe.com/docs/commerce-merchant-services/user-guides/home.html)
+*  [Data Services user guides](https://experienceleague.adobe.com/docs/commerce/user-guides/home.html)
 *  [Commerce Admin user guide](https://experienceleague.adobe.com/docs/commerce-admin/user-guides/home.html)
 *  [GraphQL Developer Guide](https://developer.adobe.com/commerce/webapi/graphql/)
 

@@ -12,7 +12,7 @@ keywords:
 
 This article discusses the `productSearch` query that is available in the Live Search and Catalog Service extension. While similar in structure and functionality, there are differences in what they output.
 
-See [Boundaries and Limits](https://experienceleague.adobe.com/en/docs/commerce-merchant-services/live-search/boundaries-limits) for the latest recommendations for creating performant queries.
+See [Boundaries and Limits](https://experienceleague.adobe.com/en/docs/commerce/live-search/boundaries-limits) for the latest recommendations for creating performant queries.
 
 ## Syntax
 
@@ -164,7 +164,7 @@ Use the [`attributeMetadata` query](./attribute-metadata.md) to return a list of
 
 <InlineAlert variant="info" slots="text"/>
 
-This feature is in beta. For installation information, see the [Live Search guide](https://experienceleague.adobe.com/en/docs/commerce-merchant-services/live-search/install#install-the-live-search-beta) in the merchant documentation.
+This feature is in beta. For installation information, see the [Live Search guide](https://experienceleague.adobe.com/en/docs/commerce/live-search/install#install-the-live-search-beta) in the merchant documentation.
 
 This beta supports three new capabilities:
 
@@ -311,7 +311,7 @@ The beta has the following limitations:
 - You can paginate a maximum of 10,000 products for any `productSearch` query.
 - These new search capabilities are not available in PLP widgets or the Live Search adapter extension.
 
-For additional Live Search boundaries and limits, see [boundaries and limits](https://experienceleague.adobe.com/en/docs/commerce-merchant-services/live-search/boundaries-limits) in the Live Search merchant guide.
+For additional Live Search boundaries and limits, see [boundaries and limits](https://experienceleague.adobe.com/en/docs/commerce/live-search/boundaries-limits) in the Live Search merchant guide.
 
 #### Filtering by categories
 
@@ -389,7 +389,7 @@ The response to the `productSearch` query can contain details about each product
 
 ### Facets
 
-[Facets](https://experienceleague.adobe.com/docs/commerce-merchant-services/live-search/live-search-admin/facets/facets.html) provide a method of high-performance filtering that uses multiple dimensions of attribute values as search criteria. Faceted search is similar, but considerably more advanced than the native layered navigation functionality.
+[Facets](https://experienceleague.adobe.com/docs/commerce/live-search/live-search-admin/facets/facets.html) provide a method of high-performance filtering that uses multiple dimensions of attribute values as search criteria. Faceted search is similar, but considerably more advanced than the native layered navigation functionality.
 
 The `facets` object contains details about each facet that affects the search results. By default, Live Search provides static facets for the `categories` and `price` product attributes that are pinned to the top of the Filters list in the storefront. The merchant can also pin other attributes to this list.
 
@@ -461,7 +461,7 @@ items {
 
 #### ProductSearchItem.productView (Catalog Service)
 
-If [Catalog Service](https://experienceleague.adobe.com/docs/commerce-merchant-services/catalog-service/guide-overview.html) is installed, you can optionally use the `productView` field instead of the `product` field to return product details. Catalog Service uses [Catalog Sync](https://experienceleague.adobe.com/docs/commerce-merchant-services/user-guides/data-services/catalog-sync.html) to manage product data, resulting in query responses with less latency than is possible with the `ProductInterface`. With Catalog Service, the structure of the pricing information varies, depending on whether the product is designated as a `SimpleProduct` (simple, downloadable, gift card) or as a `ComplexProduct` (configurable, grouped, or bundle).
+If [Catalog Service](https://experienceleague.adobe.com/docs/commerce/catalog-service/guide-overview.html) is installed, you can optionally use the `productView` field instead of the `product` field to return product details. Catalog Service uses [Catalog Sync](https://experienceleague.adobe.com/docs/commerce/user-guides/data-services/catalog-sync.html) to manage product data, resulting in query responses with less latency than is possible with the `ProductInterface`. With Catalog Service, the structure of the pricing information varies, depending on whether the product is designated as a `SimpleProduct` (simple, downloadable, gift card) or as a `ComplexProduct` (configurable, grouped, or bundle).
 
 The following Catalog Service snippet returns relevant information about each item:
 
@@ -557,7 +557,7 @@ Header name| Description
 `Magento-Store-Code` | The code assigned to the store associated with the active store view. For example, `main_website_store`.
 `Magento-Store-View-Code` | The code assigned to the active store view. For example, `default`.
 `Magento-Website-Code` | The code assigned to the website associated with the active store view. For example, `base`.
-`X-Api-Key` | For Live Search queries, set this value to `search_gql`. For Catalog Service queries, set this value to the [unique API key](https://experienceleague.adobe.com/en/docs/commerce-merchant-services/user-guides/integration-services/saas#genapikey) generated for your Commerce environment.
+`X-Api-Key` | For Live Search queries, set this value to `search_gql`. For Catalog Service queries, set this value to the [unique API key](https://experienceleague.adobe.com/en/docs/commerce/user-guides/integration-services/saas#genapikey) generated for your Commerce environment.
 
 ###  Find the customer group code
 
@@ -571,7 +571,7 @@ In the following sections provide examples for using Live Search and Catalog Ser
 
 ### Live Search
 
-This is an example of using Live Search to retrieve and filter results. The query uses the core `ProductInterface` to access product information. As a result, the query has a longer response time than using [Catalog Service](https://experienceleague.adobe.com/docs/commerce-merchant-services/catalog-service/guide-overview.html) to retrieve this information.
+This is an example of using Live Search to retrieve and filter results. The query uses the core `ProductInterface` to access product information. As a result, the query has a longer response time than using [Catalog Service](https://experienceleague.adobe.com/docs/commerce/catalog-service/guide-overview.html) to retrieve this information.
 
 For an example of using Live Search with Catalog Service, see [Catalog Service productSearch query](#catalog-service). Other than returning the `productView` object, all other attributes are the same.
 
