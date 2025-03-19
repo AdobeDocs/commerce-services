@@ -25,13 +25,13 @@ Developers can use Merchandising Services powered by Channels and Policies APIs 
 
 - **Product context** defines the business context for the products including distribution channels, data access policies for catalog syndication, and language (`locale`) scope for the catalog.
 
-Together, these components enable the creation of custom catalogs that power storefront experiences.
+Developers can use these components together to compose and deliver custom catalogs quickly, without duplicating or refactoring the base catalog data.
 
 <InlineAlert variant="info" slots="text"/>
 
 For additional architecture and implementation details, see the [Merchandising Services powered by Channels and Policies](https://experienceleague.adobe.com/en/docs/commerce/merchandising-services/overview) in Experience League.
 
-## Custom catalogs
+## Composable catalogs
 
 Composable catalogs are a key feature of Merchandising Services, created by combining product data with product context to tailor catalogs to specific business needs. Custom catalogs can:
 
