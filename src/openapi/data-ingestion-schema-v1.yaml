@@ -1960,8 +1960,9 @@ components:
         id:
           type: string
           description: |
-            Product option ID. For `CONFIGURABLE` or `SWATCH` option types, this ID must be match the
-            ["attribute code"](#operation/ProductsPost!path=attributes/code&t=request) used for the configurable product (for example, "color").
+            Product option ID. For `CONFIGURABLE` or `SWATCH` option types, this ID must match the
+            ["attribute code"](#operation/ProductsPost!path=attributes/code&t=request) used for the 
+            configurable product (for example, "color").
         label:
           type: string
           description: Option label
