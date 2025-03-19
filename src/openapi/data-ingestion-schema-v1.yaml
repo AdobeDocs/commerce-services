@@ -279,7 +279,7 @@ paths:
                 description: |
                   Update existing product attribute metadata with new values.
                   Note that fields with the `array` type will replace existing data.
-                  Example bellow updates the following attributes:
+                  The example bellow updates the following attributes:
                   * `label` - Change the product attribute label.
                   * `visibleIn` - Add `PRODUCT_LISTING` role to the product attribute.
                 value:
