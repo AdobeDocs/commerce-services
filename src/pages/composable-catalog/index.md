@@ -1,5 +1,5 @@
 ---
-title: Merchandising Services powered by Channels and Policies
+title: Merchandising Services Developer Guide
 edition: ee
 description: Use the Merchandising Services powered by Channels and Polices to implement large, complex catalogs and develop highly performant storefront experiences.
 keywords:
@@ -13,7 +13,7 @@ keywords:
   - Storefront
 ---
 
-# Merchandising Services powered by Channels and Policies overview
+# Merchandising Services powered by Channels and Policies Developer Guide
 
 This guide offers API reference and usage information for developers and commerce site administrators involved in storefront development, maintenance, and operations.
 
