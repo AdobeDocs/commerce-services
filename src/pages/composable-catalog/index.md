@@ -29,7 +29,7 @@ Together, these components enable the creation of custom catalogs that power sto
 
 <InlineAlert variant="info" slots="text"/>
 
-For additional architecture and implementation details, see the [API Reference](api-reference.md) and the [tutorial](../ccdm-use-case.md).
+For additional architecture and implementation details, see the [Merchandising Services powered by Channels and Policies](https://experienceleague.adobe.com/en/docs/commerce/merchandising-services/overview) in Experience League.
 
 ## Custom catalogs
 
@@ -51,4 +51,4 @@ Developers can use Merchandising Services APIs to manage product data and produc
 
 **[Channels and Policies API](admin/index.md)**—GraphQL API to manage product context, including distribution channels, locales, and policies. Product context is used to filter products into custom catalogs with customer-specific pricing and regional settings for language, currency, and units of measure.
 
-**[Storefront API](../../../static/graphql-api/admin-api/index.html)**—GraphQL API to access rich view-model (read-only) catalog data to build product-related storefront experiences. The Storefront API is designed to be used by frontend applications to access catalog data.
+**[Storefront API]( ../../../static/graphql-api/admin-api/index.html)**—GraphQL API to access rich view-model (read-only) catalog data to build product-related storefront experiences. The Storefront API is designed to be used by frontend applications to access catalog data.
