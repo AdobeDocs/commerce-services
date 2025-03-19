@@ -13,7 +13,7 @@ keywords:
   - Storefront
 ---
 
-# Merchandising Services powered by Channels and Policies Developer Guide
+# Merchandising Services developer guide
 
 This guide offers API reference and usage information for developers and commerce site administrators involved in storefront development, maintenance, and operations.
 
@@ -33,7 +33,7 @@ For additional architecture and implementation details, see the [Merchandising S
 
 ## Composable catalogs
 
-Composable catalogs are a key feature of Merchandising Services, created by combining product data with product context to tailor catalogs to specific business needs. Custom catalogs can:
+Composable catalogs are a key feature of Merchandising Services, created by combining product data with product context to tailor catalogs to specific business needs. Composable catalogs can:
 
 - Support various business models (B2B, B2C, D2C).
 - Power storefront experiences across web, mobile, and in-store channels.
@@ -45,10 +45,10 @@ Composable catalogs are a key feature of Merchandising Services, created by comb
 
 ## API resources
 
-Developers can use Merchandising Services APIs to manage product data and product context independently to compose custom catalogs for storefront experiences. The APIs are available in both GraphQL and REST.
+Merchandising Services offers a collection of APIs to manage product data and product context independently to compose custom catalogs for storefront experiences. The APIs are available in both GraphQL and REST.
 
 **[Data Ingestion API](data-ingestion/index.md)**—REST API to add and manage product and pricing data for merchandising across multiple business channels and locales. Data includes products, product attribute metadata, price books, and prices. Data can be added directly using the API or ingested from third-party systems.
 
 **[Channels and Policies API](admin/index.md)**—GraphQL API to manage product context, including distribution channels, locales, and policies. Product context is used to filter products into custom catalogs with customer-specific pricing and regional settings for language, currency, and units of measure.
 
-**[Storefront API]( ../../../static/graphql-api/admin-api/index.html)**—GraphQL API to access rich view-model (read-only) catalog data to build product-related storefront experiences. The Storefront API is designed to be used by frontend applications to access catalog data.
+**[Storefront API](../../../static/graphql-api/admin-api/index.html)**—GraphQL API to access rich view-model (read-only) catalog data to build product-related storefront experiences. The Storefront API is designed to be used by frontend applications to access catalog data.
