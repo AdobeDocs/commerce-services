@@ -1,5 +1,5 @@
 ---
-title: Merchandising Services Developer Guide
+title: Merchandising Services developer guide
 edition: ee
 description: Use the Merchandising Services powered by Channels and Polices to implement large, complex catalogs and develop highly performant storefront experiences.
 keywords:
