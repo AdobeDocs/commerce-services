@@ -71,8 +71,8 @@ To browse, search for, or request events, navigate to **System** > **Events** > 
 
 The following REST endpoints are available for events:
 
-* /V1/eventing/eventSubscribe:name (`POST`) - Subscribes to the event.
-* /V1/eventing/eventUnsubscribe:name (`POST`) - Unsubscribes from the event.
+* /V1/eventing/eventSubscribe/:name (`POST`) - Subscribes to the event.
+* /V1/eventing/eventUnsubscribe/:name (`POST`) - Unsubscribes from the event.
 * /V1/eventing/getEventProviders (`GET`) - Lists event providers.
 * /V1/eventing/getEventSubscriptions (`GET`) - Lists event subscriptions.
 * /V1/eventing/updateConfiguration (`PUT`) - Updates eventing configuration.
