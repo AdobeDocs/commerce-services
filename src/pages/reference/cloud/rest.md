@@ -168,8 +168,8 @@ The Adobe Commerce as a Cloud Service REST API contains the following endpoints.
 /V1/eav/attribute-sets/:attributeSetId    | DELETE |
 /V1/eav/attribute-sets/:attributeSetId    | PUT |
 /V1/eav/attribute-sets/list    | GET |
-/V1/eventing/eventSubscribe:name    | POST |
-/V1/eventing/eventUnsubscribe:name    | POST |
+/V1/eventing/eventSubscribe/:name    | POST |
+/V1/eventing/eventUnsubscribe/:name    | POST |
 /V1/eventing/getEventProviders    | GET |
 /V1/eventing/getEventSubscriptions    | GET |
 /V1/eventing/updateConfiguration    | PUT |
