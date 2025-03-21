@@ -71,11 +71,11 @@ To browse, search for, or request events, navigate to **System** > **Events** > 
 
 The following REST endpoints are available for events:
 
-* /V1/eventing/eventSubscribe/:name (`POST`) - Subscribes to the event.
-* /V1/eventing/eventUnsubscribe/:name (`POST`) - Unsubscribes from the event.
-* /V1/eventing/getEventProviders (`GET`) - Lists event providers.
-* /V1/eventing/getEventSubscriptions (`GET`) - Lists event subscriptions.
-* /V1/eventing/updateConfiguration (`PUT`) - Updates eventing configuration.
+* `POST /V1/eventing/eventSubscribe/:name` - Subscribes to the event.
+* `POST /V1/eventing/eventUnsubscribe/:name` - Unsubscribes from the event.
+* `GET /V1/eventing/getEventProviders` - Lists event providers.
+* `GET /V1/eventing/getEventSubscriptions` - Lists event subscriptions.
+* `PUT /V1/eventing/updateConfiguration` - Updates eventing configuration.
 
 #### Webhooks
 
@@ -85,6 +85,6 @@ To browse, search, or request webhooks, navigate to **System** > **Webhooks** > 
 
 The following REST endpoints are available for webhooks:
 
-* /V1/webhooks/list (`GET`) - Lists configured webhooks.
-* /V1/webhooks/subscribe (`POST`) - Subscribes to a webhook.
-* /V1/webhooks/unsubscribe (`POST`) - Unsubscribes from a webhook.
+* `GET /V1/webhooks/list` - Lists configured webhooks.
+* `POST /V1/webhooks/subscribe` - Subscribes to a webhook.
+* `POST /V1/webhooks/unsubscribe` - Unsubscribes from a webhook.
