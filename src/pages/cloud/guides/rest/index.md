@@ -69,10 +69,22 @@ Addtionally, because Adobe Commerce as a Cloud Service is preconfigured with ext
 
 To browse, search for, or request events, navigate to **System** > **Events** > **Event List** in the Admin.
 
+The following REST endpoints are available for events:
+
+* /V1/eventing/eventSubscribe:name (`POST`) - Subscribes to the event.
+* /V1/eventing/eventUnsubscribe:name (`POST`) - Unsubscribes from the event.
+* /V1/eventing/getEventProviders (`GET`) - Lists event providers.
+* /V1/eventing/getEventSubscriptions (`GET`) - Lists event subscriptions.
+* /V1/eventing/updateConfiguration (`PUT`) - Updates eventing configuration.
+
 #### Webhooks
 
 Registering webhooks works differently between platforms. Instead of using the `webhooks.xml` file, you can register webhooks in the Commerce Admin or by using the REST API.
 
-Adobe Commerce as a Cloud Service webhooks can differ slightly from the webhooks available in other versions of Adobe Commerce.
-
 To browse, search, or request webhooks, navigate to **System** > **Webhooks** > **Webhook List** in the Admin.
+
+The following REST endpoints are available for webhooks:
+
+* /V1/webhooks/list (`GET`) - Lists configured webhooks.
+* /V1/webhooks/subscribe (`POST`) - Subscribes to a webhook.
+* /V1/webhooks/unsubscribe (`POST`) - Unsubscribes from a webhook.
