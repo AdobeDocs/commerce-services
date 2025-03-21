@@ -65,9 +65,9 @@ Addtionally, because Adobe Commerce as a Cloud Service is preconfigured with ext
 
 #### Events
 
-* [Events](https://developer.adobe.com/commerce/extensibility/events/) - Adobe Commerce as a Cloud Service events can differ slightly from the events available in other versions of Adobe Commerce.
+* [Events](https://developer.adobe.com/commerce/extensibility/events/) - Adobe Commerce as a Cloud Service supports a different set of events than other versions.
 
-To browse, search for, or request events, navigate to **System** > **Events** > **Event List** in the Adobe Commerce Admin.
+To browse, search for, or request events, navigate to **System** > **Events** > **Event List** in the Admin.
 
 #### Webhooks
 
@@ -75,4 +75,4 @@ Registering webhooks works differently between platforms. Instead of using the `
 
 Adobe Commerce as a Cloud Service webhooks can differ slightly from the webhooks available in other versions of Adobe Commerce.
 
-To browse, search, or request webhooks, navigate to **System** > **Webhooks** > **Webhook List** in the Adobe Commerce Admin.
+To browse, search, or request webhooks, navigate to **System** > **Webhooks** > **Webhook List** in the Admin.
