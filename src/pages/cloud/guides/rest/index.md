@@ -65,47 +65,14 @@ Addtionally, because Adobe Commerce as a Cloud Service is preconfigured with ext
 
 #### Events
 
-* [Events](https://developer.adobe.com/commerce/extensibility/events/) - Adobe Commerce as a Cloud Service is currently limited to the following events:
-  * observer.catalog_product_save_after
-  * observer.catalog_product_save_commit_after
-  * observer.catalog_product_delete_commit_after
-  * observer.cataloginventory_stock_item_save_commit_after
-  * observer.checkout_submit_all_after
-  * observer.customer_login
-  * observer.customer_register_success
-  * observer.customer_save_after
-  * observer.customer_save_commit_after
-  * observer.customer_delete_commit_after
-  * observer.customer_group_save_commit_after
-  * observer.customer_group_delete_commit_after
-  * observer.rma_save_after
-  * observer.rma_save_commit_after
-  * observer.sales_order_save_after
-  * observer.sales_order_save_commit_after
-  * observer.sales_order_shipment_save_after
-  * observer.sales_order_shipment_track_save_after
-  * observer.sales_order_creditmemo_save_after
-  * observer.sales_order_status_history_save_after
-  * plugin.sales.api.order_management.place
-  * plugin.sales.api.order_repository.save
-  * plugin.sales_rule.api.rule_repository.save
+* [Events](https://developer.adobe.com/commerce/extensibility/events/) - Adobe Commerce as a Cloud Service events can differ slightly from the events available in other versions of Adobe Commerce.
+
+To browse, search for, or request events, navigate to **System** > **Events** > **Event List** in the Adobe Commerce Admin.
 
 #### Webhooks
 
 Registering webhooks works differently between platforms. Instead of using the `webhooks.xml` file, you can register webhooks in the Commerce Admin or by using the REST API.
 
-Adobe Commerce as a Cloud Service is limited to the following webhooks:
+Adobe Commerce as a Cloud Service webhooks can differ slightly from the webhooks available in other versions of Adobe Commerce.
 
-* observer.sales_quote_add_item
-* observer.checkout_cart_product_add_before
-* observer.catalog_product_save_after
-* observer.catalog_product_save_before
-* observer.sales_order_place_before
-* plugin.customer.api.address_repository.save
-* plugin.sales.api.order_management.place
-* plugin.quote.api.guest_coupon_management.set
-* plugin.tax.api.tax_calculation.calculate_tax
-* plugin.quote.api.shipment_estimation.estimate_by_extended_address
-* plugin.gift_card_account.api.gift_card_account_management.check_gift_card
-* plugin.out_of_process_payment_methods.api.payment_method_filter.get_list
-* plugin.out_of_process_shipping_methods.api.shipping_rate_repository.get_rates
+To browse, search, or request webhooks, navigate to **System** > **Webhooks** > **Webhook List** in the Adobe Commerce Admin.
