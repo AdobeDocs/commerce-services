@@ -1,7 +1,7 @@
 ---
-title: Catalog management APIs
+title:  Channels and Policies APIs
 edition: ee
-description: Use the Catalog management APIs to set up the channels, policies, and scopes for commerce catalogs.
+description: Use the Channels and Policies API to set up the channels, policies, and scopes for commerce catalogs.
 keywords:
   - GraphQL
   - Services
@@ -9,6 +9,6 @@ keywords:
   - Configuration
 ---
 
-# Catalog management APIs
+#  Channels and Policies API
 
-Developers creating ecommerce sites to sell to various businesses can use the Catalog Management Admin APIs to setup, configure, and manage catalogs and catalog tools for product search and recommendations. The Catalog Management APIs are implemented as a GraphQL (Graph Query Language) endpoint to manage the channels and policies used to setup and manage catalogs.
+Developers creating ecommerce sites to sell to various businesses can use the Catalog Management Admin APIs to setup, configure, and manage catalogs and catalog tools for product search and recommendations. The  Channels and Policies API is implemented as a GraphQL (Graph Query Language) endpoint to manage the channels and policies used to setup and manage catalogs.

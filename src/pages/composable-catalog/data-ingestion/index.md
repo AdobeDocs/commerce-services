@@ -17,19 +17,47 @@ This direct connection decreases the time that it takes to process product chang
 
 The Data Ingestion API is implemented as a REST (Representational State Transfer) API endpoint to manage the following types of data.
 
-- **Product**—A product is any item or service offered for sale through online channels. Products can be physical goods, digital downloads, or services. They are the core elements of your catalog. In the context of the Composable Catalog Data Model (CCDM), products are categorized into different types. Currently, the following types are supported:
+## Metadata
 
-  - Simple Products: Basic items with no variations, for example a single t-shirt in one size and color.
-  - Configurable Products: Items with multiple options or variations, for example a t-shirt available in different sizes and colors.
+Metadata defines the characteristics and behavior of a product attribute. It includes details such as the attribute's type, label, input method, and usage in the storefront, search, and filtering functionalities. These settings control how product attributes appear and function throughout the storefront.
 
-  Each product type has its own set of attributes and configurations to help you manage and present them effectively in your store.
+For example, you can define a product attribute as searchable, filterable, and sortable. You can also specify the search type for a product attribute, such as autocomplete or exact match.
 
-- **Product variants**—Refer to a specific version of a product that differs from other versions based on certain attributes like size, color, or material. These variants are typically part of a configurable product, allowing customers to choose from different options on a single product page.
+Metadata is required to index product data for discovery. Consequently, it must be created before creating products. For each Commerce project, the following product attribute metadata must be defined for each scope (`locale`):
 
-  For example, if you're selling a t-shirt, the product variants might include different sizes (small, medium, large) and colors (red, blue, green). Each combination of size and color represents a unique product variant
+- `sku`
+- `name`
+- `description`
+- `shortDescription`
+- `price`
 
-- **Metadata** (product attribute metadata)—Refers to the information that defines the characteristics and behavior of a product attribute. This metadata includes details such as the attribute's type, label, input method, and how it should be used in the storefront, search, and filtering functionalities.
+You can also define custom metadata for additional product attributes. For example, you can define a `brand` attribute to allow product discovery and filtering by brand name.
 
-  For example, if you have a product attribute called "color," the metadata would specify whether it's a text field, dropdown, or swatch, and how it should be displayed and used in various parts of the store, like product pages or search results
+For details, see [Metadata APIs](https://developer-stage.adobe.com/commerce/services/composable-catalog/data-ingestion/api-reference/#tag/Metadata) in the API reference.
 
-- **Price books and prices**—Determines the selling prices of products. In CCDM, a product SKU and price are decoupled. This decoupling allows you to define multiple price books for a single SKU to support different customer tiers, business units, and geographies. When you define prices for a product SKU, you can define regular and discounted prices within the scope of each price book.
+## Products
+
+A product is any item or service offered for sale through online channels. Products can be physical goods, digital downloads, or services. They are the core elements of your catalog. In the context of the Merchandising Services, products are categorized into different types.
+
+**Product types** are different categories of products that you can create and manage in your catalog. Merchandising Services supports the following product types:
+
+  - **Simple Products**—Basic items with no variations, for example a single t-shirt in one size and color.
+  - **Configurable Products**—Items with multiple options or variations, for example a t-shirt available in different sizes and colors.
+
+Each product type has its own set of attributes and configurations to help you manage and present them effectively in your store.
+
+**Product variants** are a specific version of a product that differs from other versions based on certain attributes like size, color, or material. These variants are typically part of a configurable product, allowing customers to choose from different options on a single product page.
+
+For example, if you're selling a t-shirt, the product variants might include different sizes (small, medium, large) and colors (red, blue, green). Each combination of size and color represents a unique product variant
+
+For details, see [Product APIs](https://developer-stage.adobe.com/commerce/services/composable-catalog/data-ingestion/api-reference/#tag/Products) in the API reference.
+
+## Price books and prices
+
+In Merchandising Services, a product SKU and its price are decoupled. This decoupling allows you to define multiple price books for a single SKU, supporting different customer tiers, business units, and geographies. When defining prices for a product SKU, you can set both regular and discounted prices within the scope of each price book.
+
+**Price books** are collections of prices for a specific set of products. Price books allow you to manage and organize prices for different customer segments, regions, or sales channels. You can create multiple price books to accommodate various pricing strategies and customer groups. Each price book has an associated currency. Merchandising Services includes a default price book with a default currency in US dollars, which is used when no other price book is specified.
+
+**Prices** are the monetary values assigned to products within a price book. To create prices for each product SKU, specify the associated price books and define the pricing schedule for each price book.
+
+For details, see [Price book](https://developer-stage.adobe.com/commerce/services/composable-catalog/data-ingestion/api-reference/#tag/Price-Books) and [Prices](https://developer-stage.adobe.com/commerce/services/composable-catalog/data-ingestion/api-reference/#tag/Price-Books) in the API reference.

@@ -16,7 +16,7 @@ A collection of APIs and tools to create, access, and manage product, catalog, a
 
 ## Resources
 
-*  [Data Services user guides](https://experienceleague.adobe.com/docs/commerce-merchant-services/user-guides/home.html)
+*  [Data Services user guides](https://experienceleague.adobe.com/docs/commerce/user-guides/home.html)
 *  [Commerce Admin user guide](https://experienceleague.adobe.com/docs/commerce-admin/user-guides/home.html)
 *  [GraphQL Developer Guide](https://developer.adobe.com/commerce/webapi/graphql/)
 
@@ -30,7 +30,7 @@ Use Commerce APIs and SDKs to create and manage commerce catalog data and config
 
 <DiscoverBlock slots="heading, link, text"/>
 
-### Composable Catalog Data Model
+### Merchandising Services powered by Channels and Policies
 
 [Catalog data ingestion](composable-catalog/data-ingestion/)
 
@@ -38,19 +38,19 @@ Set up large, complex catalog assortments by ingesting commerce catalog data fro
 
 <DiscoverBlock slots="link, text"/>
 
-[Catalog management and rules](composable-catalog/admin)
+[Channels and Policies API](composable-catalog/admin)
 
-Set up and manage Commerce catalogs and configure settings for search and recommendations capabilities.
+Set up and manage channels and policies for composable catalogs.
 
 <DiscoverBlock slots="link, text"/>
 
-[Storefront](composable-catalog/storefront-services)
+[Storefront APIs with Channels and Policies](composable-catalog/storefront-services)
 
-Retrieve product, search, and recommendations data from the catalog data model and use it to create storefront experiences.
+Retrieve product, search, and recommendations data from Merchandising Services and use it to create storefront experiences.
 
 <DiscoverBlock slots="heading,link, text"/>
 
-### Storefront and Shared Services
+### SaaS Catalog Services
 
 [Storefront APIs](graphql/)
 
