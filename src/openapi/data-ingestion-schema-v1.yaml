@@ -433,7 +433,7 @@ paths:
         - [Simple products](#operation/ProductsPost): Define the simple products that are included in the bundle. Each simple product must be created separately using the create product API.
         In the field ["links"](#operation/ProductsPost!path=links&t=request), the type `IN_BUNDLE` must be defined for simple products that belong to bundle products with reference to it.
 
-        <strong>Note:</strong>A simple product can be included only once in each bundle. If the same item is specified in multiple groups, the API returns a `Duplicate SKU found in bundle items` error.
+        <strong>Note:</strong> A simple product can be included only once in each bundle. If the same item is specified in multiple groups, the API returns a `Duplicate SKU found in bundle items` error.
         
         To update a bundle product, do one of the following:
         - Use [Update Product API](#operation/ProductsPatch) to modify the groups and items in the bundle.
