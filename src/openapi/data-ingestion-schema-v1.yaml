@@ -1009,7 +1009,7 @@ paths:
                 summary: Add a new item `gloves` to the accessories group of the bundle product `bundle-outfit`.
                 description: |
                   To add a new item `gloves` to the accessories group of the bundle product `bundle-outfit`, include the new item in the `items` array of the `accessories` group.
-                  Note that simple product `gloves` must be created separately using create product API.
+                  Note that simple product `gloves` must be created separately using the create product API.
                 value:
                   [
                     {
