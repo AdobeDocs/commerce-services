@@ -425,12 +425,16 @@ paths:
         - Use [Update Product API](#operation/ProductsPatch) to set the ["variantReferenceId"](#operation/ProductsPost!path=attributes/variantReferenceId&t=request) to `null` and unassign the product variant from the configurable product by removing the ["links"](#operation/ProductsPost!path=links&t=request) association.
 
         <h3>Bundle Products</h3>
-        A bundle product combines several simple products into one sellable unit. Items within the bundle can be categorized into logical categories like`tops`, `bottoms`, and `accessories`. Each group can have multiple items, and shoppers can select items from each group to create a customized bundle.
+        A bundle product combines several simple products into one sellable unit. Items within the bundle can be categorized into logical categories (groups) like`tops`, `bottoms`, and `accessories`.
+        Each group can have multiple items, and shoppers can select items from each group to create a customized bundle.
 
         To create a bundle product, you need the following:
         - [Bundle product](#operation/ProductsPost): Define the bundle product. [Bundles](#operation/ProductsPost!path=bundles&t=request) is a required field that defines the groups and items included in the bundle.
-        - [Simple products](#operation/ProductsPost): Define the simple products that are included in the bundle. Each simple product must be created separately using the create product API. In the field ["links"](#operation/ProductsPost!path=links&t=request), the type `IN_BUNDLE` must be defined for simple products that belong to bundle products with reference to it.
+        - [Simple products](#operation/ProductsPost): Define the simple products that are included in the bundle. Each simple product must be created separately using the create product API.
+        In the field ["links"](#operation/ProductsPost!path=links&t=request), the type `IN_BUNDLE` must be defined for simple products that belong to bundle products with reference to it.
 
+        <strong>Note:</strong>A simple product can be included only once in each bundle. If the same item is specified in multiple groups, the API returns a `Duplicate SKU found in bundle items` error.
+        
         To update a bundle product, do one of the following:
         - Use [Update Product API](#operation/ProductsPatch) to modify the groups and items in the bundle.
         - Use [Delete Product API](#operation/ProductsDelete) to remove items from the bundle.
@@ -716,6 +720,7 @@ paths:
                 summary: Create a bundle product with multiple items.
                 description: >
                   Create a bundle product `bundle-outfit` with multiple items grouped into categories like `tops`, `bottoms`, and `accessories`.
+                  An item can be included only once in each bundle product.
                 value:
                   [
                     {
