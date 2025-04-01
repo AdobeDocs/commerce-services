@@ -415,20 +415,29 @@ paths:
 
         To create a configurable product, you need the following:
         - [Product attributes](#operation/ProductMetadataPut): Define the product attributes used to define a configurable product, such as "color", "size", etc.
-        - [Configurable product](#operation/ProductsPost): Define the configurable product. [Options](#operation/ProductsPost!path=options&t=request)
-          is a required field. It defines the choices that a shopper can select.
-        - [Product variant](#operation/ProductsPost): Define a product variant for a configurable product.
-          ["Attributes"](#operation/ProductsPost!path=attributes) with
-          ["variantReferenceId"](#operation/ProductsPost!path=attributes/variantReferenceId&t=request) and
-          ["links"](#operation/ProductsPost!path=links&t=request) of type `VARIANT_OF` must be defined for product variants.
+        - [Configurable product](#operation/ProductsPost): Define the configurable product. [Configurations](#operation/ProductsPost!path=configurations&t=request) is a required field. It defines the choices that a shopper can select.
+        - [Product variant](#operation/ProductsPost): Define a product variant for a configurable product. ["Attributes"](#operation/ProductsPost!path=attributes) with ["variantReferenceId"](#operation/ProductsPost!path=attributes/variantReferenceId&t=request) and ["links"](#operation/ProductsPost!path=links&t=request) of type `VARIANT_OF` must be defined for product variants.
 
-        Each product variant links back to the configurable product through its `variantReferenceId`, which corresponds to specific
-        `options[].values[].id` in the configurable product.
+        Each product variant links back to the configurable product through its `variantReferenceId`, which corresponds to specific `configurations[].values[].variantReferenceId` in the configurable product.
 
         To unassign a product variant from a configurable product, do one of the following:
         - Use [Delete Product API](#operation/ProductsDelete) to delete the product variant.
-        - Use [Update Product API](#operation/ProductsPatch) to set the ["variantReferenceId"](#operation/ProductsPost!path=attributes/variantReferenceId&t=request)
-          to `null` and unassign the product variant from the configurable product by removing the ["links"](#operation/ProductsPost!path=links&t=request) association.
+        - Use [Update Product API](#operation/ProductsPatch) to set the ["variantReferenceId"](#operation/ProductsPost!path=attributes/variantReferenceId&t=request) to `null` and unassign the product variant from the configurable product by removing the ["links"](#operation/ProductsPost!path=links&t=request) association.
+
+        <h3>Bundle Products</h3>
+        A bundle product combines several simple products into one sellable unit. Items within the bundle can be categorized into logical categories (groups) like`tops`, `bottoms`, and `accessories`.
+        Each group can have multiple items, and shoppers can select items from each group to create a customized bundle.
+
+        To create a bundle product, you need the following:
+        - [Bundle product](#operation/ProductsPost): Define the bundle product. [Bundles](#operation/ProductsPost!path=bundles&t=request) is a required field that defines the groups and items included in the bundle.
+        - [Simple products](#operation/ProductsPost): Define the simple products that are included in the bundle. Each simple product must be created separately using the create product API.
+        In the field ["links"](#operation/ProductsPost!path=links&t=request), the type `IN_BUNDLE` must be defined for simple products that belong to bundle products with reference to it.
+
+        <strong>Note:</strong> A simple product can be included only once in each bundle. If the same item is specified in multiple groups, the API returns a `Duplicate SKU found in bundle items` error.
+        
+        To update a bundle product, do one of the following:
+        - Use [Update Product API](#operation/ProductsPatch) to modify the groups and items in the bundle.
+        - Use [Delete Product API](#operation/ProductsDelete) to remove items from the bundle.
       operationId: ProductsPost
       parameters:
         - $ref: '#/components/parameters/ContentType'
@@ -536,39 +545,37 @@ paths:
                       "visibleIn": [
                         "CATALOG"
                       ],
-                      "options": [
+                      "configurations": [
                         {
-                          "id": "color",
+                          "attributeCode": "color",
                           "label": "Pants color",
-                          "required": true,
-                          "defaultValueId": "pants-color-red",
+                          "defaultVariantReferenceId": "pants-color-red",
                           "type": "SWATCH",
                           "values": [
                             {
-                              "id": "pants-color-red",
+                              "variantReferenceId": "pants-color-red",
                               "label": "Red",
                               "colorHex": "#ff0000"
                             },
                             {
-                              "id": "pants-color-green",
+                              "variantReferenceId": "pants-color-green",
                               "label": "Green",
                               "imageUrl": "https://www.example.com/media/catalog/product/green_main_1.jpg"
                             }
                           ]
                         },
                         {
-                          "id": "size",
+                          "attributeCode": "size",
                           "label": "Pants size",
-                          "required": true,
-                          "defaultValueId": "pants-size-32",
+                          "defaultVariantReferenceId": "pants-size-32",
                           "type": "CONFIGURABLE",
                           "values": [
                             {
-                              "id": "pants-size-32",
+                              "variantReferenceId": "pants-size-32",
                               "label": "32"
                             },
                             {
-                              "id": "pants-size-44",
+                              "variantReferenceId": "pants-size-44",
                               "label": "44"
                             }
                           ]
@@ -709,6 +716,189 @@ paths:
                       ]
                     }
                   ]
+              BundleProductWithItems:
+                summary: Create a bundle product with multiple items.
+                description: >
+                  Create a bundle product `bundle-outfit` with multiple items grouped into categories like `tops`, `bottoms`, and `accessories`.
+                  An item can be included only once in each bundle product.
+                value:
+                  [
+                    {
+                      "sku": "bundle-outfit",
+                      "scope": {
+                        "locale": "en"
+                      },
+                      "name": "Bundle Outfit",
+                      "slug": "bundle-outfit",
+                      "status": "ENABLED",
+                      "visibleIn": [
+                        "CATALOG"
+                      ],
+                      "bundles": [
+                        {
+                          "group": "tops",
+                          "required": true,
+                          "multiSelect": false,
+                          "defaultItemSkus": [ "top-red" ],
+                          "items": [
+                            {
+                              "sku": "top-red",
+                              "qty": 1,
+                              "userDefinedQty": false
+                            },
+                            {
+                              "sku": "top-blue",
+                              "qty": 1,
+                              "userDefinedQty": false
+                            }
+                          ]
+                        },
+                        {
+                          "group": "bottoms",
+                          "required": true,
+                          "multiSelect": false,
+                          "defaultItemSkus": [ "bottom-black" ],
+                          "items": [
+                            {
+                              "sku": "bottom-black",
+                              "qty": 1,
+                              "userDefinedQty": false
+                            },
+                            {
+                              "sku": "bottom-white",
+                              "qty": 1,
+                              "userDefinedQty": false
+                            }
+                          ]
+                        },
+                        {
+                          "group": "accessories",
+                          "required": false,
+                          "multiSelect": true,
+                          "items": [
+                            {
+                              "sku": "socks",
+                              "qty": 1,
+                              "userDefinedQty": true
+                            },
+                            {
+                              "sku": "headband",
+                              "qty": 1,
+                              "userDefinedQty": true
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "sku": "top-red",
+                      "scope": {
+                        "locale": "en"
+                      },
+                      "name": "Red Top",
+                      "slug": "top-red",
+                      "status": "ENABLED",
+                      "visibleIn": [
+                        "CATALOG"
+                      ],
+                      "links": [
+                        {
+                          "type": "in_bundle",
+                          "sku": "bundle-outfit"
+                        }
+                      ]
+                    },
+                    {
+                      "sku": "top-blue",
+                      "scope": {
+                        "locale": "en"
+                      },
+                      "name": "Blue Top",
+                      "slug": "top-blue",
+                      "status": "ENABLED",
+                      "visibleIn": [
+                        "CATALOG"
+                      ],
+                      "links": [
+                        {
+                          "type": "in_bundle",
+                          "sku": "bundle-outfit"
+                        }
+                      ]
+                    },
+                    {
+                      "sku": "bottom-black",
+                      "scope": {
+                        "locale": "en"
+                      },
+                      "name": "Black Bottom",
+                      "slug": "bottom-black",
+                      "status": "ENABLED",
+                      "visibleIn": [
+                        "CATALOG"
+                      ],
+                      "links": [
+                        {
+                          "type": "in_bundle",
+                          "sku": "bundle-outfit"
+                        }
+                      ]
+                    },
+                    {
+                      "sku": "bottom-white",
+                      "scope": {
+                        "locale": "en"
+                      },
+                      "name": "White Bottom",
+                      "slug": "bottom-white",
+                      "status": "ENABLED",
+                      "visibleIn": [
+                        "CATALOG"
+                      ],
+                      "links": [
+                        {
+                          "type": "in_bundle",
+                          "sku": "bundle-outfit"
+                        }
+                      ]
+                    },
+                    {
+                      "sku": "socks",
+                      "scope": {
+                        "locale": "en"
+                      },
+                      "name": "Socks",
+                      "slug": "socks",
+                      "status": "ENABLED",
+                      "visibleIn": [
+                        "CATALOG"
+                      ],
+                      "links": [
+                        {
+                          "type": "in_bundle",
+                          "sku": "bundle-outfit"
+                        }
+                      ]
+                    },
+                    {
+                      "sku": "headband",
+                      "scope": {
+                        "locale": "en"
+                      },
+                      "name": "Headband",
+                      "slug": "headband",
+                      "status": "ENABLED",
+                      "visibleIn": [
+                        "CATALOG"
+                      ],
+                      "links": [
+                        {
+                          "type": "in_bundle",
+                          "sku": "bundle-outfit"
+                        }
+                      ]
+                    }
+                  ]
     patch:
       tags:
         - Products
@@ -813,6 +1003,80 @@ paths:
                         }
                       ],
                       "links": [ ]
+                    }
+                  ]
+              AddNewAccessoryItem:
+                summary: Add a new item `gloves` to the accessories group of the bundle product `bundle-outfit`.
+                description: |
+                  To add a new item `gloves` to the accessories group of the bundle product `bundle-outfit`, include the new item in the `items` array of the `accessories` group.
+                  Note that simple product `gloves` must be created separately using the create product API.
+                value:
+                  [
+                    {
+                      "sku": "bundle-outfit",
+                      "scope": {
+                        "locale": "en"
+                      },
+                      "bundles": [
+                        {
+                          "group": "tops",
+                          "required": true,
+                          "multiSelect": false,
+                          "defaultItemSkus": [ "top-red" ],
+                          "items": [
+                            {
+                              "sku": "top-red",
+                              "qty": 1,
+                              "userDefinedQty": false
+                            },
+                            {
+                              "sku": "top-blue",
+                              "qty": 1,
+                              "userDefinedQty": false
+                            }
+                          ]
+                        },
+                        {
+                          "group": "bottoms",
+                          "required": true,
+                          "multiSelect": false,
+                          "defaultItemSkus": [ "bottom-black" ],
+                          "items": [
+                            {
+                              "sku": "bottom-black",
+                              "qty": 1,
+                              "userDefinedQty": false
+                            },
+                            {
+                              "sku": "bottom-white",
+                              "qty": 1,
+                              "userDefinedQty": false
+                            }
+                          ]
+                        },
+                        {
+                          "group": "accessories",
+                          "required": false,
+                          "multiSelect": true,
+                          "items": [
+                            {
+                              "sku": "socks",
+                              "qty": 1,
+                              "userDefinedQty": true
+                            },
+                            {
+                              "sku": "headband",
+                              "qty": 1,
+                              "userDefinedQty": true
+                            },
+                            {
+                              "sku": "gloves",
+                              "qty": 1,
+                              "userDefinedQty": true
+                            }
+                          ]
+                        }
+                      ]
                     }
                   ]
   /v1/catalog/products/delete:
@@ -1640,11 +1904,16 @@ components:
           description: A list of product routes.
           items:
             $ref: '#/components/schemas/ProductRoutes'
-        options:
+        configurations:
           type: array
           description: Composite products, such as configurable products, must provide a list of product options that a shopper can select (for example, "color", "size", etc.).
           items:
-            $ref: '#/components/schemas/ProductOption'
+            $ref: '#/components/schemas/ProductConfiguration'
+        bundles:
+          type: array
+          description: Composite products, such as bundle products, must include a list of individual products that are part of the bundle, organized into groups (for example, "shirts", "pants", "accessories").
+          items:
+            $ref: '#/components/schemas/ProductBundle'
     FeedProductUpdate:
       title: Catalog Product payload
       type: object
@@ -1721,11 +1990,16 @@ components:
           description: A list of product routes.
           items:
             $ref: '#/components/schemas/ProductRoutes'
-        options:
+        configurations:
           type: array
-          description: Options associated with the product.
+          description: Composite products, such as configurable products, must provide a list of product options that a shopper can select (for example, "color", "size", etc.).
           items:
-            $ref: '#/components/schemas/ProductOption'
+            $ref: '#/components/schemas/ProductConfiguration'
+        bundles:
+          type: array
+          description: Composite products, such as bundle products, must include a list of individual products that are part of the bundle, organized into groups (for example, "shirts", "pants", "accessories").
+          items:
+            $ref: '#/components/schemas/ProductBundle'
     FeedProductDelete:
       title: Catalog Product delete payload
       type: object
@@ -1949,30 +2223,26 @@ components:
              Custom image role. Merchants can define custom roles in addition to the predefined values.
           items:
             type: string
-    ProductOption:
-      title: ProductOption
+    ProductConfiguration:
+      title: ProductConfiguration
       type: object
       required:
-        - id
+        - attributeCode
         - type
         - values
       properties:
-        id:
+        attributeCode:
           type: string
           description: |
-            Product option ID. For `CONFIGURABLE` or `SWATCH` option types, this ID must match the
-            ["attribute code"](#operation/ProductsPost!path=attributes/code&t=request) used for the 
-            configurable product (for example, "color").
+            Product option attribute code. For `CONFIGURABLE` or `SWATCH` option types, this ID must match the
+            ["attribute code"](#operation/ProductsPost!path=attributes/code&t=request)
+            used for the configurable product (for example, "color").
         label:
           type: string
           description: Option label
-        required:
-          type: boolean
-          description: Indicates whether selecting the option is required by a shopper to add a product to the shopping cart.
-          example: false
-        defaultValueId:
+        defaultVariantReferenceId:
           type: string
-          description: Specifies the pre-selected value id of the current option.
+          description: Specifies the pre-selected value variant reference id of the current option.
         type:
           type: string
           enum:
@@ -1991,9 +2261,9 @@ components:
       title: ProductOptionValue
       type: object
       required:
-        - id
+        - variantReferenceId
       properties:
-        id:
+        variantReferenceId:
           type: string
           description: |
             Option value ID.
@@ -2008,10 +2278,56 @@ components:
         imageUrl:
           type: string
           description: Image URL of the option value. Can be used for option with a SWATCH type.
-# Reason for hiding: it's relevant only for Bundle Product which is not yet supported by CCDM API
-#        sku:
-#          type: string
-#          description: Product SKU associated with the option value.
+    ProductBundle:
+      title: ProductBundle
+      type: object
+      required:
+        - group
+        - items
+      properties:
+        group:
+          type: string
+          description: |
+            Name of the group that organizes the bundle items.
+            This helps in categorizing the items within the bundle for better organization.
+            For example, groups can be "shirts", "pants", "accessories", etc.
+        required:
+          type: boolean
+          description: Indicates whether a shopper is required to select any products from this group to add the bundle to the shopping cart.
+          example: false
+        multiSelect:
+          type: boolean
+          description: Indicates whether multiple products can be selected by a shopper.
+          example: false
+        defaultItemSkus:
+          type: array
+          description: A list of default product SKUs that are selected in this bundle group.
+          items:
+            type: string
+        items:
+          type: array
+          description: |
+            A list of individual products that are part of the bundle.
+            Each item in the list represents a product that can be selected as part of the bundle.
+          items:
+            $ref: '#/components/schemas/ProductBundleItem'
+    ProductBundleItem:
+      title: ProductBundleItem
+      type: object
+      required:
+        - sku
+      properties:
+        sku:
+          type: string
+          description: Product SKU of the bundle item.
+        qty:
+          type: number
+          description: Quantity of the item in the bundle.
+          format: float
+        userDefinedQty:
+          type: boolean
+          description: Indicates whether the quantity of the item in the bundle can be defined by a shopper.
+          example: false
     ProductLink:
       title: Links
       required:
@@ -2023,7 +2339,8 @@ components:
           type: string
           description: |
             Product link type. Merchants can define custom types in addition to the predefined values.
-            `VARIANT_OF` link type must be specified to establish a connection to the configurable product SKU.
+            - `VARIANT_OF` link type must be specified to establish a connection to the configurable product SKU.
+            - `IN_BUNDLE` link type must be specified to establish a connection to the bundle product SKU.
         sku:
           type: string
           description: Product SKU
