@@ -1,7 +1,7 @@
 ---
 title: Cloud Service REST API Reference
 description: Learn about Adobe Commerce as a Cloud Service REST API.
-edition: ee
+edition: paas
 keywords:
   - REST
   - Services
@@ -9,6 +9,10 @@ noIndex: true
 ---
 
 # REST API reference for Adobe Commerce as a Cloud Service
+
+import ACCSEarlyAccess from '/src/_includes/accs/accs-early-access.md'
+
+<ACCSEarlyAccess />
 
 The Adobe Commerce as a Cloud Service REST API contains the following endpoints. More detailed endpoint information will be available in the future. For more immediate information, you can cross-reference the endpoints listed here with the existing [REST API reference](https://developer.adobe.com/commerce/webapi/rest/quick-reference/) for Adobe Commerce on Cloud and on-premises deployments.
 

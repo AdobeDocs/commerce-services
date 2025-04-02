@@ -6,9 +6,14 @@ keywords:
   - REST
   - Services
 noIndex: true
+edition: saas
 ---
 
 # Adobe Commerce as a Cloud Service API Guide
+
+import ACCSEarlyAccess from '/src/_includes/accs/accs-early-access.md'
+
+<ACCSEarlyAccess />
 
 Adobe Commerce as a Cloud Service offers flexibility, scalability, and efficiency by enabling businesses to deliver and rapidly scale digital operations and accelerate innovation. Adobe's cloud-native infrastructure automatically adjusts resources to meet peak demands for traffic, orders, and catalog management.
 

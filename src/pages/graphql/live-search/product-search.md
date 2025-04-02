@@ -1,6 +1,6 @@
 ---
 title: productSearch query
-edition: ee
+edition: paas
 description: Describes how to construct and use the productSearch query in both Live Search and Catalog Service.
 keywords:
   - GraphQL
@@ -132,7 +132,13 @@ The `filter` attribute is the part of the query that uses product attributes as 
 
 #### Filtering by attributes
 
-An attribute filter consists of a product `attribute`, a comparison operator, and the value that is being searched for. Together, they help narrow down the search results, based on shopper input. For example, if you want to set up a filter for jackets based on size, you could set the product attribute to `size`. To filter on medium-sized jackets only, set the `eq` field to `M`. To filter on both medium- and large-sized jackets, set the `in` field to `["M", "L"]`. If an attribute is numeric, you can filter on it as a price range, such as between $50 and $100. To filter on a price range, set the `attribute` to `price`, and assign the `range` field with `from` and `to` values as `50` and `100`, respectively.
+An attribute filter consists of a product `attribute`, a comparison operator, and the value that is being searched for. Together, they help narrow the search results, based on shopper input. For example:
+
+- To set up a filter for jackets based on size, set the product attribute to `size`.
+- To filter on medium-sized jackets only, set the `eq` field to `M`.
+- To filter on both medium- and large-sized jackets, set the `in` field to `["M", "L"]`.
+
+If an attribute is numeric, you can filter on it as a price range, such as between $50 and $100. For example, to filter on a price range, set the `attribute` to `price`, and assign the `range` field with `from` and `to` values as `50` and `100`, respectively. Products that are equal to the upper range are not included in the results. This aligns with how price ranges are defined for facets.
 
 You can define multiple filters in the same call. The following example filters on the price and size:
 

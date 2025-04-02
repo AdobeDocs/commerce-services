@@ -9,6 +9,10 @@ noIndex: true
 
 # User authentication
 
+import ACCSEarlyAccess from '/src/_includes/accs/accs-early-access.md'
+
+<ACCSEarlyAccess />
+
 User Authentication with Adobe's Secure User Sign-In (SUSI) interface enables Commerce administrators to authenticate through Adobe's Identity Management Service (IMS). This authentication flow is specifically designed for scenarios where API operations need to be executed with user-specific permissions. When using this method, all API calls are performed within the context of the authenticated admin user's permissions, as defined in the Adobe Admin Console.
 
 Adobe provides three types of OAuth credentials for User Authentication with a different application architectures:
