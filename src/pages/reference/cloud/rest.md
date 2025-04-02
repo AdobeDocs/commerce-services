@@ -10,7 +10,6 @@ noIndex: true
 
 # REST API reference for Adobe Commerce as a Cloud Service
 
-
 import ACCSEarlyAccess from '/src/_includes/accs/accs-early-access.md'
 
 <ACCSEarlyAccess />
