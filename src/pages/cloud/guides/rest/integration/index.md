@@ -9,6 +9,10 @@ noIndex: true
 
 # Server-to-server integration
 
+import ACCSEarlyAccess from '/src/_includes/accs/accs-early-access.md'
+
+<ACCSEarlyAccess />
+
 This guide provides practical steps for implementing Server-to-Server integration with Adobe Commerce Cloud Services REST APIs using OAuth server-to-server authentication. This type of integration enables automated system-to-system communication without user intervention, which is ideal for to following use cases:
 
 - Background processes and automated tasks

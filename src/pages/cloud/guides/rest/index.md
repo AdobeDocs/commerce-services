@@ -9,6 +9,10 @@ noIndex: true
 
 # Rest overview
 
+import ACCSEarlyAccess from '/src/_includes/accs/accs-early-access.md'
+
+<ACCSEarlyAccess />
+
 The Adobe Commerce as a Cloud Service REST API serves as a critical tool for extending and integrating commerce functionalities, but the endpoints available differ significantly from the REST APIs for Adobe Commerce on Cloud and on-premises deployments.
 
 The following key differences are important to consider when planning your REST API integrations with Adobe Commerce as a Cloud Service:
