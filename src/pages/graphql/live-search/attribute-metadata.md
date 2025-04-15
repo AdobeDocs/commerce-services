@@ -1,6 +1,6 @@
 ---
 title: attributeMetadata query
-edition: ee
+edition: acc
 description: Describes how to construct and use the Live Search attributeMetadata query.
 keywords:
   - GraphQL

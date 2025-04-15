@@ -1,6 +1,6 @@
 ---
 title: variants query
-edition: ee
+edition: acc
 description: "Describes how to construct and use the Catalog Service `variants` query to retrieve details about the variants available for a product."
 keywords:
   - GraphQL
