@@ -15,9 +15,7 @@ info:
 servers:
   - url: https://na1-sandbox.api.commerce.adobe.com/<tenantId>
     description: |-
-      Sandbox endpoint. The `tenantId` is your Adobe Experience Cloud tenant ID. It is a subdomain of your Experience
-      Cloud URL. For example, if your Experience Cloud URL is https://experience.adobe.com/#/@my-cloud-instance/cloud-manager/landing.html or
-      `mycloudinstance`.marketing.adobe.com, the tenant ID is `mycloudinstance`.
+      Sandbox endpoint. The `tenantId` is your Adobe Experience Cloud tenant ID. It is a subdomain of your Experience Cloud URL. For example, if your Experience Cloud URL is https://experience.adobe.com/#/@my-cloud-instance/cloud-manager/landing.html or your site address is `mycloudinstance.marketing.adobe.com`, the tenant ID is `mycloudinstance`.
 tags:
   - name: Metadata
     description: |
