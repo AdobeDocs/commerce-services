@@ -428,7 +428,7 @@ info:
   title: Channels and Policies API
   # This is non-standard and optional. If omitted, will use "title". Also, only relevant
   # when building non-embedded.
-  x-htmlTitle: Catalog management and rules API
+  x-htmlTitle: Channels and Policies API
   # termsOfService: 'https://yoursite.com/terms'
   # contact:
   #   name: YourSite Support
