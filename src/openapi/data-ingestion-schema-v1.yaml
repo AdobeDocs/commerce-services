@@ -2,21 +2,19 @@ openapi: 3.0.3
 info:
   title: Catalog Data Ingestion API
   description: |
-   The Catalog Data Ingestion API allows you to create and manage products and price books and directly integrate catalog data with the Commerce catalog service.
+    The Catalog Data Ingestion API allows you to create and manage products and price books and directly integrate catalog data with the Commerce catalog service.
 
-    This API provides the following resource collections to create and update catalog data:
+     This API provides the following resource collections to create and update catalog data:
 
-    - **Metadata**—define and manage product attribute metadata including display settings, search characteristics, filtering options, and sorting rules.
-    - **Products**—define and manage catalog items with their attributes (name, description, SKU, images, and variants).
-    - **Price books**—define and manage pricing scopes for different customer tiers and markets.
-    - **Prices**—define and manage product SKU prices and their associated price books.
+     - **Metadata**—define and manage product attribute metadata including display settings, search characteristics, filtering options, and sorting rules.
+     - **Products**—define and manage catalog items with their attributes (name, description, SKU, images, and variants).
+     - **Price books**—define and manage pricing scopes for different customer tiers and markets.
+     - **Prices**—define and manage product SKU prices and their associated price books.
 
   version: 1.0.0
 servers:
-  - url: https://commerce.adobe.io/<DATA_SPACE_ID>/api
-    description: |-
-      Production endpoint. The DATA_SPACE_ID value is the ID for the data space where commerce catalog data is stored.
-      See [SaaS configuration](https://experienceleague.adobe.com/en/docs/commerce/user-guides/integration-services/saas#saasenv) in Adobe Experience League.
+  - url: https://na1.api.commerce.adobe.com/<TENANT_ID>/
+    description: Production endpoint. The TENANT_ID value is the identifier of the Adobe Commerce instance. See [Adobe Commerce Cloud Manager](https://experience.adobe.com/#/commerce/cloud-service/instances) to see your available instances.
 
 tags:
   - name: Metadata
@@ -31,17 +29,17 @@ tags:
     description: Create and manage product data including simple products, configurable products, and their variants. Control product visibility, attributes, images, and pricing
   - name: Price Books
     description: |
-          Define pricing scopes to manage product prices across different customer tiers and markets. Each price book can have its own currency and discount rules.
+      Define pricing scopes to manage product prices across different customer tiers and markets. Each price book can have its own currency and discount rules.
 
-          The catalog data model provides a default price book with id `main` and currency in US dollars (`USD`).
+      The catalog data model provides a default price book with id `main` and currency in US dollars (`USD`).
   - name: Prices
     description: |
-       Manage product SKU prices across different price books and customer tiers. Define regular prices and
-       special discounts for specific customer segments or markets. The scope identifies the price books and price
-       tiers where the price is used.
+      Manage product SKU prices across different price books and customer tiers. Define regular prices and
+      special discounts for specific customer segments or markets. The scope identifies the price books and price
+      tiers where the price is used.
 
-       <strong>Note:</strong> You cannot define prices for configurable products. Prices for configurable products
-        are calculated based on the price of the selected product variant.
+      <strong>Note:</strong> You cannot define prices for configurable products. Prices for configurable products
+       are calculated based on the price of the selected product variant.
 
 paths:
   /v1/catalog/products/metadata:
@@ -72,7 +70,7 @@ paths:
 
         To update existing product attribute metadata, use the update operation.
 
-      operationId: ProductMetadataPut
+      operationId: createProductMetadata
       parameters:
         - name: Content-Type
           in: header
@@ -80,18 +78,12 @@ paths:
           schema:
             type: string
             enum: [application/json]
-        - name: x-api-key
+        - name: Authorization
           in: header
           required: true
           schema:
             type: string
-          description: Production public API key
-        - name: x-gw-signature
-          in: header
-          required: true
-          schema:
-            type: string
-          description: JWT generated for Production public API key
+          description: Authorization Bearer token
         - name: Content-Encoding
           in: header
           required: false
@@ -105,7 +97,7 @@ paths:
             schema:
               type: array
               items:
-                $ref: '#/components/schemas/FeedMetadata'
+                $ref: "#/components/schemas/FeedMetadata"
             examples:
               FeedWithMetadataInformation:
                 summary: Create product attributes metadata
@@ -116,122 +108,102 @@ paths:
                   [
                     {
                       "code": "sku",
-                      "scope": {
-                        "locale": "en"
-                      },
+                      "scope": { "locale": "en" },
                       "label": "Product Name",
                       "dataType": "TEXT",
-                      "visibleIn": [
+                      "visibleIn":
+                        [
                           "PRODUCT_DETAIL",
                           "PRODUCT_LISTING",
                           "SEARCH_RESULTS",
-                          "PRODUCT_COMPARE"
+                          "PRODUCT_COMPARE",
                         ],
-                        "filterable": true,
-                        "sortable": false,
-                        "searchable": true,
-                        "searchWeight": 1,
-                        "searchTypes": [
-                            "AUTOCOMPLETE"
-                        ]
-                      },
+                      "filterable": true,
+                      "sortable": false,
+                      "searchable": true,
+                      "searchWeight": 1,
+                      "searchTypes": ["AUTOCOMPLETE"],
+                    },
                     {
                       "code": "name",
-                      "scope": {
-                        "locale": "en"
-                      },
+                      "scope": { "locale": "en" },
                       "label": "Product Name",
                       "dataType": "TEXT",
-                      "visibleIn": [
+                      "visibleIn":
+                        [
                           "PRODUCT_DETAIL",
                           "PRODUCT_LISTING",
                           "SEARCH_RESULTS",
-                          "PRODUCT_COMPARE"
+                          "PRODUCT_COMPARE",
                         ],
-                        "filterable": false,
-                        "sortable": true,
-                        "searchable": true,
-                        "searchWeight": 1,
-                        "searchTypes": [
-                            "AUTOCOMPLETE"
-                        ]
-                      },
+                      "filterable": false,
+                      "sortable": true,
+                      "searchable": true,
+                      "searchWeight": 1,
+                      "searchTypes": ["AUTOCOMPLETE"],
+                    },
                     {
                       "code": "description",
-                      "scope": {
-                        "locale": "en"
-                      },
+                      "scope": { "locale": "en" },
                       "label": "Product Description",
                       "dataType": "TEXT",
-                      "visibleIn": [
-                        "PRODUCT_DETAIL"
-                      ],
+                      "visibleIn": ["PRODUCT_DETAIL"],
                       "filterable": false,
                       "sortable": false,
                       "searchable": false,
                       "searchWeight": 1,
-                      "searchTypes": [
-                        "AUTOCOMPLETE"
-                      ]
+                      "searchTypes": ["AUTOCOMPLETE"],
                     },
                     {
                       "code": "shortDescription",
-                      "scope": {
-                        "locale": "en"
-                      },
+                      "scope": { "locale": "en" },
                       "label": "Product Short Description",
                       "dataType": "TEXT",
-                      "visibleIn": [
-                        "PRODUCT_DETAIL"
-                      ],
+                      "visibleIn": ["PRODUCT_DETAIL"],
                       "filterable": false,
                       "sortable": false,
                       "searchable": true,
                       "searchWeight": 1,
-                      "searchTypes": [
-                        "AUTOCOMPLETE"
-                      ]
+                      "searchTypes": ["AUTOCOMPLETE"],
                     },
                     {
                       "code": "price",
-                      "scope": {
-                        "locale": "en"
-                      },
+                      "scope": { "locale": "en" },
                       "label": "Price",
                       "dataType": "DECIMAL",
-                      "visibleIn": [
-                        "PRODUCT_DETAIL",
-                        "PRODUCT_LISTING",
-                        "SEARCH_RESULTS",
-                        "PRODUCT_COMPARE"
-                      ],
+                      "visibleIn":
+                        [
+                          "PRODUCT_DETAIL",
+                          "PRODUCT_LISTING",
+                          "SEARCH_RESULTS",
+                          "PRODUCT_COMPARE",
+                        ],
                       "filterable": true,
                       "sortable": true,
                       "searchable": false,
                       "searchWeight": 1,
-                      "searchTypes": [
-                      ]
-                    }
+                      "searchTypes": [],
+                    },
                   ]
       responses:
-        '200':
+        "200":
           description: All items in the request are accepted for further processing.
           content:
             application/json;charset=UTF-8:
               schema:
-                $ref: '#/components/schemas/ProcessFeedResponse'
-        '400':
+                $ref: "#/components/schemas/ProcessFeedResponse"
+        "400":
           description: Request rejected. Some of the received items are invalid. Check the "message" and "errors" fields for details.
           content:
             application/json;charset=UTF-8:
               schema:
-                $ref: '#/components/schemas/400ProcessFeedResponse'
-        '403':
-          description: Unauthorized request. Verify the `x-api-key` and make sure that the JWT in `x-gw-signature` is still valid.
+                $ref: "#/components/schemas/400ProcessFeedResponse"
+        "403":
+          description: Unauthorized request. Verify the `Authorization` header is present and the Bearer token is still valid.
           content:
             application/json;charset=UTF-8:
               schema:
-                $ref: '#/components/schemas/403Response'
+                $ref: "#/components/schemas/403Response"
     patch:
       tags:
         - Metadata
@@ -239,7 +211,7 @@ paths:
       description: |
         Update existing product attribute metadata with new values.
         When the update is processed, the merge strategy is used to apply changes to `scalar` and `object` type fields. The replace strategy is used to apply changes for fields in an `array`.
-      operationId: ProductMetadataPatch
+      operationId: updateProductMetadata
       parameters:
         - name: Content-Type
           in: header
@@ -247,18 +219,12 @@ paths:
           schema:
             type: string
             enum: [application/json]
-        - name: x-api-key
+        - name: Authorization
           in: header
           required: true
           schema:
             type: string
-          description: Production public API key
-        - name: x-gw-signature
-          in: header
-          required: true
-          schema:
-            type: string
-          description: JWT generated for Production public API key.
+          description: Authorization Bearer token
         - name: Content-Encoding
           in: header
           required: false
@@ -272,7 +238,7 @@ paths:
             schema:
               type: array
               items:
-                $ref: '#/components/schemas/FeedMetadataUpdate'
+                $ref: "#/components/schemas/FeedMetadataUpdate"
             examples:
               FeedWithMetadataInformation:
                 summary: Example of product attribute metadata
@@ -286,39 +252,37 @@ paths:
                   [
                     {
                       "code": "name",
-                      "scope": {
-                        "locale": "en"
-                      },
+                      "scope": { "locale": "en" },
                       "label": "Updated - Product Name",
-                      "visibleIn": ["PRODUCT_DETAIL", "PRODUCT_LISTING"]
-                    }
+                      "visibleIn": ["PRODUCT_DETAIL", "PRODUCT_LISTING"],
+                    },
                   ]
       responses:
-        '200':
+        "200":
           description: All items in the request are accepted for further processing.
           content:
             application/json;charset=UTF-8:
               schema:
-                $ref: '#/components/schemas/ProcessFeedResponse'
-        '400':
+                $ref: "#/components/schemas/ProcessFeedResponse"
+        "400":
           description: Request rejected. Some of the received items are invalid. Check the "invalidFeedItems" node for specific errors.
           content:
             application/json;charset=UTF-8:
               schema:
-                $ref: '#/components/schemas/400ProcessFeedResponse'
-        '403':
-          description: Unauthorized request. Verify the `x-api-key` and make sure that the JWT in `x-gw-signature` is still valid.
+                $ref: "#/components/schemas/400ProcessFeedResponse"
+        "403":
+          description: Unauthorized request. Verify the `Authorization` header is present and the Bearer token is still valid.
           content:
             application/json;charset=UTF-8:
               schema:
-                $ref: '#/components/schemas/403Response'
+                $ref: "#/components/schemas/403Response"
   /v1/catalog/products/metadata/delete:
     post:
       tags:
         - Metadata
       summary: Delete product attributes metadata.
       description: Remove product attribute metadata resources from the catalog data.
-      operationId: ProductMetadataDelete
+      operationId: deleteProductMetadata
       parameters:
         - name: Content-Type
           in: header
@@ -326,18 +290,12 @@ paths:
           schema:
             type: string
             enum: [application/json]
-        - name: x-api-key
+        - name: Authorization
           in: header
           required: true
           schema:
             type: string
-          description: Production public API key.
-        - name: x-gw-signature
-          in: header
-          required: true
-          schema:
-            type: string
-          description: JWT generated for Production public API key.
+          description: Authorization Bearer token.
         - name: Content-Encoding
           in: header
           required: false
@@ -351,39 +309,31 @@ paths:
             schema:
               type: array
               items:
-                $ref: '#/components/schemas/FeedMetadataDelete'
+                $ref: "#/components/schemas/FeedMetadataDelete"
             examples:
               FeedWithMetadataInformation:
                 summary: Delete product attribute metadata.
                 description: Marks existing product attribute metadata as deleted.
-                value:
-                  [
-                    {
-                      "code": "name",
-                      "scope": {
-                        "locale": "en"
-                      }
-                    }
-                  ]
+                value: [{ "code": "name", "scope": { "locale": "en" } }]
       responses:
-        '200':
+        "200":
           description: All items in the request are accepted for further processing.
           content:
             application/json;charset=UTF-8:
               schema:
-                $ref: '#/components/schemas/ProcessFeedResponse'
-        '400':
+                $ref: "#/components/schemas/ProcessFeedResponse"
+        "400":
           description: Some received items are invalid. Check the ‘invalidFeedItems’ node for specific errors.
           content:
             application/json;charset=UTF-8:
-             schema:
-              $ref: '#/components/schemas/400ProcessFeedResponse'
-        '403':
+              schema:
+                $ref: "#/components/schemas/400ProcessFeedResponse"
+        "403":
           description: Unauthorized request. Verify the ‘x-api-key’ and make sure that the JWT in ‘x-gw-signature’ is still valid.
           content:
             application/json;charset=UTF-8:
               schema:
-                $ref: '#/components/schemas/403Response'
+                $ref: "#/components/schemas/403Response"
 
   /v1/catalog/products:
     post:
@@ -434,30 +384,30 @@ paths:
         In the field ["links"](#operation/ProductsPost!path=links&t=request), the type `IN_BUNDLE` must be defined for simple products that belong to bundle products with reference to it.
 
         <strong>Note:</strong> A simple product can be included only once in each bundle. If the same item is specified in multiple groups, the API returns a `Duplicate SKU found in bundle items` error.
-        
+
         To update a bundle product, do one of the following:
         - Use [Update Product API](#operation/ProductsPatch) to modify the groups and items in the bundle.
         - Use [Delete Product API](#operation/ProductsDelete) to remove items from the bundle.
-      operationId: ProductsPost
+      operationId: createProducts
       parameters:
-        - $ref: '#/components/parameters/ContentType'
-        - $ref: '#/components/parameters/xApiKey'
-        - $ref: '#/components/parameters/xGwSignature'
-        - $ref: '#/components/parameters/ContentEncoding'
+        - $ref: "#/components/parameters/ContentType"
+        - $ref: "#/components/parameters/xApiKey"
+        - $ref: "#/components/parameters/xGwSignature"
+        - $ref: "#/components/parameters/ContentEncoding"
       responses:
-        '200':
-          $ref: '#/components/responses/AcceptedResponse'
-        '400':
-          $ref: '#/components/responses/InvalidItemsResponse'
-        '403':
-          $ref: '#/components/responses/UnauthorizedResponse'
+        "200":
+          $ref: "#/components/responses/AcceptedResponse"
+        "400":
+          $ref: "#/components/responses/InvalidItemsResponse"
+        "403":
+          $ref: "#/components/responses/UnauthorizedResponse"
       requestBody:
         content:
           application/json:
             schema:
               type: array
               items:
-                $ref: '#/components/schemas/FeedProduct'
+                $ref: "#/components/schemas/FeedProduct"
             examples:
               SimpleProductWithImages:
                 summary: Create a simple product.
@@ -467,66 +417,47 @@ paths:
                   [
                     {
                       "sku": "red-pants",
-                      "scope": {
-                        "locale": "en"
-                      },
+                      "scope": { "locale": "en" },
                       "name": "red pants",
                       "slug": "red-pants.html",
                       "status": "ENABLED",
                       "description": "long description about red pants",
                       "shortDescription": "just pants",
-                      "visibleIn": [
-                        "CATALOG",
-                        "SEARCH"
-                      ],
-                      "metaTags": {
-                        "title": "Yoga pants ",
-                        "description": "Climb with Zeppelin Yoga Pant",
-                        "keywords": [
-                          "pants",
-                          "yoga"
-                        ]
-                      },
-                      "attributes": [
+                      "visibleIn": ["CATALOG", "SEARCH"],
+                      "metaTags":
                         {
-                          "code": "cost",
-                          "type": "NUMBER",
-                          "values": [
-                            "10.5"
-                          ]
+                          "title": "Yoga pants ",
+                          "description": "Climb with Zeppelin Yoga Pant",
+                          "keywords": ["pants", "yoga"],
                         },
-                        {
-                          "code": "states",
-                          "type": "ARRAY",
-                          "values": [
-                            "TX",
-                            "CA"
-                          ]
-                        }
-                      ],
-                      "images": [
-                        {
-                          "url": "https://example.com/images/pants.jpg",
-                          "label": "photo of my pants!",
-                          "roles": [
-                            "BASE",
-                            "SMALL"
-                          ],
-                          "customRoles": [
-                            "widget"
-                          ]
-                        }
-                      ],
-                      "routes": [
-                        {
-                          "path": "red-pants"
-                        },
-                        {
-                          "path": "pants/red-pants",
-                          "position": 1
-                        }
-                      ]
-                    }
+                      "attributes":
+                        [
+                          {
+                            "code": "cost",
+                            "type": "NUMBER",
+                            "values": ["10.5"],
+                          },
+                          {
+                            "code": "states",
+                            "type": "ARRAY",
+                            "values": ["TX", "CA"],
+                          },
+                        ],
+                      "images":
+                        [
+                          {
+                            "url": "https://example.com/images/pants.jpg",
+                            "label": "photo of my pants!",
+                            "roles": ["BASE", "SMALL"],
+                            "customRoles": ["widget"],
+                          },
+                        ],
+                      "routes":
+                        [
+                          { "path": "red-pants" },
+                          { "path": "pants/red-pants", "position": 1 },
+                        ],
+                    },
                   ]
               ConfigurableProductWithVariants:
                 summary: Create a configurable product with four product variants.
@@ -536,185 +467,143 @@ paths:
                   [
                     {
                       "sku": "pants",
-                      "scope": {
-                        "locale": "en"
-                      },
+                      "scope": { "locale": "en" },
                       "name": "Yoga pants",
                       "slug": "zeppelin-yoga-pant",
                       "status": "ENABLED",
-                      "visibleIn": [
-                        "CATALOG"
-                      ],
-                      "configurations": [
-                        {
-                          "attributeCode": "color",
-                          "label": "Pants color",
-                          "defaultVariantReferenceId": "pants-color-red",
-                          "type": "SWATCH",
-                          "values": [
-                            {
-                              "variantReferenceId": "pants-color-red",
-                              "label": "Red",
-                              "colorHex": "#ff0000"
-                            },
-                            {
-                              "variantReferenceId": "pants-color-green",
-                              "label": "Green",
-                              "imageUrl": "https://www.example.com/media/catalog/product/green_main_1.jpg"
-                            }
-                          ]
-                        },
-                        {
-                          "attributeCode": "size",
-                          "label": "Pants size",
-                          "defaultVariantReferenceId": "pants-size-32",
-                          "type": "CONFIGURABLE",
-                          "values": [
-                            {
-                              "variantReferenceId": "pants-size-32",
-                              "label": "32"
-                            },
-                            {
-                              "variantReferenceId": "pants-size-44",
-                              "label": "44"
-                            }
-                          ]
-                        }
-                      ]
+                      "visibleIn": ["CATALOG"],
+                      "configurations":
+                        [
+                          {
+                            "attributeCode": "color",
+                            "label": "Pants color",
+                            "defaultVariantReferenceId": "pants-color-red",
+                            "type": "SWATCH",
+                            "values":
+                              [
+                                {
+                                  "variantReferenceId": "pants-color-red",
+                                  "label": "Red",
+                                  "colorHex": "#ff0000",
+                                },
+                                {
+                                  "variantReferenceId": "pants-color-green",
+                                  "label": "Green",
+                                  "imageUrl": "https://www.example.com/media/catalog/product/green_main_1.jpg",
+                                },
+                              ],
+                          },
+                          {
+                            "attributeCode": "size",
+                            "label": "Pants size",
+                            "defaultVariantReferenceId": "pants-size-32",
+                            "type": "CONFIGURABLE",
+                            "values":
+                              [
+                                {
+                                  "variantReferenceId": "pants-size-32",
+                                  "label": "32",
+                                },
+                                {
+                                  "variantReferenceId": "pants-size-44",
+                                  "label": "44",
+                                },
+                              ],
+                          },
+                        ],
                     },
                     {
                       "sku": "pants-red-32",
-                      "scope": {
-                        "locale": "en"
-                      },
+                      "scope": { "locale": "en" },
                       "name": "Zeppelin Yoga Pant Red 32 size",
                       "slug": "pants-red-32",
                       "status": "ENABLED",
-                      "attributes": [
-                        {
-                          "code": "color",
-                          "type": "STRING",
-                          "values": [
-                            "Red Pants"
-                          ],
-                          "variantReferenceId": "pants-color-red"
-                        },
-                        {
-                          "code": "size",
-                          "type": "STRING",
-                          "values": [
-                            "32"
-                          ],
-                          "variantReferenceId": "pants-size-32"
-
-                        }
-                      ],
-                      "links": [
-                        {
-                          "type": "variant_of",
-                          "sku": "pants"
-                        }
-                      ]
+                      "attributes":
+                        [
+                          {
+                            "code": "color",
+                            "type": "STRING",
+                            "values": ["Red Pants"],
+                            "variantReferenceId": "pants-color-red",
+                          },
+                          {
+                            "code": "size",
+                            "type": "STRING",
+                            "values": ["32"],
+                            "variantReferenceId": "pants-size-32",
+                          },
+                        ],
+                      "links": [{ "type": "variant_of", "sku": "pants" }],
                     },
                     {
                       "sku": "pants-red-44",
-                      "scope": {
-                        "locale": "en"
-                      },
+                      "scope": { "locale": "en" },
                       "name": "Zeppelin Yoga Pant Red 44 size",
                       "slug": "pants-red-44",
                       "status": "ENABLED",
-                      "attributes": [
-                        {
-                          "code": "color",
-                          "type": "STRING",
-                          "values": [
-                            "Red Pants"
-                          ],
-                          "variantReferenceId": "pants-color-red"
-                        },
-                        {
-                          "code": "size",
-                          "type": "STRING",
-                          "values": [
-                            "44"
-                          ],
-                          "variantReferenceId": "pants-size-44"
-                        }
-                      ],
-                      "links": [
-                        {
-                          "type": "VARIANT_OF",
-                          "sku": "pants"
-                        }
-                      ]
+                      "attributes":
+                        [
+                          {
+                            "code": "color",
+                            "type": "STRING",
+                            "values": ["Red Pants"],
+                            "variantReferenceId": "pants-color-red",
+                          },
+                          {
+                            "code": "size",
+                            "type": "STRING",
+                            "values": ["44"],
+                            "variantReferenceId": "pants-size-44",
+                          },
+                        ],
+                      "links": [{ "type": "VARIANT_OF", "sku": "pants" }],
                     },
                     {
                       "sku": "pants-green-32",
-                      "scope": {
-                        "locale": "en"
-                      },
+                      "scope": { "locale": "en" },
                       "name": "Zeppelin Yoga Pant Green 32 size",
                       "slug": "pants-green-32",
                       "status": "ENABLED",
-                      "attributes": [
-                        {
-                          "code": "color",
-                          "type": "STRING",
-                          "values": [
-                            "Green Pants"
-                          ],
-                          "variantReferenceId": "pants-color-green"
-                        },
-                        {
-                          "code": "size",
-                          "type": "STRING",
-                          "values": [
-                            "32"
-                          ],
-                          "variantReferenceId": "pants-size-32"
-                        }
-                      ],
-                      "links": [
-                        {
-                          "type": "variant_of",
-                          "sku": "pants"
-                        }
-                      ]
+                      "attributes":
+                        [
+                          {
+                            "code": "color",
+                            "type": "STRING",
+                            "values": ["Green Pants"],
+                            "variantReferenceId": "pants-color-green",
+                          },
+                          {
+                            "code": "size",
+                            "type": "STRING",
+                            "values": ["32"],
+                            "variantReferenceId": "pants-size-32",
+                          },
+                        ],
+                      "links": [{ "type": "variant_of", "sku": "pants" }],
                     },
                     {
                       "sku": "pants-green-44",
-                      "scope": {
-                        "locale": "en"
-                      },
+                      "scope": { "locale": "en" },
                       "name": "Zeppelin Yoga Pant green 44 size",
                       "slug": "pants-green-44",
                       "status": "ENABLED",
-                      "attributes": [
-                        {
-                          "code": "color",
-                          "type": "STRING",
-                          "values": [
-                            "Green Pants"
-                          ],
-                          "variantReferenceId": "pants-color-green"
-                        },
-                        {
-                          "code": "size",
-                          "type": "STRING",
-                          "values": [
-                            "44"
-                          ],
-                          "variantReferenceId": "pants-size-44"
-                        }
-                      ],
-                      "links": [
-                        {
-                          "type": "variant_of",
-                          "sku": "pants"
-                        }
-                      ]
-                    }
+                      "attributes":
+                        [
+                          {
+                            "code": "color",
+                            "type": "STRING",
+                            "values": ["Green Pants"],
+                            "variantReferenceId": "pants-color-green",
+                          },
+                          {
+                            "code": "size",
+                            "type": "STRING",
+                            "values": ["44"],
+                            "variantReferenceId": "pants-size-44",
+                          },
+                        ],
+                      "links": [{ "type": "variant_of", "sku": "pants" }],
+                    },
                   ]
               BundleProductWithItems:
                 summary: Create a bundle product with multiple items.
@@ -725,179 +614,131 @@ paths:
                   [
                     {
                       "sku": "bundle-outfit",
-                      "scope": {
-                        "locale": "en"
-                      },
+                      "scope": { "locale": "en" },
                       "name": "Bundle Outfit",
                       "slug": "bundle-outfit",
                       "status": "ENABLED",
-                      "visibleIn": [
-                        "CATALOG"
-                      ],
-                      "bundles": [
-                        {
-                          "group": "tops",
-                          "required": true,
-                          "multiSelect": false,
-                          "defaultItemSkus": [ "top-red" ],
-                          "items": [
-                            {
-                              "sku": "top-red",
-                              "qty": 1,
-                              "userDefinedQty": false
-                            },
-                            {
-                              "sku": "top-blue",
-                              "qty": 1,
-                              "userDefinedQty": false
-                            }
-                          ]
-                        },
-                        {
-                          "group": "bottoms",
-                          "required": true,
-                          "multiSelect": false,
-                          "defaultItemSkus": [ "bottom-black" ],
-                          "items": [
-                            {
-                              "sku": "bottom-black",
-                              "qty": 1,
-                              "userDefinedQty": false
-                            },
-                            {
-                              "sku": "bottom-white",
-                              "qty": 1,
-                              "userDefinedQty": false
-                            }
-                          ]
-                        },
-                        {
-                          "group": "accessories",
-                          "required": false,
-                          "multiSelect": true,
-                          "items": [
-                            {
-                              "sku": "socks",
-                              "qty": 1,
-                              "userDefinedQty": true
-                            },
-                            {
-                              "sku": "headband",
-                              "qty": 1,
-                              "userDefinedQty": true
-                            }
-                          ]
-                        }
-                      ]
+                      "visibleIn": ["CATALOG"],
+                      "bundles":
+                        [
+                          {
+                            "group": "tops",
+                            "required": true,
+                            "multiSelect": false,
+                            "defaultItemSkus": ["top-red"],
+                            "items":
+                              [
+                                {
+                                  "sku": "top-red",
+                                  "qty": 1,
+                                  "userDefinedQty": false,
+                                },
+                                {
+                                  "sku": "top-blue",
+                                  "qty": 1,
+                                  "userDefinedQty": false,
+                                },
+                              ],
+                          },
+                          {
+                            "group": "bottoms",
+                            "required": true,
+                            "multiSelect": false,
+                            "defaultItemSkus": ["bottom-black"],
+                            "items":
+                              [
+                                {
+                                  "sku": "bottom-black",
+                                  "qty": 1,
+                                  "userDefinedQty": false,
+                                },
+                                {
+                                  "sku": "bottom-white",
+                                  "qty": 1,
+                                  "userDefinedQty": false,
+                                },
+                              ],
+                          },
+                          {
+                            "group": "accessories",
+                            "required": false,
+                            "multiSelect": true,
+                            "items":
+                              [
+                                {
+                                  "sku": "socks",
+                                  "qty": 1,
+                                  "userDefinedQty": true,
+                                },
+                                {
+                                  "sku": "headband",
+                                  "qty": 1,
+                                  "userDefinedQty": true,
+                                },
+                              ],
+                          },
+                        ],
                     },
                     {
                       "sku": "top-red",
-                      "scope": {
-                        "locale": "en"
-                      },
+                      "scope": { "locale": "en" },
                       "name": "Red Top",
                       "slug": "top-red",
                       "status": "ENABLED",
-                      "visibleIn": [
-                        "CATALOG"
-                      ],
-                      "links": [
-                        {
-                          "type": "in_bundle",
-                          "sku": "bundle-outfit"
-                        }
-                      ]
+                      "visibleIn": ["CATALOG"],
+                      "links":
+                        [{ "type": "in_bundle", "sku": "bundle-outfit" }],
                     },
                     {
                       "sku": "top-blue",
-                      "scope": {
-                        "locale": "en"
-                      },
+                      "scope": { "locale": "en" },
                       "name": "Blue Top",
                       "slug": "top-blue",
                       "status": "ENABLED",
-                      "visibleIn": [
-                        "CATALOG"
-                      ],
-                      "links": [
-                        {
-                          "type": "in_bundle",
-                          "sku": "bundle-outfit"
-                        }
-                      ]
+                      "visibleIn": ["CATALOG"],
+                      "links":
+                        [{ "type": "in_bundle", "sku": "bundle-outfit" }],
                     },
                     {
                       "sku": "bottom-black",
-                      "scope": {
-                        "locale": "en"
-                      },
+                      "scope": { "locale": "en" },
                       "name": "Black Bottom",
                       "slug": "bottom-black",
                       "status": "ENABLED",
-                      "visibleIn": [
-                        "CATALOG"
-                      ],
-                      "links": [
-                        {
-                          "type": "in_bundle",
-                          "sku": "bundle-outfit"
-                        }
-                      ]
+                      "visibleIn": ["CATALOG"],
+                      "links":
+                        [{ "type": "in_bundle", "sku": "bundle-outfit" }],
                     },
                     {
                       "sku": "bottom-white",
-                      "scope": {
-                        "locale": "en"
-                      },
+                      "scope": { "locale": "en" },
                       "name": "White Bottom",
                       "slug": "bottom-white",
                       "status": "ENABLED",
-                      "visibleIn": [
-                        "CATALOG"
-                      ],
-                      "links": [
-                        {
-                          "type": "in_bundle",
-                          "sku": "bundle-outfit"
-                        }
-                      ]
+                      "visibleIn": ["CATALOG"],
+                      "links":
+                        [{ "type": "in_bundle", "sku": "bundle-outfit" }],
                     },
                     {
                       "sku": "socks",
-                      "scope": {
-                        "locale": "en"
-                      },
+                      "scope": { "locale": "en" },
                       "name": "Socks",
                       "slug": "socks",
                       "status": "ENABLED",
-                      "visibleIn": [
-                        "CATALOG"
-                      ],
-                      "links": [
-                        {
-                          "type": "in_bundle",
-                          "sku": "bundle-outfit"
-                        }
-                      ]
+                      "visibleIn": ["CATALOG"],
+                      "links":
+                        [{ "type": "in_bundle", "sku": "bundle-outfit" }],
                     },
                     {
                       "sku": "headband",
-                      "scope": {
-                        "locale": "en"
-                      },
+                      "scope": { "locale": "en" },
                       "name": "Headband",
                       "slug": "headband",
                       "status": "ENABLED",
-                      "visibleIn": [
-                        "CATALOG"
-                      ],
-                      "links": [
-                        {
-                          "type": "in_bundle",
-                          "sku": "bundle-outfit"
-                        }
-                      ]
-                    }
+                      "visibleIn": ["CATALOG"],
+                      "links":
+                        [{ "type": "in_bundle", "sku": "bundle-outfit" }],
+                    },
                   ]
     patch:
       tags:
@@ -907,26 +748,26 @@ paths:
         Update products with specified "sku" and "scope" to replace existing field data with the data supplied in the request.
         When the update is processed, the merge strategy is used to apply changes to `scalar` and `object` type fields.
         The replace strategy is used to apply changes for fields in an `array`.
-      operationId: ProductsPatch
+      operationId: updateProducts
       parameters:
-        - $ref: '#/components/parameters/ContentType'
-        - $ref: '#/components/parameters/xApiKey'
-        - $ref: '#/components/parameters/xGwSignature'
-        - $ref: '#/components/parameters/ContentEncoding'
+        - $ref: "#/components/parameters/ContentType"
+        - $ref: "#/components/parameters/xApiKey"
+        - $ref: "#/components/parameters/xGwSignature"
+        - $ref: "#/components/parameters/ContentEncoding"
       responses:
-        '200':
-          $ref: '#/components/responses/AcceptedResponse'
-        '400':
-          $ref: '#/components/responses/InvalidItemsResponse'
-        '403':
-          $ref: '#/components/responses/UnauthorizedResponse'
+        "200":
+          $ref: "#/components/responses/AcceptedResponse"
+        "400":
+          $ref: "#/components/responses/InvalidItemsResponse"
+        "403":
+          $ref: "#/components/responses/UnauthorizedResponse"
       requestBody:
         content:
           application/json:
             schema:
               type: array
               items:
-                $ref: '#/components/schemas/FeedProductUpdate'
+                $ref: "#/components/schemas/FeedProductUpdate"
             examples:
               SimpleProductWithImages:
                 summary: Update a simple product.
@@ -943,32 +784,23 @@ paths:
                   [
                     {
                       "sku": "red-pants",
-                      "scope": {
-                        "locale": "en"
-                      },
+                      "scope": { "locale": "en" },
                       "name": "Red pants - discounts!",
-                      "metaTags": {
-                        "title": "Updated - Red"
-                      },
-                      "attributes": [
-                        {
-                          "code": "cost",
-                          "type": "NUMBER",
-                          "values": [
-                            "10.5"
-                          ]
-                        },
-                        {
-                          "code": "states",
-                          "type": "ARRAY",
-                          "values": [
-                            "TX",
-                            "CA",
-                            "NM"
-                          ]
-                        }
-                      ]
-                    }
+                      "metaTags": { "title": "Updated - Red" },
+                      "attributes":
+                        [
+                          {
+                            "code": "cost",
+                            "type": "NUMBER",
+                            "values": ["10.5"],
+                          },
+                          {
+                            "code": "states",
+                            "type": "ARRAY",
+                            "values": ["TX", "CA", "NM"],
+                          },
+                        ],
+                    },
                   ]
               UnassignProductVariant:
                 summary: Unassign product variant `pants-red-32` from configurable product `pants`.
@@ -980,30 +812,24 @@ paths:
                   [
                     {
                       "sku": "pants-red-32",
-                      "scope": {
-                        "locale": "en"
-                      },
-                      "attributes": [
-                        {
-                          "code": "color",
-                          "type": "STRING",
-                          "values": [
-                            "Red Pants"
-                          ],
-                          "variantReferenceId": null
-                        },
-                        {
-                          "code": "size",
-                          "type": "STRING",
-                          "values": [
-                            "32"
-                          ],
-                          "variantReferenceId": null
-
-                        }
-                      ],
-                      "links": [ ]
-                    }
+                      "scope": { "locale": "en" },
+                      "attributes":
+                        [
+                          {
+                            "code": "color",
+                            "type": "STRING",
+                            "values": ["Red Pants"],
+                            "variantReferenceId": null,
+                          },
+                          {
+                            "code": "size",
+                            "type": "STRING",
+                            "values": ["32"],
+                            "variantReferenceId": null,
+                          },
+                        ],
+                      "links": [],
+                    },
                   ]
               AddNewAccessoryItem:
                 summary: Add a new item `gloves` to the accessories group of the bundle product `bundle-outfit`.
@@ -1014,70 +840,72 @@ paths:
                   [
                     {
                       "sku": "bundle-outfit",
-                      "scope": {
-                        "locale": "en"
-                      },
-                      "bundles": [
-                        {
-                          "group": "tops",
-                          "required": true,
-                          "multiSelect": false,
-                          "defaultItemSkus": [ "top-red" ],
-                          "items": [
-                            {
-                              "sku": "top-red",
-                              "qty": 1,
-                              "userDefinedQty": false
-                            },
-                            {
-                              "sku": "top-blue",
-                              "qty": 1,
-                              "userDefinedQty": false
-                            }
-                          ]
-                        },
-                        {
-                          "group": "bottoms",
-                          "required": true,
-                          "multiSelect": false,
-                          "defaultItemSkus": [ "bottom-black" ],
-                          "items": [
-                            {
-                              "sku": "bottom-black",
-                              "qty": 1,
-                              "userDefinedQty": false
-                            },
-                            {
-                              "sku": "bottom-white",
-                              "qty": 1,
-                              "userDefinedQty": false
-                            }
-                          ]
-                        },
-                        {
-                          "group": "accessories",
-                          "required": false,
-                          "multiSelect": true,
-                          "items": [
-                            {
-                              "sku": "socks",
-                              "qty": 1,
-                              "userDefinedQty": true
-                            },
-                            {
-                              "sku": "headband",
-                              "qty": 1,
-                              "userDefinedQty": true
-                            },
-                            {
-                              "sku": "gloves",
-                              "qty": 1,
-                              "userDefinedQty": true
-                            }
-                          ]
-                        }
-                      ]
-                    }
+                      "scope": { "locale": "en" },
+                      "bundles":
+                        [
+                          {
+                            "group": "tops",
+                            "required": true,
+                            "multiSelect": false,
+                            "defaultItemSkus": ["top-red"],
+                            "items":
+                              [
+                                {
+                                  "sku": "top-red",
+                                  "qty": 1,
+                                  "userDefinedQty": false,
+                                },
+                                {
+                                  "sku": "top-blue",
+                                  "qty": 1,
+                                  "userDefinedQty": false,
+                                },
+                              ],
+                          },
+                          {
+                            "group": "bottoms",
+                            "required": true,
+                            "multiSelect": false,
+                            "defaultItemSkus": ["bottom-black"],
+                            "items":
+                              [
+                                {
+                                  "sku": "bottom-black",
+                                  "qty": 1,
+                                  "userDefinedQty": false,
+                                },
+                                {
+                                  "sku": "bottom-white",
+                                  "qty": 1,
+                                  "userDefinedQty": false,
+                                },
+                              ],
+                          },
+                          {
+                            "group": "accessories",
+                            "required": false,
+                            "multiSelect": true,
+                            "items":
+                              [
+                                {
+                                  "sku": "socks",
+                                  "qty": 1,
+                                  "userDefinedQty": true,
+                                },
+                                {
+                                  "sku": "headband",
+                                  "qty": 1,
+                                  "userDefinedQty": true,
+                                },
+                                {
+                                  "sku": "gloves",
+                                  "qty": 1,
+                                  "userDefinedQty": true,
+                                },
+                              ],
+                          },
+                        ],
+                    },
                   ]
   /v1/catalog/products/delete:
     post:
@@ -1086,40 +914,32 @@ paths:
       summary: Delete products.
       description: >
         Delete products with specified "sku" and "scope".
-      operationId: ProductsDelete
+      operationId: deleteProducts
       parameters:
-        - $ref: '#/components/parameters/ContentType'
-        - $ref: '#/components/parameters/xApiKey'
-        - $ref: '#/components/parameters/xGwSignature'
-        - $ref: '#/components/parameters/ContentEncoding'
+        - $ref: "#/components/parameters/ContentType"
+        - $ref: "#/components/parameters/xApiKey"
+        - $ref: "#/components/parameters/xGwSignature"
+        - $ref: "#/components/parameters/ContentEncoding"
       responses:
-        '200':
-          $ref: '#/components/responses/AcceptedResponse'
-        '400':
-          $ref: '#/components/responses/InvalidItemsResponse'
-        '403':
-          $ref: '#/components/responses/UnauthorizedResponse'
+        "200":
+          $ref: "#/components/responses/AcceptedResponse"
+        "400":
+          $ref: "#/components/responses/InvalidItemsResponse"
+        "403":
+          $ref: "#/components/responses/UnauthorizedResponse"
       requestBody:
         content:
           application/json:
             schema:
               type: array
               items:
-                $ref: '#/components/schemas/FeedProductDelete'
+                $ref: "#/components/schemas/FeedProductDelete"
             examples:
               DeleteSimpleProduct:
                 summary: Delete product.
                 description: >
                   Delete a simple product with a specified `sku` and `scope`.
-                value:
-                  [
-                    {
-                      "sku": "red-pants",
-                      "scope": {
-                        "locale": "en"
-                      }
-                    }
-                  ]
+                value: [{ "sku": "red-pants", "scope": { "locale": "en" } }]
 
   /v1/catalog/price-books:
     post:
@@ -1127,10 +947,10 @@ paths:
         - Price Books
       summary: Create price books.
       description: |
-         Create or replace existing price books.
+        Create or replace existing price books.
 
-         Use the update operation to modify values for existing price books.
-      operationId: PriceBooksPut
+        Use the update operation to modify values for existing price books.
+      operationId: createPriceBooks
       parameters:
         - name: Content-Type
           in: header
@@ -1138,18 +958,12 @@ paths:
           schema:
             type: string
             enum: [application/json]
-        - name: x-api-key
+        - name: Authorization
           in: header
           required: true
           schema:
             type: string
-          description: Production public API key
-        - name: x-gw-signature
-          in: header
-          required: true
-          schema:
-            type: string
-          description: JWT generated for Production public API key
+          description: Authorization Bearer token
         - name: Content-Encoding
           in: header
           required: false
@@ -1163,7 +977,7 @@ paths:
             schema:
               type: array
               items:
-                $ref: '#/components/schemas/FeedPricebook'
+                $ref: "#/components/schemas/FeedPricebook"
             examples:
               FeedWithPricebookInformation:
                 summary: Create a price book.
@@ -1173,32 +987,29 @@ paths:
                     {
                       "priceBookId": "dealer-north",
                       "name": "Dealer North price book name",
-                      "currency": "USD"
+                      "currency": "USD",
                     },
-                    {
-                      "priceBookId": "VIP",
-                      "currency": "USD"
-                    }
+                    { "priceBookId": "VIP", "currency": "USD" },
                   ]
       responses:
-        '200':
+        "200":
           description: All items in the request are accepted for further processing.
           content:
             application/json;charset=UTF-8:
               schema:
-                $ref: '#/components/schemas/ProcessFeedResponse'
-        '400':
+                $ref: "#/components/schemas/ProcessFeedResponse"
+        "400":
           description: Request rejected. Some of the received items are invalid. Check the "invalidFeedItems" node for specific errors.
           content:
             application/json;charset=UTF-8:
               schema:
-                $ref: '#/components/schemas/400ProcessFeedResponse'
-        '403':
-          description: Unauthorized request. Verify the `x-api-key` and make sure that the JWT in `x-gw-signature` is still valid.
+                $ref: "#/components/schemas/400ProcessFeedResponse"
+        "403":
+          description: Unauthorized request. Verify the `Authorization` header is present and the Bearer token is still valid.
           content:
             application/json;charset=UTF-8:
               schema:
-                $ref: '#/components/schemas/403Response'
+                $ref: "#/components/schemas/403Response"
     patch:
       tags:
         - Price Books
@@ -1209,7 +1020,7 @@ paths:
         and `object` type fields. The replace strategy is used to apply changes for fields in an `array`.
 
         To update the currency for the default price book, use the price book id `main`.
-      operationId: PriceBooksPatch
+      operationId: updatePriceBooks
       parameters:
         - name: Content-Type
           in: header
@@ -1217,18 +1028,12 @@ paths:
           schema:
             type: string
             enum: [application/json]
-        - name: x-api-key
+        - name: Authorization
           in: header
           required: true
           schema:
             type: string
-          description: Production public API key.
-        - name: x-gw-signature
-          in: header
-          required: true
-          schema:
-            type: string
-          description: JWT generated for Production public API key.
+          description: Authorization Bearer token.
         - name: Content-Encoding
           in: header
           required: false
@@ -1242,50 +1047,44 @@ paths:
             schema:
               type: array
               items:
-                $ref: '#/components/schemas/FeedPricebook'
+                $ref: "#/components/schemas/FeedPricebook"
             examples:
               FeedWithPriceBookInformation:
                 summary: Update existing price books.
                 description: Update the "dealer-north" and default "main" price books to change the currency.
                 value:
                   [
-                    {
-                      "priceBookId": "dealer-north",
-                      "currency": "EUR"
-                    },
-                    {
-                      "priceBookId": "main",
-                      "currency": "EUR"
-                    }
+                    { "priceBookId": "dealer-north", "currency": "EUR" },
+                    { "priceBookId": "main", "currency": "EUR" },
                   ]
       responses:
-        '200':
+        "200":
           description: All items in the request are accepted for further processing.
           content:
             application/json;charset=UTF-8:
               schema:
-                $ref: '#/components/schemas/ProcessFeedResponse'
-        '400':
+                $ref: "#/components/schemas/ProcessFeedResponse"
+        "400":
           description: Request rejected. Some of the received items are invalid. Check the `invalidFeedItems` node for specific errors.
           content:
             application/json;charset=UTF-8:
               schema:
-                $ref: '#/components/schemas/400ProcessFeedResponse'
-        '403':
-          description: Unauthorized request. Verify the `x-api-key` and make sure that the JWT in `x-gw-signature` is still valid.
+                $ref: "#/components/schemas/400ProcessFeedResponse"
+        "403":
+          description: Unauthorized request. Verify the `Authorization` header is present and the Bearer token is still valid.
           content:
             application/json;charset=UTF-8:
               schema:
-                $ref: '#/components/schemas/403Response'
+                $ref: "#/components/schemas/403Response"
   /v1/catalog/price-books/delete:
     post:
       tags:
         - Price Books
       summary: Delete price books.
       description: |
-         Delete existing price books.
-         Note that you cannot delete the default price book with id `main`.
-      operationId: PriceBooksDelete
+        Delete existing price books.
+        Note that you cannot delete the default price book with id `main`.
+      operationId: deletePriceBooks
       parameters:
         - name: Content-Type
           in: header
@@ -1293,18 +1092,12 @@ paths:
           schema:
             type: string
             enum: [application/json]
-        - name: x-api-key
+        - name: Authorization
           in: header
           required: true
           schema:
             type: string
-          description: Production public API key.
-        - name: x-gw-signature
-          in: header
-          required: true
-          schema:
-            type: string
-          description: JWT generated for Production public API key.
+          description: Authorization Bearer token.
         - name: Content-Encoding
           in: header
           required: false
@@ -1318,36 +1111,31 @@ paths:
             schema:
               type: array
               items:
-                $ref: '#/components/schemas/FeedPricebook'
+                $ref: "#/components/schemas/FeedPricebook"
             examples:
               DeleteExistingPricebook:
                 summary: Delete price book "dealer-north".
                 description: Delete the "dealer-north" price book.
-                value:
-                  [
-                    {
-                      "priceBookId": "dealer-north"
-                    }
-                  ]
+                value: [{ "priceBookId": "dealer-north" }]
       responses:
-        '200':
+        "200":
           description: All items in the request are accepted for further processing.
           content:
             application/json;charset=UTF-8:
               schema:
-                $ref: '#/components/schemas/ProcessFeedResponse'
-        '400':
+                $ref: "#/components/schemas/ProcessFeedResponse"
+        "400":
           description: Request rejected. Some of the received items are invalid. Check the "invalidFeedItems" node for specific errors.
           content:
             application/json;charset=UTF-8:
               schema:
-                $ref: '#/components/schemas/400ProcessFeedResponse'
-        '403':
-          description: Unauthorized request. Verify the `x-api-key` and make sure that the JWT in `x-gw-signature` is still valid.
+                $ref: "#/components/schemas/400ProcessFeedResponse"
+        "403":
+          description: Unauthorized request. Verify the `Authorization` header is present and the Bearer token is still valid.
           content:
             application/json;charset=UTF-8:
               schema:
-                $ref: '#/components/schemas/403Response'
+                $ref: "#/components/schemas/403Response"
 
   /v1/catalog/products/prices:
     post:
@@ -1364,7 +1152,7 @@ paths:
         Because configurable product price is calculated based on the price of the selected product variant, you don't need to send price
         data for configurable product skus. Sending price data for these skus can cause incorrect price calculations.
 
-      operationId: PricesPut
+      operationId: createPrices
       parameters:
         - name: Content-Type
           in: header
@@ -1372,18 +1160,12 @@ paths:
           schema:
             type: string
             enum: [application/json]
-        - name: x-api-key
+        - name: Authorization
           in: header
           required: true
           schema:
             type: string
-          description: Production public API key
-        - name: x-gw-signature
-          in: header
-          required: true
-          schema:
-            type: string
-          description: JWT generated for Production public API key
+          description: Authorization Bearer token
         - name: Content-Encoding
           in: header
           required: false
@@ -1397,7 +1179,7 @@ paths:
             schema:
               type: array
               items:
-                $ref: '#/components/schemas/FeedPrices'
+                $ref: "#/components/schemas/FeedPrices"
             examples:
               FeedWithNewProductPrice:
                 summary: Add product price information.
@@ -1407,44 +1189,40 @@ paths:
                     {
                       "sku": "red-pants",
                       "priceBookId": "main",
-                      "regular": 20
+                      "regular": 20,
                     },
                     {
                       "sku": "red-pants",
                       "priceBookId": "VIP",
                       "regular": 19.9,
-                      "discounts": [
-                        {"code": "discount", "percentage": 10}
-                      ]
+                      "discounts": [{ "code": "discount", "percentage": 10 }],
                     },
                     {
                       "sku": "red-pants",
                       "priceBookId": "dealer-north",
                       "regular": 20.5,
-                      "discounts": [
-                        {"code": "fixed", "price": 18}
-                      ]
-                    }
+                      "discounts": [{ "code": "fixed", "price": 18 }],
+                    },
                   ]
       responses:
-        '200':
+        "200":
           description: All items in the request are accepted for further processing.
           content:
             application/json;charset=UTF-8:
               schema:
-                $ref: '#/components/schemas/ProcessFeedResponse'
-        '400':
+                $ref: "#/components/schemas/ProcessFeedResponse"
+        "400":
           description: Request rejected. Some of the received items are invalid. Check the "invalidFeedItems" node for specific errors.
           content:
             application/json;charset=UTF-8:
               schema:
-                $ref: '#/components/schemas/400ProcessFeedResponse'
-        '403':
-          description: Unauthorized request. Verify the `x-api-key` and make sure that the JWT in `x-gw-signature` is still valid.
+                $ref: "#/components/schemas/400ProcessFeedResponse"
+        "403":
+          description: Unauthorized request. Verify the `Authorization` header is present and the Bearer token is still valid.
           content:
             application/json;charset=UTF-8:
               schema:
-                $ref: '#/components/schemas/403Response'
+                $ref: "#/components/schemas/403Response"
     patch:
       tags:
         - Prices
@@ -1452,7 +1230,7 @@ paths:
       description: |
         Change existing product prices.
         When the update is processed, the merge strategy is used to apply changes to `scalar` and `object` type fields. The replace strategy is used to apply changes for fields in an `array`.
-      operationId: PricesPatch
+      operationId: updatePrices
       parameters:
         - name: Content-Type
           in: header
@@ -1460,18 +1238,12 @@ paths:
           schema:
             type: string
             enum: [application/json]
-        - name: x-api-key
+        - name: Authorization
           in: header
           required: true
           schema:
             type: string
-          description: Production public API key
-        - name: x-gw-signature
-          in: header
-          required: true
-          schema:
-            type: string
-          description: JWT generated for Production public API key.
+          description: Authorization Bearer token
         - name: Content-Encoding
           in: header
           required: false
@@ -1485,7 +1257,7 @@ paths:
             schema:
               type: array
               items:
-                $ref: '#/components/schemas/FeedPricesUpdate'
+                $ref: "#/components/schemas/FeedPricesUpdate"
             examples:
               FeedWithProductPricesInformation:
                 summary: Product prices update.
@@ -1495,33 +1267,31 @@ paths:
                     {
                       "sku": "red-pants",
                       "priceBookId": "dealer-north",
-                      "discounts": [
-                        {"code": "discount", "percentage": 30}
-                      ]
-                    }
+                      "discounts": [{ "code": "discount", "percentage": 30 }],
+                    },
                   ]
       responses:
-        '200':
+        "200":
           description: All items in the request are accepted for further processing.
           content:
             application/json;charset=UTF-8:
               schema:
-                $ref: '#/components/schemas/ProcessFeedResponse'
-        '400':
+                $ref: "#/components/schemas/ProcessFeedResponse"
+        "400":
           description: |
             Request rejected. Some of the received items are invalid.
             Check the "invalidFeedItems" node for specific errors.
           content:
             application/json;charset=UTF-8:
               schema:
-                $ref: '#/components/schemas/400ProcessFeedResponse'
-        '403':
+                $ref: "#/components/schemas/400ProcessFeedResponse"
+        "403":
           description: |
             Unauthorized request. Verify the `x-api-key` and make sure that the JWT in `x-gw-signature` is still valid.
           content:
             application/json;charset=UTF-8:
               schema:
-                $ref: '#/components/schemas/403Response'
+                $ref: "#/components/schemas/403Response"
   /v1/catalog/products/prices/delete:
     post:
       tags:
@@ -1529,7 +1299,7 @@ paths:
       summary: Delete prices.
       description: >
         Delete existing product prices
-      operationId: PricesDelete
+      operationId: deletePrices
       parameters:
         - name: Content-Type
           in: header
@@ -1537,18 +1307,12 @@ paths:
           schema:
             type: string
             enum: [application/json]
-        - name: x-api-key
+        - name: Authorization
           in: header
           required: true
           schema:
             type: string
-          description: Production public API key
-        - name: x-gw-signature
-          in: header
-          required: true
-          schema:
-            type: string
-          description: JWT generated for Production public API key
+          description: Authorization Bearer token
         - name: Content-Encoding
           in: header
           required: false
@@ -1562,38 +1326,32 @@ paths:
             schema:
               type: array
               items:
-                $ref: '#/components/schemas/FeedPricesDelete'
+                $ref: "#/components/schemas/FeedPricesDelete"
             examples:
               FeedWithProductPricesInformation:
                 summary: Product prices delete.
                 description: >
                   Delete the existing product prices information
-                value:
-                  [
-                    {
-                      "sku": "red-pants",
-                      "priceBookId": "dealer-north",
-                    }
-                  ]
+                value: [{ "sku": "red-pants", "priceBookId": "dealer-north" }]
       responses:
-        '200':
+        "200":
           description: All items in the request are accepted for further processing.
           content:
             application/json;charset=UTF-8:
               schema:
-                $ref: '#/components/schemas/ProcessFeedResponse'
-        '400':
+                $ref: "#/components/schemas/ProcessFeedResponse"
+        "400":
           description: Request rejected. Some of the received items are invalid. Check the "invalidFeedItems" node for specific errors.
           content:
             application/json;charset=UTF-8:
               schema:
-                $ref: '#/components/schemas/400ProcessFeedResponse'
-        '403':
-          description: Unauthorized request. Verify the `x-api-key` and make sure that the JWT in `x-gw-signature` is still valid.
+                $ref: "#/components/schemas/400ProcessFeedResponse"
+        "403":
+          description: Unauthorized request. Verify the `Authorization` header is present and the Bearer token is still valid.
           content:
             application/json;charset=UTF-8:
               schema:
-                $ref: '#/components/schemas/403Response'
+                $ref: "#/components/schemas/403Response"
 
 components:
   responses:
@@ -1602,19 +1360,19 @@ components:
       content:
         application/json;charset=UTF-8:
           schema:
-            $ref: '#/components/schemas/ProcessFeedResponse'
+            $ref: "#/components/schemas/ProcessFeedResponse"
     InvalidItemsResponse:
       description: One or all received items are invalid. Check the "invalidFeedItems" node for details
       content:
         application/json;charset=UTF-8:
           schema:
-            $ref: '#/components/schemas/400ProcessFeedResponse'
+            $ref: "#/components/schemas/400ProcessFeedResponse"
     UnauthorizedResponse:
       description: Unauthorized request. Verify the `x-api-key` value is correct and ensure the JWT is not expired in `x-gw-signature`.
       content:
         application/json;charset=UTF-8:
           schema:
-            $ref: '#/components/schemas/403Response'
+            $ref: "#/components/schemas/403Response"
   parameters:
     DATA_SPACE_ID:
       name: DATA_SPACE_ID
@@ -1636,19 +1394,13 @@ components:
         type: string
         enum: [application/json]
     xApiKey:
-      name: x-api-key
+      name: Authorization
       in: header
       required: true
       schema:
         type: string
-      description: Production public API key
+      description: Authorization Bearer token
     xGwSignature:
-      name: x-gw-signature
-      in: header
-      required: true
-      schema:
-        type: string
-      description: JWT generated for Production public API key.
     ContentEncoding:
       name: Content-Encoding
       in: header
@@ -1690,7 +1442,7 @@ components:
           type: string
           description: Attribute code
         scope:
-          $ref: '#/components/schemas/Scope'
+          $ref: "#/components/schemas/Scope"
         visibleIn:
           type: array
           description: |
@@ -1758,7 +1510,7 @@ components:
           type: string
           description: Attribute code
         scope:
-          $ref: '#/components/schemas/Scope'
+          $ref: "#/components/schemas/Scope"
         visibleIn:
           type: array
           description: |
@@ -1826,7 +1578,7 @@ components:
           type: string
           description: Attribute code
         scope:
-          $ref: '#/components/schemas/Scope'
+          $ref: "#/components/schemas/Scope"
     FeedProduct:
       title: Catalog Product payload
       type: object
@@ -1842,7 +1594,7 @@ components:
           description: SKU (Stock Keeping Unit) is a unique identifier for a product.
           example: MH01
         scope:
-          $ref: '#/components/schemas/Scope'
+          $ref: "#/components/schemas/Scope"
         name:
           type: string
           description: Product name
@@ -1883,37 +1635,37 @@ components:
           type: object
           description: Meta attributes that are specified in <meta> tags.
           items:
-            $ref: '#/components/schemas/ProductMetaAttribute'
+            $ref: "#/components/schemas/ProductMetaAttribute"
         attributes:
           type: array
           description: A list of product attributes.
           items:
-            $ref: '#/components/schemas/ProductAttribute'
+            $ref: "#/components/schemas/ProductAttribute"
         images:
           type: array
           description: A list of product images.
           items:
-            $ref: '#/components/schemas/ProductImage'
+            $ref: "#/components/schemas/ProductImage"
         links:
           type: array
           description: A list of linked SKUs.
           items:
-            $ref: '#/components/schemas/ProductLink'
+            $ref: "#/components/schemas/ProductLink"
         routes:
           type: array
           description: A list of product routes.
           items:
-            $ref: '#/components/schemas/ProductRoutes'
+            $ref: "#/components/schemas/ProductRoutes"
         configurations:
           type: array
           description: Composite products, such as configurable products, must provide a list of product options that a shopper can select (for example, "color", "size", etc.).
           items:
-            $ref: '#/components/schemas/ProductConfiguration'
+            $ref: "#/components/schemas/ProductConfiguration"
         bundles:
           type: array
           description: Composite products, such as bundle products, must include a list of individual products that are part of the bundle, organized into groups (for example, "shirts", "pants", "accessories").
           items:
-            $ref: '#/components/schemas/ProductBundle'
+            $ref: "#/components/schemas/ProductBundle"
     FeedProductUpdate:
       title: Catalog Product payload
       type: object
@@ -1926,7 +1678,7 @@ components:
           description: SKU (Stock Keeping Unit) is a unique identifier for a product.
           example: MH01
         scope:
-          $ref: '#/components/schemas/Scope'
+          $ref: "#/components/schemas/Scope"
         name:
           type: string
           description: Product name
@@ -1967,39 +1719,39 @@ components:
           type: object
           description: Meta attributes that are specified in <meta> tags.
           items:
-            $ref: '#/components/schemas/ProductMetaAttribute'
+            $ref: "#/components/schemas/ProductMetaAttribute"
         attributes:
           type: array
           description: A list of product attributes.
           items:
-            $ref: '#/components/schemas/ProductAttribute'
+            $ref: "#/components/schemas/ProductAttribute"
         images:
           type: array
           description: A list of product images.
           items:
-            $ref: '#/components/schemas/ProductImage'
+            $ref: "#/components/schemas/ProductImage"
         links:
           type: array
           description: |
             A list of linked SKUs. For product variants, this is a required field that establishes a link between a product variant and the corresponding configurable product.
             `VARIANT_OF` link type must be specified to establish a connection to the configurable product SKU.
           items:
-            $ref: '#/components/schemas/ProductLink'
+            $ref: "#/components/schemas/ProductLink"
         routes:
           type: array
           description: A list of product routes.
           items:
-            $ref: '#/components/schemas/ProductRoutes'
+            $ref: "#/components/schemas/ProductRoutes"
         configurations:
           type: array
           description: Composite products, such as configurable products, must provide a list of product options that a shopper can select (for example, "color", "size", etc.).
           items:
-            $ref: '#/components/schemas/ProductConfiguration'
+            $ref: "#/components/schemas/ProductConfiguration"
         bundles:
           type: array
           description: Composite products, such as bundle products, must include a list of individual products that are part of the bundle, organized into groups (for example, "shirts", "pants", "accessories").
           items:
-            $ref: '#/components/schemas/ProductBundle'
+            $ref: "#/components/schemas/ProductBundle"
     FeedProductDelete:
       title: Catalog Product delete payload
       type: object
@@ -2012,7 +1764,7 @@ components:
           description: Product unique identifier
           example: MH01
         scope:
-          $ref: '#/components/schemas/Scope'
+          $ref: "#/components/schemas/Scope"
     FeedPricebook:
       title: FeedPricebook
       description: Price book information
@@ -2055,8 +1807,8 @@ components:
           description: Active discounts
           items:
             anyOf:
-              - $ref: '#/components/schemas/DiscountsFinalPrice'
-              - $ref: '#/components/schemas/DiscountsPercentage'
+              - $ref: "#/components/schemas/DiscountsFinalPrice"
+              - $ref: "#/components/schemas/DiscountsPercentage"
     FeedPricesUpdate:
       title: FeedPrices
       description: Product price information.
@@ -2080,8 +1832,8 @@ components:
           description: Active discounts
           items:
             anyOf:
-              - $ref: '#/components/schemas/DiscountsFinalPrice'
-              - $ref: '#/components/schemas/DiscountsPercentage'
+              - $ref: "#/components/schemas/DiscountsFinalPrice"
+              - $ref: "#/components/schemas/DiscountsPercentage"
     FeedPricesDelete:
       title: FeedPricesDelete
       description: Delete product price information.
@@ -2220,7 +1972,7 @@ components:
         customRoles:
           type: array
           description: >
-             Custom image role. Merchants can define custom roles in addition to the predefined values.
+            Custom image role. Merchants can define custom roles in addition to the predefined values.
           items:
             type: string
     ProductConfiguration:
@@ -2256,7 +2008,7 @@ components:
           type: array
           description: A list of option values. Defines option values available to shoppers (for example, "red" color or "large" size).
           items:
-            $ref: '#/components/schemas/ProductOptionValue'
+            $ref: "#/components/schemas/ProductOptionValue"
     ProductOptionValue:
       title: ProductOptionValue
       type: object
@@ -2310,7 +2062,7 @@ components:
             A list of individual products that are part of the bundle.
             Each item in the list represents a product that can be selected as part of the bundle.
           items:
-            $ref: '#/components/schemas/ProductBundleItem'
+            $ref: "#/components/schemas/ProductBundleItem"
     ProductBundleItem:
       title: ProductBundleItem
       type: object
@@ -2374,11 +2126,7 @@ components:
           type: integer
           description: The number of received and accepted items.
           format: int32
-      example:
-        {
-          "status": "ACCEPTED",
-          "acceptedCount": 4
-        }
+      example: { "status": "ACCEPTED", "acceptedCount": 4 }
     400ProcessFeedResponse:
       title: Response payload
       type: object
@@ -2394,25 +2142,26 @@ components:
           type: array
           description: List of items that did not pass validation. Fix the payload for invalid items before resubmitting the request.
           items:
-            $ref: '#/components/schemas/FeedItemFailedValidationResult'
+            $ref: "#/components/schemas/FeedItemFailedValidationResult"
       example:
         {
           "status": "FAILED",
           "message": "Items validation failed for 2 items",
-          "errors": [
-            {
-              "itemIndex": 0,
-              "code": "status",
-              "message": "status: does not have a value in the enumeration [\"ENABLED\", \"DISABLED\"]",
-              "value": "active"
-            },
-            {
-              "itemIndex": 1,
-              "code": "scope",
-              "message": "required property 'scope' not found",
-              "value": ""
-            }
-          ]
+          "errors":
+            [
+              {
+                "itemIndex": 0,
+                "code": "status",
+                "message": 'status: does not have a value in the enumeration ["ENABLED", "DISABLED"]',
+                "value": "active",
+              },
+              {
+                "itemIndex": 1,
+                "code": "scope",
+                "message": "required property 'scope' not found",
+                "value": "",
+              },
+            ],
         }
     403Response:
       title: 403 Forbidden
@@ -2427,11 +2176,7 @@ components:
             message:
               type: string
               description: Error message
-          example:
-            {
-              "error_code":"403053",
-              "message":"JWT is invalid"
-            }
+          example: { "error_code": "403053", "message": "JWT is invalid" }
         - title: 403 Unauthorized
           type: object
           properties:
@@ -2452,11 +2197,10 @@ components:
                       description: Error code
           example:
             {
-              "error": {
-                "code": "Forbidden",
-                "message": "Client ID is missing",
-                "details": {
-                  "error_code": "403000"
-                }
-              }
+              "error":
+                {
+                  "code": "Forbidden",
+                  "message": "Client ID is missing",
+                  "details": { "error_code": "403000" },
+                },
             }
