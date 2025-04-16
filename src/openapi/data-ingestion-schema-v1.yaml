@@ -199,7 +199,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/400ProcessFeedResponse"
         "403":
-          description: Unauthorized request. Verify the `Authorization` header is present and the Bearer token is still valid.
+          description: Unauthorized request. Verify that the `Authorization` header is present, and that the Bearer token is still valid.
           content:
             application/json;charset=UTF-8:
               schema:
