@@ -122,7 +122,7 @@ paths:
                       "sortable": false,
                       "searchable": true,
                       "searchWeight": 1,
-                      "searchTypes": ["AUTOCOMPLETE"],
+                      "searchTypes": ["AUTOCOMPLETE"]
                     },
                     {
                       "code": "name",
@@ -134,7 +134,7 @@ paths:
                           "PRODUCT_DETAIL",
                           "PRODUCT_LISTING",
                           "SEARCH_RESULTS",
-                          "PRODUCT_COMPARE",
+                          "PRODUCT_COMPARE"
                         ],
                       "filterable": false,
                       "sortable": true,
@@ -176,7 +176,7 @@ paths:
                           "PRODUCT_DETAIL",
                           "PRODUCT_LISTING",
                           "SEARCH_RESULTS",
-                          "PRODUCT_COMPARE",
+                          "PRODUCT_COMPARE"
                         ],
                       "filterable": true,
                       "sortable": true,
@@ -260,8 +260,8 @@ paths:
                       "code": "name",
                       "scope": { "locale": "en" },
                       "label": "Updated - Product Name",
-                      "visibleIn": ["PRODUCT_DETAIL", "PRODUCT_LISTING"],
-                    },
+                      "visibleIn": ["PRODUCT_DETAIL", "PRODUCT_LISTING"]
+                    }
                   ]
       responses:
         "200":
@@ -454,12 +454,12 @@ paths:
                           {
                             "code": "cost",
                             "type": "NUMBER",
-                            "values": ["10.5"],
+                            "values": ["10.5"]
                           },
                           {
                             "code": "states",
                             "type": "ARRAY",
-                            "values": ["TX", "CA"],
+                            "values": ["TX", "CA"]
                           },
                         ],
                       "images":
@@ -468,13 +468,13 @@ paths:
                             "url": "https://example.com/images/pants.jpg",
                             "label": "photo of my pants!",
                             "roles": ["BASE", "SMALL"],
-                            "customRoles": ["widget"],
-                          },
+                            "customRoles": ["widget"]
+                          }
                         ],
                       "routes":
                         [
                           { "path": "red-pants" },
-                          { "path": "pants/red-pants", "position": 1 },
+                          { "path": "pants/red-pants", "position": 1 }
                         ],
                     },
                   ]
