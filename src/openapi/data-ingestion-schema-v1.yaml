@@ -198,8 +198,14 @@ paths:
             application/json;charset=UTF-8:
               schema:
                 $ref: "#/components/schemas/400ProcessFeedResponse"
+        "401":
+          description: Unauthorized request. Verify that the Bearer token provided in the `Authorization` header is still valid.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/401Response"
         "403":
-          description: Unauthorized request. Verify that the `Authorization` header is present, and that the Bearer token is still valid.
+          description: Forbidden request. Verify that the `Authorization` header is present, and that the Bearer token is still valid.
           content:
             application/json;charset=UTF-8:
               schema:
@@ -270,8 +276,14 @@ paths:
             application/json;charset=UTF-8:
               schema:
                 $ref: "#/components/schemas/400ProcessFeedResponse"
+        "401":
+          description: Unauthorized request. Verify that the Bearer token provided in the `Authorization` header is still valid.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/401Response"
         "403":
-          description: Unauthorized request. Verify that the `Authorization` header is present, and that the Bearer token is still valid.
+          description: Forbidden request. Verify that the `Authorization` header is present, and that the Bearer token is still valid.
           content:
             application/json;charset=UTF-8:
               schema:
@@ -328,8 +340,14 @@ paths:
             application/json;charset=UTF-8:
               schema:
                 $ref: "#/components/schemas/400ProcessFeedResponse"
+        "401":
+          description: Unauthorized request. Verify that the Bearer token provided in the `Authorization` header is still valid.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/401Response"
         "403":
-          description: Unauthorized request. Verify that the `Authorization` header is present, and that the Bearer token is still valid.
+          description: Forbidden request. Verify that the `Authorization` header is present, and that the Bearer token is still valid.
           content:
             application/json;charset=UTF-8:
               schema:
@@ -398,8 +416,10 @@ paths:
           $ref: "#/components/responses/AcceptedResponse"
         "400":
           $ref: "#/components/responses/InvalidItemsResponse"
-        "403":
+        "401":
           $ref: "#/components/responses/UnauthorizedResponse"
+        "403":
+          $ref: "#/components/responses/ForbiddenResponse"
       requestBody:
         content:
           application/json:
@@ -757,8 +777,10 @@ paths:
           $ref: "#/components/responses/AcceptedResponse"
         "400":
           $ref: "#/components/responses/InvalidItemsResponse"
-        "403":
+        "401":
           $ref: "#/components/responses/UnauthorizedResponse"
+        "403":
+          $ref: "#/components/responses/ForbiddenResponse"
       requestBody:
         content:
           application/json:
@@ -922,8 +944,10 @@ paths:
           $ref: "#/components/responses/AcceptedResponse"
         "400":
           $ref: "#/components/responses/InvalidItemsResponse"
-        "403":
+        "401":
           $ref: "#/components/responses/UnauthorizedResponse"
+        "403":
+          $ref: "#/components/responses/ForbiddenResponse"
       requestBody:
         content:
           application/json:
@@ -1001,8 +1025,14 @@ paths:
             application/json;charset=UTF-8:
               schema:
                 $ref: "#/components/schemas/400ProcessFeedResponse"
+        "401":
+          description: Unauthorized request. Verify that the Bearer token provided in the `Authorization` header is still valid.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/401Response"
         "403":
-          description: Unauthorized request. Verify that the `Authorization` header is present, and that the Bearer token is still valid.
+          description: Forbidden request. Verify that the `Authorization` header is present, and that the Bearer token is still valid.
           content:
             application/json;charset=UTF-8:
               schema:
@@ -1067,8 +1097,14 @@ paths:
             application/json;charset=UTF-8:
               schema:
                 $ref: "#/components/schemas/400ProcessFeedResponse"
+        "401":
+          description: Unauthorized request. Verify that the Bearer token provided in the `Authorization` header is still valid.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/401Response"
         "403":
-          description: Unauthorized request. Verify that the `Authorization` header is present, and that the Bearer token is still valid.
+          description: Forbidden request. Verify that the `Authorization` header is present, and that the Bearer token is still valid.
           content:
             application/json;charset=UTF-8:
               schema:
@@ -1127,8 +1163,14 @@ paths:
             application/json;charset=UTF-8:
               schema:
                 $ref: "#/components/schemas/400ProcessFeedResponse"
+        "401":
+          description: Unauthorized request. Verify that the Bearer token provided in the `Authorization` header is still valid.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/401Response"
         "403":
-          description: Unauthorized request. Verify that the `Authorization` header is present, and that the Bearer token is still valid.
+          description: Forbidden request. Verify that the `Authorization` header is present, and that the Bearer token is still valid.
           content:
             application/json;charset=UTF-8:
               schema:
@@ -1214,8 +1256,14 @@ paths:
             application/json;charset=UTF-8:
               schema:
                 $ref: "#/components/schemas/400ProcessFeedResponse"
+        "401":
+          description: Unauthorized request. Verify that the Bearer token provided in the `Authorization` header is still valid.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/401Response"
         "403":
-          description: Unauthorized request. Verify that the `Authorization` header is present, and that the Bearer token is still valid.
+          description: Forbidden request. Verify that the `Authorization` header is present, and that the Bearer token is still valid.
           content:
             application/json;charset=UTF-8:
               schema:
@@ -1282,8 +1330,14 @@ paths:
             application/json;charset=UTF-8:
               schema:
                 $ref: "#/components/schemas/400ProcessFeedResponse"
+        "401":
+          description: Unauthorized request. Verify that the Bearer token provided in the `Authorization` header is still valid.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/401Response"
         "403":
-          description: Unauthorized request. Verify that the `Authorization` header is present, and that the Bearer token is still valid.
+          description: Forbidden request. Verify that the `Authorization` header is present, and that the Bearer token is still valid.
           content:
             application/json;charset=UTF-8:
               schema:
@@ -1342,8 +1396,14 @@ paths:
             application/json;charset=UTF-8:
               schema:
                 $ref: "#/components/schemas/400ProcessFeedResponse"
+        "401":
+          description: Unauthorized request. Verify that the Bearer token provided in the `Authorization` header is still valid.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/401Response"
         "403":
-          description: Unauthorized request. Verify that the `Authorization` header is present, and that the Bearer token is still valid.
+          description: Forbidden request. Verify that the `Authorization` header is present, and that the Bearer token is still valid.
           content:
             application/json;charset=UTF-8:
               schema:
@@ -1364,7 +1424,13 @@ components:
           schema:
             $ref: "#/components/schemas/400ProcessFeedResponse"
     UnauthorizedResponse:
-      description: Unauthorized request. Verify that the `Authorization` header is present, and that the Bearer token is still valid.
+      description: Unauthorized request. Verify that the Bearer token provided in the `Authorization` header is still valid.
+      content:
+        application/json;charset=UTF-8:
+          schema:
+            $ref: "#/components/schemas/401Response"
+    ForbiddenResponse:
+      description: Forbidden request. Verify that the `Authorization` header is present, and that the Bearer token is still valid.
       content:
         application/json;charset=UTF-8:
           schema:
@@ -2146,44 +2212,49 @@ components:
               },
             ],
         }
+    401Response:
+      title: 401 Unauthorized
+      type: object
+      properties:
+        title:
+          type: string
+          description: Error title
+        status:
+          type: string
+          description: Error status code
+        error_code:
+          type: string
+          description: Error code
+        message:
+          type: string
+          description: Error message
+      example:
+        {
+          "title": "ErrInvalidOauthToken",
+          "status": "401",
+          "error_code": "401013",
+          "message": "Oauth token is not valid",
+        }
     403Response:
       title: 403 Forbidden
       type: object
-      oneOf:
-        - title: 403 Unauthorized - invalid JWT
-          type: object
-          properties:
-            error_code:
-              type: string
-              description: Error code
-            message:
-              type: string
-              description: Error message
-          example: { "error_code": "403053", "message": "JWT is invalid" }
-        - title: 403 Unauthorized
-          type: object
-          properties:
-            error:
-              type: object
-              properties:
-                code:
-                  type: string
-                  description: Error code
-                message:
-                  type: string
-                  description: Error message
-                details:
-                  type: object
-                  properties:
-                    error_code:
-                      type: string
-                      description: Error code
-          example:
-            {
-              "error":
-                {
-                  "code": "Forbidden",
-                  "message": "Client ID is missing",
-                  "details": { "error_code": "403000" },
-                },
-            }
+      properties:
+        title:
+          type: string
+          description: Error title
+        status:
+          type: string
+          description: Error status code
+        error_code:
+          type: string
+          description: Error code
+        message:
+          type: string
+          description: Error message
+      example:
+        {
+          "title": "ErrMissingOauthToken",
+          "status": "403",
+          "error_code": "403010",
+          "message": "Oauth token is missing",
+        }
