@@ -13,7 +13,7 @@ info:
 
   version: 1.0.0
 servers:
-  - url: https://na1.api.commerce.adobe.com/<TENANT_ID>/
+  - url: https://na1.api.commerce.adobe.com/<TENANT_ID>
     description: Production endpoint. The TENANT_ID value is the identifier of the Adobe Commerce instance. See [Adobe Commerce Cloud Manager](https://experience.adobe.com/#/commerce/cloud-service/instances) to see your available instances.
 
 tags:
