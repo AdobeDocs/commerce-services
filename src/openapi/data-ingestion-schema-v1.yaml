@@ -1374,18 +1374,6 @@ components:
           schema:
             $ref: "#/components/schemas/403Response"
   parameters:
-    DATA_SPACE_ID:
-      name: DATA_SPACE_ID
-      in: path
-      description: |
-        Data Space ID.
-
-        See [SaaS data space provisioning](https://experienceleague.adobe.com/en/docs/commerce/user-guides/integration-services/saas#saas-data-space-provisioning)
-        in Adobe Experience League.
-      required: true
-      style: simple
-      schema:
-        type: string
     ContentType:
       name: Content-Type
       in: header
