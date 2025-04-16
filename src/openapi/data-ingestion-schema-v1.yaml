@@ -271,7 +271,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/400ProcessFeedResponse"
         "403":
-          description: Unauthorized request. Verify the `Authorization` header is present and the Bearer token is still valid.
+          description: Unauthorized request. Verify that the `Authorization` header is present, and that the Bearer token is still valid.
           content:
             application/json;charset=UTF-8:
               schema:
@@ -329,7 +329,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/400ProcessFeedResponse"
         "403":
-          description: Unauthorized request. Verify the ‘x-api-key’ and make sure that the JWT in ‘x-gw-signature’ is still valid.
+          description: Unauthorized request. Verify that the `Authorization` header is present, and that the Bearer token is still valid.
           content:
             application/json;charset=UTF-8:
               schema:
@@ -391,7 +391,7 @@ paths:
       operationId: createProducts
       parameters:
         - $ref: "#/components/parameters/ContentType"
-        - $ref: "#/components/parameters/xApiKey"
+        - $ref: "#/components/parameters/Authorization"
         - $ref: "#/components/parameters/ContentEncoding"
       responses:
         "200":
@@ -750,7 +750,7 @@ paths:
       operationId: updateProducts
       parameters:
         - $ref: "#/components/parameters/ContentType"
-        - $ref: "#/components/parameters/xApiKey"
+        - $ref: "#/components/parameters/Authorization"
         - $ref: "#/components/parameters/ContentEncoding"
       responses:
         "200":
@@ -915,7 +915,7 @@ paths:
       operationId: deleteProducts
       parameters:
         - $ref: "#/components/parameters/ContentType"
-        - $ref: "#/components/parameters/xApiKey"
+        - $ref: "#/components/parameters/Authorization"
         - $ref: "#/components/parameters/ContentEncoding"
       responses:
         "200":
@@ -1002,7 +1002,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/400ProcessFeedResponse"
         "403":
-          description: Unauthorized request. Verify the `Authorization` header is present and the Bearer token is still valid.
+          description: Unauthorized request. Verify that the `Authorization` header is present, and that the Bearer token is still valid.
           content:
             application/json;charset=UTF-8:
               schema:
@@ -1068,7 +1068,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/400ProcessFeedResponse"
         "403":
-          description: Unauthorized request. Verify the `Authorization` header is present and the Bearer token is still valid.
+          description: Unauthorized request. Verify that the `Authorization` header is present, and that the Bearer token is still valid.
           content:
             application/json;charset=UTF-8:
               schema:
@@ -1128,7 +1128,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/400ProcessFeedResponse"
         "403":
-          description: Unauthorized request. Verify the `Authorization` header is present and the Bearer token is still valid.
+          description: Unauthorized request. Verify that the `Authorization` header is present, and that the Bearer token is still valid.
           content:
             application/json;charset=UTF-8:
               schema:
@@ -1215,7 +1215,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/400ProcessFeedResponse"
         "403":
-          description: Unauthorized request. Verify the `Authorization` header is present and the Bearer token is still valid.
+          description: Unauthorized request. Verify that the `Authorization` header is present, and that the Bearer token is still valid.
           content:
             application/json;charset=UTF-8:
               schema:
@@ -1283,8 +1283,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/400ProcessFeedResponse"
         "403":
-          description: |
-            Unauthorized request. Verify the `x-api-key` and make sure that the JWT in `x-gw-signature` is still valid.
+          description: Unauthorized request. Verify that the `Authorization` header is present, and that the Bearer token is still valid.
           content:
             application/json;charset=UTF-8:
               schema:
@@ -1344,7 +1343,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/400ProcessFeedResponse"
         "403":
-          description: Unauthorized request. Verify the `Authorization` header is present and the Bearer token is still valid.
+          description: Unauthorized request. Verify that the `Authorization` header is present, and that the Bearer token is still valid.
           content:
             application/json;charset=UTF-8:
               schema:
@@ -1365,7 +1364,7 @@ components:
           schema:
             $ref: "#/components/schemas/400ProcessFeedResponse"
     UnauthorizedResponse:
-      description: Unauthorized request. Verify the `x-api-key` value is correct and ensure the JWT is not expired in `x-gw-signature`.
+      description: Unauthorized request. Verify that the `Authorization` header is present, and that the Bearer token is still valid.
       content:
         application/json;charset=UTF-8:
           schema:
@@ -1378,7 +1377,7 @@ components:
       schema:
         type: string
         enum: [application/json]
-    xApiKey:
+    Authorization:
       name: Authorization
       in: header
       required: true
