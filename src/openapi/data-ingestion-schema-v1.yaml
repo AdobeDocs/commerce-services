@@ -392,7 +392,6 @@ paths:
       parameters:
         - $ref: "#/components/parameters/ContentType"
         - $ref: "#/components/parameters/xApiKey"
-        - $ref: "#/components/parameters/xGwSignature"
         - $ref: "#/components/parameters/ContentEncoding"
       responses:
         "200":
@@ -752,7 +751,6 @@ paths:
       parameters:
         - $ref: "#/components/parameters/ContentType"
         - $ref: "#/components/parameters/xApiKey"
-        - $ref: "#/components/parameters/xGwSignature"
         - $ref: "#/components/parameters/ContentEncoding"
       responses:
         "200":
@@ -918,7 +916,6 @@ paths:
       parameters:
         - $ref: "#/components/parameters/ContentType"
         - $ref: "#/components/parameters/xApiKey"
-        - $ref: "#/components/parameters/xGwSignature"
         - $ref: "#/components/parameters/ContentEncoding"
       responses:
         "200":
