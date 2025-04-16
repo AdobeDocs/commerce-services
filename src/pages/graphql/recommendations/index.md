@@ -1,7 +1,7 @@
 ---
 title: Product Recommendations
 description: Learn how Product Recommendations implements GraphQL.
-edition: acc
+edition: paas
 keywords:
   - GraphQL
   - Services

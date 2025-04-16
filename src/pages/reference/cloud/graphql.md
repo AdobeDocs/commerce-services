@@ -1,6 +1,6 @@
 ---
 title: Cloud Service GraphQL API Reference
-edition: acc
+edition: paas
 description: Learn about the Adobe Commerce as a Cloud Service GraphQL APIs.
 keywords:
   - GraphQL

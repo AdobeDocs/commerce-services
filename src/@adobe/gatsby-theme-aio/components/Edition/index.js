@@ -21,16 +21,12 @@ const EDITIONS_LINK = 'https://docs.magento.com/user-guide/getting-started.html#
 
 const Edition = ({ ...props }) => {
   switch (props.name) {
-    case 'acc':
-      editionText = 'Adobe Commerce on Cloud';
-      editionColor = 'spectrum-Badge--neutral';
-      break;
-    case 'accs':
-      editionText = 'Adobe Commerce as a Cloud Service';
+    case 'paas':
+      editionText = 'PaaS';
       editionColor = 'spectrum-Badge--informative';
       break;
-    case 'aco':
-      editionText = 'Adobe Commerce Optimizer';
+    case 'saas':
+      editionText = 'SaaS';
       editionColor = 'spectrum-Badge--positive';
       break;
     default:

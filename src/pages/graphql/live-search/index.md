@@ -1,6 +1,6 @@
 ---
 title: Live Search
-edition: acc
+edition: paas
 description: Learn how Live Search implements GraphQL.
 keywords:
   - GraphQL

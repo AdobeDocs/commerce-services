@@ -1,7 +1,7 @@
 ---
 title: Cloud Service REST API Reference
 description: Learn about Adobe Commerce as a Cloud Service REST API.
-edition: acc
+edition: paas
 keywords:
   - REST
   - Services

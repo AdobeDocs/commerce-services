@@ -5,7 +5,7 @@ keywords:
   - REST
   - Services
 noIndex: true
-edition: accs
+edition: saas
 ---
 
 # Rest overview
