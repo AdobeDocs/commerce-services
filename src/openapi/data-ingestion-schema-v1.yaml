@@ -113,10 +113,8 @@ paths:
                       "dataType": "TEXT",
                       "visibleIn":
                         [
-                          "PRODUCT_DETAIL",
-                          "PRODUCT_LISTING",
-                          "SEARCH_RESULTS",
-                          "PRODUCT_COMPARE"
+                          "CATALOG",
+                          "SEARCH"
                         ],
                       "filterable": true,
                       "sortable": false,
@@ -131,10 +129,8 @@ paths:
                       "dataType": "TEXT",
                       "visibleIn":
                         [
-                          "PRODUCT_DETAIL",
-                          "PRODUCT_LISTING",
-                          "SEARCH_RESULTS",
-                          "PRODUCT_COMPARE"
+                          "CATALOG",
+                          "SEARCH"
                         ],
                       "filterable": false,
                       "sortable": true,
@@ -147,7 +143,7 @@ paths:
                       "scope": { "locale": "en" },
                       "label": "Product Description",
                       "dataType": "TEXT",
-                      "visibleIn": ["PRODUCT_DETAIL"],
+                      "visibleIn": ["CATALOG"],
                       "filterable": false,
                       "sortable": false,
                       "searchable": false,
@@ -159,7 +155,7 @@ paths:
                       "scope": { "locale": "en" },
                       "label": "Product Short Description",
                       "dataType": "TEXT",
-                      "visibleIn": ["PRODUCT_DETAIL"],
+                      "visibleIn": ["CATALOG"],
                       "filterable": false,
                       "sortable": false,
                       "searchable": true,
@@ -173,10 +169,8 @@ paths:
                       "dataType": "DECIMAL",
                       "visibleIn":
                         [
-                          "PRODUCT_DETAIL",
-                          "PRODUCT_LISTING",
-                          "SEARCH_RESULTS",
-                          "PRODUCT_COMPARE"
+                          "CATALOG",
+                          "SEARCH"
                         ],
                       "filterable": true,
                       "sortable": true,
@@ -253,16 +247,14 @@ paths:
                   Note that fields with the `array` type will replace existing data.
                   The example below updates the following attributes:
                   * `label` - Change the product attribute label.
-                  * `visibleIn` - Add `PRODUCT_LISTING` role to the product attribute.
+                  * `visibleIn` - Add `CATALOG` role to the product attribute.
                 value:
                   [
                     {
                       "code": "name",
                       "scope": { "locale": "en" },
                       "label": "Updated - Product Name",
-                      "visibleIn": [
-                        "PRODUCT_DETAIL",
-                        "PRODUCT_LISTING"]
+                      "visibleIn": ["CATALOG"]
                     }
                   ]
       responses:
@@ -730,8 +722,10 @@ paths:
                                   "userDefinedQty": true
                                 }
                               ]
-                      },
-                      {
+                          }
+                        ]
+                    },
+                    {
                       "sku": "top-red",
                       "scope": { "locale": "en" },
                       "name": "Red Top",
@@ -1575,16 +1569,12 @@ components:
           type: array
           description: |
             Determines how the attribute is used on the storefront.
-            * `PRODUCT_DETAIL`: Product attribute is visible on the Product Detail Page.
-            * `PRODUCT_LISTING`: Product attribute is visible on Product Listing Page.
-            * `SEARCH_RESULTS`: Product attribute is visible on Search Results Page.
-            * `PRODUCT_COMPARE`: Product attribute is visible on Product Compare Page.
+            * `CATALOG`: Product attribute is visible in product listing, detail, and compare pages.
+            * `SEARCH`: Product attribute is visible on Search Results Page.
           items:
             enum:
-              - PRODUCT_DETAIL
-              - PRODUCT_LISTING
-              - SEARCH_RESULTS
-              - PRODUCT_COMPARE
+              - CATALOG
+              - SEARCH
         label:
           type: string
           description: Label for the attribute that is displayed in user interfaces.
@@ -1643,16 +1633,12 @@ components:
           type: array
           description: |
             Determines how the attribute is used on the storefront.
-            * `PRODUCT_DETAIL`: Product attribute is visible on the Product Detail Page.
-            * `PRODUCT_LISTING`: Product attribute is visible on Product Listing Page.
-            * `SEARCH_RESULTS`: Product attribute is visible on Search Results Page.
-            * `PRODUCT_COMPARE`: Product attribute is visible on Product Compare Page.
+            * `SEARCH`: Product attribute is visible on Search Results Page.
+            * `CATALOG`: Product is visible in Product Listing, Detail, and Compare pages.
           items:
             enum:
-              - PRODUCT_DETAIL
-              - PRODUCT_LISTING
-              - SEARCH_RESULTS
-              - PRODUCT_COMPARE
+              - CATALOG
+              - SEARCH
         label:
           type: string
           description: Label for the attribute that is displayed in user interfaces.
