@@ -209,7 +209,7 @@ paths:
           content:
             application/json;charset=UTF-8:
               schema:
-                $ref: "#/components/schemas/403Response",
+                $ref: "#/components/schemas/403Response"
     patch:
       tags:
         - Metadata
