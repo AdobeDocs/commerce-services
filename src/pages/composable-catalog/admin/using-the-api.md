@@ -11,11 +11,11 @@ keywords:
 
 # Using the Channels and Policies API
 
-## URL structure
+## Base URL
 
-The URL structure for Channels and Policies API requests uses the following format:
+Use the following base URL for all Channels and Policies API requests.
 
-`https://na1-sandbox.api.commerce.adobe.com/<tenantId>/admin/graphql/<endpoint>`
+`https://na1-sandbox.api.commerce.adobe.com/<tenantId>/admin/graphql`
 
 <InlineAlert variant="info" slots="text"/>
 
@@ -23,15 +23,13 @@ For sample requests and examples using the API, see the [API Reference](api-refe
 
 ## Authentication
 
-Every API request must include the following credentials in the request header.
+Every API request must include a bearer token in the request header:
 
-- `x-api-key: <clientId>`
+`Authorization: Bearer <bearerToken>`
 
-  The client ID from the Adobe developer project for the API integration.
+An OAUTH 2.0 bearer access token is a type of authentication token that, when included in the Authorization header of an HTTP request, authenticates the API request and authorizes access to the requested resource. The token is valid for 24 hours. When it expires, you use the Adobe developer project credentials to generate a new one.
 
-- `Authorization: Bearer <bearerToken>`
-
-  An OAUTH 2.0 bearer access token is a type of authentication token that, when included in the Authorization header of an HTTP request, grants access to protected resources in Adobe APIs. The token is valid for 24 hours. When it expires, you use the Adobe developer project credentials to generate a new one.
+The bearer token is generated using the credentials from the Adobe developer project for the API integration. The token is valid for 24 hours. When it expires, you use the Adobe developer project credentials to generate a new one.
 
 <br></br>
 
@@ -57,7 +55,6 @@ Include the following headers in GraphQL requests.
 | Header Name   | Required |Description |
 |---------------|----------|------------|
 | `Content-Type` | Yes     | Specifies the media type of the resource. Accepted value: `application/json`. |
-| `x-api-key`         | Yes      | Use the Client ID generated for the API integration.                 |
 | `Authorization: Bearer <accessToken>`     | Yes      | Bearer token generated from IMS credentials. See [Authentication](#authentication).  |
 
 ## Request template
@@ -68,7 +65,6 @@ Use the following template for each GraphQL query request, replacing the placeho
 curl --request POST \
   --url https://na1-sandbox.api.commerce.adobe.com/<tenantId>/admin/graphql \
   --header "Content-Type: application/json" \
-  --header 'x-api-key: <clientId>' \
   --header 'Authorization: Bearer <bearerToken>' \
   --data 'apiPayload'
 ```

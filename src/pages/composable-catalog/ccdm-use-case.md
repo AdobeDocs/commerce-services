@@ -77,7 +77,6 @@ Create the metadata to define the search characteristics and filters for display
 ```shell
 curl --request POST \
   --url https://na1-sandbox.api.commerce.adobe.com/<tenantId>/v1/catalog/products/metadata \
-  --header "x-api-key: {clientId}" \
   --header "Authorization: Bearer {accessToken}" \
 
   --data '[
@@ -278,6 +277,59 @@ curl --request POST \
 ]
 ```
 
+curl --request POST \
+  --url https://na1-sandbox.api.commerce.adobe.com/XDevkG9W6UbwgQmPn995r3/v1/catalog/products/metadata \
+  --header 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsIng1dSI6Imltc19uYTEta2V5LWF0LTEuY2VyIiwia2lkIjoiaW1zX25hMS1rZXktYXQtMSIsIml0dCI6ImF0In0.eyJpZCI6IjE3NDQzMDQzMTg5NjVfMjM5OGUxYWYtYjQzNi00MzAzLTg4NjItYjdhMTUzNDUzYjBkX3VlMSIsInR5cGUiOiJhY2Nlc3NfdG9rZW4iLCJjbGllbnRfaWQiOiJkYXRhLXNvbHV0aW9ucy1jZWxsLWludGVncmF0aW9uLXRlc3QiLCJ1c2VyX2lkIjoiZGF0YS1zb2x1dGlvbnMtY2VsbC1pbnRlZ3JhdGlvbi10ZXN0QEFkb2JlU2VydmljZSIsImFzIjoiaW1zLW5hMSIsImFhX2lkIjoiZGF0YS1zb2x1dGlvbnMtY2VsbC1pbnRlZ3JhdGlvbi10ZXN0QEFkb2JlU2VydmljZSIsImN0cCI6MCwicGFjIjoiZGF0YS1zb2x1dGlvbnMtY2VsbC1pbnRlZ3JhdGlvbi10ZXN0IiwicnRpZCI6IjE3NDQzMDQzMTg5NjVfMzI0NDlkZmQtMGFiYi00NmVlLThjNWMtYTc4NWFkMjY3MmFjX3VlMSIsIm1vaSI6ImVmNGE5YmEiLCJydGVhIjoiMTc0NTUxMzkxODk2NSIsImV4cGlyZXNfaW4iOiI4NjQwMDAwMCIsImNyZWF0ZWRfYXQiOiIxNzQ0MzA0MzE4OTY1Iiwic2NvcGUiOiJzeXN0ZW0ifQ.gHik44NEw9_s3POx7juvuHUME_jEqJNIWagEpNAWev4Aw4wPh8jrVWpkFhv3Y3Kn_wrQPTujvkzn6d-lPQDjJ4l0p373DyO5rlu9HjjvMI2n5u11PTXevtuK5zVZnNbBb8fgy4pMpGGCRKF7Nz7iNF4dI7WeWz8QfXBnsgyJGRZIR-zNXQlVbGOUWyigUJ73__HxUwmu43VyrSgOf_vzzh8J1eQ0wa1BYl14QiqWe_DmaMlV4bljUCPe_MRcKxC7MXCFWflRyur-ApipoIDQuIjFC0suE1flKSidsbsieL5tjD9LAVvyQk8-cgq0pW1--qfqPWFYlbyF0LwMLi9dkw' \
+  --header 'Content-Type: application/json' \
+  --data '[
+    {
+        "code": "brand",
+        "scope": {
+            "locale": "en-US"
+        },
+        "label": "Brand",
+        "dataType": "TEXT",
+        "visibleIn": [
+            "PRODUCT_DETAIL",
+            "PRODUCT_LISTING",
+            "SEARCH_RESULTS",
+            "PRODUCT_COMPARE"
+        ],
+        "filterable": true,
+        "sortable": false,
+        "searchable": true,
+        "searchWeight": 55,
+        "searchTypes": [
+            "AUTOCOMPLETE",
+            "CONTAINS",
+            "STARTS_WITH"
+        ]
+    },
+    {
+        "code": "country",
+        "scope": {
+            "locale": "en-US"
+        },
+        "label": "Country",
+        "dataType": "TEXT",
+        "visibleIn": [
+            "PRODUCT_DETAIL",
+            "PRODUCT_LISTING",
+            "SEARCH_RESULTS",
+            "PRODUCT_COMPARE"
+        ],
+        "filterable": true,
+        "sortable": false,
+        "searchable": true,
+        "searchWeight": 55,
+        "searchTypes": [
+            "AUTOCOMPLETE",
+            "CONTAINS",
+            "STARTS_WITH"
+        ]
+    }
+]'
+
 **Response**
 
 ```shell
@@ -292,8 +344,7 @@ curl --request POST \
 ```shell
 curl --request POST \
   --url https://na1-sandbox.api.commerce.adobe.com/<tenantId>/v1/catalog/products/metadata \
-  --header 'Content-Type: application/json' \
-  --header "x-api-key: {clientId}" \
+  --header "Content-Type: application/json \
   --header "Authorization: Bearer {accessToken}" \
   --data '[
     {
@@ -502,8 +553,7 @@ Add the simple product *Aurora Prism Battery* with two attribute codes, `Brand` 
 ```shell
 curl --request POST \
   --url https://na1-sandbox.api.commerce.adobe.com/<tenanId>/api/v1/catalog/products \
-  --header 'Content-Type: application/json' \
-  --header "x-api-key: {clientId}" \
+  --header "Content-Type: application/json" \
   --header "Authorization: Bearer {accessToken}" \
 
   --data '[
@@ -583,7 +633,7 @@ Add the product *Bolt Atlas Battery* with two attribute codes, `Brand` set to *B
 ```shell
 curl --request POST \
   --url https://na1-sandbox.api.commerce.adobe.com/<tenanId>/api/v1/catalog/products \
-  --header "x-api-key: {clientId}" \
+  --header "Content-Type: application/json" \
   --header "Authorization: Bearer {accessToken}" \
 
   --data '[
@@ -673,8 +723,7 @@ The query response returns a `PolicyId` value that is required when you assign t
 ```shell
 curl --request POST \
   --url http://na1-sandbox.api.commerce.adobe.com/<tenantId>/admin/graphql \
-  --header 'Content-Type: application/json' \
-  --header "x-api-key: {clientId}" \
+  --header "Content-Type: application/json" \
   --header "Authorization: Bearer {accessToken}" \
 
   --data '{"query":"mutation createPolicy {\n\tcreatePolicy(\n\t\tpolicyRequest: {\n\t\t\tname: \"Location Policy\"\n\t\t\tmandatory: true\n\t\t\tactions: [\n\t\t\t\t{\n\t\t\t\t\ttriggers: [\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\tname: \"AC-Policy-Country\",\n\t\t\t\t\t\t\ttransportType: HTTP_HEADER\n\t\t\t\t\t\t}\n\t\t\t\t\t]\n\t\t\t\t\tfilters: [\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\tattribute: \"country\",\n\t\t\t\t\t\t\tvalueSource: TRIGGER,\n\t\t\t\t\t\t\tvalue: \"AC-Policy-Country\"\n\t\t\t\t\t\t\tactionFilterOperator: EQUALS,\n\t\t\t\t\t\t\tenabled: true\n\t\t\t\t\t\t}\n\t\t\t\t\t]\n\t\t\t\t}\n\t\t\t]\n\t\t}\n\t) {\n\t\tname\n\t\tpolicyId\n\t\tmandatory\n\t\tactions {\n\t\t\ttriggers {\n\t\t\t\tname\n\t\t\t\ttransportType\n\t\t\t}\n\t\t\tfilters {\n\t\t\t\tattribute\n\t\t\t\tvalueSource\n\t\t\t\tvalue\n\t\t\t\tactionFilterOperator\n\t\t\t\tenabled\n\t\t\t}\n\t\t}\n\t\tcreatedAt\n\t\tupdatedAt\n\t}\n}\n","operationName":"createPolicy"}'
@@ -774,8 +823,7 @@ mutation CreatePolicy {
 ```shell
 curl --request POST \
   --url http://na1-sandbox.api.commerce.adobe.com/<tenantId>/admin/graphql \
-  --header 'Content-Type: application/json' \
-  --header "x-api-key: {clientId}" \
+  --header "Content-Type: application/json" \
   --header "Authorization: Bearer {accessToken}" \
 
   --data '{"query":"mutation createPolicy {\n\tcreatePolicy(\n\t\tpolicyRequest: {\n\t\t\tname: \"Brand Policy\"\n\t\t\tmandatory: true\n\t\t\tactions: [\n\t\t\t\t{\n\t\t\t\t\ttriggers: [\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\tname: \"AC-Policy-Brand\",\n\t\t\t\t\t\t\ttransportType: HTTP_HEADER\n\t\t\t\t\t\t}\n\t\t\t\t\t]\n\t\t\t\t\tfilters: [\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\tattribute: \"brand\",\n\t\t\t\t\t\t\tvalueSource: TRIGGER,\n\t\t\t\t\t\t\tvalue: \"AC-Policy-Brand\"\n\t\t\t\t\t\t\tactionFilterOperator: EQUALS,\n\t\t\t\t\t\t\tenabled: true\n\t\t\t\t\t\t}\n\t\t\t\t\t]\n\t\t\t\t}\n\t\t\t]\n\t\t}\n\t) {\n\t\tname\n\t\tpolicyId\n\t\tmandatory\n\t\tactions {\n\t\t\ttriggers {\n\t\t\t\tname\n\t\t\t\ttransportType\n\t\t\t}\n\t\t\tfilters {\n\t\t\t\tattribute\n\t\t\t\tvalueSource\n\t\t\t\tvalue\n\t\t\t\tactionFilterOperator\n\t\t\t\tenabled\n\t\t\t}\n\t\t}\n\t\tcreatedAt\n\t\tupdatedAt\n\t}\n}\n","operationName":"createPolicy"}'
@@ -877,9 +925,8 @@ Create a channel and assign the policies for location filtering and brand filter
 ```shell
 curl --request POST \
   --url http://na1-sandbox.api.commerce.adobe.com/<tenantId>/admin/graphql \
-  --header 'Content-Type: application/json'  \
-  --header 'x-api-key: {clientId}' \
-  --header 'Authorization: Bearer {accessToken}' \
+  --header "Content-Type: application/json"  \
+  --header "Authorization: Bearer {accessToken}" \
 
   --data '{"query":"mutation {\n    createChannel(\n        channelRequest: {\n            name: \"Zenith Automotive\",\n            scopes: [\n                { locale: \"en-US\" }\n            ]\n            policyIds : [\n                \"56a6908f-eyx3-59c3-sye8-574509e6y45\",\n                \"39c8106d-aab2-49b2-aac3-177608d4e567\",\n            ]\n        }\n    ) {\n        channelId\n        name\n        scopes {\n          locale\n        }\n        policyIds\n        createdAt\n        updatedAt\n    }\n}"}'
 ```

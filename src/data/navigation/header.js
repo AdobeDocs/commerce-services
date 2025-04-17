@@ -15,7 +15,7 @@ module.exports = [
           path: "/composable-catalog/data-ingestion/"
         },
         {
-          title: "Catalog management and rules",
+          title: "Channels and Policies",
           path: "/composable-catalog/admin/"
         },
         {

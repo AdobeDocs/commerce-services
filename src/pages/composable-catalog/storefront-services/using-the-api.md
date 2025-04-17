@@ -13,13 +13,11 @@ keywords:
 
 Use the Storefront API to retrieve product data from your Commerce catalogs and display it in Commerce frontend experiences . Data includes products, product attribute metadata, prices books, and prices.
 
-## URL structure
+## Base URL
 
-The URL structure for the Channels and Policies API requests uses the following format:
+Send all Storefront API requests to this base URL:
 
-`https://na1-sandbox.api.commerce.adobe.com/<tenantId>/graphql/<endpoint>`
-
-<InlineAlert variant="info" slots="text"/>
+`https://na1-sandbox.api.commerce.adobe.com/<tenantId>/graphql`
 
 ## Authentication
 
@@ -37,7 +35,6 @@ Header name| Description
 `AC-Policy-{*}` | Optional. The trigger name configured for a policy that sets data access filters to restrict product access based on request attributes and context. Examples include POS physical stores, marketplaces, or advertisement pipelines like Google, Meta, or Instagram. Use the [policies query](https://developer-stage.adobe.com/commerce/services/graphql-api/admin-api/index.html#query-policies) to retrieve the [policy trigger names](https://developer-stage.adobe.com/commerce/services/graphql-api/admin-api/index.html#definition-TriggerResponse) available for each policy. You can specify multiple policy headers per request. Example: `AC-Policy-Country`.
 `AC-Price-Book-ID` | Optional. Defines how prices are calculated for a specific channel. Use if the merchant uses price books to calculate pricing. Merchandising Services provides a default price book `main` with currency in US dollars.
 `AC-Scope-Locale`: | Required. The locale (language or geography) scope to filter products for display or update, for example `en_US`. Use the [channels query](https://developer-stage.adobe.com/commerce/services/graphql-api/admin-api/index.html#query-channels) to retrieve the locale IDs available for each channel.
-`X-Api-Key` | Use the [Public API Key](https://experienceleague.adobe.com/en/docs/commerce/user-guides/integration-services/saas#genapikey) for your production environment when submitting Storefront API requests. |
 
 ## Request template
 
