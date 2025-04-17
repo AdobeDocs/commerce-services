@@ -873,12 +873,12 @@ paths:
                                 {
                                   "sku": "top-red",
                                   "qty": 1,
-                                  "userDefinedQty": false,
+                                  "userDefinedQty": false
                                 },
                                 {
                                   "sku": "top-blue",
                                   "qty": 1,
-                                  "userDefinedQty": false,
+                                  "userDefinedQty": false
                                 },
                               ],
                           },
@@ -892,12 +892,12 @@ paths:
                                 {
                                   "sku": "bottom-black",
                                   "qty": 1,
-                                  "userDefinedQty": false,
+                                  "userDefinedQty": false
                                 },
                                 {
                                   "sku": "bottom-white",
                                   "qty": 1,
-                                  "userDefinedQty": false,
+                                  "userDefinedQty": false
                                 },
                               ],
                           },
@@ -910,22 +910,22 @@ paths:
                                 {
                                   "sku": "socks",
                                   "qty": 1,
-                                  "userDefinedQty": true,
+                                  "userDefinedQty": true
                                 },
                                 {
                                   "sku": "headband",
                                   "qty": 1,
-                                  "userDefinedQty": true,
+                                  "userDefinedQty": true
                                 },
                                 {
                                   "sku": "gloves",
                                   "qty": 1,
-                                  "userDefinedQty": true,
-                                },
-                              ],
-                          },
-                        ],
-                    },
+                                  "userDefinedQty": true
+                                }
+                              ]
+                          }
+                        ]
+                    }
                   ]
   /v1/catalog/products/delete:
     post:
@@ -1082,7 +1082,7 @@ paths:
                 value:
                   [
                     { "priceBookId": "dealer-north", "currency": "EUR" },
-                    { "priceBookId": "main", "currency": "EUR" },
+                    { "priceBookId": "main", "currency": "EUR" }
                   ]
       responses:
         "200":
@@ -1228,19 +1228,29 @@ paths:
                     {
                       "sku": "red-pants",
                       "priceBookId": "main",
-                      "regular": 20,
+                      "regular": 20
                     },
                     {
                       "sku": "red-pants",
                       "priceBookId": "VIP",
                       "regular": 19.9,
-                      "discounts": [{ "code": "discount", "percentage": 10 }],
+                      "discounts": [
+                        {
+                          "code": "discount",
+                          "percentage": 10
+                        }
+                      ]
                     },
                     {
                       "sku": "red-pants",
                       "priceBookId": "dealer-north",
                       "regular": 20.5,
-                      "discounts": [{ "code": "fixed", "price": 18 }],
+                      "discounts": [
+                        {
+                          "code": "fixed",
+                          "price": 18
+                        }
+                      ]
                     },
                   ]
       responses:
@@ -1312,8 +1322,12 @@ paths:
                     {
                       "sku": "red-pants",
                       "priceBookId": "dealer-north",
-                      "discounts": [{ "code": "discount", "percentage": 30 }],
-                    },
+                      "discounts": [
+                        { "code": "discount",
+                        "percentage": 30
+                        }
+                      ]
+                    }
                   ]
       responses:
         "200":
