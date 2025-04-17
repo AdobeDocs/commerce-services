@@ -730,10 +730,8 @@ paths:
                                   "userDefinedQty": true
                                 }
                               ]
-                          }
-                        ]
-                    },
-                    {
+                      },
+                      {
                       "sku": "top-red",
                       "scope": { "locale": "en" },
                       "name": "Red Top",
