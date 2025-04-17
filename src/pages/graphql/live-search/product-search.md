@@ -133,6 +133,7 @@ The `filter` attribute is the part of the query that uses product attributes as 
 #### Filtering by attributes
 
 An attribute filter consists of a product `attribute`, a comparison operator, and the value that is being searched for. Together, they help narrow the search results, based on shopper input. For example:
+
 - To set up a filter for jackets based on size, set the product attribute to `size`.
 - To filter on medium-sized jackets only, set the `eq` field to `M`.
 - To filter on both medium- and large-sized jackets, set the `in` field to `["M", "L"]`.
