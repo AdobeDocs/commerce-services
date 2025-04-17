@@ -116,7 +116,7 @@ paths:
                           "PRODUCT_DETAIL",
                           "PRODUCT_LISTING",
                           "SEARCH_RESULTS",
-                          "PRODUCT_COMPARE",
+                          "PRODUCT_COMPARE"
                         ],
                       "filterable": true,
                       "sortable": false,
@@ -140,7 +140,7 @@ paths:
                       "sortable": true,
                       "searchable": true,
                       "searchWeight": 1,
-                      "searchTypes": ["AUTOCOMPLETE"],
+                      "searchTypes": ["AUTOCOMPLETE"]
                     },
                     {
                       "code": "description",
@@ -152,7 +152,7 @@ paths:
                       "sortable": false,
                       "searchable": false,
                       "searchWeight": 1,
-                      "searchTypes": ["AUTOCOMPLETE"],
+                      "searchTypes": ["AUTOCOMPLETE"]
                     },
                     {
                       "code": "shortDescription",
@@ -164,7 +164,7 @@ paths:
                       "sortable": false,
                       "searchable": true,
                       "searchWeight": 1,
-                      "searchTypes": ["AUTOCOMPLETE"],
+                      "searchTypes": ["AUTOCOMPLETE"]
                     },
                     {
                       "code": "price",
@@ -182,8 +182,8 @@ paths:
                       "sortable": true,
                       "searchable": false,
                       "searchWeight": 1,
-                      "searchTypes": [],
-                    },
+                      "searchTypes": []
+                    }
                   ]
       responses:
         "200":
@@ -209,7 +209,7 @@ paths:
           content:
             application/json;charset=UTF-8:
               schema:
-                $ref: "#/components/schemas/403Response"
+                $ref: "#/components/schemas/403Response",
     patch:
       tags:
         - Metadata
@@ -260,7 +260,9 @@ paths:
                       "code": "name",
                       "scope": { "locale": "en" },
                       "label": "Updated - Product Name",
-                      "visibleIn": ["PRODUCT_DETAIL", "PRODUCT_LISTING"]
+                      "visibleIn": [
+                        "PRODUCT_DETAIL",
+                        "PRODUCT_LISTING"]
                     }
                   ]
       responses:
@@ -326,7 +328,12 @@ paths:
               FeedWithMetadataInformation:
                 summary: Delete product attribute metadata.
                 description: Marks existing product attribute metadata as deleted.
-                value: [{ "code": "name", "scope": { "locale": "en" } }]
+                value: [
+                  {
+                    "code": "name",
+                    "scope": { "locale": "en" }
+                  }
+                ]
       responses:
         "200":
           description: All items in the request are accepted for further processing.
@@ -442,12 +449,16 @@ paths:
                       "status": "ENABLED",
                       "description": "long description about red pants",
                       "shortDescription": "just pants",
-                      "visibleIn": ["CATALOG", "SEARCH"],
+                      "visibleIn":
+                        [
+                        "CATALOG",
+                        "SEARCH"
+                        ],
                       "metaTags":
                         {
                           "title": "Yoga pants ",
                           "description": "Climb with Zeppelin Yoga Pant",
-                          "keywords": ["pants", "yoga"],
+                          "keywords": ["pants", "yoga"]
                         },
                       "attributes":
                         [
@@ -460,7 +471,7 @@ paths:
                             "code": "states",
                             "type": "ARRAY",
                             "values": ["TX", "CA"]
-                          },
+                          }
                         ],
                       "images":
                         [
@@ -475,8 +486,8 @@ paths:
                         [
                           { "path": "red-pants" },
                           { "path": "pants/red-pants", "position": 1 }
-                        ],
-                    },
+                        ]
+                    }
                   ]
               ConfigurableProductWithVariants:
                 summary: Create a configurable product with four product variants.
@@ -503,14 +514,14 @@ paths:
                                 {
                                   "variantReferenceId": "pants-color-red",
                                   "label": "Red",
-                                  "colorHex": "#ff0000",
+                                  "colorHex": "#ff0000"
                                 },
                                 {
                                   "variantReferenceId": "pants-color-green",
                                   "label": "Green",
-                                  "imageUrl": "https://www.example.com/media/catalog/product/green_main_1.jpg",
-                                },
-                              ],
+                                  "imageUrl": "https://www.example.com/media/catalog/product/green_main_1.jpg"
+                                }
+                              ]
                           },
                           {
                             "attributeCode": "size",
@@ -521,15 +532,15 @@ paths:
                               [
                                 {
                                   "variantReferenceId": "pants-size-32",
-                                  "label": "32",
+                                  "label": "32"
                                 },
                                 {
                                   "variantReferenceId": "pants-size-44",
-                                  "label": "44",
-                                },
-                              ],
-                          },
-                        ],
+                                  "label": "44"
+                                }
+                              ]
+                          }
+                        ]
                     },
                     {
                       "sku": "pants-red-32",
@@ -543,16 +554,22 @@ paths:
                             "code": "color",
                             "type": "STRING",
                             "values": ["Red Pants"],
-                            "variantReferenceId": "pants-color-red",
+                            "variantReferenceId": "pants-color-red"
                           },
                           {
                             "code": "size",
                             "type": "STRING",
                             "values": ["32"],
-                            "variantReferenceId": "pants-size-32",
-                          },
+                            "variantReferenceId": "pants-size-32"
+                          }
                         ],
-                      "links": [{ "type": "variant_of", "sku": "pants" }],
+                      "links":
+                        [
+                          {
+                            "type": "variant_of",
+                            "sku": "pants"
+                            }
+                        ]
                     },
                     {
                       "sku": "pants-red-44",
@@ -566,16 +583,22 @@ paths:
                             "code": "color",
                             "type": "STRING",
                             "values": ["Red Pants"],
-                            "variantReferenceId": "pants-color-red",
+                            "variantReferenceId": "pants-color-red"
                           },
                           {
                             "code": "size",
                             "type": "STRING",
                             "values": ["44"],
-                            "variantReferenceId": "pants-size-44",
-                          },
+                            "variantReferenceId": "pants-size-44"
+                          }
                         ],
-                      "links": [{ "type": "VARIANT_OF", "sku": "pants" }],
+                      "links":
+                        [
+                          {
+                            "type": "VARIANT_OF",
+                            "sku": "pants"
+                          }
+                        ]
                     },
                     {
                       "sku": "pants-green-32",
@@ -589,16 +612,22 @@ paths:
                             "code": "color",
                             "type": "STRING",
                             "values": ["Green Pants"],
-                            "variantReferenceId": "pants-color-green",
+                            "variantReferenceId": "pants-color-green"
                           },
                           {
                             "code": "size",
                             "type": "STRING",
                             "values": ["32"],
-                            "variantReferenceId": "pants-size-32",
-                          },
+                            "variantReferenceId": "pants-size-32"
+                          }
                         ],
-                      "links": [{ "type": "variant_of", "sku": "pants" }],
+                      "links":
+                        [
+                          {
+                            "type": "VARIANT_OF",
+                            "sku": "pants"
+                          }
+                        ]
                     },
                     {
                       "sku": "pants-green-44",
@@ -612,17 +641,23 @@ paths:
                             "code": "color",
                             "type": "STRING",
                             "values": ["Green Pants"],
-                            "variantReferenceId": "pants-color-green",
+                            "variantReferenceId": "pants-color-green"
                           },
                           {
                             "code": "size",
                             "type": "STRING",
                             "values": ["44"],
-                            "variantReferenceId": "pants-size-44",
-                          },
+                            "variantReferenceId": "pants-size-44"
+                          }
                         ],
-                      "links": [{ "type": "variant_of", "sku": "pants" }],
-                    },
+                      "links":
+                        [
+                          {
+                            "type": "VARIANT_OF",
+                            "sku": "pants"
+                          }
+                        ]
+                    }
                   ]
               BundleProductWithItems:
                 summary: Create a bundle product with multiple items.
@@ -650,14 +685,14 @@ paths:
                                 {
                                   "sku": "top-red",
                                   "qty": 1,
-                                  "userDefinedQty": false,
+                                  "userDefinedQty": false
                                 },
                                 {
                                   "sku": "top-blue",
                                   "qty": 1,
-                                  "userDefinedQty": false,
-                                },
-                              ],
+                                  "userDefinedQty": false
+                                }
+                              ]
                           },
                           {
                             "group": "bottoms",
@@ -669,14 +704,14 @@ paths:
                                 {
                                   "sku": "bottom-black",
                                   "qty": 1,
-                                  "userDefinedQty": false,
+                                  "userDefinedQty": false
                                 },
                                 {
                                   "sku": "bottom-white",
                                   "qty": 1,
-                                  "userDefinedQty": false,
-                                },
-                              ],
+                                  "userDefinedQty": false
+                                }
+                              ]
                           },
                           {
                             "group": "accessories",
@@ -687,16 +722,16 @@ paths:
                                 {
                                   "sku": "socks",
                                   "qty": 1,
-                                  "userDefinedQty": true,
+                                  "userDefinedQty": true
                                 },
                                 {
                                   "sku": "headband",
                                   "qty": 1,
-                                  "userDefinedQty": true,
-                                },
-                              ],
-                          },
-                        ],
+                                  "userDefinedQty": true
+                                }
+                              ]
+                          }
+                        ]
                     },
                     {
                       "sku": "top-red",
@@ -706,7 +741,11 @@ paths:
                       "status": "ENABLED",
                       "visibleIn": ["CATALOG"],
                       "links":
-                        [{ "type": "in_bundle", "sku": "bundle-outfit" }],
+                        [
+                          { "type": "in_bundle",
+                          "sku": "bundle-outfit"
+                          }
+                        ]
                     },
                     {
                       "sku": "top-blue",
@@ -716,7 +755,11 @@ paths:
                       "status": "ENABLED",
                       "visibleIn": ["CATALOG"],
                       "links":
-                        [{ "type": "in_bundle", "sku": "bundle-outfit" }],
+                        [
+                          { "type": "in_bundle",
+                          "sku": "bundle-outfit"
+                          }
+                        ]
                     },
                     {
                       "sku": "bottom-black",
@@ -726,7 +769,11 @@ paths:
                       "status": "ENABLED",
                       "visibleIn": ["CATALOG"],
                       "links":
-                        [{ "type": "in_bundle", "sku": "bundle-outfit" }],
+                        [
+                          { "type": "in_bundle",
+                          "sku": "bundle-outfit"
+                          }
+                        ]
                     },
                     {
                       "sku": "bottom-white",
@@ -736,7 +783,11 @@ paths:
                       "status": "ENABLED",
                       "visibleIn": ["CATALOG"],
                       "links":
-                        [{ "type": "in_bundle", "sku": "bundle-outfit" }],
+                        [
+                          { "type": "in_bundle",
+                          "sku": "bundle-outfit"
+                          }
+                        ]
                     },
                     {
                       "sku": "socks",
@@ -746,7 +797,11 @@ paths:
                       "status": "ENABLED",
                       "visibleIn": ["CATALOG"],
                       "links":
-                        [{ "type": "in_bundle", "sku": "bundle-outfit" }],
+                        [
+                          { "type": "in_bundle",
+                          "sku": "bundle-outfit"
+                          }
+                        ]
                     },
                     {
                       "sku": "headband",
@@ -756,8 +811,12 @@ paths:
                       "status": "ENABLED",
                       "visibleIn": ["CATALOG"],
                       "links":
-                        [{ "type": "in_bundle", "sku": "bundle-outfit" }],
-                    },
+                        [
+                          { "type": "in_bundle",
+                          "sku": "bundle-outfit"
+                          }
+                        ]
+                    }
                   ]
     patch:
       tags:
@@ -812,15 +871,15 @@ paths:
                           {
                             "code": "cost",
                             "type": "NUMBER",
-                            "values": ["10.5"],
+                            "values": ["10.5"]
                           },
                           {
                             "code": "states",
                             "type": "ARRAY",
-                            "values": ["TX", "CA", "NM"],
-                          },
-                        ],
-                    },
+                            "values": ["TX", "CA", "NM"]
+                          }
+                        ]
+                    }
                   ]
               UnassignProductVariant:
                 summary: Unassign product variant `pants-red-32` from configurable product `pants`.
@@ -839,17 +898,17 @@ paths:
                             "code": "color",
                             "type": "STRING",
                             "values": ["Red Pants"],
-                            "variantReferenceId": null,
+                            "variantReferenceId": null
                           },
                           {
                             "code": "size",
                             "type": "STRING",
                             "values": ["32"],
-                            "variantReferenceId": null,
-                          },
+                            "variantReferenceId": null
+                          }
                         ],
-                      "links": [],
-                    },
+                      "links": []
+                    }
                   ]
               AddNewAccessoryItem:
                 summary: Add a new item `gloves` to the accessories group of the bundle product `bundle-outfit`.
@@ -879,8 +938,8 @@ paths:
                                   "sku": "top-blue",
                                   "qty": 1,
                                   "userDefinedQty": false
-                                },
-                              ],
+                                }
+                              ]
                           },
                           {
                             "group": "bottoms",
@@ -898,8 +957,8 @@ paths:
                                   "sku": "bottom-white",
                                   "qty": 1,
                                   "userDefinedQty": false
-                                },
-                              ],
+                                }
+                              ]
                           },
                           {
                             "group": "accessories",
@@ -960,8 +1019,13 @@ paths:
                 summary: Delete product.
                 description: >
                   Delete a simple product with a specified `sku` and `scope`.
-                value: [{ "sku": "red-pants", "scope": { "locale": "en" } }]
-
+                value:
+                  [
+                    {
+                      "sku": "red-pants",
+                      "scope": { "locale": "en" }
+                    }
+                  ]
   /v1/catalog/price-books:
     post:
       tags:
@@ -1008,9 +1072,12 @@ paths:
                     {
                       "priceBookId": "dealer-north",
                       "name": "Dealer North price book name",
-                      "currency": "USD",
+                      "currency": "USD"
                     },
-                    { "priceBookId": "VIP", "currency": "USD" },
+                    {
+                      "priceBookId": "VIP",
+                      "currency": "USD"
+                    }
                   ]
       responses:
         "200":
@@ -1251,7 +1318,7 @@ paths:
                           "price": 18
                         }
                       ]
-                    },
+                    }
                   ]
       responses:
         "200":
@@ -2216,15 +2283,15 @@ components:
                 "itemIndex": 0,
                 "code": "status",
                 "message": 'status: does not have a value in the enumeration ["ENABLED", "DISABLED"]',
-                "value": "active",
+                "value": "active"
               },
               {
                 "itemIndex": 1,
                 "code": "scope",
                 "message": "required property 'scope' not found",
-                "value": "",
-              },
-            ],
+                "value": ""
+              }
+            ]
         }
     401Response:
       title: 401 Unauthorized
@@ -2247,7 +2314,7 @@ components:
           "title": "ErrInvalidOauthToken",
           "status": "401",
           "error_code": "401013",
-          "message": "Oauth token is not valid",
+          "message": "Oauth token is not valid"
         }
     403Response:
       title: 403 Forbidden
@@ -2270,5 +2337,5 @@ components:
           "title": "ErrMissingOauthToken",
           "status": "403",
           "error_code": "403010",
-          "message": "Oauth token is missing",
+          "message": "Oauth token is missing"
         }
