@@ -23,7 +23,10 @@ module.exports = [
                 },
             ]
         },
-        {
+/* Commenting out the Channel and Policies API section during the early access period. Customers will
+use the Commerce Optimizer UI to configure channels and policies.
+
+       {
             title: "Channels and Policies API",
             path: "composable-catalog/admin/",
             header: "true",
@@ -37,7 +40,8 @@ module.exports = [
                 path: "/composable-catalog/admin/api-reference.md"
                 },
             ]
-        },
+      },
+*/
         {
             title: "Storefront API",
             path: "composable-catalog/storefront-services/",

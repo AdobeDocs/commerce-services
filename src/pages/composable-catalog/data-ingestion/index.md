@@ -11,11 +11,9 @@ keywords:
 
 # Data Ingestion API
 
-Developers setting up catalogs for merchants with large or complex product assortments use the Data Ingestion API to send catalog data to Commerce storefront services directly, bypassing the need to go through an Adobe Commerce instance, saving time and processing power.
+Developers setting up catalogs for merchants with large or complex product assortments use the Data Ingestion API to send catalog data to Commerce storefront services directly. It bypasses the Adobe Commerce instance and moves catalog data from a third-party Enterprise Resource Planning (ERP) directly to Adobe Commerce services reducing processing time and improving performance.
 
-This direct connection decreases the time that it takes to process product changes because it bypasses the Adobe Commerce instance and moves catalog data from a third-party Enterprise Resource Planning (ERP) directly to Adobe Commerce services.
-
-The Data Ingestion API is implemented as a REST (Representational State Transfer) API endpoint to manage the following types of data.
+The Data Ingestion API is designed to be used by backend applications to manage product data. It is not intended for use by frontend applications or storefronts. It is implemented as a REST (Representational State Transfer) API endpoint to manage the following types of data.
 
 ## Metadata
 

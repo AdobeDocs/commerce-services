@@ -26,7 +26,7 @@ Learn how to use Commerce APIs and SDKs to integrate with third-party software a
 
 ## Discover
 
-Use Commerce APIs and SDKs to create and manage commerce catalog data and configuration and use it to create scalable, performant storefront experiences.
+Use Commerce APIs and SDKs to manage commerce catalog data and configuration and use it to create scalable, performant storefront experiences.
 
 <DiscoverBlock slots="heading, link, text"/>
 
@@ -38,9 +38,10 @@ Set up large, complex catalog assortments by ingesting commerce catalog data fro
 
 <DiscoverBlock slots="link, text"/>
 
-[Channels and Policies API](composable-catalog/admin)
+Channels and Policies
 
-Set up and manage channels and policies for composable catalogs.
+Set up and manage channels and policies to create catalog variations for different distribution channels and customer segments.
+See the [Commerce Optimizer Guide](https://experienceleague.adobe.com/en/docs/commerce/optimizer/overview) for details.
 
 <DiscoverBlock slots="link, text"/>
 
