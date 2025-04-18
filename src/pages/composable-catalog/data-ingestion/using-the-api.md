@@ -32,7 +32,7 @@ The URL structure is:
 &NewLine; <!--Add space between the collapsible section and the previous paragraph-->
 
 <details>
-      <summary><b>Get your tenant Id</b></summary>
+      <summary><b>Get your tenant ID</b></summary>
 
 import GetTenantId from '/src/_includes/authentication/get-tenant-id.md'
 
@@ -71,7 +71,7 @@ Include the following headers in REST API requests.
 
 | Header name  | Required | Description |
 |--------------|----------|-------------|
-| `AC-Environment-Id` | Yes | Specify the [tenant Id](#base-url) for the Commerce cloud instance.
+| `AC-Environment-Id` | Yes | Specify the [tenant ID](#base-url) for the Commerce cloud instance.
 | `Content-Encoding` | No  | Use this header only if the payload is compressed with gzip. Accepted value: `gzip`.                                                                           |
 | `Content-Type`  | Yes   | Media type of the resource. Accepted value: `application/json`. |
 | `Authorization: Bearer {access token}`  | Yes  | Bearer access token generated using credentials from the Adobe developer project for the API integration.                            |

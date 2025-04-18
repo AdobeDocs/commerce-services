@@ -32,7 +32,7 @@ The URL structure is:
 &NewLine; <!--Add space between the collapsible section and the previous paragraph-->
 
 <details>
-      <summary><b>Get your tenant Id</b></summary>
+      <summary><b>Get your tenant ID</b></summary>
 
 import GetTenantId from '/src/_includes/authentication/get-tenant-id.md'
 
@@ -78,7 +78,7 @@ curl --request POST \
 |------------------|-----------------------------------------------------------------------------------------------------------------|
 | `channelID`   | The ID for the channel products will be sold through. Use the <a href="https://developer-stage.adobe.com/commerce/services/graphql-api/admin-api/index.html#query-channels">channels query</a> to retrieve available IDs.|
 | `tenantId` | is the unique identifier for your organization's specific instance within the Adobe Experience Cloud.|
-| `policyName: policyValue` | When used, the policy trigger name and value that sets data access filters to restrict product access based on request attributes. Use the <a href="https://developer-stage.adobe.com/commerce/services/graphql-api/admin-api/index.html#query-policies">policies query</a> to retrieve available policies.                    |
+| `policyName: policyValue` | Optional. The policy trigger name and value that sets data access filters to restrict product access based on request attributes. Use the <a href="https://developer-stage.adobe.com/commerce/services/graphql-api/admin-api/index.html#query-policies">policies query</a> to retrieve available policies.                    |
 | `pricebookID`  | Optional. The price book ID used to retrieve the pricing schedule for a SKU. |
 | localeValue | The locale (language or geography) scope to filter products for display or update. |            |
 | apiPayload      | API payload. See examples in the <a href="ccdm-use-cases">tutorial.</a> |
