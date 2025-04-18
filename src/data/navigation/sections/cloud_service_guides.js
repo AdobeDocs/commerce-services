@@ -22,6 +22,10 @@ module.exports = [
         ],
       },
       {
+        title: "Edition test",
+        path: "/cloud/guides/rest/edition-test/",
+      },
+      {
         title: "Integration",
         path: "/cloud/guides/rest/integration/",
       },

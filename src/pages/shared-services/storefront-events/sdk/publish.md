@@ -1,7 +1,7 @@
 ---
 title: Publish storefront events | Commerce Services
 description: Learn how to programmatically publish Adobe Commerce storefront events.
-edition: ee
+edition: paas
 keywords:
   - Events
   - Services

@@ -6,6 +6,7 @@ keywords:
   - REST
   - Services
 noIndex: true
+edition: saas
 ---
 
 # Adobe Commerce as a Cloud Service API Guide

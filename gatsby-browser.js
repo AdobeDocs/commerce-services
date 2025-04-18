@@ -23,4 +23,4 @@ const components = {
 // Wrap the root element with the MDXProvider
 export const wrapRootElement = ({ element }) => {
   return <MDXProvider components={components}>{element}</MDXProvider>;
-};
+}; 
