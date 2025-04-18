@@ -11,7 +11,7 @@ Catalog Service, Live Search, and Product Recommendations services contribute to
 The endpoints for all Storefront Service queries are:
 
 - Testing: `https://catalog-service-sandbox.adobe.io/graphql`
-- Production: `https://na1-sandbox.api.commerce.adobe.com/<tenantId>/graphql`
+- Production: `https://catalog-service.adobe.io/graphql`
 
 You must also specify multiple HTTP headers, including an API key, with each call. Refer to the documentation for each query for details about the required headers.
 
