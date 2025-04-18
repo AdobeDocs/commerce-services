@@ -14,13 +14,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import '@spectrum-css/badge';
 import '@spectrum-css/link';
+import '@spectrum-css/tooltip';
 
-let editionText = '';
-let editionColor = '';
-const EDITIONS_LINK = 'https://docs.magento.com/user-guide/getting-started.html#product-editions';
+const EDITIONS_LINK = 'https://experienceleague.adobe.com/en/docs/commerce';
 
-const Edition = ({ ...props }) => {
-  switch (props.name) {
+const Edition = ({ name, showLearnMore = false, tooltip }) => {
+  // Handle both string and object values for name prop
+  const editionType = typeof name === 'object' ? name.type : name;
+  const editionTooltip = typeof name === 'object' ? name.tooltip : tooltip;
+
+  let editionText = '';
+  let editionColor = '';
+
+  switch (editionType) {
     case 'paas':
       editionText = 'PaaS';
       editionColor = 'spectrum-Badge--informative';
@@ -29,23 +35,55 @@ const Edition = ({ ...props }) => {
       editionText = 'SaaS';
       editionColor = 'spectrum-Badge--positive';
       break;
+    case 'onprem':
+      editionText = 'On-premises';
+      editionColor = 'spectrum-Badge--neutral';
+      break;
     default:
       editionText = 'Create an Edition tag';
       editionColor = 'spectrum-Badge--yellow';
   }
 
   return (
-    <span class={`spectrum-Badge spectrum-Badge--sizeS ${editionColor}`} style={{ paddingBottom: '4px' }}>
-      {editionText}.&nbsp;
-      <a href={`${EDITIONS_LINK}`} class="spectrum-Link spectrum-Link--overBackground" target="_blank" rel="noreferrer">
-        Learn more
-      </a>
-    </span>
+    <a 
+      href={EDITIONS_LINK}
+      className="spectrum-Link"
+      target="_blank"
+      rel="noreferrer"
+      style={{ 
+        textDecoration: 'none',
+        display: 'inline-block',
+        marginTop: '1rem',
+        position: 'relative'
+      }}
+      title={editionTooltip}
+    >
+      <span 
+        className={`spectrum-Badge spectrum-Badge--sizeS ${editionColor}`} 
+        style={{ 
+          paddingBottom: '4px',
+          cursor: 'pointer'
+        }}
+      >
+        {editionText}
+        {showLearnMore && (
+          <>&nbsp;.&nbsp;Learn more</>
+        )}
+      </span>
+    </a>
   );
 };
 
 Edition.propTypes = {
-  name: PropTypes.string
+  name: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.shape({
+      type: PropTypes.string.isRequired,
+      tooltip: PropTypes.string
+    })
+  ]),
+  showLearnMore: PropTypes.bool,
+  tooltip: PropTypes.string
 };
 
 export { Edition };
