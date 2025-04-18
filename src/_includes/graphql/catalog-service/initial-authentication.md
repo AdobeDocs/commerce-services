@@ -11,7 +11,7 @@ Field | Data Type | Description
 `level` | Int | Indicates the depth of the category within the tree.
 `name` | String | The category display name.
 `parentId` | String! | ID of the parent category.
-`path` | String | The path to the category, as a string of category IDs, separated by slashes (/). For example, 1/2/20
+`path` | String | The path to the category, as a string of category IDs, separated by slashes (/). For example, `1/2/20`.
 `roles` | [String!]! | A comma-separated list of keywords that are visible only to search engines.
 `urlKey` | String | The part of the URL that identifies the category.
 `urlPath` | String | The URL path for the category.
