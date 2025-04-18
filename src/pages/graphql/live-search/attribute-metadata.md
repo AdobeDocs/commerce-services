@@ -19,7 +19,7 @@ The `attributeMetadata` query returns a list of product attribute codes that can
 ## Endpoints
 
 - Testing: `https://catalog-service-sandbox.adobe.io/graphql`
-- Production: `https://na1-sandbox.api.commerce.adobe.com/<tenantId>/graphql`
+- Production: `https://catalog-service.adobe.io/graphql`
 
 ## Required headers
 

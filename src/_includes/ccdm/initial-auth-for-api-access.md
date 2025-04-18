@@ -22,7 +22,7 @@ To create Projects for enterprise organizations, you must have a system administ
 
 1. Copy the Client ID and the Client Secret values to a secure location.
 
-   - Use the Client ID and Client Secret to refresh expired bearer tokens using cuRL.
+   - Use the Client ID and Client Secret to refresh expired bearer tokens [using curl].
 
    - Include the Client ID in the `x-api-key` header to authenticate API requests.
 

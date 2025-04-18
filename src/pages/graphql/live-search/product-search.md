@@ -544,7 +544,7 @@ The query response can also contain the following top-level fields and objects:
 ## Endpoints
 
 - Testing: `https://catalog-service-sandbox.adobe.io/graphql`
-- Production: `https://na1-sandbox.api.commerce.adobe.com/<tenantId>/graphql`
+- Production: `https://catalog-service.adobe.io/graphql`
 
 ## Required headers
 

@@ -18,7 +18,7 @@ Field | Data Type | Description
 
 ### CategoryViewInterface attributes
 
-The `CategoryViewInterface`  returns information about the CategoryView
+The `CategoryViewInterface`  returns information about the CategoryView.
 
 Field | Data Type | Description
 --- | --- | ---

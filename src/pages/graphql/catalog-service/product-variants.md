@@ -28,7 +28,7 @@ variants(sku: String!, optionIds: [String!], pageSize: Int, cursor: String): [Pr
 ## Endpoints
 
 - Testing: `https://catalog-service-sandbox.adobe.io/graphql`
-- Production: `https://na1-sandbox.api.commerce.adobe.com/<tenantId>/graphql`
+- Production: `https://catalog-service.adobe.io/graphql`
 
 ## Required headers
 
