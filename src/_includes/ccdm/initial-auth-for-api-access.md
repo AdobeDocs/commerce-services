@@ -30,6 +30,6 @@ To create Projects for enterprise organizations, you must have a system administ
 
    1. Select **Generate Access Token**.
 
-   1. Save the bearer token to a secure location
+   1. Save the bearer token to a secure location.
 
    The bearer token is valid for 24 hours. You can use the same bearer token for all API requests until it expires.

@@ -87,7 +87,7 @@ curl --request POST \
   --url https://na1-sandbox.api.commerce.adobe.com/<tenantId>/<endpoint> \
   --header "Content-Type:  application/json" \
   --header "Authorization: Bearer {access token}" \
-  --data "<apiPayload>"
+  --data "{apiPayload}"
 ```
 
 | Placeholder name | Description                                                                                                    |

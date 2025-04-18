@@ -85,7 +85,7 @@ curl --request POST \
   --url https://na1-sandbox.api.commerce.adobe.com/<tenantId>/admin/graphql \
   --header "Content-Type: application/json" \
   --header "Authorization: Bearer {access token}" \
-  --data "apiPayload"
+  --data "{apiPayload}"
 ```
 
 For sample requests, see the [tutorial](../ccdm-use-case.md).

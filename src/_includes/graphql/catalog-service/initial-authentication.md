@@ -1,12 +1,12 @@
-The categories query returns the `CategoryView` object, which implements `CategoryViewInterface`.
+The `categories` query returns the `CategoryView` object, which implements `CategoryViewInterface`.
 
 ### CategoryView type
 
 Field | Data Type | Description
 --- | --- | ---
-`availableSortBy` | [String] | Lists the available sorting methods. Maps to Display Settings > Available Product Listing Sort By.
+`availableSortBy` | [String] | Lists the available sorting methods. Maps to **Display Settings** > **Available Product Listing Sort By**.
 `children` | [String!] | A list of subcategories within the category.
-`defaultSortBy` | String | The default sorting method. Maps to Display Settings > Default Product List Sort By.
+`defaultSortBy` | String | The default sorting method. Maps to **Display Settings > Default Product List Sort By**.
 `id` | ID! | The category ID.
 `level` | Int | Indicates the depth of the category within the tree.
 `name` | String | The category display name.
