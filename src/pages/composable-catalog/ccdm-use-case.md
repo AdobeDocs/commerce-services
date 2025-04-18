@@ -76,7 +76,7 @@ Create the metadata to define the search characteristics and filters for display
 
 ```shell
 curl --request POST \
-  --url https://na1-sandbox.api.commerce.adobe.com/<tenantId>/v1/catalog/products/metadata \
+  --url https://na1-sandbox.api.commerce.adobe.com/{tenantId}/v1/catalog/products/metadata \
   --header "Authorization: Bearer {access token}" \
 
   --data "[
@@ -260,7 +260,7 @@ curl --request POST \
 ```
 
 curl --request POST \
-  --url https://na1-sandbox.api.commerce.adobe.com/<tenantId>/v1/catalog/products/metadata \
+  --url https://na1-sandbox.api.commerce.adobe.com/{tenantId}/v1/catalog/products/metadata \
   --header "Authorization: Bearer {access token}" \
   --header "Content-Type: application/json" \
   --data "[
@@ -321,7 +321,7 @@ curl --request POST \
 
 ```shell
 curl --request POST \
-  --url https://na1-sandbox.api.commerce.adobe.com/<tenantId>/v1/catalog/products/metadata \
+  --url https://na1-sandbox.api.commerce.adobe.com/{tenantId}/v1/catalog/products/metadata \
   --header "Content-Type: application/json" \
   --header "Authorization: Bearer {access token}" \
   --data "[
@@ -684,7 +684,7 @@ The query response returns a `PolicyId` value that is required when you assign t
 
 ```shell
 curl --request POST \
-  --url http://na1-sandbox.api.commerce.adobe.com/<tenantId>/admin/graphql \
+  --url http://na1-sandbox.api.commerce.adobe.com/{tenantId}/admin/graphql \
   --header "Content-Type: application/json" \
   --header "Authorization: Bearer {access token}" \
 
@@ -784,7 +784,7 @@ mutation CreatePolicy {
 
 ```shell
 curl --request POST \
-  --url http://na1-sandbox.api.commerce.adobe.com/<tenantId>/admin/graphql \
+  --url http://na1-sandbox.api.commerce.adobe.com/{tenantId}/admin/graphql \
   --header "Content-Type: application/json" \
   --header "Authorization: Bearer {access token}" \
 
@@ -886,7 +886,7 @@ Create a channel and assign the policies for location filtering and brand filter
 
 ```shell
 curl --request POST \
-  --url http://na1-sandbox.api.commerce.adobe.com/<tenantId>/admin/graphql \
+  --url http://na1-sandbox.api.commerce.adobe.com/{tenantId}/admin/graphql \
   --header "Content-Type: application/json"  \
   --header "Authorization: Bearer {access token}" \
 
@@ -953,7 +953,7 @@ Use the Storefront GraphQL API [productSearch](https://developer-stage.adobe.com
 
 Send GraphQL requests for Storefront APIs to the following base URL:
 
-`http://na1-sandbox.api.commerce.adobe.com/<tenantId>/graphql`
+`http://na1-sandbox.api.commerce.adobe.com/{tenantId}/graphql`
 
 ### Retrieve SKU for the `Aurora` brand
 
@@ -965,7 +965,7 @@ Use the following headers in the request:
 
 ```text
 AC-Channel-Id: "b726c1e9-2842-4ab5-9b19-ca65c23bbb3b"
-AC-Environment-Id: "<tenantId>"
+AC-Environment-Id: "{tenantId}"
 AC-Policy-Brand: "Aurora"
 AC-Policy-Country: "US"
 AC-Price-Book-Id: "base"
@@ -1135,7 +1135,7 @@ Use the following headers in the request:
 
 ```text
 AC-Channel-Id: "b726c1e9-2842-4ab5-9b19-ca65c23bbb3b"
-AC-Environment-Id: "<tenantId>"
+AC-Environment-Id: "{tenantId}"
 AC-Policy-Brand: "Bolt"
 AC-Policy-Country: "UK"
 AC-Price-Book-Id: "base"

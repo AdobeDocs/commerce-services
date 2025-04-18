@@ -34,7 +34,7 @@ The URL structure is:
 <details>
       <summary><b>Get your tenant Id</b></summary>
 
-import GetTenantId from '/src/_includes/ccdm/get-tenant-id.md'
+import GetTenantId from '/src/_includes/authentication/get-tenant-id.md'
 
 <GetTenantId />
 
@@ -61,7 +61,7 @@ Include the following headers in GraphQL requests as needed.
 
 ## Request template
 
-Use the following template for GraphQL requests using [cURL](https://curl.se/). Use required and optional headers as needed. Replace placeholders with required values.
+Use the following template to submit requests using [curl](https://curl.se/). Use required and optional headers as needed. Replace placeholders with required values.
 
 ```shell
 curl --request POST \

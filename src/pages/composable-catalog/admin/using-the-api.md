@@ -19,14 +19,14 @@ Use the following base URL for all Channels and Policies API requests.
 
 <InlineAlert variant="info" slots="text"/>
 
-For sample requests and examples using the API, see the [API Reference](api-reference.md) and the [tutorial](ccdm-use-case.md).
+For sample requests and examples using the API, see the [API Reference](api-reference.md) and the [tutorial](../ccdm-use-case.md).
 
 The URL structure is:
 
 ```https://<region>-<environment>.api.commerce.adobe.com/<tenantId>```
 
 - `region` is the cloud region where your instance is deployed.
-- `environment-type` identifies non-production environments, for example, `sandbox` or `staging`.
+- `environment-type` is included only for non-production URLs (`sandbox`).
 - `tenantId` is the unique identifier for your organization's specific instance within the Adobe Experience Cloud.
 
 &NewLine; <!--Add space between the collapsible section and the previous paragraph-->
@@ -34,7 +34,7 @@ The URL structure is:
 <details>
       <summary><b>Get your tenant Id</b></summary>
 
-import GetTenantId from '/src/_includes/ccdm/get-tenant-id.md'
+import GetTenantId from '/src/_includes/authentication/get-tenant-id.md'
 
 <GetTenantId />
 
@@ -46,16 +46,14 @@ Every API request must include a bearer token in the request header:
 
 `Authorization: Bearer {access token}`
 
-An OAUTH 2.0 bearer access token is a type of authentication token that, when included in the Authorization header of an HTTP request, authenticates the API request and authorizes access to the requested resource. The token is valid for 24 hours. When it expires, you use the Adobe developer project credentials to generate a new one.
-
-The bearer token is generated using the credentials from the Adobe developer project for the API integration. The token is valid for 24 hours. When it expires, you use the Adobe developer project credentials to generate a new one.
+The bearer token is generated using the credentials from the Adobe developer project for the API integration. The token is valid for 24 hours. When it expires, use the Adobe developer project credentials to [generate a new one](#generate-a-new-access-token).
 
 <br></br>
 
 <details>
       <summary><b>Get credentials and bearer access tokens</b></summary>
 
-import IMSAuth from '/src/_includes/ccdm/initial-auth-for-api-access.md'
+import IMSAuth from '/src/_includes/authentication/initial-auth-for-api-access.md'
 
 <IMSAuth />
 
@@ -63,7 +61,7 @@ import IMSAuth from '/src/_includes/ccdm/initial-auth-for-api-access.md'
 
 ### Generate a new access token
 
-import GetBearerToken from '/src/_includes/ccdm/initial-auth-for-api-access.md'
+import GetBearerToken from '/src/_includes/authentication/initial-auth-for-api-access.md'
 
 <GetBearerToken />
 
@@ -78,7 +76,7 @@ Include the following headers in GraphQL requests.
 
 ## Request template
 
-Use the following template for each GraphQL query request, replacing the placeholders as required.
+Use the following template to submit requests using [curl](https://curl.se/), replacing the placeholders as required.
 
 ```shell
 curl --request POST \

@@ -26,7 +26,7 @@ Learn how to use Commerce APIs and SDKs to integrate with third-party software a
 
 ## Discover
 
-Use Commerce APIs and SDKs to create and manage commerce catalog data and configuration and use it to create scalable, performant storefront experiences.
+Use Commerce APIs and SDKs to manage commerce catalog data and configuration and use it to create scalable, performant storefront experiences.
 
 <DiscoverBlock slots="heading, link, text"/>
 

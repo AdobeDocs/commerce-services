@@ -11,7 +11,7 @@ keywords:
 
 # Set up and manage catalogs
 
-An ecommerce product catalog benefits from reflecting the company's business structure as closely as possible. Businesses need to sell different products and different prices depending on geographic market, distribution channel, customer segment, and other variables.
+An ecommerce product catalog benefits from reflecting the company's business structure as closely as possible. Businesses need to sell different products at different prices depending on geographic market, distribution channel, customer segment, and other variables.
 
 Using the channel, policy, and scope resources available with the Merchandising Services Channels and Policies API, you can create catalog variations instantly to adapt to these scenarios without requiring extensive development work.
 
