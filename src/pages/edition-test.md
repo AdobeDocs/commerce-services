@@ -1,9 +1,6 @@
 ---
 title: Edition Component Test
 description: Testing the Edition component with both page-level metadata and inline usage.
-keywords:
-  - Test
-  - Component
 edition:
   - type: paas
     tooltip: Applies to Adobe Commerce on Cloud projects (Adobe-managed PaaS infrastructure).
