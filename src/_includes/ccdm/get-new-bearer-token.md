@@ -6,7 +6,7 @@ curl -X POST 'https://ims-na1.adobelogin.com/ims/token/v3' -H 'Content-Type: app
 
 Replace the following placeholders with your credentials:
 
-- `<CLIENT_ID>`: The client ID generated for your Adobe developer project
-- `<CLIENT_SECRET>`: The client secret generated for your Adobe developer project
+- `<client_id>`: The client ID generated for your Adobe developer project
+- `<client_secret>`: The client secret generated for your Adobe developer project
 
 You can get these from the Adobe Developer Console project details page.
