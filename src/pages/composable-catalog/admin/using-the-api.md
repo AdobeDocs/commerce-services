@@ -19,7 +19,7 @@ Use the following base URL for all Channels and Policies API requests.
 
 <InlineAlert variant="info" slots="text"/>
 
-For sample requests and examples using the API, see the [API Reference](api-reference.md) and the [tutorial](cdm-use-case.md).
+For sample requests and examples using the API, see the [API Reference](api-reference.md) and the [tutorial](ccdm-use-case.md).
 
 The URL structure is:
 
