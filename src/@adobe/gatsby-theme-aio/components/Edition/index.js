@@ -18,15 +18,11 @@ import '@spectrum-css/tooltip';
 
 const EDITIONS_LINK = 'https://experienceleague.adobe.com/en/docs/commerce';
 
-const Edition = ({ name, showLearnMore = false, tooltip }) => {
-  // Handle both string and object values for name prop
-  const editionType = typeof name === 'object' ? name.type : name;
-  const editionTooltip = typeof name === 'object' ? name.tooltip : tooltip;
-
+const EditionBadge = ({ type, tooltip, showLearnMore = false }) => {
   let editionText = '';
   let editionColor = '';
 
-  switch (editionType) {
+  switch (type) {
     case 'paas':
       editionText = 'PaaS';
       editionColor = 'spectrum-Badge--informative';
@@ -54,9 +50,10 @@ const Edition = ({ name, showLearnMore = false, tooltip }) => {
         textDecoration: 'none',
         display: 'inline-block',
         marginTop: '1rem',
+        marginRight: '0.5rem',
         position: 'relative'
       }}
-      title={editionTooltip}
+      title={tooltip}
     >
       <span 
         className={`spectrum-Badge spectrum-Badge--sizeS ${editionColor}`} 
@@ -74,13 +71,50 @@ const Edition = ({ name, showLearnMore = false, tooltip }) => {
   );
 };
 
+const Edition = ({ name, showLearnMore = false, tooltip }) => {
+  // Convert input to array of edition objects
+  const editions = Array.isArray(name) 
+    ? name 
+    : typeof name === 'object' 
+      ? [name] 
+      : [{ type: name, tooltip }];
+
+  return (
+    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.25rem' }}>
+      {editions.map((edition, index) => (
+        <EditionBadge
+          key={`${edition.type || edition}-${index}`}
+          type={typeof edition === 'object' ? edition.type : edition}
+          tooltip={typeof edition === 'object' ? edition.tooltip : tooltip}
+          showLearnMore={showLearnMore}
+        />
+      ))}
+    </div>
+  );
+};
+
+EditionBadge.propTypes = {
+  type: PropTypes.string.isRequired,
+  tooltip: PropTypes.string,
+  showLearnMore: PropTypes.bool
+};
+
 Edition.propTypes = {
   name: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.shape({
       type: PropTypes.string.isRequired,
       tooltip: PropTypes.string
-    })
+    }),
+    PropTypes.arrayOf(
+      PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.shape({
+          type: PropTypes.string.isRequired,
+          tooltip: PropTypes.string
+        })
+      ])
+    )
   ]),
   showLearnMore: PropTypes.bool,
   tooltip: PropTypes.string
