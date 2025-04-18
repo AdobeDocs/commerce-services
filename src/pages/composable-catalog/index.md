@@ -29,7 +29,7 @@ Developers can use these components together to compose and deliver custom catal
 
 <InlineAlert variant="info" slots="text"/>
 
-For additional architecture and implementation details, see the [Merchandising Services powered by Channels and Policies](https://experienceleague.adobe.com/en/docs/commerce/merchandising-services/overview) in Experience League.
+For additional architecture and implementation details, see [Merchandising Services powered by Channels and Policies](https://experienceleague.adobe.com/en/docs/commerce/merchandising-services/overview) in Experience League.
 
 ## API resources
 
@@ -37,6 +37,6 @@ Merchandising Services includes the following APIs to manage product data and pr
 
 **[Data Ingestion API](data-ingestion/index.md)**—REST API to add and manage product and pricing data for merchandising across multiple business channels and locales. Data includes products, product attribute metadata, price books, and prices. Data can be added to the Merchandising services data pipeline directly using the API or ingested from third-party systems.
 
-**[Channels and Policies API](admin/index.md)**—GraphQL API to manage product context, including distribution channels, locales, and policies. Product context is used to filter products into custom catalogs with customer-specific pricing and regional settings for language, currency, and units of measure.
+**Channels and Policies API**—GraphQL API that powers the catalog management capabilities available through Adobe Commerce Optimizer. From the UI, you can create distribution channels, locales, and policies to set up and deliver custom, composable catalogs with minimal development effort. For details, see the [Adobe Commerce Optimizer Guide](https://experienceleague.adobe.com/en/docs/commerce/optimizer/overview).
 
 **[Storefront API](../../../static/graphql-api/admin-api/index.html)**—GraphQL API to access rich view-model (read-only) catalog data to build product-related storefront experiences. The Storefront API is designed to be used by frontend applications to access catalog data.

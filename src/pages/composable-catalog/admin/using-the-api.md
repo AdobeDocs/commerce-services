@@ -21,11 +21,30 @@ Use the following base URL for all Channels and Policies API requests.
 
 For sample requests and examples using the API, see the [API Reference](api-reference.md) and the [tutorial](cdm-use-case.md).
 
+The URL structure is:
+
+```https://<region>-<environment>.api.commerce.adobe.com/<tenantId>```
+
+- `region` is the cloud region where your instance is deployed.
+- `environment-type` identifies non-production environments, for example, `sandbox` or `staging`
+- `tenantId` is the unique identifier for your organization's specific instance within the Adobe Experience Cloud.
+
+&NewLine; <!--Add space between the collapsible section and the previous paragraph-->
+
+<details>
+      <summary><b>Get your tenant Id</b></summary>
+
+import GetTenantId from '/src/_includes/ccdm/get-tenant-id.md'
+
+<GetTenantId />
+
+</details>
+
 ## Authentication
 
 Every API request must include a bearer token in the request header:
 
-`Authorization: Bearer <bearerToken>`
+`Authorization: Bearer {access token}`
 
 An OAUTH 2.0 bearer access token is a type of authentication token that, when included in the Authorization header of an HTTP request, authenticates the API request and authorizes access to the requested resource. The token is valid for 24 hours. When it expires, you use the Adobe developer project credentials to generate a new one.
 
@@ -42,7 +61,7 @@ import IMSAuth from '/src/_includes/ccdm/initial-auth-for-api-access.md'
 
 </details>
 
-### Get a new access token
+### Generate a new access token
 
 import GetBearerToken from '/src/_includes/ccdm/initial-auth-for-api-access.md'
 
@@ -55,7 +74,7 @@ Include the following headers in GraphQL requests.
 | Header Name   | Required |Description |
 |---------------|----------|------------|
 | `Content-Type` | Yes     | Specifies the media type of the resource. Accepted value: `application/json`. |
-| `Authorization: Bearer <accessToken>`     | Yes      | Bearer token generated from IMS credentials. See [Authentication](#authentication).  |
+| `Authorization: Bearer {access token}`     | Yes      | Bearer token generated from IMS credentials. See [Authentication](#authentication).  |
 
 ## Request template
 
@@ -65,8 +84,8 @@ Use the following template for each GraphQL query request, replacing the placeho
 curl --request POST \
   --url https://na1-sandbox.api.commerce.adobe.com/<tenantId>/admin/graphql \
   --header "Content-Type: application/json" \
-  --header 'Authorization: Bearer <bearerToken>' \
-  --data 'apiPayload'
+  --header "Authorization: Bearer {access token}" \
+  --data "apiPayload"
 ```
 
 For sample requests, see the [tutorial](../ccdm-use-case.md).
