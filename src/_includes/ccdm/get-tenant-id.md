@@ -1,4 +1,4 @@
-Find your tenant Id in the access URLs for your Commerce Optimizer project in Cloud Manager.
+Find your tenant ID in the access URLs for your Commerce Optimizer project in Cloud Manager.
 
 1. Log in to your [Adobe Experience Cloud](https://experience.adobe.com/) account.
 
