@@ -73,7 +73,7 @@ Include the following headers in REST API requests.
 
 | Header name  | Required | Description |
 |--------------|----------|-------------|
-| `AC-Environment-Id` | Yes | Specify the tenant Id for the Adobe Commerce instance. You can find the tenant Id 
+| `AC-Environment-Id` | Yes | Specify the [tenant Id](#base-url) for the Commerce cloud instance.
 | `Content-Encoding` | No  | Use this header only if the payload is compressed with gzip. Accepted value: `gzip`.                                                                           |
 | `Content-Type`  | Yes   | Media type of the resource. Accepted value: `application/json`. |
 | `Authorization: Bearer {access token}`  | Yes  | Bearer access token generated using credentials from the Adobe developer project for the API integration.                            |
