@@ -26,7 +26,7 @@ The URL structure is:
 ```https://<region>-<environment>.api.commerce.adobe.com/<tenantId>```
 
 - `region` is the cloud region where your instance is deployed.
-- `environment-type` identifies non-production environments, for example, `sandbox` or `staging`
+- `environment-type` identifies non-production environments, for example, `sandbox` or `staging`.
 - `tenantId` is the unique identifier for your organization's specific instance within the Adobe Experience Cloud.
 
 &NewLine; <!--Add space between the collapsible section and the previous paragraph-->
