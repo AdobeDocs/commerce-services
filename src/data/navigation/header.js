@@ -14,10 +14,13 @@ module.exports = [
           title: "Catalog data ingestion",
           path: "/composable-catalog/data-ingestion/"
         },
+/* Commenting out the Channel and Policies API section during the early access period. Customers will
+use the Commerce Optimizer UI to configure channels and policies.
         {
-          title: "Catalog management and rules",
+          title: "Channels and Policies",
           path: "/composable-catalog/admin/"
         },
+*/
         {
           title: "Storefront",
           path: "/composable-catalog/storefront-services/"

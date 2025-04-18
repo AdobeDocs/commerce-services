@@ -354,7 +354,7 @@ This does not result in strict filtering when used by itself.
 ```graphql
 filter: [
   {
-    attribute:"categories", 
+    attribute:"categories",
     in: "women/bottoms-women"
   },
   {

@@ -4,16 +4,16 @@ info:
   description: |
     The Catalog Data Ingestion API allows you to create and manage products and price books and directly integrate catalog data with the Commerce catalog service.
 
-     This API provides the following resource collections to create and update catalog data:
+    This API provides the following resource collections to create and update catalog data:
 
-     - **Metadata**—define and manage product attribute metadata including display settings, search characteristics, filtering options, and sorting rules.
-     - **Products**—define and manage catalog items with their attributes (name, description, SKU, images, and variants).
-     - **Price books**—define and manage pricing scopes for different customer tiers and markets.
-     - **Prices**—define and manage product SKU prices and their associated price books.
+    - **Metadata**—define and manage product attribute metadata including display settings, search characteristics, filtering options, and sorting rules.
+    - **Products**—define and manage catalog items with their attributes (name, description, SKU, images, and variants).
+    - **Price books**—define and manage pricing scopes for different customer tiers and markets.
+    - **Prices**—define and manage product SKU prices and their associated price books.
 
   version: 1.0.0
 servers:
-  - url: https://na1.api.commerce.adobe.com/<TENANT_ID>
+  - url: https://na1-sandbox.api.commerce.adobe.com/<TENANT_ID>
     description: Production endpoint. The TENANT_ID value is the identifier of the Adobe Commerce instance. See [Adobe Commerce Cloud Manager](https://experience.adobe.com/#/commerce/cloud-service/instances) to see your available instances.
 
 tags:

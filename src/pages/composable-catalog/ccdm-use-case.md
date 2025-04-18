@@ -15,10 +15,10 @@ Learn how a company with a single base catalog can use the Merchandising Service
 
 This end-to-end use case demonstrates how a company with a single base catalog can use Merchandising Services to:
 
-- Support products across two geographical markets and two distinct brands.
+- Support products across two geographical markets and two distinct brands
 - Support pricing by customer segment
-- Enhance operational efficiency by avoiding duplication of product catalogs across multiple websites.
-- Control product visibility on websites based on geographical market and brand specifications.
+- Enhance operational efficiency by avoiding duplication of product catalogs across multiple websites
+- Control product visibility on websites based on geographical market and brand specifications
 
 Before you begin, review [set up and manage catalogs](manage-catalogs.md) to understand the channel and policy concepts.
 
@@ -54,17 +54,216 @@ Add two simple products, "Aurora Prism battery" and "Bolt Atlas battery" and the
 
 ### Add product attribute metadata
 
-Create the metadata to define the search characteristics and filters for displaying *location* and *brand* attributes on the storefront by submitting a [Create product attribute metadata](https://developer-stage.adobe.com/commerce/services/composable-catalog/data-ingestion/api-reference/#operation/ProductMetadataPut) POST request.
+Create the metadata to define the search characteristics and filters for displaying product attributes on the storefront by submitting a [Create product attribute metadata](https://developer-stage.adobe.com/commerce/services/composable-catalog/data-ingestion/api-reference/#operation/ProductMetadataPut) POST request.
 
-**Request**
+You must specify the product attribute metadata for each locale you want to support.
+
+For the Zenith Automotive catalog, each product has the following attributes.
+
+- `sku` is unique identifier for a product
+- `name`is unique name for a product
+- `description` provides detailed product information, typically used in product detail pages
+- `shortDescription` provides a concise overview of a product, typically used in product listings
+- `brand` is a string attribute that indicates the brand of the product.
+- `price`
+- `country` is a string attribute that indicates the country where the product is sold.
+- `is_vehicle` is a boolean attribute that indicates whether the product is a vehicle or a battery.
+- `part_category` is a string attribute that indicates the category of the product.
+
+Create the metadata to define the search characteristics and filters for displaying product attributes on the storefront by submitting a [Create product attribute metadata](https://developer-stage.adobe.com/commerce/services/composable-catalog/data-ingestion/api-reference/#operation/ProductMetadataPut) POST request.
+
+#### Request to add metadata for en-US scope
 
 ```shell
 curl --request POST \
-  --url https://commerce.adobe.io/<DATA_SPACE_ID>/api/v1/catalog/products/metadata \
-  --header 'Content-Type: application/json' \
-  --header 'x-api-key: <API_KEY>' \
-  --header 'x-gw-signature: <JWT_TOKEN>' \
-  --data '[
+  --url https://na1-sandbox.api.commerce.adobe.com/{tenantId}/v1/catalog/products/metadata \
+  --header "Authorization: Bearer {access token}" \
+
+  --data "[
+[
+    {
+        "code": "sku",
+        "scope": {
+            "locale": "en-US"
+        },
+        "label": "SKU",
+        "dataType": "TEXT",
+        "visibleIn": [
+            "CATALOG",
+            "SEARCH",
+        ],
+        "filterable": true,
+        "sortable": false,
+        "searchable": true,
+        "searchWeight": 1,
+        "searchTypes": [
+            "AUTOCOMPLETE"
+        ]
+    },
+    {
+        "code": "name",
+        "scope": {
+            "locale": "en-US"
+        },
+        "label": "Name",
+        "dataType": "TEXT",
+        "visibleIn": [
+            "CATALOG",
+            "SEARCH"
+        ],
+        "filterable": false,
+        "sortable": true,
+        "searchable": true,
+        "searchWeight": 1,
+        "searchTypes": [
+            "AUTOCOMPLETE"
+        ]
+    },
+    {
+        "code": "description",
+        "scope": {
+            "locale": "en-US"
+        },
+        "label": "Description",
+        "dataType": "TEXT",
+        "visibleIn": [
+            "CATALOG",
+            "SEARCH"
+        ],
+        "filterable": false,
+        "sortable": false,
+        "searchable": false,
+        "searchWeight": 1,
+        "searchTypes": [
+            "AUTOCOMPLETE"
+        ]
+    },
+    {
+        "code": "shortDescription",
+        "scope": {
+            "locale": "en-US"
+        },
+        "label": "Short description",
+        "dataType": "TEXT",
+        "visibleIn": [
+            "CATALOG",
+            "SEARCH"
+        ],
+        "filterable": false,
+        "sortable": false,
+        "searchable": true,
+        "searchWeight": 1,
+        "searchTypes": [
+            "AUTOCOMPLETE",
+        ]
+    },
+    {
+        "label": "Price",
+        "dataType": "DECIMAL",
+        "visibleIn": [
+            "CATALOG",
+            "SEARCH"
+        ],
+        "filterable": true,
+        "sortable": true,
+        "searchable": false,
+        "searchWeight": 1,
+        "searchTypes": [
+            "AUTOCOMPLETE"
+        ]
+    },
+        {
+        "code": "brand",
+        "scope": {
+            "locale": "en-US"
+        },
+        "label": "Brand",
+        "dataType": "TEXT",
+        "visibleIn": [
+            "CATALOG",
+            "SEARCH"
+        ],
+        "filterable": true,
+        "sortable": false,
+        "searchable": true,
+        "searchWeight": 1,
+        "searchTypes": [
+            "AUTOCOMPLETE",
+            "CONTAINS",
+            "STARTS_WITH"
+        ]
+    },
+        {
+        "code": "country",
+        "scope": {
+            "locale": "en-US"
+        },
+        "label": "Country",
+        "dataType": "TEXT",
+        "visibleIn": [
+            "CATALOG",
+            "SEARCH"
+        ],
+        "filterable": true,
+        "sortable": false,
+        "searchable": true,
+        "searchWeight": 1,
+        "searchTypes": [
+            "AUTOCOMPLETE",
+            "CONTAINS",
+            "STARTS_WITH"
+        ]
+    },
+    {
+        "code": "part_category",
+        "scope": {
+            "locale": "en-US"
+        },
+        "label": "Part Category",
+        "dataType": "TEXT",
+        "visibleIn": [
+            "CATALOG",
+            "SEARCH"
+        ],
+        "filterable": true,
+        "sortable": false,
+        "searchable": true,
+        "searchWeight": 55,
+        "searchTypes": [
+            "AUTOCOMPLETE",
+            "CONTAINS",
+            "STARTS_WITH"
+        ]
+    },
+    {
+        "code": "is_vehicle",
+        "scope": {
+            "locale": "en-US"
+        },
+        "label": "Is Vehicle?",
+        "dataType": "BOOLEAN",
+        "visibleIn": [
+            "CATALOG",
+            "SEARCH"
+        ],
+        "filterable": true,
+        "sortable": false,
+        "searchable": true,
+        "searchWeight": 55,
+        "searchTypes": [
+            "AUTOCOMPLETE",
+            "CONTAINS",
+            "STARTS_WITH"
+        ]
+    }
+]"
+```
+
+curl --request POST \
+  --url https://na1-sandbox.api.commerce.adobe.com/{tenantId}/v1/catalog/products/metadata \
+  --header "Authorization: Bearer {access token}" \
+  --header "Content-Type: application/json" \
+  --data "[
     {
         "code": "brand",
         "scope": {
@@ -73,10 +272,8 @@ curl --request POST \
         "label": "Brand",
         "dataType": "TEXT",
         "visibleIn": [
-            "PRODUCT_DETAIL",
-            "PRODUCT_LISTING",
-            "SEARCH_RESULTS",
-            "PRODUCT_COMPARE"
+            "CATALOG",
+            "SEARCH"
         ],
         "filterable": true,
         "sortable": false,
@@ -96,10 +293,8 @@ curl --request POST \
         "label": "Country",
         "dataType": "TEXT",
         "visibleIn": [
-            "PRODUCT_DETAIL",
-            "PRODUCT_LISTING",
-            "SEARCH_RESULTS",
-            "PRODUCT_COMPARE"
+            "CATALOG",
+            "SEARCH"
         ],
         "filterable": true,
         "sortable": false,
@@ -111,7 +306,200 @@ curl --request POST \
             "STARTS_WITH"
         ]
     }
-]'
+]"
+
+**Response**
+
+```shell
+{
+    "status": "ACCEPTED",
+    "acceptedCount": 8
+}
+```
+
+**Request to add metadata for en-GB scope**
+
+```shell
+curl --request POST \
+  --url https://na1-sandbox.api.commerce.adobe.com/{tenantId}/v1/catalog/products/metadata \
+  --header "Content-Type: application/json" \
+  --header "Authorization: Bearer {access token}" \
+  --data "[
+    {
+        "code": "sku",
+        "scope": {
+            "locale": "en-GB"
+        },
+        "label": "SKU",
+        "dataType": "TEXT",
+        "visibleIn": [
+            "CATALOG",
+            "SEARCH"
+        ],
+        "filterable": true,
+        "sortable": true,
+        "searchable": true,
+        "searchWeight": 55,
+        "searchTypes": [
+            "AUTOCOMPLETE"
+        ]
+    },
+    {
+        "code": "name",
+        "scope": {
+            "locale": "en-GB"
+        },
+        "label": "Name",
+        "dataType": "TEXT",
+        "visibleIn": [
+            "CATALOG",
+            "SEARCH"
+        ],
+        "filterable": true,
+        "sortable": true,
+        "searchable": true,
+        "searchWeight": 1,
+        "searchTypes": [
+            "AUTOCOMPLETE",
+            "CONTAINS",
+            "STARTS_WITH"
+        ]
+    },
+    {
+        "code": "description",
+        "scope": {
+            "locale": "en-GB"
+        },
+        "label": "Description",
+        "dataType": "TEXT",
+        "visibleIn": [
+            "CATALOG",
+            "SEARCH"
+        ],
+        "filterable": true,
+        "sortable": false,
+        "searchable": true,
+        "searchWeight": 1,
+        "searchTypes": [
+            "AUTOCOMPLETE",
+            "CONTAINS",
+            "STARTS_WITH"
+        ]
+    },
+    {
+        "code": "shortDescription",
+        "scope": {
+            "locale": "en-GB"
+        },
+        "label": "Short description",
+        "dataType": "TEXT",
+        "visibleIn": [
+            "CATALOG",
+            "SEARCH"
+        ],
+        "filterable": true,
+        "sortable": false,
+        "searchable": true,
+        "searchWeight": 1,
+        "searchTypes": [
+            "AUTOCOMPLETE",
+            "CONTAINS",
+            "STARTS_WITH"
+        ]
+    },
+        {
+        "code": "brand",
+        "scope": {
+            "locale": "en-GB"
+        },
+        "label": "Brand",
+        "dataType": "TEXT",
+        "visibleIn": [
+            "CATALOG",
+            "SEARCH"
+        ],
+        "filterable": true,
+        "sortable": false,
+        "searchable": true,
+        "searchWeight": 1,
+        "searchTypes": [
+            "AUTOCOMPLETE",
+            "CONTAINS",
+            "STARTS_WITH"
+        ]
+    },
+        {
+        "code": "country",
+        "scope": {
+            "locale": "en-GB"
+        },
+        "label": "Country",
+        "dataType": "TEXT",
+        "visibleIn": [
+            "CATALOG",
+            "SEARCH"
+        ],
+        "filterable": true,
+        "sortable": false,
+        "searchable": true,
+        "searchWeight": 1,
+        "searchTypes": [
+            "AUTOCOMPLETE",
+            "CONTAINS",
+            "STARTS_WITH"
+        ]
+    },
+    {
+        "code": "part_category",
+        "scope": {
+            "locale": "en-GB"
+        },
+        "label": "Part Category",
+        "dataType": "TEXT",
+        "visibleIn": [
+            "CATALOG",
+            "SEARCH"
+        ],
+        "filterable": true,
+        "sortable": false,
+        "searchable": true,
+        "searchWeight": 55,
+        "searchTypes": [
+            "AUTOCOMPLETE",
+            "CONTAINS",
+            "STARTS_WITH"
+        ]
+    },
+    {
+        "code": "is_vehicle",
+        "scope": {
+            "locale": "en-GB"
+        },
+        "label": "Is Vehicle?",
+        "dataType": "BOOLEAN",
+        "visibleIn": [
+            "CATALOG",
+            "SEARCH"
+        ],
+        "filterable": true,
+        "sortable": false,
+        "searchable": true,
+        "searchWeight": 55,
+        "searchTypes": [
+            "AUTOCOMPLETE",
+            "CONTAINS",
+            "STARTS_WITH"
+        ]
+    }
+]"
+
+**Response**
+
+```shell
+{
+    "status": "ACCEPTED",
+    "acceptedCount": 8
+}
 ```
 
 ### Add products
@@ -126,11 +514,11 @@ Add the simple product *Aurora Prism Battery* with two attribute codes, `Brand` 
 
 ```shell
 curl --request POST \
-  --url https://commerce.adobe.io/<DATA_SPACE_ID>/api/v1/catalog/products \
-  --header 'Content-Type: application/json' \
-  --header 'x-api-key: <API_KEY>' \
-  --header 'x-gw-signature: <JWT_TOKEN>' \
-  --data '[
+  --url https://na1-sandbox.api.commerce.adobe.com/<tenanId>/api/v1/catalog/products \
+  --header "Content-Type: application/json" \
+  --header "Authorization: Bearer {access token}" \
+
+  --data "[
         {
         "sku": "aurora_prism_battery",
         "scope": {
@@ -195,7 +583,7 @@ curl --request POST \
             }
         ]
         }
-]'
+]"
 ```
 
 #### Create Bolt product
@@ -206,11 +594,11 @@ Add the product *Bolt Atlas Battery* with two attribute codes, `Brand` set to *B
 
 ```shell
 curl --request POST \
-  --url https://commerce.adobe.io/<DATA_SPACE_ID>/api/v1/catalog/products \
-  --header 'Content-Type: application/json' \
-  --header 'x-api-key: <API_KEY>' \
-  --header 'x-gw-signature: <JWT_TOKEN>' \
-  --data '[
+  --url https://na1-sandbox.api.commerce.adobe.com/<tenanId>/api/v1/catalog/products \
+  --header "Content-Type: application/json" \
+  --header "Authorization: Bearer {access token}" \
+
+  --data "[
         {
         "sku": "bolt_atlas_battery",
         "scope": {
@@ -275,7 +663,7 @@ curl --request POST \
             }
         ]
         }
-]'
+]"
 ```
 
 ## Step 2. Define the channel and policies
@@ -296,12 +684,11 @@ The query response returns a `PolicyId` value that is required when you assign t
 
 ```shell
 curl --request POST \
-  --url http://commerce.adobe.io/admin/graphql \
-  --header 'Content-Type: application/json' \
-  --header 'AC-Environment-Id: <DATA_SPACE_ID>' \
-  --header 'x-api-key: <API_KEY>' \
-  --header 'x-gw-signature: <JWT_TOKEN>' \
-  --data '{"query":"mutation createPolicy {\n\tcreatePolicy(\n\t\tpolicyRequest: {\n\t\t\tname: \"Location Policy\"\n\t\t\tmandatory: true\n\t\t\tactions: [\n\t\t\t\t{\n\t\t\t\t\ttriggers: [\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\tname: \"AC-Policy-Country\",\n\t\t\t\t\t\t\ttransportType: HTTP_HEADER\n\t\t\t\t\t\t}\n\t\t\t\t\t]\n\t\t\t\t\tfilters: [\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\tattribute: \"country\",\n\t\t\t\t\t\t\tvalueSource: TRIGGER,\n\t\t\t\t\t\t\tvalue: \"AC-Policy-Country\"\n\t\t\t\t\t\t\tactionFilterOperator: EQUALS,\n\t\t\t\t\t\t\tenabled: true\n\t\t\t\t\t\t}\n\t\t\t\t\t]\n\t\t\t\t}\n\t\t\t]\n\t\t}\n\t) {\n\t\tname\n\t\tpolicyId\n\t\tmandatory\n\t\tactions {\n\t\t\ttriggers {\n\t\t\t\tname\n\t\t\t\ttransportType\n\t\t\t}\n\t\t\tfilters {\n\t\t\t\tattribute\n\t\t\t\tvalueSource\n\t\t\t\tvalue\n\t\t\t\tactionFilterOperator\n\t\t\t\tenabled\n\t\t\t}\n\t\t}\n\t\tcreatedAt\n\t\tupdatedAt\n\t}\n}\n","operationName":"createPolicy"}'
+  --url http://na1-sandbox.api.commerce.adobe.com/{tenantId}/admin/graphql \
+  --header "Content-Type: application/json" \
+  --header "Authorization: Bearer {access token}" \
+
+  --data "{"query":"mutation createPolicy {\n\tcreatePolicy(\n\t\tpolicyRequest: {\n\t\t\tname: \"Location Policy\"\n\t\t\tmandatory: true\n\t\t\tactions: [\n\t\t\t\t{\n\t\t\t\t\ttriggers: [\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\tname: \"AC-Policy-Country\",\n\t\t\t\t\t\t\ttransportType: HTTP_HEADER\n\t\t\t\t\t\t}\n\t\t\t\t\t]\n\t\t\t\t\tfilters: [\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\tattribute: \"country\",\n\t\t\t\t\t\t\tvalueSource: TRIGGER,\n\t\t\t\t\t\t\tvalue: \"AC-Policy-Country\"\n\t\t\t\t\t\t\tactionFilterOperator: EQUALS,\n\t\t\t\t\t\t\tenabled: true\n\t\t\t\t\t\t}\n\t\t\t\t\t]\n\t\t\t\t}\n\t\t\t]\n\t\t}\n\t) {\n\t\tname\n\t\tpolicyId\n\t\tmandatory\n\t\tactions {\n\t\t\ttriggers {\n\t\t\t\tname\n\t\t\t\ttransportType\n\t\t\t}\n\t\t\tfilters {\n\t\t\t\tattribute\n\t\t\t\tvalueSource\n\t\t\t\tvalue\n\t\t\t\tactionFilterOperator\n\t\t\t\tenabled\n\t\t\t}\n\t\t}\n\t\tcreatedAt\n\t\tupdatedAt\n\t}\n}\n","operationName":"createPolicy"}"
 ```
 
 **Payload**
@@ -397,12 +784,11 @@ mutation CreatePolicy {
 
 ```shell
 curl --request POST \
-  --url http://commerce.adobe.io/admin/graphql \
-  --header 'Content-Type: application/json' \
-  --header 'AC-Environment-Id: <DATA_SPACE_ID>' \
-  --header 'x-api-key: <API_KEY>' \
-  --header 'x-gw-signature: <JWT_TOKEN>' \
-  --data '{"query":"mutation createPolicy {\n\tcreatePolicy(\n\t\tpolicyRequest: {\n\t\t\tname: \"Brand Policy\"\n\t\t\tmandatory: true\n\t\t\tactions: [\n\t\t\t\t{\n\t\t\t\t\ttriggers: [\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\tname: \"AC-Policy-Brand\",\n\t\t\t\t\t\t\ttransportType: HTTP_HEADER\n\t\t\t\t\t\t}\n\t\t\t\t\t]\n\t\t\t\t\tfilters: [\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\tattribute: \"brand\",\n\t\t\t\t\t\t\tvalueSource: TRIGGER,\n\t\t\t\t\t\t\tvalue: \"AC-Policy-Brand\"\n\t\t\t\t\t\t\tactionFilterOperator: EQUALS,\n\t\t\t\t\t\t\tenabled: true\n\t\t\t\t\t\t}\n\t\t\t\t\t]\n\t\t\t\t}\n\t\t\t]\n\t\t}\n\t) {\n\t\tname\n\t\tpolicyId\n\t\tmandatory\n\t\tactions {\n\t\t\ttriggers {\n\t\t\t\tname\n\t\t\t\ttransportType\n\t\t\t}\n\t\t\tfilters {\n\t\t\t\tattribute\n\t\t\t\tvalueSource\n\t\t\t\tvalue\n\t\t\t\tactionFilterOperator\n\t\t\t\tenabled\n\t\t\t}\n\t\t}\n\t\tcreatedAt\n\t\tupdatedAt\n\t}\n}\n","operationName":"createPolicy"}'
+  --url http://na1-sandbox.api.commerce.adobe.com/{tenantId}/admin/graphql \
+  --header "Content-Type: application/json" \
+  --header "Authorization: Bearer {access token}" \
+
+  --data "{"query":"mutation createPolicy {\n\tcreatePolicy(\n\t\tpolicyRequest: {\n\t\t\tname: \"Brand Policy\"\n\t\t\tmandatory: true\n\t\t\tactions: [\n\t\t\t\t{\n\t\t\t\t\ttriggers: [\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\tname: \"AC-Policy-Brand\",\n\t\t\t\t\t\t\ttransportType: HTTP_HEADER\n\t\t\t\t\t\t}\n\t\t\t\t\t]\n\t\t\t\t\tfilters: [\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\tattribute: \"brand\",\n\t\t\t\t\t\t\tvalueSource: TRIGGER,\n\t\t\t\t\t\t\tvalue: \"AC-Policy-Brand\"\n\t\t\t\t\t\t\tactionFilterOperator: EQUALS,\n\t\t\t\t\t\t\tenabled: true\n\t\t\t\t\t\t}\n\t\t\t\t\t]\n\t\t\t\t}\n\t\t\t]\n\t\t}\n\t) {\n\t\tname\n\t\tpolicyId\n\t\tmandatory\n\t\tactions {\n\t\t\ttriggers {\n\t\t\t\tname\n\t\t\t\ttransportType\n\t\t\t}\n\t\t\tfilters {\n\t\t\t\tattribute\n\t\t\t\tvalueSource\n\t\t\t\tvalue\n\t\t\t\tactionFilterOperator\n\t\t\t\tenabled\n\t\t\t}\n\t\t}\n\t\tcreatedAt\n\t\tupdatedAt\n\t}\n}\n","operationName":"createPolicy"}"
 ```
 
 **Payload**
@@ -500,12 +886,11 @@ Create a channel and assign the policies for location filtering and brand filter
 
 ```shell
 curl --request POST \
-  --url http://commerce.adobe.io/admin/graphql \
-  --header 'Content-Type: application/json'  \
-  --header 'AC-Environment-Id: <DATA_SPACE_ID>' \
-  --header 'x-api-key: <API_KEY>' \
-  --header 'x-gw-signature: <JWT_TOKEN>' \
-  --data '{"query":"mutation {\n    createChannel(\n        channelRequest: {\n            name: \"Zenith Automotive\",\n            scopes: [\n                { locale: \"en-US\" }\n            ]\n            policyIds : [\n                \"56a6908f-eyx3-59c3-sye8-574509e6y45\",\n                \"39c8106d-aab2-49b2-aac3-177608d4e567\",\n            ]\n        }\n    ) {\n        channelId\n        name\n        scopes {\n          locale\n        }\n        policyIds\n        createdAt\n        updatedAt\n    }\n}"}'
+  --url http://na1-sandbox.api.commerce.adobe.com/{tenantId}/admin/graphql \
+  --header "Content-Type: application/json"  \
+  --header "Authorization: Bearer {access token}" \
+
+  --data "{"query":"mutation {\n    createChannel(\n        channelRequest: {\n            name: \"Zenith Automotive\",\n            scopes: [\n                { locale: \"en-US\" }\n            ]\n            policyIds : [\n                \"56a6908f-eyx3-59c3-sye8-574509e6y45\",\n                \"39c8106d-aab2-49b2-aac3-177608d4e567\",\n            ]\n        }\n    ) {\n        channelId\n        name\n        scopes {\n          locale\n        }\n        policyIds\n        createdAt\n        updatedAt\n    }\n}"}"
 ```
 
 **Payload**
@@ -566,14 +951,9 @@ mutation {
 
 Use the Storefront GraphQL API [productSearch](https://developer-stage.adobe.com/commerce/services/graphql-api/storefront-api/index.html#query-productSearch) query to retrieve the SKUs you created.
 
-Send GraphQL requests for Storefront APIs to the following endpoints:
+Send GraphQL requests for Storefront APIs to the following base URL:
 
-- Sandbox: `https://catalog-service-sandbox.adobe.io/graphql`
-- Production: `https://catalog-service.adobe.io/graphql`
-
-<InlineAlert variant="info" slots="text"/>
-
-When you submit requests using Storefront API, use the Adobe Commerce API key for your production environment to authenticate to both sandbox and production endpoints.
+`http://na1-sandbox.api.commerce.adobe.com/{tenantId}/graphql`
 
 ### Retrieve SKU for the `Aurora` brand
 
@@ -584,14 +964,13 @@ The brand and location (`AC-Policy-Brand` and `AC-Policy-Country`) are passed in
 Use the following headers in the request:
 
 ```text
-AC-Channel-Id: 'b726c1e9-2842-4ab5-9b19-ca65c23bbb3b'
-AC-Environment-Id: '<DATA_SPACE_ID>'
-AC-Policy-Brand: 'Aurora'
-AC-Policy-Country: 'US'
-AC-Price-Book-Id: 'base'
-AC-Scope-Locale: 'en-US'
-Content-Type: 'application/json'
-X-Api-Key: '<API-KEY>'
+AC-Channel-Id: "b726c1e9-2842-4ab5-9b19-ca65c23bbb3b"
+AC-Environment-Id: "{tenantId}"
+AC-Policy-Brand: "Aurora"
+AC-Policy-Country: "US"
+AC-Price-Book-Id: "base"
+AC-Scope-Locale: "en-US"
+Content-Type: "application/json"
 ```
 
 #### Request
@@ -644,7 +1023,7 @@ query getProductSearchDetails(
 }
 ```
 
-Here are the variable values to specify in the request:
+Here are the variable values for the request:
 
 ```json
 {
@@ -711,9 +1090,6 @@ The response returns the product details for a single SKU, `Aurora Prism battery
                 "path": "vehicles/aurora-prism/parts",
                 "position": 1
               }
-              {
-              "path": "aurora-prism-battery"
-            },
             ],
             "roles": [
               "SEARCH",
@@ -758,14 +1134,13 @@ The brand and location (`AC-Policy-Brand` and `AC-Policy-Country`) are passed in
 Use the following headers in the request:
 
 ```text
-AC-Channel-Id: 'b726c1e9-2842-4ab5-9b19-ca65c23bbb3b'
-AC-Environment-Id: '<DATA_SPACE_ID>'
-AC-Policy-Brand: 'Bolt'
-AC-Policy-Country: 'UK'
-AC-Price-Book-Id: 'base'
-AC-Scope-Locale: 'en-US'
+AC-Channel-Id: "b726c1e9-2842-4ab5-9b19-ca65c23bbb3b"
+AC-Environment-Id: "{tenantId}"
+AC-Policy-Brand: "Bolt"
+AC-Policy-Country: "UK"
+AC-Price-Book-Id: "base"
+AC-Scope-Locale: "en-US"
 Content-Type: 'application/json'
-X-Api-Key: '<API-KEY>'
 ```
 
 #### Request
@@ -816,7 +1191,7 @@ query getProductSearchDetails(
 }
 ```
 
-Here are the variables specified in the request:
+Here are the variables for the request:
 
 ```json
 {
@@ -875,23 +1250,6 @@ The response returns the product details for a single SKU, `Bolt Atlas battery`.
             ],
             "description": "Vehicle battery sold only in UK",
             "shortDescription": "battery",
-
-             "images": [
-            {
-                "url": "https://picsum.photos/300/200",
-                "label": "bolt atlas battery photo",
-                "roles": [
-                    "PDP",
-                    "PLP"
-                ]
-            }
-        ],
-        "links": [
-            {
-                "sku": "bolt-atlas-2025",
-                "type": "related"
-            }
-        ],
             "routes": [
               {
                 "path": "bolt-atlas-battery"
