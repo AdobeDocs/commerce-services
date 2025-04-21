@@ -20,43 +20,13 @@ exports.createSchemaCustomization = ({ actions }) => {
     }
 
     type MdxFrontmatter @dontInfer {
-      title: String
-      keywords: [String]
-      category: String
-      description: String
-      contributors: [String]
-      contributor_link: String
-      contributor_name: String
       edition: String
       editionObjects: [EditionType]
-      openAPISpec: String
-      frameSrc: String
-      frameHeight: String
-      layout: String
-      jsDoc: Boolean
-      hideBreadcrumbNav: Boolean
-      featured: Boolean
-      noIndex: Boolean
     }
 
     type MarkdownRemarkFrontmatter @dontInfer {
-      title: String
-      keywords: [String]
-      category: String
-      description: String
-      contributors: [String]
-      contributor_link: String
-      contributor_name: String
       edition: String
       editionObjects: [EditionType]
-      openAPISpec: String
-      frameSrc: String
-      frameHeight: String
-      layout: String
-      jsDoc: Boolean
-      hideBreadcrumbNav: Boolean
-      featured: Boolean
-      noIndex: Boolean
     }
   `);
 };
