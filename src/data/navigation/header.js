@@ -37,7 +37,7 @@ module.exports = [
         path: "/reference/cloud/rest/",
       },
       {
-        title: "Cloude Service - GraphQL API",
+        title: "Cloud Service - GraphQL API",
         description: "View the reference documentation for the GraphQL API.",
         path: "/reference/cloud/graphql/",
       },
