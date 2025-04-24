@@ -24,12 +24,12 @@ const EDITIONS_LINK = 'https://experienceleague.adobe.com/en/docs/commerce/user-
 const Edition = ({ ...props }) => {
   switch (props.name) {
     case 'paas':
-      editionText = 'PaaS only';
+      editionText = 'PaaS';
       editionColor = 'spectrum-Badge--informative';
-      editionTooltip = 'Applies to Adobe Commerce on Cloud projects (Adobe-managed PaaS infrastructure).';
+      editionTooltip = 'Applies to Adobe Commerce on Cloud (Adobe-managed PaaS infrastructure) and on-premises projects.';
       break;
     case 'saas':
-      editionText = 'SaaS only';
+      editionText = 'SaaS';
       editionColor = 'spectrum-Badge--positive';
       editionTooltip = 'Applies to Adobe Commerce as a Cloud Service and Adobe Commerce Optimizer projects (Adobe-managed SaaS infrastructure).';
       break;
