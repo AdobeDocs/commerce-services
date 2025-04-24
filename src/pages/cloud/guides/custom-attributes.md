@@ -17,7 +17,7 @@ import ACCSEarlyAccess from '/src/_includes/accs/accs-early-access.md'
 
 Custom attributes can extend the core data model in Adobe Commerce. Since you cannot modify the Cloud Service data model directly, custom attributes allow you to add additional attributes to entities without requiring code or database schema changes.
 
-Consider a situation where you want to modify a `duns_number` or `industry_type` information for a company. Custom attributes make this possible.
+Consider a situation where you want to specify a `duns_number` or `industry_type` information for a company. Custom attributes make this possible.
 
 The following entities support custom attributes in Adobe Commerce as a Cloud Service:
 
