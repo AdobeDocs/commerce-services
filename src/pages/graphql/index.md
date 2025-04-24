@@ -1,6 +1,5 @@
 ---
 title: Storefront Services GraphQL Overview
-edition: paas
 description: Learn about the GraphQL capabilities of Live Search, Catalog Service, and Product Recommendations
 ---
 

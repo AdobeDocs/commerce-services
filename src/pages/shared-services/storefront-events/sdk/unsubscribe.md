@@ -1,7 +1,6 @@
 ---
 title: Unsubscribe from storefront events | Commerce Services
 description: Learn how to programmatically unsubscribe from Adobe Commerce storefront events.
-edition: paas
 keywords:
   - Events
   - Services
