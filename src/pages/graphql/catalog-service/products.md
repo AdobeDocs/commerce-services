@@ -1,6 +1,5 @@
 ---
 title: products query
-edition: paas
 description: Describes how to construct and use the Catalog Service products query.
 keywords:
   - GraphQL
