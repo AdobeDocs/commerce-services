@@ -4,6 +4,7 @@ description: Learn about REST API authentication in Adobe Commerce as a Cloud Se
 keywords:
   - REST
   - Services
+edition: saas
 noIndex: true
 ---
 

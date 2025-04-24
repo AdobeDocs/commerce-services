@@ -4,6 +4,7 @@ description: Learn about Server-to-Server Authentication in Adobe Commerce as a 
 keywords:
   - REST
   - Services
+edition: saas
 noIndex: true
 ---
 

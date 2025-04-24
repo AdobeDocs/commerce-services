@@ -4,6 +4,7 @@ description: Learn about webhooks Commerce Cloud Service.
 keywords:
   - REST
   - Services
+edition: saas
 noIndex: true
 ---
 

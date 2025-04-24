@@ -4,6 +4,7 @@ description: Learn how to implement a server-to-server integration with the Adob
 keywords:
   - REST
   - Services
+edition: saas
 noIndex: true
 ---
 
