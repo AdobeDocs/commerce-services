@@ -26,7 +26,7 @@ const Edition = ({ ...props }) => {
     case 'paas':
       editionText = 'PaaS';
       editionColor = 'spectrum-Badge--informative';
-      editionTooltip = 'Applies to Adobe Commerce on Cloud (Adobe-managed PaaS infrastructure) and on-premises projects.';
+      editionTooltip = 'Applies to Adobe Commerce on Cloud (Adobe-managed PaaS infrastructure) and on-premises projects only.';
       break;
     case 'saas':
       editionText = 'SaaS';
