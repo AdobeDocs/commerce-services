@@ -1,6 +1,6 @@
 ---
 title: productSearch query
-edition: ee
+edition: paas
 description: Describes how to construct and use the productSearch query in both Live Search and Catalog Service.
 keywords:
   - GraphQL
