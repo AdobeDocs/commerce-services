@@ -1175,7 +1175,7 @@ paths:
       summary: Delete price books.
       description: |
         Delete existing price books.
-        When deleting a price book, all associated prices assigned to the `priceBookId` will also get deleted.
+        When you delete a price book, all associated prices assigned to the `priceBookId` are also deleted. If a product does not have any other price books assigned, the prices default to the pricing schedule defined in the default, `main` price book.
         Note that you cannot delete the default price book with id `main`.
       operationId: deletePriceBooks
       parameters:
