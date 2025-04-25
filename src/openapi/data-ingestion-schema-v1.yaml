@@ -204,6 +204,14 @@ paths:
             application/json;charset=UTF-8:
               schema:
                 $ref: "#/components/schemas/403Response"
+        "429":
+          description: |
+            HTTP 429 Too Many Requests status code signals that a client has exceeded the rate limit of 300 requests per minute.
+            Check `retry-after` header to get the time in seconds to wait before sending the next request.
+          content:
+            text/html;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/429Response"
     patch:
       tags:
         - Metadata
@@ -282,6 +290,14 @@ paths:
             application/json;charset=UTF-8:
               schema:
                 $ref: "#/components/schemas/403Response"
+        "429":
+          description: |
+            HTTP 429 Too Many Requests status code signals that a client has exceeded the rate limit of 300 requests per minute.
+            Check `retry-after` header to get the time in seconds to wait before sending the next request.
+          content:
+            text/html;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/429Response"
   /v1/catalog/products/metadata/delete:
     post:
       tags:
@@ -351,6 +367,14 @@ paths:
             application/json;charset=UTF-8:
               schema:
                 $ref: "#/components/schemas/403Response"
+        "429":
+          description: |
+            HTTP 429 Too Many Requests status code signals that a client has exceeded the rate limit of 300 requests per minute.
+            Check `retry-after` header to get the time in seconds to wait before sending the next request.
+          content:
+            text/html;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/429Response"
 
   /v1/catalog/products:
     post:
@@ -1096,6 +1120,14 @@ paths:
             application/json;charset=UTF-8:
               schema:
                 $ref: "#/components/schemas/403Response"
+        "429":
+          description: |
+            HTTP 429 Too Many Requests status code signals that a client has exceeded the rate limit of 300 requests per minute.
+            Check `retry-after` header to get the time in seconds to wait before sending the next request.
+          content:
+            text/html;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/429Response"
     patch:
       tags:
         - Price Books
@@ -1168,6 +1200,14 @@ paths:
             application/json;charset=UTF-8:
               schema:
                 $ref: "#/components/schemas/403Response"
+        "429":
+          description: |
+            HTTP 429 Too Many Requests status code signals that a client has exceeded the rate limit of 300 requests per minute.
+            Check `retry-after` header to get the time in seconds to wait before sending the next request.
+          content:
+            text/html;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/429Response"
   /v1/catalog/price-books/delete:
     post:
       tags:
@@ -1235,6 +1275,14 @@ paths:
             application/json;charset=UTF-8:
               schema:
                 $ref: "#/components/schemas/403Response"
+        "429":
+          description: |
+            HTTP 429 Too Many Requests status code signals that a client has exceeded the rate limit of 300 requests per minute.
+            Check `retry-after` header to get the time in seconds to wait before sending the next request.
+          content:
+            text/html;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/429Response"
 
   /v1/catalog/products/prices:
     post:
@@ -1338,6 +1386,14 @@ paths:
             application/json;charset=UTF-8:
               schema:
                 $ref: "#/components/schemas/403Response"
+        "429":
+          description: |
+            HTTP 429 Too Many Requests status code signals that a client has exceeded the rate limit of 300 requests per minute.
+            Check `retry-after` header to get the time in seconds to wait before sending the next request.
+          content:
+            text/html;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/429Response"
     patch:
       tags:
         - Prices
@@ -1416,6 +1472,14 @@ paths:
             application/json;charset=UTF-8:
               schema:
                 $ref: "#/components/schemas/403Response"
+        "429":
+          description: |
+            HTTP 429 Too Many Requests status code signals that a client has exceeded the rate limit of 300 requests per minute.
+            Check `retry-after` header to get the time in seconds to wait before sending the next request.
+          content:
+            text/html;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/429Response"
   /v1/catalog/products/prices/delete:
     post:
       tags:
@@ -1482,6 +1546,14 @@ paths:
             application/json;charset=UTF-8:
               schema:
                 $ref: "#/components/schemas/403Response"
+        "429":
+          description: |
+            HTTP 429 Too Many Requests status code signals that a client has exceeded the rate limit of 300 requests per minute.
+            Check `retry-after` header to get the time in seconds to wait before sending the next request.
+          content:
+            text/html;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/429Response"
 
 components:
   responses:
@@ -2324,3 +2396,9 @@ components:
           "error_code": "403010",
           "message": "Oauth token is missing"
         }
+    429Response:
+      title: 429 Too Many Requests
+      description: |
+        HTTP 429 Too Many Requests status code signals that a client has exceeded the rate limit of 300 requests per minute.
+        Check `retry-after` header to get the time in seconds to wait before sending the next request.
+      type: string
