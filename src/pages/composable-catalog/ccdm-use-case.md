@@ -668,6 +668,12 @@ curl --request POST \
 
 ## Step 2. Define the channel and policies
 
+<InlineAlert variant="info" slots="text"/>
+
+Channels and policies must be created from the [Adobe Commerce Optimizer user interface](https://experienceleague.adobe.com/en/docs/commerce/optimizer/catalog/channels). The below API documentation fo Channels and Policies
+are provided only to help users get a deeper understanding of the underlying data structure that supports Merchandising Services powered by
+Channels and Policies.
+
 In this step, create a channel for `Zenith Automotive` using the [Create channel](https://developer-stage.adobe.com/commerce/services/graphql-api/admin-api/index.html#mutation-createChannel) GraphQL mutation from the Channels and Policies API.
 
 Assign two policies to the channel: a `Location Policy` with "USA" and "UK" as locations, and a `Brand Policy` with "Aurora" and "Bolt".
