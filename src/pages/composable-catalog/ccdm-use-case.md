@@ -670,7 +670,7 @@ curl --request POST \
 
 <InlineAlert variant="info" slots="text"/>
 
-Channels and policies must be created from the [Adobe Commerce Optimizer user interface](https://experienceleague.adobe.com/en/docs/commerce/optimizer/catalog/channels). The below API documentation fo Channels and Policies
+Channels and policies must be created from the [Adobe Commerce Optimizer user interface](https://experienceleague.adobe.com/en/docs/commerce/optimizer/catalog/channels). The below API documentation for Channels and Policies
 are provided only to help users get a deeper understanding of the underlying data structure that supports Merchandising Services powered by
 Channels and Policies.
 
