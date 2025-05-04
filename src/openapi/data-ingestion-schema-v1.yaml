@@ -292,8 +292,8 @@ paths:
                 $ref: "#/components/schemas/403Response"
         "429":
           description: |
-            HTTP 429 Too Many Requests status code signals that a client has exceeded the rate limit of 300 requests per minute.
-            Check `retry-after` header to get the time in seconds to wait before sending the next request.
+            Too many requests. Indicates that a client has exceeded the rate limit of 300 requests per minute.
+            Check the `retry-after` header to get the time (in seconds) to wait before sending the next request.
           content:
             text/html;charset=UTF-8:
               schema:
@@ -369,8 +369,10 @@ paths:
                 $ref: "#/components/schemas/403Response"
         "429":
           description: |
-            HTTP 429 Too Many Requests status code signals that a client has exceeded the rate limit of 300 requests per minute.
-            Check `retry-after` header to get the time in seconds to wait before sending the next request.
+```suggestion
+          description: |
+            Too many requests. Indicates that a client has exceeded the rate limit of 300 requests per minute.
+            Check the `retry-after` header to get the time (in seconds) to wait before sending the next request.
           content:
             text/html;charset=UTF-8:
               schema:
@@ -1122,8 +1124,9 @@ paths:
                 $ref: "#/components/schemas/403Response"
         "429":
           description: |
-            HTTP 429 Too Many Requests status code signals that a client has exceeded the rate limit of 300 requests per minute.
-            Check `retry-after` header to get the time in seconds to wait before sending the next request.
+          description: |
+            Too many requests. Indicates that a client has exceeded the rate limit of 300 requests per minute.
+            Check the `retry-after` header to get the time (in seconds) to wait before sending the next request.
           content:
             text/html;charset=UTF-8:
               schema:
@@ -1202,8 +1205,9 @@ paths:
                 $ref: "#/components/schemas/403Response"
         "429":
           description: |
-            HTTP 429 Too Many Requests status code signals that a client has exceeded the rate limit of 300 requests per minute.
-            Check `retry-after` header to get the time in seconds to wait before sending the next request.
+          description: |
+            Too many requests. Indicates that a client has exceeded the rate limit of 300 requests per minute.
+            Check the `retry-after` header to get the time (in seconds) to wait before sending the next request.
           content:
             text/html;charset=UTF-8:
               schema:
@@ -1277,8 +1281,9 @@ paths:
                 $ref: "#/components/schemas/403Response"
         "429":
           description: |
-            HTTP 429 Too Many Requests status code signals that a client has exceeded the rate limit of 300 requests per minute.
-            Check `retry-after` header to get the time in seconds to wait before sending the next request.
+          description: |
+            Too many requests. Indicates that a client has exceeded the rate limit of 300 requests per minute.
+            Check the `retry-after` header to get the time (in seconds) to wait before sending the next request.
           content:
             text/html;charset=UTF-8:
               schema:
@@ -1388,8 +1393,9 @@ paths:
                 $ref: "#/components/schemas/403Response"
         "429":
           description: |
-            HTTP 429 Too Many Requests status code signals that a client has exceeded the rate limit of 300 requests per minute.
-            Check `retry-after` header to get the time in seconds to wait before sending the next request.
+          description: |
+            Too many requests. Indicates that a client has exceeded the rate limit of 300 requests per minute.
+            Check the `retry-after` header to get the time (in seconds) to wait before sending the next request.
           content:
             text/html;charset=UTF-8:
               schema:
@@ -1474,8 +1480,9 @@ paths:
                 $ref: "#/components/schemas/403Response"
         "429":
           description: |
-            HTTP 429 Too Many Requests status code signals that a client has exceeded the rate limit of 300 requests per minute.
-            Check `retry-after` header to get the time in seconds to wait before sending the next request.
+          description: |
+            Too many requests. Indicates that a client has exceeded the rate limit of 300 requests per minute.
+            Check the `retry-after` header to get the time (in seconds) to wait before sending the next request.
           content:
             text/html;charset=UTF-8:
               schema:
@@ -1548,8 +1555,9 @@ paths:
                 $ref: "#/components/schemas/403Response"
         "429":
           description: |
-            HTTP 429 Too Many Requests status code signals that a client has exceeded the rate limit of 300 requests per minute.
-            Check `retry-after` header to get the time in seconds to wait before sending the next request.
+          description: |
+            Too many requests. Indicates that a client has exceeded the rate limit of 300 requests per minute.
+            Check the `retry-after` header to get the time (in seconds) to wait before sending the next request.
           content:
             text/html;charset=UTF-8:
               schema:
@@ -2399,6 +2407,7 @@ components:
     429Response:
       title: 429 Too Many Requests
       description: |
-        HTTP 429 Too Many Requests status code signals that a client has exceeded the rate limit of 300 requests per minute.
-        Check `retry-after` header to get the time in seconds to wait before sending the next request.
+          description: |
+            Too many requests. Indicates that a client has exceeded the rate limit of 300 requests per minute.
+            Check the `retry-after` header to get the time (in seconds) to wait before sending the next request.
       type: string
