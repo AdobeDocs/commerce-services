@@ -1291,20 +1291,3 @@ The response returns the product details for a single SKU, `Bolt Atlas battery`.
 }
 ```
 
-### Obtain an access token
-
-To authenticate your API requests, you need to obtain an access token. Use the following curl command:
-
-```shell
-curl --request POST \
-  --url 'https://ims-na1.adobelogin.com/ims/token/v3' \
-  --header 'Content-Type: application/x-www-form-urlencoded' \
-  --data 'grant_type=client_credentials' \
-  --data 'client_id=d968818f6be344c38ac6ddba423da0e2' \
-  --data 'client_secret=p8e-ntN1vFebiYPm-y_FxxGXEpKuu3Ul8ksL' \
-  --data 'scope=adobeio_api,openid,AdobeID,read_organizations'
-```
-
-Replace the following values with your own:
-- `client_id`: Your Adobe I/O client ID
-- `client_secret`: Your Adobe I/O client secret
