@@ -87,4 +87,4 @@ For sample requests and examples using the API, see the [API Reference](api-refe
 
 ## Limitations
 
-The Storefront API has the following limitations and boundaries:
+See [Limits and boundaries](https://experienceleague.adobe.com/en/docs/commerce/optimizer/boundaries-limits) in the *Adobe Commerce Optimizer Guide*.
