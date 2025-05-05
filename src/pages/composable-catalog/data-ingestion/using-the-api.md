@@ -61,9 +61,9 @@ import IMSAuth from '/src/_includes/authentication/initial-auth-for-api-access.m
 
 ### Generate a new access token
 
-import GetBearerToken from '/src/_includes/authentication/initial-auth-for-api-access.md'
+import GetNewToken from '/src/_includes/authentication/get-new-bearer-token.md'
 
-<GetBearerToken />
+<GetNewToken />
 
 ## Header parameters
 
@@ -91,11 +91,11 @@ curl --request POST \
 | Placeholder name | Description                                                                                                    |
 |------------------|----------------------------------------------------------------------------------------------------------------|
 | `endpoint`       | Endpoint for specific Data Ingestion API, for example: `/v1/catalog/products/prices`  |
-| `accessToken`    | Bearer token generated from IMS credentials. See [Authentication](#authentication)                                    |
+| `accessToken`    | Bearer token generated from IMS credentials. See [Authentication](#authentication).                                   |
 | `apiPayload`     | API payload see examples in the [tutorial](../ccdm-use-case.md)                                                                             |
 
 For sample requests, see the [tutorial](../ccdm-use-case.md).
 
 ## Limitations
 
-The Data Ingestion API has the following limitations and boundaries:
+See [Limits and boundaries](https://experienceleague.adobe.com/en/docs/commerce/optimizer/boundaries-limits) in the *Adobe Commerce Optimizer Guide*.
