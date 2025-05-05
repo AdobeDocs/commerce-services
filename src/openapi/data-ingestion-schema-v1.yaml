@@ -1131,7 +1131,6 @@ paths:
                 $ref: "#/components/schemas/403Response"
         "429":
           description: |
-          description: |
             Too many requests. Indicates that a client has exceeded the rate limit of 300 requests per minute.
             Check the `retry-after` header to get the time (in seconds) to wait before sending the next request.
           content:
@@ -1212,7 +1211,6 @@ paths:
                 $ref: "#/components/schemas/403Response"
         "429":
           description: |
-          description: |
             Too many requests. Indicates that a client has exceeded the rate limit of 300 requests per minute.
             Check the `retry-after` header to get the time (in seconds) to wait before sending the next request.
           content:
@@ -1287,7 +1285,6 @@ paths:
               schema:
                 $ref: "#/components/schemas/403Response"
         "429":
-          description: |
           description: |
             Too many requests. Indicates that a client has exceeded the rate limit of 300 requests per minute.
             Check the `retry-after` header to get the time (in seconds) to wait before sending the next request.
@@ -1400,7 +1397,6 @@ paths:
                 $ref: "#/components/schemas/403Response"
         "429":
           description: |
-          description: |
             Too many requests. Indicates that a client has exceeded the rate limit of 300 requests per minute.
             Check the `retry-after` header to get the time (in seconds) to wait before sending the next request.
           content:
@@ -1487,7 +1483,6 @@ paths:
                 $ref: "#/components/schemas/403Response"
         "429":
           description: |
-          description: |
             Too many requests. Indicates that a client has exceeded the rate limit of 300 requests per minute.
             Check the `retry-after` header to get the time (in seconds) to wait before sending the next request.
           content:
@@ -1561,7 +1556,6 @@ paths:
               schema:
                 $ref: "#/components/schemas/403Response"
         "429":
-          description: |
           description: |
             Too many requests. Indicates that a client has exceeded the rate limit of 300 requests per minute.
             Check the `retry-after` header to get the time (in seconds) to wait before sending the next request.
@@ -2422,7 +2416,6 @@ components:
     429Response:
       title: 429 Too Many Requests
       description: |
-          description: |
-            Too many requests. Indicates that a client has exceeded the rate limit of 300 requests per minute.
-            Check the `retry-after` header to get the time (in seconds) to wait before sending the next request.
+        Too many requests. Indicates that a client has exceeded the rate limit of 300 requests per minute.
+        Check the `retry-after` header to get the time (in seconds) to wait before sending the next request.
       type: string
