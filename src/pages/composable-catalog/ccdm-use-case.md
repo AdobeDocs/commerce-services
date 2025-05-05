@@ -1290,4 +1290,3 @@ The response returns the product details for a single SKU, `Bolt Atlas battery`.
   }
 }
 ```
-
