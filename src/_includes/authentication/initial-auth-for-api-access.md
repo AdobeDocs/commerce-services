@@ -1,3 +1,4 @@
+
 To get API authentication credentials and tokens, create an Adobe developer project to enable communication between your Commerce project and Merchandising Services APIs.
 
 <InlineAlert variant="info" slots="text" />
