@@ -378,8 +378,6 @@ paths:
                 $ref: "#/components/schemas/403Response"
         "429":
           description: |
-```suggestion
-          description: |
             Too many requests. Indicates that a client has exceeded the rate limit of 300 requests per minute.
             Check the `retry-after` header to get the time (in seconds) to wait before sending the next request.
           content:
