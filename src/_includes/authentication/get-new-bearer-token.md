@@ -5,8 +5,8 @@ curl --request POST \
   --url 'https://ims-na1.adobelogin.com/ims/token/v3' \
   --header 'Content-Type: application/x-www-form-urlencoded' \
   --data 'grant_type=client_credentials' \
-  --data 'client_id={client-id-value}' \
-  --data 'client_secret={client-secret-value}' \
+  --data 'client_id={{client-id-value}}' \
+  --data 'client_secret={{client-secret-value}}' \
   --data 'scope=adobeio_api,openid,AdobeID,read_organizations'
 ```
 
