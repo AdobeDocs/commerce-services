@@ -32,7 +32,27 @@ module.exports = [
       {
         title: "Storefront events collector",
         path: "/shared-services/storefront-events/collector/",
+        pages:  [
+          {
+            title: "Verify event collection",
+            path: "/shared-services/storefront-events/collector/verify/",
+          },
+        ]
       },
+      {
+        title: "Features",
+        path: "/shared-services/storefront-events/feature",
+        pages:  [
+          {
+            title: "Live Search Events",
+            path: "/shared-services/storefront-events/feature/ls-events",
+          },
+          {
+            title: "Product Recommendations Events",
+            path: "/shared-services/storefront-events/feature/prex-events",
+          },
+        ]
+      }
     ],
   },
 ];

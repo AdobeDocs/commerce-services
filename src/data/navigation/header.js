@@ -47,19 +47,14 @@ module.exports = [
     title: "Events and SDKs",
     menu: [
       {
-        title: "Storefront Events SDK",
-        description: "Learn how to use the Storefront Events SDK.",
+        title: "Storefront Events and SDK",
+        description: "Learn about the events deployed to your storefront and how to use the Storefront Events SDK.",
         path: "/shared-services/storefront-events/",
       },
       {
         title: "Product Recommendations SDK",
         description: "Learn how to use the Product Recommendations SDK.",
         path: "/product-recommendations/",
-      },
-      {
-        title: "Live Search Events",
-        description: "Learn how to use the Live Search Events SDK.",
-        path: "/live-search/",
       },
     ],
   },
