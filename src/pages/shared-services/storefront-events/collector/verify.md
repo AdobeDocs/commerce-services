@@ -9,11 +9,11 @@ keywords:
 
 # Verify Event Collection
 
-After you install and configure the [[!DNL Product Recommendations]](https://experienceleague.adobe.com/en/docs/commerce/product-recommendations/getting-started/install-configure) or [[!DNL Live Search]](https://experienceleague.adobe.com/en/docs/commerce/live-search/install) modules, you can verify that the behavioral data is being sent to Adobe Commerce. You can use developer tools available in Chrome, or install the Snowplow Chrome extension. If you need additional help, see [Troubleshoot [!DNL Product Recommendations] module](https://experienceleague.adobe.com/docs/commerce-knowledge-base/kb/troubleshooting/miscellaneous/troubleshoot-product-recommendations-module-in-magento-commerce.html) and [Troubleshoot [!DNL Live Search] module](https://experienceleague.adobe.com/en/docs/commerce/live-search/boundaries-limits#troubleshooting).
+After you install and configure the [Product Recommendations](https://experienceleague.adobe.com/en/docs/commerce/product-recommendations/getting-started/install-configure) or [Live Search](https://experienceleague.adobe.com/en/docs/commerce/live-search/install) modules, you can verify that the behavioral data is being sent to Adobe Commerce. You can use developer tools available in Chrome, or install the Snowplow Chrome extension. If you need additional help, see [Troubleshoot Product Recommendations module](https://experienceleague.adobe.com/docs/commerce-knowledge-base/kb/troubleshooting/miscellaneous/troubleshoot-product-recommendations-module-in-magento-commerce.html) and [Troubleshoot Live Search module](https://experienceleague.adobe.com/en/docs/commerce/live-search/boundaries-limits#troubleshooting).
 
 <InlineAlert variant="info" slots="text"/>
 
-The [!DNL Data Connection] extension uses queries in Adobe Experience Platform to [verify that event collection](https://experienceleague.adobe.com/en/docs/commerce/data-connection/fundamentals/connect-data#confirm-that-event-data-is-collected) is working.
+The Data Connection extension uses queries in Adobe Experience Platform to [verify that event collection](https://experienceleague.adobe.com/en/docs/commerce/data-connection/fundamentals/connect-data#confirm-that-event-data-is-collected) is working.
 
 ## Verify using developer tools in Chrome
 

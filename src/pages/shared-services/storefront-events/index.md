@@ -9,13 +9,13 @@ keywords:
 
 # Adobe Commerce storefront events
 
-When you install Adobe Commerce, storefront events are deployed to your site. These events capture data from shoppers' interactions on your site. When you install and configure SaaS-based Adobe Commerce features such as [[!DNL Product Recommendations]](https://experienceleague.adobe.com/en/docs/commerce/product-recommendations/getting-started/install-configure), [[!DNL Live Search]](https://experienceleague.adobe.com/en/docs/commerce/live-search/install), or [[!DNL Data Connection]](https://experienceleague.adobe.com/en/docs/commerce/data-connection/fundamentals/install) the modules deploy behavioral data collection to your storefront for specific events. This mechanism collects anonymized behavioral data from the events and help to power [!DNL Product Recommendations] and [!DNL Live Search] or in the case of [!DNL Data Connection], send that behavioral data to the Adobe Experience Platform.
+When you install Adobe Commerce, storefront events are deployed to your site. These events capture data from shoppers' interactions on your site. When you install and configure SaaS-based Adobe Commerce features such as [Product Recommendations](https://experienceleague.adobe.com/en/docs/commerce/product-recommendations/getting-started/install-configure), [Live Search](https://experienceleague.adobe.com/en/docs/commerce/live-search/install), or [Data Connection](https://experienceleague.adobe.com/en/docs/commerce/data-connection/fundamentals/install) the modules deploy behavioral data collection to your storefront for specific events. This mechanism collects anonymized behavioral data from the events and help to power Product Recommendations and Live Search or in the case of Data Connection, send that behavioral data to the Adobe Experience Platform.
 
 In this topic you learn:
 
-- What events do the [!DNL Product Recommendations], [!DNL Live Search], and [!DNL Data Connection] modules give you access to?
+- What events do the Product Recommendations, Live Search, and Data Connection modules give you access to?
 - What events are supported on each framework, such as Luma/PHP, PWA, Adobe Experience Platform, and so on?
-- How do you publish, subscribe, and handle the storefront events ([!DNL Live Search] and [!DNL Product Recommendations] only)?
+- How do you publish, subscribe, and handle the storefront events (Live Search and Product Recommendations only)?
 - What is the complete list of events that are available on your storefront?
 
 ## Available events based on module
@@ -24,34 +24,34 @@ The following section lists the events from which each module collects behaviora
 
 <InlineAlert variant="info" slots="text"/>
 
-[!DNL Product Recommendations] and [!DNL Live Search] also use other non-module specific events to populate dashboards, inform ranking strategies, and help Adobe Sensei interpret shopper data correctly.
+Product Recommendations and Live Search also use other non-module specific events to populate dashboards, inform ranking strategies, and help Adobe Sensei interpret shopper data correctly.
 
 ### Product Recommendations
 
-The [!DNL Product Recommendations] module collects behavioral data from the following events:
+The Product Recommendations module collects behavioral data from the following events:
 
 - [impression-render](#impression-render)
 - [rec-add-to-cart-click](#rec-add-to-cart-click)
 - [rec-click](#rec-click)
 - [view](#view)
 
-[Learn more](./feature/prex-events.md) about how [!DNL Product Recommendations] uses behavioral data.
+[Learn more](./feature/prex-events.md) about how Product Recommendations uses behavioral data.
 
 ### Live Search
 
-The [!DNL Live Search] module collects behavioral data from the following events:
+The Live Search module collects behavioral data from the following events:
 
 - [searchProductClick](#searchproductclick)
-- [searchRequestSent](#searchrequestsent) (also part of the [[!DNL Data Connection]](#data-connection) list.)
-- [searchResponseReceived](#searchresponsereceived) (also part of the [[!DNL Data Connection]](#data-connection) list.)
+- [searchRequestSent](#searchrequestsent) (also part of the [Data Connection](#data-connection) list.)
+- [searchResponseReceived](#searchresponsereceived) (also part of the [Data Connection](#data-connection) list.)
 - [searchResultsView](#searchresultsview)
 - [searchSuggestionClick](#searchsuggestionclick)
 
-[Learn more](./feature/ls-events.md) about how [!DNL Live Search] uses behavioral data.
+[Learn more](./feature/ls-events.md) about how Live Search uses behavioral data.
 
 ### Data Connection
 
-The [!DNL Data Connection] module collects behavioral data from the following categories of events:
+The Data Connection module collects behavioral data from the following categories of events:
 
 #### General
 
@@ -73,7 +73,7 @@ The [!DNL Data Connection] module collects behavioral data from the following ca
 
 #### Search
 
-These events are also part of the [!DNL Live Search](#live-search) collection of events.
+These events are also part of the [Live Search](#live-search) collection of events.
 
 - [searchRequestSent](#searchrequestsent)
 - [searchResponseReceived](#searchresponsereceived)
@@ -85,7 +85,7 @@ These events are also part of the [!DNL Live Search](#live-search) collection of
 - [removeFromRequisitionList](#removefromrequisitionlist)
 - [deleteRequisitionList](#deleterequisitionlist)
 
-[Learn more](https://experienceleague.adobe.com/en/docs/commerce/data-connection/fundamentals/connect-data#data-collection) about how [!DNL Data Connection] uses behavioral data.
+[Learn more](https://experienceleague.adobe.com/en/docs/commerce/data-connection/fundamentals/connect-data#data-collection) about how Data Connection uses behavioral data.
 
 ## Supported events
 
@@ -159,7 +159,7 @@ Adobe provides an eventing framework from Adobe Commerce that you can use to pro
 
 <InlineAlert variant="info" slots="text"/>
 
-If you are using the [!DNL Data Connection] module, the module deploys these SDKs for you. [Learn more](https://experienceleague.adobe.com/en/docs/commerce/data-connection/fundamentals/connect-data#data-collection).
+If you are using the Data Connection module, the module deploys these SDKs for you. [Learn more](https://experienceleague.adobe.com/en/docs/commerce/data-connection/fundamentals/connect-data#data-collection).
 
 - [**Adobe Commerce Storefront Events SDK**](sdk/index.md)—Provides access to a common data layer and an event publishing/subscription service.
 - [**Adobe Commerce Storefront Events Collector**](collector/index.md)—Listens for and handles events sent from the SDK.

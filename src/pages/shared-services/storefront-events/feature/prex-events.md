@@ -8,9 +8,9 @@ keywords:
 
 # Product Recommendations Events
 
-The [storefront events](../index.md#complete-list-of-storefront-events) topic lists all the events deployed to your storefront. In that list, there is a subset of events specific to [!DNL Product Recommendations]. These events collect data when shoppers interact with recommendation units on the storefront and power the metrics to analyze how well your recommendations are performing.
+The [storefront events](../index.md#complete-list-of-storefront-events) topic lists all the events deployed to your storefront. In that list, there is a subset of events specific to Product Recommendations. These events collect data when shoppers interact with recommendation units on the storefront and power the metrics to analyze how well your recommendations are performing.
 
-See the [list of events](../index.md#product-recommendations) specific to [!DNL Product Recommendations].
+See the [list of events](../index.md#product-recommendations) specific to Product Recommendations.
 
 <InlineAlert variant="info" slots="text"/>
 
@@ -18,7 +18,7 @@ Product Recommendation metrics are optimized for Luma storefronts. If your store
 
 ## Required dashboard events
 
-The following events are required to populate the [[!DNL Product Recommendations] dashboard](https://experienceleague.adobe.com/en/docs/commerce/product-recommendations/admin/workspace).
+The following events are required to populate the [Product Recommendations dashboard](https://experienceleague.adobe.com/en/docs/commerce/product-recommendations/admin/workspace).
 
 | Dashboard column | Events    | Join field  |
 | ---------------- | --------- | ----------- |

@@ -13,7 +13,7 @@ This package serves as the foundation for eventing on an Adobe Commerce storefro
 
 >[!NOTE]
 >
->If you are using the [!DNL Data Connection] module, you can skip this topic as the module deploys this SDK for you. [Learn more](https://experienceleague.adobe.com/en/docs/commerce/data-connection/fundamentals/connect-data#data-collection).
+>If you are using the Data Connection module, you can skip this topic as the module deploys this SDK for you. [Learn more](https://experienceleague.adobe.com/en/docs/commerce/data-connection/fundamentals/connect-data#data-collection).
 
 ## Installation
 

@@ -6,15 +6,15 @@ keywords:
   - Services
 ---
 
-# [!DNL Live Search] Events
+# Live Search Events
 
-The [storefront events](../index.md#supported-events) topic lists all the events deployed to your storefront. In that list, there is a subset of events specific to [!DNL Live Search].
+The [storefront events](../index.md#supported-events) topic lists all the events deployed to your storefront. In that list, there is a subset of events specific to Live Search.
 
-See the [list of events](../index.md#live-search) specific to [!DNL Live Search].
+See the [list of events](../index.md#live-search) specific to Live Search.
 
 ## Events used for ranking strategy
 
-The following table describes the events used by [!DNL Live Search] [ranking strategies](https://experienceleague.adobe.com/en/docs/commerce/live-search/live-search-admin/rules/rules-add#intelligent-ranking).
+The following table describes the events used by Live Search [ranking strategies](https://experienceleague.adobe.com/en/docs/commerce/live-search/live-search-admin/rules/rules-add#intelligent-ranking).
 
 | Ranking Strategy | Events | Page |
 | --- | --- | --- |
@@ -25,7 +25,7 @@ The following table describes the events used by [!DNL Live Search] [ranking str
 
 <InlineAlert variant="info" slots="text"/>
 
-Data collection for the purposes of [!DNL Live Search] does not include personally identifiable information (PII). All user identifiers, such as cookie IDs and IP addresses, are strictly anonymized. [Learn more](https://www.adobe.com/privacy/experience-cloud.html).
+Data collection for the purposes of Live Search does not include personally identifiable information (PII). All user identifiers, such as cookie IDs and IP addresses, are strictly anonymized. [Learn more](https://www.adobe.com/privacy/experience-cloud.html).
 
 ## Required dashboard events
 
