@@ -11,9 +11,9 @@ keywords:
 
 This package listens for and handles events sent from the [Adobe Commerce Events SDK](../sdk/index.md). It runs as a side effect and is meant to be a convenience for users who want to send events to Adobe Commerce for processing.
 
->[!NOTE]
->
->If you are using the Data Connection module, you can skip this topic as the module deploys the Adobe Commerce Event Collector for you. [Learn more](https://experienceleague.adobe.com/en/docs/commerce/data-connection/fundamentals/connect-data#data-collection).
+<InlineAlert variant="info" slots="text"/>
+
+If you are using the Data Connection module, you can skip this topic as the module deploys the Adobe Commerce Event Collector for you. [Learn more](https://experienceleague.adobe.com/en/docs/commerce/data-connection/fundamentals/connect-data#data-collection).
 
 ## Installation
 

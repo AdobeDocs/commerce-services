@@ -11,9 +11,9 @@ keywords:
 
 This package serves as the foundation for eventing on an Adobe Commerce storefront. It provides access to a common data layer, and an event publishing and subscription service. You can use the [Adobe Commerce Event Collector](../collector/index.md) package to listen for the events and send them to Adobe Commerce for processing.
 
->[!NOTE]
->
->If you are using the Data Connection module, you can skip this topic as the module deploys this SDK for you. [Learn more](https://experienceleague.adobe.com/en/docs/commerce/data-connection/fundamentals/connect-data#data-collection).
+<InlineAlert variant="info" slots="text"/>
+
+If you are using the Data Connection module, you can skip this topic as the module deploys this SDK for you. [Learn more](https://experienceleague.adobe.com/en/docs/commerce/data-connection/fundamentals/connect-data#data-collection).
 
 ## Installation
 

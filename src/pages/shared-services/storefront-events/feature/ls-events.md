@@ -8,9 +8,9 @@ keywords:
 
 # Live Search Events
 
-The [storefront events](.././index.md#complete-list-of-storefront-events) topic lists all the events deployed to your storefront. In that list, there is a subset of events specific to Live Search.
+The [storefront events](../index.md#complete-list-of-storefront-events) topic lists all the events deployed to your storefront. In that list, there is a subset of events specific to Live Search.
 
-See the [list of events](.././index.md#live-search) specific to Live Search.
+See the [list of events](../index.md#live-search) specific to Live Search.
 
 ## Events used for ranking strategy
 
