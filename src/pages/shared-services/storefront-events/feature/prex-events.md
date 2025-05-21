@@ -42,14 +42,14 @@ This table describes the events used by each recommendation type.
 
 | Recommendation Type | Events | Page |
 | --- | --- | --- |
-| Most Viewed | `page-view`<br>`product-view` | Product detail page |
-| Most Purchased | `page-view`<br>`place-order` | Cart/Checkout |
-| Most added to cart | `page-view`<br>`add-to-cart` | Product detail page<br>Product listing page<br>Cart<br>Wish List |
-| Viewed this, viewed that | `page-view`<br>`product-view` | Product detail page |
-| Viewed this, bought that | Product Recs | `page-view`<br>`product-view` | Product detail page<br>Cart/Checkout |
-| Bought this, bought that | Product Recs | `page-view`<br>`product-view` | Product detail page |
-| Trending | `page-view`<br>`product-view` | Product detail page |
-| Conversion: View to purchase | Product Recs | `page-view`<br>`product-view` | Product detail page |
-| Conversion: View to purchase | Product Recs | `page-view`<br>`place-order` | Cart/Checkout |
-| Conversion: View to cart | Product Recs | `page-view`<br>`product-view` | Product detail page |
-| Conversion: View to cart | Product Recs | `page-view`<br>`add-to-cart` | Product detail page<br>Product listing page<br>Cart<br>Wishlist |
+| Most Viewed | `page-view`, `product-view` | Product detail page |
+| Most Purchased | `page-view`, `place-order` | Cart/Checkout |
+| Most added to cart | `page-view`, `add-to-cart` | Product detail page, Product listing page, Cart, Wish List |
+| Viewed this, viewed that | `page-view`, `product-view` | Product detail page |
+| Viewed this, bought that | Product Recs | `page-view`, `product-view` | Product detail page, Cart/Checkout |
+| Bought this, bought that | Product Recs | `page-view`, `product-view` | Product detail page |
+| Trending | `page-view`, `product-view` | Product detail page |
+| Conversion: View to purchase | Product Recs | `page-view`, `product-view` | Product detail page |
+| Conversion: View to purchase | Product Recs | `page-view`, `place-order` | Cart/Checkout |
+| Conversion: View to cart | Product Recs | `page-view`, `product-view` | Product detail page |
+| Conversion: View to cart | Product Recs | `page-view`, `add-to-cart` | Product detail page, Product listing page, Cart, Wishlist |

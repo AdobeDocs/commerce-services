@@ -18,10 +18,10 @@ The following table describes the events used by [!DNL Live Search] [ranking str
 
 | Ranking Strategy | Events | Page |
 | --- | --- | --- |
-| Most Viewed |  `page-view`<br>`product-view` | Product detail page |
-| Most Purchased |  `page-view`<br>`place-order` | Cart/Checkout |
-| Most added to cart |  `page-view`<br>`add-to-cart` | Product detail page<br>Product listing page<br>Cart<br>Wish List |
-| Viewed this, viewed that |  `page-view`<br>`product-view` | Product detail page |
+| Most Viewed |  `page-view`, `product-view` | Product detail page |
+| Most Purchased |  `page-view`, `place-order` | Cart/Checkout |
+| Most added to cart |  `page-view`, `add-to-cart` | Product detail page, Product listing page, Cart, Wish List |
+| Viewed this, viewed that |  `page-view`, `product-view` | Product detail page |
 
 <InlineAlert variant="info" slots="text"/>
 
