@@ -11,6 +11,10 @@ keywords:
 
 This package serves as the foundation for eventing on an Adobe Commerce storefront. It provides access to a common data layer, and an event publishing and subscription service. You can use the [Adobe Commerce Event Collector](../collector/index.md) package to listen for the events and send them to Adobe Commerce for processing.
 
+>[!NOTE]
+>
+>If you are using the [!DNL Data Connection] module, you can skip this topic as the module deploys this SDK for you. [Learn more](https://experienceleague.adobe.com/en/docs/commerce/data-connection/fundamentals/connect-data#data-collection).
+
 ## Installation
 
 This SDK can be used as a hosted script, or bundled in a JavaScript application. The script version is hosted on [cdn](https://cdn.jsdelivr.net/npm/@adobe/magento-storefront-events-sdk@1/dist/index.js), and the bundled version is hosted on [npm](https://www.npmjs.com/package/@adobe/magento-storefront-events-sdk).
@@ -41,9 +45,9 @@ require(['magentoStorefrontEvents'], function (magentoStorefrontEvents) {
         if(!magentoStorefrontEvents) return; 
 ```
 
->[!NOTE]
->
->To avoid any issues, make sure you keep the script or bundled version up to date with the latest release.
+<InlineAlert variant="info" slots="text"/>
+
+To avoid any issues, make sure you keep the script or bundled version up to date with the latest release.
 
 ## Quick Start
 
