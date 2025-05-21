@@ -36,7 +36,7 @@ To ensure that events are firing on pages across your site (home, product, check
 1. Reload the page.
 1. You should see calls under `tp2` in the **Name** column.
 
-![Firing events](../_images/filter-ds2.png)
+![Firing events](../_images/filter-tp2.png)
 _Verify that events are firing_
 
 ## Verify using Snowplow Chrome extension

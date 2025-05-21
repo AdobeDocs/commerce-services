@@ -2,7 +2,7 @@
 title: Product Recommendations Events | Commerce Services
 description: Lists events in the Adobe Commerce Event SDK that are applicable to Product Recommendations. 
 keywords:
-  - Product Recommendations
+  - Recommendations
   - Services
 ---
 
