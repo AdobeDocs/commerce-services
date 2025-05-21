@@ -700,7 +700,7 @@ The following table describes the data collected for this event.
 
 |Description| XDM event name|
 |---|---|
-|Triggered by the following events in the "search as you type" popover:<br><br>Press Enter, Click _View All_<br><br>Triggered by the following events on search results pages:<br><br>Select a filter, Change the sort order (_Sort By_), Change the sort direction (ascending or descending), Change the number of results per page (_Show # per page_), Navigate to the next page, Navigate to the previous page, Navigate to a different page|`searchRequest`|
+|Triggered by the following events in the "search as you type" popover: Press Enter, Click _View All_. Triggered by the following events on search results pages: Select a filter, Change the sort order (_Sort By_), Change the sort direction (ascending or descending), Change the number of results per page (_Show # per page_), Navigate to the next page, Navigate to the previous page, Navigate to a different page|`searchRequest`|
 
 <InlineAlert variant="info" slots="text"/>
 
