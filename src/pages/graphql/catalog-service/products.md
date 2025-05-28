@@ -41,8 +41,7 @@ products (skus [String]) [ProductView]
 
 ## Endpoints
 
-* Testing: `https://catalog-service-sandbox.adobe.io/graphql`
-* Production: `https://catalog-service.adobe.io/graphql`
+{% include graphql/endpoints.md %}
 
 ## Required headers
 
