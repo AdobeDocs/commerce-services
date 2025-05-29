@@ -438,8 +438,8 @@ paths:
         <strong>Note:</strong> A simple product can be included only once in each bundle. If the same item is specified in multiple groups, the API returns a `Duplicate SKU found in bundle items` error.
 
         To update a bundle product, do one of the following:
-        - Use [Update Product API](#operation/updateProducts) to modify the groups and items in the bundle.
-        - Use [Delete Product API](#operation/deleteProducts) to remove items from the bundle.
+        - Use [Update products API](#operation/updateProducts) to modify the groups and items in the bundle.
+        - Use [Delete products API](#operation/deleteProducts) to remove items from the bundle.
       operationId: createProducts
       parameters:
         - $ref: "#/components/parameters/ContentType"
