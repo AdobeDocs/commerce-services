@@ -1061,7 +1061,7 @@ paths:
       description: |
         Create or replace existing price books.
 
-        Use the [update Price book operation](#operation/updatePriceBooks) to modify values for existing price books.
+        Use the [update price books operation](#operation/updatePriceBooks) to modify values for existing price books.
       operationId: createPriceBooks
       parameters:
         - name: Content-Type
