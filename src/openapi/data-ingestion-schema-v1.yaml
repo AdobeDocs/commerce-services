@@ -417,9 +417,10 @@ paths:
         <h3 id="simpleProducts">Simple Products</h3>
         Create products or replace existing products with specified `sku` and `source` values.
 
-        Use the <strong>[update operation](#operation/updateProducts)</strong> to modify values for an existing product.
+        Use the [update operation](#operation/updateProducts) to modify values for an existing product.
 
         <h3>Configurable Products</h3>
+
         A configurable product is a parent product that allows customers to select from multiple predefined attributes such as color, size, and material.
         Each unique combination of these attribute values (for example, `color=green`, `size=large`) represents a product variant.
 
@@ -430,7 +431,7 @@ paths:
 
         To create a configurable product, you need the following:
 
-        * <strong>Product attributes</strong>—<a href="#operation/createProductMetadata">Create product attributes</a> (for example, "color", "size")
+        * <strong>Product attributes</strong>—[Create product attributes](#operation/createProductMetadata) such as "color", "size"
         that will be used to differentiate product variants. These attributes must be registered in the system before they can be referenced in
         product definitions.
 
@@ -470,7 +471,8 @@ paths:
 
           To unassign a product variant from a configurable product, do one of the following:
           - Use [Delete Product API](#operation/deleteProducts) to delete the product variant.
-          - Use [Update Product API](#operation/updateProducts) to set the ["variantReferenceId"](#operation/createProducts!path=attributes/variantReferenceId&t=request) to `null` and unassign the product variant from the configurable product by removing the ["links"](#operation/createProducts!path=links&t=request) association.
+          - Use [Update Product API](#operation/updateProducts) to set the ["variantReferenceId"](#operation/createProducts!path=attributes/variantReferenceId&t=request) to `null` and unassign the product variant from the
+          configurable product by removing the ["links"](#operation/createProducts!path=links&t=request) association. OpenAPI specification)
 
         <h3>Bundle Products</h3>
 
@@ -478,6 +480,9 @@ paths:
         Each group can have multiple items, and shoppers can select items from each group to create a customized bundle.
 
         To create a bundle product, you need the following:
+        - Bundle product: Use the Create products API to define the bundle product. [Bundles](#operation/createProducts!path=bundles&t=request) is a required field that defines the groups and items included in the bundle.
+        - [Simple products](#simpleProducts): Define the simple products that are included in the bundle. Each simple product must be created separately using the create product API.
+        In the field ["links"](#), the type `IN_BUNDLE` must be defined for simple products that belong to bundle products with reference to it.
 
         * <strong>Bundle product</strong>—[Define the parent product](#operation/createProducts) and include a [bundles](#operation/createProducts!path=bundles) array that
         specifies the groups and items included in the bundle. Each group must define:
@@ -494,8 +499,8 @@ paths:
         If the same item is specified in multiple groups, the API returns a `Duplicate SKU found in bundle items` error.
 
         To update a bundle product, do one of the following:
-        * Use the [Update products API](#operation/updateProducts) to modify the groups and items in the bundle
-        * Use the [Delete products API](#operation/deleteProducts) to remove items from the bundle
+        - Use [Update Product API](#operation/updateProducts) to modify the groups and items in the bundle.
+        - Use [Delete Product API](#operation/deleteProducts) to remove items from the bundle.
       operationId: createProducts
       parameters:
         - $ref: "#/components/parameters/ContentType"
