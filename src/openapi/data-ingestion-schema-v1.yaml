@@ -405,64 +405,28 @@ paths:
          - You can create multiple products in a single request, and also create product variants for configurable products in the same request.
 
         <h3 id="simpleProducts">Simple Products</h3>
-        Create products or replace existing products with specified `sku` and `scope` values.
+        Create products or replace existing products with a specified `sku` and `scope`.
         If a product with the same data exists with the same SKU and scope, the product update request is ignored.
 
-        Use the <strong>[update operation](#operation/updateProducts)</strong> to modify values for an existing product.
+        Use the [update operation](#operation/updateProducts) to modify values for an existing product.
 
-        <h3>Configurable Products</h3>
-        A configurable product is a parent product that allows customers to select from multiple predefined attributes such as color, size, and material.
-        Each unique combination of these attribute values (for example, `color=green`, `size=large`) represents a product variant.
-
-        Each variant is treated as a distinct child product with its own SKU, price, and inventory. These variants are stored as separate entities in the database and linked to the parent configurable product.
-
-        The configurable product itself acts as a container or abstraction layer, enabling a unified frontend experience while maintaining
-        granular control over each variant on the backend.
+        <h3 id="configurableProducts">Configurable Products</h3>
+        A configurable product is a product that offers multiple options, such as color and size. Each unique combination of these options,
+        like 'color green' and 'size large,' defines a product variant. This variant is an independent product with its own SKU, price, and
+        inventory. The configurable product acts as a container for these product variants.
 
         To create a configurable product, you need the following:
+        - [Product attributes](#operation/ProductMetadataPut): Define the product attributes used to define a configurable product, such as "color", "size", etc.
+        - Configurable product: Define the configurable product. [Configurations](#operation/createProducts!path=configurations&t=request) is a required field. It defines the choices that a shopper can select.
+        - [Product variant](#operation/createProducts): Define a product variant for a configurable product. The variant definition must have [Attributes](createProducts!path=attributes&t=request) with [variantReferenceId](#operation/createProducts!path=attributes/variantReferenceId&t=request) and [links](#operation/createProducts!path=links&t=request) of type `VARIANT_OF`.
 
         * <strong>Product attributes</strong>—<a href="#operation/createProductMetadata">Create product attributes</a> (for example, "color", "size")
         that will be used to differentiate product variants. These attributes must be registered in the system before they can be referenced in
         product definitions.
 
-        * <strong>Configurable product</strong>—Define the parent product and include a
-          [configurations](#operation/createProducts!path=configurations&t=request) array that specifies the selectable options
-          and maps each option to a set of possible values. Each value must include a
-          [variantReferenceId](#operation/createProducts!path=configurations/values/variantReferenceId&t=request),
-          which links to a specific variant.
-
-        * <strong>Product variants</strong>—Define a product variant for each valid combination of attribute values. Each variant must:
-          * Include relevant attribute values in an [attributes](#operation/createProducts!path=attributes&t=request) array.
-          * Reference the parent configurable product using variantReferenceId.
-          * Include a [links](#operation/createProducts!path=links&t=request) array with a link of type `VARIANT_OF` pointing to the configurable product.
-
-          For example:
-
-          <pre>
-          {
-            "sku": "pants-red-32",
-            "attributes": [
-              {
-                "code": "color",
-                "type": "STRING",
-                "values": ["Red"],
-                "variantReferenceId": "pants-color-red"
-              }
-            ],
-            "links": [
-              {
-                "type": "VARIANT_OF",
-                "sku": "pants"
-              }
-            ]
-          }
-        </pre>
-
-          Each product variant links back to the configurable product through its `variantReferenceId`, which corresponds to specific `configurations[].values[].variantReferenceId` in the configurable product.
-
-          To unassign a product variant from a configurable product, do one of the following:
-          - Use [Delete Product API](#operation/deleteProducts) to delete the product variant.
-          - Use [Update Product API](#operation/updateProducts) to set the ["variantReferenceId"](#operation/createProducts!path=attributes/variantReferenceId&t=request) to `null` and unassign the product variant from the configurable product by removing the ["links"](#operation/createProducts!path=links&t=request) association.
+        To unassign a product variant from a configurable product, do one of the following:
+        - Use the [Delete Product API](#operation/deleteProducts) to delete the product variant.
+        - Use the [Update Product API](#operation/updateProducts)to set the ["variantReferenceId"](#operation/createProducts!path=attributes/variantReferenceId&t=request) to `null` and unassign the product variant from the configurable product by removing the ["links"](#operation/createProducts!path=links&t=request) association.
 
         <h3>Bundle Products</h3>
 
@@ -470,6 +434,9 @@ paths:
         Each group can have multiple items, and shoppers can select items from each group to create a customized bundle.
 
         To create a bundle product, you need the following:
+        - Bundle product: Use the Create products API to define the bundle product. [Bundles](#operation/createProducts!path=bundles&t=request) is a required field that defines the groups and items included in the bundle.
+        - [Simple products](#simpleProducts): Define the simple products that are included in the bundle. Each simple product must be created separately using the create product API.
+        In the field ["links"](#), the type `IN_BUNDLE` must be defined for simple products that belong to bundle products with reference to it.
 
         * <strong>Bundle product</strong>—[Define the parent product](#operation/createProducts) and include a [bundles](#operation/createProducts!path=bundles) array that
         specifies the groups and items included in the bundle. Each group must define:
@@ -486,8 +453,8 @@ paths:
         If the same item is specified in multiple groups, the API returns a `Duplicate SKU found in bundle items` error.
 
         To update a bundle product, do one of the following:
-        * Use the [Update products API](#operation/updateProducts) to modify the groups and items in the bundle
-        * Use the [Delete products API](#operation/deleteProducts) to remove items from the bundle
+        - Use [Update Product API](#operation/updateProducts) to modify the groups and items in the bundle.
+        - Use [Delete Product API](#operation/deleteProducts) to remove items from the bundle.
       operationId: createProducts
       parameters:
         - $ref: "#/components/parameters/ContentType"
@@ -1109,7 +1076,7 @@ paths:
       description: |
         Create or replace existing price books.
 
-        Use the [update price books operation](#operation/updatePriceBooks) to modify values for existing price books.
+        Use the [update Price book operation](#operation/updatePriceBooks) to modify values for existing price books.
       operationId: createPriceBooks
       parameters:
         - name: Content-Type
