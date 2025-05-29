@@ -17,7 +17,9 @@ The `attributeMetadata` query returns a list of product attribute codes that can
 
 ## Endpoints
 
-{% include graphql/endpoints.md %}
+import StorefrontAPIEndpoints from '/src/_includes/graphql/endpoints.md'
+
+<StorefrontAPIEndpoints />
 
 ## Required headers
 

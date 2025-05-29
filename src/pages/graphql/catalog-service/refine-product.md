@@ -20,7 +20,9 @@ refineProduct(sku: String!, optionIds: [String!]!): ProductView
 
 ## Endpoints
 
-{% include graphql/endpoints.md %}
+import StorefrontAPIEndpoints from '/src/_includes/graphql/endpoints.md'
+
+<StorefrontAPIEndpoints />
 
 ## Required headers
 

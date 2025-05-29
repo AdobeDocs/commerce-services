@@ -548,7 +548,9 @@ The query response can also contain the following top-level fields and objects:
 
 ## Endpoints
 
-{% include graphql/endpoints.md %}
+import StorefrontAPIEndpoints from '/src/_includes/graphql/endpoints.md'
+
+<StorefrontAPIEndpoints />
 
 ## Required headers
 

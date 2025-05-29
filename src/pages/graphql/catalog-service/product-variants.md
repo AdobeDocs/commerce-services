@@ -26,7 +26,9 @@ variants(sku: String!, optionIds: [String!], pageSize: Int, cursor: String): Pro
 
 ## Endpoints
 
-{% include graphql/endpoints.md %}
+import StorefrontAPIEndpoints from '/src/_includes/graphql/endpoints.md'
+
+<StorefrontAPIEndpoints />
 
 ## Required headers
 
