@@ -1,4 +1,7 @@
 openapi: 3.0.3
+externalDocs:
+  url: https://github.com/adobe-commerce/aco-ts-sdk/blob/main/README.md
+  description: Learn about the Adobe Commerce Optimizer SDK for Merchandising Services
 info:
   title: Catalog Data Ingestion API
   description: |
@@ -6,11 +9,10 @@ info:
 
     This API provides the following resource collections to create and update catalog data:
 
-    - **Metadata**—define and manage product attribute metadata including display settings, search characteristics, filtering options, and sorting rules.
-    - **Products**—define and manage catalog items with their attributes (name, description, SKU, images, and variants).
-    - **Price books**—define and manage pricing scopes for different customer tiers and markets.
-    - **Prices**—define and manage product SKU prices and their associated price books.
-
+    - <strong>[Metadata](#tag/Metadata)</strong>—define and manage product attribute metadata including display settings, search characteristics, filtering options, and sorting rules.
+    - <strong>[Products](#tag/Products)</strong>—define and manage catalog items with their attributes (name, description, SKU, images, and variants).
+    - <strong>[Price books](#tag/Price-Books)</strong>—define and manage pricing scopes for different customer tiers and markets.
+    - <strong>[Prices](#tag/Prices)</strong>—define and manage product SKU prices and their associated price books.
   version: 1.0.0
 servers:
   - url: https://na1-sandbox.api.commerce.adobe.com/<TENANT_ID>
@@ -402,42 +404,42 @@ paths:
          configurable product.
          - You can create multiple products in a single request, and also create product variants for configurable products in the same request.
 
-        <h3>Simple Products</h3>
+        <h3 id="simpleProducts">Simple Products</h3>
         Create products or replace existing products with a specified `sku` and `scope`.
         If a product with the same data exists with the same SKU and scope, the product update request is ignored.
 
-        Use the [update operation](#operation/ProductsPatch) to modify values for an existing product.
+        Use the [update operation](#operation/updateProducts) to modify values for an existing product.
 
-        <h3>Configurable Products</h3>
+        <h3 id="configurableProducts">Configurable Products</h3>
         A configurable product is a product that offers multiple options, such as color and size. Each unique combination of these options,
         like 'color green' and 'size large,' defines a product variant. This variant is an independent product with its own SKU, price, and
         inventory. The configurable product acts as a container for these product variants.
 
         To create a configurable product, you need the following:
         - [Product attributes](#operation/ProductMetadataPut): Define the product attributes used to define a configurable product, such as "color", "size", etc.
-        - [Configurable product](#operation/ProductsPost): Define the configurable product. [Configurations](#operation/ProductsPost!path=configurations&t=request) is a required field. It defines the choices that a shopper can select.
-        - [Product variant](#operation/ProductsPost): Define a product variant for a configurable product. ["Attributes"](#operation/ProductsPost!path=attributes) with ["variantReferenceId"](#operation/ProductsPost!path=attributes/variantReferenceId&t=request) and ["links"](#operation/ProductsPost!path=links&t=request) of type `VARIANT_OF` must be defined for product variants.
+        - Configurable product: Define the configurable product. [Configurations](#operation/createProducts!path=configurations&t=request) is a required field. It defines the choices that a shopper can select.
+        - [Product variant](#operation/createProducts): Define a product variant for a configurable product. The variant definition must have [Attributes](createProducts!path=attributes&t=request) with [variantReferenceId](#operation/createProducts!path=attributes/variantReferenceId&t=request) and [links](#operation/createProducts!path=links&t=request) of type `VARIANT_OF`.
 
         Each product variant links back to the configurable product through its `variantReferenceId`, which corresponds to specific `configurations[].values[].variantReferenceId` in the configurable product.
 
         To unassign a product variant from a configurable product, do one of the following:
-        - Use [Delete Product API](#operation/ProductsDelete) to delete the product variant.
-        - Use [Update Product API](#operation/ProductsPatch) to set the ["variantReferenceId"](#operation/ProductsPost!path=attributes/variantReferenceId&t=request) to `null` and unassign the product variant from the configurable product by removing the ["links"](#operation/ProductsPost!path=links&t=request) association.
+        - Use the [Delete Product API](#operation/deleteProducts) to delete the product variant.
+        - Use the [Update Product API](#operation/updateProducts)to set the ["variantReferenceId"](#operation/createProducts!path=attributes/variantReferenceId&t=request) to `null` and unassign the product variant from the configurable product by removing the ["links"](#operation/createProducts!path=links&t=request) association.
 
         <h3>Bundle Products</h3>
         A bundle product combines several simple products into one sellable unit. Items within the bundle can be categorized into logical categories (groups) like`tops`, `bottoms`, and `accessories`.
         Each group can have multiple items, and shoppers can select items from each group to create a customized bundle.
 
         To create a bundle product, you need the following:
-        - [Bundle product](#operation/ProductsPost): Define the bundle product. [Bundles](#operation/ProductsPost!path=bundles&t=request) is a required field that defines the groups and items included in the bundle.
-        - [Simple products](#operation/ProductsPost): Define the simple products that are included in the bundle. Each simple product must be created separately using the create product API.
-        In the field ["links"](#operation/ProductsPost!path=links&t=request), the type `IN_BUNDLE` must be defined for simple products that belong to bundle products with reference to it.
+        - Bundle product: Use the Create products API to define the bundle product. [Bundles](#operation/createProducts!path=bundles&t=request) is a required field that defines the groups and items included in the bundle.
+        - [Simple products](#simpleProducts): Define the simple products that are included in the bundle. Each simple product must be created separately using the create product API.
+        In the field ["links"](#), the type `IN_BUNDLE` must be defined for simple products that belong to bundle products with reference to it.
 
         <strong>Note:</strong> A simple product can be included only once in each bundle. If the same item is specified in multiple groups, the API returns a `Duplicate SKU found in bundle items` error.
 
         To update a bundle product, do one of the following:
-        - Use [Update Product API](#operation/ProductsPatch) to modify the groups and items in the bundle.
-        - Use [Delete Product API](#operation/ProductsDelete) to remove items from the bundle.
+        - Use [Update Product API](#operation/updateProducts) to modify the groups and items in the bundle.
+        - Use [Delete Product API](#operation/deleteProducts) to remove items from the bundle.
       operationId: createProducts
       parameters:
         - $ref: "#/components/parameters/ContentType"
@@ -1055,11 +1057,11 @@ paths:
     post:
       tags:
         - Price Books
-      summary: Create price books.
+      summary: Create price books
       description: |
         Create or replace existing price books.
 
-        Use the update operation to modify values for existing price books.
+        Use the [update Price book operation](#operation/updatePriceBooks) to modify values for existing price books.
       operationId: createPriceBooks
       parameters:
         - name: Content-Type
@@ -1140,7 +1142,7 @@ paths:
     patch:
       tags:
         - Price Books
-      summary: Update price books.
+      summary: Update price books
       description: |-
         Update existing price books to change the name or the currency used for pricing.
         When the update is processed, the merge strategy is used to apply changes to `scalar`
@@ -1221,7 +1223,7 @@ paths:
     post:
       tags:
         - Price Books
-      summary: Delete price books.
+      summary: Delete price books
       description: |
         Delete existing price books.
         When you delete a price book, all associated prices assigned to the `priceBookId` are also deleted. If a product does not have any other price books assigned, the prices default to the pricing schedule defined in the default, `main` price book.
@@ -1297,9 +1299,8 @@ paths:
     post:
       tags:
         - Prices
-      summary: Create prices.
+      summary: Create prices
       description: |
-        <h3>Simple Products</h3>
         Create or replace existing product prices.
 
         A price must be associated with at least the default price book with id `main`.
@@ -1406,7 +1407,7 @@ paths:
     patch:
       tags:
         - Prices
-      summary: Update prices.
+      summary: Update prices
       description: |
         Change existing product prices.
         When the update is processed, the merge strategy is used to apply changes to `scalar` and `object` type fields. The replace strategy is used to apply changes for fields in an `array`.
@@ -1493,7 +1494,7 @@ paths:
     post:
       tags:
         - Prices
-      summary: Delete prices.
+      summary: Delete prices
       description: >
         Delete existing product prices
       operationId: deletePrices
@@ -2131,7 +2132,7 @@ components:
           nullable: true
           description: |
             The variant reference ID establishes a link between a product variant and the corresponding
-            [Option Value ID](#operation/ProductsPost!path=options/values/id&t=request) in a configurable product.
+            [Option Value ID](#operation/createProducts!path=options/values/id&t=request) in a configurable product.
 
             A variant reference ID can be specified only for a product that represents a variant of a configurable product.
     ProductRoutes:
@@ -2191,7 +2192,7 @@ components:
           type: string
           description: |
             Product option attribute code. For `CONFIGURABLE` or `SWATCH` option types, this ID must match the
-            ["attribute code"](#operation/ProductsPost!path=attributes/code&t=request)
+            ["attribute code"](#operation/createProducts!path=attributes/code&t=request)
             used for the configurable product (for example, "color").
         label:
           type: string
@@ -2223,7 +2224,7 @@ components:
           type: string
           description: |
             Option value ID.
-            For `CONFIGURABLE` or `SWATCH` option types, this ID must match the ["variantReferenceId"](#operation/ProductsPost!path=attributes/variantReferenceId&t=request)
+            For `CONFIGURABLE` or `SWATCH` option types, this ID must match the ["variantReferenceId"](#operation/createProducts!path=attributes/variantReferenceId&t=request)
             defined in the product variant.
         label:
           type: string
