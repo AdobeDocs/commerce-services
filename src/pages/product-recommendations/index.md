@@ -13,10 +13,6 @@ If you need to programmatically access product recommendations for your storefro
 
 ## Installing
 
-### Dependencies
-
-Before installing the Product Recommendations JavaScript SDK, make sure you have installed the [Catalog SaaS Export module](catalog-saas-export-module.md).
-
 ### Product Recommendations JavaScript SDK
 
 This SDK can be pulled down from a CDN or installed as a module from NPM.

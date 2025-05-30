@@ -1,7 +1,11 @@
 ---
-title: Commerce Data Services
-description: Learn how about the APIs and tools available to manage and use commerce catalog and event data programmatically.
+title: Merchandising Services powered by Catalog Views and Policies
+description: Learn about the APIs and tools available to manage and use commerce catalog and event data programmatically.
+keywords:
+  - GraphQL
+  - REST
   - Services
+hideBreadcrumbNav: true
 ---
 
 <Hero slots="image, heading, text"/>
@@ -10,14 +14,17 @@ description: Learn how about the APIs and tools available to manage and use comm
 
 # Commerce Data Services
 
-A collection of APIs and tools to create, access, and manage product, catalog, and discovery data for ecommerce applications and storefronts.
+A collection of APIs and tools to integrate with third-party services, manage catalog data, and build headless ecommerce applications.
 
 <Resources slots="heading, links"/>
 
 ## Resources
 
 *  [Data Services user guides](https://experienceleague.adobe.com/docs/commerce/user-guides/home.html)
-*  [Commerce Admin user guide](https://experienceleague.adobe.com/docs/commerce-admin/user-guides/home.html)
+*  [Commerce Storefront Documentation](https://experienceleague.adobe.com/developer/commerce/storefront/)
+*  [Commerce Optimizer guide](https://experienceleague.adobe.com/en/docs/commerce/optimizer/overview.html)
+*  [Commerce Merchant Documentation](https://experienceleague.adobe.com/docs/commerce-admin/user-guides/home.html)
+*  [Getting Started with Adobe Commerce web APIs](https://developer.adobe.com/commerce/webapi/get-started/)
 *  [GraphQL Developer Guide](https://developer.adobe.com/commerce/webapi/graphql/)
 
 ## Overview
@@ -30,7 +37,7 @@ Use Commerce APIs and SDKs to manage commerce catalog data and configuration and
 
 <DiscoverBlock slots="heading, link, text"/>
 
-### Merchandising Services powered by Channels and Policies
+## Merchandising Services powered by Catalog Views and Policies
 
 [Catalog data ingestion](composable-catalog/data-ingestion/)
 
@@ -38,48 +45,59 @@ Set up large, complex catalog assortments by ingesting commerce catalog data fro
 
 <DiscoverBlock slots="link, text"/>
 
-Channels and Policies
+Catalog Views and Policies
 
-Set up and manage channels and policies to create catalog variations for different distribution channels and customer segments.
+Set up and manage catalog views and policies to create catalog variations for different distribution channels and customer segments.
 See the [Commerce Optimizer Guide](https://experienceleague.adobe.com/en/docs/commerce/optimizer/overview) for details.
 
 <DiscoverBlock slots="link, text"/>
 
-[Storefront APIs with Channels and Policies](composable-catalog/storefront-services)
+[Catalog Service APIs](composable-catalog/storefront-services)
 
-Retrieve product, search, and recommendations data from Merchandising Services and use it to create storefront experiences.
-
+Retrieve catalog data product, price, search, and recommendations data from Merchandising Services and use it to create storefront experiences.
 <DiscoverBlock slots="heading,link, text"/>
 
-### SaaS Catalog Services
+## SaaS Catalog Services
 
-[Storefront APIs](graphql/)
+[Catalog Service API](graphql/catalog-service/)
 
-Retrieve product, search, and recommendations data from Adobe Commerce and use it to create storefront experiences.
+Retrieve catalog data product-related content to frontend applications.
 
 <DiscoverBlock slots="link, text"/>
 
-[Storefront Events SDK](shared-services/)
+[Live Search API](graphql/live-search/)
 
-Explore common tools and SDKs shared across Services for Adobe Commerce.
+Retrieve and filter search results using product faceting and other data.
+
+<DiscoverBlock slots="link, text"/>
+
+[Product Recommendations API](graphql/recommendations/)
+
+Retrieve recommended products based on a provided SKU.
+
+<DiscoverBlock slots="link, text"/>
+
+[Storefront Events SDK](shared-services/storefront-events/)
+
+Explore common tools and SDKs shared across Merchandising Services.
 
 <DiscoverBlock slots="link, text"/>
 
 [Live Search Events](live-search/)
 
-Lists the events defined in the Adobe Commerce Event SDK that are applicable to Live Search.
+Learn about the events defined in the Adobe Commerce Event SDK that are applicable to Live Search.
 
 <DiscoverBlock slots="link, text"/>
 
 [Product Recommendations SDK](product-recommendations/)
 
-Learn how to use the Product Recommendations SDK with Adobe Commerce to fetch recommendations programmatically in the browser.
+Dynamically fetch and display personalized product recommendations in your storefront experience.
 
 <DiscoverBlock slots="link, text"/>
 
 [Commerce Reporting API](reporting/)
 
-Learn how to import data into your Commerce data warehouse and export raw data from your Commerce Reporting dashboards.
+Import data into your Commerce data warehouse and export raw data from your Commerce Reporting dashboards.
 
 ## Contributing to this documentation
 
