@@ -21,9 +21,9 @@ A collection of APIs and tools to integrate with third-party services, manage ca
 ## Resources
 
 *  [Data Services user guides](https://experienceleague.adobe.com/docs/commerce/user-guides/home.html)
-*  [Commerce Storefront Documentation](https://experienceleague.adobe.com/developer/commerce/storefront/)
-*  [Commerce Optimizer guide](https://experienceleague.adobe.com/en/docs/commerce/optimizer/overview.html)
+*  [Commerce Optimizer Guide](https://experienceleague.adobe.com/en/docs/commerce/optimizer/overview)
 *  [Commerce Merchant Documentation](https://experienceleague.adobe.com/docs/commerce-admin/user-guides/home.html)
+*  [Commerce Storefront Documentation](https://experienceleague.adobe.com/developer/commerce/storefront/)
 *  [Getting Started with Adobe Commerce web APIs](https://developer.adobe.com/commerce/webapi/get-started/)
 *  [GraphQL Developer Guide](https://developer.adobe.com/commerce/webapi/graphql/)
 
