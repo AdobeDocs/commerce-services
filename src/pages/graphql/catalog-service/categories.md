@@ -33,8 +33,9 @@ The `subtree` object allows you to specify how many levels of subcategories to r
 
 ## Endpoints
 
-* Testing: `https://catalog-service-sandbox.adobe.io/graphql`
-* Production: `https://catalog-service.adobe.io/graphql`
+import StorefrontAPIEndpoints from '/src/_includes/graphql/endpoints.md'
+
+<StorefrontAPIEndpoints />
 
 ## Required headers
 
