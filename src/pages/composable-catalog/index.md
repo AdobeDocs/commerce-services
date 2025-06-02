@@ -39,4 +39,4 @@ Merchandising Services includes the following APIs to manage product data and pr
 
 **Channels and Policies API**—GraphQL API that powers the catalog management capabilities available through Adobe Commerce Optimizer. From the UI, you can create distribution channels, locales, and policies to set up and deliver custom, composable catalogs with minimal development effort. For details, see the [Adobe Commerce Optimizer Guide](https://experienceleague.adobe.com/en/docs/commerce/optimizer/overview).
 
-**[Storefront API](../../../static/graphql-api/admin-api/index.html)**—GraphQL API to access rich view-model (read-only) catalog data to build product-related storefront experiences. The Storefront API is designed to be used by frontend applications to access catalog data.
+**[Storefront API](storefront-services/index.md)**—GraphQL API to access rich view-model (read-only) catalog data to build product-related storefront experiences. The Storefront API is designed to be used by frontend applications to access catalog data.

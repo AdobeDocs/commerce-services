@@ -21,8 +21,9 @@ refineProduct(sku: String!, optionIds: [String!]!): ProductView
 
 ## Endpoints
 
-* Testing: `https://catalog-service-sandbox.adobe.io/graphql`
-* Production: `https://catalog-service.adobe.io/graphql`
+import StorefrontAPIEndpoints from '/src/_includes/graphql/endpoints.md'
+
+<StorefrontAPIEndpoints />
 
 ## Required headers
 
