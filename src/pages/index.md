@@ -66,27 +66,15 @@ Retrieve recommended products based on a provided SKU.
 
 <DiscoverBlock slots="link, text"/>
 
-[Storefront Events SDK](shared-services/storefront-events/)
-
-Explore common tools and SDKs shared across Merchandising Services.
-
-<DiscoverBlock slots="link, text"/>
-
-[Live Search Events](live-search/)
-
-Learn about the events defined in the Adobe Commerce Event SDK that are applicable to Live Search.
-
-<DiscoverBlock slots="link, text"/>
-
-[Product Recommendations SDK](product-recommendations/)
-
-Dynamically fetch and display personalized product recommendations in your storefront experience.
-
-<DiscoverBlock slots="link, text"/>
-
 [Commerce Reporting API](reporting/)
 
 Import data into your Commerce data warehouse and export raw data from your Commerce Reporting dashboards.
+
+<DiscoverBlock slots="link, text"/>
+
+[Storefront Events and SDK](shared-services/storefront-events/)
+
+Learn about the events deployed to your storefront and how to publish, subscribe, and handle the events programmatically.
 
 ## Contributing to this documentation
 
