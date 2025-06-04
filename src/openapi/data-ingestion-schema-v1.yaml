@@ -41,10 +41,14 @@ tags:
     description: |
       Manage product SKU prices across different price books and customer tiers. Define regular prices and
       special discounts for specific customer segments or markets by specifying price book id.
+      
+      Before creating prices with Prices API, first create [Price books](#tag/Price-Books). Prices that have reference to non-existing price book will be ignored.  
 
       <strong>Price lookup logic</strong>
 
-      The product price is determined by searching for a price in the hierarchy of price books, starting from the specified price book and moving up to the top-level parent. If no price is found, the product will not have a defined price.
+      The product price lookup follows a hierarchical path through price books. The search starts at the specified price book and traverses upward through parent price books until it reaches the root level. The product will have no price if:
+        - No price is found in the entire hierarchy
+        - The price book specified in price record does was not created
       
       <strong>Note:</strong> You cannot define prices for configurable products. Prices for configurable products
        are calculated based on the price of the selected product variant.
@@ -1068,6 +1072,8 @@ paths:
         Create or replace existing price books.
 
         Use the [update price books operation](#operation/updatePriceBooks) to modify values for existing price books.
+        
+        <strong>Note:</strong> Once created, you cannot change parent/child relationship for existing price books. If you need to change the parent/child relationship, you should delete the price book and create a new one with the desired parent/child relationship.
       operationId: createPriceBooks
       parameters:
         - name: Content-Type
@@ -1154,9 +1160,8 @@ paths:
         - Price Books
       summary: Update price books
       description: |-
-        Update existing price books to change the name or the currency used for pricing.
-        When the update is processed, the merge strategy is used to apply changes to `scalar`
-        and `object` type fields. The replace strategy is used to apply changes for fields in an `array`.
+        Update API allows to change the name for base or child price book or change currency for the base price book.
+        Updating of parentId currently is not supported and will be ignored.
       operationId: updatePriceBooks
       parameters:
         - name: Content-Type
