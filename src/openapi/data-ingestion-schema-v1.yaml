@@ -567,7 +567,7 @@ paths:
               ConfigurableProductWithVariants:
                 summary: Create a configurable product with four product variants
                 description: >
-                  <a href=configurable product with four variants>Create a configurable product</a> `pants` with four product variants: `pants-red-32`, `pants-red-44`, `pants-green-32` and `pants-green-44`.
+                  Create a configurable product `pants` with four product variants: `pants-red-32`, `pants-red-44`, `pants-green-32` and `pants-green-44`.
                 value:
                   [
                     {
