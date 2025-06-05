@@ -414,8 +414,7 @@ paths:
         A configurable product is a parent product that allows customers to select from multiple predefined attributes such as color, size, and material.
         Each unique combination of these attribute values (for example, `color=green`, `size=large`) represents a product variant.
 
-        Each variant is treated as a distinct child product with its own **SKU**, **price**, and **inventory**. These variants are stored as separate entities
-        in the database and linked to the parent configurable product.
+        Each variant is treated as a distinct child product with its own SKU, price, and inventory. These variants are stored as separate entities in the database and linked to the parent configurable product.
 
         The configurable product itself acts as a container or abstraction layer, enabling a unified frontend experience while maintaining
         granular control over each variant on the backend.
