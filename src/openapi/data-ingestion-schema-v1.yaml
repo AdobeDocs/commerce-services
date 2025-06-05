@@ -361,7 +361,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/ProcessFeedResponse"
         "400":
-          description: Some received items are invalid. Check the ‘invalidFeedItems' node for specific errors.
+          description: Some received items are invalid. Check the 'invalidFeedItems' node for specific errors.
           content:
             application/json;charset=UTF-8:
               schema:
