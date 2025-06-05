@@ -461,8 +461,8 @@ paths:
           Each product variant links back to the configurable product through its `variantReferenceId`, which corresponds to specific `configurations[].values[].variantReferenceId` in the configurable product.
 
           To unassign a product variant from a configurable product, do one of the following:
-          - Use [Delete Product API](#operation/ProductsDelete) to delete the product variant.
-          - Use [Update Product API](#operation/ProductsPatch) to set the ["variantReferenceId"](#operation/ProductsPost!path=attributes/variantReferenceId&t=request) to `null` and unassign the product variant from the configurable product by removing the ["links"](#operation/createProducts) association.
+          - Use [Delete Product API](#operation/deleteProducts) to delete the product variant.
+          - Use [Update Product API](#operation/updateProducts) to set the ["variantReferenceId"](#operation/createProducts!path=attributes/variantReferenceId&t=request) to `null` and unassign the product variant from the configurable product by removing the ["links"](#operation/createProducts!path=links&t=request) association.
 
         <h3>Bundle Products</h3>
 
