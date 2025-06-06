@@ -1067,7 +1067,7 @@ paths:
         - Products
       summary: Delete products
       description: >
-        Delete products with specified `sku`` and `scope`` values.
+        Delete products with specified `sku`` and `scope`` values
       operationId: deleteProducts
       parameters:
         - $ref: "#/components/parameters/ContentType"
