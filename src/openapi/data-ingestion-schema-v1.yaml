@@ -474,7 +474,7 @@ paths:
         * <strong>Bundle product</strong>—[Define the parent product](#operation/createProducts) and include a [bundles](#operation/createProducts!path=bundles) array that
         specifies the groups and items included in the bundle. Each group must define:
           * `group` - Name of the group (e.g., "tops", "bottoms")
-          * `required` - Whether selection from this group is mandatory
+          * `required` - Whether a selection from this group is mandatory
           * `multiSelect` - Whether multiple items can be selected
           * `items` - List of products that can be selected from this group
 
