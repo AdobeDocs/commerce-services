@@ -1121,7 +1121,7 @@ paths:
 
         Use the [update price books operation](#operation/updatePriceBooks) to modify values for existing price books.
 
-        <strong>Note:</strong> Once created, you cannot change the parent-child relationship for existing price books. If you need to change the parent-child relationship, delete the price book and create a new one with the desired parent-child relationship.
+        <strong>Note:</strong> After you assign a `parentId` to a price book, you cannot change the parentId value using the update operation. If you want to define a different parent-child relationship, delete the child price book and create a new one with the desired parent-child relationship.
       operationId: createPriceBooks
       parameters:
         - name: Content-Type
