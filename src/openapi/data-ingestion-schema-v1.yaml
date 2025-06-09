@@ -31,25 +31,25 @@ tags:
     description: Create and manage product data including simple products, configurable products, and their variants. Control product visibility, attributes, images, and pricing
   - name: Price Books
     description: |
-      Define pricing scopes to manage product prices across different customer tiers and markets. Price books support a hierarchical model, allowing up to 3 levels of nested child price books under each base price book. Each price book can reference a parent price book, forming a tree structure for pricing scopes.
-      
+      Define pricing scopes to manage product prices across different customer tiers and markets. Price books support a hierarchical model, allowing up to three levels of nested child price books under each base price book. Each price book can reference a parent price book, forming a tree structure for pricing scopes.
+
       The base price book defines the currency for itself and all its child price books. Child price books inherit this currency and cannot override it.
-  
-      <strong>Note:</strong> You cannot assign a parent price book to a base price book. Due to the asynchronous nature of the API, this validation is not enforced at runtime; any attempt to set a parent for a base price book will be ignored.
+
+      <strong>Note:</strong> You cannot assign a parent price book to a base price book. Due to the asynchronous nature of the API, this validation is not enforced at runtime. API requests that attempt to set a parent price book for a base price book are ignored.
 
   - name: Prices
     description: |
       Manage product SKU prices across different price books and customer tiers. Define regular prices and
-      special discounts for specific customer segments or markets by specifying price book id.
-      
-      Before creating prices with Prices API, first create [Price books](#tag/Price-Books). Prices that have reference to non-existing price book will be ignored.  
+      special discounts for specific customer segments or markets by specifying a price book id.
+
+      Before creating prices with the Prices API, first create [Price books](#tag/Price-Books). Prices that reference a non-existing price book are ignored.
 
       <strong>Price lookup logic</strong>
 
-      The product price lookup follows a hierarchical path through price books. The search starts at the specified price book and traverses upward through parent price books until it reaches the root level. The product will have no price if:
+      The product price lookup follows a hierarchical path through price books. The search starts at the specified price book and traverses upward through parent price books until it reaches the root level. A product is not assigned a price if:
         - No price is found in the entire hierarchy
-        - The price book specified in price record does was not created
-      
+        - The price book specified in a price record has not been created
+
       <strong>Note:</strong> You cannot define prices for configurable products. Prices for configurable products
        are calculated based on the price of the selected product variant.
 
@@ -488,7 +488,7 @@ paths:
           * `multiSelect` - Whether multiple items can be selected
           * `items` - List of products that can be selected from this group
 
-        * <strong>Simple products</strong>—Define each simple product that will be included in the bundle. Each product must:
+        * <strong>Simple products</strong>—Define each simple product to include in the bundle. Each product must:
           * Include a [links](#operation/createProducts!path=links) array with a link of type `IN_BUNDLE` pointing to the bundle product
           * Be created separately using the [create product API](#operation/createProducts)
 
@@ -1120,8 +1120,8 @@ paths:
         Create or replace existing price books.
 
         Use the [update price books operation](#operation/updatePriceBooks) to modify values for existing price books.
-        
-        <strong>Note:</strong> Once created, you cannot change parent/child relationship for existing price books. If you need to change the parent/child relationship, you should delete the price book and create a new one with the desired parent/child relationship.
+
+        <strong>Note:</strong> Once created, you cannot change the parent-child relationship for existing price books. If you need to change the parent-child relationship, delete the price book and create a new one with the desired parent-child relationship.
       operationId: createPriceBooks
       parameters:
         - name: Content-Type
@@ -1153,7 +1153,7 @@ paths:
             examples:
               FeedWithPricebookInformation:
                 summary: Create a base price book with child price books
-                description: Create a base price book "us" and with "USD" currency and 2 child price books
+                description: Create a base price book and two child price books. The base price book specifies the `USD` currency for the parent and child price books.
                 value:
                   [
                     {
@@ -1208,8 +1208,8 @@ paths:
         - Price Books
       summary: Update price books
       description: |-
-        Update API allows to change the name for base or child price book or change currency for the base price book.
-        Updating of parentId currently is not supported and will be ignored.
+        Change the name of a base or child price book, or change the currency assigned to the base price book.
+        Updating of parentId currently is not supported and is ignored.
       operationId: updatePriceBooks
       parameters:
         - name: Content-Type
@@ -1286,8 +1286,8 @@ paths:
       summary: Delete price books
       description: |
         When you delete a price book, all its child price books and all prices assigned to the `priceBookId` and its children are also deleted.
-        
-        If a price book is deleted by mistake, you have up to 1 week to restore the deleted price books and their associated prices. Restoring is done by recreating the most parent price book that was deleted, using the same payload as the original. The state of the price books and prices will be restored to what it was at the time of deletion.
+
+        If a price book is deleted by mistake, you have up to one week to restore the deleted price books and their associated prices. Restoring is done by recreating the top-level parent price book that was deleted, using the same payload submitted in the original create price book request. The state of the price books and prices are restored to the status and price values assigned when the price book was deleted.
       operationId: deletePriceBooks
       parameters:
         - name: Content-Type
@@ -1319,7 +1319,7 @@ paths:
             examples:
               DeleteExistingPricebook:
                 summary: Delete price book "dealer-north"
-                description: Delete the "dealer-north" price book. All prices assigned to this price book will also be deleted.
+                description: Delete the "dealer-north" price book. All prices assigned to this price book are also deleted.
                 value: [{ "priceBookId": "dealer-north" }]
       responses:
         "200":
