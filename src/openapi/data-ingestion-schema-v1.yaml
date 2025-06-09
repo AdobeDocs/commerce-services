@@ -1209,7 +1209,7 @@ paths:
       summary: Update price books
       description: |-
         Change the name of a base or child price book, or change the currency assigned to the base price book.
-        Updating of parentId currently is not supported and is ignored.
+        When you submit the update request for a child price book, include the correct `parentId`. If the request includes a different `parentId`, the value is ignored.
       operationId: updatePriceBooks
       parameters:
         - name: Content-Type
