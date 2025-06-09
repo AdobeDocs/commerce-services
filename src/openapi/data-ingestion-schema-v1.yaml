@@ -1241,10 +1241,14 @@ paths:
             examples:
               FeedWithPriceBookInformation:
                 summary: Update existing price books
-                description: Update the name of "dealer-north" price book
+                description: Update the name of child price book, "dealer-north"
                 value:
                   [
-                    { "priceBookId": "dealer-north", "name": "North dealership" }
+                    {
+                      "priceBookId": "dealer-north",
+                      "parentId": "us",
+                      "name": "North dealership"
+                    }
                   ]
       responses:
         "200":
