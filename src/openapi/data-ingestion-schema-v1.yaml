@@ -31,14 +31,24 @@ tags:
     description: Create and manage product data including simple products, configurable products, and their variants. Control product visibility, attributes, images, and pricing
   - name: Price Books
     description: |
-      Define pricing scopes to manage product prices across different customer tiers and markets. Each price book can have its own currency and discount rules.
+      Define pricing scopes to manage product prices across different customer tiers and markets. Price books support a hierarchical model, allowing up to three levels of nested child price books under each base price book. Each price book can reference a parent price book, forming a tree structure for pricing scopes.
 
-      The catalog data model provides a default price book with id `main` and currency in US dollars (`USD`).
+      The base price book defines the currency for itself and all its child price books. Child price books inherit this currency and cannot override it.
+
+      <strong>Note:</strong> You cannot assign a parent price book to a base price book. Due to the asynchronous nature of the API, this validation is not enforced at runtime. API requests that attempt to set a parent price book for a base price book are ignored.
+
   - name: Prices
     description: |
       Manage product SKU prices across different price books and customer tiers. Define regular prices and
-      special discounts for specific customer segments or markets. The scope identifies the price books and price
-      tiers where the price is used.
+      special discounts for specific customer segments or markets by specifying a price book id.
+
+      Before creating prices with the Prices API, first create [Price books](#tag/Price-Books). Prices that reference a non-existing price book are ignored.
+
+      <strong>Price lookup logic</strong>
+
+      The product price lookup follows a hierarchical path through price books. The search starts at the specified price book and traverses upward through parent price books until it reaches the root level. A product is not assigned a price if:
+        - No price is found in the entire hierarchy
+        - The price book specified in a price record has not been created
 
       <strong>Note:</strong> You cannot define prices for configurable products. Prices for configurable products
        are calculated based on the price of the selected product variant.
@@ -478,7 +488,7 @@ paths:
           * `multiSelect` - Whether multiple items can be selected
           * `items` - List of products that can be selected from this group
 
-        * <strong>Simple products</strong>—Define each simple product that will be included in the bundle. Each product must:
+        * <strong>Simple products</strong>—Define each simple product to include in the bundle. Each product must:
           * Include a [links](#operation/createProducts!path=links) array with a link of type `IN_BUNDLE` pointing to the bundle product
           * Be created separately using the [create product API](#operation/createProducts)
 
@@ -1110,6 +1120,8 @@ paths:
         Create or replace existing price books.
 
         Use the [update price books operation](#operation/updatePriceBooks) to modify values for existing price books.
+
+        <strong>Note:</strong> After you assign a `parentId` to a price book, you cannot change the parentId value using the update operation. If you want to define a different parent-child relationship, delete the child price book and create a new one with the desired parent-child relationship.
       operationId: createPriceBooks
       parameters:
         - name: Content-Type
@@ -1140,18 +1152,22 @@ paths:
                 $ref: "#/components/schemas/FeedPricebook"
             examples:
               FeedWithPricebookInformation:
-                summary: Create a price book
-                description: Create a price book and specify the currency for prices.
+                summary: Create a base price book with child price books
+                description: Create a base price book and two child price books. The base price book specifies the `USD` currency for the parent and child price books.
                 value:
                   [
                     {
-                      "priceBookId": "dealer-north",
+                      "priceBookId": "us",
                       "name": "Dealer North price book name",
                       "currency": "USD"
-                    },
-                    {
-                      "priceBookId": "VIP",
-                      "currency": "USD"
+                    },                    {
+                      "priceBookId": "dealer-north",
+                      "parentId": "us",
+                      "name": "Dealer North price book"
+                    },                    {
+                      "priceBookId": "dealer-west",
+                      "parentId": "us",
+                      "name": "Dealer West price book"
                     }
                   ]
       responses:
@@ -1192,11 +1208,8 @@ paths:
         - Price Books
       summary: Update price books
       description: |-
-        Update existing price books to change the name or the currency used for pricing.
-        When the update is processed, the merge strategy is used to apply changes to `scalar`
-        and `object` type fields. The replace strategy is used to apply changes for fields in an `array`.
-
-        To update the currency for the default price book, use the price book id `main`.
+        Change the name of a base or child price book, or change the currency assigned to the base price book.
+        When you submit the update request for a child price book, include the correct `parentId`. If the request includes a different `parentId`, the value is ignored.
       operationId: updatePriceBooks
       parameters:
         - name: Content-Type
@@ -1228,11 +1241,14 @@ paths:
             examples:
               FeedWithPriceBookInformation:
                 summary: Update existing price books
-                description: Update the "dealer-north" and default "main" price books to change the currency.
+                description: Update the name of child price book, "dealer-north"
                 value:
                   [
-                    { "priceBookId": "dealer-north", "currency": "EUR" },
-                    { "priceBookId": "main", "currency": "EUR" }
+                    {
+                      "priceBookId": "dealer-north",
+                      "parentId": "us",
+                      "name": "North dealership"
+                    }
                   ]
       responses:
         "200":
@@ -1273,9 +1289,9 @@ paths:
         - Price Books
       summary: Delete price books
       description: |
-        Delete existing price books
-        When you delete a price book, all associated prices assigned to the `priceBookId` are also deleted. If a product does not have any other price books assigned, the prices default to the pricing schedule defined in the default, `main` price book.
-        Note that you cannot delete the default price book with id `main`.
+        When you delete a price book, all its child price books and all prices assigned to the `priceBookId` and its children are also deleted.
+
+        If a price book is deleted by mistake, you have up to one week to restore the deleted price books and their associated prices. Restoring is done by recreating the top-level parent price book that was deleted, using the same payload submitted in the original create price book request. The state of the price books and prices are restored to the status and price values assigned when the price book was deleted.
       operationId: deletePriceBooks
       parameters:
         - name: Content-Type
@@ -1303,11 +1319,11 @@ paths:
             schema:
               type: array
               items:
-                $ref: "#/components/schemas/FeedPricebook"
+                $ref: "#/components/schemas/FeedPricebookDelete"
             examples:
               DeleteExistingPricebook:
                 summary: Delete price book "dealer-north"
-                description: Delete the "dealer-north" price book.
+                description: Delete the "dealer-north" price book. All prices assigned to this price book are also deleted.
                 value: [{ "priceBookId": "dealer-north" }]
       responses:
         "200":
@@ -1351,8 +1367,6 @@ paths:
       description: |
         Create or replace existing product prices.
 
-        A price must be associated with at least the default price book with id `main`.
-
         <h3>Configurable Products</h3>
         Because configurable product price is calculated based on the price of the selected product variant, you don't need to send price
         data for configurable product skus. Sending price data for these skus can cause incorrect price calculations.
@@ -1393,28 +1407,17 @@ paths:
                   [
                     {
                       "sku": "red-pants",
-                      "priceBookId": "main",
+                      "priceBookId": "us",
                       "regular": 20
                     },
                     {
                       "sku": "red-pants",
-                      "priceBookId": "VIP",
+                      "priceBookId": "dealer-north",
                       "regular": 19.9,
                       "discounts": [
                         {
                           "code": "discount",
                           "percentage": 10
-                        }
-                      ]
-                    },
-                    {
-                      "sku": "red-pants",
-                      "priceBookId": "dealer-north",
-                      "regular": 20.5,
-                      "discounts": [
-                        {
-                          "code": "fixed",
-                          "price": 18
                         }
                       ]
                     }
@@ -2021,6 +2024,50 @@ components:
     FeedPricebook:
       title: FeedPricebook
       description: Price book information
+      oneOf:
+        - $ref: '#/components/schemas/PriceBookBase'
+        - $ref: '#/components/schemas/PriceBookChild'
+    PriceBookBase:
+      title: Base price book
+      type: object
+      required: [priceBookId, name, currency]
+      properties:
+        priceBookId:
+          type: string
+          description: Base price book id
+          minLength: 1
+          maxLength: 64
+        name:
+          type: string
+          description: Price book name
+          minLength: 1
+        currency:
+          type: string
+          description: Price book currency
+          minLength: 1
+          maxLength: 5
+    PriceBookChild:
+      title: Child price book
+      type: object
+      required: [priceBookId, name, parentId]
+      properties:
+        priceBookId:
+          type: string
+          description: Child price book id
+          minLength: 1
+          maxLength: 64
+        name:
+          type: string
+          description: Price book name
+          minLength: 1
+        parentId:
+          type: string
+          description: Base price book id
+          minLength: 1
+          maxLength: 64
+    FeedPricebookDelete:
+      title: FeedPricebookDelete
+      description: Price book information
       required:
         - priceBookId
       type: object
@@ -2028,14 +2075,6 @@ components:
         priceBookId:
           type: string
           description: Price book id
-        name:
-          type: string
-          description: Price book name
-        currency:
-          type: string
-          description: Price book currency
-          minLength: 1
-          maxLength: 5
     FeedPrices:
       title: FeedPrices
       description: Product price information.
