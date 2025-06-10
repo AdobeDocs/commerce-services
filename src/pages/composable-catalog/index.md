@@ -29,7 +29,7 @@ Developers can use these components together to compose and deliver custom catal
 
 <InlineAlert variant="info" slots="text"/>
 
-For additional architecture and implementation details, see the [Adobe Commerce Optimizer Guide](https://experienceleague-review.corp.adobe.com/docs/commerce/optimizer/overview.html) in Experience League.
+For additional architecture and implementation details, see the [Adobe Commerce Optimizer Guide](https://experienceleague.adobe.com/docs/commerce/optimizer/overview.html) in Experience League.
 
 ## API resources
 
