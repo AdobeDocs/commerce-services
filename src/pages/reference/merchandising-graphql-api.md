@@ -4,8 +4,10 @@ edition: ee
 description: Get information about the merchandising APIs to retrieve product and catalog data to create storefront experiences.
 keywords:
   - GraphQL
-  - Commerce Optimizer Merchandising Services
-  - Product Discovery
+  - Search
   - Recommendations
+  - Services
+  - Storefront
+layout: none
 frameSrc: /graphql-api/storefront-api/index.html
 ---

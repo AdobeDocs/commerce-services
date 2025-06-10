@@ -27,14 +27,6 @@ A collection of APIs and tools to integrate with third-party services, manage ca
 *  [Getting Started with Adobe Commerce web APIs](https://developer.adobe.com/commerce/webapi/get-started/)
 *  [GraphQL Developer Guide](https://developer.adobe.com/commerce/webapi/graphql/)
 
-## Overview
-
-Learn how to use Commerce APIs and SDKs to integrate with third-party software and build headless applications.
-
-## Discover
-
-Use Commerce APIs and SDKs to manage commerce catalog data and configuration and use it to create scalable, performant storefront experiences.
-
 <DiscoverBlock slots="heading, link, text"/>
 
 ## Merchandising Services powered by Catalog Views and Policies
@@ -45,23 +37,23 @@ Set up large, complex catalog assortments by ingesting commerce catalog data fro
 
 <DiscoverBlock slots="link, text"/>
 
-Catalog Views and Policies
+**Catalog Views and Policies**
 
-Set up and manage catalog views and policies to create catalog variations for different distribution channels and customer segments.
-See the [Commerce Optimizer Guide](https://experienceleague.adobe.com/en/docs/commerce/optimizer/overview) for details.
+Set up and manage catalog views and policies to create catalog variations for different distribution channels and customer segments. See the [Commerce Optimizer Guide](https://experienceleague.adobe.com/en/docs/commerce/optimizer/overview) for details.
 
 <DiscoverBlock slots="link, text"/>
 
-[Catalog Service APIs](composable-catalog/storefront-services)
+[Merchandising APIs](composable-catalog/storefront-services)
 
-Retrieve catalog data product, price, search, and recommendations data from Merchandising Services and use it to create storefront experiences.
+Retrieve product, price, search, and recommendations data from Merchandising Services and use it to create storefront experiences.
+
 <DiscoverBlock slots="heading,link, text"/>
 
 ## SaaS Catalog Services
 
 [Catalog Service API](graphql/catalog-service/)
 
-Retrieve catalog data product-related content to frontend applications.
+Deliver product-related content to frontend applications.
 
 <DiscoverBlock slots="link, text"/>
 
