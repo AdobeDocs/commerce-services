@@ -19,12 +19,14 @@ properties:
         - Cloud
         - Configuration
         - Cron
+        - Data Import/Export
         - Events
         - Extensibility
         - Extensions
         - GraphQL
         - Integration
         - Inventory
+        - Merchandising
         - Payments
         - Performance
         - Personalization
