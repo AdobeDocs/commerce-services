@@ -19,6 +19,7 @@ properties:
         - Cloud
         - Configuration
         - Cron
+        - Data Import/Export
         - Events
         - Extensibility
         - Extensions
@@ -26,7 +27,6 @@ properties:
         - Integration
         - Inventory
         - Merchandising
-        - Data Import/Export
         - Payments
         - Performance
         - Personalization
