@@ -8,6 +8,7 @@ keywords:
   - Recommendations
   - Services
   - Storefront
+  - Merchandising
 layout: none
 frameSrc: /graphql-api/storefront-api/index.html
 ---

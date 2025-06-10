@@ -37,6 +37,7 @@ The URL structure is:
 import GetTenantId from '/src/_includes/authentication/get-tenant-id.md'
 
 <GetTenantId />
+
 </details>
 
 ## Authentication
