@@ -25,6 +25,8 @@ properties:
         - GraphQL
         - Integration
         - Inventory
+        - Merchandising
+        - Data Import/Export
         - Payments
         - Performance
         - Personalization

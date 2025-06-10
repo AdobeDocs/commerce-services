@@ -23,8 +23,8 @@ Using the channel, policy, and scope resources available with the Merchandising 
 
   Example: POS physical stores, marketplaces, advertisement pipelines such as Google, Meta, and Instagram.
 
-* **Scope**—Specifies the language and geography (locale) for catalogs. Scope is set at the SKU level during data ingestion. When used, the `locale` scope is required. A channel must define at least one locale.
+* **Scope**—Specifies the language and geography (locale) for catalogs. The catalog source is set at the SKU level during data ingestion. When used, the `locale` source is required. A catalog view must define at least one locale.
 
-  Example: Locale scopes such as `en_US` or `es_ES`, and scopes like 'brand' and 'market' that can be introduced to meet unique business use cases.
+  Example: Locale scopes such as `en_US` or `es_ES`, and sources like 'brand' and 'market' that can be introduced to meet unique business use cases.
 
 For details, see the [Adobe Commerce Optimizer Guide](https://experienceleague.adobe.com/en/docs/commerce/optimizer/overview).

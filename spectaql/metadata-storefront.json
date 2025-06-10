@@ -1,5 +1,13 @@
 {
+    "INTERFACE": {
+        "CategoryViewInterface": {
+            "documentation": { "undocumented": true }
+        }
+    },
     "OBJECT": {
+        "CategoryView": {
+            "documentation": { "undocumented": true }
+        },
         "Query": {
             "fields": {
                 "categories": {
