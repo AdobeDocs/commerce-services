@@ -11,7 +11,7 @@ keywords:
 
 # Using the composable catalog with your storefront
 
-Learn how a company with a single base catalog can use the Merchandising Services powered by Channels and Policies APIs to add product data, define catalogs using projections, and retrieve the catalog data for display in a headless storefront.
+Learn how a company with a single base catalog can use the Merchandising Services powered by Channels and Policies APIs to ingest catalog data, and retrieve catalog data for display in a headless storefront.
 
 This end-to-end use case demonstrates how a company with a single base catalog can use Merchandising Services to:
 
