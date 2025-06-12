@@ -62,7 +62,7 @@ paths:
       description: |
         To ensure product data is indexed for discovery, create or replace existing product attribute metadata resources before creating products.
 
-        For each Commerce project, you must define metadata for the following attributes for each scope (`locale`):
+        For each Commerce project, you must define metadata for the following attributes for each catalog source (`locale`):
           - `sku`
           - `name`
           - `description`
@@ -72,7 +72,7 @@ paths:
         Also, you can define metadata for custom attributes.
 
         When creating product attribute metadata:
-          - Each product attribute requires a unique `code` and `scope`.
+          - Each product attribute requires a unique `code` and `source`.
           - Use the `dataType` field to define the data type for the product attribute.
           - Use the `visibleIn` field to define where the product attribute is displayed on the storefront.
           - Use the `filterable`, `sortable`, and `searchable` fields to define how the product attribute
@@ -120,7 +120,7 @@ paths:
                   [
                     {
                       "code": "sku",
-                      "scope": { "locale": "en" },
+                      "source": { "locale": "en" },
                       "label": "Product Name",
                       "dataType": "TEXT",
                       "visibleIn":
@@ -138,7 +138,7 @@ paths:
                     },
                     {
                       "code": "name",
-                      "scope": { "locale": "en" },
+                      "source": { "locale": "en" },
                       "label": "Product Name",
                       "dataType": "TEXT",
                       "visibleIn":
@@ -156,7 +156,7 @@ paths:
                     },
                     {
                       "code": "description",
-                      "scope": { "locale": "en" },
+                      "source": { "locale": "en" },
                       "label": "Product Description",
                       "dataType": "TEXT",
                       "visibleIn": ["PRODUCT_DETAIL"],
@@ -168,7 +168,7 @@ paths:
                     },
                     {
                       "code": "shortDescription",
-                      "scope": { "locale": "en" },
+                      "source": { "locale": "en" },
                       "label": "Product Short Description",
                       "dataType": "TEXT",
                       "visibleIn": ["PRODUCT_DETAIL"],
@@ -180,7 +180,7 @@ paths:
                     },
                     {
                       "code": "price",
-                      "scope": { "locale": "en" },
+                      "source": { "locale": "en" },
                       "label": "Price",
                       "dataType": "DECIMAL",
                       "visibleIn":
@@ -278,7 +278,7 @@ paths:
                   [
                     {
                       "code": "name",
-                      "scope": { "locale": "en" },
+                      "source": { "locale": "en" },
                       "label": "Updated - Product Name",
                       "visibleIn": [
                         "PRODUCT_DETAIL",
@@ -360,7 +360,7 @@ paths:
                 value: [
                   {
                     "code": "name",
-                    "scope": { "locale": "en" }
+                    "source": { "locale": "en" }
                   }
                 ]
       responses:
@@ -407,7 +407,7 @@ paths:
 
         When creating products:
          - Each product requires a unique SKU identifier.
-         - Products must have a defined scope, for example `locale`.
+         - Products must have a defined catalog source, for example `locale`.
          - Add values for the required `name`, `slug`, and `status` fields.
          - Define optional fields such as descriptions, images, and custom attributes as needed.
          - Use the `links` field to define relationships between products, such as linking a product variant to its parent
@@ -415,8 +415,7 @@ paths:
          - You can create multiple products in a single request, and also create product variants for configurable products in the same request.
 
         <h3 id="simpleProducts">Simple Products</h3>
-        Create products or replace existing products with specified `sku` and `scope` values.
-        If a product with the same data exists with the same SKU and scope, the product update request is ignored.
+        Create products or replace existing products with specified `sku` and `source` values.
 
         Use the <strong>[update operation](#operation/updateProducts)</strong> to modify values for an existing product.
 
@@ -454,7 +453,6 @@ paths:
             "attributes": [
               {
                 "code": "color",
-                "type": "STRING",
                 "values": ["Red"],
                 "variantReferenceId": "pants-color-red"
               }
@@ -528,7 +526,7 @@ paths:
                   [
                     {
                       "sku": "red-pants",
-                      "scope": { "locale": "en" },
+                      "source": { "locale": "en" },
                       "name": "red pants",
                       "slug": "red-pants.html",
                       "status": "ENABLED",
@@ -549,12 +547,10 @@ paths:
                         [
                           {
                             "code": "cost",
-                            "type": "NUMBER",
                             "values": ["10.5"]
                           },
                           {
                             "code": "states",
-                            "type": "ARRAY",
                             "values": ["TX", "CA"]
                           }
                         ],
@@ -582,7 +578,7 @@ paths:
                   [
                     {
                       "sku": "pants",
-                      "scope": { "locale": "en" },
+                      "source": { "locale": "en" },
                       "name": "Yoga pants",
                       "slug": "zeppelin-yoga-pant",
                       "status": "ENABLED",
@@ -629,7 +625,7 @@ paths:
                     },
                     {
                       "sku": "pants-red-32",
-                      "scope": { "locale": "en" },
+                      "source": { "locale": "en" },
                       "name": "Zeppelin Yoga Pant Red 32 size",
                       "slug": "pants-red-32",
                       "status": "ENABLED",
@@ -637,13 +633,11 @@ paths:
                         [
                           {
                             "code": "color",
-                            "type": "STRING",
                             "values": ["Red Pants"],
                             "variantReferenceId": "pants-color-red"
                           },
                           {
                             "code": "size",
-                            "type": "STRING",
                             "values": ["32"],
                             "variantReferenceId": "pants-size-32"
                           }
@@ -658,7 +652,7 @@ paths:
                     },
                     {
                       "sku": "pants-red-44",
-                      "scope": { "locale": "en" },
+                      "source": { "locale": "en" },
                       "name": "Zeppelin Yoga Pant Red 44 size",
                       "slug": "pants-red-44",
                       "status": "ENABLED",
@@ -666,13 +660,11 @@ paths:
                         [
                           {
                             "code": "color",
-                            "type": "STRING",
                             "values": ["Red Pants"],
                             "variantReferenceId": "pants-color-red"
                           },
                           {
                             "code": "size",
-                            "type": "STRING",
                             "values": ["44"],
                             "variantReferenceId": "pants-size-44"
                           }
@@ -687,7 +679,7 @@ paths:
                     },
                     {
                       "sku": "pants-green-32",
-                      "scope": { "locale": "en" },
+                      "source": { "locale": "en" },
                       "name": "Zeppelin Yoga Pant Green 32 size",
                       "slug": "pants-green-32",
                       "status": "ENABLED",
@@ -695,13 +687,11 @@ paths:
                         [
                           {
                             "code": "color",
-                            "type": "STRING",
                             "values": ["Green Pants"],
                             "variantReferenceId": "pants-color-green"
                           },
                           {
                             "code": "size",
-                            "type": "STRING",
                             "values": ["32"],
                             "variantReferenceId": "pants-size-32"
                           }
@@ -716,7 +706,7 @@ paths:
                     },
                     {
                       "sku": "pants-green-44",
-                      "scope": { "locale": "en" },
+                      "source": { "locale": "en" },
                       "name": "Zeppelin Yoga Pant green 44 size",
                       "slug": "pants-green-44",
                       "status": "ENABLED",
@@ -724,13 +714,11 @@ paths:
                         [
                           {
                             "code": "color",
-                            "type": "STRING",
                             "values": ["Green Pants"],
                             "variantReferenceId": "pants-color-green"
                           },
                           {
                             "code": "size",
-                            "type": "STRING",
                             "values": ["44"],
                             "variantReferenceId": "pants-size-44"
                           }
@@ -753,7 +741,7 @@ paths:
                   [
                     {
                       "sku": "bundle-outfit",
-                      "scope": { "locale": "en" },
+                      "source": { "locale": "en" },
                       "name": "Bundle Outfit",
                       "slug": "bundle-outfit",
                       "status": "ENABLED",
@@ -820,7 +808,7 @@ paths:
                     },
                     {
                       "sku": "top-red",
-                      "scope": { "locale": "en" },
+                      "source": { "locale": "en" },
                       "name": "Red Top",
                       "slug": "top-red",
                       "status": "ENABLED",
@@ -834,7 +822,7 @@ paths:
                     },
                     {
                       "sku": "top-blue",
-                      "scope": { "locale": "en" },
+                      "source": { "locale": "en" },
                       "name": "Blue Top",
                       "slug": "top-blue",
                       "status": "ENABLED",
@@ -848,7 +836,7 @@ paths:
                     },
                     {
                       "sku": "bottom-black",
-                      "scope": { "locale": "en" },
+                      "source": { "locale": "en" },
                       "name": "Black Bottom",
                       "slug": "bottom-black",
                       "status": "ENABLED",
@@ -862,7 +850,7 @@ paths:
                     },
                     {
                       "sku": "bottom-white",
-                      "scope": { "locale": "en" },
+                      "source": { "locale": "en" },
                       "name": "White Bottom",
                       "slug": "bottom-white",
                       "status": "ENABLED",
@@ -876,7 +864,7 @@ paths:
                     },
                     {
                       "sku": "socks",
-                      "scope": { "locale": "en" },
+                      "source": { "locale": "en" },
                       "name": "Socks",
                       "slug": "socks",
                       "status": "ENABLED",
@@ -890,7 +878,7 @@ paths:
                     },
                     {
                       "sku": "headband",
-                      "scope": { "locale": "en" },
+                      "source": { "locale": "en" },
                       "name": "Headband",
                       "slug": "headband",
                       "status": "ENABLED",
@@ -908,7 +896,7 @@ paths:
         - Products
       summary: Update products
       description: |
-        Update products with specified `sku` and `scope` values to replace existing field data with the data supplied in the request.
+        Update products with specified `sku` and `source` values to replace existing field data with the data supplied in the request.
         When the update is processed, the merge strategy is used to apply changes to `scalar` and `object` type fields.
         The replace strategy is used to apply changes for fields in an `array`.
       operationId: updateProducts
@@ -948,19 +936,17 @@ paths:
                   [
                     {
                       "sku": "red-pants",
-                      "scope": { "locale": "en" },
+                      "source": { "locale": "en" },
                       "name": "Red pants - discounts!",
                       "metaTags": { "title": "Updated - Red" },
                       "attributes":
                         [
                           {
                             "code": "cost",
-                            "type": "NUMBER",
                             "values": ["10.5"]
                           },
                           {
                             "code": "states",
-                            "type": "ARRAY",
                             "values": ["TX", "CA", "NM"]
                           }
                         ]
@@ -976,18 +962,16 @@ paths:
                   [
                     {
                       "sku": "pants-red-32",
-                      "scope": { "locale": "en" },
+                      "source": { "locale": "en" },
                       "attributes":
                         [
                           {
                             "code": "color",
-                            "type": "STRING",
                             "values": ["Red Pants"],
                             "variantReferenceId": null
                           },
                           {
                             "code": "size",
-                            "type": "STRING",
                             "values": ["32"],
                             "variantReferenceId": null
                           }
@@ -1004,7 +988,7 @@ paths:
                   [
                     {
                       "sku": "bundle-outfit",
-                      "scope": { "locale": "en" },
+                      "source": { "locale": "en" },
                       "bundles":
                         [
                           {
@@ -1077,7 +1061,7 @@ paths:
         - Products
       summary: Delete products
       description: >
-        Delete products with specified `sku`` and `scope`` values
+        Delete products with specified `sku`` and `source`` values
       operationId: deleteProducts
       parameters:
         - $ref: "#/components/parameters/ContentType"
@@ -1103,12 +1087,12 @@ paths:
               DeleteSimpleProduct:
                 summary: Delete product
                 description: >
-                  Delete a simple product with specified `sku` and `scope` values
+                  Delete a simple product with specified `sku` and `source` values
                 value:
                   [
                     {
                       "sku": "red-pants",
-                      "scope": { "locale": "en" }
+                      "source": { "locale": "en" }
                     }
                   ]
   /v1/catalog/price-books:
@@ -1689,7 +1673,7 @@ components:
       description: Metadata information for a product attribute.
       required:
         - code
-        - scope
+        - source
         - label
         - dataType
       type: object
@@ -1697,8 +1681,8 @@ components:
         code:
           type: string
           description: Attribute code
-        scope:
-          $ref: "#/components/schemas/Scope"
+        source:
+          $ref: "#/components/schemas/Source"
         visibleIn:
           type: array
           description: |
@@ -1759,14 +1743,14 @@ components:
       description: Metadata information for a product attribute.
       required:
         - code
-        - scope
+        - source
       type: object
       properties:
         code:
           type: string
           description: Attribute code
-        scope:
-          $ref: "#/components/schemas/Scope"
+        source:
+          $ref: "#/components/schemas/Source"
         visibleIn:
           type: array
           description: |
@@ -1827,20 +1811,20 @@ components:
       description: Delete metadata information for a product attribute.
       required:
         - code
-        - scope
+        - source
       type: object
       properties:
         code:
           type: string
           description: Attribute code
-        scope:
-          $ref: "#/components/schemas/Scope"
+        source:
+          $ref: "#/components/schemas/Source"
     FeedProduct:
       title: Catalog Product payload
       type: object
       required:
         - sku
-        - scope
+        - source
         - name
         - slug
         - status
@@ -1849,8 +1833,8 @@ components:
           type: string
           description: SKU (Stock Keeping Unit) is a unique identifier for a product.
           example: MH01
-        scope:
-          $ref: "#/components/schemas/Scope"
+        source:
+          $ref: "#/components/schemas/Source"
         name:
           type: string
           description: Product name
@@ -1927,14 +1911,14 @@ components:
       type: object
       required:
         - sku
-        - scope
+        - source
       properties:
         sku:
           type: string
           description: SKU (Stock Keeping Unit) is a unique identifier for a product.
           example: MH01
-        scope:
-          $ref: "#/components/schemas/Scope"
+        source:
+          $ref: "#/components/schemas/Source"
         name:
           type: string
           description: Product name
@@ -2013,14 +1997,14 @@ components:
       type: object
       required:
         - sku
-        - scope
+        - source
       properties:
         sku:
           type: string
           description: Product unique identifier
           example: MH01
-        scope:
-          $ref: "#/components/schemas/Scope"
+        source:
+          $ref: "#/components/schemas/Source"
     FeedPricebook:
       title: FeedPricebook
       description: Price book information
@@ -2158,9 +2142,9 @@ components:
         percentage:
           type: number
           format: float
-    Scope:
-      title: Scope
-      description: Scope of the entity. For example it's locale "English"
+    Source:
+      title: Catalog source
+      description: Source of the entity. For example it's locale "English"
       type: object
       required:
         - locale
@@ -2189,26 +2173,26 @@ components:
       type: object
       required:
         - code
-        - type
         - values
       properties:
         code:
           type: string
           description: Product Attribute Code
-        type:
-          enum:
-            - BOOLEAN
-            - NUMBER
-            - STRING
-            - ARRAY
-            - OBJECT
-          description: |
-            Type of attribute value to be applied during the rendering phase. Validation occurs only when the code is rendered. Invalid values are ignored.
-            - `BOOLEAN`: Accept single value: "true" or false
-            - `NUMBER`: Accept single number,e.g. "85", "0.42", etc.
-            - `STRING`: Accept single string,e.g. "Great day, yall!"
-            - `ARRAY`: Accept list of strings ,e.g. ["red", "green", "blue"]
-            - `OBJECT`: Accept JSON object `"{"name": "swatch", "color": "red"}"`
+# DCAT-2461:
+#        type:
+#          enum:
+#            - BOOLEAN
+#            - NUMBER
+#            - STRING
+#            - ARRAY
+#            - OBJECT
+#          description: |
+#            Type of attribute value to be applied during the rendering phase. Validation occurs only when the code is rendered. Invalid values are ignored.
+#            - `BOOLEAN`: Accept single value: "true" or false
+#            - `NUMBER`: Accept single number,e.g. "85", "0.42", etc.
+#            - `STRING`: Accept single string,e.g. "Great day, yall!"
+#            - `ARRAY`: Accept list of strings ,e.g. ["red", "green", "blue"]
+#            - `OBJECT`: Accept JSON object `"{"name": "swatch", "color": "red"}"`
         values:
           type: array
           description: A list of value(s) associated with a specified attribute code.
@@ -2449,8 +2433,8 @@ components:
               },
               {
                 "itemIndex": 1,
-                "code": "scope",
-                "message": "required property 'scope' not found",
+                "code": "source",
+                "message": "required property 'source' not found",
                 "value": ""
               }
             ]
