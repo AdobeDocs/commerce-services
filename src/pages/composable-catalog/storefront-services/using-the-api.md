@@ -52,10 +52,10 @@ Include the following headers in GraphQL requests as needed.
 
 | Header name| Description
 | --- | ---
-|`AC-Channel-ID` | Required. The ID for the channel that products will be sold through. For example, in the automotive industry, the channel could be dealers. In the manufacturing industry, the channel could be a manufacturing location for suppliers. Use the [channels query](https://developer-stage.adobe.com/commerce/services/graphql-api/admin-api/index.html#query-channels) to retrieve the list of available channels with the channel ID.|
-`AC-Policy-{*}` | Optional. The trigger name configured for a policy that sets data access filters to restrict product access based on request attributes and context. Examples include POS physical stores, marketplaces, or advertisement pipelines like Google, Meta, or Instagram. Use the [policies query](https://developer-stage.adobe.com/commerce/services/graphql-api/admin-api/index.html#query-policies) to retrieve the [policy trigger names](https://developer-stage.adobe.com/commerce/services/graphql-api/admin-api/index.html#definition-TriggerResponse) available for each policy. You can specify multiple policy headers per request. Example: `AC-Policy-Country`.
+|`AC-View-ID` | Required. The ID for the catalog view that products will be sold through. For example, in the automotive industry, the catalog view could be dealers. In the manufacturing industry, the view could be a manufacturing location for suppliers. You can view the list of available catalog view and associated ids from the [Adobe Commerce Optimizer UI](https://experienceleague.adobe.com/en/docs/commerce/optimizer/catalog/channels).|
+`AC-Policy-{*}` | Optional. The trigger name configured for a policy that sets data access filters to restrict product access based on request attributes and context. Examples include POS physical stores, marketplaces, or advertisement pipelines like Google, Meta, or Instagram. You can view the list of available policies and associated ids from the [Adobe Commerce Optimizer UI](https://experienceleague.adobe.com/en/docs/commerce/optimizer/catalog/policies).You can specify multiple policy headers per request. Example: `AC-Policy-Country`.
 `AC-Price-Book-ID` | Optional. Defines how prices are calculated for a specific channel. Use if the merchant uses price books to calculate pricing. Merchandising Services provides a default price book `main` with currency in US dollars.
-`AC-Scope-Locale`: | Required. The locale (language or geography) scope to filter products for display or update, for example `en_US`. Use the [channels query](https://developer-stage.adobe.com/commerce/services/graphql-api/admin-api/index.html#query-channels) to retrieve the locale IDs available for each channel.
+`AC-Source-Locale`: | Required. The catalog source locale (language or geography) to filter products for display or update, for example `en_US`. Use the [channels query](https://developer-stage.adobe.com/commerce/services/graphql-api/admin-api/index.html#query-channels) to retrieve the locale IDs available for each channel.
 
 ## Request template
 
@@ -65,10 +65,10 @@ Use the following template to submit requests using [curl](https://curl.se/). Us
 curl --request POST \
 -- url https://na1-sandbox.api.commerce.adobe.com/<tenantId>/graphql \
 --header --header 'AC-Environment-ID: <tenantId>' \
---header 'AC-Channel-ID:  <channelId>'  \
+--header 'AC-View-ID:  <channelId>'  \
 --header 'AC-Policy-<POLICY_NAME>: <policyValue>' \
 --header 'AC-Price-Book-ID-<pricebookId>' \
---header 'AC-Scope-Locale: <localeValue>' \
+--header 'AC-Source-Locale: <localeValue>' \
 --data '<apiPayload>'
 ```
 
@@ -78,7 +78,7 @@ curl --request POST \
 | `tenantId` | is the unique identifier for your organization's specific instance within the Adobe Experience Cloud.|
 | `policyName: policyValue` | Optional. The policy trigger name and value that sets data access filters to restrict product access based on request attributes. Use the <a href="https://developer-stage.adobe.com/commerce/services/graphql-api/admin-api/index.html#query-policies">policies query</a> to retrieve available policies.                    |
 | `pricebookID`  | Optional. The price book ID used to retrieve the pricing schedule for a SKU. |
-| localeValue | The locale (language or geography) scope to filter products for display or update. |            |
+| localeValue | The catalog source locale (language or geography) to filter products for display or update. |            |
 | apiPayload      | API payload. See examples in the <a href="ccdm-use-cases">tutorial.</a> |
 
 For sample requests and examples using the API, see the [API Reference](api-reference.md) and the [tutorial](../ccdm-use-case.md).

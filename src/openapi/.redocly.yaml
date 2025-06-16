@@ -13,7 +13,7 @@ theme:
   openapi:
     pagination: section
     hideHostname: true
-    sortPropsAlphabetically: true
+    sortPropsAlphabetically: false
     pathInMiddlePanel: true
     hideDownloadButton: false
     hideTryItPanel: true
@@ -23,3 +23,4 @@ theme:
     ctrlFHijack: true
     scrollYOffset: 64
     disableSidebar: true
+    disableDeepLinks: false

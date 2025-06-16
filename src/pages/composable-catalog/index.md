@@ -23,13 +23,13 @@ Developers can use Merchandising Services powered by Channels and Policies APIs 
 
 - **Product data** provides the details about the products to be sold-sku, attributes, metadata, and assets data, and prices for each item.
 
-- **Product context** defines the business context for the products including distribution channels, data access policies for catalog syndication, and language (`locale`) scope for the catalog.
+- **Product context** defines the business context for the products including distribution channels (catalog views), data access policies for catalog syndication, and catalog source (`locale`).
 
 Developers can use these components together to compose and deliver custom catalogs quickly, without duplicating or refactoring the base catalog data.
 
 <InlineAlert variant="info" slots="text"/>
 
-For additional architecture and implementation details, see [Merchandising Services powered by Channels and Policies](https://experienceleague.adobe.com/en/docs/commerce/merchandising-services/overview) in Experience League.
+For additional architecture and implementation details, see [Merchandising Services powered by Catalog Views and Policies](https://experienceleague.adobe.com/en/docs/commerce/merchandising-services/overview) in Experience League.
 
 ## API resources
 
@@ -37,6 +37,6 @@ Merchandising Services includes the following APIs to manage product data and pr
 
 **[Data Ingestion API](data-ingestion/index.md)**—REST API to add and manage product and pricing data for merchandising across multiple business channels and locales. Data includes products, product attribute metadata, price books, and prices. Data can be added to the Merchandising services data pipeline directly using the API or ingested from third-party systems.
 
-**Channels and Policies API**—GraphQL API that powers the catalog management capabilities available through Adobe Commerce Optimizer. From the UI, you can create distribution channels, locales, and policies to set up and deliver custom, composable catalogs with minimal development effort. For details, see the [Adobe Commerce Optimizer Guide](https://experienceleague.adobe.com/en/docs/commerce/optimizer/overview).
+**Catalog Views and Policies API**—GraphQL API that powers the catalog management capabilities available through Adobe Commerce Optimizer. From the UI, you can create distribution channels, locales, and policies to set up and deliver custom, composable catalogs with minimal development effort. For details, see the [Adobe Commerce Optimizer Guide](https://experienceleague.adobe.com/en/docs/commerce/optimizer/overview).
 
-**[Storefront API](../../../static/graphql-api/admin-api/index.html)**—GraphQL API to access rich view-model (read-only) catalog data to build product-related storefront experiences. The Storefront API is designed to be used by frontend applications to access catalog data.
+**[Storefront API](storefront-services/index.md)**—GraphQL API to access rich view-model (read-only) catalog data to build product-related storefront experiences. The Storefront API is designed to be used by frontend applications to access catalog data.

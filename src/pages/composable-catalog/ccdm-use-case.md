@@ -11,7 +11,7 @@ keywords:
 
 # Using the composable catalog with your storefront
 
-Learn how a company with a single base catalog can use the Merchandising Services powered by Channels and Policies APIs to add product data, define catalogs using projections, and retrieve the catalog data for display in a headless storefront.
+Learn how a company with a single base catalog can use the Merchandising Services powered by Catalog Views and Policies APIs to add product data, define catalogs using projections, and retrieve the catalog data for display in a headless storefront.
 
 This end-to-end use case demonstrates how a company with a single base catalog can use Merchandising Services to:
 
@@ -20,15 +20,15 @@ This end-to-end use case demonstrates how a company with a single base catalog c
 - Enhance operational efficiency by avoiding duplication of product catalogs across multiple websites
 - Control product visibility on websites based on geographical market and brand specifications
 
-Before you begin, review [set up and manage catalogs](manage-catalogs.md) to understand the channel and policy concepts.
+Before you begin, review [set up and manage catalogs](manage-catalogs.md) to understand the catalog view and policy concepts.
 
 ## Let's get started
 
 This use case demonstrates an end-to-end workflow for using Merchandising Services based on the following components:
 
-- One Channel
+- One Catalog View
 
-  A distribution channel for `Zenith Automotive` is linked to a single scope, (locale: `en-US`) and two policies.
+  One catalog view for `Zenith Automotive` that is linked to a single catalog source, (locale: `en-US`) and two policies.
 
   - The **Location** policy (*Policy 1*) that defines the catalog projection for `locations`. This projection can be used to specify a target geographic market for selling specified SKUs. For example: `UK`, `USA`.
   - The **Brand** policy (*Policy 2*) defines the catalog projection for `brands`. This projection can be used to specify one or more brands associated with each product SKU, for example `Aurora`, `Bolt`.
@@ -37,16 +37,16 @@ This use case demonstrates an end-to-end workflow for using Merchandising Servic
   - `Aurora Prism battery` belongs to `Aurora` and is aimed to be sold in `USA`.
   - `Bolt Atlas battery` belongs to `Bolt` and is aimed to be sold in `UK`.
   - The values for brand and location are product attributes of each SKU.
-  - The product specification does not include any `Channel` or `Policy` values. When retrieving products using the Storefront API, Channel and Policy values are passed in using API headers.
+  - The product specification does not include any `View` or `Policy` values. When retrieving products using the Storefront API, View and Policy values are passed in using API headers.
 
 - Storefront APIs
   - A catalog service API endpoint is used to represent how data will be retrieved using Merchandising Services concepts.
-  - Pay close attention to the API headers. The Merchandising Services concepts for filtering products using channels and policies are implemented through the API headers.
+  - Pay close attention to the API headers. The Merchandising Services concepts for filtering products using catalog views and policies are implemented through the API headers.
   - Two Storefront API calls are represented:
     - API Call one: Returns a SKU for `Aurora` and `USA` combination.
     - API Call two: Returns a SKU for `Bolt` and `UK` combination.
 
-In the steps below, you use Merchandising Services APIs to add the product, channel, and policy data to the SaaS data space for your project. Then, you use the the [Storefront API](./admin/using-the-api.md) to retrieve the product data based on brand and location attributes.
+In the steps below, you use Merchandising Services APIs to add the product, catalog view, and policy data to the SaaS data space for your project. Then, you use the the [Merchandising APIs](./admin/using-the-api.md) to retrieve the product data based on brand and location attributes.
 
 ## Step 1. Add products to your catalog
 
@@ -72,7 +72,7 @@ For the Zenith Automotive catalog, each product has the following attributes.
 
 Create the metadata to define the search characteristics and filters for displaying product attributes on the storefront by submitting a [Create product attribute metadata](https://developer-stage.adobe.com/commerce/services/composable-catalog/data-ingestion/api-reference/#operation/ProductMetadataPut) POST request.
 
-#### Request to add metadata for en-US scope
+#### Request to add metadata for the `en-US` catalog source
 
 ```shell
 curl --request POST \
@@ -83,7 +83,7 @@ curl --request POST \
 [
     {
         "code": "sku",
-        "scope": {
+        "source": {
             "locale": "en-US"
         },
         "label": "SKU",
@@ -102,7 +102,7 @@ curl --request POST \
     },
     {
         "code": "name",
-        "scope": {
+        "source": {
             "locale": "en-US"
         },
         "label": "Name",
@@ -121,7 +121,7 @@ curl --request POST \
     },
     {
         "code": "description",
-        "scope": {
+        "source": {
             "locale": "en-US"
         },
         "label": "Description",
@@ -140,7 +140,7 @@ curl --request POST \
     },
     {
         "code": "shortDescription",
-        "scope": {
+        "source": {
             "locale": "en-US"
         },
         "label": "Short description",
@@ -174,7 +174,7 @@ curl --request POST \
     },
         {
         "code": "brand",
-        "scope": {
+        "source": {
             "locale": "en-US"
         },
         "label": "Brand",
@@ -195,7 +195,7 @@ curl --request POST \
     },
         {
         "code": "country",
-        "scope": {
+        "source": {
             "locale": "en-US"
         },
         "label": "Country",
@@ -216,7 +216,7 @@ curl --request POST \
     },
     {
         "code": "part_category",
-        "scope": {
+        "source": {
             "locale": "en-US"
         },
         "label": "Part Category",
@@ -237,7 +237,7 @@ curl --request POST \
     },
     {
         "code": "is_vehicle",
-        "scope": {
+        "source": {
             "locale": "en-US"
         },
         "label": "Is Vehicle?",
@@ -266,7 +266,7 @@ curl --request POST \
   --data "[
     {
         "code": "brand",
-        "scope": {
+        "source": {
             "locale": "en-US"
         },
         "label": "Brand",
@@ -287,7 +287,7 @@ curl --request POST \
     },
     {
         "code": "country",
-        "scope": {
+        "source": {
             "locale": "en-US"
         },
         "label": "Country",
@@ -317,7 +317,7 @@ curl --request POST \
 }
 ```
 
-**Request to add metadata for en-GB scope**
+**Request to add metadata for the `en-GB` catalog source**
 
 ```shell
 curl --request POST \
@@ -327,7 +327,7 @@ curl --request POST \
   --data "[
     {
         "code": "sku",
-        "scope": {
+        "source": {
             "locale": "en-GB"
         },
         "label": "SKU",
@@ -346,7 +346,7 @@ curl --request POST \
     },
     {
         "code": "name",
-        "scope": {
+        "source": {
             "locale": "en-GB"
         },
         "label": "Name",
@@ -367,7 +367,7 @@ curl --request POST \
     },
     {
         "code": "description",
-        "scope": {
+        "source": {
             "locale": "en-GB"
         },
         "label": "Description",
@@ -388,7 +388,7 @@ curl --request POST \
     },
     {
         "code": "shortDescription",
-        "scope": {
+        "source": {
             "locale": "en-GB"
         },
         "label": "Short description",
@@ -409,7 +409,7 @@ curl --request POST \
     },
         {
         "code": "brand",
-        "scope": {
+        "source": {
             "locale": "en-GB"
         },
         "label": "Brand",
@@ -430,7 +430,7 @@ curl --request POST \
     },
         {
         "code": "country",
-        "scope": {
+        "source": {
             "locale": "en-GB"
         },
         "label": "Country",
@@ -451,7 +451,7 @@ curl --request POST \
     },
     {
         "code": "part_category",
-        "scope": {
+        "source": {
             "locale": "en-GB"
         },
         "label": "Part Category",
@@ -472,7 +472,7 @@ curl --request POST \
     },
     {
         "code": "is_vehicle",
-        "scope": {
+        "source": {
             "locale": "en-GB"
         },
         "label": "Is Vehicle?",
@@ -521,7 +521,7 @@ curl --request POST \
   --data "[
         {
         "sku": "aurora_prism_battery",
-        "scope": {
+        "source": {
             "locale": "en-US"
         },
         "name": "Aurora prism battery",
@@ -601,7 +601,7 @@ curl --request POST \
   --data "[
         {
         "sku": "bolt_atlas_battery",
-        "scope": {
+        "source": {
             "locale": "en-US"
         },
         "name": "Bolt Atlas battery",
@@ -666,292 +666,22 @@ curl --request POST \
 ]"
 ```
 
-## Step 2. Define the channel and policies
+## Step 2. Define the catalog views and policies
 
 <InlineAlert variant="info" slots="text"/>
 
-Channels and policies must be created from the [Adobe Commerce Optimizer user interface](https://experienceleague.adobe.com/en/docs/commerce/optimizer/catalog/overview). The below API documentation for Channels and Policies
-are provided only to help users get a deeper understanding of the underlying data structure that supports Merchandising Services powered by
-Channels and Policies.
+Catalog views and policies must be created from the [Adobe Commerce Optimizer user interface](https://experienceleague.adobe.com/en/docs/commerce/optimizer/catalog/overview).
 
-In this step, create a channel for `Zenith Automotive` using the [Create channel](https://developer-stage.adobe.com/commerce/services/graphql-api/admin-api/index.html#mutation-createChannel) GraphQL mutation from the Channels and Policies API.
+In this step, create the following policies and catalog view for Zenith Automotive:
 
-Assign two policies to the channel: a `Location Policy` with "USA" and "UK" as locations, and a `Brand Policy` with "Aurora" and "Bolt".
+- **[Create Policies](https://experienceleague.adobe.com/en/docs/commerce/optimizer/catalog/channels)**:
 
-### Create policies
+  - `Location Policy` with "USA" and "UK" as locations.
+  - `Brand Policy` with "Aurora" and "Bolt".
 
-Use the [createPolicy](https://developer-stage.adobe.com/commerce/services/graphql-api/admin-api/index.html#definition-CreatePolicyRequest) GraphQL mutation from the Channels and Policies API to define the location and brand policies.
+- **[Create the Catalog View](https://experienceleague.adobe.com/en/docs/commerce/optimizer/catalog/channels)**:
 
-The query response returns a `PolicyId` value that is required when you assign the policy to a channel.
-
-#### Location policy
-
-**cURL Request**
-
-```shell
-curl --request POST \
-  --url http://na1-sandbox.api.commerce.adobe.com/{tenantId}/admin/graphql \
-  --header "Content-Type: application/json" \
-  --header "Authorization: Bearer {access token}" \
-
-  --data "{"query":"mutation createPolicy {\n\tcreatePolicy(\n\t\tpolicyRequest: {\n\t\t\tname: \"Location Policy\"\n\t\t\tmandatory: true\n\t\t\tactions: [\n\t\t\t\t{\n\t\t\t\t\ttriggers: [\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\tname: \"AC-Policy-Country\",\n\t\t\t\t\t\t\ttransportType: HTTP_HEADER\n\t\t\t\t\t\t}\n\t\t\t\t\t]\n\t\t\t\t\tfilters: [\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\tattribute: \"country\",\n\t\t\t\t\t\t\tvalueSource: TRIGGER,\n\t\t\t\t\t\t\tvalue: \"AC-Policy-Country\"\n\t\t\t\t\t\t\tactionFilterOperator: EQUALS,\n\t\t\t\t\t\t\tenabled: true\n\t\t\t\t\t\t}\n\t\t\t\t\t]\n\t\t\t\t}\n\t\t\t]\n\t\t}\n\t) {\n\t\tname\n\t\tpolicyId\n\t\tmandatory\n\t\tactions {\n\t\t\ttriggers {\n\t\t\t\tname\n\t\t\t\ttransportType\n\t\t\t}\n\t\t\tfilters {\n\t\t\t\tattribute\n\t\t\t\tvalueSource\n\t\t\t\tvalue\n\t\t\t\tactionFilterOperator\n\t\t\t\tenabled\n\t\t\t}\n\t\t}\n\t\tcreatedAt\n\t\tupdatedAt\n\t}\n}\n","operationName":"createPolicy"}"
-```
-
-**Payload**
-
-```graphql
-mutation CreatePolicy {
-  createPolicy(policyRequest: {
-    name: "Location policy",
-    mandatory: true,
-    actions: [
-      {
-        triggers: [
-          {
-            name: "AC-Policy-Country",
-            transportType: HTTP_HEADER
-          }
-        ],
-        filters: [
-          {
-            attribute: "country",
-            valueSource: TRIGGER,
-            value: "AC-Policy-Country",
-            actionFilterOperator: EQUALS,
-            enabled: true
-          }
-        ]
-      }
-    ]
-  }) {
-    name
-    policyId
-    mandatory
-    actions {
-      triggers {
-        name
-        transportType
-      }
-      filters {
-        attribute
-        valueSource
-        value
-        actionFilterOperator
-        enabled
-      }
-    }
-    createdAt
-    updatedAt
-  }
-}
-```
-
-**Response**
-
-```graphql
-{
-  "data": {
-      "createPolicy": {
-          "policyId": "56a6908f-eyx3-59c3-sye8-574509e6y45",
-          "name": "Location policy",
-          "mandatory": true,
-          "actions": [
-              {
-                  "triggers": [
-                      {
-                          "transportType": "HTTP_HEADER",
-                          "name": "AC-Policy-Country"
-                      }
-                  ],
-                  "filters": [
-                      {
-                          "attribute": "country",
-                          "actionFilterOperator": "EQUALS",
-                          "value": "AC-Policy-Country",
-                          "enabled": true,
-                          "valueSource": "TRIGGER"
-                      }
-                  ]
-              }
-          ],
-          "createdAt": "2024-11-12T12:00:16.146157",
-          "updatedAt": "2024-11-12T12:00:16.146157"
-      }
-  },
-  "extensions": {
-      "request-id": "bbcdcbc79b5d873b"
-  }
-}
-```
-
-#### Brand policy
-
-**cURL Request**
-
-```shell
-curl --request POST \
-  --url http://na1-sandbox.api.commerce.adobe.com/{tenantId}/admin/graphql \
-  --header "Content-Type: application/json" \
-  --header "Authorization: Bearer {access token}" \
-
-  --data "{"query":"mutation createPolicy {\n\tcreatePolicy(\n\t\tpolicyRequest: {\n\t\t\tname: \"Brand Policy\"\n\t\t\tmandatory: true\n\t\t\tactions: [\n\t\t\t\t{\n\t\t\t\t\ttriggers: [\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\tname: \"AC-Policy-Brand\",\n\t\t\t\t\t\t\ttransportType: HTTP_HEADER\n\t\t\t\t\t\t}\n\t\t\t\t\t]\n\t\t\t\t\tfilters: [\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\tattribute: \"brand\",\n\t\t\t\t\t\t\tvalueSource: TRIGGER,\n\t\t\t\t\t\t\tvalue: \"AC-Policy-Brand\"\n\t\t\t\t\t\t\tactionFilterOperator: EQUALS,\n\t\t\t\t\t\t\tenabled: true\n\t\t\t\t\t\t}\n\t\t\t\t\t]\n\t\t\t\t}\n\t\t\t]\n\t\t}\n\t) {\n\t\tname\n\t\tpolicyId\n\t\tmandatory\n\t\tactions {\n\t\t\ttriggers {\n\t\t\t\tname\n\t\t\t\ttransportType\n\t\t\t}\n\t\t\tfilters {\n\t\t\t\tattribute\n\t\t\t\tvalueSource\n\t\t\t\tvalue\n\t\t\t\tactionFilterOperator\n\t\t\t\tenabled\n\t\t\t}\n\t\t}\n\t\tcreatedAt\n\t\tupdatedAt\n\t}\n}\n","operationName":"createPolicy"}"
-```
-
-**Payload**
-
-```graphql
-mutation CreatePolicy {
-  createPolicy(policyRequest: {
-    name: "Brand policy",
-    mandatory: true,
-    actions: [
-      {
-        triggers: [
-          {
-            name: "AC-Policy-Brand",
-            transportType: HTTP_HEADER
-          }
-        ],
-        filters: [
-          {
-            attribute: "brand",
-            valueSource: TRIGGER,
-            value: "AC-Policy-Brand",
-            actionFilterOperator: EQUALS,
-            enabled: true
-          }
-        ]
-      }
-    ]
-  }) {
-    name
-    policyId
-    mandatory
-    actions {
-      triggers {
-        name
-        transportType
-      }
-      filters {
-        attribute
-        valueSource
-        value
-        actionFilterOperator
-        enabled
-      }
-    }
-    createdAt
-    updatedAt
-  }
-}
-```
-
-**Response**
-
-```graphql
-{
-  "data": {
-      "createPolicy": {
-          "policyId": "39c8106d-aab2-49b2-aac3-177608d4e567",
-          "name": "Brand policy",
-          "mandatory": true,
-          "actions": [
-              {
-                  "triggers": [
-                      {
-                          "transportType": "HTTP_HEADER",
-                          "name": "AC-Policy-Brand"
-                      }
-                  ],
-                  "filters": [
-                      {
-                          "attribute": "country",
-                          "actionFilterOperator": "EQUALS",
-                          "value": "AC-Policy-Country",
-                          "enabled": true,
-                          "valueSource": "TRIGGER"
-                      }
-                  ]
-              }
-          ],
-          "createdAt": "2024-11-12T12:00:16.146157",
-          "updatedAt": "2024-11-12T12:00:16.146157"
-      }
-  },
-  "extensions": {
-      "request-id": "bbcdcbc79b5d6788b"
-  }
-}
-```
-
-### Create channel
-
-Create a channel and assign the policies for location filtering and brand filtering. Use the policy IDs returned in the `createPolicy` request to assign the policies.
-
-**cURL Request**
-
-```shell
-curl --request POST \
-  --url http://na1-sandbox.api.commerce.adobe.com/{tenantId}/admin/graphql \
-  --header "Content-Type: application/json"  \
-  --header "Authorization: Bearer {access token}" \
-
-  --data "{"query":"mutation {\n    createChannel(\n        channelRequest: {\n            name: \"Zenith Automotive\",\n            scopes: [\n                { locale: \"en-US\" }\n            ]\n            policyIds : [\n                \"56a6908f-eyx3-59c3-sye8-574509e6y45\",\n                \"39c8106d-aab2-49b2-aac3-177608d4e567\",\n            ]\n        }\n    ) {\n        channelId\n        name\n        scopes {\n          locale\n        }\n        policyIds\n        createdAt\n        updatedAt\n    }\n}"}"
-```
-
-**Payload**
-
-```graphql
-mutation {
-    createChannel(
-        channelRequest: {
-            name: "Zenith Automotive",
-            scopes: [
-                { locale: "en-US" }
-            ]
-            policyIds : [
-                "56a6908f-eyx3-59c3-sye8-574509e6y45",
-                "39c8106d-aab2-49b2-aac3-177608d4e567",
-            ]
-        }
-    ) {
-        channelId
-        name
-        scopes {
-          locale
-        }
-        policyIds
-        createdAt
-        updatedAt
-    }
-}
-```
-
-**Response**
-
-```json
-{
-    "data": {
-        "channels": [
-            {
-                "name": "Zenith Automotive",
-                "channelId": "b726c1e9-2842-4ab5-9b19-ca65c23bbb3b",
-                "scopes": [
-                    {
-                        "locale": "en-US"
-                    }
-                ],
-                "policyIds": [
-                    "56a6908f-eyx3-59c3-sye8-574509e6y45",
-                    "39c8106d-aab2-49b2-aac3-177608d4e567",
-                ],
-                "createdAt": "2024-12-04T19:18:46.075",
-                "updatedAt": "2024-12-16T21:17:00.793"
-            }
-        ]
-    }
-}
-```
+  - `Zenith Automotive` with a single catalog source, `en-US`, and assign the Location and Brand policies to the catalog view.
 
 ## Step 3. Retrieve SKUs
 
@@ -970,12 +700,11 @@ The brand and location (`AC-Policy-Brand` and `AC-Policy-Country`) are passed in
 Use the following headers in the request:
 
 ```text
-AC-Channel-Id: "b726c1e9-2842-4ab5-9b19-ca65c23bbb3b"
-AC-Environment-Id: "{tenantId}"
+AC-View-Id: "b726c1e9-2842-4ab5-9b19-ca65c23bbb3b"
 AC-Policy-Brand: "Aurora"
 AC-Policy-Country: "US"
 AC-Price-Book-Id: "base"
-AC-Scope-Locale: "en-US"
+AC-source-Locale: "en-US"
 Content-Type: "application/json"
 ```
 
@@ -1140,12 +869,11 @@ The brand and location (`AC-Policy-Brand` and `AC-Policy-Country`) are passed in
 Use the following headers in the request:
 
 ```text
-AC-Channel-Id: "b726c1e9-2842-4ab5-9b19-ca65c23bbb3b"
-AC-Environment-Id: "{tenantId}"
+AC-View-Id: "b726c1e9-2842-4ab5-9b19-ca65c23bbb3b"
 AC-Policy-Brand: "Bolt"
 AC-Policy-Country: "UK"
 AC-Price-Book-Id: "base"
-AC-Scope-Locale: "en-US"
+AC-Source-Locale: "en-US"
 Content-Type: 'application/json'
 ```
 
