@@ -1845,10 +1845,12 @@ components:
           example: kangaroo-hoodie.html
         description:
           type: string
+          nullable: true
           description: The main description for the product
           example: A kangaroo hoodie for all seasons
         shortDescription:
           type: string
+          nullable: true
           description: A short description of the product
           example: A hoodie for all seasons with a kangaroo pocket
         status:
@@ -1872,10 +1874,7 @@ components:
               - CATALOG
               - SEARCH
         metaTags:
-          type: object
-          description: Meta attributes that are specified in <meta> tags.
-          items:
-            $ref: "#/components/schemas/ProductMetaAttribute"
+          $ref: "#/components/schemas/ProductMetaAttribute"
         attributes:
           type: array
           description: A list of product attributes.
@@ -1906,6 +1905,11 @@ components:
           description: Composite products, such as bundle products, must include a list of individual products that are part of the bundle, organized into groups (for example, "shirts", "pants", "accessories").
           items:
             $ref: "#/components/schemas/ProductBundle"
+        externalIds:
+          type: array
+          description: A list of external IDs for the product.
+          items:
+            $ref: "#/components/schemas/ProductExternalId"
     FeedProductUpdate:
       title: Catalog Product payload
       type: object
@@ -1929,10 +1933,12 @@ components:
           example: kangaroo-hoodie.html
         description:
           type: string
+          nullable: true
           description: The main description for the product
           example: A kangaroo hoodie for all seasons
         shortDescription:
           type: string
+          nullable: true
           description: A short description of the product
           example: A hoodie for all seasons with a kangaroo pocket
         status:
@@ -1956,10 +1962,7 @@ components:
               - CATALOG
               - SEARCH
         metaTags:
-          type: object
-          description: Meta attributes that are specified in <meta> tags.
-          items:
-            $ref: "#/components/schemas/ProductMetaAttribute"
+          $ref: "#/components/schemas/ProductMetaAttribute"
         attributes:
           type: array
           description: A list of product attributes.
@@ -1992,6 +1995,11 @@ components:
           description: Composite products, such as bundle products, must include a list of individual products that are part of the bundle, organized into groups (for example, "shirts", "pants", "accessories").
           items:
             $ref: "#/components/schemas/ProductBundle"
+        externalIds:
+          type: array
+          description: A list of external IDs for the product.
+          items:
+            $ref: "#/components/schemas/ProductExternalId"
     FeedProductDelete:
       title: Catalog Product delete payload
       type: object
@@ -2127,6 +2135,9 @@ components:
     DiscountsFinalPrice:
       title: Final Price
       type: object
+      required:
+        - code
+        - price
       properties:
         code:
           type: string
@@ -2136,6 +2147,9 @@ components:
     DiscountsPercentage:
       title: Discount
       type: object
+      required:
+        - code
+        - percentage
       properties:
         code:
           type: string
@@ -2155,6 +2169,7 @@ components:
           example: English
     ProductMetaAttribute:
       title: Meta Attributes
+      description: Meta attributes that are specified in <meta> tags.
       type: object
       properties:
         title:
@@ -2252,7 +2267,7 @@ components:
           items:
             type: string
     ProductConfiguration:
-      title: ProductConfiguration
+      title: Configurations
       type: object
       required:
         - attributeCode
@@ -2271,6 +2286,7 @@ components:
         defaultVariantReferenceId:
           type: string
           description: Specifies the pre-selected value variant reference id of the current option.
+          nullable: true
         type:
           type: string
           enum:
@@ -2307,7 +2323,7 @@ components:
           type: string
           description: Image URL of the option value. Can be used for option with a SWATCH type.
     ProductBundle:
-      title: ProductBundle
+      title: Bundles
       type: object
       required:
         - group
@@ -2339,6 +2355,19 @@ components:
             Each item in the list represents a product that can be selected as part of the bundle.
           items:
             $ref: "#/components/schemas/ProductBundleItem"
+    ProductExternalId:
+      title: External Ids
+      type: object
+      required:
+        - id
+        - origin
+      properties:
+        id:
+          type: string
+          description: External ID of the product.
+        origin:
+          type: string
+          description: External ID origin. Specifies the system that generated the external ID, such as Adobe Commerce, Google Product Ratings, etc.
     ProductBundleItem:
       title: ProductBundleItem
       type: object
