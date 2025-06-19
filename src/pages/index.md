@@ -21,46 +21,27 @@ A collection of APIs and tools to integrate with third-party services, manage ca
 ## Resources
 
 *  [Cloud Service User Guide](https://experienceleague.adobe.com/en/docs/commerce/cloud-service/overview)
+*  [Cloud Service APIs](https://developer.adobe.com/commerce/webapi/rest/)
 *  [Merchandising Services User Guides](https://experienceleague.adobe.com/en/docs/commerce/user-guides/home)
 *  [Commerce Admin User Guides](https://experienceleague.adobe.com/en/docs/commerce-admin/user-guides/home)
 
 <DiscoverBlock slots="heading, link, text"/>
 
-## Commerce as a Cloud Service
-
-[REST & GraphQL API](cloud/guides/index.md)
-
-Integrate with third-party services and build headless applications.
-
-<DiscoverBlock slots="link, text"/>
-
-[Custom attributes](cloud/guides/custom-attributes.md)
-
-Add custom attributes to core data model entities with REST and GraphQL APIs.
-
-<DiscoverBlock slots="link, text"/>
-
-[Webhooks](cloud/guides/rest/webhooks.md)
-
-Subscribe to webhooks to trigger external calls when Adobe Commerce events occur.
-
-<DiscoverBlock slots="heading, link, text"/>
-
 ## SaaS Catalog Services
 
-[Catalog Service API](graphql/catalog-service/)
+[Catalog Service API](https://developer.adobe.com/commerce/webapi/graphql/schema/catalog-service/)
 
 Deliver product-related content to frontend applications.
 
 <DiscoverBlock slots="link, text"/>
 
-[Live Search API](graphql/live-search/)
+[Live Search API](https://developer.adobe.com/commerce/webapi/graphql/schema/live-search/)
 
 Retrieve and filter search results using product faceting and other data.
 
 <DiscoverBlock slots="link, text"/>
 
-[Product Recommendations API](graphql/recommendations/)
+[Product Recommendations API](https://developer.adobe.com/commerce/webapi/graphql/schema/product-recommendations/)
 
 Retrieve recommended products based on a provided SKU.
 
