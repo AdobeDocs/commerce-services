@@ -28,19 +28,19 @@ A collection of APIs and tools to integrate with third-party services, manage ca
 
 ## Commerce as a Cloud Service
 
-[REST & GraphQL API](cloud/guides/index.md)
+[REST APIs](https://developer.adobe.com/commerce/webapi/rest/)
 
 Integrate with third-party services and build headless applications.
 
 <DiscoverBlock slots="link, text"/>
 
-[Custom attributes](cloud/guides/custom-attributes.md)
+[Custom attributes](https://developer.adobe.com/commerce/webapi/rest/modules/custom-attributes/)
 
 Add custom attributes to core data model entities with REST and GraphQL APIs.
 
 <DiscoverBlock slots="link, text"/>
 
-[Webhooks](cloud/guides/rest/webhooks.md)
+[Webhooks](https://developer.adobe.com/commerce/extensibility/webhooks/api/)
 
 Subscribe to webhooks to trigger external calls when Adobe Commerce events occur.
 
@@ -48,19 +48,19 @@ Subscribe to webhooks to trigger external calls when Adobe Commerce events occur
 
 ## SaaS Catalog Services
 
-[Catalog Service API](graphql/catalog-service/)
+[Catalog Service API](https://developer.adobe.com/commerce/webapi/graphql/schema/catalog-service/)
 
 Deliver product-related content to frontend applications.
 
 <DiscoverBlock slots="link, text"/>
 
-[Live Search API](graphql/live-search/)
+[Live Search API](https://developer.adobe.com/commerce/webapi/graphql/schema/live-search/)
 
 Retrieve and filter search results using product faceting and other data.
 
 <DiscoverBlock slots="link, text"/>
 
-[Product Recommendations API](graphql/recommendations/)
+[Product Recommendations API](https://developer.adobe.com/commerce/webapi/graphql/schema/product-recommendations/)
 
 Retrieve recommended products based on a provided SKU.
 
