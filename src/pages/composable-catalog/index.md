@@ -23,7 +23,7 @@ Developers can use Adobe Commerce Optimizer Merchandising Services to implement 
 
 - **Product data** provides the details about the products to be sold-sku, attributes, metadata, and assets data, and prices for each item.
 
-- **Product context** defines the business context for the products including distribution channels, data access policies for catalog syndication, and language (`locale`) scope for the catalog. Product context is managed from the [Adobe Commerce Optimizer user interface](https://experienceleague.adobe.com/en/docs/commerce/optimizer/overview#quick-tour), and is not directly accessible through the APIs.
+- **Product context** defines the business context for the products including catalog views, data access policies for catalog syndication, and catalog source (`locale`).
 
 Developers can use these components together to compose and deliver custom catalogs quickly, without duplicating or refactoring the base catalog data.
 
@@ -37,7 +37,7 @@ Adobe Commerce Optimizer Merchandising Services provides the following APIs:
 
 **[Data Ingestion API](data-ingestion/index.md)**—REST API to add and manage product and pricing data for merchandising across multiple business channels and locales. Data includes products, product attribute metadata, price books, and prices. The API expects data in JSON format, which can be added to the Merchandising services data pipeline directly using the API or ingested from third-party systems.
 
-*Example Integration*: Use the Data Ingestion API to upload product data by sending a POST request to the `/products` endpoint with a JSON payload containing product details such as SKU, attributes, and pricing. This allows businesses to synchronize their catalog data efficiently.
+**Catalog Views and Policies API**—GraphQL API that powers the catalog management capabilities available through Adobe Commerce Optimizer. From the UI, you can create catalog views that represent distribution channels for product sales, catalog source (locales), and policies to set up and deliver custom, composable catalogs with minimal development effort. For details, see the [Adobe Commerce Optimizer Guide](https://experienceleague.adobe.com/en/docs/commerce/optimizer/overview).
 
 **[Merchandising API](storefront-services/index.md)**—GraphQL API to access rich view-model (read-only) catalog data to build product-related storefront experiences. The Merchandising API is designed to be used by frontend applications to access catalog data.
 

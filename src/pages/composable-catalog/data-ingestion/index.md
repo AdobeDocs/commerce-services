@@ -21,7 +21,7 @@ Metadata defines the characteristics and behavior of a product attribute. It inc
 
 For example, you can define a product attribute as searchable, filterable, and sortable. You can also specify the search type for a product attribute, such as autocomplete or exact match.
 
-Metadata is required to index product data for discovery. Consequently, it must be created before creating products. For each Commerce project, the following product attribute metadata must be defined for each scope (`locale`):
+Metadata is required to index product data for discovery. Consequently, it must be created before creating products. For each Commerce project, the following product attribute metadata must be defined for each catalog source (`locale`):
 
 - `sku`
 - `name`
@@ -52,7 +52,7 @@ For details, see [Product APIs](https://developer-stage.adobe.com/commerce/servi
 
 ## Price books and prices
 
-In Merchandising Services, a product SKU and its price are decoupled. This decoupling allows you to define multiple price books for a single SKU, supporting different customer tiers, business units, and geographies. When defining prices for a product SKU, you can set both regular and discounted prices within the scope of each price book.
+In Merchandising Services, a product SKU and its price are decoupled. This decoupling allows you to define multiple price books for a single SKU, supporting different customer tiers, business units, and geographies. When defining prices for a product SKU, you can set both regular and discounted prices within the catalog source for each price book.
 
 **Price books** are collections of prices for a specific set of products. Price books allow you to manage and organize prices for different customer segments, regions, or sales channels. You can create multiple price books to accommodate various pricing strategies and customer groups. Each price book has an associated currency. Merchandising Services includes a default price book with a default currency in US dollars, which is used when no other price book is specified.
 
