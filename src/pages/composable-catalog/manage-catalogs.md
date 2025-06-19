@@ -15,7 +15,7 @@ An ecommerce product catalog benefits from reflecting the company's business str
 
 Using the catalog view, policy, and catalog source resources available with the Merchandising Services Catalog Views and Policies API, you can create catalog variations instantly to adapt to these scenarios without requiring extensive development work.
 
-* **Catalog Views**—Represent the product assortment that a business wants to a particular distribution channel. A catalog view is the highest-level abstraction which encapsulates catalog sources and policies.
+* **Catalog Views**—Represent the product assortment that a business wants to sell to a particular distribution channel. A catalog view is the highest-level abstraction which encapsulates catalog sources and policies.
 
   Example: Dealers for the automotive industry. Subsidiaries for multi-brand conglomerates. Manufacturing location for suppliers.
 

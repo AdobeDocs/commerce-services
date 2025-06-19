@@ -1,7 +1,7 @@
 ---
-title: Storefront APIs
+title: Merchandising API
 edition: ee
-description: Use the storefront APIs to create commerce storefront browse and discovery experiences using catalog data stored in the backend.
+description: Developers can use the merchandising APIs to create commerce storefront browse and discovery experiences by retrieving catalog data stored in Adobe Commerce Optimizer.
 
 keywords:
   - GraphQL
@@ -9,8 +9,8 @@ keywords:
   - Storefront
 ---
 
-# Storefront API
+# Merchandising API
 
-Frontend developers can use the storefront APIs to create commerce storefront experiences using the catalog data configured on the backend. The storefront APIs are implemented as a GraphQL (Graph Query Language) endpoint.
+ Developers can use the merchandising APIs to create commerce storefront browse and discovery experiences by retrieving catalog data from Adobe Commerce Optimizer. The storefront APIs are implemented as a GraphQL (Graph Query Language) endpoint.
 
 For details about the Storefront API, see the [Storefront API Reference](api-reference.md).

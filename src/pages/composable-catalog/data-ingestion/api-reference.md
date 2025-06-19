@@ -1,6 +1,6 @@
 ---
 title: Data Ingestion API Reference (REST)
-description: Test the Redoc API block
+description: Learn about the Data Ingestion Rest API for Adobe Commerce Optimizer.
 layout: none
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: Merchandising Services powered by Catalog Views and Policies
+title: Merchandising Services
 description: Learn about the APIs and tools available to manage and use commerce catalog and event data programmatically.
 keywords:
   - GraphQL
@@ -10,11 +10,11 @@ hideBreadcrumbNav: true
 
 <Hero slots="image, heading, text"/>
 
-![Data Services](_images/home-bg.jpeg)
+![Merchandising Services](_images/home-bg.jpeg)
 
-# Commerce Data Services
+# Merchandising Services
 
-A collection of APIs and tools to integrate with third-party services, manage catalog data, and build headless ecommerce applications.
+Use the Merchandising APIs and SDK to manage commerce catalog data and configuration and use it to create scalable, performant storefront experiences.
 
 <Resources slots="heading, links"/>
 
@@ -24,56 +24,25 @@ A collection of APIs and tools to integrate with third-party services, manage ca
 *  [Commerce Optimizer Guide](https://experienceleague.adobe.com/en/docs/commerce/optimizer/overview)
 *  [Commerce Merchant Documentation](https://experienceleague.adobe.com/docs/commerce-admin/user-guides/home.html)
 *  [Commerce Storefront Documentation](https://experienceleague.adobe.com/developer/commerce/storefront/)
-*  [Getting Started with Adobe Commerce web APIs](https://developer.adobe.com/commerce/webapi/get-started/)
 *  [GraphQL Developer Guide](https://developer.adobe.com/commerce/webapi/graphql/)
 
-## Overview
+<DiscoverBlock slots="heading,link, text"/>
 
-Learn how to use Commerce APIs and SDKs to integrate with third-party software and build headless applications.
+## Catalog Data APIs
 
-## Discover
-
-Use Commerce APIs and SDKs to manage commerce catalog data and configuration and use it to create scalable, performant storefront experiences.
-
-<DiscoverBlock slots="heading, link, text"/>
-
-## Merchandising Services powered by Catalog Views and Policies
-
-[Catalog data ingestion](composable-catalog/data-ingestion/)
+[Data Ingestion API](composable-catalog/data-ingestion/)
 
 Set up large, complex catalog assortments by ingesting commerce catalog data from backend systems into a centralized datastore.
 
 <DiscoverBlock slots="link, text"/>
 
-Catalog Views and Policies
-
-Set up and manage catalog views and policies to create catalog variations for different distribution channels and customer segments.
-See the [Commerce Optimizer Guide](https://experienceleague.adobe.com/en/docs/commerce/optimizer/overview) for details.
-
-<DiscoverBlock slots="link, text"/>
-
-[Catalog Service APIs](composable-catalog/storefront-services)
+[Merchandising API](composable-catalog/storefront-services/)
 
 Retrieve catalog data product, price, search, and recommendations data from Merchandising Services and use it to create storefront experiences.
+
 <DiscoverBlock slots="heading,link, text"/>
 
-## SaaS Catalog Services
-
-[Catalog Service API](graphql/catalog-service/)
-
-Retrieve catalog data product-related content to frontend applications.
-
-<DiscoverBlock slots="link, text"/>
-
-[Live Search API](graphql/live-search/)
-
-Retrieve and filter search results using product faceting and other data.
-
-<DiscoverBlock slots="link, text"/>
-
-[Product Recommendations API](graphql/recommendations/)
-
-Retrieve recommended products based on a provided SKU.
+## SDKs and Reporting
 
 <DiscoverBlock slots="link, text"/>
 
