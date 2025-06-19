@@ -4,33 +4,45 @@ module.exports = [
       path: "/",
     },
     {
-      title: "Merchandising Services powered by Channels and Policies",
+      title: "Guides",
       menu: [
         {
-          title: "Overview",
+          title: "Merchandising Services",
+          description: "Learn the basics of using Merchandising Services APIs for Commerce Optimizer.",
           path: "/composable-catalog/"
         },
-        {
-          title: "Catalog data ingestion",
-          path: "/composable-catalog/data-ingestion/"
-        },
-/* Commenting out the Channel and Policies API section during the early access period. Customers will
-use the Commerce Optimizer UI to configure channels and policies.
-        {
-          title: "Channels and Policies",
-          path: "/composable-catalog/admin/"
-        },
-*/
-        {
-          title: "Storefront",
-          path: "/composable-catalog/storefront-services/"
-        },
-      ]
-    },
-    {
-      title: "Storefront APIs",
-      path: "/graphql/"
-    },
+      {
+        title: "Catalog Service",
+        description: "Learn how Catalog Service implements GraphQL.",
+        path: "/graphql/catalog-service/"
+      },
+      {
+        title: "Live Search",
+        description: "Learn how Live Search implements GraphQL.",
+        path: "/graphql/live-search/"
+      },
+      {
+        title: "Product Recommendations",
+        description: "Learn how Product Recommendations implements GraphQL.",
+        path: "/graphql/recommendations/"
+      }
+    ],
+  },
+  {
+    title: "API Reference",
+    menu: [
+      {
+        title: "Data ingestion - REST API",
+        description: "View the reference documentation for Commerce Optimizer Catalog Data Ingestion API.",
+        path: "/reference/data-ingestion-rest.md",
+      },
+      {
+        title: "Merchandising Services - GraphQL API",
+        description: "View the reference documentation for the Commerce Optimizer Merchandising Services API.",
+        path: "/reference/cloud/graphql/",
+      },
+    ],
+  },
     {
       title: "Events and SDKs",
       menu: [

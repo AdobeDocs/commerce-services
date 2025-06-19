@@ -1,6 +1,6 @@
 module.exports = [
   {
-    title: "Merchandising Services powered by Channels and Policies",
+    title: "Merchandising Services Developer Guide",
     path: "/composable-catalog/",
     pages: [
       {   title: "Set up and manage catalogs",
@@ -43,7 +43,7 @@ use the Commerce Optimizer UI to configure channels and policies.
       },
 */
         {
-            title: "Storefront API",
+            title: "Merchandising Services API",
             path: "composable-catalog/storefront-services/",
             header: "true",
             pages: [
