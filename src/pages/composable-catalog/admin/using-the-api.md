@@ -1,7 +1,7 @@
 ---
-title: Using the Channels and Policies API
+title: Using the Catalog Views and Policies API
 edition: ee
-description: Get information about using GraphQL queries and mutations to manage channels, policies, and configuration for search and recommendations capabilities.
+description: Get information about using GraphQL queries and mutations to manage catalog views, policies, and configuration for search and recommendations capabilities.
 keywords:
   - GraphQL
   - Services
@@ -9,11 +9,11 @@ keywords:
   - Performance
 ---
 
-# Using the Channels and Policies API
+# Using the Catalog Views and Policies API
 
 ## Base URL
 
-Use the following base URL for all Channels and Policies API requests.
+Use the following base URL for all Catalog Views and Policies API requests.
 
 `https://na1-sandbox.api.commerce.adobe.com/<tenantId>/admin/graphql`
 
