@@ -4,21 +4,6 @@ module.exports = [
     path: "/",
   },
   {
-    title: "API Reference",
-    menu: [
-      {
-        title: "Cloud Service - REST API",
-        description: "View the reference documentation for the REST API.",
-        path: "/reference/cloud/rest/",
-      },
-      {
-        title: "Cloud Service - GraphQL API",
-        description: "View the reference documentation for the GraphQL API.",
-        path: "/reference/cloud/graphql/",
-      },
-    ],
-  },
-  {
     title: "Events and SDKs",
     menu: [
       {
