@@ -12,11 +12,11 @@ module.exports = [
     menu: [
       {
         title: "Catalog data ingestion API",
-        path: "/composable-catalog/data-ingestion/"
+        path: "/reference/rest/data-ingestion-rest-api.md"
       },
       {
         title: "Merchandising API",
-        path: "/composable-catalog/storefront-services/"
+        path: "/reference/graphql/merchandising-graphql-api.md"
       },
     ]
   },
