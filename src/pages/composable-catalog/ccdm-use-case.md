@@ -37,12 +37,12 @@ This use case demonstrates an end-to-end workflow for using Merchandising Servic
   - `Aurora Prism battery` belongs to `Aurora` and is aimed to be sold in `USA`.
   - `Bolt Atlas battery` belongs to `Bolt` and is aimed to be sold in `UK`.
   - The values for brand and location are product attributes of each SKU.
-  - The product specification does not include any `View` or `Policy` values. When retrieving products using the Storefront API, View and Policy values are passed in using API headers.
+  - The product specification does not include any `View` or `Policy` values. When retrieving products using Merchandising API, View and Policy values are passed in using API headers.
 
-- Storefront APIs
+- Merchandising APIs
   - A catalog service API endpoint is used to represent how data will be retrieved using Merchandising Services concepts.
   - Pay close attention to the API headers. The Merchandising Services concepts for filtering products using catalog views and policies are implemented through the API headers.
-  - Two Storefront API calls are represented:
+  - Two Merchandising API calls are represented:
     - API Call one: Returns a SKU for `Aurora` and `USA` combination.
     - API Call two: Returns a SKU for `Bolt` and `UK` combination.
 
@@ -258,55 +258,6 @@ curl --request POST \
     }
 ]"
 ```
-
-curl --request POST \
-  --url https://na1-sandbox.api.commerce.adobe.com/{tenantId}/v1/catalog/products/metadata \
-  --header "Authorization: Bearer {access token}" \
-  --header "Content-Type: application/json" \
-  --data "[
-    {
-        "code": "brand",
-        "source": {
-            "locale": "en-US"
-        },
-        "label": "Brand",
-        "dataType": "TEXT",
-        "visibleIn": [
-            "CATALOG",
-            "SEARCH"
-        ],
-        "filterable": true,
-        "sortable": false,
-        "searchable": true,
-        "searchWeight": 55,
-        "searchTypes": [
-            "AUTOCOMPLETE",
-            "CONTAINS",
-            "STARTS_WITH"
-        ]
-    },
-    {
-        "code": "country",
-        "source": {
-            "locale": "en-US"
-        },
-        "label": "Country",
-        "dataType": "TEXT",
-        "visibleIn": [
-            "CATALOG",
-            "SEARCH"
-        ],
-        "filterable": true,
-        "sortable": false,
-        "searchable": true,
-        "searchWeight": 55,
-        "searchTypes": [
-            "AUTOCOMPLETE",
-            "CONTAINS",
-            "STARTS_WITH"
-        ]
-    }
-]"
 
 **Response**
 
@@ -685,9 +636,9 @@ In this step, create the following policies and catalog view for Zenith Automoti
 
 ## Step 3. Retrieve SKUs
 
-Use the Storefront GraphQL API [productSearch](https://developer-stage.adobe.com/commerce/services/graphql-api/storefront-api/index.html#query-productSearch) query to retrieve the SKUs you created.
+Use the Merchandising GraphQL API [productSearch](https://developer-stage.adobe.com/commerce/services/graphql-api/storefront-api/index.html#query-productSearch) query to retrieve the SKUs you created.
 
-Send GraphQL requests for Storefront APIs to the following base URL:
+Send GraphQL requests for Merchandising APIs to the following base URL:
 
 `http://na1-sandbox.api.commerce.adobe.com/{tenantId}/graphql`
 
@@ -695,7 +646,7 @@ Send GraphQL requests for Storefront APIs to the following base URL:
 
 Retrieve the SKU you created for `Aurora` where location is `USA`. Use the search phrase `Zenith Automotive Vehicles and Parts`, and specify a page size to limit results.
 
-The brand and location (`AC-Policy-Brand` and `AC-Policy-Country`) are passed in using [Storefront API headers](https://developer-stage.adobe.com/commerce/services/composable-catalog/storefront-services/using-the-api/#header).
+The brand and location (`AC-Policy-Brand` and `AC-Policy-Country`) are passed in using [Merchandising API headers](https://developer-stage.adobe.com/commerce/services/composable-catalog/storefront-services/using-the-api/#header).
 
 Use the following headers in the request:
 
@@ -864,7 +815,7 @@ The response returns the product details for a single SKU, `Aurora Prism battery
 
 Retrieve the SKU you created for `Bolt` where location is `UK`. Use the search phrase `Zenith Automotive Vehicles and Parts`, and specify a page size to limit results.
 
-The brand and location (`AC-Policy-Brand` and `AC-Policy-Country`) are passed in using the [Storefront API headers](https://developer-stage.adobe.com/commerce/services/composable-catalog/storefront-services/using-the-api/#header).
+The brand and location (`AC-Policy-Brand` and `AC-Policy-Country`) are passed in using the [Merchandising API headers](https://developer-stage.adobe.com/commerce/services/composable-catalog/storefront-services/using-the-api/#header).
 
 Use the following headers in the request:
 
