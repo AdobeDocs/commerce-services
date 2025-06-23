@@ -2,6 +2,7 @@
 title: Retrieve catalog data
 edition: ee
 description: Build dynamic commerce storefronts with the Merchandising GraphQL API. Access real-time catalog, product discovery, and recommendations data.
+keywords:
   - GraphQL
   - Services
   - Storefront
