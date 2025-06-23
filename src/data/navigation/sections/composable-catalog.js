@@ -8,7 +8,7 @@ module.exports = [
           path: "/composable-catalog/data-ingestion/",
           pages: [
             {
-              title: "Using the API",
+              title: "Get started",
               path: "/composable-catalog/data-ingestion/using-the-api.md"
               },
             {
@@ -23,13 +23,21 @@ module.exports = [
           header: "true",
           pages: [
             {
-              title: "Using the API",
+              title: "Get started",
               path: "/composable-catalog/storefront-services/using-the-api.md"
               },
-              {
-              title: "API Reference",
-              path: "/composable-catalog/storefront-services/api-reference.md"
+            {
+              title: "Use cases",
+              path: "/composable-catalog/storefront-services/use-cases.md"
               },
+            {
+              title: "Limitations and considerations",
+              path: "/composable-catalog/storefront-services/limitations.md"
+            },
+            {
+              title: "Monitor and troubleshoot",
+              path: "/composable-catalog/storefront-services/troubleshooting.md"
+            }
           ]
       },
       {   title: "Set up and manage catalogs",

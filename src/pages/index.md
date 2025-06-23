@@ -10,7 +10,7 @@ hideBreadcrumbNav: true
 
 <Hero slots="image, heading, text"/>
 
-![Merchandising Services](_images/home-bg.jpeg)
+![Merchandising Services](_images/pipeline-illustration.png)
 
 # Merchandising Services
 

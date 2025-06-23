@@ -8,7 +8,7 @@ Find your tenant ID in the access URLs for your Commerce Optimizer project in Cl
 
 1. To view the access URLs including the base URL for the REST and GraphQL APIs, click the information icon next to the instance name.
 
-   ![Access URLs for Commerce Optimizer UI, REST, and GraphQL APIs](../../pages/_images/aco-instance-tenant-id.png)
+   ![Access URLs for Commerce Optimizer UI, REST, and GraphQL APIs](../../pages/_images/reporting/aco-instance-details.png)
 
 <InlineAlert variant="info" slots="text" />
 

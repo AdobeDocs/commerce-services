@@ -1,6 +1,6 @@
 ---
 title: Live Search Events | Commerce Services
-description: Lists events in the Adobe Commerce Event SDK that are applicable to Live Search. 
+description: Lists events in the Adobe Commerce Event SDK that are applicable to Live Search.
 keywords:
   - Search
   - Services

@@ -31,7 +31,7 @@ Metadata is required to index product data for discovery. Consequently, it must 
 
 You can also define custom metadata for additional product attributes. For example, you can define a `brand` attribute to allow product discovery and filtering by brand name.
 
-For details, see [Metadata APIs](https://developer-stage.adobe.com/commerce/services/composable-catalog/data-ingestion/api-reference/#tag/Metadata) in the API reference.
+For details, see <a href="https://developer-stage.adobe.com/commerce/services/composable-catalog/reference/rest/index.html/#tag/Metadata" target="_blank" rel="noopener noreferrer">Metadata API</a> in the *Data Ingestion API Reference*.
 
 ## Products
 
@@ -48,7 +48,7 @@ Each product type has its own set of attributes and configurations to help you m
 
 For example, if you're selling a t-shirt, the product variants might include different sizes (small, medium, large) and colors (red, blue, green). Each combination of size and color represents a unique product variant
 
-For details, see [Product APIs](https://developer-stage.adobe.com/commerce/services/composable-catalog/data-ingestion/api-reference/#tag/Products) in the API reference.
+For details, see <a href="https://developer-stage.adobe.com/commerce/services/composable-catalog/reference/rest/index.html/#tag/Products" target="_blank" rel="noopener noreferrer">Products API</a> in the *Data Ingestion API reference*.
 
 ## Price books and prices
 
@@ -58,4 +58,4 @@ In Merchandising Services, a product SKU and its price are decoupled. This decou
 
 **Prices** are the monetary values assigned to products within a price book. To create prices for each product SKU, specify the associated price books and define the pricing schedule for each price book.
 
-For details, see [Price book](https://developer-stage.adobe.com/commerce/services/composable-catalog/data-ingestion/api-reference/#tag/Price-Books) and [Prices](https://developer-stage.adobe.com/commerce/services/composable-catalog/data-ingestion/api-reference/#tag/Price-Books) in the API reference.
+For details, see <a href="https://developer-stage.adobe.com/commerce/services/composable-catalog/reference/rest/index.html/#tag/Price-Books" target="_blank" rel="noopener noreferrer">Price Books</a> and <a href="https://developer-stage.adobe.com/commerce/services/composable-catalog/reference/rest/index.html/#tag/Prices" target="_blank" rel="noopener noreferrer">Prices</a> in the *Data Ingestion API Reference*.

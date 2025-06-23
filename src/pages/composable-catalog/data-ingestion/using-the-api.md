@@ -1,5 +1,5 @@
 ---
-title: Using the data ingestion API
+title: Get Started with the Data Ingestion API
 edition: ee
 description: Get information about using the data ingestion API to create and manage product, price book, and price data for you commerce catalog.
 keywords:
@@ -9,7 +9,7 @@ keywords:
   - Performance
 ---
 
-# Using the data ingestion API
+# Get started with the data ingestion API
 
 Use the data ingestion API to create and manage product data for your ecommerce catalog. Data includes products, product attribute metadata, prices books, and prices.
 
@@ -96,6 +96,12 @@ curl --request POST \
 
 For sample requests, see the [tutorial](../ccdm-use-case.md).
 
+## Use the Adobe Commerce Optimizer SDK
+
+The Adobe Commerce Optimizer (ACO) SDK provides an easy integration point with the Adobe Commerce Optimizer Data Ingestion API. With the ACO SDK, the SDK helps you manage the full integration with catalog ingestion APIs and IMS authentication methods. To download the SDK and learn how to use it, see the [Adobe Commerce Optimizer GitHub repository](https://github.com/adobe-commerce/aco-ts-sdk).
+
 ## Limitations
 
-See [Limits and boundaries](https://experienceleague.adobe.com/en/docs/commerce/optimizer/boundaries-limits) in the *Adobe Commerce Optimizer Guide*.
+The Data Ingestion API has a rate limit of 300 requests per minute.
+
+For additional information about limits and boundaries, see the [Limits and boundaries](https://experienceleague.adobe.com/docs/commerce-optimizer/boundaries-limits.html) section in the *Adobe Commerce Optimizer Guide*.

@@ -1,7 +1,7 @@
 ---
-title: Using the storefront API
+title: Get Started with the Merchandising API
 edition: ee
-description: Learn how to use the storefront APIs to manage and deliver product data to commerce storefronts or applications in the context of Merchandising Services.
+description: Build dynamic e-commerce storefronts with the Merchandising GraphQL API. Access real-time product data, pricing, search, and recommendations from Adobe Commerce Optimizer with optimized performance and multi-channel support.
 keywords:
   - GraphQL
   - Services
@@ -9,13 +9,25 @@ keywords:
   - Performance
 ---
 
-# Using the storefront API
+# Get started with the Merchandising API
 
-Use the Storefront API to retrieve product data from your Commerce catalogs and display it in Commerce frontend experiences. Data includes products, product attribute metadata, prices books, and prices.
+Use the Merchandising API to retrieve product data from your Commerce catalogs and display it in Commerce frontend experiences. Data includes products, product attribute metadata, prices books, and prices.
+
+## Prerequisites
+
+Before using the Merchandising API, ensure you have:
+
+- **Adobe Commerce Optimizer Access**: Active subscription and the tenant ID associated with your Valid tenant ID
+- **Catalog Data**: Products and pricing data ingested via the [Data Ingestion API](../data-ingestion/index.md)
+- **Catalog Views**: Configured views and policies in Adobe Commerce Optimizer
+- **Authentication Setup**: Proper headers configured for API requests
+- **GraphQL Client**: A tool or library to make GraphQL requests (e.g., Postman, Apollo Client, or cURL)
+- **Familiarity with GraphQL**: Basic understanding of GraphQL queries and mutations
+- **Development Environment**: Set up for testing API requests (e.g., local development server or staging environment)
 
 ## Base URL
 
-Send all Storefront API requests to this base URL:
+Send all Merchandising API requests to this base URL:
 
 ```text
 https://na1-sandbox.api.commerce.adobe.com/<tenantId>/graphql
@@ -42,13 +54,11 @@ import GetTenantId from '/src/_includes/authentication/get-tenant-id.md'
 
 ## Authentication
 
-Authentication is not required for the Storefront API.
+Authentication is not required for the Merchandising API.
 
 ## Headers
 
-When making requests to the storefront API, you must include specific HTTP headers to ensure proper authentication and data retrieval. These headers provide necessary information, such as the channel ID, locale, and optional policy and price book headers that tailor the API response to your needs.
-
-Include the following headers in GraphQL requests as needed.
+When making requests to the storefront API, you must include required HTTP headers that provide necessary information, such as the catalog view ID, catalog source locale. Additionally, you can include optional policy and price book headers that tailor the API response to your needs.
 
 | Header name| Description
 | --- | ---
@@ -65,7 +75,7 @@ Use the following template to submit requests using [curl](https://curl.se/). Us
 curl --request POST \
 -- url https://na1-sandbox.api.commerce.adobe.com/<tenantId>/graphql \
 --header --header 'AC-Environment-ID: <tenantId>' \
---header 'AC-View-ID:  <channelId>'  \
+--header 'AC-View-ID:  <catalogviewId>'  \
 --header 'AC-Policy-<POLICY_NAME>: <policyValue>' \
 --header 'AC-Price-Book-ID-<pricebookId>' \
 --header 'AC-Source-Locale: <localeValue>' \
@@ -74,15 +84,53 @@ curl --request POST \
 
 | Placeholder name | Description                                                                                                     |
 |------------------|-----------------------------------------------------------------------------------------------------------------|
-| `channelID`   | The ID for the channel products will be sold through. Use the <a href="https://developer-stage.adobe.com/commerce/services/graphql-api/admin-api/index.html#query-channels">channels query</a> to retrieve available IDs.|
+| `catalogviewlID`   | The ID for the catalog view products will be sold through.|
 | `tenantId` | is the unique identifier for your organization's specific instance within the Adobe Experience Cloud.|
-| `policyName: policyValue` | Optional. The policy trigger name and value that sets data access filters to restrict product access based on request attributes. Use the <a href="https://developer-stage.adobe.com/commerce/services/graphql-api/admin-api/index.html#query-policies">policies query</a> to retrieve available policies.                    |
+| `policyName: policyValue` | Optional. The policy trigger name and value that sets data access filters to restrict product access based on request attributes.              |
 | `pricebookID`  | Optional. The price book ID used to retrieve the pricing schedule for a SKU. |
 | localeValue | The catalog source locale (language or geography) to filter products for display or update. |            |
 | apiPayload      | API payload. See examples in the <a href="ccdm-use-cases">tutorial.</a> |
 
-For sample requests and examples using the API, see the [API Reference](api-reference.md) and the [tutorial](../ccdm-use-case.md).
+Get the values for catalog view, policy, catalog source locale, and price book from the [Adobe Commerce Optimizer UI](https://experienceleague.adobe.com/en/docs/commerce/optimizer/overview#quick-tour).
 
-## Limitations
+## Make your first request
 
-See [Limits and boundaries](https://experienceleague.adobe.com/en/docs/commerce/optimizer/boundaries-limits) in the *Adobe Commerce Optimizer Guide*.
+To get started with the Merchandising API, follow these steps to make your first request:
+
+1. Get values for the tenant ID and required authentication headers
+
+   - `tenantId`: Your unique tenant ID for Adobe Commerce Optimizer
+   - `AC-View-ID`: Catalog view ID from Adobe Commerce Optimizer
+   - `AC-Source-Locale`: Locale for data filtering (for example, `en-US`, `en-GB`)
+
+2. Make your first query
+
+   Use the following example to search for products using the `productSearch` query, replacing the variable with your own values based on the catalog data and the configuration or your Adobe Commerce Optimizer instance This query retrieves a list of products based on a search term, including their IDs, SKUs, names, and prices.
+
+   ```bash
+   curl -X POST \
+     'https://na1-sandbox.api.commerce.adobe.com/{{tenant-id}}/graphql' \
+     -H 'Content-Type: application/json' \
+     -H 'AC-View-ID: {{your-catalog-view-id}}' \
+     -H 'AC-Source-Locale: en-US' \
+     -d '{
+     "query": "query ProductSearch($search: String!) { productSearch(search: $search, pageSize: 10) { items { id sku   name price { regularPrice { amount { value currency } } } } totalCount } }",
+     "variables": {
+     "search": ""
+       }
+     }'
+   ```
+
+   For sample requests and examples using the API, see the <a href="https://developer-stage.adobe.com/commerce/services/references/rest/" target="_blank" rel="noopener noreferrer">Merchandising API Reference</a>.
+
+## Test with the GraphQL Playground
+
+For interactive testing and exploration, use the [Adobe Commerce Optimizer API Playground]<a href="https://experienceleague.adobe.com/developer/commerce/storefront/playgrounds/commerce-optimizer/" target="_blank" rel="noopener noreferrer">Adobe Commerce Optimizer API Playground</a>.
+
+## Getting Help
+
+### Documentation Resources
+
+- **[Adobe Commerce Optimizer Guide](https://experienceleague.adobe.com/en/docs/commerce/optimizer/overview.html)**: Comprehensive documentation for Adobe Commerce Optimizer
+- **[Adobe Commerce Storefront Guide](https://experienceleague.adobe.com/docs/commerce-storefront.html)**: Documentation for integrating with Adobe Commerce storefront on Adobe Edge Delivery Services.
+- **[Adobe Developer App Builder for Commerce](https://experienceleague.adobe.com/en/docs/commerce-learn/tutorials/adobe-developer-app-builder/introduction-to-app-builder)
