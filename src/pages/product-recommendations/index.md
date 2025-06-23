@@ -1,7 +1,6 @@
 ---
 title: Product Recommendations SDK
 description: Learn how to use the Product Recommendations SDK with Adobe Commerce to fetch recommendations programmatically in the browser.
-edition: ee
 keywords:
   - Recommendations
   - Services
@@ -12,8 +11,6 @@ keywords:
 If you need to programmatically access product recommendations for your storefront, use the [Product Recommendations JavaScript SDK](https://www.npmjs.com/package/@magento/recommendations-js-sdk). The SDK is a web services API wrapper that allows you to fetch recommendations programmatically in the browser. With the SDK, you do not need to manage the full lifecycle or understand the complexity of the web services API.
 
 ## Installing
-
-### Product Recommendations JavaScript SDK
 
 This SDK can be pulled down from a CDN or installed as a module from NPM.
 

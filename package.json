@@ -29,7 +29,6 @@
     "serve": "NODE_OPTIONS='--max-old-space-size=8192' gatsby serve",
     "clean": "gatsby clean",
     "test": "remark src/pages --frail",
-    "build:saas-api": "spectaql --target-file index.html --config static/graphql/source/config-saas.yml",
     "build:admin-api": "spectaql --target-file index.html --config spectaql/config-admin.yml",
     "dev:admin-api": "spectaql --target-file index.html --config spectaql/config-admin.yml --development-mode",
     "build:storefront-api": "spectaql --target-file index.html --config spectaql/config-storefront.yml",

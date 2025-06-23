@@ -1,7 +1,6 @@
 ---
 title: Context for storefront events | Commerce Services 
 description: Learn how to programmatically get and set context for Adobe Commerce storefront events.
-edition: ee
 keywords:
   - Events
   - Services

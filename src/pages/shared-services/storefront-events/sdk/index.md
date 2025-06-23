@@ -1,7 +1,6 @@
 ---
 title: Adobe Commerce Events SDK | Commerce Services
 description: Learn how to programmatically publish and subscribe to Adobe Commerce storefront events.
-edition: ee
 keywords:
   - Events
   - Services
