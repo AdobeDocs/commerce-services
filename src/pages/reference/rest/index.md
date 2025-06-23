@@ -5,7 +5,7 @@ keywords:
   - REST
   - Integration
   - Services
-  - Data Import/Export
+  - Data Import
 layout: none
 
 ---
