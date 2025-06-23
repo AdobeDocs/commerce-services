@@ -30,6 +30,11 @@
     "clean": "gatsby clean",
     "test": "remark src/pages --frail",
     "build:saas-api": "spectaql --target-file index.html --config static/graphql/source/config-saas.yml",
+    "build:admin-api": "spectaql --target-file index.html --config spectaql/config-admin.yml",
+    "dev:admin-api": "spectaql --target-file index.html --config spectaql/config-admin.yml --development-mode",
+    "build:storefront-api": "spectaql --target-file index.html --config spectaql/config-storefront.yml",
+    "dev:storefront-api": "spectaql --target-file index.html --config spectaql/config-storefront.yml --development-mode",
+    "build:graphql": "yarn build:admin-api && yarn build:storefront-api",
     "lint": "docker run --rm -e RUN_LOCAL=true --env-file .github/super-linter.env -v \"$PWD\":/tmp/lint github/super-linter:slim-v5"
   },
   "packageManager": "yarn@3.2.4"
