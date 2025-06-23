@@ -1,8 +1,7 @@
 ---
 title: Retrieve catalog data
 edition: ee
-description: Build dynamic commerce storefronts with the Merchandising GraphQL API. Access real-time product data, pricing, search, and recommendations using catalog data from Adobe Commerce Optimizer.
-
+description: Build dynamic commerce storefronts with the Merchandising GraphQL API. Access real-time catalog data and support product discovery and recommendations capabilities.
 keywords:
   - GraphQL
   - Services
@@ -10,6 +9,7 @@ keywords:
   - Merchandising
   - Search
   - Recommendations
+  - Security
 ---
 
 # Retrieve catalog data with the Merchandising API
@@ -91,13 +91,13 @@ For custom storefronts built with frameworks like React, Vue.js, Angular, or any
 
 ## Next Steps
 
-See the [Getting Started with the Merchandising API](#getting-started) section for instructions on how to set up your environment and start using the API.
+See the [Get Started with the Merchandising API](using-the-api.md) section for instructions on how to set up your environment and start using the API.
 
 ## Related Documentation
 
 - **[Data Ingestion API](../data-ingestion/index.md)**: Ingest and manage product and pricing data
 - **<a href="https://experienceleague.adobe.com/docs/commerce/optimizer/setup/catalog-view.html" target="_blank" rel="noopener noreferrer">Catalog Management</a>**: Set up catalog views and policies in Adobe Commerce Optimizer
-- **[API Reference](../api-reference.md)**: Complete Merchandising API documentation with examples
+- **<a href="https://developer-stage.adobe.com/commerce/services/composable-catalog/reference/graphql/index.html" target="_blank" rel="noopener noreferrer">**: Merchandising API Reference
 - **[GraphQL Queries](use-cases.md#available-queries)**: Available queries
 
 For additional support and community resources, visit the [Adobe Commerce Developer Portal](https://developer.adobe.com/commerce/).

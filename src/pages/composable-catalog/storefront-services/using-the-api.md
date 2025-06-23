@@ -1,7 +1,7 @@
 ---
 title: Get Started with the Merchandising API
 edition: ee
-description: Build dynamic e-commerce storefronts with the Merchandising GraphQL API. Access real-time product data, pricing, search, and recommendations from Adobe Commerce Optimizer with optimized performance and multi-channel support.
+description: Learn how to use the Merchandising GraphQL API to access real-time catalog, product discovery, and recommendations data from Adobe Commerce Optimizer.
 keywords:
   - GraphQL
   - Services
