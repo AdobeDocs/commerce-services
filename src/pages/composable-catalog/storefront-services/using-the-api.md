@@ -17,7 +17,7 @@ Use the Merchandising API to retrieve product data from your Commerce catalogs a
 
 Before using the Merchandising API, ensure you have:
 
-- **Adobe Commerce Optimizer Access**: Active subscription and the tenant ID associated with your Valid tenant ID
+- **Adobe Commerce Optimizer Access**: Active subscription and the tenant ID associated with your Adobe Commerce Optimizer instance
 - **Catalog Data**: Products and pricing data ingested via the [Data Ingestion API](../data-ingestion/index.md)
 - **Catalog Views**: Configured views and policies in Adobe Commerce Optimizer
 - **Authentication Setup**: Proper headers configured for API requests
@@ -84,14 +84,14 @@ curl --request POST \
 
 | Placeholder name | Description                                                                                                     |
 |------------------|-----------------------------------------------------------------------------------------------------------------|
-| `catalogviewlID`   | The ID for the catalog view products will be sold through.|
+| `catalogviewID`   | The ID for the catalog view products will be sold through.|
 | `tenantId` | is the unique identifier for your organization's specific instance within the Adobe Experience Cloud.|
 | `policyName: policyValue` | Optional. The policy trigger name and value that sets data access filters to restrict product access based on request attributes.              |
 | `pricebookID`  | Optional. The price book ID used to retrieve the pricing schedule for a SKU. |
-| localeValue | The catalog source locale (language or geography) to filter products for display or update. |            |
-| apiPayload      | API payload. See examples in the <a href="ccdm-use-cases">tutorial.</a> |
+| `localeValue` | The catalog source locale (language or geography) to filter products for display or update. |            |
+| `apiPayload`      | API payload. See examples in the <a href="ccdm-use-cases">tutorial.</a> |
 
-Get the values for catalog view, policy, catalog source locale, and price book from the [Adobe Commerce Optimizer UI](https://experienceleague.adobe.com/en/docs/commerce/optimizer/overview#quick-tour).
+Get the values for catalog view, policy, catalog source locale, and price book data from the [Adobe Commerce Optimizer UI](https://experienceleague.adobe.com/en/docs/commerce/optimizer/overview#quick-tour).
 
 ## Make your first request
 
@@ -125,12 +125,11 @@ To get started with the Merchandising API, follow these steps to make your first
 
 ## Test with the GraphQL Playground
 
-For interactive testing and exploration, use the [Adobe Commerce Optimizer API Playground]<a href="https://experienceleague.adobe.com/developer/commerce/storefront/playgrounds/commerce-optimizer/" target="_blank" rel="noopener noreferrer">Adobe Commerce Optimizer API Playground</a>.
+For interactive testing and exploration, use the <a href="https://experienceleague.adobe.com/developer/commerce/storefront/playgrounds/commerce-optimizer/" target="_blank" rel="noopener noreferrer">Adobe Commerce Optimizer API Playground</a>.
 
-## Getting Help
+## Related documentation
 
-### Documentation Resources
-
-- **[Adobe Commerce Optimizer Guide](https://experienceleague.adobe.com/en/docs/commerce/optimizer/overview.html)**: Comprehensive documentation for Adobe Commerce Optimizer
-- **[Adobe Commerce Storefront Guide](https://experienceleague.adobe.com/docs/commerce-storefront.html)**: Documentation for integrating with Adobe Commerce storefront on Adobe Edge Delivery Services.
-- **[Adobe Developer App Builder for Commerce](https://experienceleague.adobe.com/en/docs/commerce-learn/tutorials/adobe-developer-app-builder/introduction-to-app-builder)
+- **[Adobe Commerce Optimizer Guide](https://experienceleague.adobe.com/en/docs/commerce/optimizer/overview.html)**: Review comprehensive documentation for Adobe Commerce Optimizer.
+- **[Adobe Commerce Storefront Guide](https://experienceleague.adobe.com/docs/commerce-storefront.html)**: Get help integrating Adobe Commerce Optimizer with an Adobe Commerce storefront on Adobe Edge Delivery Services.
+- **[Adobe Developer App Builder for Commerce](https://experienceleague.adobe.com/en/docs/commerce-learn/tutorials/adobe-developer-app-builder/introduction-to-app-builder)**: Get documentation for building custom applications to integrate with Adobe Commerce solutions.
+- **[Adobe Commerce Knowledge Base](https://experienceleague.adobe.com/docs/commerce-knowledge-base.html)**: Search the Adobe Commerce knowledge base for self-service solutions.
