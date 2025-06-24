@@ -1,6 +1,6 @@
 ---
 title: Using the Catalog Views and Policies API
-edition: ee
+edition: saas
 description: Get information about using GraphQL queries and mutations to manage catalog views, policies, and configuration for search and recommendations capabilities.
 keywords:
   - GraphQL

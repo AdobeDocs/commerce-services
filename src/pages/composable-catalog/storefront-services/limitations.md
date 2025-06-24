@@ -1,6 +1,6 @@
 ---
-title: Limitations and Considerations
-edition: ee
+title: Limitations and considerations
+edition: saas
 description: Learn about the limitations and considerations when using the Merchandising API to retrieve catalog data from Adobe Commerce Optimizer.
 keywords:
   - GraphQL

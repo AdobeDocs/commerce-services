@@ -1,6 +1,6 @@
 ---
 title: Use cases for the Merchandising API
-edition: ee
+edition: saas
 description: Learn about the limitations and considerations when using the Merchandising API to retrieve catalog data from Adobe Commerce Optimizer.
 keywords:
   - GraphQL
@@ -11,7 +11,7 @@ keywords:
 
 # Use cases for the Merchandising API
 
-The Merchandising API supports various e-commerce scenarios:
+The Merchandising API supports various e-commerce scenarios. The catalog data delivered by the API is filtered based on the request headers and the catalog view, catalog source, policy, and price book configuration in Adobe Commerce Optimizer. This allows you to create tailored storefront experiences for different customer segments, channels, and regions.
 
 ### E-commerce Storefronts
 
@@ -35,7 +35,7 @@ The Merchandising API supports various e-commerce scenarios:
 
 ## Available Queries
 
-The Merchandising API provides several GraphQL queries designed for different use cases:
+The Merchandising API provides several GraphQL queries designed for different use cases.
 
 | Query | Description | Use Case |
 |-------|-------------|----------|
@@ -43,7 +43,6 @@ The Merchandising API provides several GraphQL queries designed for different us
 | `productSearch` | Search products with filters, sorting, and pagination | Search results, category pages, product listings |
 | `refineProduct` | Get variant-specific information for configurable products | Product option selection, variant switching |
 | `variants` | Retrieve all variants of a configurable product | Product detail pages, variant galleries |
-| `categories` | Get category hierarchy and navigation data | Store navigation, breadcrumbs, category pages |
 | `recommendations` | Retrieve personalized product recommendations | Related products, cross-sells, and upsells |
 
 ### Query Examples

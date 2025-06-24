@@ -1,6 +1,5 @@
 ---
 title: Set up and manage catalogs
-edition: ee
 description: Learn how to use catalog views, policies, and catalog source resources to define where products are sold and who they are sold to.
 keywords:
   - GraphQL

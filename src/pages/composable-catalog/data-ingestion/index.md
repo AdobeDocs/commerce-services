@@ -1,6 +1,6 @@
 ---
 title: Data Ingestion API
-edition: ee
+edition: saas
 description: Learn how to use the Data Ingestion GraphQL API to add and manage product data using the composable catalog data model.
 keywords:
   - REST
@@ -31,7 +31,7 @@ Metadata is required to index product data for discovery. Consequently, it must 
 
 You can also define custom metadata for additional product attributes. For example, you can define a `brand` attribute to allow product discovery and filtering by brand name.
 
-For details, see <a href="https://developer-stage.adobe.com/commerce/services/composable-catalog/reference/rest/index.html/#tag/Metadata" target="_blank" rel="noopener noreferrer">Metadata API</a> in the *Data Ingestion API Reference*.
+For details, see <a href="https://developer-stage.adobe.com/commerce/services/composable-catalog/data-ingestion/api-reference/#tag/Metadata" target="_blank" rel="noopener noreferrer">Metadata API</a> in the *Data Ingestion API Reference*.
 
 ## Products
 
@@ -46,9 +46,9 @@ Each product type has its own set of attributes and configurations to help you m
 
 **Product variants** are a specific version of a product that differs from other versions based on certain attributes like size, color, or material. These variants are typically part of a configurable product, allowing customers to choose from different options on a single product page.
 
-For example, if you're selling a t-shirt, the product variants might include different sizes (small, medium, large) and colors (red, blue, green). Each combination of size and color represents a unique product variant
+For example, if you're selling a t-shirt, the product variants might include different sizes (small, medium, large) and colors (red, blue, green). Each combination of size and color represents a unique product variant.
 
-For details, see <a href="https://developer-stage.adobe.com/commerce/services/composable-catalog/reference/rest/index.html/#tag/Products" target="_blank" rel="noopener noreferrer">Products API</a> in the *Data Ingestion API reference*.
+For details, see <a href="https://developer-stage.adobe.com/commerce/services/composable-catalog/data-ingestion/api-reference/#tag/Products" target="_blank" rel="noopener noreferrer">Products API</a> in the *Data Ingestion API reference*.
 
 ## Price books and prices
 
@@ -58,4 +58,4 @@ In Merchandising Services, a product SKU and its price are decoupled. This decou
 
 **Prices** are the monetary values assigned to products within a price book. To create prices for each product SKU, specify the associated price books and define the pricing schedule for each price book.
 
-For details, see <a href="https://developer-stage.adobe.com/commerce/services/composable-catalog/reference/rest/index.html/#tag/Price-Books" target="_blank" rel="noopener noreferrer">Price Books</a> and <a href="https://developer-stage.adobe.com/commerce/services/composable-catalog/reference/rest/index.html/#tag/Prices" target="_blank" rel="noopener noreferrer">Prices</a> in the *Data Ingestion API Reference*.
+For details, see <a href="https://developer-stage.adobe.com/commerce/services/composable-catalog/data-ingestion/api-reference/#tag/Metadata/#tag/Price-Books" target="_blank" rel="noopener noreferrer">Price Books</a> and <a href="https://developer-stage.adobe.com/commerce/services/composable-catalog/data-ingestion/api-reference/#operation/createPrices" target="_blank" rel="noopener noreferrer">Prices</a> in the *Data Ingestion API Reference*.

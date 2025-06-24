@@ -1,6 +1,6 @@
 ---
 title: Merchandising Services Developer Guide
-edition: ee
+edition: saas
 description: Use the Merchandising Services powered by Channels and Polices to implement large, complex catalogs and develop highly performant storefront experiences.
 keywords:
   - GraphQL

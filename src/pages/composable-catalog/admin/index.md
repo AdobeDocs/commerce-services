@@ -1,6 +1,6 @@
 ---
 title:  Catalog Views and Policies APIs
-edition: ee
+edition: saas
 description: Use the Channels and Policies API to set up the channels, policies, and scopes for commerce catalogs.
 keywords:
   - GraphQL

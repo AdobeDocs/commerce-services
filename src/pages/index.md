@@ -1,6 +1,7 @@
 ---
 title: Merchandising Services
 description: Learn about the APIs and tools available to manage and use commerce catalog and event data programmatically.
+edition: saas
 keywords:
   - GraphQL
   - REST

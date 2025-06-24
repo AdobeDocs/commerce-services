@@ -1,6 +1,5 @@
 ---
 title: Create a composable catalog for your storefront
-edition: ee
 description: Tutorial to create a composable catalog that supports a single base catalog which can deliver catalog projections based on geographic locations and brand.
 keywords:
   - GraphQL

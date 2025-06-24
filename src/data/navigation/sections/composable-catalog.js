@@ -6,20 +6,25 @@ module.exports = [
         {
           title: "Ingest product and price data",
           path: "/composable-catalog/data-ingestion/",
-          pages: [
-            {
-              title: "Get started",
-              path: "/composable-catalog/data-ingestion/using-the-api.md"
-              },
-            {
-              title: "API Reference",
-              path: "/composable-catalog/data-ingestion/api-reference.md"
-            },
-          ]
+          header: "true",
+        pages: [
+          {
+            title: "Authentication",
+            path: "/composable-catalog/data-ingestion/authentication.md"
+          },
+          {
+            title: "Get started",
+            path: "/composable-catalog/data-ingestion/using-the-api.md"
+          },
+          {
+            title: "API Reference",
+            path: "/composable-catalog/data-ingestion/api-reference"
+          },
+        ]
       },
       {
           title: "Retrieve catalog data",
-          path: "composable-catalog/storefront-services/",
+          path: "/composable-catalog/storefront-services/",
           header: "true",
           pages: [
             {
@@ -31,21 +36,22 @@ module.exports = [
               path: "/composable-catalog/storefront-services/use-cases.md"
               },
             {
-              title: "Limitations and considerations",
+              title: "Limitations",
               path: "/composable-catalog/storefront-services/limitations.md"
             },
             {
               title: "Monitor and troubleshoot",
               path: "/composable-catalog/storefront-services/troubleshooting.md"
-            }
+            },
+            {
+              title: "API Reference",
+              path: "/composable-catalog/storefront-services/api-reference.md"
+            },
           ]
-      },
-      {   title: "Set up and manage catalogs",
-            path: "/composable-catalog/manage-catalogs.md"
       },
       { title: "Tutorial",
           path: "/composable-catalog/ccdm-use-case.md"
-      }
+      },
     ]
   }
 ];
