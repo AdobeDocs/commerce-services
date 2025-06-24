@@ -69,7 +69,7 @@ When making requests to the storefront API, you must include required HTTP heade
 |`AC-View-ID` | Required. The ID for the catalog view that products will be sold through. For example, in the automotive industry, the catalog view could be dealers. In the manufacturing industry, the view could be a manufacturing location for suppliers. You can view the list of available catalog view and associated ids from the [Adobe Commerce Optimizer UI](https://experienceleague.adobe.com/en/docs/commerce/optimizer/catalog/channels).|
 `AC-Policy-{*}` | Optional. The trigger name configured for a policy that sets data access filters to restrict product access based on request attributes and context. Examples include POS physical stores, marketplaces, or advertisement pipelines like Google, Meta, or Instagram. You can view the list of available policies and associated ids from the [Adobe Commerce Optimizer UI](https://experienceleague.adobe.com/en/docs/commerce/optimizer/catalog/policies).You can specify multiple policy headers per request. Example: `AC-Policy-Country`.
 `AC-Price-Book-ID` | Optional. Defines how prices are calculated for a specific catalog view. Use if the merchant uses price books to calculate pricing. Merchandising Services provides a default price book `main` with currency in US dollars.
-`AC-Source-Locale`: | Required. The catalog source locale (language or geography) to filter products for display or update, for example `en_US`. Use the [channels query](https://developer-stage.adobe.com/commerce/services/graphql-api/admin-api/index.html#query-channels) to retrieve the locale IDs available for each catalog view.
+`AC-Source-Locale`: | Required. The catalog source locale (language or geography) to filter products for display or update, for example `en_US`. See the catalog view configuration in the [Adobe Commerce Optimizer UI](https://experienceleague.adobe.com/en/docs/commerce/optimizer/catalog/channels) to determine the correct value.
 
 ### Request template
 
@@ -125,7 +125,7 @@ To get started with the Merchandising API, follow these steps to make your first
      }'
    ```
 
-   For sample requests and examples using the API, see the <a href="https://developer-stage.adobe.com/commerce/services/composable-catalog-storefront-services/api-reference/" target="_blank" rel="noopener noreferrer">Merchandising API Reference</a>.
+   For sample requests and examples using the API, see the <a href="https://developer-stage.adobe.com/commerce/services/composable-catalog/reference/graphql/merchandising-api.md/" target="_blank" rel="noopener noreferrer">Merchandising API Reference</a>.
 
 ## Test with the GraphQL Playground
 

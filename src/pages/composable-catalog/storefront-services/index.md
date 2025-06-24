@@ -57,7 +57,7 @@ This diagram illustrates the flow of data between the storefront, the Merchandis
 3. **Data Retrieval**: Optimized queries fetch relevant product and pricing data
 4. **Response**: Structured data is returned to your application for rendering
 
-Product catalog updates delivered directly through data ingestion API requests, or a third-party app integration are synchronized to Adobe Commerce Optimizer, ensuring that the Merchandising API always serves the latest data.
+Product catalog updates delivered directly through data ingestion API requests or a third-party app integration are synchronized to Adobe Commerce Optimizer, ensuring that the Merchandising API always serves the latest data.
 
 ## Integration Options
 

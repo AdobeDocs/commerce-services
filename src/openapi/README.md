@@ -30,4 +30,4 @@ The Data Ingestion API Reference is embedded in the [Data Ingestion API referenc
 
 1. After updates are approved, a documentation team member merges the PR and publishes the updates to [developer-stage site](https://developer-stage.adobe.com/commerce/services/composable-catalog/) for Early Access customers.
 
-   You can review the currently published version in the [Data Ingestion API reference topic](https://developer-stage.adobe.com/commerce/services/composable-catalog/data-ingestion/api-reference/).
+   You can review the currently published version in the [Data Ingestion API reference topic](https://developer-stage.adobe.com/commerce/services/composable-catalog/reference/rest/data-ingestion-api/).
