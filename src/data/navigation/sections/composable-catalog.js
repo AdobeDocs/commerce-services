@@ -52,6 +52,21 @@ module.exports = [
       { title: "Tutorial",
           path: "/composable-catalog/ccdm-use-case.md"
       },
+      {
+        title: "Reference",
+        path: "/composable-catalog/reference/",
+        header: "true",
+        pages: [
+          {
+            title: "Data Ingestion REST API",
+            path: "/composable-catalog/reference/rest/data-ingestion-api.md"
+            },
+          {
+            title: "Merchandising GraphQL API",
+            path: "/composable-catalog/reference/graphql/merchandising-api.md"
+            },
+        ]
+      },
     ]
   }
 ];
