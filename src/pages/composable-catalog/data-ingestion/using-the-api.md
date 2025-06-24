@@ -206,9 +206,9 @@ After you successfully make your first request, you can continue to use the Data
 
 You can also explore the [API reference](https://developer-stage.adobe.com/commerce/services/composable-catalog/reference/rest/data-ingestion-api/) for detailed information about each endpoint and its parameters.
 
-## Create integrations with SDK
+## Create integrations with the SDK
 
-The Adobe Commerce Optimizer (ACO) SDK provides an easy integration point with the Adobe Commerce Optimizer Data Ingestion API. With the ACO SDK, the SDK helps you manage the full integration with catalog ingestion APIs and IMS authentication methods. To download the SDK and learn how to use it, see the [Adobe Commerce Optimizer GitHub repository](https://github.com/adobe-commerce/aco-ts-sdk).
+The Adobe Commerce Optimizer SDK for Typescript & Javascript provides an easy integration point with the Adobe Commerce Optimizer Data Ingestion API. This SDK helps you manage the full integration with catalog ingestion APIs and IMS authentication methods. To download the SDK and learn how to use it, see the [Adobe Commerce Optimizer SDK GitHub repository](https://github.com/adobe-commerce/aco-ts-sdk).
 
 ## Limitations
 
