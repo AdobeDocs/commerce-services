@@ -18,7 +18,7 @@ module.exports = [
           },
           {
             title: "API Reference",
-            path: "/composable-catalog/data-ingestion/api-reference/"
+            path: "/composable-catalog/data-ingestion/api-reference"
           },
         ]
       },

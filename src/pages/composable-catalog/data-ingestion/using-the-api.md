@@ -204,7 +204,7 @@ After you successfully make your first request, you can continue to use the Data
 - Create price books to manage pricing for different customer segments, regions, or sales channels.
 - Create prices to set the monetary values for your products within the price books.
 
-You can also explore the [API reference](https://developer-stage.adobe.com/commerce/services/composable-catalog/reference/rest/data-ingestion-api/) for detailed information about each endpoint and its parameters.
+You can also explore the [API reference](https://developer-stage.adobe.com/commerce/services/composable-catalog/data-ingestion/api-reference/) for detailed information about each endpoint and its parameters.
 
 ## Create integrations with SDK
 
@@ -216,6 +216,6 @@ The Data Ingestion API has a rate limit of 300 requests per minute.
 
 For additional information about limits and boundaries, see the [Limits and boundaries](https://experienceleague.adobe.com/docs/commerce-optimizer/boundaries-limits.html) section in the *Adobe Commerce Optimizer Guide*.
 
-<InlineAlert variant="info" slots="text" />
-
+>[!NOTE]
+>
 >This guide covers direct API access using bearer tokens. For user authentication workflows, see the [User Authentication Guide](https://developer.adobe.com/developer-console/docs/guides/authentication/UserAuthentication/implementation/).
