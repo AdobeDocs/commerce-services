@@ -52,7 +52,7 @@ Include the following headers in REST API requests.
 |--------------|----------|-------------|
 | `Content-Encoding` | No  | Use this header only if the payload is compressed with gzip. Accepted value: `gzip`.                                                                           |
 | `Content-Type`  | Yes   | Media type of the resource. Accepted value: `application/json`. |
-| `Authorization: Bearer {access token}`  | Yes  | Bearer access token generated using credentials from the Adobe developer project for the API integration.                            |
+| `Authorization: Bearer {access token}`  | Yes  | Bearer access token generated using credentials from the Adobe developer project for the API integration.  See [Authentication](authentication.md).                          |
 
 ## Request template
 
@@ -69,7 +69,7 @@ curl --request POST \
 | Placeholder name | Description                                                                                                    |
 |------------------|----------------------------------------------------------------------------------------------------------------|
 | `endpoint`       | Endpoint for specific Data Ingestion API, for example: `/v1/catalog/products/prices`  |
-| `accessToken`    | Bearer token generated from IMS credentials. See [Authentication](#authentication).                                   |
+| `accessToken`    | Bearer token generated from IMS credentials. See [Authentication](authentication.md).                                   |
 | `apiPayload`     | API payload see examples in the [tutorial](../ccdm-use-case.md)                                                                             |
 
 For sample requests, see the [tutorial](../ccdm-use-case.md).
