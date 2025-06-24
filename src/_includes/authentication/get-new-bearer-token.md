@@ -20,4 +20,3 @@ You can get these credentials from the Adobe Developer Console project details p
 <InlineAlert variant="info" slots="text" />
 
 For information on managing, refreshing, and revoking bearer tokens, see the [User Authentication Implementation Guide](https://developer.adobe.com/developer-console/docs/guides/authentication/UserAuthentication/) in the *Adobe Developer Console documentation*.
-
