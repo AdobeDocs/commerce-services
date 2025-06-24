@@ -422,12 +422,12 @@ info:
   ##############################################
 
   description: |
-     Use the storefront GraphQL API to access rich view-model (read-only) catalog data to build product-related storefront experiences.
-     For more information about the API, see the <a href="https://developer-stage.adobe.com/commerce/services/composable-catalog/storefront-services/" target="_blank">developer documentation</a>.
-  title: Storefront API
+     Use the Merchandising GraphQL API to access rich view-model (read-only) catalog data to build product-related storefront experiences.
+     For more information about the API, see the <a href="https://developer-stage.adobe.com/commerce/services/composable-catalog/storefront-services/api-reference/" target="_blank">developer documentation</a>.
+  title: Merchandising GraphQL API
   # This is non-standard and optional. If omitted, will use "title". Also, only relevant
   # when building non-embedded.
-  x-htmlTitle: Storefront API
+  x-htmlTitle: Merchandising GraphQL API
   # termsOfService: 'https://yoursite.com/terms'
   # contact:
   #   name: YourSite Support

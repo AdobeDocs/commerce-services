@@ -7,18 +7,17 @@
     "url": "https://github.com/AdobeDocs/commerce-services"
   },
   "dependencies": {
-    "@adobe/gatsby-theme-aio": "4.14.19",
+    "@adobe/gatsby-theme-aio": "4.15.1",
     "gatsby": "4.22.0",
     "react": "^17.0.0",
-    "react-dom": "^17.0.0",
-    "spectaql": "^3.0.2"
+    "react-dom": "^17.0.0"
   },
   "devDependencies": {
+    "browserslist": "latest",
     "remark-cli": "^12.0.1",
     "remark-frontmatter": "^5.0.0",
     "remark-heading-id": "^1.0.1",
     "remark-lint-frontmatter-schema": "^3.15.4",
-    "remark-lint-no-dead-urls": "^1.1.0",
     "remark-validate-links": "^13.0.1"
   },
   "scripts": {
@@ -29,12 +28,13 @@
     "build": "NODE_OPTIONS='--max-old-space-size=8192' gatsby build",
     "serve": "NODE_OPTIONS='--max-old-space-size=8192' gatsby serve",
     "clean": "gatsby clean",
-    "test": "remark src/pages --quiet --frail",
+    "test": "remark src/pages --frail",
     "build:admin-api": "spectaql --target-file index.html --config spectaql/config-admin.yml",
-    "dev:admin-api": "spectaql --development-mode-live --config spectaql/config-admin.yml",
+    "dev:admin-api": "spectaql --target-file index.html --config spectaql/config-admin.yml --development-mode",
     "build:storefront-api": "spectaql --target-file index.html --config spectaql/config-storefront.yml",
-    "dev:storefront-api": "spectaql --development-mode-live --config spectaql/config-storefront.yml",
-    "build:graphql": "yarn run build:admin-api && yarn run build:storefront-api"
+    "dev:storefront-api": "spectaql --target-file index.html --config spectaql/config-storefront.yml --development-mode",
+    "build:graphql": "yarn build:admin-api && yarn build:storefront-api",
+    "lint": "docker run --rm -e RUN_LOCAL=true --env-file .github/super-linter.env -v \"$PWD\":/tmp/lint github/super-linter:slim-v5"
   },
   "packageManager": "yarn@3.2.4"
 }

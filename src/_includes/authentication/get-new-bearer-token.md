@@ -15,4 +15,8 @@ Replace the following placeholders with your credentials:
 - `<client_id>`: The client ID generated for your Adobe developer project
 - `<client_secret>`: The client secret generated for your Adobe developer project
 
-You can get these credentials from the Adobe Developer Console project details page. If you don't have access to the developer console, contact your system administrator to get the credentials.
+You can get these credentials from the Adobe Developer Console project details page. If you don't have access to the developer console, contact your system administrator for assistance.
+
+<InlineAlert variant="info" slots="text" />
+
+For information on managing, refreshing, and revoking bearer tokens, see the [User Authentication Implementation Guide](https://developer.adobe.com/developer-console/docs/guides/authentication/UserAuthentication/) in the *Adobe Developer Console documentation*.

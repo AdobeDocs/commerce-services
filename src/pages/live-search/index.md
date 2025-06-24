@@ -1,7 +1,6 @@
 ---
 title: Live Search Events | Commerce Services
-description: Lists events in the Adobe Commerce Event SDK that are applicable to Live Search. 
-edition: ee
+description: Lists events in the Adobe Commerce Event SDK that are applicable to Live Search.
 keywords:
   - Search
   - Services
@@ -21,5 +20,5 @@ The [_Adobe Commerce Event SDK_](../shared-services/storefront-events/sdk/) prov
 
 ## Related information
 
-* [Introduction to Live Search](https://experienceleague.adobe.com/docs/commerce/live-search/overview.html?lang=en)
-* [GraphQL queries](../graphql/index.md)
+* [Introduction to Live Search](https://experienceleague.adobe.com/docs/commerce-merchant-services/live-search/overview.html?lang=en)
+* [GraphQL queries](https://developer.adobe.com/commerce/webapi/graphql/schema/live-search/)

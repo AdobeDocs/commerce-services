@@ -1,9 +1,9 @@
 
+const composable_catalog = require("./composable-catalog");
 const live_search = require("./live_search");
 const product_recommendations  = require("./product_recommendations");
+const shared_services = require("./shared_services");
 const reporting = require("./reporting");
-const shared_services  = require("./shared_services");
-const graphql = require("./graphql");
-const composable_catalog = require("./composable-catalog");
 
-module.exports = [...live_search,...product_recommendations,...graphql,...shared_services, ...reporting,...composable_catalog];
+module.exports = [...composable_catalog,...live_search,...product_recommendations,...shared_services,...reporting];
+

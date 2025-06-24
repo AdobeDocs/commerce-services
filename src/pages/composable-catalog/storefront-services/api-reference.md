@@ -1,6 +1,6 @@
 ---
-title: Storefront API Reference
-edition: ee
+title: Merchandising API Reference
+edition: saas
 description: Get information about the storefront APIs to retrieve product and catalog data to create storefront experiences.
 keywords:
   - GraphQL

@@ -1,62 +1,57 @@
 module.exports = [
   {
-    title: "Merchandising Services powered by Channels and Policies",
+    title: "Merchandising Services",
     path: "/composable-catalog/",
     pages: [
-      {   title: "Set up and manage catalogs",
-            path: "/composable-catalog/manage-catalogs.md"
+        {
+          title: "Ingest product and price data",
+          path: "/composable-catalog/data-ingestion/",
+          header: "true",
+        pages: [
+          {
+            title: "Authentication",
+            path: "/composable-catalog/data-ingestion/authentication.md"
+          },
+          {
+            title: "Get started",
+            path: "/composable-catalog/data-ingestion/using-the-api.md"
+          },
+          {
+            title: "API Reference",
+            path: "/composable-catalog/data-ingestion/api-reference"
+          },
+        ]
+      },
+      {
+          title: "Retrieve catalog data",
+          path: "/composable-catalog/storefront-services/",
+          header: "true",
+          pages: [
+            {
+              title: "Get started",
+              path: "/composable-catalog/storefront-services/using-the-api.md"
+              },
+            {
+              title: "Use cases",
+              path: "/composable-catalog/storefront-services/use-cases.md"
+              },
+            {
+              title: "Limitations",
+              path: "/composable-catalog/storefront-services/limitations.md"
+            },
+            {
+              title: "Monitor and troubleshoot",
+              path: "/composable-catalog/storefront-services/troubleshooting.md"
+            },
+            {
+              title: "API Reference",
+              path: "/composable-catalog/storefront-services/api-reference.md"
+            },
+          ]
       },
       { title: "Tutorial",
           path: "/composable-catalog/ccdm-use-case.md"
       },
-        {
-            title: "Catalog data ingestion API",
-            path: "/composable-catalog/data-ingestion/",
-            pages: [
-              {
-                title: "Using the API",
-                path: "/composable-catalog/data-ingestion/using-the-api.md"
-                },
-               {
-                title: "API Reference",
-                path: "/composable-catalog/data-ingestion/api-reference.md"
-                },
-            ]
-        },
-/* Commenting out the Channel and Policies API section during the early access period. Customers will
-use the Commerce Optimizer UI to configure channels and policies.
-
-       {
-            title: "Channels and Policies API",
-            path: "composable-catalog/admin/",
-            header: "true",
-            pages: [
-              {
-                title: "Using the API",
-                path: "/composable-catalog/admin/using-the-api.md"
-                },
-               {
-                title: "API Reference",
-                path: "/composable-catalog/admin/api-reference.md"
-                },
-            ]
-      },
-*/
-        {
-            title: "Storefront API",
-            path: "composable-catalog/storefront-services/",
-            header: "true",
-            pages: [
-              {
-                title: "Using the API",
-                path: "/composable-catalog/storefront-services/using-the-api.md"
-                },
-               {
-                title: "API Reference",
-                path: "/composable-catalog/storefront-services/api-reference.md"
-                },
-            ]
-        },
     ]
-  },
+  }
 ];
