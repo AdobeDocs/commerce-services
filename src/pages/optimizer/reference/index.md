@@ -1,7 +1,7 @@
 ---
 title:  API References for Adobe Commerce Optimizer
 edition: saas
-description: Get detailed API references for the Data Ingestion REST API and the Merchandising GraphQL API for use with Adobe Commerce Optimizer
+description: Get reference information and examples for the Data Ingestion REST API and the Merchandising GraphQL API for use with Adobe Commerce Optimizer.
   - GraphQL
   - Services
   - Backend Development
