@@ -14,11 +14,11 @@ module.exports = [
             },
             {
               title: "Get started",
-              path: "/optimizer/data-ingestion/using-the-api/"
+              path: "/optimizer/data-ingestion/using-the-api.md"
             },
             {
               title: "API Reference",
-              path: "/optimizer/data-ingestion/api-reference/"
+              path: "/optimizer/reference/rest/data-ingestion-api.md"
             }
           ]
         },
@@ -45,7 +45,7 @@ module.exports = [
             },
             {
               title: "API Reference",
-              path: "/optimizer/reference/api-reference.md"
+              path: "/optimizer/reference/graphql/merchandising-api.md"
             }
           ]
         },
