@@ -34,12 +34,12 @@ The Merchandising API is a GraphQL API that allows you to access real-time catal
 Send all Merchandising API requests to this base URL:
 
 ```text
-https://na1-sandbox.api.commerce.adobe.com/<tenantId>/graphql
+https://na1-sandbox.api.commerce.adobe.com/{{tenantId}}/graphql
 ```
 
 The URL structure is:
 
-```https://<region>-<environment>.api.commerce.adobe.com/<tenantId>```
+```https://{{region}}-{{environment}}.api.commerce.adobe.com/{{tenantId}}```
 
 - `region` is the cloud region where your instance is deployed.
 - `environment-type` is present only for non-production,`sandbox` environments.
@@ -77,8 +77,7 @@ Use the following template to submit requests using [curl](https://curl.se/). Us
 
 ```shell
 curl --request POST \
--- url https://na1-sandbox.api.commerce.adobe.com/<tenantId>/graphql \
---header --header 'AC-Environment-ID: <tenantId>' \
+--url https://na1-sandbox.api.commerce.adobe.com/{{tenantId}}/graphql \
 --header 'AC-View-ID:  <catalogviewId>'  \
 --header 'AC-Policy-<POLICY_NAME>: <policyValue>' \
 --header 'AC-Price-Book-ID-<pricebookId>' \
@@ -93,7 +92,7 @@ curl --request POST \
 | `policyName: policyValue` | Optional. The policy trigger name and value that sets data access filters to restrict product access based on request attributes.              |
 | `pricebookID`  | Optional. The price book ID used to retrieve the pricing schedule for a SKU. |
 | `localeValue` | The catalog source locale (language or geography) to filter products for display or update. |            |
-| `apiPayload`      | API payload. See examples in the <a href="ccdm-use-cases">tutorial.</a> |
+| `apiPayload`      | API payload. See examples in the [tutorial](../ccdm-use-case.md). |
 
 Get the values for catalog view, policy, catalog source locale, and price book data from the [Adobe Commerce Optimizer UI](https://experienceleague.adobe.com/en/docs/commerce/optimizer/overview#quick-tour).
 
@@ -125,7 +124,7 @@ To get started with the Merchandising API, follow these steps to make your first
      }'
    ```
 
-   For sample requests and examples using the API, see the <a href="https://developer.adobe.com/commerce/services/optimizer/reference/graphql/merchandising-api.md/" target="_blank" rel="noopener noreferrer">Merchandising API Reference</a>.
+   For sample requests and examples using the API, see the <a href="https://developer.adobe.com/commerce/services/optimizer/reference/graphql/merchandising-api/" target="_blank" rel="noopener noreferrer">Merchandising API Reference</a>.
 
 ## Test with the GraphQL Playground
 

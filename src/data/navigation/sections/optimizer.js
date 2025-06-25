@@ -14,11 +14,12 @@ module.exports = [
             },
             {
               title: "Get started",
-              path: "/optimizer/data-ingestion/using-the-api/"
+              path: "/optimizer/data-ingestion/using-the-api.md"
             },
             {
               title: "API Reference",
-              path: "/optimizer/data-ingestion/api-reference/"
+              path: "https://developer.adobe.com/commerce/services/optimizer/reference/rest/data-ingestion-api/",
+              EventTarget: "_top"
             }
           ]
         },
@@ -45,7 +46,8 @@ module.exports = [
             },
             {
               title: "API Reference",
-              path: "/optimizer/reference/api-reference.md"
+              path: "https://developer.adobe.com/commerce/services/optimizer/reference/graphql/merchandising-api/",
+              EventTarget: "_top"
             }
           ]
         },

@@ -16,7 +16,7 @@ When building dynamic storefronts with the Merchandising GraphQL API, it's essen
 ## Common Issues
 
 - **Authentication Errors**: Verify that the tenant ID used in the endpoint URL to ensure it matches the tenant ID in your Adobe Commerce Optimizer instance.
-- **Missing Data**: Ensure products are properly ingested via the Data Ingestion API. You can check the synchronization status for product data from the [Data Sync page](https://experienceleague-review.corp.adobe.com/docs/commerce/optimizer/setup/data-sync.html) in Adobe Commerce Optimizer.
+- **Missing Data**: Ensure products are properly ingested via the Data Ingestion API. You can check the synchronization status for product data from the [Data Sync page](https://experienceleague.adobe.com/en/docs/commerce/optimizer/setup/data-sync) in Adobe Commerce Optimizer.
 - **Performance Issues**: Optimize queries and implement caching.
 - **Rate Limiting**: Monitor API usage and implement proper throttling.
 

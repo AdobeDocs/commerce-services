@@ -12,11 +12,11 @@ module.exports = [
     menu: [
       {
         title: "Catalog data ingestion REST API",
-        path: "/optimizer/data-ingestion/api-reference.md"
+        path: "/optimizer/reference/rest"
       },
       {
         title: "Merchandising GraphQL API",
-        path: "/optimizer/reference/graphql/merchandising-api/"
+        path: "/optimizer/reference/graphql"
       },
     ]
   },
