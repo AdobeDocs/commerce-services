@@ -22,12 +22,12 @@ The Data Ingestion API is a RESTful API that allows you to manage product and pr
 Send all Data Ingestion API requests to the following base URL:
 
 ```text
-https://na1-sandbox.api.commerce.adobe.com/{tenantId}
+https://na1-sandbox.api.commerce.adobe.com/{{tenantId}}
 ```
 
 The URL structure is:
 
-`https://{region}-{environment}.api.commerce.adobe.com/{tenantId}`
+`https://{{region}}-{{environment}}.api.commerce.adobe.com/{{tenantId}}`
 
 - `region` is the cloud region where your instance is deployed.
 - `environment-type` identifies non-production environments, for example, `sandbox` or `staging`.
@@ -60,7 +60,7 @@ Use the following template to submit requests using [curl](https://curl.se/) rep
 
 ```shell
 curl --request POST \
-  --url https://na1-sandbox.api.commerce.adobe.com/{tenantId}/{endpoint} \
+  --url https://na1-sandbox.api.commerce.adobe.com/{{tenantId}}/{{endpoint}} \
   --header "Content-Type:  application/json" \
   --header "Authorization: Bearer {access token}" \
   --data "{apiPayload}"
@@ -69,7 +69,7 @@ curl --request POST \
 | Placeholder name | Description                                                                                                    |
 |------------------|----------------------------------------------------------------------------------------------------------------|
 | `endpoint`       | Endpoint for specific Data Ingestion API, for example: `/v1/catalog/products/prices`  |
-| `accessToken`    | Bearer token generated from IMS credentials. See [Authentication](authentication.md).                                   |
+| `access token`   | Bearer token generated from IMS credentials. See [Authentication](authentication.md).                                   |
 | `apiPayload`     | API payload see examples in the [tutorial](../ccdm-use-case.md)                                                                             |
 
 For sample requests, see the [tutorial](../ccdm-use-case.md).
@@ -86,10 +86,9 @@ To get started with the Data Ingestion API, follow these steps to make your firs
 
   ```shell
   curl -X POST \
-    'https://catalog-service-qa.adobe.io/attributes/metadata' \
+    'https://na1-sandbox.api.commerce.adobe.com/{{tenantId}}/v1/catalog/attributes/metadata' \
     -H 'Content-Type: application/json' \
-    -H 'x-api-key: YOUR_API_KEY' \
-    -H 'x-tenant-id: YOUR_TENANT_ID' \
+    -H 'Authorization: Bearer {access token}' \
     -d '[
       {
         "code": "sku",

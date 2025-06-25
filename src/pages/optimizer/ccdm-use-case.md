@@ -45,7 +45,7 @@ This use case demonstrates an end-to-end workflow for using Merchandising Servic
     - API Call one: Returns a SKU for `Aurora` and `USA` combination.
     - API Call two: Returns a SKU for `Bolt` and `UK` combination.
 
-In the steps below, you use Merchandising Services APIs to add the product, catalog view, and policy data to the SaaS data space for your project. Then, you use the the [Merchandising APIs](./admin/using-the-api.md) to retrieve the product data based on brand and location attributes.
+In the steps below, you use Merchandising Services APIs to add the product, catalog view, and policy data to the SaaS data space for your project. Then, you use the the [Merchandising APIs](../merchandising-services/using-the-api.md) to retrieve the product data based on brand and location attributes.
 
 ## Step 1. Add products to your catalog
 
@@ -75,9 +75,8 @@ Create the metadata to define the search characteristics and filters for display
 
 ```shell
 curl --request POST \
-  --url https://na1-sandbox.api.commerce.adobe.com/{tenantId}/v1/catalog/products/metadata \
+  --url https://na1-sandbox.api.commerce.adobe.com/{{tenantId}}/v1/catalog/products/metadata \
   --header "Authorization: Bearer {access token}" \
-
   --data "[
 [
     {
@@ -271,7 +270,7 @@ curl --request POST \
 
 ```shell
 curl --request POST \
-  --url https://na1-sandbox.api.commerce.adobe.com/{tenantId}/v1/catalog/products/metadata \
+  --url https://na1-sandbox.api.commerce.adobe.com/{{tenantId}}/v1/catalog/products/metadata \
   --header "Content-Type: application/json" \
   --header "Authorization: Bearer {access token}" \
   --data "[
@@ -464,7 +463,7 @@ Add the simple product *Aurora Prism Battery* with two attribute codes, `Brand` 
 
 ```shell
 curl --request POST \
-  --url https://na1-sandbox.api.commerce.adobe.com/<tenanId>/api/v1/catalog/products \
+  --url https://na1-sandbox.api.commerce.adobe.com/{{tenantId}}/api/v1/catalog/products \
   --header "Content-Type: application/json" \
   --header "Authorization: Bearer {access token}" \
 
@@ -544,7 +543,7 @@ Add the product *Bolt Atlas Battery* with two attribute codes, `Brand` set to *B
 
 ```shell
 curl --request POST \
-  --url https://na1-sandbox.api.commerce.adobe.com/<tenanId>/api/v1/catalog/products \
+  --url https://na1-sandbox.api.commerce.adobe.com/{{tenantId}}/api/v1/catalog/products \
   --header "Content-Type: application/json" \
   --header "Authorization: Bearer {access token}" \
 
@@ -639,13 +638,13 @@ Use the Merchandising GraphQL API [productSearch](https://developer.adobe.com/co
 
 Send GraphQL requests for Merchandising APIs to the following base URL:
 
-`http://na1-sandbox.api.commerce.adobe.com/{tenantId}/graphql`
+`https://na1-sandbox.api.commerce.adobe.com/{{tenantId}}/graphql`
 
 ### Retrieve SKU for the `Aurora` brand
 
 Retrieve the SKU you created for `Aurora` where location is `USA`. Use the search phrase `Zenith Automotive Vehicles and Parts`, and specify a page size to limit results.
 
-The brand and location (`AC-Policy-Brand` and `AC-Policy-Country`) are passed in using [Merchandising API headers](https://developer.adobe.com/commerce/services/using-the-api/#header).
+The brand and location (`AC-Policy-Brand` and `AC-Policy-Country`) are passed in using the [Merchandising API headers](../merchandising-services/using-the-api.md#header).
 
 Use the following headers in the request:
 
@@ -814,7 +813,7 @@ The response returns the product details for a single SKU, `Aurora Prism battery
 
 Retrieve the SKU you created for `Bolt` where location is `UK`. Use the search phrase `Zenith Automotive Vehicles and Parts`, and specify a page size to limit results.
 
-The brand and location (`AC-Policy-Brand` and `AC-Policy-Country`) are passed in using the [Merchandising API headers](https://developer.adobe.com/commerce/services/optimizer/using-the-api.md/#header).
+The brand and location (`AC-Policy-Brand` and `AC-Policy-Country`) are passed in using the [Merchandising API headers](../merchandising-services/using-the-api.md#header).
 
 Use the following headers in the request:
 
