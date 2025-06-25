@@ -125,7 +125,7 @@ To get started with the Merchandising API, follow these steps to make your first
      }'
    ```
 
-   For sample requests and examples using the API, see the <a href="https://developer-stage.adobe.com/commerce/services/optimizer/reference/graphql/merchandising-api.md/" target="_blank" rel="noopener noreferrer">Merchandising API Reference</a>.
+   For sample requests and examples using the API, see the <a href="https://developer.adobe.com/commerce/services/optimizer/reference/graphql/merchandising-api.md/" target="_blank" rel="noopener noreferrer">Merchandising API Reference</a>.
 
 ## Test with the GraphQL Playground
 

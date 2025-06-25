@@ -423,7 +423,7 @@ info:
   description: |
      Use the Channels and Policies API to set up distribution channels, locales, and policies to filter products into custom catalogs
      with customer-specific pricing and regional settings for language, currency, and units of measure.
-     For more information about the API, see the <a href="https://developer-stage.adobe.com/commerce/services/optimizer/admin/" target="_blank">developer documentation</a>.
+     For more information about the API, see the <a href="https://developer.adobe.com/commerce/services/optimizer/admin/" target="_blank">developer documentation</a>.
   version: 1.0.0
   title: Channels and Policies API
   # This is non-standard and optional. If omitted, will use "title". Also, only relevant
@@ -442,7 +442,7 @@ info:
   # x-introItems:
     # Can be a Title (for the Nav panel) + URL to simply add a link to somewhere
     # - title: Channels and Policies Guide
-    # url: https://developer-stage.adobe.com/commerce/services/optimizer/admin/
+    # url: https://developer.adobe.com/commerce/services/optimizer/admin/
     # Can be a Title (for the Nav panel) + description (for the Content panel)
     # - title: Important thing 1
     #   description: Some important stuff we wanted you to know. Supports `markdown`
