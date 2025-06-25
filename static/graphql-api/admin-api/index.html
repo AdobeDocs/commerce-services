@@ -1,17 +1,21 @@
-<link rel="stylesheet" href="stylesheets/spectaql.min.css" />
+<link rel="stylesheet"
+      href="stylesheets/spectaql.min.css" />
 <script src="javascripts/spectaql.min.js"></script>
 <div id="spectaql">
-  <div id="page" class="drawer-layout">
+  <div id="page"
+       class="drawer-layout">
     <div id="sidebar">
       <div class="sidebar-top-container">
         <div id="logo">
         </div>
-        <button class="close-button" type="button">
+        <button class="close-button"
+                type="button">
           <span aria-hidden="true">×</span>
           <span class="sr-only">Close menu</span>
         </button>
       </div>
-      <nav id="nav" role="navigation">
+      <nav id="nav"
+           role="navigation">
         <div class="nav-group">
           <h4 class="nav-group-title">Introduction</h4>
           <ul class="nav-group-items">
@@ -82,17 +86,24 @@
     </div>
     <div id="docs">
       <div id="mobile-navbar">
-        <button class="sidebar-open-button" type="button">
+        <button class="sidebar-open-button"
+                type="button">
           <span class="hamburger"></span>
           <span class="sr-only">All topics</span>
         </button>
       </div>
       <article id="content">
         <h1 class="doc-heading">Channels and Policies API</h1>
-        <div id="introduction" data-traverse-target="introduction">
-          <div id="welcome" class="doc-row">
+        <div id="introduction"
+             data-traverse-target="introduction">
+          <div id="welcome"
+               class="doc-row">
             <div class="doc-copy">
-              <p>Use the Channels and Policies API to set up distribution channels, locales, and policies to filter products into custom catalogs with customer-specific pricing and regional settings for language, currency, and units of measure. For more information about the API, see the <a href="https://developer-stage.adobe.com/commerce/services/composable-catalog/admin/" target="_blank">developer documentation</a>.</p>
+              <p>Use the Channels and Policies API to set up distribution channels, locales, and policies to filter
+                products into custom catalogs with customer-specific pricing and regional settings for language,
+                currency, and units of measure. For more information about the API, see the <a
+                   href="https://developer-stage.adobe.com/commerce/services/optimizer/admin/"
+                   target="_blank">developer documentation</a>.</p>
             </div>
             <div class="doc-examples">
               <div class="example-section welcome-api-endpoints-section example-section-is-code">
@@ -111,8 +122,12 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
             </div>
           </div>
         </div>
-        <h1 id="group-Operations-Queries" class="group-heading" data-traverse-target="group-Operations-Queries">Queries</h1>
-        <section id="query-channel" class="operation operation-query" data-traverse-target="query-channel">
+        <h1 id="group-Operations-Queries"
+            class="group-heading"
+            data-traverse-target="group-Operations-Queries">Queries</h1>
+        <section id="query-channel"
+                 class="operation operation-query"
+                 data-traverse-target="query-channel">
           <h2 class="operation-heading ">
             <code>channel</code>
           </h2>
@@ -162,7 +177,8 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                   <li>values: Values to query for.</li>
                   <li>enabled: Indicates if the filter is enabled or not (true | false).</li>
                   <li>valueSource: Any of &quot;TRIGGER&quot; , &quot;STATIC&quot;.</li>
-                  <li>actionFilterOperator: Any of &quot;EQUALS&quot;, &quot;GREATER_THAN_EQUAL&quot;, &quot;LESS_THAN_EQUAL&quot;.</li>
+                  <li>actionFilterOperator: Any of &quot;EQUALS&quot;, &quot;GREATER_THAN_EQUAL&quot;,
+                    &quot;LESS_THAN_EQUAL&quot;.</li>
                 </ul>
                 <p><strong>Query Examples</strong></p>
                 <ol>
@@ -296,7 +312,8 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                   <tbody>
                     <tr>
                       <td>
-                        <span class="property-name"><code>channelId</code></span> - <span class="property-type"><a href="#definition-String"><code>String!</code></a></span>
+                        <span class="property-name"><code>channelId</code></span> - <span class="property-type"><a
+                             href="#definition-String"><code>String!</code></a></span>
                       </td>
                       <td>
                       </td>
@@ -310,8 +327,11 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
               <div class="example-section example-section-is-code operation-query-example">
                 <h5>Query</h5>
                 <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">query</span> channel<span class="hljs-tag">(<span class="hljs-code">$channelId</span>:<span class="hljs-type"> String!</span>)</span> <span class="hljs-tag">{
+
+                <head></head>
+
+                <body>
+                  <pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">query</span> channel<span class="hljs-tag">(<span class="hljs-code">$channelId</span>:<span class="hljs-type"> String!</span>)</span> <span class="hljs-tag">{
   <span class="hljs-symbol">channel<span class="hljs-tag">(channelId: <span class="hljs-code">$channelId</span>)</span> <span class="hljs-tag">{
     <span class="hljs-symbol">allowedPriceBookIds</span>
     <span class="hljs-symbol">channelId</span>
@@ -329,23 +349,31 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
   }</span></span>
 }</span></span>
 </code></pre>
-                  </body>
+                </body>
+
                 </html>
               </div>
               <div class="example-section example-section-is-code operation-variables-example">
                 <h5>Variables</h5>
                 <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"channelId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">}</span>
+
+                <head></head>
+
+                <body>
+                  <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"channelId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
+                </body>
+
                 </html>
               </div>
               <div class="example-section example-section-is-code operation-response-example">
                 <h5>Response</h5>
                 <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+
+                <head></head>
+
+                <body>
+                  <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
   <span class="hljs-attr">"data"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
     <span class="hljs-attr">"channel"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
       <span class="hljs-attr">"allowedPriceBookIds"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"abc123"</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
@@ -361,14 +389,17 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
   <span class="hljs-punctuation">}</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
+                </body>
+
                 </html>
               </div>
             </div>
             <a href="#top">back to top</a>
           </div>
         </section>
-        <section id="query-channels" class="operation operation-query" data-traverse-target="query-channels">
+        <section id="query-channels"
+                 class="operation operation-query"
+                 data-traverse-target="query-channels">
           <div class="operation-group-name">
             <a href="#group-Operations-Queries">Queries</a>
           </div>
@@ -417,7 +448,8 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                   <li>values: Values to query for.</li>
                   <li>enabled: Indicates if the filter is enabled or not (true | false).</li>
                   <li>valueSource: Any of &quot;TRIGGER&quot; , &quot;STATIC&quot;.</li>
-                  <li>actionFilterOperator: Any of &quot;EQUALS&quot;, &quot;GREATER_THAN_EQUAL&quot;, &quot;LESS_THAN_EQUAL&quot;.</li>
+                  <li>actionFilterOperator: Any of &quot;EQUALS&quot;, &quot;GREATER_THAN_EQUAL&quot;,
+                    &quot;LESS_THAN_EQUAL&quot;.</li>
                 </ul>
                 <p><strong>Query Examples</strong></p>
                 <ol>
@@ -562,8 +594,11 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
               <div class="example-section example-section-is-code operation-query-example">
                 <h5>Query</h5>
                 <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">query</span> channels <span class="hljs-tag">{
+
+                <head></head>
+
+                <body>
+                  <pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">query</span> channels <span class="hljs-tag">{
   <span class="hljs-symbol">channels <span class="hljs-tag">{
     <span class="hljs-symbol">allowedPriceBookIds</span>
     <span class="hljs-symbol">channelId</span>
@@ -581,14 +616,18 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
   }</span></span>
 }</span></span>
 </code></pre>
-                  </body>
+                </body>
+
                 </html>
               </div>
               <div class="example-section example-section-is-code operation-response-example">
                 <h5>Response</h5>
                 <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+
+                <head></head>
+
+                <body>
+                  <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
   <span class="hljs-attr">"data"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
     <span class="hljs-attr">"channels"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
       <span class="hljs-punctuation">{</span>
@@ -606,14 +645,17 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
   <span class="hljs-punctuation">}</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
+                </body>
+
                 </html>
               </div>
             </div>
             <a href="#top">back to top</a>
           </div>
         </section>
-        <section id="query-policies" class="operation operation-query" data-traverse-target="query-policies">
+        <section id="query-policies"
+                 class="operation operation-query"
+                 data-traverse-target="query-policies">
           <div class="operation-group-name">
             <a href="#group-Operations-Queries">Queries</a>
           </div>
@@ -650,7 +692,8 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                   <li>values: Values to query for.</li>
                   <li>enabled: Indicates if the filter is enabled or not (true | false).</li>
                   <li>valueSource: Any of &quot;TRIGGER&quot; , &quot;STATIC&quot;.</li>
-                  <li>actionFilterOperator: Any of &quot;EQUALS&quot;, &quot;GREATER_THAN_EQUAL&quot;, &quot;LESS_THAN_EQUAL&quot;.</li>
+                  <li>actionFilterOperator: Any of &quot;EQUALS&quot;, &quot;GREATER_THAN_EQUAL&quot;,
+                    &quot;LESS_THAN_EQUAL&quot;.</li>
                 </ul>
                 <p><strong>Query Examples</strong></p>
                 <ol>
@@ -717,8 +760,11 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
               <div class="example-section example-section-is-code operation-query-example">
                 <h5>Query</h5>
                 <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">query</span> policies <span class="hljs-tag">{
+
+                <head></head>
+
+                <body>
+                  <pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">query</span> policies <span class="hljs-tag">{
   <span class="hljs-symbol">policies <span class="hljs-tag">{
     <span class="hljs-symbol">actions <span class="hljs-tag">{
       <span class="hljs-type">...ActionResponseFragment</span>
@@ -731,14 +777,18 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
   }</span></span>
 }</span></span>
 </code></pre>
-                  </body>
+                </body>
+
                 </html>
               </div>
               <div class="example-section example-section-is-code operation-response-example">
                 <h5>Response</h5>
                 <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+
+                <head></head>
+
+                <body>
+                  <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
   <span class="hljs-attr">"data"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
     <span class="hljs-attr">"policies"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
       <span class="hljs-punctuation">{</span>
@@ -753,14 +803,17 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
   <span class="hljs-punctuation">}</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
+                </body>
+
                 </html>
               </div>
             </div>
             <a href="#top">back to top</a>
           </div>
         </section>
-        <section id="query-policy" class="operation operation-query" data-traverse-target="query-policy">
+        <section id="query-policy"
+                 class="operation operation-query"
+                 data-traverse-target="query-policy">
           <div class="operation-group-name">
             <a href="#group-Operations-Queries">Queries</a>
           </div>
@@ -801,7 +854,8 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                   <li>values: Values to query for.</li>
                   <li>enabled: Indicates if the filter is enabled or not (true | false).</li>
                   <li>valueSource: Any of &quot;TRIGGER&quot; , &quot;STATIC&quot;.</li>
-                  <li>actionFilterOperator: Any of &quot;EQUALS&quot;, &quot;GREATER_THAN_EQUAL&quot;, &quot;LESS_THAN_EQUAL&quot;.</li>
+                  <li>actionFilterOperator: Any of &quot;EQUALS&quot;, &quot;GREATER_THAN_EQUAL&quot;,
+                    &quot;LESS_THAN_EQUAL&quot;.</li>
                 </ul>
                 <p><strong>Query Examples</strong>:</p>
                 <ol>
@@ -902,7 +956,8 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                   <tbody>
                     <tr>
                       <td>
-                        <span class="property-name"><code>policyId</code></span> - <span class="property-type"><a href="#definition-String"><code>String!</code></a></span>
+                        <span class="property-name"><code>policyId</code></span> - <span class="property-type"><a
+                             href="#definition-String"><code>String!</code></a></span>
                       </td>
                       <td>
                       </td>
@@ -916,8 +971,11 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
               <div class="example-section example-section-is-code operation-query-example">
                 <h5>Query</h5>
                 <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">query</span> policy<span class="hljs-tag">(<span class="hljs-code">$policyId</span>:<span class="hljs-type"> String!</span>)</span> <span class="hljs-tag">{
+
+                <head></head>
+
+                <body>
+                  <pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">query</span> policy<span class="hljs-tag">(<span class="hljs-code">$policyId</span>:<span class="hljs-type"> String!</span>)</span> <span class="hljs-tag">{
   <span class="hljs-symbol">policy<span class="hljs-tag">(policyId: <span class="hljs-code">$policyId</span>)</span> <span class="hljs-tag">{
     <span class="hljs-symbol">actions <span class="hljs-tag">{
       <span class="hljs-type">...ActionResponseFragment</span>
@@ -930,23 +988,31 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
   }</span></span>
 }</span></span>
 </code></pre>
-                  </body>
+                </body>
+
                 </html>
               </div>
               <div class="example-section example-section-is-code operation-variables-example">
                 <h5>Variables</h5>
                 <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"policyId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">}</span>
+
+                <head></head>
+
+                <body>
+                  <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"policyId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
+                </body>
+
                 </html>
               </div>
               <div class="example-section example-section-is-code operation-response-example">
                 <h5>Response</h5>
                 <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+
+                <head></head>
+
+                <body>
+                  <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
   <span class="hljs-attr">"data"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
     <span class="hljs-attr">"policy"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
       <span class="hljs-attr">"actions"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">ActionResponse</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
@@ -959,14 +1025,17 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
   <span class="hljs-punctuation">}</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
+                </body>
+
                 </html>
               </div>
             </div>
             <a href="#top">back to top</a>
           </div>
         </section>
-        <section id="query-scopes" class="operation operation-query" data-traverse-target="query-scopes">
+        <section id="query-scopes"
+                 class="operation operation-query"
+                 data-traverse-target="query-scopes">
           <div class="operation-group-name">
             <a href="#group-Operations-Queries">Queries</a>
           </div>
@@ -994,31 +1063,43 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
               <div class="example-section example-section-is-code operation-query-example">
                 <h5>Query</h5>
                 <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">query</span> scopes <span class="hljs-tag">{
+
+                <head></head>
+
+                <body>
+                  <pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">query</span> scopes <span class="hljs-tag">{
   <span class="hljs-symbol">scopes <span class="hljs-tag">{
     <span class="hljs-symbol">locale</span>
   }</span></span>
 }</span></span>
 </code></pre>
-                  </body>
+                </body>
+
                 </html>
               </div>
               <div class="example-section example-section-is-code operation-response-example">
                 <h5>Response</h5>
                 <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"data"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span><span class="hljs-attr">"scopes"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">{</span><span class="hljs-attr">"locale"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">}</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">}</span><span class="hljs-punctuation">}</span>
+
+                <head></head>
+
+                <body>
+                  <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"data"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span><span class="hljs-attr">"scopes"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">{</span><span class="hljs-attr">"locale"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">}</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">}</span><span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
+                </body>
+
                 </html>
               </div>
             </div>
             <a href="#top">back to top</a>
           </div>
         </section>
-        <h1 id="group-Operations-Mutations" class="group-heading" data-traverse-target="group-Operations-Mutations">Mutations</h1>
-        <section id="mutation-batchChannel" class="operation operation-mutation" data-traverse-target="mutation-batchChannel">
+        <h1 id="group-Operations-Mutations"
+            class="group-heading"
+            data-traverse-target="group-Operations-Mutations">Mutations</h1>
+        <section id="mutation-batchChannel"
+                 class="operation operation-mutation"
+                 data-traverse-target="mutation-batchChannel">
           <h2 class="operation-heading ">
             <code>batchChannel</code>
           </h2>
@@ -1029,7 +1110,9 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                 <p>Inserts or Updates channels in a single batch operation.</p>
                 <p><strong>Input</strong>:</p>
                 <ul>
-                  <li>channels (UpdateChannelRequest): a list of items to insert or update. If any item in the batch does not have a channelId field, a new channel will be created for that record; otherwise, it will be updated.<ul>
+                  <li>channels (UpdateChannelRequest): a list of items to insert or update. If any item in the batch
+                    does not have a channelId field, a new channel will be created for that record; otherwise, it will
+                    be updated.<ul>
                       <li>channelId: Channel identifier. Optional.</li>
                       <li>name: Name of the channel. Optional</li>
                       <li>scopes: List of locale scopes identifiers. If provided, it cannot be empty.</li>
@@ -1147,7 +1230,10 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
     <span class="hljs-punctuation">}</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
-                <p>In the provided example, the first item, with channel identifier of &#39;844ed921&#39; will update the provided attributes, while the second item in the list will be created, as reflected by the &#39;createdAt&#39; and &#39;updatedAt&#39; attributes for the response. Please note that the response returns also an errors list, where any transaction failure will be appended to.</p>
+                <p>In the provided example, the first item, with channel identifier of &#39;844ed921&#39; will update
+                  the provided attributes, while the second item in the list will be created, as reflected by the
+                  &#39;createdAt&#39; and &#39;updatedAt&#39; attributes for the response. Please note that the response
+                  returns also an errors list, where any transaction failure will be appended to.</p>
               </div>
             </div>
           </div>
@@ -1170,7 +1256,8 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                   <tbody>
                     <tr>
                       <td>
-                        <span class="property-name"><code>channels</code></span> - <span class="property-type"><a href="#definition-UpdateChannelRequest"><code>[UpdateChannelRequest!]!</code></a></span>
+                        <span class="property-name"><code>channels</code></span> - <span class="property-type"><a
+                             href="#definition-UpdateChannelRequest"><code>[UpdateChannelRequest!]!</code></a></span>
                       </td>
                       <td>
                       </td>
@@ -1184,8 +1271,11 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
               <div class="example-section example-section-is-code operation-query-example">
                 <h5>Query</h5>
                 <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">mutation</span> batchChannel<span class="hljs-tag">(<span class="hljs-code">$channels</span>: <span class="hljs-type">[UpdateChannelRequest!</span>]!)</span> <span class="hljs-tag">{
+
+                <head></head>
+
+                <body>
+                  <pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">mutation</span> batchChannel<span class="hljs-tag">(<span class="hljs-code">$channels</span>: <span class="hljs-type">[UpdateChannelRequest!</span>]!)</span> <span class="hljs-tag">{
   <span class="hljs-symbol">batchChannel<span class="hljs-tag">(channels: <span class="hljs-code">$channels</span>)</span> <span class="hljs-tag">{
     <span class="hljs-symbol">channels <span class="hljs-tag">{
       <span class="hljs-type">...ChannelResponseFragment</span>
@@ -1194,23 +1284,31 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
   }</span></span>
 }</span></span>
 </code></pre>
-                  </body>
+                </body>
+
                 </html>
               </div>
               <div class="example-section example-section-is-code operation-variables-example">
                 <h5>Variables</h5>
                 <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"channels"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">UpdateChannelRequest</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">}</span>
+
+                <head></head>
+
+                <body>
+                  <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"channels"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">UpdateChannelRequest</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
+                </body>
+
                 </html>
               </div>
               <div class="example-section example-section-is-code operation-response-example">
                 <h5>Response</h5>
                 <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+
+                <head></head>
+
+                <body>
+                  <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
   <span class="hljs-attr">"data"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
     <span class="hljs-attr">"batchChannel"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
       <span class="hljs-attr">"channels"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">ChannelResponse</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
@@ -1219,14 +1317,17 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
   <span class="hljs-punctuation">}</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
+                </body>
+
                 </html>
               </div>
             </div>
             <a href="#top">back to top</a>
           </div>
         </section>
-        <section id="mutation-batchPolicy" class="operation operation-mutation" data-traverse-target="mutation-batchPolicy">
+        <section id="mutation-batchPolicy"
+                 class="operation operation-mutation"
+                 data-traverse-target="mutation-batchPolicy">
           <div class="operation-group-name">
             <a href="#group-Operations-Mutations">Mutations</a>
           </div>
@@ -1240,7 +1341,9 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                 <p>Updates a batch of policies.</p>
                 <p><strong>Input</strong></p>
                 <ul>
-                  <li>policies (UpdatePolicyRequest). List of items to insert or update. If any item in the batch does not have a policyId field, a new policy will be created for that record; otherwise, it will be updated.<ul>
+                  <li>policies (UpdatePolicyRequest). List of items to insert or update. If any item in the batch does
+                    not have a policyId field, a new policy will be created for that record; otherwise, it will be
+                    updated.<ul>
                       <li>policyId: Policy identifier. Optional.</li>
                       <li>name: Name of the policy. Optional.</li>
                       <li>mandatory: Indicates if the policy is compulsory or not (true | false). Optional.</li>
@@ -1255,7 +1358,8 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                 </ul>
                 <p>Trigger fields:</p>
                 <ul>
-                  <li>name: Name of the trigger. If it does not start with &quot;AC-Policy-&quot;, an error is returned.</li>
+                  <li>name: Name of the trigger. If it does not start with &quot;AC-Policy-&quot;, an error is returned.
+                  </li>
                   <li>transportType: Type of transport type, currently only &quot;HTTP_HEADER&quot; is supported.</li>
                 </ul>
                 <p>Action Filters fields:</p>
@@ -1264,10 +1368,13 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                   <li>values: Values to query for.</li>
                   <li>enabled: Indicates if the filter is enabled or not (true | false).</li>
                   <li>valueSource: Any of &quot;TRIGGER&quot; , &quot;STATIC&quot;.</li>
-                  <li>actionFilterOperator: Any of &quot;EQUALS&quot;, &quot;GREATER_THAN_EQUAL&quot;, &quot;LESS_THAN_EQUAL&quot;.</li>
+                  <li>actionFilterOperator: Any of &quot;EQUALS&quot;, &quot;GREATER_THAN_EQUAL&quot;,
+                    &quot;LESS_THAN_EQUAL&quot;.</li>
                 </ul>
                 <p><strong>Caveat</strong>:</p>
-                <p>Currently, appending or removing items to the list of actions, triggers, or filters, is an all-or-nothing operation, meaning that, if the fields are included, then, whatever it is provided, will replace the current values.</p>
+                <p>Currently, appending or removing items to the list of actions, triggers, or filters, is an
+                  all-or-nothing operation, meaning that, if the fields are included, then, whatever it is provided,
+                  will replace the current values.</p>
                 <p><strong>Example</strong></p>
                 <ol>
                   <li>Creates a new policy &quot;POL18:1&quot; and updates policy with id &quot;39c8106d&quot;:</li>
@@ -1359,7 +1466,8 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                   <tbody>
                     <tr>
                       <td>
-                        <span class="property-name"><code>policies</code></span> - <span class="property-type"><a href="#definition-UpdatePolicyRequest"><code>[UpdatePolicyRequest!]!</code></a></span>
+                        <span class="property-name"><code>policies</code></span> - <span class="property-type"><a
+                             href="#definition-UpdatePolicyRequest"><code>[UpdatePolicyRequest!]!</code></a></span>
                       </td>
                       <td>
                       </td>
@@ -1373,8 +1481,11 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
               <div class="example-section example-section-is-code operation-query-example">
                 <h5>Query</h5>
                 <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">mutation</span> batchPolicy<span class="hljs-tag">(<span class="hljs-code">$policies</span>: <span class="hljs-type">[UpdatePolicyRequest!</span>]!)</span> <span class="hljs-tag">{
+
+                <head></head>
+
+                <body>
+                  <pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">mutation</span> batchPolicy<span class="hljs-tag">(<span class="hljs-code">$policies</span>: <span class="hljs-type">[UpdatePolicyRequest!</span>]!)</span> <span class="hljs-tag">{
   <span class="hljs-symbol">batchPolicy<span class="hljs-tag">(policies: <span class="hljs-code">$policies</span>)</span> <span class="hljs-tag">{
     <span class="hljs-symbol">errors</span>
     <span class="hljs-symbol">policies <span class="hljs-tag">{
@@ -1383,23 +1494,31 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
   }</span></span>
 }</span></span>
 </code></pre>
-                  </body>
+                </body>
+
                 </html>
               </div>
               <div class="example-section example-section-is-code operation-variables-example">
                 <h5>Variables</h5>
                 <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"policies"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">UpdatePolicyRequest</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">}</span>
+
+                <head></head>
+
+                <body>
+                  <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"policies"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">UpdatePolicyRequest</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
+                </body>
+
                 </html>
               </div>
               <div class="example-section example-section-is-code operation-response-example">
                 <h5>Response</h5>
                 <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+
+                <head></head>
+
+                <body>
+                  <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
   <span class="hljs-attr">"data"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
     <span class="hljs-attr">"batchPolicy"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
       <span class="hljs-attr">"errors"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"abc123"</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
@@ -1408,14 +1527,17 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
   <span class="hljs-punctuation">}</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
+                </body>
+
                 </html>
               </div>
             </div>
             <a href="#top">back to top</a>
           </div>
         </section>
-        <section id="mutation-createChannel" class="operation operation-mutation" data-traverse-target="mutation-createChannel">
+        <section id="mutation-createChannel"
+                 class="operation operation-mutation"
+                 data-traverse-target="mutation-createChannel">
           <div class="operation-group-name">
             <a href="#group-Operations-Mutations">Mutations</a>
           </div>
@@ -1434,7 +1556,8 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                     <ul>
                       <li>name: Name of the channel. Mandatory. Needs to be unique.</li>
                       <li>scopes: List of locale scopes identifiers. At least one locale object should be provided.</li>
-                      <li>policyIds: List of policy identifiers. These should be already created and available. At least one policy identifier should be provided.</li>
+                      <li>policyIds: List of policy identifiers. These should be already created and available. At least
+                        one policy identifier should be provided.</li>
                       <li>allowedPriceBookIds: List of price book identifiers allowed within the channel. Optional.</li>
                       <li>defaultPriceBookId: Default price book identifier for the channel. Optional.</li>
                     </ul>
@@ -1663,7 +1786,8 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                   <tbody>
                     <tr>
                       <td>
-                        <span class="property-name"><code>channelRequest</code></span> - <span class="property-type"><a href="#definition-CreateChannelRequest"><code>CreateChannelRequest!</code></a></span>
+                        <span class="property-name"><code>channelRequest</code></span> - <span class="property-type"><a
+                             href="#definition-CreateChannelRequest"><code>CreateChannelRequest!</code></a></span>
                       </td>
                       <td>
                       </td>
@@ -1677,8 +1801,11 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
               <div class="example-section example-section-is-code operation-query-example">
                 <h5>Query</h5>
                 <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">mutation</span> createChannel<span class="hljs-tag">(<span class="hljs-code">$channelRequest</span>:<span class="hljs-type"> CreateChannelRequest!</span>)</span> <span class="hljs-tag">{
+
+                <head></head>
+
+                <body>
+                  <pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">mutation</span> createChannel<span class="hljs-tag">(<span class="hljs-code">$channelRequest</span>:<span class="hljs-type"> CreateChannelRequest!</span>)</span> <span class="hljs-tag">{
   <span class="hljs-symbol">createChannel<span class="hljs-tag">(channelRequest: <span class="hljs-code">$channelRequest</span>)</span> <span class="hljs-tag">{
     <span class="hljs-symbol">allowedPriceBookIds</span>
     <span class="hljs-symbol">channelId</span>
@@ -1696,23 +1823,31 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
   }</span></span>
 }</span></span>
 </code></pre>
-                  </body>
+                </body>
+
                 </html>
               </div>
               <div class="example-section example-section-is-code operation-variables-example">
                 <h5>Variables</h5>
                 <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"channelRequest"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">CreateChannelRequest</span><span class="hljs-punctuation">}</span>
+
+                <head></head>
+
+                <body>
+                  <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"channelRequest"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">CreateChannelRequest</span><span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
+                </body>
+
                 </html>
               </div>
               <div class="example-section example-section-is-code operation-response-example">
                 <h5>Response</h5>
                 <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+
+                <head></head>
+
+                <body>
+                  <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
   <span class="hljs-attr">"data"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
     <span class="hljs-attr">"createChannel"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
       <span class="hljs-attr">"allowedPriceBookIds"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
@@ -1728,14 +1863,17 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
   <span class="hljs-punctuation">}</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
+                </body>
+
                 </html>
               </div>
             </div>
             <a href="#top">back to top</a>
           </div>
         </section>
-        <section id="mutation-createPolicy" class="operation operation-mutation" data-traverse-target="mutation-createPolicy">
+        <section id="mutation-createPolicy"
+                 class="operation operation-mutation"
+                 data-traverse-target="mutation-createPolicy">
           <div class="operation-group-name">
             <a href="#group-Operations-Mutations">Mutations</a>
           </div>
@@ -1765,7 +1903,8 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                 </ul>
                 <p>Trigger fields:</p>
                 <ul>
-                  <li>name: Name of the trigger. If it does not start with &quot;AC-Policy-&quot;, an error is returned.</li>
+                  <li>name: Name of the trigger. If it does not start with &quot;AC-Policy-&quot;, an error is returned.
+                  </li>
                   <li>transportType: Type of transport type, currently only &quot;HTTP_HEADER&quot; is supported.</li>
                 </ul>
                 <p>Action Filters fields:</p>
@@ -1774,7 +1913,8 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                   <li>values: Values to query for.</li>
                   <li>enabled: Indicates if the filter is enabled or not (true | false).</li>
                   <li>valueSource: Any of &quot;TRIGGER&quot; , &quot;STATIC&quot;.</li>
-                  <li>actionFilterOperator: Any of &quot;EQUALS&quot;, &quot;GREATER_THAN_EQUAL&quot;, &quot;LESS_THAN_EQUAL&quot;.</li>
+                  <li>actionFilterOperator: Any of &quot;EQUALS&quot;, &quot;GREATER_THAN_EQUAL&quot;,
+                    &quot;LESS_THAN_EQUAL&quot;.</li>
                 </ul>
                 <p><strong>Example</strong></p>
                 <pre><code class="hljs"><span class="hljs-symbol"><span class="hljs-keyword">mutation</span> <span class="hljs-tag">{
@@ -1880,7 +2020,8 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                   <tbody>
                     <tr>
                       <td>
-                        <span class="property-name"><code>policyRequest</code></span> - <span class="property-type"><a href="#definition-CreatePolicyRequest"><code>CreatePolicyRequest!</code></a></span>
+                        <span class="property-name"><code>policyRequest</code></span> - <span class="property-type"><a
+                             href="#definition-CreatePolicyRequest"><code>CreatePolicyRequest!</code></a></span>
                       </td>
                       <td>
                       </td>
@@ -1894,8 +2035,11 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
               <div class="example-section example-section-is-code operation-query-example">
                 <h5>Query</h5>
                 <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">mutation</span> createPolicy<span class="hljs-tag">(<span class="hljs-code">$policyRequest</span>:<span class="hljs-type"> CreatePolicyRequest!</span>)</span> <span class="hljs-tag">{
+
+                <head></head>
+
+                <body>
+                  <pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">mutation</span> createPolicy<span class="hljs-tag">(<span class="hljs-code">$policyRequest</span>:<span class="hljs-type"> CreatePolicyRequest!</span>)</span> <span class="hljs-tag">{
   <span class="hljs-symbol">createPolicy<span class="hljs-tag">(policyRequest: <span class="hljs-code">$policyRequest</span>)</span> <span class="hljs-tag">{
     <span class="hljs-symbol">actions <span class="hljs-tag">{
       <span class="hljs-type">...ActionResponseFragment</span>
@@ -1908,23 +2052,31 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
   }</span></span>
 }</span></span>
 </code></pre>
-                  </body>
+                </body>
+
                 </html>
               </div>
               <div class="example-section example-section-is-code operation-variables-example">
                 <h5>Variables</h5>
                 <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"policyRequest"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">CreatePolicyRequest</span><span class="hljs-punctuation">}</span>
+
+                <head></head>
+
+                <body>
+                  <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"policyRequest"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">CreatePolicyRequest</span><span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
+                </body>
+
                 </html>
               </div>
               <div class="example-section example-section-is-code operation-response-example">
                 <h5>Response</h5>
                 <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+
+                <head></head>
+
+                <body>
+                  <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
   <span class="hljs-attr">"data"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
     <span class="hljs-attr">"createPolicy"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
       <span class="hljs-attr">"actions"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">ActionResponse</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
@@ -1937,14 +2089,17 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
   <span class="hljs-punctuation">}</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
+                </body>
+
                 </html>
               </div>
             </div>
             <a href="#top">back to top</a>
           </div>
         </section>
-        <section id="mutation-deleteChannel" class="operation operation-mutation" data-traverse-target="mutation-deleteChannel">
+        <section id="mutation-deleteChannel"
+                 class="operation operation-mutation"
+                 data-traverse-target="mutation-deleteChannel">
           <div class="operation-group-name">
             <a href="#group-Operations-Mutations">Mutations</a>
           </div>
@@ -2029,7 +2184,8 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                   <tbody>
                     <tr>
                       <td>
-                        <span class="property-name"><code>channelId</code></span> - <span class="property-type"><a href="#definition-String"><code>String!</code></a></span>
+                        <span class="property-name"><code>channelId</code></span> - <span class="property-type"><a
+                             href="#definition-String"><code>String!</code></a></span>
                       </td>
                       <td>
                       </td>
@@ -2043,37 +2199,51 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
               <div class="example-section example-section-is-code operation-query-example">
                 <h5>Query</h5>
                 <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">mutation</span> deleteChannel<span class="hljs-tag">(<span class="hljs-code">$channelId</span>:<span class="hljs-type"> String!</span>)</span> <span class="hljs-tag">{
+
+                <head></head>
+
+                <body>
+                  <pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">mutation</span> deleteChannel<span class="hljs-tag">(<span class="hljs-code">$channelId</span>:<span class="hljs-type"> String!</span>)</span> <span class="hljs-tag">{
   <span class="hljs-symbol">deleteChannel<span class="hljs-tag">(channelId: <span class="hljs-code">$channelId</span>)</span></span>
 }</span></span>
 </code></pre>
-                  </body>
+                </body>
+
                 </html>
               </div>
               <div class="example-section example-section-is-code operation-variables-example">
                 <h5>Variables</h5>
                 <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"channelId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">}</span>
+
+                <head></head>
+
+                <body>
+                  <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"channelId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
+                </body>
+
                 </html>
               </div>
               <div class="example-section example-section-is-code operation-response-example">
                 <h5>Response</h5>
                 <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"data"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span><span class="hljs-attr">"deleteChannel"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">}</span><span class="hljs-punctuation">}</span>
+
+                <head></head>
+
+                <body>
+                  <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"data"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span><span class="hljs-attr">"deleteChannel"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">}</span><span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
+                </body>
+
                 </html>
               </div>
             </div>
             <a href="#top">back to top</a>
           </div>
         </section>
-        <section id="mutation-deletePolicy" class="operation operation-mutation" data-traverse-target="mutation-deletePolicy">
+        <section id="mutation-deletePolicy"
+                 class="operation operation-mutation"
+                 data-traverse-target="mutation-deletePolicy">
           <div class="operation-group-name">
             <a href="#group-Operations-Mutations">Mutations</a>
           </div>
@@ -2156,7 +2326,8 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                   <tbody>
                     <tr>
                       <td>
-                        <span class="property-name"><code>policyId</code></span> - <span class="property-type"><a href="#definition-String"><code>String!</code></a></span>
+                        <span class="property-name"><code>policyId</code></span> - <span class="property-type"><a
+                             href="#definition-String"><code>String!</code></a></span>
                       </td>
                       <td>
                       </td>
@@ -2170,37 +2341,51 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
               <div class="example-section example-section-is-code operation-query-example">
                 <h5>Query</h5>
                 <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">mutation</span> deletePolicy<span class="hljs-tag">(<span class="hljs-code">$policyId</span>:<span class="hljs-type"> String!</span>)</span> <span class="hljs-tag">{
+
+                <head></head>
+
+                <body>
+                  <pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">mutation</span> deletePolicy<span class="hljs-tag">(<span class="hljs-code">$policyId</span>:<span class="hljs-type"> String!</span>)</span> <span class="hljs-tag">{
   <span class="hljs-symbol">deletePolicy<span class="hljs-tag">(policyId: <span class="hljs-code">$policyId</span>)</span></span>
 }</span></span>
 </code></pre>
-                  </body>
+                </body>
+
                 </html>
               </div>
               <div class="example-section example-section-is-code operation-variables-example">
                 <h5>Variables</h5>
                 <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"policyId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">}</span>
+
+                <head></head>
+
+                <body>
+                  <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"policyId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
+                </body>
+
                 </html>
               </div>
               <div class="example-section example-section-is-code operation-response-example">
                 <h5>Response</h5>
                 <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"data"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span><span class="hljs-attr">"deletePolicy"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">}</span><span class="hljs-punctuation">}</span>
+
+                <head></head>
+
+                <body>
+                  <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"data"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span><span class="hljs-attr">"deletePolicy"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">}</span><span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
+                </body>
+
                 </html>
               </div>
             </div>
             <a href="#top">back to top</a>
           </div>
         </section>
-        <section id="mutation-updateChannel" class="operation operation-mutation" data-traverse-target="mutation-updateChannel">
+        <section id="mutation-updateChannel"
+                 class="operation operation-mutation"
+                 data-traverse-target="mutation-updateChannel">
           <div class="operation-group-name">
             <a href="#group-Operations-Mutations">Mutations</a>
           </div>
@@ -2292,7 +2477,8 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
                   <tbody>
                     <tr>
                       <td>
-                        <span class="property-name"><code>channelRequest</code></span> - <span class="property-type"><a href="#definition-UpdateChannelRequest"><code>UpdateChannelRequest!</code></a></span>
+                        <span class="property-name"><code>channelRequest</code></span> - <span class="property-type"><a
+                             href="#definition-UpdateChannelRequest"><code>UpdateChannelRequest!</code></a></span>
                       </td>
                       <td>
                       </td>
@@ -2306,8 +2492,11 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
               <div class="example-section example-section-is-code operation-query-example">
                 <h5>Query</h5>
                 <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">mutation</span> updateChannel<span class="hljs-tag">(<span class="hljs-code">$channelRequest</span>:<span class="hljs-type"> UpdateChannelRequest!</span>)</span> <span class="hljs-tag">{
+
+                <head></head>
+
+                <body>
+                  <pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">mutation</span> updateChannel<span class="hljs-tag">(<span class="hljs-code">$channelRequest</span>:<span class="hljs-type"> UpdateChannelRequest!</span>)</span> <span class="hljs-tag">{
   <span class="hljs-symbol">updateChannel<span class="hljs-tag">(channelRequest: <span class="hljs-code">$channelRequest</span>)</span> <span class="hljs-tag">{
     <span class="hljs-symbol">allowedPriceBookIds</span>
     <span class="hljs-symbol">channelId</span>
@@ -2325,23 +2514,31 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
   }</span></span>
 }</span></span>
 </code></pre>
-                  </body>
+                </body>
+
                 </html>
               </div>
               <div class="example-section example-section-is-code operation-variables-example">
                 <h5>Variables</h5>
                 <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"channelRequest"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">UpdateChannelRequest</span><span class="hljs-punctuation">}</span>
+
+                <head></head>
+
+                <body>
+                  <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"channelRequest"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">UpdateChannelRequest</span><span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
+                </body>
+
                 </html>
               </div>
               <div class="example-section example-section-is-code operation-response-example">
                 <h5>Response</h5>
                 <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+
+                <head></head>
+
+                <body>
+                  <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
   <span class="hljs-attr">"data"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
     <span class="hljs-attr">"updateChannel"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
       <span class="hljs-attr">"allowedPriceBookIds"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
@@ -2357,14 +2554,17 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
   <span class="hljs-punctuation">}</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
+                </body>
+
                 </html>
               </div>
             </div>
             <a href="#top">back to top</a>
           </div>
         </section>
-        <section id="mutation-updatePolicy" class="operation operation-mutation" data-traverse-target="mutation-updatePolicy">
+        <section id="mutation-updatePolicy"
+                 class="operation operation-mutation"
+                 data-traverse-target="mutation-updatePolicy">
           <div class="operation-group-name">
             <a href="#group-Operations-Mutations">Mutations</a>
           </div>
@@ -2393,7 +2593,8 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
                 </ul>
                 <p>Trigger fields:</p>
                 <ul>
-                  <li>name: Name of the trigger. If it does not start with &quot;AC-Policy-&quot;, an error is returned.</li>
+                  <li>name: Name of the trigger. If it does not start with &quot;AC-Policy-&quot;, an error is returned.
+                  </li>
                   <li>transportType: Type of transport type, currently only &quot;HTTP_HEADER&quot; is supported.</li>
                 </ul>
                 <p>Action Filters fields:</p>
@@ -2402,10 +2603,13 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
                   <li>values: Values to query for.</li>
                   <li>enabled: Indicates if the filter is enabled or not (true | false).</li>
                   <li>valueSource: Any of &quot;TRIGGER&quot; , &quot;STATIC&quot;.</li>
-                  <li>actionFilterOperator: Any of &quot;EQUALS&quot;, &quot;GREATER_THAN_EQUAL&quot;, &quot;LESS_THAN_EQUAL&quot;.</li>
+                  <li>actionFilterOperator: Any of &quot;EQUALS&quot;, &quot;GREATER_THAN_EQUAL&quot;,
+                    &quot;LESS_THAN_EQUAL&quot;.</li>
                 </ul>
                 <p><strong>Caveat</strong>:</p>
-                <p>Currently, appending or removing items to the list of actions, triggers, or filters, is an all-or-nothing operation, meaning that, if the fields are included, then, whatever it is provided, will replace the current values.</p>
+                <p>Currently, appending or removing items to the list of actions, triggers, or filters, is an
+                  all-or-nothing operation, meaning that, if the fields are included, then, whatever it is provided,
+                  will replace the current values.</p>
                 <p><strong>Examples</strong>:</p>
                 <ol>
                   <li>Updating the name of a policy:</li>
@@ -2560,7 +2764,8 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
                   <tbody>
                     <tr>
                       <td>
-                        <span class="property-name"><code>policyRequest</code></span> - <span class="property-type"><a href="#definition-UpdatePolicyRequest"><code>UpdatePolicyRequest!</code></a></span>
+                        <span class="property-name"><code>policyRequest</code></span> - <span class="property-type"><a
+                             href="#definition-UpdatePolicyRequest"><code>UpdatePolicyRequest!</code></a></span>
                       </td>
                       <td>
                       </td>
@@ -2574,8 +2779,11 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
               <div class="example-section example-section-is-code operation-query-example">
                 <h5>Query</h5>
                 <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">mutation</span> updatePolicy<span class="hljs-tag">(<span class="hljs-code">$policyRequest</span>:<span class="hljs-type"> UpdatePolicyRequest!</span>)</span> <span class="hljs-tag">{
+
+                <head></head>
+
+                <body>
+                  <pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">mutation</span> updatePolicy<span class="hljs-tag">(<span class="hljs-code">$policyRequest</span>:<span class="hljs-type"> UpdatePolicyRequest!</span>)</span> <span class="hljs-tag">{
   <span class="hljs-symbol">updatePolicy<span class="hljs-tag">(policyRequest: <span class="hljs-code">$policyRequest</span>)</span> <span class="hljs-tag">{
     <span class="hljs-symbol">actions <span class="hljs-tag">{
       <span class="hljs-type">...ActionResponseFragment</span>
@@ -2588,23 +2796,31 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
   }</span></span>
 }</span></span>
 </code></pre>
-                  </body>
+                </body>
+
                 </html>
               </div>
               <div class="example-section example-section-is-code operation-variables-example">
                 <h5>Variables</h5>
                 <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"policyRequest"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">UpdatePolicyRequest</span><span class="hljs-punctuation">}</span>
+
+                <head></head>
+
+                <body>
+                  <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"policyRequest"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">UpdatePolicyRequest</span><span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
+                </body>
+
                 </html>
               </div>
               <div class="example-section example-section-is-code operation-response-example">
                 <h5>Response</h5>
                 <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+
+                <head></head>
+
+                <body>
+                  <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
   <span class="hljs-attr">"data"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
     <span class="hljs-attr">"updatePolicy"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
       <span class="hljs-attr">"actions"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">ActionResponse</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
@@ -2617,15 +2833,20 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
   <span class="hljs-punctuation">}</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
+                </body>
+
                 </html>
               </div>
             </div>
             <a href="#top">back to top</a>
           </div>
         </section>
-        <h1 id="group-Types" class="group-heading" data-traverse-target="group-Types">Types</h1>
-        <section id="definition-ActionFilterOperator" class="definition definition-enum" data-traverse-target="definition-ActionFilterOperator">
+        <h1 id="group-Types"
+            class="group-heading"
+            data-traverse-target="group-Types">Types</h1>
+        <section id="definition-ActionFilterOperator"
+                 class="definition definition-enum"
+                 data-traverse-target="definition-ActionFilterOperator">
           <h2 class="definition-heading">ActionFilterOperator</h2>
           <div class="doc-row">
             <div class="doc-copy">
@@ -2679,17 +2900,23 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
               <div class="example-section example-section-is-code">
                 <h5>Example</h5>
                 <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-gql"><span class="hljs-symbol">"EQUALS"</span>
+
+                <head></head>
+
+                <body>
+                  <pre><code class="hljs language-gql"><span class="hljs-symbol">"EQUALS"</span>
 </code></pre>
-                  </body>
+                </body>
+
                 </html>
               </div>
             </div>
             <a href="#top">back to top</a>
           </div>
         </section>
-        <section id="definition-ActionFilterRequest" class="definition definition-input-object" data-traverse-target="definition-ActionFilterRequest">
+        <section id="definition-ActionFilterRequest"
+                 class="definition definition-input-object"
+                 data-traverse-target="definition-ActionFilterRequest">
           <div class="definition-group-name">
             <a href="#group-Types">Types</a>
           </div>
@@ -2712,32 +2939,39 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
                   <tbody>
                     <tr>
                       <td>
-                        <span class="property-name"><code>actionFilterOperator</code></span> - <span class="property-type"><a href="#definition-ActionFilterOperator"><code>ActionFilterOperator!</code></a></span>
+                        <span class="property-name"><code>actionFilterOperator</code></span> - <span
+                              class="property-type"><a
+                             href="#definition-ActionFilterOperator"><code>ActionFilterOperator!</code></a></span>
                       </td>
                       <td> Filter comparison operator. Required. </td>
                     </tr>
                     <tr>
                       <td>
-                        <span class="property-name"><code>attribute</code></span> - <span class="property-type"><a href="#definition-String"><code>String!</code></a></span>
+                        <span class="property-name"><code>attribute</code></span> - <span class="property-type"><a
+                             href="#definition-String"><code>String!</code></a></span>
                       </td>
                       <td> Attribute name to use in the filter. Required. </td>
                     </tr>
                     <tr>
                       <td>
-                        <span class="property-name"><code>enabled</code></span> - <span class="property-type"><a href="#definition-Boolean"><code>Boolean!</code></a></span>
+                        <span class="property-name"><code>enabled</code></span> - <span class="property-type"><a
+                             href="#definition-Boolean"><code>Boolean!</code></a></span>
                       </td>
                       <td> Indicates if the filter is enabled or not (true | false). Required. </td>
                     </tr>
                     <tr>
                       <td>
-                        <span class="property-name"><code>value</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
+                        <span class="property-name"><code>value</code></span> - <span class="property-type"><a
+                             href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> Filter attribute value. Deprecated. Use values instead. <span class="deprecation-reason">No longer supported</span>
+                      <td> Filter attribute value. Deprecated. Use values instead. <span class="deprecation-reason">No
+                          longer supported</span>
                       </td>
                     </tr>
                     <tr>
                       <td>
-                        <span class="property-name"><code>valueSource</code></span> - <span class="property-type"><a href="#definition-ActionFilterValueSource"><code>ActionFilterValueSource!</code></a></span>
+                        <span class="property-name"><code>valueSource</code></span> - <span class="property-type"><a
+                             href="#definition-ActionFilterValueSource"><code>ActionFilterValueSource!</code></a></span>
                       </td>
                       <td>
                         <p>Indicates the location of action filter&#39;s value. Required.</p>
@@ -2749,7 +2983,8 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
                     </tr>
                     <tr>
                       <td>
-                        <span class="property-name"><code>values</code></span> - <span class="property-type"><a href="#definition-String"><code>[String!]</code></a></span>
+                        <span class="property-name"><code>values</code></span> - <span class="property-type"><a
+                             href="#definition-String"><code>[String!]</code></a></span>
                       </td>
                       <td> Filter attribute values. </td>
                     </tr>
@@ -2761,8 +2996,11 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
               <div class="example-section example-section-is-code">
                 <h5>Example</h5>
                 <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+
+                <head></head>
+
+                <body>
+                  <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
   <span class="hljs-attr">"actionFilterOperator"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"EQUALS"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"attribute"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"enabled"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span><span class="hljs-punctuation">,</span>
@@ -2771,14 +3009,17 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
   <span class="hljs-attr">"values"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"abc123"</span><span class="hljs-punctuation">]</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
+                </body>
+
                 </html>
               </div>
             </div>
             <a href="#top">back to top</a>
           </div>
         </section>
-        <section id="definition-ActionFilterResponse" class="definition definition-object" data-traverse-target="definition-ActionFilterResponse">
+        <section id="definition-ActionFilterResponse"
+                 class="definition definition-object"
+                 data-traverse-target="definition-ActionFilterResponse">
           <div class="definition-group-name">
             <a href="#group-Types">Types</a>
           </div>
@@ -2800,33 +3041,43 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
                   </thead>
                   <tbody>
                     <tr>
-                      <td data-property-name=""><span class="property-name"><code>actionFilterOperator</code></span> - <span class="property-type"><a href="#definition-ActionFilterOperator"><code>ActionFilterOperator</code></a></span>
+                      <td data-property-name=""><span class="property-name"><code>actionFilterOperator</code></span> -
+                        <span class="property-type"><a
+                             href="#definition-ActionFilterOperator"><code>ActionFilterOperator</code></a></span>
                       </td>
                       <td> Filter comparison operator. </td>
                     </tr>
                     <tr>
-                      <td data-property-name=""><span class="property-name"><code>attribute</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
+                      <td data-property-name=""><span class="property-name"><code>attribute</code></span> - <span
+                              class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
                       <td> Attribute name to use in the filter. </td>
                     </tr>
                     <tr>
-                      <td data-property-name=""><span class="property-name"><code>enabled</code></span> - <span class="property-type"><a href="#definition-Boolean"><code>Boolean</code></a></span>
+                      <td data-property-name=""><span class="property-name"><code>enabled</code></span> - <span
+                              class="property-type"><a href="#definition-Boolean"><code>Boolean</code></a></span>
                       </td>
                       <td> Indicates if the filter is enabled or not (true | false). </td>
                     </tr>
                     <tr>
-                      <td data-property-name="" class="definition-deprecated"><span class="property-name"><code>value</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
+                      <td data-property-name=""
+                          class="definition-deprecated"><span class="property-name"><code>value</code></span> - <span
+                              class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> Filter attribute value. Deprecated. Use values instead. <span class="deprecation-reason">No longer supported</span>
+                      <td> Filter attribute value. Deprecated. Use values instead. <span class="deprecation-reason">No
+                          longer supported</span>
                       </td>
                     </tr>
                     <tr>
-                      <td data-property-name=""><span class="property-name"><code>valueSource</code></span> - <span class="property-type"><a href="#definition-ActionFilterValueSource"><code>ActionFilterValueSource</code></a></span>
+                      <td data-property-name=""><span class="property-name"><code>valueSource</code></span> - <span
+                              class="property-type"><a
+                             href="#definition-ActionFilterValueSource"><code>ActionFilterValueSource</code></a></span>
                       </td>
                       <td> Indicates the type of action filter. </td>
                     </tr>
                     <tr>
-                      <td data-property-name=""><span class="property-name"><code>values</code></span> - <span class="property-type"><a href="#definition-String"><code>[String]</code></a></span>
+                      <td data-property-name=""><span class="property-name"><code>values</code></span> - <span
+                              class="property-type"><a href="#definition-String"><code>[String]</code></a></span>
                       </td>
                       <td> Filter attribute values. </td>
                     </tr>
@@ -2838,8 +3089,11 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
               <div class="example-section example-section-is-code">
                 <h5>Example</h5>
                 <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+
+                <head></head>
+
+                <body>
+                  <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
   <span class="hljs-attr">"actionFilterOperator"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"EQUALS"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"attribute"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"enabled"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span>
@@ -2848,14 +3102,17 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
   <span class="hljs-attr">"values"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"abc123"</span><span class="hljs-punctuation">]</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
+                </body>
+
                 </html>
               </div>
             </div>
             <a href="#top">back to top</a>
           </div>
         </section>
-        <section id="definition-ActionFilterValueSource" class="definition definition-enum" data-traverse-target="definition-ActionFilterValueSource">
+        <section id="definition-ActionFilterValueSource"
+                 class="definition definition-enum"
+                 data-traverse-target="definition-ActionFilterValueSource">
           <div class="definition-group-name">
             <a href="#group-Types">Types</a>
           </div>
@@ -2898,17 +3155,23 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
               <div class="example-section example-section-is-code">
                 <h5>Example</h5>
                 <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-gql"><span class="hljs-symbol">"STATIC"</span>
+
+                <head></head>
+
+                <body>
+                  <pre><code class="hljs language-gql"><span class="hljs-symbol">"STATIC"</span>
 </code></pre>
-                  </body>
+                </body>
+
                 </html>
               </div>
             </div>
             <a href="#top">back to top</a>
           </div>
         </section>
-        <section id="definition-ActionRequest" class="definition definition-input-object" data-traverse-target="definition-ActionRequest">
+        <section id="definition-ActionRequest"
+                 class="definition definition-input-object"
+                 data-traverse-target="definition-ActionRequest">
           <div class="definition-group-name">
             <a href="#group-Types">Types</a>
           </div>
@@ -2931,15 +3194,18 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
                   <tbody>
                     <tr>
                       <td>
-                        <span class="property-name"><code>filters</code></span> - <span class="property-type"><a href="#definition-ActionFilterRequest"><code>[ActionFilterRequest!]</code></a></span>
+                        <span class="property-name"><code>filters</code></span> - <span class="property-type"><a
+                             href="#definition-ActionFilterRequest"><code>[ActionFilterRequest!]</code></a></span>
                       </td>
                       <td> List of action filters for the enclosing policy action item. Optional. </td>
                     </tr>
                     <tr>
                       <td>
-                        <span class="property-name"><code>triggers</code></span> - <span class="property-type"><a href="#definition-TriggerRequest"><code>[TriggerRequest!]</code></a></span>
+                        <span class="property-name"><code>triggers</code></span> - <span class="property-type"><a
+                             href="#definition-TriggerRequest"><code>[TriggerRequest!]</code></a></span>
                       </td>
-                      <td> List of triggers for the enclosing policy action item. Optional. If not provided, then the policy will always be applied. </td>
+                      <td> List of triggers for the enclosing policy action item. Optional. If not provided, then the
+                        policy will always be applied. </td>
                     </tr>
                   </tbody>
                 </table>
@@ -2949,20 +3215,26 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
               <div class="example-section example-section-is-code">
                 <h5>Example</h5>
                 <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+
+                <head></head>
+
+                <body>
+                  <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
   <span class="hljs-attr">"filters"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">ActionFilterRequest</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"triggers"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">TriggerRequest</span><span class="hljs-punctuation">]</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
+                </body>
+
                 </html>
               </div>
             </div>
             <a href="#top">back to top</a>
           </div>
         </section>
-        <section id="definition-ActionResponse" class="definition definition-object" data-traverse-target="definition-ActionResponse">
+        <section id="definition-ActionResponse"
+                 class="definition definition-object"
+                 data-traverse-target="definition-ActionResponse">
           <div class="definition-group-name">
             <a href="#group-Types">Types</a>
           </div>
@@ -2984,12 +3256,16 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
                   </thead>
                   <tbody>
                     <tr>
-                      <td data-property-name=""><span class="property-name"><code>filters</code></span> - <span class="property-type"><a href="#definition-ActionFilterResponse"><code>[ActionFilterResponse!]</code></a></span>
+                      <td data-property-name=""><span class="property-name"><code>filters</code></span> - <span
+                              class="property-type"><a
+                             href="#definition-ActionFilterResponse"><code>[ActionFilterResponse!]</code></a></span>
                       </td>
                       <td> List of action filters for a given policy. </td>
                     </tr>
                     <tr>
-                      <td data-property-name=""><span class="property-name"><code>triggers</code></span> - <span class="property-type"><a href="#definition-TriggerResponse"><code>[TriggerResponse!]</code></a></span>
+                      <td data-property-name=""><span class="property-name"><code>triggers</code></span> - <span
+                              class="property-type"><a
+                             href="#definition-TriggerResponse"><code>[TriggerResponse!]</code></a></span>
                       </td>
                       <td> List of triggers for a given policy. </td>
                     </tr>
@@ -3001,20 +3277,26 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
               <div class="example-section example-section-is-code">
                 <h5>Example</h5>
                 <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+
+                <head></head>
+
+                <body>
+                  <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
   <span class="hljs-attr">"filters"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">ActionFilterResponse</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"triggers"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">TriggerResponse</span><span class="hljs-punctuation">]</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
+                </body>
+
                 </html>
               </div>
             </div>
             <a href="#top">back to top</a>
           </div>
         </section>
-        <section id="definition-BatchChannelResponse" class="definition definition-object" data-traverse-target="definition-BatchChannelResponse">
+        <section id="definition-BatchChannelResponse"
+                 class="definition definition-object"
+                 data-traverse-target="definition-BatchChannelResponse">
           <div class="definition-group-name">
             <a href="#group-Types">Types</a>
           </div>
@@ -3036,12 +3318,15 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
                   </thead>
                   <tbody>
                     <tr>
-                      <td data-property-name=""><span class="property-name"><code>channels</code></span> - <span class="property-type"><a href="#definition-ChannelResponse"><code>[ChannelResponse!]</code></a></span>
+                      <td data-property-name=""><span class="property-name"><code>channels</code></span> - <span
+                              class="property-type"><a
+                             href="#definition-ChannelResponse"><code>[ChannelResponse!]</code></a></span>
                       </td>
                       <td> List of channels to insert or update. </td>
                     </tr>
                     <tr>
-                      <td data-property-name=""><span class="property-name"><code>errors</code></span> - <span class="property-type"><a href="#definition-String"><code>[String!]</code></a></span>
+                      <td data-property-name=""><span class="property-name"><code>errors</code></span> - <span
+                              class="property-type"><a href="#definition-String"><code>[String!]</code></a></span>
                       </td>
                       <td> List of errors found during the insert or update operations, if any. </td>
                     </tr>
@@ -3053,20 +3338,26 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
               <div class="example-section example-section-is-code">
                 <h5>Example</h5>
                 <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+
+                <head></head>
+
+                <body>
+                  <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
   <span class="hljs-attr">"channels"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">ChannelResponse</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"errors"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">]</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
+                </body>
+
                 </html>
               </div>
             </div>
             <a href="#top">back to top</a>
           </div>
         </section>
-        <section id="definition-BatchPolicyResponse" class="definition definition-object" data-traverse-target="definition-BatchPolicyResponse">
+        <section id="definition-BatchPolicyResponse"
+                 class="definition definition-object"
+                 data-traverse-target="definition-BatchPolicyResponse">
           <div class="definition-group-name">
             <a href="#group-Types">Types</a>
           </div>
@@ -3088,12 +3379,15 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
                   </thead>
                   <tbody>
                     <tr>
-                      <td data-property-name=""><span class="property-name"><code>errors</code></span> - <span class="property-type"><a href="#definition-String"><code>[String!]</code></a></span>
+                      <td data-property-name=""><span class="property-name"><code>errors</code></span> - <span
+                              class="property-type"><a href="#definition-String"><code>[String!]</code></a></span>
                       </td>
                       <td> List of errors found during the insert or update operations, if any. </td>
                     </tr>
                     <tr>
-                      <td data-property-name=""><span class="property-name"><code>policies</code></span> - <span class="property-type"><a href="#definition-PolicyResponse"><code>[PolicyResponse!]</code></a></span>
+                      <td data-property-name=""><span class="property-name"><code>policies</code></span> - <span
+                              class="property-type"><a
+                             href="#definition-PolicyResponse"><code>[PolicyResponse!]</code></a></span>
                       </td>
                       <td> List of policy objects created or modified. </td>
                     </tr>
@@ -3105,20 +3399,26 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
               <div class="example-section example-section-is-code">
                 <h5>Example</h5>
                 <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+
+                <head></head>
+
+                <body>
+                  <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
   <span class="hljs-attr">"errors"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"abc123"</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"policies"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">PolicyResponse</span><span class="hljs-punctuation">]</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
+                </body>
+
                 </html>
               </div>
             </div>
             <a href="#top">back to top</a>
           </div>
         </section>
-        <section id="definition-Boolean" class="definition definition-scalar" data-traverse-target="definition-Boolean">
+        <section id="definition-Boolean"
+                 class="definition definition-scalar"
+                 data-traverse-target="definition-Boolean">
           <div class="definition-group-name">
             <a href="#group-Types">Types</a>
           </div>
@@ -3135,7 +3435,9 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
             <a href="#top">back to top</a>
           </div>
         </section>
-        <section id="definition-ChannelResponse" class="definition definition-object" data-traverse-target="definition-ChannelResponse">
+        <section id="definition-ChannelResponse"
+                 class="definition definition-object"
+                 data-traverse-target="definition-ChannelResponse">
           <div class="definition-group-name">
             <a href="#group-Types">Types</a>
           </div>
@@ -3157,49 +3459,63 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
                   </thead>
                   <tbody>
                     <tr>
-                      <td data-property-name=""><span class="property-name"><code>allowedPriceBookIds</code></span> - <span class="property-type"><a href="#definition-String"><code>[String!]</code></a></span>
+                      <td data-property-name=""><span class="property-name"><code>allowedPriceBookIds</code></span> -
+                        <span class="property-type"><a href="#definition-String"><code>[String!]</code></a></span>
                       </td>
-                      <td> List of price book identifiers allowed within the channel. If the list is empty, all price books will be allowed. The default value is empty. </td>
+                      <td> List of price book identifiers allowed within the channel. If the list is empty, all price
+                        books will be allowed. The default value is empty. </td>
                     </tr>
                     <tr>
-                      <td data-property-name=""><span class="property-name"><code>channelId</code></span> - <span class="property-type"><a href="#definition-String"><code>String!</code></a></span>
+                      <td data-property-name=""><span class="property-name"><code>channelId</code></span> - <span
+                              class="property-type"><a href="#definition-String"><code>String!</code></a></span>
                       </td>
                       <td> Unique identifier for the channel. </td>
                     </tr>
                     <tr>
-                      <td data-property-name=""><span class="property-name"><code>createdAt</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
+                      <td data-property-name=""><span class="property-name"><code>createdAt</code></span> - <span
+                              class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> Timestamp of when the channel was created, in ISO 8601 format (e.g., 2024-07-25T16:10:11.701669). </td>
+                      <td> Timestamp of when the channel was created, in ISO 8601 format (e.g.,
+                        2024-07-25T16:10:11.701669). </td>
                     </tr>
                     <tr>
-                      <td data-property-name=""><span class="property-name"><code>defaultPriceBookId</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
+                      <td data-property-name=""><span class="property-name"><code>defaultPriceBookId</code></span> -
+                        <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
                       <td> Default price book identifier for the channel. </td>
                     </tr>
                     <tr>
-                      <td data-property-name=""><span class="property-name"><code>name</code></span> - <span class="property-type"><a href="#definition-String"><code>String!</code></a></span>
+                      <td data-property-name=""><span class="property-name"><code>name</code></span> - <span
+                              class="property-type"><a href="#definition-String"><code>String!</code></a></span>
                       </td>
                       <td> Name of the channel. </td>
                     </tr>
                     <tr>
-                      <td data-property-name=""><span class="property-name"><code>policies</code></span> - <span class="property-type"><a href="#definition-PolicyResponse"><code>[PolicyResponse]</code></a></span>
+                      <td data-property-name=""><span class="property-name"><code>policies</code></span> - <span
+                              class="property-type"><a
+                             href="#definition-PolicyResponse"><code>[PolicyResponse]</code></a></span>
                       </td>
                       <td> Policies associated to each channel (joined by policyIds). </td>
                     </tr>
                     <tr>
-                      <td data-property-name=""><span class="property-name"><code>policyIds</code></span> - <span class="property-type"><a href="#definition-String"><code>[String!]</code></a></span>
+                      <td data-property-name=""><span class="property-name"><code>policyIds</code></span> - <span
+                              class="property-type"><a href="#definition-String"><code>[String!]</code></a></span>
                       </td>
                       <td> List of policy identifiers associated with the channel. </td>
                     </tr>
                     <tr>
-                      <td data-property-name=""><span class="property-name"><code>scopes</code></span> - <span class="property-type"><a href="#definition-ChannelScopeResponse"><code>[ChannelScopeResponse!]</code></a></span>
+                      <td data-property-name=""><span class="property-name"><code>scopes</code></span> - <span
+                              class="property-type"><a
+                             href="#definition-ChannelScopeResponse"><code>[ChannelScopeResponse!]</code></a></span>
                       </td>
                       <td> List of scopes associated with the channel. </td>
                     </tr>
                     <tr>
-                      <td data-property-name=""><span class="property-name"><code>updatedAt</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
+                      <td data-property-name=""><span class="property-name"><code>updatedAt</code></span> - <span
+                              class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> Timestamp of the last update to the channel, in ISO 8601 format (e.g., 2024-07-25T16:10:11.701669). </td>
+                      <td> Timestamp of the last update to the channel, in ISO 8601 format (e.g.,
+                        2024-07-25T16:10:11.701669). </td>
                     </tr>
                   </tbody>
                 </table>
@@ -3209,8 +3525,11 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
               <div class="example-section example-section-is-code">
                 <h5>Example</h5>
                 <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+
+                <head></head>
+
+                <body>
+                  <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
   <span class="hljs-attr">"allowedPriceBookIds"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"channelId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"createdAt"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
@@ -3222,14 +3541,17 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
   <span class="hljs-attr">"updatedAt"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
+                </body>
+
                 </html>
               </div>
             </div>
             <a href="#top">back to top</a>
           </div>
         </section>
-        <section id="definition-ChannelScopeRequest" class="definition definition-input-object" data-traverse-target="definition-ChannelScopeRequest">
+        <section id="definition-ChannelScopeRequest"
+                 class="definition definition-input-object"
+                 data-traverse-target="definition-ChannelScopeRequest">
           <div class="definition-group-name">
             <a href="#group-Types">Types</a>
           </div>
@@ -3248,7 +3570,8 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
                   <tbody>
                     <tr>
                       <td>
-                        <span class="property-name"><code>locale</code></span> - <span class="property-type"><a href="#definition-String"><code>String!</code></a></span>
+                        <span class="property-name"><code>locale</code></span> - <span class="property-type"><a
+                             href="#definition-String"><code>String!</code></a></span>
                       </td>
                       <td>
                       </td>
@@ -3261,17 +3584,23 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
               <div class="example-section example-section-is-code">
                 <h5>Example</h5>
                 <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"locale"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">}</span>
+
+                <head></head>
+
+                <body>
+                  <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"locale"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
+                </body>
+
                 </html>
               </div>
             </div>
             <a href="#top">back to top</a>
           </div>
         </section>
-        <section id="definition-ChannelScopeResponse" class="definition definition-object" data-traverse-target="definition-ChannelScopeResponse">
+        <section id="definition-ChannelScopeResponse"
+                 class="definition definition-object"
+                 data-traverse-target="definition-ChannelScopeResponse">
           <div class="definition-group-name">
             <a href="#group-Types">Types</a>
           </div>
@@ -3289,7 +3618,8 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
                   </thead>
                   <tbody>
                     <tr>
-                      <td data-property-name=""><span class="property-name"><code>locale</code></span> - <span class="property-type"><a href="#definition-String"><code>String!</code></a></span>
+                      <td data-property-name=""><span class="property-name"><code>locale</code></span> - <span
+                              class="property-type"><a href="#definition-String"><code>String!</code></a></span>
                       </td>
                       <td>
                       </td>
@@ -3302,17 +3632,23 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
               <div class="example-section example-section-is-code">
                 <h5>Example</h5>
                 <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"locale"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">}</span>
+
+                <head></head>
+
+                <body>
+                  <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"locale"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
+                </body>
+
                 </html>
               </div>
             </div>
             <a href="#top">back to top</a>
           </div>
         </section>
-        <section id="definition-CreateChannelRequest" class="definition definition-input-object" data-traverse-target="definition-CreateChannelRequest">
+        <section id="definition-CreateChannelRequest"
+                 class="definition definition-input-object"
+                 data-traverse-target="definition-CreateChannelRequest">
           <div class="definition-group-name">
             <a href="#group-Types">Types</a>
           </div>
@@ -3335,31 +3671,37 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
                   <tbody>
                     <tr>
                       <td>
-                        <span class="property-name"><code>allowedPriceBookIds</code></span> - <span class="property-type"><a href="#definition-String"><code>[String!]</code></a></span>
+                        <span class="property-name"><code>allowedPriceBookIds</code></span> - <span
+                              class="property-type"><a href="#definition-String"><code>[String!]</code></a></span>
                       </td>
-                      <td> List of price book identifiers allowed within the channel. If the list is empty, all price books will be allowed. The default value is empty. </td>
+                      <td> List of price book identifiers allowed within the channel. If the list is empty, all price
+                        books will be allowed. The default value is empty. </td>
                     </tr>
                     <tr>
                       <td>
-                        <span class="property-name"><code>defaultPriceBookId</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
+                        <span class="property-name"><code>defaultPriceBookId</code></span> - <span
+                              class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
                       <td> Default price book identifier for the channel. </td>
                     </tr>
                     <tr>
                       <td>
-                        <span class="property-name"><code>name</code></span> - <span class="property-type"><a href="#definition-String"><code>String!</code></a></span>
+                        <span class="property-name"><code>name</code></span> - <span class="property-type"><a
+                             href="#definition-String"><code>String!</code></a></span>
                       </td>
                       <td> Name of the Chanel. Mandatory. </td>
                     </tr>
                     <tr>
                       <td>
-                        <span class="property-name"><code>policyIds</code></span> - <span class="property-type"><a href="#definition-String"><code>[String!]</code></a></span>
+                        <span class="property-name"><code>policyIds</code></span> - <span class="property-type"><a
+                             href="#definition-String"><code>[String!]</code></a></span>
                       </td>
                       <td> List of policy identifiers. </td>
                     </tr>
                     <tr>
                       <td>
-                        <span class="property-name"><code>scopes</code></span> - <span class="property-type"><a href="#definition-ChannelScopeRequest"><code>[ChannelScopeRequest!]</code></a></span>
+                        <span class="property-name"><code>scopes</code></span> - <span class="property-type"><a
+                             href="#definition-ChannelScopeRequest"><code>[ChannelScopeRequest!]</code></a></span>
                       </td>
                       <td> List of locale identifiers. </td>
                     </tr>
@@ -3371,8 +3713,11 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
               <div class="example-section example-section-is-code">
                 <h5>Example</h5>
                 <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+
+                <head></head>
+
+                <body>
+                  <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
   <span class="hljs-attr">"allowedPriceBookIds"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"abc123"</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"defaultPriceBookId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
@@ -3380,14 +3725,17 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
   <span class="hljs-attr">"scopes"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">ChannelScopeRequest</span><span class="hljs-punctuation">]</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
+                </body>
+
                 </html>
               </div>
             </div>
             <a href="#top">back to top</a>
           </div>
         </section>
-        <section id="definition-CreatePolicyRequest" class="definition definition-input-object" data-traverse-target="definition-CreatePolicyRequest">
+        <section id="definition-CreatePolicyRequest"
+                 class="definition definition-input-object"
+                 data-traverse-target="definition-CreatePolicyRequest">
           <div class="definition-group-name">
             <a href="#group-Types">Types</a>
           </div>
@@ -3410,19 +3758,22 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
                   <tbody>
                     <tr>
                       <td>
-                        <span class="property-name"><code>actions</code></span> - <span class="property-type"><a href="#definition-ActionRequest"><code>[ActionRequest]!</code></a></span>
+                        <span class="property-name"><code>actions</code></span> - <span class="property-type"><a
+                             href="#definition-ActionRequest"><code>[ActionRequest]!</code></a></span>
                       </td>
                       <td> List of policy's actions. Required, at least one item. </td>
                     </tr>
                     <tr>
                       <td>
-                        <span class="property-name"><code>mandatory</code></span> - <span class="property-type"><a href="#definition-Boolean"><code>Boolean!</code></a></span>
+                        <span class="property-name"><code>mandatory</code></span> - <span class="property-type"><a
+                             href="#definition-Boolean"><code>Boolean!</code></a></span>
                       </td>
                       <td> Indicates if the policy is required or not (true | false). Required. </td>
                     </tr>
                     <tr>
                       <td>
-                        <span class="property-name"><code>name</code></span> - <span class="property-type"><a href="#definition-String"><code>String!</code></a></span>
+                        <span class="property-name"><code>name</code></span> - <span class="property-type"><a
+                             href="#definition-String"><code>String!</code></a></span>
                       </td>
                       <td> Name of the policy. Required. </td>
                     </tr>
@@ -3434,21 +3785,27 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
               <div class="example-section example-section-is-code">
                 <h5>Example</h5>
                 <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+
+                <head></head>
+
+                <body>
+                  <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
   <span class="hljs-attr">"actions"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">ActionRequest</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"mandatory"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
+                </body>
+
                 </html>
               </div>
             </div>
             <a href="#top">back to top</a>
           </div>
         </section>
-        <section id="definition-PolicyResponse" class="definition definition-object" data-traverse-target="definition-PolicyResponse">
+        <section id="definition-PolicyResponse"
+                 class="definition definition-object"
+                 data-traverse-target="definition-PolicyResponse">
           <div class="definition-group-name">
             <a href="#group-Types">Types</a>
           </div>
@@ -3470,32 +3827,39 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
                   </thead>
                   <tbody>
                     <tr>
-                      <td data-property-name=""><span class="property-name"><code>actions</code></span> - <span class="property-type"><a href="#definition-ActionResponse"><code>[ActionResponse!]</code></a></span>
+                      <td data-property-name=""><span class="property-name"><code>actions</code></span> - <span
+                              class="property-type"><a
+                             href="#definition-ActionResponse"><code>[ActionResponse!]</code></a></span>
                       </td>
                       <td> List of actions associated to the policy. </td>
                     </tr>
                     <tr>
-                      <td data-property-name=""><span class="property-name"><code>createdAt</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
+                      <td data-property-name=""><span class="property-name"><code>createdAt</code></span> - <span
+                              class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
                       <td> Record creation timestamp. </td>
                     </tr>
                     <tr>
-                      <td data-property-name=""><span class="property-name"><code>mandatory</code></span> - <span class="property-type"><a href="#definition-Boolean"><code>Boolean</code></a></span>
+                      <td data-property-name=""><span class="property-name"><code>mandatory</code></span> - <span
+                              class="property-type"><a href="#definition-Boolean"><code>Boolean</code></a></span>
                       </td>
                       <td> Indicates if the policy is required or not (true | false). </td>
                     </tr>
                     <tr>
-                      <td data-property-name=""><span class="property-name"><code>name</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
+                      <td data-property-name=""><span class="property-name"><code>name</code></span> - <span
+                              class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
                       <td> Policy name. </td>
                     </tr>
                     <tr>
-                      <td data-property-name=""><span class="property-name"><code>policyId</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
+                      <td data-property-name=""><span class="property-name"><code>policyId</code></span> - <span
+                              class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
                       <td> Policy identifier. </td>
                     </tr>
                     <tr>
-                      <td data-property-name=""><span class="property-name"><code>updatedAt</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
+                      <td data-property-name=""><span class="property-name"><code>updatedAt</code></span> - <span
+                              class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
                       <td> Record's latest update timestamp. </td>
                     </tr>
@@ -3507,8 +3871,11 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
               <div class="example-section example-section-is-code">
                 <h5>Example</h5>
                 <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+
+                <head></head>
+
+                <body>
+                  <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
   <span class="hljs-attr">"actions"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">ActionResponse</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"createdAt"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"mandatory"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span>
@@ -3517,14 +3884,17 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
   <span class="hljs-attr">"updatedAt"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
+                </body>
+
                 </html>
               </div>
             </div>
             <a href="#top">back to top</a>
           </div>
         </section>
-        <section id="definition-Scope" class="definition definition-object" data-traverse-target="definition-Scope">
+        <section id="definition-Scope"
+                 class="definition definition-object"
+                 data-traverse-target="definition-Scope">
           <div class="definition-group-name">
             <a href="#group-Types">Types</a>
           </div>
@@ -3542,7 +3912,8 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
                   </thead>
                   <tbody>
                     <tr>
-                      <td data-property-name=""><span class="property-name"><code>locale</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
+                      <td data-property-name=""><span class="property-name"><code>locale</code></span> - <span
+                              class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
                       <td>
                       </td>
@@ -3555,17 +3926,23 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
               <div class="example-section example-section-is-code">
                 <h5>Example</h5>
                 <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"locale"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">}</span>
+
+                <head></head>
+
+                <body>
+                  <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"locale"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
+                </body>
+
                 </html>
               </div>
             </div>
             <a href="#top">back to top</a>
           </div>
         </section>
-        <section id="definition-String" class="definition definition-scalar" data-traverse-target="definition-String">
+        <section id="definition-String"
+                 class="definition definition-scalar"
+                 data-traverse-target="definition-String">
           <div class="definition-group-name">
             <a href="#group-Types">Types</a>
           </div>
@@ -3574,24 +3951,32 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
             <div class="doc-copy">
               <div class="definition-description doc-copy-section">
                 <h5>Description</h5>
-                <p>The <code>String</code> scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.</p>
+                <p>The <code>String</code> scalar type represents textual data, represented as UTF-8 character
+                  sequences. The String type is most often used by GraphQL to represent free-form human-readable text.
+                </p>
               </div>
             </div>
             <div class="doc-examples">
               <div class="example-section example-section-is-code">
                 <h5>Example</h5>
                 <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-gql"><span class="hljs-symbol">"abc123"</span>
+
+                <head></head>
+
+                <body>
+                  <pre><code class="hljs language-gql"><span class="hljs-symbol">"abc123"</span>
 </code></pre>
-                  </body>
+                </body>
+
                 </html>
               </div>
             </div>
             <a href="#top">back to top</a>
           </div>
         </section>
-        <section id="definition-TransportType" class="definition definition-enum" data-traverse-target="definition-TransportType">
+        <section id="definition-TransportType"
+                 class="definition definition-enum"
+                 data-traverse-target="definition-TransportType">
           <div class="definition-group-name">
             <a href="#group-Types">Types</a>
           </div>
@@ -3627,17 +4012,23 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
               <div class="example-section example-section-is-code">
                 <h5>Example</h5>
                 <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-gql"><span class="hljs-symbol">"HTTP_HEADER"</span>
+
+                <head></head>
+
+                <body>
+                  <pre><code class="hljs language-gql"><span class="hljs-symbol">"HTTP_HEADER"</span>
 </code></pre>
-                  </body>
+                </body>
+
                 </html>
               </div>
             </div>
             <a href="#top">back to top</a>
           </div>
         </section>
-        <section id="definition-TriggerRequest" class="definition definition-input-object" data-traverse-target="definition-TriggerRequest">
+        <section id="definition-TriggerRequest"
+                 class="definition definition-input-object"
+                 data-traverse-target="definition-TriggerRequest">
           <div class="definition-group-name">
             <a href="#group-Types">Types</a>
           </div>
@@ -3660,13 +4051,15 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
                   <tbody>
                     <tr>
                       <td>
-                        <span class="property-name"><code>name</code></span> - <span class="property-type"><a href="#definition-String"><code>String!</code></a></span>
+                        <span class="property-name"><code>name</code></span> - <span class="property-type"><a
+                             href="#definition-String"><code>String!</code></a></span>
                       </td>
                       <td> Name of the trigger. Required. </td>
                     </tr>
                     <tr>
                       <td>
-                        <span class="property-name"><code>transportType</code></span> - <span class="property-type"><a href="#definition-TransportType"><code>TransportType!</code></a></span>
+                        <span class="property-name"><code>transportType</code></span> - <span class="property-type"><a
+                             href="#definition-TransportType"><code>TransportType!</code></a></span>
                       </td>
                       <td> Type of transport. Only HTTP_HEADER supported. Required. </td>
                     </tr>
@@ -3678,20 +4071,26 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
               <div class="example-section example-section-is-code">
                 <h5>Example</h5>
                 <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+
+                <head></head>
+
+                <body>
+                  <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
   <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"transportType"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"HTTP_HEADER"</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
+                </body>
+
                 </html>
               </div>
             </div>
             <a href="#top">back to top</a>
           </div>
         </section>
-        <section id="definition-TriggerResponse" class="definition definition-object" data-traverse-target="definition-TriggerResponse">
+        <section id="definition-TriggerResponse"
+                 class="definition definition-object"
+                 data-traverse-target="definition-TriggerResponse">
           <div class="definition-group-name">
             <a href="#group-Types">Types</a>
           </div>
@@ -3713,12 +4112,15 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
                   </thead>
                   <tbody>
                     <tr>
-                      <td data-property-name=""><span class="property-name"><code>name</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
+                      <td data-property-name=""><span class="property-name"><code>name</code></span> - <span
+                              class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
                       <td> Name of the trigger. It should start with the "AC-Policy-" prefix. </td>
                     </tr>
                     <tr>
-                      <td data-property-name=""><span class="property-name"><code>transportType</code></span> - <span class="property-type"><a href="#definition-TransportType"><code>TransportType</code></a></span>
+                      <td data-property-name=""><span class="property-name"><code>transportType</code></span> - <span
+                              class="property-type"><a
+                             href="#definition-TransportType"><code>TransportType</code></a></span>
                       </td>
                       <td> Originating transport type. Currently only HTTP_HEADER is supported. </td>
                     </tr>
@@ -3730,20 +4132,26 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
               <div class="example-section example-section-is-code">
                 <h5>Example</h5>
                 <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+
+                <head></head>
+
+                <body>
+                  <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
   <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"transportType"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"HTTP_HEADER"</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
+                </body>
+
                 </html>
               </div>
             </div>
             <a href="#top">back to top</a>
           </div>
         </section>
-        <section id="definition-UpdateChannelRequest" class="definition definition-input-object" data-traverse-target="definition-UpdateChannelRequest">
+        <section id="definition-UpdateChannelRequest"
+                 class="definition definition-input-object"
+                 data-traverse-target="definition-UpdateChannelRequest">
           <div class="definition-group-name">
             <a href="#group-Types">Types</a>
           </div>
@@ -3766,37 +4174,46 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
                   <tbody>
                     <tr>
                       <td>
-                        <span class="property-name"><code>allowedPriceBookIds</code></span> - <span class="property-type"><a href="#definition-String"><code>[String!]</code></a></span>
+                        <span class="property-name"><code>allowedPriceBookIds</code></span> - <span
+                              class="property-type"><a href="#definition-String"><code>[String!]</code></a></span>
                       </td>
-                      <td> List of price book identifiers allowed within the channel. Providing an empty list removes all allowed price book restrictions within the channel. </td>
+                      <td> List of price book identifiers allowed within the channel. Providing an empty list removes
+                        all allowed price book restrictions within the channel. </td>
                     </tr>
                     <tr>
                       <td>
-                        <span class="property-name"><code>channelId</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
+                        <span class="property-name"><code>channelId</code></span> - <span class="property-type"><a
+                             href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> Channel identifier. Required only if used for an update operation. It can be omitted if used in a batch insert operation. </td>
+                      <td> Channel identifier. Required only if used for an update operation. It can be omitted if used
+                        in a batch insert operation. </td>
                     </tr>
                     <tr>
                       <td>
-                        <span class="property-name"><code>defaultPriceBookId</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
+                        <span class="property-name"><code>defaultPriceBookId</code></span> - <span
+                              class="property-type"><a href="#definition-String"><code>String</code></a></span>
                       </td>
                       <td> Default price book identifier for the channel. </td>
                     </tr>
                     <tr>
                       <td>
-                        <span class="property-name"><code>name</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
+                        <span class="property-name"><code>name</code></span> - <span class="property-type"><a
+                             href="#definition-String"><code>String</code></a></span>
                       </td>
                       <td> Name of the channel to update. </td>
                     </tr>
                     <tr>
                       <td>
-                        <span class="property-name"><code>policyIds</code></span> - <span class="property-type"><a href="#definition-String"><code>[String!]</code></a></span>
+                        <span class="property-name"><code>policyIds</code></span> - <span class="property-type"><a
+                             href="#definition-String"><code>[String!]</code></a></span>
                       </td>
-                      <td> List of policy identifiers. Providing an empty list removes all policy links to the channel. </td>
+                      <td> List of policy identifiers. Providing an empty list removes all policy links to the channel.
+                      </td>
                     </tr>
                     <tr>
                       <td>
-                        <span class="property-name"><code>scopes</code></span> - <span class="property-type"><a href="#definition-ChannelScopeRequest"><code>[ChannelScopeRequest!]</code></a></span>
+                        <span class="property-name"><code>scopes</code></span> - <span class="property-type"><a
+                             href="#definition-ChannelScopeRequest"><code>[ChannelScopeRequest!]</code></a></span>
                       </td>
                       <td> List of scopes. Providing an empty list removes all scopes from the channel. </td>
                     </tr>
@@ -3808,8 +4225,11 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
               <div class="example-section example-section-is-code">
                 <h5>Example</h5>
                 <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+
+                <head></head>
+
+                <body>
+                  <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
   <span class="hljs-attr">"allowedPriceBookIds"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"abc123"</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"channelId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"defaultPriceBookId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
@@ -3818,14 +4238,17 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
   <span class="hljs-attr">"scopes"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">ChannelScopeRequest</span><span class="hljs-punctuation">]</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
+                </body>
+
                 </html>
               </div>
             </div>
             <a href="#top">back to top</a>
           </div>
         </section>
-        <section id="definition-UpdatePolicyRequest" class="definition definition-input-object" data-traverse-target="definition-UpdatePolicyRequest">
+        <section id="definition-UpdatePolicyRequest"
+                 class="definition definition-input-object"
+                 data-traverse-target="definition-UpdatePolicyRequest">
           <div class="definition-group-name">
             <a href="#group-Types">Types</a>
           </div>
@@ -3848,27 +4271,32 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
                   <tbody>
                     <tr>
                       <td>
-                        <span class="property-name"><code>actions</code></span> - <span class="property-type"><a href="#definition-ActionRequest"><code>[ActionRequest!]</code></a></span>
+                        <span class="property-name"><code>actions</code></span> - <span class="property-type"><a
+                             href="#definition-ActionRequest"><code>[ActionRequest!]</code></a></span>
                       </td>
                       <td> List of policy's actions. Optional. </td>
                     </tr>
                     <tr>
                       <td>
-                        <span class="property-name"><code>mandatory</code></span> - <span class="property-type"><a href="#definition-Boolean"><code>Boolean</code></a></span>
+                        <span class="property-name"><code>mandatory</code></span> - <span class="property-type"><a
+                             href="#definition-Boolean"><code>Boolean</code></a></span>
                       </td>
                       <td> Indicates if the policy is compulsory or not (true | false). Optional. </td>
                     </tr>
                     <tr>
                       <td>
-                        <span class="property-name"><code>name</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
+                        <span class="property-name"><code>name</code></span> - <span class="property-type"><a
+                             href="#definition-String"><code>String</code></a></span>
                       </td>
                       <td> Name of the policy. Optional. </td>
                     </tr>
                     <tr>
                       <td>
-                        <span class="property-name"><code>policyId</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
+                        <span class="property-name"><code>policyId</code></span> - <span class="property-type"><a
+                             href="#definition-String"><code>String</code></a></span>
                       </td>
-                      <td> Policy identifier. Required only if used for an update operation. It can be omitted if used in a batch insert operation. </td>
+                      <td> Policy identifier. Required only if used for an update operation. It can be omitted if used
+                        in a batch insert operation. </td>
                     </tr>
                   </tbody>
                 </table>
@@ -3878,15 +4306,19 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
               <div class="example-section example-section-is-code">
                 <h5>Example</h5>
                 <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+
+                <head></head>
+
+                <body>
+                  <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
   <span class="hljs-attr">"actions"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">ActionRequest</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"mandatory"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"policyId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
+                </body>
+
                 </html>
               </div>
             </div>
@@ -3895,7 +4327,8 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
         </section>
         <div class="doc-row no-margin">
           <div class="doc-copy doc-separator">
-            <a class="powered-by" href="https://github.com/anvilco/spectaql">Documentation by <span>Anvil SpectaQL</span></a>
+            <a class="powered-by"
+               href="https://github.com/anvilco/spectaql">Documentation by <span>Anvil SpectaQL</span></a>
           </div>
         </div>
       </article>

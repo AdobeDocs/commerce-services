@@ -62,8 +62,8 @@ If you have questions, open an issue and ask us. We look forward to hearing from
 
 The GraphQL API reference is generated using [SpectaQL](https://github.com/anvilco/spectaql), an open source tool. The data required for the generator is located in the `spectaql` directory:
 
-- `config-admin.yml`: [configuration file to generate the Channels and Policies API Reference](spectaql/config-admin.yml).
-- `config-storefront.yml`: [configuration file to generate the Merchandising Services Storefront API Reference](spectaql/config-admin.yml).
+- `config-admin.yml`: [configuration file to generate the Channels and Policies API Reference](spectaql/config-admin.yml). (Not used in the current implementation, but included for future use.)
+- `config-merchandising.yml`: [configuration file to generate the Merchandising Services API Reference](spectaql/config-admin.yml).
 
 These configuration files include the endpoint for each API service.
 
@@ -72,13 +72,11 @@ When you build the API reference, the build script uses live introspection to re
 The resulting GraphQL API references are output to the `static/graphql-api/` directory.
 
 - `static/graphql/admin-api/index.html`
-- `static/graphql/storefront-api/index.html`
+- `static/graphql/merchandising-api/index.html`
 
 The references are embedded in the API Reference page using the `frameSrc` feature supported by the Adobe I/O theme.
 
-- [Channels and Policies API Reference](src/pages/composable-catalog/admin/api-reference.md) `frameSrc: /graphql-api/admin-api/index.html`
-
-- [Storefront API reference](src/pages/composable-catalog/storefront-services/api-reference.md) `frameSrc: /graphql-api/storefront-api/index.html`
+- [Channels and Policies API Reference](src/pages/optimizer/reference/graphql/merchandising-api/) `frameSrc: /graphql-api/merchandising-api/index.html`
 
 ### Build commands
 
@@ -86,10 +84,8 @@ To rebuild the GraphQL API references after any updates, use yarn locally to run
 
 Command | Description
 ------- |------------
-`build:admin-api` | Regenerates the Channels and Policies API reference
-`dev:admin-api` | Regenerates the Channels and Policies API reference with a live preview of updated output
-`build:storefront-api` | Regenerates the Storefront API reference
-`dev:storefront-api` | Regenerates the Storefront API reference with a live preview of updated output
+`build:merchandising-api` | Regenerates the Merchandising API reference
+`dev:merchandising-api` | Regenerates the Merchandising API reference with a live preview of updated output
 `build:graphql` | Regenerates both references
 
 For example, to rebuild the Catalog management and rules API, run the command:
@@ -124,23 +120,18 @@ For local builds, ensure that your environment has the following installed:
 1. To regenerate an API reference locally and test changes in live preview, use either of the following commands:
 
    ```shell
-   yarn `dev:admin-api`
-   ```
-
-   ```shell
-   yarn `dev:storefront-api`
+   yarn `dev:merchandising-api`
    ```
 
 1. Commit changes and push them to your remote branch.
 
 1. Create and submit a PR against the `ccdm-early-access` branch, and request review from the Commerce Documentation team.
 
-1. After updates are approved, a documentation team member merges the PR and publishes the updates to [developer-stage site](https://developer-stage.adobe.com/commerce/services/composable-catalog/) for Early Access customers.
+1. After updates are approved, a documentation team member merges the PR and publishes the updates to [developer-stage site](https://developer-stage.adobe.com/commerce/services/merchandising-services/) for Early Access customers.
 
    View the published API references:
 
-   - [Channels and Policies API Reference](https://developer-stage.adobe.com/commerce/services/composable-catalog/admin/api-reference/)
-   - [Storefront API Reference](https://developer-stage.adobe.com/commerce/services/composable-catalog/storefront-services/api-reference/)
+   - [Storefront API Reference](https://developer-stage.adobe.com/commerce/services/optimizer/reference/graphql/merchandising-api/)
 
 ### Resources
 
