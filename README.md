@@ -127,11 +127,11 @@ For local builds, ensure that your environment has the following installed:
 
 1. Create and submit a PR against the `ccdm-early-access` branch, and request review from the Commerce Documentation team.
 
-1. After updates are approved, a documentation team member merges the PR and publishes the updates to [developer-stage site](https://developer-stage.adobe.com/commerce/services/merchandising-services/) for Early Access customers.
+1. After updates are approved, a documentation team member merges the PR and publishes the updates to [developer site](https://developer.adobe.com/commerce/services/merchandising-services/) for Early Access customers.
 
    View the published API references:
 
-   - [Storefront API Reference](https://developer-stage.adobe.com/commerce/services/optimizer/reference/graphql/merchandising-api/)
+   - [Storefront API Reference](https://developer.adobe.com/commerce/services/optimizer/reference/graphql/merchandising-api/)
 
 ### Resources
 
