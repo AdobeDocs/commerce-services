@@ -1,17 +1,16 @@
 ---
-title: Data Ingestion API
+title: Ingest product and price data with the Data Ingestion API
 edition: saas
 description: Learn how to use the Data Ingestion GraphQL API to add and manage product data using the composable catalog data model.
 keywords:
   - REST
   - Services
   - Backend Development
-  - Performance
 ---
 
-# Data Ingestion API
+# Ingest product and price data with the Data Ingestion API
 
-Developers setting up catalogs for merchants with large or complex product assortments use the Data Ingestion API to send catalog data to Commerce storefront services directly. It bypasses the Adobe Commerce instance and moves catalog data from a third-party Enterprise Resource Planning (ERP) directly to Adobe Commerce services reducing processing time and improving performance.
+Developers setting up catalogs for merchants with large or complex product assortments use the Data Ingestion API to send catalog data to Commerce Optimizer merchandising services directly, creating a single base catalog that can be configured and filter to deliver custom catalog views for different sales channels, locales, and customer segments.
 
 The Data Ingestion API is designed to be used by backend applications to manage product data. It is not intended for use by frontend applications or storefronts. It is implemented as a REST (Representational State Transfer) API endpoint to manage the following types of data.
 
@@ -31,7 +30,7 @@ Metadata is required to index product data for discovery. Consequently, it must 
 
 You can also define custom metadata for additional product attributes. For example, you can define a `brand` attribute to allow product discovery and filtering by brand name.
 
-For details, see <a href="https://developer-stage.adobe.com/commerce/services/composable-catalog/data-ingestion/api-reference/#tag/Metadata" target="_blank" rel="noopener noreferrer">Metadata API</a> in the *Data Ingestion API Reference*.
+For details, see <a href="https://developer-stage.adobe.com/commerce/services/optimizer/reference/rest/data-ingestion-api/#tag/Metadata" target="_blank" rel="noopener noreferrer">Metadata API</a> in the *Data Ingestion API Reference*.
 
 ## Products
 
@@ -48,7 +47,7 @@ Each product type has its own set of attributes and configurations to help you m
 
 For example, if you're selling a t-shirt, the product variants might include different sizes (small, medium, large) and colors (red, blue, green). Each combination of size and color represents a unique product variant.
 
-For details, see <a href="https://developer-stage.adobe.com/commerce/services/composable-catalog/data-ingestion/api-reference/#tag/Products" target="_blank" rel="noopener noreferrer">Products API</a> in the *Data Ingestion API reference*.
+For details, see <a href="https://developer-stage.adobe.com/commerce/services/optimizer/reference/rest/data-ingestion-api/#tag/Products" target="_blank" rel="noopener noreferrer">Products API</a> in the *Data Ingestion API reference*.
 
 ## Price books and prices
 
@@ -58,4 +57,4 @@ In Merchandising Services, a product SKU and its price are decoupled. This decou
 
 **Prices** are the monetary values assigned to products within a price book. To create prices for each product SKU, specify the associated price books and define the pricing schedule for each price book.
 
-For details, see <a href="https://developer-stage.adobe.com/commerce/services/composable-catalog/data-ingestion/api-reference/#tag/Metadata/#tag/Price-Books" target="_blank" rel="noopener noreferrer">Price Books</a> and <a href="https://developer-stage.adobe.com/commerce/services/composable-catalog/data-ingestion/api-reference/#operation/createPrices" target="_blank" rel="noopener noreferrer">Prices</a> in the *Data Ingestion API Reference*.
+For details, see <a href="https://developer-stage.adobe.com/commerce/services/optimizer/reference/rest/data-ingestion-api/#tag/Metadata/#tag/Price-Books" target="_blank" rel="noopener noreferrer">Price Books</a> and <a href="https://developer-stage.adobe.com/commerce/services/optimizer/reference/rest/data-ingestion-api/#operation/createPrices" target="_blank" rel="noopener noreferrer">Prices</a> in the *Data Ingestion API Reference*.
