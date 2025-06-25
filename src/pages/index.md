@@ -31,13 +31,13 @@ Use the Merchandising APIs and SDK to manage commerce catalog data and configura
 
 ## Catalog Data APIs
 
-[Data Ingestion API](composable-catalog/data-ingestion/)
+[Data Ingestion API](optimizer/data-ingestion/)
 
 Set up large, complex catalog assortments by ingesting commerce catalog data from backend systems into a centralized datastore.
 
 <DiscoverBlock slots="link, text"/>
 
-[Merchandising API](composable-catalog/storefront-services/)
+[Merchandising API](optimizer/)
 
 Retrieve catalog data product, price, search, and recommendations data from Merchandising Services and use it to create storefront experiences.
 

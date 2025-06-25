@@ -5,18 +5,18 @@ module.exports = [
   },
   {
     title: "Developer Guide",
-    path: "/composable-catalog/"
+    path: "/optimizer/"
   },
   {
     title: "API Reference",
     menu: [
       {
         title: "Catalog data ingestion REST API",
-        path: "/composable-catalog/data-ingestion/api-reference.md"
+        path: "/optimizer/data-ingestion/api-reference.md"
       },
       {
         title: "Merchandising GraphQL API",
-        path: "/composable-catalog/storefront-services/api-reference.md"
+        path: "/optimizer/reference/graphql/merchandising-api/"
       },
     ]
   },
