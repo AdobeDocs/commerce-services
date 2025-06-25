@@ -45,7 +45,7 @@ This use case demonstrates an end-to-end workflow for using Merchandising Servic
     - API Call one: Returns a SKU for `Aurora` and `USA` combination.
     - API Call two: Returns a SKU for `Bolt` and `UK` combination.
 
-In the steps below, you use Merchandising Services APIs to add the product, catalog view, and policy data to the SaaS data space for your project. Then, you use the the [Merchandising APIs](../merchandising-services/using-the-api.md) to retrieve the product data based on brand and location attributes.
+In the steps below, you use Merchandising Services APIs to add the product, catalog view, and policy data to the SaaS data space for your project. Then, you use the the [Merchandising APIs](merchandising-services/using-the-api.md) to retrieve the product data based on brand and location attributes.
 
 ## Step 1. Add products to your catalog
 
@@ -644,7 +644,7 @@ Send GraphQL requests for Merchandising APIs to the following base URL:
 
 Retrieve the SKU you created for `Aurora` where location is `USA`. Use the search phrase `Zenith Automotive Vehicles and Parts`, and specify a page size to limit results.
 
-The brand and location (`AC-Policy-Brand` and `AC-Policy-Country`) are passed in using the [Merchandising API headers](../merchandising-services/using-the-api.md#header).
+The brand and location (`AC-Policy-Brand` and `AC-Policy-Country`) are passed in using the [Merchandising API headers](merchandising-services/using-the-api.md#headers).
 
 Use the following headers in the request:
 
@@ -813,7 +813,7 @@ The response returns the product details for a single SKU, `Aurora Prism battery
 
 Retrieve the SKU you created for `Bolt` where location is `UK`. Use the search phrase `Zenith Automotive Vehicles and Parts`, and specify a page size to limit results.
 
-The brand and location (`AC-Policy-Brand` and `AC-Policy-Country`) are passed in using the [Merchandising API headers](../merchandising-services/using-the-api.md#header).
+The brand and location (`AC-Policy-Brand` and `AC-Policy-Country`) are passed in using the [Merchandising API headers](merchandising-services/using-the-api.md#headers).
 
 Use the following headers in the request:
 
