@@ -15,17 +15,17 @@ hideBreadcrumbNav: true
 
 # Merchandising Services
 
-Use the Merchandising APIs and SDK to manage commerce catalog data and configuration and use it to create scalable, performant storefront experiences.
+Use the Merchandising APIs and SDK to manage commerce catalog data for Adobe Commerce Optimizer, and use the data to create composable, scalable, and performant storefront experiences.
 
 <Resources slots="heading, links"/>
 
 ## Resources
 
-*  [Data Services user guides](https://experienceleague.adobe.com/docs/commerce/user-guides/home.html)
 *  [Commerce Optimizer Guide](https://experienceleague.adobe.com/en/docs/commerce/optimizer/overview)
-*  [Commerce Merchant Documentation](https://experienceleague.adobe.com/docs/commerce-admin/user-guides/home.html)
 *  [Commerce Storefront Documentation](https://experienceleague.adobe.com/developer/commerce/storefront/)
+*  [Commerce Services user guides](https://experienceleague.adobe.com/docs/commerce/user-guides/home.html)
 *  [GraphQL Developer Guide](https://developer.adobe.com/commerce/webapi/graphql/)
+*  [Commerce Merchant Documentation](https://experienceleague.adobe.com/docs/commerce-admin/user-guides/home.html)
 
 <DiscoverBlock slots="heading,link, text"/>
 

@@ -1,0 +1,12 @@
+curl 'https://catalog-service-sandbox.adobe.io/graphql'
+-H 'Accept-Encoding: gzip, deflate, br'
+-H 'Content-Type: application/json'
+-H 'Accept: application/json'
+-H 'Connection: keep-alive' -H 'Origin: altair://-' 
+-H 'Magento-Customer-Group: b6589fc6ab0dc82cf12099d1c2d40ab994e8410c'
+-H 'Magento-Environment-Id: a37013ca-2e57-4aa3-8ada-f0af45634856'
+-H 'Magento-Store-Code: elemiscom'
+-H 'Magento-Store-View-Code: uk'
+-H 'Magento-Website-Code: elemis'
+-H 'X-Api-Key: 2411910804824979b7d96dfbb0fdde2c'
+--data-binary '{"query":"# {productSearch(filter: [{ attribute: \"sku\", eq: \"50765\" }]\n#     phrase: \"\"\n#     sort: []\n#   ) {\n#     items {\n#       productView {\n#         sku\n#       }\n#     }\n#   }\n# }\n\n# query GetProduct($skus: [String]!) {\n#   products(skus: $skus) {\n#     id\n#     sku\n#     name\n#     __typename\n#     ... on ComplexProductView {\n#       options {\n#         id\n#         multi\n#         required\n#         title\n#         values {\n#           id\n#           title\n#           inStock\n#         }\n#       } \n#     }\n#   }\n# }\n\nquery SearchProduct{\n  productSearch (\n    filter: []\n    phrase: \"Online\"\n  ) {\n    items {\n      product {\n        sku\n        name\n      }\n    }\n  }\n}","variables":{"skus":["12343","50111_config"]}}' --compressed
