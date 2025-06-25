@@ -1,30 +1,44 @@
 module.exports = [
   {
-    title: "Cloud and Data Services",
+    title: "Merchandising Services",
     path: "/",
+  },
+  {
+    title: "Developer Guide",
+    path: "/optimizer/"
+  },
+  {
+    title: "API Reference",
+    menu: [
+      {
+        title: "Catalog data ingestion REST API",
+        path: "/optimizer/data-ingestion/api-reference.md"
+      },
+      {
+        title: "Merchandising GraphQL API",
+        path: "/optimizer/reference/graphql/merchandising-api/"
+      },
+    ]
   },
   {
     title: "Events and SDKs",
     menu: [
       {
         title: "Storefront Events SDK",
-        description: "Learn how to use the Storefront Events SDK.",
-        path: "/shared-services/storefront-events/",
+        path: "/shared-services/storefront-events/"
       },
       {
         title: "Product Recommendations SDK",
-        description: "Learn how to use the Product Recommendations SDK.",
-        path: "/product-recommendations/",
+        path: "/product-recommendations/"
       },
       {
         title: "Live Search Events",
-        description: "Learn how to use the Live Search Events SDK.",
-        path: "/live-search/",
+        path: "/live-search/"
       },
-    ],
+    ]
   },
   {
     title: "Reporting",
-    path: "/reporting/",
-  },
+    path: "/reporting/"
+  }
 ];

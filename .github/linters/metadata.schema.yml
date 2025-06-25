@@ -19,7 +19,8 @@ properties:
         - Cloud
         - Configuration
         - Cron
-        - Data Import/Export
+        - Data Import
+        - Data Export
         - Events
         - Extensibility
         - Extensions
@@ -30,6 +31,7 @@ properties:
         - Payments
         - Performance
         - Personalization
+        - Product discovery
         - Recommendations
         - Reporting
         - REST
@@ -39,6 +41,7 @@ properties:
         - Storefront
         - Tools
         - Upgrade
+        - Troubleshooting
 
 required:
   - title

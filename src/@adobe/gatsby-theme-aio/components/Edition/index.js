@@ -40,12 +40,12 @@ const Edition = ({ ...props }) => {
   }
 
   return (
-    <a 
+    <a
       href={EDITIONS_LINK}
       className="spectrum-Link"
       target="_blank"
       rel="noreferrer"
-      style={{ 
+      style={{
         textDecoration: 'none',
         display: 'inline-block',
         marginTop: '1rem',
@@ -54,7 +54,7 @@ const Edition = ({ ...props }) => {
       }}
       title={editionTooltip}
     >
-      <span 
+      <span
         className={`spectrum-Badge spectrum-Badge--sizeS ${editionColor}`} 
         style={{ paddingBottom: '4px', cursor: 'pointer' }}
       >
