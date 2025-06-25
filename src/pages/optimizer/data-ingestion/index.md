@@ -30,7 +30,7 @@ Metadata is required to index product data for discovery. Consequently, it must 
 
 You can also define custom metadata for additional product attributes. For example, you can define a `brand` attribute to allow product discovery and filtering by brand name.
 
-For details, see <a href="https://developer-stage.adobe.com/commerce/services/optimizer/reference/rest/data-ingestion-api/#tag/Metadata" target="_blank" rel="noopener noreferrer">Metadata API</a> in the *Data Ingestion API Reference*.
+For details, see <a href="https:developer.adobe.com/commerce/services/optimizer/reference/rest/data-ingestion-api/#tag/Metadata" target="_blank" rel="noopener noreferrer">Metadata API</a> in the *Data Ingestion API Reference*.
 
 ## Products
 
@@ -47,7 +47,7 @@ Each product type has its own set of attributes and configurations to help you m
 
 For example, if you're selling a t-shirt, the product variants might include different sizes (small, medium, large) and colors (red, blue, green). Each combination of size and color represents a unique product variant.
 
-For details, see <a href="https://developer-stage.adobe.com/commerce/services/optimizer/reference/rest/data-ingestion-api/#tag/Products" target="_blank" rel="noopener noreferrer">Products API</a> in the *Data Ingestion API reference*.
+For details, see <a href="https://developer.adobe.com/commerce/services/optimizer/reference/rest/data-ingestion-api/#tag/Products" target="_blank" rel="noopener noreferrer">Products API</a> in the *Data Ingestion API reference*.
 
 ## Price books and prices
 
@@ -57,7 +57,7 @@ In Merchandising Services, a product SKU and its price are decoupled. This decou
 
 **Prices** are the monetary values assigned to products within a price book. To create prices for each product SKU, specify the associated price books and define the pricing schedule for each price book.
 
-For details, see <a href="https://developer-stage.adobe.com/commerce/services/optimizer/reference/rest/data-ingestion-api/#tag/Metadata/#tag/Price-Books" target="_blank" rel="noopener noreferrer">Price Books</a> and <a href="https://developer-stage.adobe.com/commerce/services/optimizer/reference/rest/data-ingestion-api/#operation/createPrices" target="_blank" rel="noopener noreferrer">Prices</a> in the *Data Ingestion API Reference*.
+For details, see <a href="https://developer.adobe.com/commerce/services/optimizer/reference/rest/data-ingestion-api/#tag/Metadata/#tag/Price-Books" target="_blank" rel="noopener noreferrer">Price Books</a> and <a href="https://developer.adobe.com/commerce/services/optimizer/reference/rest/data-ingestion-api/#operation/createPrices" target="_blank" rel="noopener noreferrer">Prices</a> in the *Data Ingestion API Reference*.
 
 ## Load sample data using the Adobe Commerce Optimizer SDK
 
