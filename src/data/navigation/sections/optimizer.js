@@ -18,7 +18,7 @@ module.exports = [
             },
             {
               title: "API Reference",
-              path: "https://developer.adobe.com/commerce/services/reference/rest/",
+              path: "https://developer-stage.adobe.com/commerce/services/reference/rest/",
               EventTarget: "_top"
             }
           ]
@@ -46,7 +46,7 @@ module.exports = [
             },
             {
               title: "API Reference",
-              path: "https://developer.adobe.com/commerce/services/reference/graphql/",
+              path: "https://developer-stage.adobe.com/commerce/services/reference/graphql/",
               EventTarget: "_top"
             }
           ]
