@@ -8,9 +8,9 @@ keywords:
   - Performance
 ---
 
-# Using the composable catalog with your storefront
+# Create a composable catalog for your storefront
 
-Learn how a company with a single base catalog can use the Merchandising Services powered by Catalog Views and Policies APIs to add product data, define catalogs using projections, and retrieve the catalog data for display in a headless storefront.
+Learn how a company with a single base catalog can use Merchandising Services powered by catalog views and policies to add product data, and retrieve the catalog data for display in a headless storefront.
 
 This end-to-end use case demonstrates how a company with a single base catalog can use Merchandising Services to:
 
@@ -45,7 +45,7 @@ This use case demonstrates an end-to-end workflow for using Merchandising Servic
     - API Call one: Returns a SKU for `Aurora` and `USA` combination.
     - API Call two: Returns a SKU for `Bolt` and `UK` combination.
 
-In the steps below, you use Merchandising Services APIs to add the product, catalog view, and policy data to the SaaS data space for your project. Then, you use the the [Merchandising APIs](./admin/using-the-api.md) to retrieve the product data based on brand and location attributes.
+In the steps below, you use Merchandising Services APIs to add the product, catalog view, and policy data to the SaaS data space for your project. Then, you use the the [Merchandising APIs](merchandising-services/using-the-api.md) to retrieve the product data based on brand and location attributes.
 
 ## Step 1. Add products to your catalog
 
@@ -53,7 +53,7 @@ Add two simple products, "Aurora Prism battery" and "Bolt Atlas battery" and the
 
 ### Add product attribute metadata
 
-Create the metadata to define the search characteristics and filters for displaying product attributes on the storefront by submitting a [Create product attribute metadata](https://developer-stage.adobe.com/commerce/services/composable-catalog/data-ingestion/api-reference/#operation/ProductMetadataPut) POST request.
+Create the metadata to define the search characteristics and filters for displaying product attributes on the storefront by submitting a [Create product attribute metadata](https://developer.adobe.com/commerce/services/optimizer/reference/rest/data-ingestion-api/#operation/ProductMetadataPut) POST request.
 
 You must specify the product attribute metadata for each locale you want to support.
 
@@ -69,15 +69,14 @@ For the Zenith Automotive catalog, each product has the following attributes.
 - `is_vehicle` is a boolean attribute that indicates whether the product is a vehicle or a battery.
 - `part_category` is a string attribute that indicates the category of the product.
 
-Create the metadata to define the search characteristics and filters for displaying product attributes on the storefront by submitting a [Create product attribute metadata](https://developer-stage.adobe.com/commerce/services/composable-catalog/data-ingestion/api-reference/#operation/ProductMetadataPut) POST request.
+Create the metadata to define the search characteristics and filters for displaying product attributes on the storefront by submitting a [Create product attribute metadata](https://developer.adobe.com/commerce/services/optimizer/reference/rest/data-ingestion-api/#operation/ProductMetadataPut) POST request.
 
 #### Request to add metadata for the `en-US` catalog source
 
 ```shell
 curl --request POST \
-  --url https://na1-sandbox.api.commerce.adobe.com/{tenantId}/v1/catalog/products/metadata \
+  --url https://na1-sandbox.api.commerce.adobe.com/{{tenantId}}/v1/catalog/products/metadata \
   --header "Authorization: Bearer {access token}" \
-
   --data "[
 [
     {
@@ -271,7 +270,7 @@ curl --request POST \
 
 ```shell
 curl --request POST \
-  --url https://na1-sandbox.api.commerce.adobe.com/{tenantId}/v1/catalog/products/metadata \
+  --url https://na1-sandbox.api.commerce.adobe.com/{{tenantId}}/v1/catalog/products/metadata \
   --header "Content-Type: application/json" \
   --header "Authorization: Bearer {access token}" \
   --data "[
@@ -454,7 +453,7 @@ curl --request POST \
 
 ### Add products
 
-Add products by submitting a [createProducts](https://developer-stage.adobe.com/commerce/services/composable-catalog/data-ingestion/api-reference/#operation/ProductsPost) POST request using the Data Ingestion API.
+Add products by submitting a [createProducts](https://developer.adobe.com/commerce/services/optimizer/reference/rest/data-ingestion-api/#operation/ProductsPost) POST request using the Data Ingestion API.
 
 #### Create Aurora product
 
@@ -464,7 +463,7 @@ Add the simple product *Aurora Prism Battery* with two attribute codes, `Brand` 
 
 ```shell
 curl --request POST \
-  --url https://na1-sandbox.api.commerce.adobe.com/<tenanId>/api/v1/catalog/products \
+  --url https://na1-sandbox.api.commerce.adobe.com/{{tenantId}}/api/v1/catalog/products \
   --header "Content-Type: application/json" \
   --header "Authorization: Bearer {access token}" \
 
@@ -538,13 +537,13 @@ curl --request POST \
 
 #### Create Bolt product
 
-Add the product *Bolt Atlas Battery* with two attribute codes, `Brand` set to *Bolt*, and `Country` set to *UK* by sending the following payload in the [createProducts](https://developer-stage.adobe.com/commerce/services/composable-catalog/data-ingestion/api-reference/#operation/ProductsPost) request.
+Add the product *Bolt Atlas Battery* with two attribute codes, `Brand` set to *Bolt*, and `Country` set to *UK* by sending the following payload in the [createProducts](https://developer.adobe.com/commerce/services/optimizer/reference/rest/data-ingestion-api/#operation/ProductsPost) request.
 
 **Create product request**
 
 ```shell
 curl --request POST \
-  --url https://na1-sandbox.api.commerce.adobe.com/<tenanId>/api/v1/catalog/products \
+  --url https://na1-sandbox.api.commerce.adobe.com/{{tenantId}}/api/v1/catalog/products \
   --header "Content-Type: application/json" \
   --header "Authorization: Bearer {access token}" \
 
@@ -635,17 +634,17 @@ In this step, create the following policies and catalog view for Zenith Automoti
 
 ## Step 3. Retrieve SKUs
 
-Use the Merchandising GraphQL API [productSearch](https://developer-stage.adobe.com/commerce/services/graphql-api/storefront-api/index.html#query-productSearch) query to retrieve the SKUs you created.
+Use the Merchandising GraphQL API [productSearch](https://developer.adobe.com/commerce/services/graphql-api/storefront-api/index.html#query-productSearch) query to retrieve the SKUs you created.
 
 Send GraphQL requests for Merchandising APIs to the following base URL:
 
-`http://na1-sandbox.api.commerce.adobe.com/{tenantId}/graphql`
+`https://na1-sandbox.api.commerce.adobe.com/{{tenantId}}/graphql`
 
 ### Retrieve SKU for the `Aurora` brand
 
 Retrieve the SKU you created for `Aurora` where location is `USA`. Use the search phrase `Zenith Automotive Vehicles and Parts`, and specify a page size to limit results.
 
-The brand and location (`AC-Policy-Brand` and `AC-Policy-Country`) are passed in using [Merchandising API headers](https://developer-stage.adobe.com/commerce/services/composable-catalog/storefront-services/using-the-api/#header).
+The brand and location (`AC-Policy-Brand` and `AC-Policy-Country`) are passed in using the [Merchandising API headers](merchandising-services/using-the-api.md#headers).
 
 Use the following headers in the request:
 
@@ -814,7 +813,7 @@ The response returns the product details for a single SKU, `Aurora Prism battery
 
 Retrieve the SKU you created for `Bolt` where location is `UK`. Use the search phrase `Zenith Automotive Vehicles and Parts`, and specify a page size to limit results.
 
-The brand and location (`AC-Policy-Brand` and `AC-Policy-Country`) are passed in using the [Merchandising API headers](https://developer-stage.adobe.com/commerce/services/composable-catalog/storefront-services/using-the-api/#header).
+The brand and location (`AC-Policy-Brand` and `AC-Policy-Country`) are passed in using the [Merchandising API headers](merchandising-services/using-the-api.md#headers).
 
 Use the following headers in the request:
 

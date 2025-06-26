@@ -22,12 +22,12 @@ The Data Ingestion API is a RESTful API that allows you to manage product and pr
 Send all Data Ingestion API requests to the following base URL:
 
 ```text
-https://na1-sandbox.api.commerce.adobe.com/{tenantId}
+https://na1-sandbox.api.commerce.adobe.com/{{tenantId}}
 ```
 
 The URL structure is:
 
-`https://{region}-{environment}.api.commerce.adobe.com/{tenantId}`
+`https://{{region}}-{{environment}}.api.commerce.adobe.com/{{tenantId}}`
 
 - `region` is the cloud region where your instance is deployed.
 - `environment-type` identifies non-production environments, for example, `sandbox` or `staging`.
@@ -60,7 +60,7 @@ Use the following template to submit requests using [curl](https://curl.se/) rep
 
 ```shell
 curl --request POST \
-  --url https://na1-sandbox.api.commerce.adobe.com/{tenantId}/{endpoint} \
+  --url https://na1-sandbox.api.commerce.adobe.com/{{tenantId}}/{{endpoint}} \
   --header "Content-Type:  application/json" \
   --header "Authorization: Bearer {access token}" \
   --data "{apiPayload}"
@@ -69,7 +69,7 @@ curl --request POST \
 | Placeholder name | Description                                                                                                    |
 |------------------|----------------------------------------------------------------------------------------------------------------|
 | `endpoint`       | Endpoint for specific Data Ingestion API, for example: `/v1/catalog/products/prices`  |
-| `accessToken`    | Bearer token generated from IMS credentials. See [Authentication](authentication.md).                                   |
+| `access token`   | Bearer token generated from IMS credentials. See [Authentication](authentication.md).                                   |
 | `apiPayload`     | API payload see examples in the [tutorial](../ccdm-use-case.md)                                                                             |
 
 For sample requests, see the [tutorial](../ccdm-use-case.md).
@@ -86,10 +86,9 @@ To get started with the Data Ingestion API, follow these steps to make your firs
 
   ```shell
   curl -X POST \
-    'https://catalog-service-qa.adobe.io/attributes/metadata' \
+    'https://na1-sandbox.api.commerce.adobe.com/{{tenantId}}/v1/catalog/attributes/metadata' \
     -H 'Content-Type: application/json' \
-    -H 'x-api-key: YOUR_API_KEY' \
-    -H 'x-tenant-id: YOUR_TENANT_ID' \
+    -H 'Authorization: Bearer {access token}' \
     -d '[
       {
         "code": "sku",
@@ -192,7 +191,7 @@ To get started with the Data Ingestion API, follow these steps to make your firs
   ```
 
 3. Verify the response
-   - If the request is successful, you receive a `201 Created` response with the metadata for the product attributes.
+   - If the request is successful, you receive a `200 Created` response with the metadata for the product attributes.
    - If the request fails, you receive an error message with details about the issue.
 
 ### Next steps
@@ -204,11 +203,11 @@ After you successfully make your first request, you can continue to use the Data
 - Create price books to manage pricing for different customer segments, regions, or sales channels.
 - Create prices to set the monetary values for your products within the price books.
 
-You can also explore the [API reference](https://developer-stage.adobe.com/commerce/services/composable-catalog/data-ingestion/api-reference/) for detailed information about each endpoint and its parameters.
+You can also explore the [API reference](https://developer.adobe.com/commerce/services/optimizer/reference/rest/data-ingestion-api/) for detailed information about each endpoint and its parameters.
 
 ## Create integrations with SDK
 
-The Adobe Commerce Optimizer (ACO) SDK provides an easy integration point with the Adobe Commerce Optimizer Data Ingestion API. With the ACO SDK, the SDK helps you manage the full integration with catalog ingestion APIs and IMS authentication methods. To download the SDK and learn how to use it, see the [Adobe Commerce Optimizer GitHub repository](https://github.com/adobe-commerce/aco-ts-sdk).
+The Adobe Commerce Optimizer (ACO) SDK simplifies integration with the Data Ingestion API by providing pre-built methods for catalog ingestion and IMS authentication. The SDK handles the complexity of API interactions, allowing you to focus on your business logic. To download the SDK and learn how to use it, see the [Adobe Commerce Optimizer GitHub repository](https://github.com/adobe-commerce/aco-ts-sdk).
 
 ## Limitations
 
@@ -216,6 +215,6 @@ The Data Ingestion API has a rate limit of 300 requests per minute.
 
 For additional information about limits and boundaries, see the [Limits and boundaries](https://experienceleague.adobe.com/docs/commerce-optimizer/boundaries-limits.html) section in the *Adobe Commerce Optimizer Guide*.
 
->[!NOTE]
->
+<InlineAlert variant="info" slots="text" />
+
 >This guide covers direct API access using bearer tokens. For user authentication workflows, see the [User Authentication Guide](https://developer.adobe.com/developer-console/docs/guides/authentication/UserAuthentication/implementation/).

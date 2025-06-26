@@ -16,7 +16,7 @@ spectaql:
   # Set to null to not write the output to the filesystem, making it only available via the API (default: public)
   #
   # Default: public
-  targetDir: static/graphql-api/storefront-api
+  targetDir: static/graphql-api/merchandising-api
 
   # Optional path to an image to use as the logo in the top-left of the output
   # logoFile: path/to/logo.png
@@ -111,7 +111,7 @@ introspection:
   # schemaFile: path/to/schema.gql
 
   # File containing Introspection Query response in JS module export, or JSON format
-  # introspectionFile: spectaql/storefront-api-schema.json
+  # introspectionFile: spectaql/merchandising-api-schema.json
 
   # URL of the GraphQL endpoint to hit if you want to generate the documentation based on live Introspection Query results
   # NOTE: If not using introspection.url OR servers[], you need to provide x-url below
@@ -202,7 +202,7 @@ introspection:
   #
 
   # File that contains your metadata data in JS module export, or JSON format
-  metadataFile: spectaql/metadata-storefront.json
+  metadataFile: spectaql/metadata-merchandising.json
 
   # The path to a key from which to read the documentation-related metadata at each level of your metadata file.
   # Defaults to 'documentation', but in case you use a different name, or have a complex/nested metadata structure, you can
@@ -423,7 +423,7 @@ info:
 
   description: |
      Use the Merchandising GraphQL API to access rich view-model (read-only) catalog data to build product-related storefront experiences.
-     For more information about the API, see the <a href="https://developer-stage.adobe.com/commerce/services/composable-catalog/storefront-services/api-reference/" target="_blank">developer documentation</a>.
+     For more information about the API, see the <a href="https://developer.adobe.com/commerce/services/optimizer/reference/graphql/merchandising-api/" target="_blank">developer documentation</a>.
   title: Merchandising GraphQL API
   # This is non-standard and optional. If omitted, will use "title". Also, only relevant
   # when building non-embedded.
@@ -440,8 +440,8 @@ info:
   # A non-standard array of items to display in your Introduction Area
   # x-introItems:
     # Can be a Title (for the Nav panel) + URL to simply add a link to somewhere
-    # - title: Storefront API Guide
-    # url: https://developer-stage.adobe.com/commerce/services/composable-catalog/storefront-services/
+    # - title: MerchandisingAPI Guide
+    # url: https://developer.adobe.com/commerce/services/optimizer/merchandising-services/
     # Can be a Title (for the Nav panel) + description (for the Content panel)
     # - title: Important thing 1
     #   description: Some important stuff we wanted you to know. Supports `markdown`

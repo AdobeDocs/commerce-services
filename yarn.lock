@@ -7361,6 +7361,7 @@ __metadata:
   resolution: "commerce-services@workspace:."
   dependencies:
     "@adobe/gatsby-theme-aio": 4.15.1
+    browserslist: latest
     gatsby: 4.22.0
     react: ^17.0.0
     react-dom: ^17.0.0

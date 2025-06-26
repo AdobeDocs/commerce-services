@@ -57,7 +57,7 @@ This diagram illustrates the flow of data between the storefront, the Merchandis
 3. **Data Retrieval**: Optimized queries fetch relevant product and pricing data
 4. **Response**: Structured data is returned to your application for rendering
 
-Product catalog updates delivered directly through data ingestion API requests, or a third-party app integration are synchronized to Adobe Commerce Optimizer, ensuring that the Merchandising API always serves the latest data.
+Product catalog updates delivered directly through data ingestion API requests or a third-party app integration are synchronized to Adobe Commerce Optimizer, ensuring that the Merchandising API always serves the latest data.
 
 ## Integration Options
 
@@ -97,7 +97,7 @@ See the [Get Started with the Merchandising API](using-the-api.md) section for i
 
 - **[Data Ingestion API](../data-ingestion/index.md)**: Ingest and manage product and pricing data
 - **<a href="https://experienceleague.adobe.com/docs/commerce/optimizer/setup/catalog-view.html" target="_blank" rel="noopener noreferrer">Catalog Management</a>**: Set up catalog views and policies in Adobe Commerce Optimizer
-- **<a href="https://developer-stage.adobe.com/commerce/services/composable-catalog/storefront-services/api-reference/" target="_blank" rel="noopener noreferrer">Merchandising API Reference</a>**: Merchandising API Reference
+- **<a href="https://developer.adobe.com/commerce/services/optimizer/reference/graphql/merchandising-api/" target="_blank" rel="noopener noreferrer">Merchandising API Reference</a>**: Merchandising API Reference
 - **[GraphQL Queries](use-cases.md#available-queries)**: Available queries
 
 For additional support and community resources, visit the [Adobe Commerce Developer Portal](https://developer.adobe.com/commerce/).

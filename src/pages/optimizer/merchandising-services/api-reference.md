@@ -7,5 +7,5 @@ keywords:
   - Services
   - Search
   - Recommendations
-frameSrc: /graphql-api/storefront-api/index.html
+frameSrc: /graphql-api/merchandising-api/index.html
 ---

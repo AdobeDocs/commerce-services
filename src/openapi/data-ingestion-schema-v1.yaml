@@ -1,7 +1,7 @@
 openapi: 3.0.3
 externalDocs:
   url: https://github.com/adobe-commerce/aco-ts-sdk/blob/main/README.md
-  description: Learn about the Adobe Commerce Optimizer SDK for Merchandising Services
+  description: Learn about the Adobe Commerce Optimizer TypeScript and JavaScript SDK for Merchandising Services
 info:
   title: Catalog Data Ingestion API
   description: |

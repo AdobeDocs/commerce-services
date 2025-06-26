@@ -1,17 +1,16 @@
 ---
-title: Data Ingestion API
+title: Ingest product and price data with the Data Ingestion API
 edition: saas
-description: Learn how to use the Data Ingestion GraphQL API to add and manage product data using the composable catalog data model.
+description: Learn how to use the Data Ingestion REST API to add and manage product data using the composable catalog data model.
 keywords:
   - REST
   - Services
   - Backend Development
-  - Performance
 ---
 
-# Data Ingestion API
+# Ingest product and price data with the Data Ingestion API
 
-Developers setting up catalogs for merchants with large or complex product assortments use the Data Ingestion API to send catalog data to Commerce storefront services directly. It bypasses the Adobe Commerce instance and moves catalog data from a third-party Enterprise Resource Planning (ERP) directly to Adobe Commerce services reducing processing time and improving performance.
+Developers setting up catalogs for merchants with large or complex product assortments use the Data Ingestion API to send catalog data to Commerce Optimizer merchandising services directly. This data is used to create a single base catalog that can be configured and filtered to deliver custom catalog views for different sales channels, locales, and customer segments.
 
 The Data Ingestion API is designed to be used by backend applications to manage product data. It is not intended for use by frontend applications or storefronts. It is implemented as a REST (Representational State Transfer) API endpoint to manage the following types of data.
 
@@ -31,7 +30,7 @@ Metadata is required to index product data for discovery. Consequently, it must 
 
 You can also define custom metadata for additional product attributes. For example, you can define a `brand` attribute to allow product discovery and filtering by brand name.
 
-For details, see <a href="https://developer-stage.adobe.com/commerce/services/composable-catalog/data-ingestion/api-reference/#tag/Metadata" target="_blank" rel="noopener noreferrer">Metadata API</a> in the *Data Ingestion API Reference*.
+For details, see <a href="https://developer.adobe.com/commerce/services/optimizer/reference/rest/data-ingestion-api/#tag/Metadata" target="_blank" rel="noopener noreferrer">Metadata API</a> in the *Data Ingestion API Reference*.
 
 ## Products
 
@@ -48,7 +47,7 @@ Each product type has its own set of attributes and configurations to help you m
 
 For example, if you're selling a t-shirt, the product variants might include different sizes (small, medium, large) and colors (red, blue, green). Each combination of size and color represents a unique product variant.
 
-For details, see <a href="https://developer-stage.adobe.com/commerce/services/composable-catalog/data-ingestion/api-reference/#tag/Products" target="_blank" rel="noopener noreferrer">Products API</a> in the *Data Ingestion API reference*.
+For details, see <a href="https://developer.adobe.com/commerce/services/optimizer/reference/rest/data-ingestion-api/#tag/Products" target="_blank" rel="noopener noreferrer">Products API</a> in the *Data Ingestion API Reference*.
 
 ## Price books and prices
 
@@ -58,4 +57,29 @@ In Merchandising Services, a product SKU and its price are decoupled. This decou
 
 **Prices** are the monetary values assigned to products within a price book. To create prices for each product SKU, specify the associated price books and define the pricing schedule for each price book.
 
-For details, see <a href="https://developer-stage.adobe.com/commerce/services/composable-catalog/data-ingestion/api-reference/#tag/Metadata/#tag/Price-Books" target="_blank" rel="noopener noreferrer">Price Books</a> and <a href="https://developer-stage.adobe.com/commerce/services/composable-catalog/data-ingestion/api-reference/#operation/createPrices" target="_blank" rel="noopener noreferrer">Prices</a> in the *Data Ingestion API Reference*.
+For details, see <a href="https://developer.adobe.com/commerce/services/optimizer/reference/rest/data-ingestion-api/#tag/Price-Books" target="_blank" rel="noopener noreferrer">Price Books</a> and <a href="https://developer.adobe.com/commerce/services/optimizer/reference/rest/data-ingestion-api/#operation/createPrices" target="_blank" rel="noopener noreferrer">Prices</a> in the *Data Ingestion API Reference*.
+
+## Load sample data using the Adobe Commerce Optimizer SDK
+
+To help you get started with the data ingestion, you can load sample catalog data into your Adobe Commerce Optimizer instance using the Adobe Commerce Optimizer TypeScript and JavaScript SDK. This loads initial product and price data that you can use to
+
+- Test the Data Ingestion API by submitting updates to the sample data
+- Explore the capabilities of the Merchandising Services
+- Understand the data structure and relationships
+
+### About the sample data
+
+The sample data is based on the <a href="https://experienceleague.adobe.com/en/docs/commerce/optimizer/use-case/admin-use-case#business-scenario--carvelo-automobile" target="_blank" rel="noopener noreferrer">Carvelo use case</a> described in the *Adobe Commerce Optimizer User Guide*. It includes a variety of products, price books, and prices to demonstrate how to use the API effectively.
+
+To load the sample data, follow the instructions in the [Sample catalog data ingestion GitHub repository](https://github.com/adobe-commerce/aco-sample-catalog-data-ingestion).
+
+After loading the sample data, you can:
+
+- Set up your first storefront
+- Complete the end-to-end workflow for the Carvelo use case
+
+See the [Carvelo use case](https://experienceleague.adobe.com/en/docs/commerce/optimizer/use-case/admin-use-case#business-scenario--carvelo-automobile) in the *Adobe Commerce Optimizer User Guide* for details on how to set up the storefront and complete the workflow.
+
+## Next steps
+
+Get started with the [Data Ingestion API](using-the-api.md)

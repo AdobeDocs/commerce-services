@@ -15,7 +15,7 @@ keywords:
 
 Use the following base URL for all Catalog Views and Policies API requests.
 
-`https://na1-sandbox.api.commerce.adobe.com/<tenantId>/admin/graphql`
+`https://na1-sandbox.api.commerce.adobe.com/{{tenantId}}/admin/graphql`
 
 <InlineAlert variant="info" slots="text"/>
 
@@ -23,7 +23,7 @@ For sample requests and examples using the API, see the [API Reference](api-refe
 
 The URL structure is:
 
-```https://<region>-<environment>.api.commerce.adobe.com/<tenantId>```
+```https://{{region}}-{{environment}}.api.commerce.adobe.com/{{tenantId}}```
 
 - `region` is the cloud region where your instance is deployed.
 - `environment-type` is included only for non-production URLs (`sandbox`).
@@ -80,7 +80,7 @@ Use the following template to submit requests using [curl](https://curl.se/), re
 
 ```shell
 curl --request POST \
-  --url https://na1-sandbox.api.commerce.adobe.com/<tenantId>/admin/graphql \
+  --url https://na1-sandbox.api.commerce.adobe.com/{{tenantId}}/admin/graphql \
   --header "Content-Type: application/json" \
   --header "Authorization: Bearer {access token}" \
   --data "{apiPayload}"
