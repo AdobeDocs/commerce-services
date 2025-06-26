@@ -5,11 +5,11 @@ module.exports = [
     pages: [
       {
         title: "Data Ingestion API",
-        path: "/rest/",
+        path: "/reference/rest/index.md",
       },
       {
         title: "Merchandising API",
-        path: "/graphql/",
+        path: "/reference/graphql/index.md",
       },
     ],
   },
