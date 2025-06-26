@@ -9,6 +9,5 @@ keywords:
   - Services
   - Storefront
   - Merchandising
-layout: none
 frameSrc: /graphql-api/merchandising-api/index.html
 ---
