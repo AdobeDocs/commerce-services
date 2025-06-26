@@ -32,7 +32,7 @@
     "build:admin-api": "spectaql --target-file index.html --config spectaql/config-admin.yml",
     "dev:admin-api": "spectaql --target-file index.html --config spectaql/config-admin.yml --development-mode",
     "build:merchandising-api": "spectaql --target-file index.html --config spectaql/config-merchandising.yml",
-    "dev:merchandisingapi": "spectaql --target-file index.html --config spectaql/config-merchandising.yml --development-mode",
+    "dev:merchandising-api": "spectaql --target-file index.html --config spectaql/config-merchandising.yml --development-mode",
     "build:graphql": "yarn build:admin-api && yarn build:merchandising-api",
     "lint": "docker run --rm -e RUN_LOCAL=true --env-file .github/super-linter.env -v \"$PWD\":/tmp/lint github/super-linter:slim-v5"
   },
