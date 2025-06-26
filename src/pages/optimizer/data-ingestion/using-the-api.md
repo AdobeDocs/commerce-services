@@ -191,7 +191,7 @@ To get started with the Data Ingestion API, follow these steps to make your firs
   ```
 
 3. Verify the response
-   - If the request is successful, you receive a `201 Created` response with the metadata for the product attributes.
+   - If the request is successful, you receive a `200 Created` response with the metadata for the product attributes.
    - If the request fails, you receive an error message with details about the issue.
 
 ### Next steps
@@ -207,7 +207,7 @@ You can also explore the [API reference](https://developer.adobe.com/commerce/se
 
 ## Create integrations with SDK
 
-The Adobe Commerce Optimizer (ACO) SDK provides an easy integration point with the Adobe Commerce Optimizer Data Ingestion API. With the ACO SDK, the SDK helps you manage the full integration with catalog ingestion APIs and IMS authentication methods. To download the SDK and learn how to use it, see the [Adobe Commerce Optimizer GitHub repository](https://github.com/adobe-commerce/aco-ts-sdk).
+The Adobe Commerce Optimizer (ACO) SDK simplifies integration with the Data Ingestion API by providing pre-built methods for catalog ingestion and IMS authentication. The SDK handles the complexity of API interactions, allowing you to focus on your business logic. To download the SDK and learn how to use it, see the [Adobe Commerce Optimizer GitHub repository](https://github.com/adobe-commerce/aco-ts-sdk).
 
 ## Limitations
 
