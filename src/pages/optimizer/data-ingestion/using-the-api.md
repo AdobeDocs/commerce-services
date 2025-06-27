@@ -203,7 +203,7 @@ After you successfully make your first request, you can continue to use the Data
 - Create price books to manage pricing for different customer segments, regions, or sales channels.
 - Create prices to set the monetary values for your products within the price books.
 
-You can also explore the [API reference](https://developer.adobe.com/commerce/services/optimizer/reference/rest/data-ingestion-api/) for detailed information about each endpoint and its parameters.
+You can also explore the [API reference](https://developer.adobe.com/commerce/services/reference/rest/) for detailed information about each endpoint and its parameters.
 
 ## Create integrations with SDK
 

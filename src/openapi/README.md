@@ -30,4 +30,4 @@ The Data Ingestion API Reference is embedded in the [Data Ingestion API referenc
 
 1. After updates are approved, a documentation team member merges the PR and publishes the updates to [developer site](https://developer.adobe.com/commerce/services/optimizer/) for Early Access customers.
 
-   You can review the currently published version in the [Data Ingestion API reference topic](https://developer.adobe.com/commerce/services/optimizer/reference/rest/data-ingestion-api/).
+   You can review the currently published version in the [Data Ingestion API reference topic](https://developer.adobe.com/commerce/services/reference/rest/).

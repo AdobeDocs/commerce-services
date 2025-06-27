@@ -423,7 +423,7 @@ info:
 
   description: |
      Use the Merchandising GraphQL API to access rich view-model (read-only) catalog data to build product-related storefront experiences.
-     For more information about the API, see the <a href="https://developer.adobe.com/commerce/services/optimizer/reference/graphql/merchandising-api/" target="_blank">developer documentation</a>.
+     For more information about the API, see the <a href="https://developer.adobe.com/commerce/services/optimizer/merchandising-services/" target="_blank">developer documentation</a>.
   title: Merchandising GraphQL API
   # This is non-standard and optional. If omitted, will use "title". Also, only relevant
   # when building non-embedded.
