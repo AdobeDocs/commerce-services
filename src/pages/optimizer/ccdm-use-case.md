@@ -53,7 +53,7 @@ Add two simple products, "Aurora Prism battery" and "Bolt Atlas battery" and the
 
 ### Add product attribute metadata
 
-Create the metadata to define the search characteristics and filters for displaying product attributes on the storefront by submitting a [Create product attribute metadata](https://developer.adobe.com/commerce/services/optimizer/reference/rest/data-ingestion-api/#operation/ProductMetadataPut) POST request.
+Create the metadata to define the search characteristics and filters for displaying product attributes on the storefront by submitting a [Create product attribute metadata](https://developer.adobe.com/commerce/services/reference/rest/#operation/createProductMetadata) POST request.
 
 You must specify the product attribute metadata for each locale you want to support.
 
@@ -69,7 +69,7 @@ For the Zenith Automotive catalog, each product has the following attributes.
 - `is_vehicle` is a boolean attribute that indicates whether the product is a vehicle or a battery.
 - `part_category` is a string attribute that indicates the category of the product.
 
-Create the metadata to define the search characteristics and filters for displaying product attributes on the storefront by submitting a [Create product attribute metadata](https://developer.adobe.com/commerce/services/optimizer/reference/rest/data-ingestion-api/#operation/ProductMetadataPut) POST request.
+Create the metadata to define the search characteristics and filters for displaying product attributes on the storefront by submitting a [Create product attribute metadata](https://developer.adobe.com/commerce/services/reference/rest/#operation/createProductMetadata) POST request.
 
 #### Request to add metadata for the `en-US` catalog source
 
@@ -453,7 +453,7 @@ curl --request POST \
 
 ### Add products
 
-Add products by submitting a [createProducts](https://developer.adobe.com/commerce/services/optimizer/reference/rest/data-ingestion-api/#operation/ProductsPost) POST request using the Data Ingestion API.
+Add products by submitting a [createProducts](https://developer.adobe.com/commerce/services/reference/rest/#operation/createProducts) POST request using the Data Ingestion API.
 
 #### Create Aurora product
 
@@ -537,7 +537,7 @@ curl --request POST \
 
 #### Create Bolt product
 
-Add the product *Bolt Atlas Battery* with two attribute codes, `Brand` set to *Bolt*, and `Country` set to *UK* by sending the following payload in the [createProducts](https://developer.adobe.com/commerce/services/optimizer/reference/rest/data-ingestion-api/#operation/ProductsPost) request.
+Add the product *Bolt Atlas Battery* with two attribute codes, `Brand` set to *Bolt*, and `Country` set to *UK* by sending the following payload in the [createProducts](https://developer.adobe.com/commerce/services/reference/rest/#operation/createProductMetadata) request.
 
 **Create product request**
 

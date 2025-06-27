@@ -109,4 +109,4 @@ query ProductDetails($skus: [String!]!) {
 }
 ```
 
-For detailed examples of each query, see the <a href="https://developer.adobe.com/commerce/services/optimizer/reference/graphql/merchandising-api/" target="_blank" rel="noopener noreferrer">Merchandising API Reference</a>.
+For detailed examples of each query, see the <a href="https://developer.adobe.com/commerce/services/reference/graphql/" target="_blank" rel="noopener noreferrer">Merchandising API Reference</a>.
