@@ -9,14 +9,14 @@ keywords:
 
 # Adobe Commerce storefront events
 
-When you install Adobe Commerce, storefront events are deployed to your site. These events capture data from shoppers' interactions on your site. When you install and configure SaaS-based Adobe Commerce features such as [Product Recommendations](https://experienceleague.adobe.com/en/docs/commerce/product-recommendations/getting-started/install-configure), [Live Search](https://experienceleague.adobe.com/en/docs/commerce/live-search/install), or [Data Connection](https://experienceleague.adobe.com/en/docs/commerce/data-connection/fundamentals/install) the modules deploy behavioral data collection to your storefront for specific events. This mechanism collects anonymized behavioral data from the events and help to power Product Recommendations and Live Search or in the case of Data Connection, send that behavioral data to the Adobe Experience Platform.
+When you install Adobe Commerce, storefront events are deployed to your site automatically. These events capture data from shoppers' interactions on your site. If you enable SaaS-based Adobe Commerce features such as [Product Recommendations](https://experienceleague.adobe.com/en/docs/commerce/product-recommendations/getting-started/install-configure), [Live Search](https://experienceleague.adobe.com/en/docs/commerce/live-search/install), or [Data Connection](https://experienceleague.adobe.com/en/docs/commerce/data-connection/fundamentals/install) additional modules are installed to collect behavioral data for specific events. This anonymized data powers Product Recommendations and Live Search, or in the case of Data Connection, is sent to Adobe Experience Platform for further analysis.
 
 In this topic you learn:
 
-- What events do the Product Recommendations, Live Search, and Data Connection modules give you access to?
-- What events are supported on each framework, such as Luma/PHP, PWA, Adobe Experience Platform, and so on?
-- How do you publish, subscribe, and handle the storefront events (Live Search and Product Recommendations only)?
-- What is the complete list of events that are available on your storefront?
+- What storefront events are available through the Product Recommendations, Live Search, and Data Connection modules?
+- What events are supported across different frameworks, such as Commerce Storefront on Edge Delivery Services, Luma/PHP, PWA, and Adobe Experience Platform?
+- How can you publish, subscribe to , and handle storefront events for Live Search and Product Recommendations?
+- What is the complete list of storefront events that are available?
 
 ## Available events based on module
 

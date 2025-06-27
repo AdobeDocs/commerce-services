@@ -13,7 +13,7 @@ This package serves as the foundation for eventing on an Adobe Commerce storefro
 
 <InlineAlert variant="info" slots="text"/>
 
-If you are using the Data Connection module, you can skip this topic as the module deploys this SDK for you. [Learn more](https://experienceleague.adobe.com/en/docs/commerce/data-connection/fundamentals/connect-data#data-collection).
+If you are using the Data Connection module, you can skip this installation topic. The module automatically deploys the SDK for you. [Learn more](https://experienceleague.adobe.com/en/docs/commerce/data-connection/fundamentals/connect-data#data-collection).
 
 ## Installation
 
@@ -47,7 +47,7 @@ require(['magentoStorefrontEvents'], function (magentoStorefrontEvents) {
 
 <InlineAlert variant="info" slots="text"/>
 
-To avoid any issues, make sure you keep the script or bundled version up to date with the latest release.
+To prevent issues, always keep the script or bundled version updated to the latest release.
 
 ## Quick Start
 

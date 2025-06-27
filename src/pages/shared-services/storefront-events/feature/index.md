@@ -9,7 +9,7 @@ keywords:
 
 # Features
 
-Learn how Live Search and Product Recommendations use storefront events to capture behavioral data from shoppers' interactions on your site.
+Learn how Live Search and Product Recommendations use storefront events to capture behavioral data from shopper interactions on your site.
 
 - [Live Search](ls-events.md)
 - [Product Recommendations](prex-events.md)

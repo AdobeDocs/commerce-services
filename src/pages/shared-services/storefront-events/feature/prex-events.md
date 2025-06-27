@@ -8,7 +8,7 @@ keywords:
 
 # Product Recommendations Events
 
-The [storefront events](../index.md#complete-list-of-storefront-events) topic lists all the events deployed to your storefront. In that list, there is a subset of events specific to Product Recommendations. These events collect data when shoppers interact with recommendation units on the storefront and power the metrics to analyze how well your recommendations are performing.
+The [storefront events](../index.md#complete-list-of-storefront-events) topic lists all the events deployed to your storefront, including a subset of events specific to Product Recommendations. These events track shopper interactions with recommendation units and generate metrics to evaluate the recommendation units performance.
 
 See the [list of events](../index.md#product-recommendations) specific to Product Recommendations.
 
