@@ -10,7 +10,7 @@ To create Projects for enterprise organizations, you must have a system administ
 
 1. Create an API project.
 
-   1. Add the **Adobe I/O Events for Adobe Commerce** API to your project. Then, click **Next**.
+   1. Add the **Adobe Commerce Optimizer Ingestion** API to your project. Then, click **Next**.
 
    1. Configure the Client ID and Client Secret credentials by selecting the **OAUTH Server to Server Authentication** option.
 
