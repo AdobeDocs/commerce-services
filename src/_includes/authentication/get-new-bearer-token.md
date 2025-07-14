@@ -7,7 +7,7 @@ curl --request POST \
   --data 'grant_type=client_credentials' \
   --data 'client_id={{client-id-value}}' \
   --data 'client_secret={{client-secret-value}}' \
-  --data 'scope=adobeio_api,openid,AdobeID,read_organizations'
+  --data 'scope=openid, AdobeID, commerce.aco.ingestion, email, profile'
 ```
 
 Replace the following placeholders with your credentials:
@@ -19,4 +19,4 @@ You can get these credentials from the Adobe Developer Console project details p
 
 <InlineAlert variant="info" slots="text" />
 
-For information on managing, refreshing, and revoking bearer tokens, see the [User Authentication Implementation Guide](https://developer.adobe.com/developer-console/docs/guides/authentication/UserAuthentication/) in the *Adobe Developer Console documentation*.
+This token request provisions the required scopes for Adobe Commerce Optimizer data ingestion as listed in the `scope` parameter. For information on managing, refreshing, and revoking bearer tokens, see the [User Authentication Implementation Guide](https://developer.adobe.com/developer-console/docs/guides/authentication/UserAuthentication/) in the *Adobe Developer Console documentation*.
