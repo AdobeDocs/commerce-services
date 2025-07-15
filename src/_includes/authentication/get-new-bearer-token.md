@@ -7,7 +7,7 @@ curl --request POST \
   --data 'grant_type=client_credentials' \
   --data 'client_id={{client-id-value}}' \
   --data 'client_secret={{client-secret-value}}' \
-  --data 'scope=openid, AdobeID, commerce.aco.ingestion, email, profile'
+  --data 'scope=openid,AdobeID,profile,email,commerce.aco.ingestion'
 ```
 
 Replace the following placeholders with your credentials:
