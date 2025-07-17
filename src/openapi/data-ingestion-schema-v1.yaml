@@ -15,8 +15,12 @@ info:
     - <strong>[Prices](#tag/Prices)</strong>—define and manage product SKU prices and their associated price books.
   version: 1.0.0
 servers:
-  - url: https://na1-sandbox.api.commerce.adobe.com/<TENANT_ID>
-    description: Production endpoint. The TENANT_ID value is the identifier of the Adobe Commerce instance. See [Adobe Commerce Cloud Manager](https://experience.adobe.com/#/commerce/cloud-service/instances) to see your available instances.
+  - url: https://na1-sandbox.api.commerce.adobe.com/{tenantId}
+    description: Production endpoint. The tenantId value is the identifier of the Adobe Commerce instance. See [Adobe Commerce Cloud Manager](https://experience.adobe.com/#/commerce/cloud-service/instances) to see your available instances.
+    variables:
+      tenantId:
+        description: The identifier of the Adobe Commerce instance
+        default: your-tenant-id
 
 tags:
   - name: Metadata
