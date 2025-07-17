@@ -14,6 +14,10 @@ info:
     - <strong>[Price books](#tag/Price-Books)</strong>—define and manage pricing scopes for different customer tiers and markets.
     - <strong>[Prices](#tag/Prices)</strong>—define and manage product SKU prices and their associated price books.
   version: 1.0.0
+security:
+  - apiKeyAuth: []
+  - bearerAuth: []
+  - imsOrgAuth: []
 servers:
   - url: https://na1-sandbox.api.commerce.adobe.com/{tenantId}
     description: Production endpoint. The tenantId value is the identifier of the Adobe Commerce instance. See [Adobe Commerce Cloud Manager](https://experience.adobe.com/#/commerce/cloud-service/instances) to see your available instances.
@@ -94,12 +98,6 @@ paths:
           schema:
             type: string
             enum: [application/json]
-        - name: Authorization
-          in: header
-          required: true
-          schema:
-            type: string
-          description: Authorization Bearer token
         - name: Content-Encoding
           in: header
           required: false
@@ -249,12 +247,6 @@ paths:
           schema:
             type: string
             enum: [application/json]
-        - name: Authorization
-          in: header
-          required: true
-          schema:
-            type: string
-          description: Authorization Bearer token
         - name: Content-Encoding
           in: header
           required: false
@@ -337,12 +329,6 @@ paths:
           schema:
             type: string
             enum: [application/json]
-        - name: Authorization
-          in: header
-          required: true
-          schema:
-            type: string
-          description: Authorization Bearer token.
         - name: Content-Encoding
           in: header
           required: false
@@ -503,7 +489,6 @@ paths:
       operationId: createProducts
       parameters:
         - $ref: "#/components/parameters/ContentType"
-        - $ref: "#/components/parameters/Authorization"
         - $ref: "#/components/parameters/ContentEncoding"
       responses:
         "200":
@@ -906,7 +891,6 @@ paths:
       operationId: updateProducts
       parameters:
         - $ref: "#/components/parameters/ContentType"
-        - $ref: "#/components/parameters/Authorization"
         - $ref: "#/components/parameters/ContentEncoding"
       responses:
         "200":
@@ -1069,7 +1053,6 @@ paths:
       operationId: deleteProducts
       parameters:
         - $ref: "#/components/parameters/ContentType"
-        - $ref: "#/components/parameters/Authorization"
         - $ref: "#/components/parameters/ContentEncoding"
       responses:
         "200":
@@ -1118,12 +1101,6 @@ paths:
           schema:
             type: string
             enum: [application/json]
-        - name: Authorization
-          in: header
-          required: true
-          schema:
-            type: string
-          description: Authorization Bearer token
         - name: Content-Encoding
           in: header
           required: false
@@ -1206,12 +1183,6 @@ paths:
           schema:
             type: string
             enum: [application/json]
-        - name: Authorization
-          in: header
-          required: true
-          schema:
-            type: string
-          description: Authorization Bearer token.
         - name: Content-Encoding
           in: header
           required: false
@@ -1288,12 +1259,6 @@ paths:
           schema:
             type: string
             enum: [application/json]
-        - name: Authorization
-          in: header
-          required: true
-          schema:
-            type: string
-          description: Authorization Bearer token.
         - name: Content-Encoding
           in: header
           required: false
@@ -1367,12 +1332,6 @@ paths:
           schema:
             type: string
             enum: [application/json]
-        - name: Authorization
-          in: header
-          required: true
-          schema:
-            type: string
-          description: Authorization Bearer token
         - name: Content-Encoding
           in: header
           required: false
@@ -1458,12 +1417,6 @@ paths:
           schema:
             type: string
             enum: [application/json]
-        - name: Authorization
-          in: header
-          required: true
-          schema:
-            type: string
-          description: Authorization Bearer token
         - name: Content-Encoding
           in: header
           required: false
@@ -1544,12 +1497,6 @@ paths:
           schema:
             type: string
             enum: [application/json]
-        - name: Authorization
-          in: header
-          required: true
-          schema:
-            type: string
-          description: Authorization Bearer token
         - name: Content-Encoding
           in: header
           required: false
@@ -1605,6 +1552,21 @@ paths:
                 $ref: "#/components/schemas/429Response"
 
 components:
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: API key for authentication
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Bearer token for authorization
+    imsOrgAuth:
+      type: apiKey
+      in: header
+      name: x-gw-ims-org-id
+      description: Adobe IMS organization ID
   responses:
     AcceptedResponse:
       description: All items accepted and will be processed asynchronously
@@ -1638,13 +1600,7 @@ components:
       schema:
         type: string
         enum: [application/json]
-    Authorization:
-      name: Authorization
-      in: header
-      required: true
-      schema:
-        type: string
-      description: Authorization Bearer token
+
     ContentEncoding:
       name: Content-Encoding
       in: header
