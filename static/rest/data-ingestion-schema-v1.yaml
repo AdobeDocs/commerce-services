@@ -225,9 +225,8 @@ paths:
               schema:
                 $ref: "#/components/schemas/403Response"
         "429":
-          x-summary: Too many requests
           description: |
-            Indicates that a client has exceeded the rate limit of 300 requests per minute.
+            Too many requests. Indicates that a client has exceeded the rate limit of 300 requests per minute.
             Check the `retry-after` header to get the time (in seconds) to wait before sending the next request.
           content:
             text/html;charset=UTF-8:
