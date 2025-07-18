@@ -6,7 +6,7 @@ const GetCredentialOAuthS2s = () => {
 
   return (
 
-    <GetCredential className="getCredentialContainer" templateId="6877d7fc5f82307e4d935db7" productName='Adobe Commerce as a Cloud Service' >
+    <GetCredential className="getCredentialContainer" templateId="6877d7fc5f82307e4d935db7" productName='Adobe Commerce Optimizer' >
 
       <GetCredential.SignIn title="Get credentials" paragraph="After signing in, you can create credentials that can be used to call the Commerce APIs." buttonText="Sign in" />
 
@@ -15,7 +15,7 @@ const GetCredentialOAuthS2s = () => {
         <GetCredential.Form.CredentialName label="Credential name" description="The credential name must be unique, use alphanumeric characters, and between 6 and 45 characters long. A project will be automatically created with the same name in Adobe Developer Console." range="45" />
 
         <GetCredential.Form.Products label="Included products and services">
-          <GetCredential.Form.Product label="Adobe Commerce as a Cloud Service" icon={commerce} />
+          <GetCredential.Form.Product label="Adobe Commerce Optimizer" icon={commerce} />
         </GetCredential.Form.Products>
 
         <GetCredential.Form.AdobeDeveloperConsole label='By checking this box, you agree to' linkText="Adobe Developer Terms of Use" href="https://wwwimages2.adobe.com/content/dam/cc/en/legal/servicetou/Adobe-Developer-Additional-Terms_en-US_20230822.pdf" />
@@ -69,7 +69,7 @@ const GetCredentialOAuthS2s = () => {
         </GetCredential.Card.Side>
 
         <GetCredential.Card.Products label="Included products and services">
-          <GetCredential.Card.Product label="Adobe Commerce as a Cloud Service" icon={commerce} />
+          <GetCredential.Card.Product label="Adobe Commerce Optimizer" icon={commerce} />
         </GetCredential.Card.Products>
 
         <GetCredential.Card.ProjectsDropdown label="Projects" subHeading="Only your projects that contain credentials are shown" />
@@ -81,7 +81,7 @@ const GetCredentialOAuthS2s = () => {
         <GetCredential.Card.AccessToken helpText="" buttonLabel="Generate and copy token" heading={(<>Access token<br/><br/> <span style="font-weight:normal"><small>After copying the access token, you must prepend the token with <code>Bearer</code> to use it with API calls.</small></span></>)} />
 
 
-        <GetCredential.Card.CredentialDetails heading={(<>Credential details<br/><br/> <span style="font-weight:normal"><small>You can use the following credential details to try out the Adobe Commerce as a Cloud Service REST API below.<ul><li>Client ID: Your public identifier for accessing the API. This acts as an API key when used with the Commerce APIs, and corresponds with the <code>x-api-key</code> header.</li><li>Organization ID: The ID of the organization you're using with the Commerce APIs. This corresponds with the <code>x-gw-ims-org-id</code> header.</li></ul></small></span></>)} orderBy="ClientId,ImsOrgID">
+        <GetCredential.Card.CredentialDetails heading={(<>Credential details<br/><br/> <span style="font-weight:normal"><small>You can use the following credential details to try out the Adobe Commerce Optimizer REST API below.<ul><li>Client ID: Your public identifier for accessing the API. This acts as an API key when used with the Commerce APIs, and corresponds with the <code>x-api-key</code> header.</li><li>Organization ID: The ID of the organization you're using with the Commerce APIs. This corresponds with the <code>x-gw-ims-org-id</code> header.</li></ul></small></span></>)} orderBy="ClientId,ImsOrgID">
           <GetCredential.Card.CredentialDetails.ClientId heading="Client ID (x-api-key)" />
           <GetCredential.Card.CredentialDetails.ImsOrgID heading="Organization ID" />
           <GetCredential.Card.CredentialDetails.Scopes heading="Scopes" scope="openid,session,AdobeID,read_organizations,additional_info.projectedProductContext" />
@@ -89,7 +89,7 @@ const GetCredentialOAuthS2s = () => {
 
       </GetCredential.Card>
 
-      <GetCredential.Return title="Previously created projects" paragraph="Select a project and access your existing credentials for Adobe Commerce as a Cloud Service." className="card_developer_console" isCollapsable="true">
+      <GetCredential.Return title="Previously created projects" paragraph="Select a project and access your existing credentials for Adobe Commerce Optimizer." className="card_developer_console" isCollapsable="true">
 
         <GetCredential.Return.Side>
           <GetCredential.Return.Side.Custom>
@@ -101,7 +101,7 @@ const GetCredentialOAuthS2s = () => {
           <GetCredential.Return.Side.NewCredential heading="Need another credential?" buttonLabel="Create new credential" />
         </GetCredential.Return.Side>
 
-        <GetCredential.Return.CredentialDetails heading={(<>Credential details<br/><br/> <span style="font-weight:normal"><small>You can use the following credential details to try out the Adobe Commerce as a Cloud Service REST API below.<ul><li>Client ID: Your public identifier for accessing the API. This acts as an API key when used with the Platform APIs, and corresponds with the <code>x-api-key</code> header.</li><li>Organization ID: The ID of the organization you're using with the Commerce APIs. This corresponds with the <code>x-gw-ims-org-id</code> header.</li></ul></small></span></>)} orderBy="ClientId,ImsOrgID">
+        <GetCredential.Return.CredentialDetails heading={(<>Credential details<br/><br/> <span style="font-weight:normal"><small>You can use the following credential details to try out the Adobe Commerce Optimizer REST API below.<ul><li>Client ID: Your public identifier for accessing the API. This acts as an API key when used with the Platform APIs, and corresponds with the <code>x-api-key</code> header.</li><li>Organization ID: The ID of the organization you're using with the Commerce APIs. This corresponds with the <code>x-gw-ims-org-id</code> header.</li></ul></small></span></>)} orderBy="ClientId,ImsOrgID">
           <GetCredential.Return.CredentialDetails.ClientId heading="Client ID (x-api-key)" />
           <GetCredential.Return.CredentialDetails.ImsOrgID heading="Organization ID" />
           <GetCredential.Return.CredentialDetails.Scopes heading="Scopes" scope="openid,session,AdobeID,read_organizations,additional_info.projectedProductContext" />
@@ -116,7 +116,7 @@ const GetCredentialOAuthS2s = () => {
         <GetCredential.Return.DevConsoleLink heading="Developer Console project" />
 
         <GetCredential.Return.Products label="Included products and services">
-          <GetCredential.Return.Product label="Adobe Commerce as a Cloud Service" icon={commerce} />
+          <GetCredential.Return.Product label="Adobe Commerce Optimizer" icon={commerce} />
         </GetCredential.Return.Products>
 
       </GetCredential.Return>
@@ -126,9 +126,9 @@ const GetCredentialOAuthS2s = () => {
         paragraph="Create unique credentials that you will use to call multiple APIs from your application."
       >
         <GetCredential.RequestAccess.EdgeCase>
-          <GetCredential.RequestAccess.EdgeCase.NoProduct title="Your organization does not have access to Adobe Commerce as a Cloud Service." />
-          <GetCredential.RequestAccess.EdgeCase.Type1User title="You do not have access to Adobe Commerce as a Cloud Service. Please use another organization and try again." />
-          <GetCredential.RequestAccess.EdgeCase.NotMember title="You do not have access to Adobe Commerce as a Cloud Service. Please use another organization and try again." />
+          <GetCredential.RequestAccess.EdgeCase.NoProduct title="Your organization does not have access to Adobe Commerce Optimizer." />
+          <GetCredential.RequestAccess.EdgeCase.Type1User title="You do not have access to Adobe Commerce Optimizer. Please use another organization and try again." />
+          <GetCredential.RequestAccess.EdgeCase.NotMember title="You do not have access to Adobe Commerce Optimizer. Please use another organization and try again." />
         </GetCredential.RequestAccess.EdgeCase>
 
         <GetCredential.RequestAccess.RestrictedAccess
@@ -138,7 +138,7 @@ const GetCredentialOAuthS2s = () => {
           <GetCredential.RequestAccess.RestrictedAccess.Products label="Included products and services">
             <GetCredential.RequestAccess.RestrictedAccess.Products.Product
               icon={commerce}
-              label="Adobe Commerce as a Cloud Service"
+              label="Adobe Commerce Optimizer"
             />
           </GetCredential.RequestAccess.RestrictedAccess.Products>
         </GetCredential.RequestAccess.RestrictedAccess>
