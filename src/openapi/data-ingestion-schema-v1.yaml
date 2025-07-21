@@ -1303,7 +1303,7 @@ paths:
             schema:
               type: array
               items:
-                $ref: "#/components/schemas/FeedPricebookDelete"
+                $ref: "#/components/schemas/FeedPriceBookDelete"
             examples:
               DeleteExistingPricebook:
                 summary: Delete price book "dealer-north"
@@ -1484,8 +1484,15 @@ paths:
                       "sku": "red-pants",
                       "priceBookId": "dealer-north",
                       "discounts": [
-                        { "code": "discount",
-                        "percentage": 30
+                        {
+                          "code": "discount",
+                          "percentage": 30
+                        }
+                      ],
+                      "tierPrices": [
+                        {
+                          "qty": 10,
+                          "percentage": 40
                         }
                       ]
                     }
@@ -2057,8 +2064,8 @@ components:
           description: Base price book id
           minLength: 1
           maxLength: 64
-    FeedPricebookDelete:
-      title: FeedPricebookDelete
+    FeedPriceBookDelete:
+      title: FeedPriceBookDelete
       description: Price book information
       required:
         - priceBookId
@@ -2093,6 +2100,13 @@ components:
             anyOf:
               - $ref: "#/components/schemas/DiscountsFinalPrice"
               - $ref: "#/components/schemas/DiscountsPercentage"
+        tierPrices:
+          type: array
+          description: Tier prices for quantities greater-than one
+          items:
+            anyOf:
+              - $ref: "#/components/schemas/TierFinalPrice"
+              - $ref: "#/components/schemas/TierPercentage"
     FeedPricesUpdate:
       title: FeedPrices
       description: Product price information.
@@ -2134,6 +2148,7 @@ components:
           description: Price book id
     DiscountsFinalPrice:
       title: Final Price
+      description: Final discount price.
       type: object
       required:
         - code
@@ -2146,6 +2161,7 @@ components:
           format: float
     DiscountsPercentage:
       title: Discount
+      description: Discount percentage of the regular price. Example $100 with a 20% discount is $80 final price.
       type: object
       required:
         - code
@@ -2153,6 +2169,36 @@ components:
       properties:
         code:
           type: string
+        percentage:
+          type: number
+          format: float
+    TierFinalPrice:
+      title: Final Price
+      description: Final price for a given quantity.
+      type: object
+      required:
+        - qty
+        - price
+      properties:
+        qty:
+          type: number
+          format: float
+          description: Must be a value greater-than 1
+        price:
+          type: number
+          format: float
+    TierPercentage:
+      title: Discount
+      description: Discount percentage of the regular price for a given quantity. Example $100 with a 20% discount is $80 final price.
+      type: object
+      required:
+        - qty
+        - percentage
+      properties:
+        qty:
+          type: number
+          format: float
+          description: Must be a value greater-than 1
         percentage:
           type: number
           format: float
