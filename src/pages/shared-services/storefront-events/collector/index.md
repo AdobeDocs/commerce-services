@@ -1,5 +1,5 @@
 ---
-title: Adobe Commerce Event Collector | Commerce Services
+title: Install the Event Collector | Commerce Services
 description: Learn how to listen for (and handle) Adobe Commerce storefront events emitted by the events SDK.
 keywords:
   - Events
@@ -7,7 +7,7 @@ keywords:
   - Storefront
 ---
 
-# Adobe Commerce Event Collector
+# Install the Event Collector
 
 This package listens for and handles events sent from the [Adobe Commerce Events SDK](../sdk/index.md). It runs as a side effect and is meant to be a convenience for users who want to send events to Adobe Commerce for processing.
 

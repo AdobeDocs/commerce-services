@@ -1,5 +1,5 @@
 ---
-title: Adobe Commerce Events SDK | Commerce Services
+title: Customize Event Handling | Commerce Services
 description: Learn how to programmatically publish and subscribe to Adobe Commerce storefront events.
 keywords:
   - Events
@@ -7,6 +7,6 @@ keywords:
   - Storefront
 ---
 
-# Adobe Commerce Events SDK
+# Customize event handling
 
-This package serves as the foundation for eventing on an Adobe Commerce storefront. It provides access to a common data layer, and an event publishing and subscription service. You can use the [Adobe Commerce Event Collector](../collector/index.md) package to listen for the events and send them to Adobe Commerce for processing.
+In this section, you learn how to programatically publish and subscribe to Adobe Commerce storefront events using the Storefront Events SDK. Then, you learn how to listen to and handle the events using the storefront events collector.
