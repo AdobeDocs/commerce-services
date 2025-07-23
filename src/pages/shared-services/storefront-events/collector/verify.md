@@ -7,7 +7,7 @@ keywords:
   - Storefront
 ---
 
-# Verify Event Collection
+# Verify event collection
 
 After you install and configure the [Product Recommendations](https://experienceleague.adobe.com/en/docs/commerce/product-recommendations/getting-started/install-configure) or [Live Search](https://experienceleague.adobe.com/en/docs/commerce/live-search/install) modules, you can verify that the behavioral data is being sent to Adobe Commerce. Use developer tools available in Chrome or the Snowplow Chrome extension to check. For more help, see the troubleshooting guides for [Product Recommendations](https://experienceleague.adobe.com/docs/commerce-knowledge-base/kb/troubleshooting/miscellaneous/troubleshoot-product-recommendations-module-in-magento-commerce.html) and [Live Search](https://experienceleague.adobe.com/en/docs/commerce/live-search/boundaries-limits#troubleshooting).
 
@@ -55,7 +55,7 @@ Install the [Snowplow Analytics Debugger extension for Chrome](https://chrome.go
 
 1. Verify that the [SaaS Data Space ID](https://experienceleague.adobe.com/docs/commerce-admin/config/services/saas.html) is set correctly.
 
-![Snowplow filter](../_images//snowplow-filter.png)
+![Snowplow filter](../_images/snowplow-filter.png)
 _Snowplow Filter_
 
 <InlineAlert variant="info" slots="text"/>
@@ -64,8 +64,8 @@ A value of `Data validity : NOT FOUND` in the debugger indicates an internal sch
 
 ## Verify that events are firing correctly
 
-To verify that the events used for metrics are firing correctly, look for the `impression-render`, `view`, and `rec-click` events in the Snowplow Analytics Debugger. See the [full list of events](https://experienceleague.adobe.com/docs/commerce/product-recommendations/developer/events.html).
+To verify that the events used for metrics are firing correctly, look for the `impression-render`, `view`, and `rec-click` events in the Snowplow Analytics Debugger.
 
 <InlineAlert variant="info" slots="text"/>
 
-If [Cookie Restriction Mode](https://experienceleague.adobe.com/docs/commerce-admin/start/compliance/privacy/compliance-cookie-law.html) is *enabled*, Adobe Commerce does not collect behavioral data until the shopper consents. If Cookie Restriction Mode is *disabled*, behavioral data is collected by default.
+If [Cookie Restriction Mode](https://experienceleague.adobe.com/docs/commerce-admin/start/compliance/privacy/compliance-cookie-law.html) is _enabled_, Adobe Commerce does not collect behavioral data until the shopper consents. If Cookie Restriction Mode is _disabled_, behavioral data is collected by default.
