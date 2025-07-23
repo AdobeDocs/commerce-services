@@ -1,13 +1,13 @@
 ---
   name: Staging deployment
   on:
-    # Trigger the workflow on each push to ccdm-early-access
+    # Trigger the workflow on each push to develop
     push:
       branches:
-        - ccdm-early-access
+        - develop
   jobs:
     set-state:
-      if: ${{ github.ref == 'refs/heads/ccdm-early-access' }}
+      if: ${{ github.ref == 'refs/heads/develop' }}
       runs-on: ubuntu-latest
       outputs:
         clean_cache: ${{ contains(github.event.inputs.clean, 'yes') }}
