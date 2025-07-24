@@ -63,7 +63,7 @@ tags:
 
       * You cannot define prices for configurable products. Prices for configurable products are calculated based on the price of the selected product variant.
       * Each discount requires a unique `code` identifier to distinguish between different discount types.
-      * Tier quantities must be greater than 1 and should be configured in ascending order.
+      * Tier quantities must be greater than 1.
 
       <h3>Best practices</h3>
 
