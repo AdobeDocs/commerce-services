@@ -405,7 +405,7 @@ paths:
 
         Use the <strong>[update operation](#operation/updateProducts)</strong> to modify values for an existing product.
 
-        <h3 od="configurableProducts">Configurable products</h3>
+        <h3 id="configurableProducts">Configurable products</h3>
 
         A configurable product is a parent product that allows customers to select from multiple predefined attributes such as color, size, and material.
         Each unique combination of these attribute values (for example, `color=green`, `size=large`) represents a product variant.
