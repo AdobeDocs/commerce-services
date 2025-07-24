@@ -17,7 +17,7 @@ Adobe provides an eventing framework that you can use to programmatically access
 
 <InlineAlert variant="info" slots="text"/>
 
-If you are using the Data Connection module, the module deploys these SDKs for you. [Learn more](https://experienceleague.adobe.com/en/docs/commerce/data-connection/fundamentals/connect-data#data-collection).
+If you are using the Data Connection module, the module deploys the eventing framework for you. [Learn more](https://experienceleague.adobe.com/en/docs/commerce/data-connection/fundamentals/connect-data#data-collection).
 
 - [**Adobe Commerce Storefront Events SDK**](sdk/index.md)—Provides access to a common data layer and an event publishing/subscription service.
 - [**Adobe Commerce Storefront Events Collector**](collector/index.md)—Listens for and handles events sent from the SDK.
@@ -39,9 +39,11 @@ The Product Recommendations module collects behavioral data from the following e
 - [rec-click](./reference/storefront-events.md#rec-click)
 - [view](./reference/storefront-events.md#view)
 
-<InlineAlert variant="info" slots="text"/>
+Although Product Recommendation metrics are optimized for Luma storefronts, they also work with other storefront implementations:
 
-Product Recommendation metrics are optimized for Luma storefronts. If your storefront is implemented with PWA Studio, refer to the [PWA documentation](https://developer.adobe.com/commerce/pwa-studio/integrations/product-recommendations/). If you use a custom frontend technology such as React or Vue JS, learn how to integrate [Product Recommendations in a headless](https://experienceleague.adobe.com/en/docs/commerce/product-recommendations/getting-started/headless) environment.
+- [Edge Delivery Storefront](https://experienceleague.adobe.com/developer/commerce/storefront/setup/analytics/instrumentation/)
+- [PWA Studio](https://developer.adobe.com/commerce/pwa-studio/integrations/product-recommendations/)
+- [Custom frontent (React, Vue JS)](https://experienceleague.adobe.com/en/docs/commerce/product-recommendations/getting-started/headless)
 
 #### Required dashboard events
 
