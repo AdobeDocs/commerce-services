@@ -14,9 +14,17 @@ info:
     - <strong>[Price books](#tag/Price-Books)</strong>—define and manage pricing scopes for different customer tiers and markets.
     - <strong>[Prices](#tag/Prices)</strong>—define and manage product SKU prices and their associated price books.
   version: 1.0.0
+security:
+  - apiKeyAuth: []
+  - bearerAuth: []
+  - imsOrgAuth: []
 servers:
-  - url: https://na1-sandbox.api.commerce.adobe.com/<TENANT_ID>
-    description: Production endpoint. The TENANT_ID value is the identifier of the Adobe Commerce instance. See [Adobe Commerce Cloud Manager](https://experience.adobe.com/#/commerce/cloud-service/instances) to see your available instances.
+  - url: https://na1-sandbox.api.commerce.adobe.com/{tenantId}
+    description: Production endpoint. The tenantId value is the identifier of the Adobe Commerce instance. See [Adobe Commerce Cloud Manager](https://experience.adobe.com/#/commerce/cloud-service/instances) to see your available instances.
+    variables:
+      tenantId:
+        description: The identifier of the Adobe Commerce instance
+        default: your-tenant-id
 
 tags:
   - name: Metadata
@@ -184,7 +192,6 @@ paths:
       operationId: createProductMetadata
       parameters:
         - $ref: "#/components/parameters/ContentType"
-        - $ref: "#/components/parameters/Authorization"
         - $ref: "#/components/parameters/ContentEncoding"
       responses:
         "200":
@@ -301,7 +308,6 @@ paths:
       operationId: updateProductMetadata
       parameters:
         - $ref: "#/components/parameters/ContentType"
-        - $ref: "#/components/parameters/Authorization"
         - $ref: "#/components/parameters/ContentEncoding"
       responses:
         "200":
@@ -352,7 +358,6 @@ paths:
       operationId: deleteProductMetadata
       parameters:
         - $ref: "#/components/parameters/ContentType"
-        - $ref: "#/components/parameters/Authorization"
         - $ref: "#/components/parameters/ContentEncoding"
       responses:
         "200":
@@ -486,7 +491,6 @@ paths:
       operationId: createProducts
       parameters:
         - $ref: "#/components/parameters/ContentType"
-        - $ref: "#/components/parameters/Authorization"
         - $ref: "#/components/parameters/ContentEncoding"
       responses:
         "200":
@@ -891,7 +895,6 @@ paths:
       operationId: updateProducts
       parameters:
         - $ref: "#/components/parameters/ContentType"
-        - $ref: "#/components/parameters/Authorization"
         - $ref: "#/components/parameters/ContentEncoding"
       responses:
         "200":
@@ -1056,7 +1059,6 @@ paths:
       operationId: deleteProducts
       parameters:
         - $ref: "#/components/parameters/ContentType"
-        - $ref: "#/components/parameters/Authorization"
         - $ref: "#/components/parameters/ContentEncoding"
       responses:
         "200":
@@ -1102,7 +1104,6 @@ paths:
       operationId: createPriceBooks
       parameters:
         - $ref: "#/components/parameters/ContentType"
-        - $ref: "#/components/parameters/Authorization"
         - $ref: "#/components/parameters/ContentEncoding"
       responses:
         "200":
@@ -1152,7 +1153,6 @@ paths:
       operationId: updatePriceBooks
       parameters:
         - $ref: "#/components/parameters/ContentType"
-        - $ref: "#/components/parameters/Authorization"
         - $ref: "#/components/parameters/ContentEncoding"
       responses:
         "200":
@@ -1196,7 +1196,6 @@ paths:
       operationId: deletePriceBooks
       parameters:
         - $ref: "#/components/parameters/ContentType"
-        - $ref: "#/components/parameters/Authorization"
         - $ref: "#/components/parameters/ContentEncoding"
       responses:
         "200":
@@ -1262,7 +1261,6 @@ paths:
       operationId: createPrices
       parameters:
         - $ref: "#/components/parameters/ContentType"
-        - $ref: "#/components/parameters/Authorization"
         - $ref: "#/components/parameters/ContentEncoding"
       responses:
         "200":
@@ -1418,7 +1416,6 @@ paths:
       operationId: updatePrices
       parameters:
         - $ref: "#/components/parameters/ContentType"
-        - $ref: "#/components/parameters/Authorization"
         - $ref: "#/components/parameters/ContentEncoding"
       responses:
         "200":
@@ -1486,7 +1483,6 @@ paths:
       operationId: deletePrices
       parameters:
         - $ref: "#/components/parameters/ContentType"
-        - $ref: "#/components/parameters/Authorization"
         - $ref: "#/components/parameters/ContentEncoding"
       responses:
         "200":
@@ -1514,6 +1510,21 @@ paths:
                 value: [{ "sku": "red-pants", "priceBookId": "dealer-north" }]
 
 components:
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: API key for authentication
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Bearer token for authorization
+    imsOrgAuth:
+      type: apiKey
+      in: header
+      name: x-gw-ims-org-id
+      description: Adobe IMS organization ID
   responses:
     AcceptedResponse:
       x-summary: All items accepted
@@ -1573,13 +1584,7 @@ components:
       schema:
         type: string
         enum: [application/json]
-    Authorization:
-      name: Authorization
-      in: header
-      required: true
-      schema:
-        type: string
-      description: Authorization Bearer token
+
     ContentEncoding:
       name: Content-Encoding
       in: header
