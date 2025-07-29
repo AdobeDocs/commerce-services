@@ -39,19 +39,118 @@ tags:
 
   - name: Prices
     description: |
-      Manage product SKU prices across different price books and customer tiers. Define regular prices and
-      special discounts for specific customer segments or markets by specifying a price book id.
+      Manage product SKU prices across different price books and customer tiers. Define regular prices,
+      discounts, and tiered pricing for specific customer segments or markets by specifying a price book id.
 
       Before creating prices with the Prices API, first create [Price books](#tag/Price-Books). Prices that reference a non-existing price book are ignored.
 
-      <strong>Price lookup logic</strong>
+      The Prices API supports three main pricing components:
 
-      The product price lookup follows a hierarchical path through price books. The search starts at the specified price book and traverses upward through parent price books until it reaches the root level. A product is not assigned a price if:
+      * **Regular Price** - The base price for a product SKU in a specific price book
+      * **Discounts** - Percentage or fixed amount discounts applied to the regular price
+      * **Tiered Pricing** - Quantity-based pricing that offers different prices based on purchase quantity.
+        Tiered pricing can be configured as a fixed or percentage price.
+
+      <h3>Price lookup logic</h3>
+
+      The product price lookup follows a hierarchical path through price books. The search starts at the specified price book
+      and traverses upward through parent price books until it finds a price or reaches the root level. A product is not assigned
+      a price if:
         - No price is found in the entire hierarchy
         - The price book specified in a price record has not been created
 
-      <strong>Note:</strong> You cannot define prices for configurable products. Prices for configurable products
-       are calculated based on the price of the selected product variant.
+      <h3>Important notes</h3>
+
+      * You cannot define prices for configurable products. Prices for configurable products are calculated based on the price of the selected product variant.
+      * Each discount requires a unique `code` identifier to distinguish between different discount types.
+      * Tier quantities must be greater than 1.
+
+      <h3>Best practices</h3>
+
+      **Price Book Management**
+      * Create price books before defining prices
+      * Use descriptive price book IDs and names
+      * Plan your pricing hierarchy before implementation
+      * Test price book relationships in development
+
+      **Pricing Strategy**
+      * Use consistent discount codes across your catalog
+      * Implement tiered pricing for bulk purchase incentives
+      * Consider geographic and customer segment pricing
+      * Monitor price performance and adjust strategies
+
+      **Data Management**
+      * Validate all price data before sending to production
+      * Use bulk operations for large price updates
+      * Implement proper error handling for failed requests
+      * Keep backup copies of pricing configurations
+
+      **Performance Considerations**
+      * Batch price updates for better performance
+      * Use gzip compression for large payloads
+      * Monitor API rate limits (300 requests per minute)
+      * Implement retry logic for failed requests
+
+      <strong>Common Use Cases</strong>
+
+      **Seasonal Pricing**
+      ```json
+      {
+        "sku": "summer-dress",
+        "priceBookId": "us-seasonal",
+        "regular": 89.99,
+        "discounts": [
+          {
+            "code": "summer_sale",
+            "percentage": 30
+          }
+        ]
+      }
+      ```
+
+      **Customer Segment Pricing**
+      ```json
+      {
+        "sku": "premium-product",
+        "priceBookId": "us-vip",
+        "regular": 199.99,
+        "discounts": [
+          {
+            "code": "vip_member",
+            "percentage": 20
+          }
+        ],
+        "tierPrices": [
+          {
+            "qty": 2,
+            "percentage": 10
+          }
+        ]
+      }
+      ```
+
+      **Bulk Purchase Incentives**
+      ```json
+      {
+        "sku": "office-supplies",
+        "priceBookId": "us-business",
+        "regular": 15.99,
+        "tierPrices": [
+          {
+            "qty": 10,
+            "price": 12.99
+          },
+          {
+            "qty": 25,
+            "price": 10.99
+          },
+          {
+            "qty": 50,
+            "percentage": 35
+          }
+        ]
+      }
+      ```
 
 paths:
   /v1/catalog/products/metadata:
@@ -84,25 +183,20 @@ paths:
 
       operationId: createProductMetadata
       parameters:
-        - name: Content-Type
-          in: header
-          required: true
-          schema:
-            type: string
-            enum: [application/json]
-        - name: Authorization
-          in: header
-          required: true
-          schema:
-            type: string
-          description: Authorization Bearer token
-        - name: Content-Encoding
-          in: header
-          required: false
-          schema:
-            type: string
-            enum: [gzip]
-          description: Use this header if the payload is compressed with gzip.
+        - $ref: "#/components/parameters/ContentType"
+        - $ref: "#/components/parameters/Authorization"
+        - $ref: "#/components/parameters/ContentEncoding"
+      responses:
+        "200":
+          $ref: "#/components/responses/AcceptedResponse"
+        "400":
+          $ref: "#/components/responses/InvalidItemsResponse"
+        "401":
+          $ref: "#/components/responses/UnauthorizedResponse"
+        "403":
+          $ref: "#/components/responses/ForbiddenResponse"
+        "429":
+          $ref: "#/components/responses/TooManyRequestsResponse"
       requestBody:
         content:
           application/json:
@@ -197,39 +291,6 @@ paths:
                       "searchTypes": []
                     }
                   ]
-      responses:
-        "200":
-          description: All items in the request are accepted for further processing.
-          content:
-            application/json;charset=UTF-8:
-              schema:
-                $ref: "#/components/schemas/ProcessFeedResponse"
-        "400":
-          description: Request rejected. Some of the received items are invalid. Check the "message" and "errors" fields for details.
-          content:
-            application/json;charset=UTF-8:
-              schema:
-                $ref: "#/components/schemas/400ProcessFeedResponse"
-        "401":
-          description: Unauthorized request. Verify that the Bearer token provided in the `Authorization` header is still valid.
-          content:
-            application/json;charset=UTF-8:
-              schema:
-                $ref: "#/components/schemas/401Response"
-        "403":
-          description: Forbidden request. Verify that the `Authorization` header is present, and that the Bearer token is still valid.
-          content:
-            application/json;charset=UTF-8:
-              schema:
-                $ref: "#/components/schemas/403Response"
-        "429":
-          description: |
-            Too many requests. Indicates that a client has exceeded the rate limit of 300 requests per minute.
-            Check the `retry-after` header to get the time (in seconds) to wait before sending the next request.
-          content:
-            text/html;charset=UTF-8:
-              schema:
-                $ref: "#/components/schemas/429Response"
     patch:
       tags:
         - Metadata
@@ -239,25 +300,20 @@ paths:
         When the update is processed, the merge strategy is used to apply changes to `scalar` and `object` type fields. The replace strategy is used to apply changes for fields in an `array`.
       operationId: updateProductMetadata
       parameters:
-        - name: Content-Type
-          in: header
-          required: true
-          schema:
-            type: string
-            enum: [application/json]
-        - name: Authorization
-          in: header
-          required: true
-          schema:
-            type: string
-          description: Authorization Bearer token
-        - name: Content-Encoding
-          in: header
-          required: false
-          schema:
-            type: string
-            enum: [gzip]
-          description: Use this header if the payload is compressed with gzip.
+        - $ref: "#/components/parameters/ContentType"
+        - $ref: "#/components/parameters/Authorization"
+        - $ref: "#/components/parameters/ContentEncoding"
+      responses:
+        "200":
+          $ref: "#/components/responses/AcceptedResponse"
+        "400":
+          $ref: "#/components/responses/InvalidItemsResponse"
+        "401":
+          $ref: "#/components/responses/UnauthorizedResponse"
+        "403":
+          $ref: "#/components/responses/ForbiddenResponse"
+        "429":
+          $ref: "#/components/responses/TooManyRequestsResponse"
       requestBody:
         content:
           application/json:
@@ -286,39 +342,7 @@ paths:
                       ]
                     }
                   ]
-      responses:
-        "200":
-          description: All items in the request are accepted for further processing.
-          content:
-            application/json;charset=UTF-8:
-              schema:
-                $ref: "#/components/schemas/ProcessFeedResponse"
-        "400":
-          description: Request rejected. Some of the received items are invalid. Check the "invalidFeedItems" node for specific errors.
-          content:
-            application/json;charset=UTF-8:
-              schema:
-                $ref: "#/components/schemas/400ProcessFeedResponse"
-        "401":
-          description: Unauthorized request. Verify that the Bearer token provided in the `Authorization` header is still valid.
-          content:
-            application/json;charset=UTF-8:
-              schema:
-                $ref: "#/components/schemas/401Response"
-        "403":
-          description: Forbidden request. Verify that the `Authorization` header is present, and that the Bearer token is still valid.
-          content:
-            application/json;charset=UTF-8:
-              schema:
-                $ref: "#/components/schemas/403Response"
-        "429":
-          description: |
-            Too many requests. Indicates that a client has exceeded the rate limit of 300 requests per minute.
-            Check the `retry-after` header to get the time (in seconds) to wait before sending the next request.
-          content:
-            text/html;charset=UTF-8:
-              schema:
-                $ref: "#/components/schemas/429Response"
+
   /v1/catalog/products/metadata/delete:
     post:
       tags:
@@ -327,25 +351,20 @@ paths:
       description: Remove product attribute metadata resources from the catalog data.
       operationId: deleteProductMetadata
       parameters:
-        - name: Content-Type
-          in: header
-          required: true
-          schema:
-            type: string
-            enum: [application/json]
-        - name: Authorization
-          in: header
-          required: true
-          schema:
-            type: string
-          description: Authorization Bearer token.
-        - name: Content-Encoding
-          in: header
-          required: false
-          schema:
-            type: string
-            enum: [gzip]
-          description: Use this header if the payload is compressed with gzip.
+        - $ref: "#/components/parameters/ContentType"
+        - $ref: "#/components/parameters/Authorization"
+        - $ref: "#/components/parameters/ContentEncoding"
+      responses:
+        "200":
+          $ref: "#/components/responses/AcceptedResponse"
+        "400":
+          $ref: "#/components/responses/InvalidItemsResponse"
+        "401":
+          $ref: "#/components/responses/UnauthorizedResponse"
+        "403":
+          $ref: "#/components/responses/ForbiddenResponse"
+        "429":
+          $ref: "#/components/responses/TooManyRequestsResponse"
       requestBody:
         content:
           application/json:
@@ -363,39 +382,6 @@ paths:
                     "source": { "locale": "en" }
                   }
                 ]
-      responses:
-        "200":
-          description: All items in the request are accepted for further processing.
-          content:
-            application/json;charset=UTF-8:
-              schema:
-                $ref: "#/components/schemas/ProcessFeedResponse"
-        "400":
-          description: Some received items are invalid. Check the ‘invalidFeedItems’ node for specific errors.
-          content:
-            application/json;charset=UTF-8:
-              schema:
-                $ref: "#/components/schemas/400ProcessFeedResponse"
-        "401":
-          description: Unauthorized request. Verify that the Bearer token provided in the `Authorization` header is still valid.
-          content:
-            application/json;charset=UTF-8:
-              schema:
-                $ref: "#/components/schemas/401Response"
-        "403":
-          description: Forbidden request. Verify that the `Authorization` header is present, and that the Bearer token is still valid.
-          content:
-            application/json;charset=UTF-8:
-              schema:
-                $ref: "#/components/schemas/403Response"
-        "429":
-          description: |
-            Too many requests. Indicates that a client has exceeded the rate limit of 300 requests per minute.
-            Check the `retry-after` header to get the time (in seconds) to wait before sending the next request.
-          content:
-            text/html;charset=UTF-8:
-              schema:
-                $ref: "#/components/schemas/429Response"
 
   /v1/catalog/products:
     post:
@@ -414,12 +400,13 @@ paths:
          configurable product.
          - You can create multiple products in a single request, and also create product variants for configurable products in the same request.
 
-        <h3 id="simpleProducts">Simple Products</h3>
+        <h3 id="simpleProducts">Simple products</h3>
         Create products or replace existing products with specified `sku` and `source` values.
 
         Use the <strong>[update operation](#operation/updateProducts)</strong> to modify values for an existing product.
 
-        <h3>Configurable Products</h3>
+        <h3 id="configurableProducts">Configurable products</h3>
+
         A configurable product is a parent product that allows customers to select from multiple predefined attributes such as color, size, and material.
         Each unique combination of these attribute values (for example, `color=green`, `size=large`) represents a product variant.
 
@@ -472,7 +459,7 @@ paths:
           - Use [Delete Product API](#operation/deleteProducts) to delete the product variant.
           - Use [Update Product API](#operation/updateProducts) to set the ["variantReferenceId"](#operation/createProducts!path=attributes/variantReferenceId&t=request) to `null` and unassign the product variant from the configurable product by removing the ["links"](#operation/createProducts!path=links&t=request) association.
 
-        <h3>Bundle Products</h3>
+        <h3>Bundle products</h3>
 
         A bundle product combines several simple products into one sellable unit. Items within the bundle can be categorized into logical groups like `tops`, `bottoms`, and `accessories`.
         Each group can have multiple items, and shoppers can select items from each group to create a customized bundle.
@@ -510,6 +497,8 @@ paths:
           $ref: "#/components/responses/UnauthorizedResponse"
         "403":
           $ref: "#/components/responses/ForbiddenResponse"
+        "429":
+          $ref: "#/components/responses/TooManyRequestsResponse"
       requestBody:
         content:
           application/json:
@@ -913,6 +902,8 @@ paths:
           $ref: "#/components/responses/UnauthorizedResponse"
         "403":
           $ref: "#/components/responses/ForbiddenResponse"
+        "429":
+          $ref: "#/components/responses/TooManyRequestsResponse"
       requestBody:
         content:
           application/json:
@@ -1076,6 +1067,8 @@ paths:
           $ref: "#/components/responses/UnauthorizedResponse"
         "403":
           $ref: "#/components/responses/ForbiddenResponse"
+        "429":
+          $ref: "#/components/responses/TooManyRequestsResponse"
       requestBody:
         content:
           application/json:
@@ -1108,25 +1101,20 @@ paths:
         <strong>Note:</strong> After you assign a `parentId` to a price book, you cannot change the parentId value using the update operation. If you want to define a different parent-child relationship, delete the child price book and create a new one with the desired parent-child relationship.
       operationId: createPriceBooks
       parameters:
-        - name: Content-Type
-          in: header
-          required: true
-          schema:
-            type: string
-            enum: [application/json]
-        - name: Authorization
-          in: header
-          required: true
-          schema:
-            type: string
-          description: Authorization Bearer token
-        - name: Content-Encoding
-          in: header
-          required: false
-          schema:
-            type: string
-            enum: [gzip]
-          description: Use this header if the payload is compressed with gzip.
+        - $ref: "#/components/parameters/ContentType"
+        - $ref: "#/components/parameters/Authorization"
+        - $ref: "#/components/parameters/ContentEncoding"
+      responses:
+        "200":
+          $ref: "#/components/responses/AcceptedResponse"
+        "400":
+          $ref: "#/components/responses/InvalidItemsResponse"
+        "401":
+          $ref: "#/components/responses/UnauthorizedResponse"
+        "403":
+          $ref: "#/components/responses/ForbiddenResponse"
+        "429":
+          $ref: "#/components/responses/TooManyRequestsResponse"
       requestBody:
         content:
           application/json:
@@ -1154,39 +1142,6 @@ paths:
                       "name": "Dealer West price book"
                     }
                   ]
-      responses:
-        "200":
-          description: All items in the request are accepted for further processing.
-          content:
-            application/json;charset=UTF-8:
-              schema:
-                $ref: "#/components/schemas/ProcessFeedResponse"
-        "400":
-          description: Request rejected. Some of the received items are invalid. Check the "invalidFeedItems" node for specific errors.
-          content:
-            application/json;charset=UTF-8:
-              schema:
-                $ref: "#/components/schemas/400ProcessFeedResponse"
-        "401":
-          description: Unauthorized request. Verify that the Bearer token provided in the `Authorization` header is still valid.
-          content:
-            application/json;charset=UTF-8:
-              schema:
-                $ref: "#/components/schemas/401Response"
-        "403":
-          description: Forbidden request. Verify that the `Authorization` header is present, and that the Bearer token is still valid.
-          content:
-            application/json;charset=UTF-8:
-              schema:
-                $ref: "#/components/schemas/403Response"
-        "429":
-          description: |
-            Too many requests. Indicates that a client has exceeded the rate limit of 300 requests per minute.
-            Check the `retry-after` header to get the time (in seconds) to wait before sending the next request.
-          content:
-            text/html;charset=UTF-8:
-              schema:
-                $ref: "#/components/schemas/429Response"
     patch:
       tags:
         - Price Books
@@ -1196,25 +1151,20 @@ paths:
         When you submit the update request for a child price book, include the correct `parentId`. If the request includes a different `parentId`, the value is ignored.
       operationId: updatePriceBooks
       parameters:
-        - name: Content-Type
-          in: header
-          required: true
-          schema:
-            type: string
-            enum: [application/json]
-        - name: Authorization
-          in: header
-          required: true
-          schema:
-            type: string
-          description: Authorization Bearer token.
-        - name: Content-Encoding
-          in: header
-          required: false
-          schema:
-            type: string
-            enum: [gzip]
-          description: Use this header if the payload is compressed with gzip.
+        - $ref: "#/components/parameters/ContentType"
+        - $ref: "#/components/parameters/Authorization"
+        - $ref: "#/components/parameters/ContentEncoding"
+      responses:
+        "200":
+          $ref: "#/components/responses/AcceptedResponse"
+        "400":
+          $ref: "#/components/responses/InvalidItemsResponse"
+        "401":
+          $ref: "#/components/responses/UnauthorizedResponse"
+        "403":
+          $ref: "#/components/responses/ForbiddenResponse"
+        "429":
+          $ref: "#/components/responses/TooManyRequestsResponse"
       requestBody:
         content:
           application/json:
@@ -1234,39 +1184,6 @@ paths:
                       "name": "North dealership"
                     }
                   ]
-      responses:
-        "200":
-          description: All items in the request are accepted for further processing.
-          content:
-            application/json;charset=UTF-8:
-              schema:
-                $ref: "#/components/schemas/ProcessFeedResponse"
-        "400":
-          description: Request rejected. Some of the received items are invalid. Check the `invalidFeedItems` node for specific errors.
-          content:
-            application/json;charset=UTF-8:
-              schema:
-                $ref: "#/components/schemas/400ProcessFeedResponse"
-        "401":
-          description: Unauthorized request. Verify that the Bearer token provided in the `Authorization` header is still valid.
-          content:
-            application/json;charset=UTF-8:
-              schema:
-                $ref: "#/components/schemas/401Response"
-        "403":
-          description: Forbidden request. Verify that the `Authorization` header is present, and that the Bearer token is still valid.
-          content:
-            application/json;charset=UTF-8:
-              schema:
-                $ref: "#/components/schemas/403Response"
-        "429":
-          description: |
-            Too many requests. Indicates that a client has exceeded the rate limit of 300 requests per minute.
-            Check the `retry-after` header to get the time (in seconds) to wait before sending the next request.
-          content:
-            text/html;charset=UTF-8:
-              schema:
-                $ref: "#/components/schemas/429Response"
   /v1/catalog/price-books/delete:
     post:
       tags:
@@ -1278,104 +1195,86 @@ paths:
         If a price book is deleted by mistake, you have up to one week to restore the deleted price books and their associated prices. Restoring is done by recreating the top-level parent price book that was deleted, using the same payload submitted in the original create price book request. The state of the price books and prices are restored to the status and price values assigned when the price book was deleted.
       operationId: deletePriceBooks
       parameters:
-        - name: Content-Type
-          in: header
-          required: true
-          schema:
-            type: string
-            enum: [application/json]
-        - name: Authorization
-          in: header
-          required: true
-          schema:
-            type: string
-          description: Authorization Bearer token.
-        - name: Content-Encoding
-          in: header
-          required: false
-          schema:
-            type: string
-            enum: [gzip]
-          description: Use this header if the payload is compressed with gzip.
+        - $ref: "#/components/parameters/ContentType"
+        - $ref: "#/components/parameters/Authorization"
+        - $ref: "#/components/parameters/ContentEncoding"
+      responses:
+        "200":
+          $ref: "#/components/responses/AcceptedResponse"
+        "400":
+          $ref: "#/components/responses/InvalidItemsResponse"
+        "401":
+          $ref: "#/components/responses/UnauthorizedResponse"
+        "403":
+          $ref: "#/components/responses/ForbiddenResponse"
+        "429":
+          $ref: "#/components/responses/TooManyRequestsResponse"
       requestBody:
         content:
           application/json:
             schema:
               type: array
               items:
-                $ref: "#/components/schemas/FeedPricebookDelete"
+                $ref: "#/components/schemas/FeedPriceBookDelete"
             examples:
               DeleteExistingPricebook:
                 summary: Delete price book "dealer-north"
                 description: Delete the "dealer-north" price book. All prices assigned to this price book are also deleted.
                 value: [{ "priceBookId": "dealer-north" }]
-      responses:
-        "200":
-          description: All items in the request are accepted for further processing.
-          content:
-            application/json;charset=UTF-8:
-              schema:
-                $ref: "#/components/schemas/ProcessFeedResponse"
-        "400":
-          description: Request rejected. Some of the received items are invalid. Check the "invalidFeedItems" node for specific errors.
-          content:
-            application/json;charset=UTF-8:
-              schema:
-                $ref: "#/components/schemas/400ProcessFeedResponse"
-        "401":
-          description: Unauthorized request. Verify that the Bearer token provided in the `Authorization` header is still valid.
-          content:
-            application/json;charset=UTF-8:
-              schema:
-                $ref: "#/components/schemas/401Response"
-        "403":
-          description: Forbidden request. Verify that the `Authorization` header is present, and that the Bearer token is still valid.
-          content:
-            application/json;charset=UTF-8:
-              schema:
-                $ref: "#/components/schemas/403Response"
-        "429":
-          description: |
-            Too many requests. Indicates that a client has exceeded the rate limit of 300 requests per minute.
-            Check the `retry-after` header to get the time (in seconds) to wait before sending the next request.
-          content:
-            text/html;charset=UTF-8:
-              schema:
-                $ref: "#/components/schemas/429Response"
-
   /v1/catalog/products/prices:
     post:
       tags:
         - Prices
       summary: Create prices
       description: |
-        Create or replace existing product prices.
+        Create or replace existing product prices with support for regular pricing, discounts, and tiered pricing.
 
-        <h3>Configurable Products</h3>
+        <h3>Pricing structure</h3>
+
+        Each price record can include:
+
+        * **Regular Price** - The base price for the product SKU
+        * **Discounts** - Percentage or fixed amount discounts applied to the regular price
+        * **Tiered Pricing** - Quantity-based pricing for bulk purchases
+
+        <h3>Discount configuration</h3>
+
+        Discounts can be configured in two ways:
+
+        * **Fixed Amount Discounts** - Use `price` field to specify a fixed discount amount (e.g., 10.00 for $10 off)
+        * **Percentage Discounts** - Use `percentage` field to specify a discount percentage (e.g., 20 for 20% off)
+
+        Each discount requires a unique `code` identifier to distinguish between different discount types.
+
+        <h3>Tiered pricing</h3>
+
+        Tiered pricing offers different prices based on purchase quantity:
+
+        * **Tier Fixed Prices** - Use `price` field with `qty` to specify quantity-based fixed prices
+        * **Tier Percentage Discounts** - Use `percentage` field with `qty` to specify quantity-based percentage discounts
+
+        Tier quantities must be greater than 1.
+
+        <h3>Pricing for configurable products</h3>
         Because configurable product price is calculated based on the price of the selected product variant, you don't need to send price
-        data for configurable product skus. Sending price data for these skus can cause incorrect price calculations.
+        data for configurable product SKUs. Sending price data for these SKUs can cause incorrect price calculations.
 
       operationId: createPrices
       parameters:
-        - name: Content-Type
-          in: header
-          required: true
-          schema:
-            type: string
-            enum: [application/json]
-        - name: Authorization
-          in: header
-          required: true
-          schema:
-            type: string
-          description: Authorization Bearer token
-        - name: Content-Encoding
-          in: header
-          required: false
-          schema:
-            type: string
-            enum: [gzip]
-          description: Use this header if the payload is compressed with gzip
+        - $ref: "#/components/parameters/ContentType"
+        - $ref: "#/components/parameters/Authorization"
+        - $ref: "#/components/parameters/ContentEncoding"
+      responses:
+        "200":
+          $ref: "#/components/responses/AcceptedResponse"
+        "400":
+          $ref: "#/components/responses/InvalidItemsResponse"
+        "401":
+          $ref: "#/components/responses/UnauthorizedResponse"
+        "403":
+          $ref: "#/components/responses/ForbiddenResponse"
+        "429":
+          $ref: "#/components/responses/TooManyRequestsResponse"
       requestBody:
         content:
           application/json:
@@ -1385,8 +1284,10 @@ paths:
                 $ref: "#/components/schemas/FeedPrices"
             examples:
               FeedWithNewProductPrice:
-                summary: Add product price information
-                description: Add product price information to the catalog data.
+                summary: Add product price information with discounts and tiered pricing
+                description: |
+                  Add product price information to the catalog data with examples of regular pricing,
+                  percentage discounts, and tiered pricing for bulk purchases.
                 value:
                   [
                     {
@@ -1400,73 +1301,136 @@ paths:
                       "regular": 19.9,
                       "discounts": [
                         {
-                          "code": "discount",
+                          "code": "seasonal_sale",
                           "percentage": 10
+                        },
+                        {
+                          "code": "loyalty_discount",
+                          "price": 2.00
+                        }
+                      ],
+                      "tierPrices": [
+                        {
+                          "qty": 5,
+                          "percentage": 15
+                        },
+                        {
+                          "qty": 10,
+                          "price": 15.00
                         }
                       ]
                     }
                   ]
-      responses:
-        "200":
-          description: All items in the request are accepted for further processing.
-          content:
-            application/json;charset=UTF-8:
-              schema:
-                $ref: "#/components/schemas/ProcessFeedResponse"
-        "400":
-          description: Request rejected. Some of the received items are invalid. Check the "invalidFeedItems" node for specific errors.
-          content:
-            application/json;charset=UTF-8:
-              schema:
-                $ref: "#/components/schemas/400ProcessFeedResponse"
-        "401":
-          description: Unauthorized request. Verify that the Bearer token provided in the `Authorization` header is still valid.
-          content:
-            application/json;charset=UTF-8:
-              schema:
-                $ref: "#/components/schemas/401Response"
-        "403":
-          description: Forbidden request. Verify that the `Authorization` header is present, and that the Bearer token is still valid.
-          content:
-            application/json;charset=UTF-8:
-              schema:
-                $ref: "#/components/schemas/403Response"
-        "429":
-          description: |
-            Too many requests. Indicates that a client has exceeded the rate limit of 300 requests per minute.
-            Check the `retry-after` header to get the time (in seconds) to wait before sending the next request.
-          content:
-            text/html;charset=UTF-8:
-              schema:
-                $ref: "#/components/schemas/429Response"
+              FeedWithComplexPricing:
+                summary: Complex pricing with multiple discount types and tier levels
+                description: |
+                  Example showing complex pricing scenarios with multiple discount types,
+                  tiered pricing for different quantity levels, and geographic pricing variations.
+                value:
+                  [
+                    {
+                      "sku": "premium-watch",
+                      "priceBookId": "us-premium",
+                      "regular": 299.99,
+                      "discounts": [
+                        {
+                          "code": "holiday_sale",
+                          "percentage": 15
+                        },
+                        {
+                          "code": "vip_member",
+                          "price": 25.00
+                        }
+                      ],
+                      "tierPrices": [
+                        {
+                          "qty": 2,
+                          "percentage": 10
+                        },
+                        {
+                          "qty": 5,
+                          "percentage": 20
+                        },
+                        {
+                          "qty": 10,
+                          "price": 250.00
+                        }
+                      ]
+                    },
+                    {
+                      "sku": "premium-watch",
+                      "priceBookId": "us-wholesale",
+                      "regular": 250.00,
+                      "discounts": [
+                        {
+                          "code": "bulk_discount",
+                          "percentage": 25
+                        }
+                      ],
+                      "tierPrices": [
+                        {
+                          "qty": 10,
+                          "price": 200.00
+                        },
+                        {
+                          "qty": 25,
+                          "price": 175.00
+                        },
+                        {
+                          "qty": 50,
+                          "percentage": 40
+                        }
+                      ]
+                    }
+                  ]
+
     patch:
       tags:
         - Prices
       summary: Update prices
       description: |
-        Change existing product prices
+        Change existing product prices, discounts, and tiered pricing.
+
         When the update is processed, the merge strategy is used to apply changes to `scalar` and `object` type fields. The replace strategy is used to apply changes for fields in an `array`.
+
+        <h3>Update strategies</h3>
+
+        * **Regular Price** - Updated using merge strategy
+        * **Discounts Array** - Updated using replace strategy (entire array is replaced)
+        * **Tiered Pricing Array** - Updated using replace strategy (entire array is replaced)
+
+        <h3>Discount and tier pricing updates</h3>
+
+        When updating discounts or tiered pricing:
+
+        * Include all desired discounts/tiers in the array
+        * The entire array replaces the existing configuration
+        * To remove all discounts/tiers, send an empty array
+        * To add new discounts/tiers, include both existing and new items
+
+        <h3>Best practices</h3>
+
+        * Always include the complete array of discounts/tiers when updating
+        * Use descriptive discount codes for easier management
+        * Ensure tier quantities are in ascending order
+        * Test updates in a development environment first
+
       operationId: updatePrices
       parameters:
-        - name: Content-Type
-          in: header
-          required: true
-          schema:
-            type: string
-            enum: [application/json]
-        - name: Authorization
-          in: header
-          required: true
-          schema:
-            type: string
-          description: Authorization Bearer token
-        - name: Content-Encoding
-          in: header
-          required: false
-          schema:
-            type: string
-            enum: [gzip]
-          description: Use this header if the payload is compressed with gzip.
+        - $ref: "#/components/parameters/ContentType"
+        - $ref: "#/components/parameters/Authorization"
+        - $ref: "#/components/parameters/ContentEncoding"
+      responses:
+        "200":
+          $ref: "#/components/responses/AcceptedResponse"
+        "400":
+          $ref: "#/components/responses/InvalidItemsResponse"
+        "401":
+          $ref: "#/components/responses/UnauthorizedResponse"
+        "403":
+          $ref: "#/components/responses/ForbiddenResponse"
+        "429":
+          $ref: "#/components/responses/TooManyRequestsResponse"
       requestBody:
         content:
           application/json:
@@ -1476,55 +1440,41 @@ paths:
                 $ref: "#/components/schemas/FeedPricesUpdate"
             examples:
               FeedWithProductPricesInformation:
-                summary: Product prices update
-                description: Update existing product prices for the given SKU ("red-pants") and price book id ("dealer-north").
+                summary: Update product prices with enhanced discounts and tiered pricing
+                description: |
+                  Update existing product prices for the given SKU ("red-pants") and price book id ("dealer-north").
+                  This example shows how to update both discounts and tiered pricing simultaneously.
                 value:
                   [
                     {
                       "sku": "red-pants",
                       "priceBookId": "dealer-north",
                       "discounts": [
-                        { "code": "discount",
-                        "percentage": 30
+                        {
+                          "code": "holiday_sale",
+                          "percentage": 30
+                        },
+                        {
+                          "code": "bulk_discount",
+                          "price": 5.00
+                        }
+                      ],
+                      "tierPrices": [
+                        {
+                          "qty": 5,
+                          "percentage": 20
+                        },
+                        {
+                          "qty": 10,
+                          "percentage": 40
+                        },
+                        {
+                          "qty": 25,
+                          "price": 12.00
                         }
                       ]
                     }
                   ]
-      responses:
-        "200":
-          description: All items in the request are accepted for further processing.
-          content:
-            application/json;charset=UTF-8:
-              schema:
-                $ref: "#/components/schemas/ProcessFeedResponse"
-        "400":
-          description: |
-            Request rejected. Some of the received items are invalid.
-            Check the "invalidFeedItems" node for specific errors.
-          content:
-            application/json;charset=UTF-8:
-              schema:
-                $ref: "#/components/schemas/400ProcessFeedResponse"
-        "401":
-          description: Unauthorized request. Verify that the Bearer token provided in the `Authorization` header is still valid.
-          content:
-            application/json;charset=UTF-8:
-              schema:
-                $ref: "#/components/schemas/401Response"
-        "403":
-          description: Forbidden request. Verify that the `Authorization` header is present, and that the Bearer token is still valid.
-          content:
-            application/json;charset=UTF-8:
-              schema:
-                $ref: "#/components/schemas/403Response"
-        "429":
-          description: |
-            Too many requests. Indicates that a client has exceeded the rate limit of 300 requests per minute.
-            Check the `retry-after` header to get the time (in seconds) to wait before sending the next request.
-          content:
-            text/html;charset=UTF-8:
-              schema:
-                $ref: "#/components/schemas/429Response"
   /v1/catalog/products/prices/delete:
     post:
       tags:
@@ -1532,27 +1482,23 @@ paths:
       summary: Delete prices
       description: >
         Delete existing product prices
+
       operationId: deletePrices
       parameters:
-        - name: Content-Type
-          in: header
-          required: true
-          schema:
-            type: string
-            enum: [application/json]
-        - name: Authorization
-          in: header
-          required: true
-          schema:
-            type: string
-          description: Authorization Bearer token
-        - name: Content-Encoding
-          in: header
-          required: false
-          schema:
-            type: string
-            enum: [gzip]
-          description: Use this header if the payload is compressed with gzip.
+        - $ref: "#/components/parameters/ContentType"
+        - $ref: "#/components/parameters/Authorization"
+        - $ref: "#/components/parameters/ContentEncoding"
+      responses:
+        "200":
+          $ref: "#/components/responses/AcceptedResponse"
+        "400":
+          $ref: "#/components/responses/InvalidItemsResponse"
+        "401":
+          $ref: "#/components/responses/UnauthorizedResponse"
+        "403":
+          $ref: "#/components/responses/ForbiddenResponse"
+        "429":
+          $ref: "#/components/responses/TooManyRequestsResponse"
       requestBody:
         content:
           application/json:
@@ -1566,66 +1512,59 @@ paths:
                 description: >
                   Delete the existing product prices information
                 value: [{ "sku": "red-pants", "priceBookId": "dealer-north" }]
-      responses:
-        "200":
-          description: All items in the request are accepted for further processing.
-          content:
-            application/json;charset=UTF-8:
-              schema:
-                $ref: "#/components/schemas/ProcessFeedResponse"
-        "400":
-          description: Request rejected. Some of the received items are invalid. Check the "invalidFeedItems" node for specific errors.
-          content:
-            application/json;charset=UTF-8:
-              schema:
-                $ref: "#/components/schemas/400ProcessFeedResponse"
-        "401":
-          description: Unauthorized request. Verify that the Bearer token provided in the `Authorization` header is still valid.
-          content:
-            application/json;charset=UTF-8:
-              schema:
-                $ref: "#/components/schemas/401Response"
-        "403":
-          description: Forbidden request. Verify that the `Authorization` header is present, and that the Bearer token is still valid.
-          content:
-            application/json;charset=UTF-8:
-              schema:
-                $ref: "#/components/schemas/403Response"
-        "429":
-          description: |
-            Too many requests. Indicates that a client has exceeded the rate limit of 300 requests per minute.
-            Check the `retry-after` header to get the time (in seconds) to wait before sending the next request.
-          content:
-            text/html;charset=UTF-8:
-              schema:
-                $ref: "#/components/schemas/429Response"
 
 components:
   responses:
     AcceptedResponse:
-      description: All items accepted and will be processed asynchronously
+      x-summary: All items accepted
+      description: |
+        All items accepted and will be processed asynchronously
       content:
         application/json;charset=UTF-8:
           schema:
             $ref: "#/components/schemas/ProcessFeedResponse"
     InvalidItemsResponse:
-      description: One or all received items are invalid. Check the "invalidFeedItems" node for details
+      x-summary: Request rejected
+      description: |
+        Some of the received items are invalid. Check the "message" and "errors" fields for details.
+
+        Common validation errors include:
+
+        * **Invalid SKU**: SKU does not exist in the catalog
+        * **Invalid Price Book**: Price book ID does not exist
+        * **Invalid Discount Code**: Duplicate or invalid discount codes
+        * **Invalid Tier Quantities**: Quantities not in ascending order or less than 2
+        * **Configurable Product Price**: Attempting to set price for configurable product SKU
+        * **Invalid Price Format**: Non-numeric or negative price values
       content:
         application/json;charset=UTF-8:
           schema:
             $ref: "#/components/schemas/400ProcessFeedResponse"
     UnauthorizedResponse:
-      description: Unauthorized request. Verify that the Bearer token provided in the `Authorization` header is still valid.
+      x-summary: Unauthorized request
+      description: |
+        Verify that the Bearer token provided in the `Authorization` header is still valid.
       content:
         application/json;charset=UTF-8:
           schema:
             $ref: "#/components/schemas/401Response"
     ForbiddenResponse:
-      description: Forbidden request. Verify that the `Authorization` header is present, and that the Bearer token is still valid.
+      x-summary: Forbidden request
+      description: |
+        Verify that the `Authorization` header is present, and that the Bearer token is still valid.
       content:
         application/json;charset=UTF-8:
           schema:
             $ref: "#/components/schemas/403Response"
+    TooManyRequestsResponse:
+      x-summary: Too many requests
+      description: |
+        Indicates that a client has exceeded the rate limit of 300 requests per minute.
+        Check the `retry-after` header to get the time (in seconds) to wait before sending the next request.
+      content:
+        text/html;charset=UTF-8:
+          schema:
+            $ref: "#/components/schemas/429Response"
   parameters:
     ContentType:
       name: Content-Type
@@ -2057,8 +1996,8 @@ components:
           description: Base price book id
           minLength: 1
           maxLength: 64
-    FeedPricebookDelete:
-      title: FeedPricebookDelete
+    FeedPriceBookDelete:
+      title: FeedPriceBookDelete
       description: Price book information
       required:
         - priceBookId
@@ -2069,7 +2008,10 @@ components:
           description: Price book id
     FeedPrices:
       title: FeedPrices
-      description: Product price information.
+      description: |
+        Product price information with support for regular pricing, discounts, and tiered pricing.
+        Each price record must reference an existing price book and can include multiple discount types
+        and tiered pricing levels for different quantity thresholds.
       required:
         - sku
         - priceBookId
@@ -2078,21 +2020,53 @@ components:
       properties:
         sku:
           type: string
-          description: Product SKU
+          description: |
+            Product SKU identifier. Must match an existing product in the catalog.
+            For configurable products, use the variant SKU, not the parent SKU.
+          example: "red-pants-xl"
         priceBookId:
           type: string
-          description: Price book id
+          description: |
+            Price book identifier. Must reference an existing price book.
+            Prices referencing non-existing price books are ignored.
+          example: "us-retail"
         regular:
           type: number
           format: float
-          description: Regular price
+          description: |
+            Base price for the product SKU in the specified price book.
+            This is the price before any discounts or tiered pricing are applied.
+          example: 29.99
         discounts:
           type: array
-          description: Active discounts
+          description: |
+            Array of active discounts applied to the regular price.
+            Each discount requires a unique code identifier.
+            Supports both percentage and fixed amount discounts.
           items:
             anyOf:
               - $ref: "#/components/schemas/DiscountsFinalPrice"
               - $ref: "#/components/schemas/DiscountsPercentage"
+          example:
+            - code: "seasonal_sale"
+              percentage: 15
+            - code: "loyalty_discount"
+              price: 5.00
+        tierPrices:
+          type: array
+          description: |
+            Array of tiered pricing for quantity-based discounts.
+            Quantities must be greater than 1 and should be in ascending order.
+            Supports both percentage and fixed price tiers.
+          items:
+            anyOf:
+              - $ref: "#/components/schemas/TierFinalPrice"
+              - $ref: "#/components/schemas/TierPercentage"
+          example:
+            - qty: 5
+              percentage: 10
+            - qty: 10
+              price: 25.00
     FeedPricesUpdate:
       title: FeedPrices
       description: Product price information.
@@ -2118,6 +2092,13 @@ components:
             anyOf:
               - $ref: "#/components/schemas/DiscountsFinalPrice"
               - $ref: "#/components/schemas/DiscountsPercentage"
+        tierPrices:
+          type: array
+          description: Tier prices for quantities greater-than one
+          items:
+            anyOf:
+              - $ref: "#/components/schemas/TierFinalPrice"
+              - $ref: "#/components/schemas/TierPercentage"
     FeedPricesDelete:
       title: FeedPricesDelete
       description: Delete product price information.
@@ -2133,7 +2114,10 @@ components:
           type: string
           description: Price book id
     DiscountsFinalPrice:
-      title: Final Price
+      title: Fixed Amount Discount
+      description: |
+        Fixed amount discount that reduces the regular price by a specific monetary value.
+        Example: $100 regular price with a $10 fixed discount results in $90 final price.
       type: object
       required:
         - code
@@ -2141,11 +2125,22 @@ components:
       properties:
         code:
           type: string
+          description: |
+            Unique identifier for the discount. Must be unique within the price record.
+            Use descriptive codes for easier management (e.g., "loyalty_discount", "holiday_sale").
+          example: "loyalty_discount"
         price:
           type: number
           format: float
+          description: |
+            Fixed discount amount in the same currency as the price book.
+            Must be a positive number less than the regular price.
+          example: 10.00
     DiscountsPercentage:
-      title: Discount
+      title: Percentage Discount
+      description: |
+        Percentage discount that reduces the regular price by a specified percentage.
+        Example: $100 regular price with a 20% discount results in $80 final price.
       type: object
       required:
         - code
@@ -2153,9 +2148,65 @@ components:
       properties:
         code:
           type: string
+          description: |
+            Unique identifier for the discount. Must be unique within the price record.
+            Use descriptive codes for easier management (e.g., "seasonal_sale", "vip_member").
+          example: "seasonal_sale"
         percentage:
           type: number
           format: float
+          description: |
+            Discount percentage as a positive number.
+            Valid range is 0.01 to 99.99 (1% to 99.99%).
+          example: 15.5
+    TierFinalPrice:
+      title: Tier Fixed Price
+      description: |
+        Fixed price offered for bulk purchases at a specific quantity threshold.
+        Example: $100 regular price with tier price of $80 for quantity of 5 or more.
+      type: object
+      required:
+        - qty
+        - price
+      properties:
+        qty:
+          type: number
+          format: float
+          description: |
+            Minimum quantity required to qualify for this tier price.
+            Must be greater than 1 and should be in ascending order with other tiers.
+          example: 5
+        price:
+          type: number
+          format: float
+          description: |
+            Fixed price offered for the specified quantity threshold.
+            Must be a positive number less than or equal to the regular price.
+          example: 80.00
+    TierPercentage:
+      title: Tier Percentage Discount
+      description: |
+        Percentage discount applied when purchasing at or above a specific quantity threshold.
+        Example: $100 regular price with 20% discount for quantity of 10 or more.
+      type: object
+      required:
+        - qty
+        - percentage
+      properties:
+        qty:
+          type: number
+          format: float
+          description: |
+            Minimum quantity required to qualify for this tier discount.
+            Must be greater than 1 and should be in ascending order with other tiers.
+          example: 10
+        percentage:
+          type: number
+          format: float
+          description: |
+            Discount percentage applied for the specified quantity threshold.
+            Valid range is 0.01 to 99.99 (1% to 99.99%).
+          example: 20.0
     Source:
       title: Catalog source
       description: Source of the entity. For example it's locale "English"
@@ -2402,23 +2453,6 @@ components:
           type: string
           description: Product SKU
       description: Product association
-    ItemFailedValidationResult:
-      title: ItemFailedValidationResult
-      type: object
-      properties:
-        code:
-          type: string
-          description: Code for the validation error.
-        itemIndex:
-          type: integer
-          description: Index of the conflicting item
-          format: int32
-        message:
-          type: string
-          description: Validation error message for the item.
-        value:
-          type: string
-          description: The value supplied to the API.
     ProcessFeedResponse:
       title: Response payload
       type: object
