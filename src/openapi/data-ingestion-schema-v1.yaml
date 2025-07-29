@@ -1253,7 +1253,7 @@ paths:
         * **Tier Fixed Prices** - Use `price` field with `qty` to specify quantity-based fixed prices
         * **Tier Percentage Discounts** - Use `percentage` field with `qty` to specify quantity-based percentage discounts
 
-        Tier quantities must be greater than 1 and should be configured in ascending order.
+        Tier quantities must be greater than 1.
 
         <h3>Pricing for configurable products</h3>
         Because configurable product price is calculated based on the price of the selected product variant, you don't need to send price
