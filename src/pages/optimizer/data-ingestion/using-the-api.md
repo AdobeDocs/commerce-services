@@ -213,7 +213,7 @@ The Adobe Commerce Optimizer (ACO) SDK simplifies integration with the Data Inge
 
 The Data Ingestion API has a rate limit of 300 requests per minute.
 
-For additional information about limits and boundaries, see the [Limits and boundaries](https://experienceleague.adobe.com/docs/commerce-optimizer/boundaries-limits.html) section in the *Adobe Commerce Optimizer Guide*.
+For additional information about limits and boundaries, see the [Limits and boundaries](https://experienceleague.adobe.com/en/docs/commerce-optimizer/boundaries-limits) section in the *Adobe Commerce Optimizer Guide*.
 
 <InlineAlert variant="info" slots="text" />
 
