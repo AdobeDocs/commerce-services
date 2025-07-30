@@ -11,4 +11,4 @@ layout: none
 
 # API Reference
 
-<RedoclyAPIBlock src="https://raw.githubusercontent.com/AdobeDocs/commerce-services/refs/heads/ccdm-early-access/src/openapi/data-ingestion-schema-v1.yaml" scrollYOffset={64} />
+<RedoclyAPIBlock src="https://raw.githubusercontent.com/AdobeDocs/commerce-services/refs/heads/main/src/openapi/data-ingestion-schema-v1.yaml" scrollYOffset={64} />
