@@ -207,7 +207,13 @@ You can also explore the [API reference](https://developer.adobe.com/commerce/se
 
 ## Create integrations with SDK
 
-The Adobe Commerce Optimizer (ACO) SDK simplifies integration with the Data Ingestion API by providing pre-built methods for catalog ingestion and IMS authentication. The SDK handles the complexity of API interactions, allowing you to focus on your business logic. To download the SDK and learn how to use it, see the [Adobe Commerce Optimizer GitHub repository](https://github.com/adobe-commerce/aco-ts-sdk).
+The Adobe Commerce Optimizer SDKs simplify integration with the Data Ingestion API by providing pre-built methods for catalog ingestion and IMS authentication. The SDKs handle the complexity of API interactions, allowing you to focus on your business logic.
+
+Use the following GitHub repository links to download an available SDK and learn how to use it.
+
+- [TypeScript SDK](https://github.com/adobe-commerce/aco-ts-sdk) – for JavaScript/TypeScript integrations
+
+- [Java SDK](https://github.com/adobe-commerce/aco-java-sdk) – for Java-based integrations
 
 ## Limitations
 
