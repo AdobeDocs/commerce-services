@@ -215,7 +215,6 @@ Use the following GitHub repository links to download an available SDK and learn
 
 - [Java SDK](https://github.com/adobe-commerce/aco-java-sdk) – for Java-based integrations
 
-
 ## Limitations
 
 The Data Ingestion API has a rate limit of 300 requests per minute.
