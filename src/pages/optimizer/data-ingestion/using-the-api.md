@@ -217,9 +217,9 @@ Use the following GitHub repository links to download an available SDK and learn
 
 ## Limitations
 
-The Data Ingestion API has a rate limit of 300 requests per minute.
+The Data Ingestion API has a rate limit of 300 requests per minute. If you exceed the limit, the API returns a 429 response.
 
-For additional information about limits and boundaries, see the [Limits and boundaries](https://experienceleague.adobe.com/docs/commerce-optimizer/boundaries-limits.html) section in the *Adobe Commerce Optimizer Guide*.
+For additional information about limits and boundaries, see the [Limits and boundaries](https://experienceleague.adobe.com/en/docs/commerce-optimizer/boundaries-limits) section in the *Adobe Commerce Optimizer Guide*.
 
 <InlineAlert variant="info" slots="text" />
 
