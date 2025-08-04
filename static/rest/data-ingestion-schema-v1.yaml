@@ -19,7 +19,7 @@ security:
   - bearerAuth: []
   - imsOrgAuth: []
 servers:
-  - url: https://na1-sandbox.api.commerce.adobe.com/{tenantId}
+  - url: https://na1-stage.api.commerce.adobe.com/{tenantId}
     variables:
       tenantId:
         default: string
