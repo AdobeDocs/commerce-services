@@ -30,7 +30,7 @@ const GetCredentialOAuthS2s = () => {
                 This credential allows you to use industry standard OAuth2.0 libraries to generate access tokens using the OAuth 2.0 client credentials grant type.
               </p>
               <p>
-                This credential does not automatically return the tenant ID for your sandbox environments. You must manually copy and paste a tenant ID from the Commerce Cloud Manager into the <code>tenantID</code> field.
+                This credential does not automatically return the tenant IDs associated with your Adobe Commerce Optimizer sandbox environments. You must manually copy and paste a tenant ID from the Commerce Cloud Manager into the <code>tenantID</code> field in the <strong>Try it</strong> panel below. See the Adobe Commerce Optimizer <a href="https://developer.adobe.com/commerce/services/optimizer/data-ingestion/using-the-api/#base-url"><em>Developer Guide</em></a> for help finding your tenant ID.
               </p>
             </div>
             <div style={{ display: "flex", gap: "16px", flexDirection: "column" }}>
