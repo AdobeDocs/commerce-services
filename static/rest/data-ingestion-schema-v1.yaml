@@ -22,8 +22,7 @@ servers:
   - url: https://na1-sandbox.api.commerce.adobe.com/{tenantId}
     variables:
       tenantId:
-        description: The identifier of the Adobe Commerce instance
-        default: (string)
+        default: string
 
 tags:
   - name: Metadata
