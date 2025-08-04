@@ -14,10 +14,6 @@ info:
     - <strong>[Price books](#tag/Price-Books)</strong>—define and manage pricing scopes for different customer tiers and markets.
     - <strong>[Prices](#tag/Prices)</strong>—define and manage product SKU prices and their associated price books.
   version: 1.0.0
-security:
-  - apiKeyAuth: []
-  - bearerAuth: []
-  - imsOrgAuth: []
 servers:
   - url: https://na1-sandbox.api.commerce.adobe.com/{tenantId}
     variables:
@@ -191,6 +187,9 @@ paths:
       parameters:
         - $ref: "#/components/parameters/ContentType"
         - $ref: "#/components/parameters/ContentEncoding"
+        - $ref: "#/components/parameters/authorization"
+        - $ref: "#/components/parameters/x-api-key"
+        - $ref: "#/components/parameters/x-gw-ims-org-id"
       responses:
         "200":
           $ref: "#/components/responses/AcceptedResponse"
@@ -307,6 +306,9 @@ paths:
       parameters:
         - $ref: "#/components/parameters/ContentType"
         - $ref: "#/components/parameters/ContentEncoding"
+        - $ref: "#/components/parameters/authorization"
+        - $ref: "#/components/parameters/x-api-key"
+        - $ref: "#/components/parameters/x-gw-ims-org-id"
       responses:
         "200":
           $ref: "#/components/responses/AcceptedResponse"
@@ -357,6 +359,9 @@ paths:
       parameters:
         - $ref: "#/components/parameters/ContentType"
         - $ref: "#/components/parameters/ContentEncoding"
+        - $ref: "#/components/parameters/authorization"
+        - $ref: "#/components/parameters/x-api-key"
+        - $ref: "#/components/parameters/x-gw-ims-org-id"
       responses:
         "200":
           $ref: "#/components/responses/AcceptedResponse"
@@ -490,6 +495,9 @@ paths:
       parameters:
         - $ref: "#/components/parameters/ContentType"
         - $ref: "#/components/parameters/ContentEncoding"
+        - $ref: "#/components/parameters/authorization"
+        - $ref: "#/components/parameters/x-api-key"
+        - $ref: "#/components/parameters/x-gw-ims-org-id"
       responses:
         "200":
           $ref: "#/components/responses/AcceptedResponse"
@@ -894,6 +902,9 @@ paths:
       parameters:
         - $ref: "#/components/parameters/ContentType"
         - $ref: "#/components/parameters/ContentEncoding"
+        - $ref: "#/components/parameters/authorization"
+        - $ref: "#/components/parameters/x-api-key"
+        - $ref: "#/components/parameters/x-gw-ims-org-id"
       responses:
         "200":
           $ref: "#/components/responses/AcceptedResponse"
@@ -1058,6 +1069,9 @@ paths:
       parameters:
         - $ref: "#/components/parameters/ContentType"
         - $ref: "#/components/parameters/ContentEncoding"
+        - $ref: "#/components/parameters/authorization"
+        - $ref: "#/components/parameters/x-api-key"
+        - $ref: "#/components/parameters/x-gw-ims-org-id"
       responses:
         "200":
           $ref: "#/components/responses/AcceptedResponse"
@@ -1152,6 +1166,9 @@ paths:
       parameters:
         - $ref: "#/components/parameters/ContentType"
         - $ref: "#/components/parameters/ContentEncoding"
+        - $ref: "#/components/parameters/authorization"
+        - $ref: "#/components/parameters/x-api-key"
+        - $ref: "#/components/parameters/x-gw-ims-org-id"
       responses:
         "200":
           $ref: "#/components/responses/AcceptedResponse"
@@ -1195,6 +1212,9 @@ paths:
       parameters:
         - $ref: "#/components/parameters/ContentType"
         - $ref: "#/components/parameters/ContentEncoding"
+        - $ref: "#/components/parameters/authorization"
+        - $ref: "#/components/parameters/x-api-key"
+        - $ref: "#/components/parameters/x-gw-ims-org-id"
       responses:
         "200":
           $ref: "#/components/responses/AcceptedResponse"
@@ -1260,6 +1280,9 @@ paths:
       parameters:
         - $ref: "#/components/parameters/ContentType"
         - $ref: "#/components/parameters/ContentEncoding"
+        - $ref: "#/components/parameters/authorization"
+        - $ref: "#/components/parameters/x-api-key"
+        - $ref: "#/components/parameters/x-gw-ims-org-id"
       responses:
         "200":
           $ref: "#/components/responses/AcceptedResponse"
@@ -1415,6 +1438,9 @@ paths:
       parameters:
         - $ref: "#/components/parameters/ContentType"
         - $ref: "#/components/parameters/ContentEncoding"
+        - $ref: "#/components/parameters/authorization"
+        - $ref: "#/components/parameters/x-api-key"
+        - $ref: "#/components/parameters/x-gw-ims-org-id"
       responses:
         "200":
           $ref: "#/components/responses/AcceptedResponse"
@@ -1482,6 +1508,9 @@ paths:
       parameters:
         - $ref: "#/components/parameters/ContentType"
         - $ref: "#/components/parameters/ContentEncoding"
+        - $ref: "#/components/parameters/authorization"
+        - $ref: "#/components/parameters/x-api-key"
+        - $ref: "#/components/parameters/x-gw-ims-org-id"
       responses:
         "200":
           $ref: "#/components/responses/AcceptedResponse"
@@ -1508,21 +1537,6 @@ paths:
                 value: [{ "sku": "red-pants", "priceBookId": "dealer-north" }]
 
 components:
-  securitySchemes:
-    apiKeyAuth:
-      type: apiKey
-      in: header
-      name: x-api-key
-      description: API key for authentication
-    bearerAuth:
-      type: http
-      scheme: bearer
-      description: Bearer token for authorization
-    imsOrgAuth:
-      type: apiKey
-      in: header
-      name: x-gw-ims-org-id
-      description: Adobe IMS organization ID
   responses:
     AcceptedResponse:
       x-summary: All items accepted
@@ -1575,6 +1589,27 @@ components:
           schema:
             $ref: "#/components/schemas/429Response"
   parameters:
+    authorization:
+      name: Authorization (Bearer)
+      in: header
+      required: true
+      schema:
+        type: string
+
+    x-api-key:
+      name: x-api-key
+      in: header
+      required: true
+      schema:
+        type: string
+
+    x-gw-ims-org-id:
+      name: x-gw-ims-org-id
+      in: header
+      required: true
+      schema:
+        type: string
+
     ContentType:
       name: Content-Type
       in: header
