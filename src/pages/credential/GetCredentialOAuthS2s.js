@@ -29,6 +29,9 @@ const GetCredentialOAuthS2s = () => {
               <p className="spectrum-Body spectrum-Body--sizeM">
                 This credential allows you to use industry standard OAuth2.0 libraries to generate access tokens using the OAuth 2.0 client credentials grant type.
               </p>
+              <p>
+                This credential does not automatically return the tenant ID for your sandbox environments. You must manually copy and paste a tenant ID from the Commerce Cloud Manager into the <code>tenantID</code> field.
+              </p>
             </div>
             <div style={{ display: "flex", gap: "16px", flexDirection: "column" }}>
               <h3 className="spectrum-Heading spectrum-Heading--sizeS side-header">
