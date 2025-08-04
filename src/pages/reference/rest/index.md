@@ -13,6 +13,4 @@ import GetCredentialOAuthS2s from '/src/pages/credential/GetCredentialOAuthS2s.j
 
 <GetCredentialOAuthS2s />
 
-# API Reference
-
 <RedoclyAPIBlock src='/commerce/services/rest/data-ingestion-schema-v1.yaml' />
