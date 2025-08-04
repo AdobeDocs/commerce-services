@@ -184,7 +184,7 @@ paths:
 
       operationId: createProductMetadata
       parameters:
-        - $ref: "#/components/parameters/authorization"
+        - $ref: "#/components/parameters/Authorization"
         - $ref: "#/components/parameters/ApiKey"
         - $ref: "#/components/parameters/ImsOrgId"
         - $ref: "#/components/parameters/ContentType"
@@ -303,7 +303,7 @@ paths:
         When the update is processed, the merge strategy is used to apply changes to `scalar` and `object` type fields. The replace strategy is used to apply changes for fields in an `array`.
       operationId: updateProductMetadata
       parameters:
-        - $ref: "#/components/parameters/authorization"
+        - $ref: "#/components/parameters/Authorization"
         - $ref: "#/components/parameters/ApiKey"
         - $ref: "#/components/parameters/ImsOrgId"
         - $ref: "#/components/parameters/ContentType"
@@ -356,7 +356,7 @@ paths:
       description: Remove product attribute metadata resources from the catalog data.
       operationId: deleteProductMetadata
       parameters:
-        - $ref: "#/components/parameters/authorization"
+        - $ref: "#/components/parameters/Authorization"
         - $ref: "#/components/parameters/ApiKey"
         - $ref: "#/components/parameters/ImsOrgId"
         - $ref: "#/components/parameters/ContentType"
@@ -492,7 +492,7 @@ paths:
         * Use the [Delete products API](#operation/deleteProducts) to remove items from the bundle
       operationId: createProducts
       parameters:
-        - $ref: "#/components/parameters/authorization"
+        - $ref: "#/components/parameters/Authorization"
         - $ref: "#/components/parameters/ApiKey"
         - $ref: "#/components/parameters/ImsOrgId"
         - $ref: "#/components/parameters/ContentType"
@@ -899,7 +899,7 @@ paths:
         The replace strategy is used to apply changes for fields in an `array`.
       operationId: updateProducts
       parameters:
-        - $ref: "#/components/parameters/authorization"
+        - $ref: "#/components/parameters/Authorization"
         - $ref: "#/components/parameters/ApiKey"
         - $ref: "#/components/parameters/ImsOrgId"
         - $ref: "#/components/parameters/ContentType"
@@ -1066,7 +1066,7 @@ paths:
         Delete products with specified `sku`` and `source`` values
       operationId: deleteProducts
       parameters:
-        - $ref: "#/components/parameters/authorization"
+        - $ref: "#/components/parameters/Authorization"
         - $ref: "#/components/parameters/ApiKey"
         - $ref: "#/components/parameters/ImsOrgId"
         - $ref: "#/components/parameters/ContentType"
@@ -1114,7 +1114,7 @@ paths:
         <strong>Note:</strong> After you assign a `parentId` to a price book, you cannot change the parentId value using the update operation. If you want to define a different parent-child relationship, delete the child price book and create a new one with the desired parent-child relationship.
       operationId: createPriceBooks
       parameters:
-        - $ref: "#/components/parameters/authorization"
+        - $ref: "#/components/parameters/Authorization"
         - $ref: "#/components/parameters/ApiKey"
         - $ref: "#/components/parameters/ImsOrgId"
         - $ref: "#/components/parameters/ContentType"
@@ -1166,7 +1166,7 @@ paths:
         When you submit the update request for a child price book, include the correct `parentId`. If the request includes a different `parentId`, the value is ignored.
       operationId: updatePriceBooks
       parameters:
-        - $ref: "#/components/parameters/authorization"
+        - $ref: "#/components/parameters/Authorization"
         - $ref: "#/components/parameters/ApiKey"
         - $ref: "#/components/parameters/ImsOrgId"
         - $ref: "#/components/parameters/ContentType"
@@ -1212,7 +1212,7 @@ paths:
         If a price book is deleted by mistake, you have up to one week to restore the deleted price books and their associated prices. Restoring is done by recreating the top-level parent price book that was deleted, using the same payload submitted in the original create price book request. The state of the price books and prices are restored to the status and price values assigned when the price book was deleted.
       operationId: deletePriceBooks
       parameters:
-        - $ref: "#/components/parameters/authorization"
+        - $ref: "#/components/parameters/Authorization"
         - $ref: "#/components/parameters/ApiKey"
         - $ref: "#/components/parameters/ImsOrgId"
         - $ref: "#/components/parameters/ContentType"
@@ -1280,7 +1280,7 @@ paths:
 
       operationId: createPrices
       parameters:
-        - $ref: "#/components/parameters/authorization"
+        - $ref: "#/components/parameters/Authorization"
         - $ref: "#/components/parameters/ApiKey"
         - $ref: "#/components/parameters/ImsOrgId"
         - $ref: "#/components/parameters/ContentType"
@@ -1438,7 +1438,7 @@ paths:
 
       operationId: updatePrices
       parameters:
-        - $ref: "#/components/parameters/authorization"
+        - $ref: "#/components/parameters/Authorization"
         - $ref: "#/components/parameters/ApiKey"
         - $ref: "#/components/parameters/ImsOrgId"
         - $ref: "#/components/parameters/ContentType"
@@ -1508,7 +1508,7 @@ paths:
 
       operationId: deletePrices
       parameters:
-        - $ref: "#/components/parameters/authorization"
+        - $ref: "#/components/parameters/Authorization"
         - $ref: "#/components/parameters/ApiKey"
         - $ref: "#/components/parameters/ImsOrgId"
         - $ref: "#/components/parameters/ContentType"
@@ -1591,7 +1591,7 @@ components:
           schema:
             $ref: "#/components/schemas/429Response"
   parameters:
-    authorization:
+    Authorization:
       name: Authorization
       in: header
       required: true
