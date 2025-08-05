@@ -104,9 +104,9 @@ const GetCredentialOAuthS2s = () => {
         </GetCredential.Return.Side>
 
         <GetCredential.Return.CredentialDetails heading={(<>Credential details<br/><br/> <span style="font-weight:normal"><small>This credential does not automatically return the tenant IDs associated with your Adobe Commerce Optimizer sandbox environments. You must manually copy and paste a tenant ID from the Commerce Cloud Manager into the <code>tenantID</code> field in the <strong>Try it</strong> panel below. See the <a href="https://developer.adobe.com/commerce/services/optimizer/data-ingestion/using-the-api/">Get started</a> documentation for help finding your tenant ID.</small></span></>)} orderBy="ClientId,ImsOrgID">
-          <GetCredential.Card.CredentialDetails.ClientId heading="Client ID (x-api-key)" />
-          <GetCredential.Card.CredentialDetails.ImsOrgID heading="Organization ID (x-gw-ims-org-id)" />
-          <GetCredential.Card.CredentialDetails.Scopes heading="Scopes" scope="openid,session,AdobeID,read_organizations,additional_info.projectedProductContext" />
+          <GetCredential.Return.CredentialDetails.ClientId heading="Client ID (x-api-key)" />
+          <GetCredential.Return.CredentialDetails.ImsOrgID heading="Organization ID (x-gw-ims-org-id)" />
+          <GetCredential.Return.CredentialDetails.Scopes heading="Scopes" scope="openid,session,AdobeID,read_organizations,additional_info.projectedProductContext" />
         </GetCredential.Return.CredentialDetails>
 
         <GetCredential.Return.ProjectsDropdown label="Projects" subHeading="Only your projects that contain credentials are shown" />
