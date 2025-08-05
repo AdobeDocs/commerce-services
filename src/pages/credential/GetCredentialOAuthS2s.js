@@ -10,7 +10,7 @@ const GetCredentialOAuthS2s = () => {
 
       <GetCredential.SignIn title="Get credentials" paragraph="After signing in, you can create credentials that can be used to call the catalog data ingestion REST API." buttonText="Sign in" />
 
-      <GetCredential.Form title="Get credentials" paragraph="Create credentials that you can use to call the catalog data ingestion REST API." className="formClass">
+      <GetCredential.Form title="Get credentials" paragraph="Create credentials that you can use to call the catalog data ingestion REST API.<br/><br/>You also need to know your sandbox tenant ID to use the API." className="formClass">
 
         <GetCredential.Form.CredentialName label="Credential name" description="The credential name must be unique, use alphanumeric characters, and between 6 and 45 characters long. A project will be automatically created with the same name in Adobe Developer Console." range="45" />
 
@@ -81,9 +81,9 @@ const GetCredentialOAuthS2s = () => {
 
         <GetCredential.Card.DevConsoleLink heading="Developer Console Project" />
 
-        <GetCredential.Card.AccessToken helpText="" buttonLabel="Generate and copy token" heading={(<>Access token<br/><br/> <span style="font-weight:normal"><small>Click the following button to generate an access token with the Client ID (<code>x-api-key</code>) and Organization ID (<code>x-gw-ims-org-id</code>) displayed in the <strong>Credential details</strong> section below.<br/><br/>After copying the access token, paste it into the <strong>Authorization</strong> header parameter of any API request in the <strong>Try it</strong> panel below. You only need to paste it once—after that, all other Authorization header fields in subsequent requests will be automatically populated for you.</small></span></>)}/>
+        <GetCredential.Card.AccessToken helpText="" buttonLabel="Generate and copy token" heading={(<>Access token<br/><br/> <span style="font-weight:normal"><small>Paste the access token into the <strong>Authorization</strong> header in the <strong>Try it</strong> panel below. You only need to do this once; future requests will use it automatically.</small></span></>)}/>
 
-        <GetCredential.Card.CredentialDetails heading={(<>Credential details<br/><br/> <span style="font-weight:normal"><small>This credential does not automatically return the tenant IDs associated with your Adobe Commerce Optimizer sandbox environments. You must manually copy and paste a tenant ID from the Commerce Cloud Manager into the <code>tenantID</code> field in the <strong>Try it</strong> panel below. See the <a href="https://developer.adobe.com/commerce/services/optimizer/data-ingestion/using-the-api/">Get started</a> documentation for help finding your tenant ID.</small></span></>)} orderBy="ClientId,ImsOrgID">
+        <GetCredential.Card.CredentialDetails heading={(<>Credential details<br/><br/> <span style="font-weight:normal"><small>Copy your tenant ID from the Commerce Cloud Manager and paste it in the <code>tenantID</code> field in the <strong>Try it</strong> panel below. You only need to do this once; future requests will use it automatically. <a href="https://developer.adobe.com/commerce/services/optimizer/data-ingestion/using-the-api/">Learn more</a>.</small></span></>)} orderBy="ClientId,ImsOrgID">
           <GetCredential.Card.CredentialDetails.ClientId heading="Client ID (x-api-key)" />
           <GetCredential.Card.CredentialDetails.ImsOrgID heading="Organization ID (x-gw-ims-org-id)" />
           <GetCredential.Card.CredentialDetails.Scopes heading="Scopes" scope="openid,session,AdobeID,read_organizations,additional_info.projectedProductContext" />
@@ -103,7 +103,7 @@ const GetCredentialOAuthS2s = () => {
           <GetCredential.Return.Side.NewCredential heading="Need another credential?" buttonLabel="Create new credential" />
         </GetCredential.Return.Side>
 
-        <GetCredential.Return.CredentialDetails heading={(<>Credential details<br/><br/> <span style="font-weight:normal"><small>This credential does not automatically return the tenant IDs associated with your Adobe Commerce Optimizer sandbox environments. You must manually copy and paste a tenant ID from the Commerce Cloud Manager into the <code>tenantID</code> field in the <strong>Try it</strong> panel below. See the <a href="https://developer.adobe.com/commerce/services/optimizer/data-ingestion/using-the-api/">Get started</a> documentation for help finding your tenant ID.</small></span></>)} orderBy="ClientId,ImsOrgID">
+        <GetCredential.Return.CredentialDetails heading={(<>Credential details<br/><br/> <span style="font-weight:normal"><small>Copy your tenant ID from the Commerce Cloud Manager and paste it in the <code>tenantID</code> field in the <strong>Try it</strong> panel below. You only need to do this once; future requests will use it automatically. <a href="https://developer.adobe.com/commerce/services/optimizer/data-ingestion/using-the-api/">Learn more</a>.</small></span></>)} orderBy="ClientId,ImsOrgID">
           <GetCredential.Return.CredentialDetails.ClientId heading="Client ID (x-api-key)" />
           <GetCredential.Return.CredentialDetails.ImsOrgID heading="Organization ID (x-gw-ims-org-id)" />
           <GetCredential.Return.CredentialDetails.Scopes heading="Scopes" scope="openid,session,AdobeID,read_organizations,additional_info.projectedProductContext" />
@@ -113,7 +113,7 @@ const GetCredentialOAuthS2s = () => {
 
         <GetCredential.Return.ManageDeveloperConsole label="Manage all your projects and credentials on Adobe Developer Console" direction='/console/projects' />
 
-        <GetCredential.Return.AccessToken helpText="" buttonLabel="Generate and copy token" heading={(<>Access token<br/><br/> <span style="font-weight:normal"><small>Click the following button to generate an access token with the Client ID (<code>x-api-key</code>) and Organization ID (<code>x-gw-ims-org-id</code>) displayed in the <strong>Credential details</strong> section below.<br/><br/>After copying the access token, paste it into the <strong>Authorization</strong> header parameter of any API request in the <strong>Try it</strong> panel below. You only need to paste it once—after that, all other Authorization header fields in subsequent requests will be automatically populated for you.</small></span></>)} />
+        <GetCredential.Return.AccessToken helpText="" buttonLabel="Generate and copy token" heading={(<>Access token<br/><br/> <span style="font-weight:normal"><small>Paste the access token into the <strong>Authorization</strong> header in the <strong>Try it</strong> panel below. You only need to do this once; future requests will use it automatically.</small></span></>)} />
 
         <GetCredential.Return.DevConsoleLink heading="Developer Console project" />
 
