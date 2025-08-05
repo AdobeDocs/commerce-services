@@ -84,6 +84,8 @@ const GetCredentialOAuthS2s = () => {
         <GetCredential.Card.AccessToken helpText="" buttonLabel="Generate and copy token" heading={(<>Access token<br/><br/> <span style="font-weight:normal"><small>After copying the access token, you must prepend the token with <code>Bearer</code> to use it with API calls.</small></span></>)} />
 
         <GetCredential.Card.CredentialDetails heading={(<>Credential details<br/><br/> <span style="font-weight:normal"><small>This credential does not automatically return the tenant IDs associated with your Adobe Commerce Optimizer sandbox environments. You must manually copy and paste a tenant ID from the Commerce Cloud Manager into the <code>tenantID</code> field in the <strong>Try it</strong> panel below. See the <a href="https://developer.adobe.com/commerce/services/optimizer/data-ingestion/using-the-api/">Get started</a> documentation for help finding your tenant ID.</small></span></>)}>
+          <GetCredential.Card.CredentialDetails.ClientId heading="Client ID (x-api-key)" />
+          <GetCredential.Card.CredentialDetails.ImsOrgID heading="Organization ID" />
           <GetCredential.Card.CredentialDetails.Scopes heading="Scopes" scope="openid,session,AdobeID,read_organizations,additional_info.projectedProductContext" />
         </GetCredential.Card.CredentialDetails>
 
@@ -102,6 +104,8 @@ const GetCredentialOAuthS2s = () => {
         </GetCredential.Return.Side>
 
         <GetCredential.Return.CredentialDetails heading={(<>Credential details<br/><br/> <span style="font-weight:normal"><small>This credential does not automatically return the tenant IDs associated with your Adobe Commerce Optimizer sandbox environments. You must manually copy and paste a tenant ID from the Commerce Cloud Manager into the <code>tenantID</code> field in the <strong>Try it</strong> panel below. See the <a href="https://developer.adobe.com/commerce/services/optimizer/data-ingestion/using-the-api/">Get started</a> documentation for help finding your tenant ID.</small></span></>)}>
+          <GetCredential.Card.CredentialDetails.ClientId heading="Client ID (x-api-key)" />
+          <GetCredential.Card.CredentialDetails.ImsOrgID heading="Organization ID" />
           <GetCredential.Card.CredentialDetails.Scopes heading="Scopes" scope="openid,session,AdobeID,read_organizations,additional_info.projectedProductContext" />
         </GetCredential.Return.CredentialDetails>
 
