@@ -10,7 +10,7 @@ const GetCredentialOAuthS2s = () => {
 
       <GetCredential.SignIn title="Get credentials" paragraph="After signing in, you can create credentials that can be used to call the catalog data ingestion REST API." buttonText="Sign in" />
 
-      <GetCredential.Form title="Get credentials" paragraph="Create credentials that you can use to call the catalog data ingestion REST API. You also need to know your sandbox tenant ID to use the API." className="formClass">
+      <GetCredential.Form title="Get credentials" paragraph="Create credentials that you can use to call the catalog data ingestion REST API. You also need to know your sandbox tenant ID to call the API." className="formClass">
 
         <GetCredential.Form.CredentialName label="Credential name" description="The credential name must be unique, use alphanumeric characters, and between 6 and 45 characters long. A project will be automatically created with the same name in Adobe Developer Console." range="45" />
 
@@ -30,7 +30,7 @@ const GetCredentialOAuthS2s = () => {
                 This credential allows you to use industry standard OAuth2.0 libraries to generate access tokens using the OAuth 2.0 client credentials grant type.
               </p>
               <p className="spectrum-Body spectrum-Body--sizeM">
-                This credential does not automatically return the tenant IDs associated with your Adobe Commerce Optimizer sandbox environments. You must manually copy and paste a tenant ID from the Commerce Cloud Manager into the <code>tenantID</code> field in the <strong>Try it</strong> panel below. See the <a href="https://developer.adobe.com/commerce/services/optimizer/data-ingestion/using-the-api/">Get started</a> documentation for help finding your tenant ID.
+                This credential only provides an access token. It does not return the tenant IDs associated with your Adobe Commerce Optimizer sandbox environments, which is required for API calls. In addition to the access token, you must manually copy and paste a tenant ID from the Commerce Cloud Manager into the <code>tenantID</code> field in the <strong>Try it</strong> panel below. See the <a href="https://developer.adobe.com/commerce/services/optimizer/data-ingestion/using-the-api/">Get started</a> documentation for help finding your tenant ID.
               </p>
             </div>
             <div style={{ display: "flex", gap: "16px", flexDirection: "column" }}>
