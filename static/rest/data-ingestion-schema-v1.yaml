@@ -185,8 +185,6 @@ paths:
       operationId: createProductMetadata
       parameters:
         - $ref: "#/components/parameters/Authorization"
-        - $ref: "#/components/parameters/ApiKey"
-        - $ref: "#/components/parameters/ImsOrgId"
         - $ref: "#/components/parameters/ContentType"
         - $ref: "#/components/parameters/ContentEncoding"
       responses:
@@ -304,8 +302,6 @@ paths:
       operationId: updateProductMetadata
       parameters:
         - $ref: "#/components/parameters/Authorization"
-        - $ref: "#/components/parameters/ApiKey"
-        - $ref: "#/components/parameters/ImsOrgId"
         - $ref: "#/components/parameters/ContentType"
         - $ref: "#/components/parameters/ContentEncoding"
       responses:
@@ -357,8 +353,6 @@ paths:
       operationId: deleteProductMetadata
       parameters:
         - $ref: "#/components/parameters/Authorization"
-        - $ref: "#/components/parameters/ApiKey"
-        - $ref: "#/components/parameters/ImsOrgId"
         - $ref: "#/components/parameters/ContentType"
         - $ref: "#/components/parameters/ContentEncoding"
       responses:
@@ -493,8 +487,6 @@ paths:
       operationId: createProducts
       parameters:
         - $ref: "#/components/parameters/Authorization"
-        - $ref: "#/components/parameters/ApiKey"
-        - $ref: "#/components/parameters/ImsOrgId"
         - $ref: "#/components/parameters/ContentType"
         - $ref: "#/components/parameters/ContentEncoding"
       responses:
@@ -900,8 +892,6 @@ paths:
       operationId: updateProducts
       parameters:
         - $ref: "#/components/parameters/Authorization"
-        - $ref: "#/components/parameters/ApiKey"
-        - $ref: "#/components/parameters/ImsOrgId"
         - $ref: "#/components/parameters/ContentType"
         - $ref: "#/components/parameters/ContentEncoding"
       responses:
@@ -1067,8 +1057,6 @@ paths:
       operationId: deleteProducts
       parameters:
         - $ref: "#/components/parameters/Authorization"
-        - $ref: "#/components/parameters/ApiKey"
-        - $ref: "#/components/parameters/ImsOrgId"
         - $ref: "#/components/parameters/ContentType"
         - $ref: "#/components/parameters/ContentEncoding"
       responses:
@@ -1115,8 +1103,6 @@ paths:
       operationId: createPriceBooks
       parameters:
         - $ref: "#/components/parameters/Authorization"
-        - $ref: "#/components/parameters/ApiKey"
-        - $ref: "#/components/parameters/ImsOrgId"
         - $ref: "#/components/parameters/ContentType"
         - $ref: "#/components/parameters/ContentEncoding"
       responses:
@@ -1167,8 +1153,6 @@ paths:
       operationId: updatePriceBooks
       parameters:
         - $ref: "#/components/parameters/Authorization"
-        - $ref: "#/components/parameters/ApiKey"
-        - $ref: "#/components/parameters/ImsOrgId"
         - $ref: "#/components/parameters/ContentType"
         - $ref: "#/components/parameters/ContentEncoding"
       responses:
@@ -1213,8 +1197,6 @@ paths:
       operationId: deletePriceBooks
       parameters:
         - $ref: "#/components/parameters/Authorization"
-        - $ref: "#/components/parameters/ApiKey"
-        - $ref: "#/components/parameters/ImsOrgId"
         - $ref: "#/components/parameters/ContentType"
         - $ref: "#/components/parameters/ContentEncoding"
       responses:
@@ -1281,8 +1263,6 @@ paths:
       operationId: createPrices
       parameters:
         - $ref: "#/components/parameters/Authorization"
-        - $ref: "#/components/parameters/ApiKey"
-        - $ref: "#/components/parameters/ImsOrgId"
         - $ref: "#/components/parameters/ContentType"
         - $ref: "#/components/parameters/ContentEncoding"
       responses:
@@ -1439,8 +1419,6 @@ paths:
       operationId: updatePrices
       parameters:
         - $ref: "#/components/parameters/Authorization"
-        - $ref: "#/components/parameters/ApiKey"
-        - $ref: "#/components/parameters/ImsOrgId"
         - $ref: "#/components/parameters/ContentType"
         - $ref: "#/components/parameters/ContentEncoding"
       responses:
@@ -1509,8 +1487,6 @@ paths:
       operationId: deletePrices
       parameters:
         - $ref: "#/components/parameters/Authorization"
-        - $ref: "#/components/parameters/ApiKey"
-        - $ref: "#/components/parameters/ImsOrgId"
         - $ref: "#/components/parameters/ContentType"
         - $ref: "#/components/parameters/ContentEncoding"
       responses:
@@ -1597,20 +1573,6 @@ components:
       required: true
       schema:
         type: string
-    ApiKey:
-      name: x-api-key
-      in: header
-      required: true
-      schema:
-        type: string
-      description: API key for authorization
-    ImsOrgId:
-      name: x-gw-ims-org-id
-      in: header
-      required: true
-      schema:
-        type: string
-      description: Adobe IMS organization ID
     ContentType:
       name: Content-Type
       in: header
