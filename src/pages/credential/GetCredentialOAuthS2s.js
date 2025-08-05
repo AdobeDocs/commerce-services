@@ -8,9 +8,9 @@ const GetCredentialOAuthS2s = () => {
 
     <GetCredential className="getCredentialContainer" templateId="6887db51a6867b6202ef2f9c" productName='Adobe Commerce Optimizer' >
 
-      <GetCredential.SignIn title="Get credentials" paragraph="After signing in, you can create credentials that can be used to call the Commerce APIs." buttonText="Sign in" />
+      <GetCredential.SignIn title="Get credentials" paragraph="After signing in, you can create credentials that can be used to call the catalog data ingestion REST API." buttonText="Sign in" />
 
-      <GetCredential.Form title="Get credentials" paragraph="Create credentials that you can use to call the Commerce APIs." className="formClass">
+      <GetCredential.Form title="Get credentials" paragraph="Create credentials that you can use to call the catalog data ingestion REST API." className="formClass">
 
         <GetCredential.Form.CredentialName label="Credential name" description="The credential name must be unique, use alphanumeric characters, and between 6 and 45 characters long. A project will be automatically created with the same name in Adobe Developer Console." range="45" />
 
@@ -30,14 +30,14 @@ const GetCredentialOAuthS2s = () => {
                 This credential allows you to use industry standard OAuth2.0 libraries to generate access tokens using the OAuth 2.0 client credentials grant type.
               </p>
               <p className="spectrum-Body spectrum-Body--sizeM">
-                This credential does not automatically return the tenant IDs associated with your Adobe Commerce Optimizer sandbox environments. You must manually copy and paste a tenant ID from the Commerce Cloud Manager into the <code>tenantID</code> field in the <strong>Try it</strong> panel below. See the Adobe Commerce Optimizer <a href="https://developer.adobe.com/commerce/services/optimizer/data-ingestion/using-the-api/#base-url"><em>Developer Guide</em></a> for help finding your tenant ID.
+                This credential does not automatically return the tenant IDs associated with your Adobe Commerce Optimizer sandbox environments. You must manually copy and paste a tenant ID from the Commerce Cloud Manager into the <code>tenantID</code> field in the <strong>Try it</strong> panel below. See the <a href="https://developer.adobe.com/commerce/services/optimizer/data-ingestion/using-the-api/">Get started</a> documentation for help finding your tenant ID.
               </p>
             </div>
             <div style={{ display: "flex", gap: "16px", flexDirection: "column" }}>
               <h3 className="spectrum-Heading spectrum-Heading--sizeS side-header">
                 Learn more
               </h3>
-              <a style={{ color: "#0265DC" }} href="https://developer.adobe.com/commerce/webapi/rest/authentication/">
+              <a style={{ color: "#0265DC" }} href="https://developer.adobe.com/commerce/services/optimizer/data-ingestion/authentication/">
                 Authentication documentation
               </a>
             </div>
@@ -83,11 +83,7 @@ const GetCredentialOAuthS2s = () => {
 
         <GetCredential.Card.AccessToken helpText="" buttonLabel="Generate and copy token" heading={(<>Access token<br/><br/> <span style="font-weight:normal"><small>After copying the access token, you must prepend the token with <code>Bearer</code> to use it with API calls.</small></span></>)} />
 
-
-        <GetCredential.Card.CredentialDetails heading={(<>Credential details<br/><br/> <span style="font-weight:normal"><small>You can use the following credential details to try out the Adobe Commerce Optimizer REST API below.<ul><li>Client ID: Your public identifier for accessing the API. This acts as an API key when used with the Commerce APIs, and corresponds with the <code>x-api-key</code> header.</li><li>Organization ID: The ID of the organization you're using with the Commerce APIs. This corresponds with the <code>x-gw-ims-org-id</code> header.</li></ul></small></span></>)} orderBy="ClientId,ImsOrgID">
-          <GetCredential.Card.CredentialDetails.ClientId heading="Client ID (x-api-key)" />
-          <GetCredential.Card.CredentialDetails.ImsOrgID heading="Organization ID" />
-          <GetCredential.Card.CredentialDetails.Scopes heading="Scopes" scope="openid,session,AdobeID,read_organizations,additional_info.projectedProductContext" />
+        <GetCredential.Card.CredentialDetails heading={(<>Credential details<br/><br/> <span style="font-weight:normal"><small>This credential does not automatically return the tenant IDs associated with your Adobe Commerce Optimizer sandbox environments. You must manually copy and paste a tenant ID from the Commerce Cloud Manager into the <code>tenantID</code> field in the <strong>Try it</strong> panel below. See the <a href="https://developer.adobe.com/commerce/services/optimizer/data-ingestion/using-the-api/">Get started</a> documentation for help finding your tenant ID.</small></span></>)}>
         </GetCredential.Card.CredentialDetails>
 
       </GetCredential.Card>
@@ -104,10 +100,7 @@ const GetCredentialOAuthS2s = () => {
           <GetCredential.Return.Side.NewCredential heading="Need another credential?" buttonLabel="Create new credential" />
         </GetCredential.Return.Side>
 
-        <GetCredential.Return.CredentialDetails heading={(<>Credential details<br/><br/> <span style="font-weight:normal"><small>You can use the following credential details to try out the Adobe Commerce Optimizer REST API below.<ul><li>Client ID: Your public identifier for accessing the API. This acts as an API key when used with the Platform APIs, and corresponds with the <code>x-api-key</code> header.</li><li>Organization ID: The ID of the organization you're using with the Commerce APIs. This corresponds with the <code>x-gw-ims-org-id</code> header.</li></ul></small></span></>)} orderBy="ClientId,ImsOrgID">
-          <GetCredential.Return.CredentialDetails.ClientId heading="Client ID (x-api-key)" />
-          <GetCredential.Return.CredentialDetails.ImsOrgID heading="Organization ID" />
-          <GetCredential.Return.CredentialDetails.Scopes heading="Scopes" scope="openid,session,AdobeID,read_organizations,additional_info.projectedProductContext" />
+        <GetCredential.Return.CredentialDetails heading={(<>Credential details<br/><br/> <span style="font-weight:normal"><small>This credential does not automatically return the tenant IDs associated with your Adobe Commerce Optimizer sandbox environments. You must manually copy and paste a tenant ID from the Commerce Cloud Manager into the <code>tenantID</code> field in the <strong>Try it</strong> panel below. See the <a href="https://developer.adobe.com/commerce/services/optimizer/data-ingestion/using-the-api/">Get started</a> documentation for help finding your tenant ID.</small></span></>)}>
         </GetCredential.Return.CredentialDetails>
 
         <GetCredential.Return.ProjectsDropdown label="Projects" subHeading="Only your projects that contain credentials are shown" />
