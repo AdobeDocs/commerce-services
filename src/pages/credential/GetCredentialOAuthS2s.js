@@ -10,7 +10,7 @@ const GetCredentialOAuthS2s = () => {
 
       <GetCredential.SignIn title="Get credentials" paragraph="After signing in, you can create credentials that can be used to call the catalog data ingestion REST API." buttonText="Sign in" />
 
-      <GetCredential.Form title="Get credentials" paragraph="Create credentials that you can use to call the catalog data ingestion REST API. You also need to know your sandbox tenant ID to call the API." className="formClass">
+      <GetCredential.Form title="Get credentials" paragraph="Create credentials that you can use to call the catalog data ingestion REST API. You also need the sandbox tenant ID to call the API." className="formClass">
 
         <GetCredential.Form.CredentialName label="Credential name" description="The credential name must be unique, use alphanumeric characters, and between 6 and 45 characters long. A project will be automatically created with the same name in Adobe Developer Console." range="45" />
 
@@ -81,9 +81,9 @@ const GetCredentialOAuthS2s = () => {
 
         <GetCredential.Card.DevConsoleLink heading="Developer Console Project" />
 
-        <GetCredential.Card.AccessToken helpText="" buttonLabel="Generate and copy token" heading={(<>Access token<br/><br/> <span style="font-weight:normal"><small>Paste the access token into the <strong>Authorization</strong> header in the <strong>Try it</strong> panel below. You only need to do this once; future requests will use it automatically.</small></span></>)}/>
+        <GetCredential.Card.AccessToken helpText="" buttonLabel="Generate and copy token" heading={(<>Access token<br/><br/> <span style="font-weight:normal"><small>Paste the access token into the <strong>Authorization</strong> header in the <strong>Try it</strong> panel below. Then, add the <a href="https://developer.adobe.com/commerce/services/optimizer/data-ingestion/using-the-api/#base-url">tenant ID</a> to the <strong>tenant ID</strong> field. You only need to do this once; future requests reuse the values automatically.</small></span></>)}/>
 
-        <GetCredential.Card.CredentialDetails heading={(<>Credential details<br/><br/> <span style="font-weight:normal"><small>In addition to the access token, you must manually copy and paste a tenant ID from the Commerce Cloud Manager into the <code>tenantID</code> field in the <strong>Try it</strong> panel below. See the <a href="https://developer.adobe.com/commerce/services/optimizer/data-ingestion/using-the-api/">Get started</a> documentation for help finding your tenant ID. You only need to do this once; future requests will reuse the value.<br/><br/>The following Client ID and Organization ID are used to generate the access token:</small></span></>)} orderBy="ClientId,ImsOrgID">
+        <GetCredential.Card.CredentialDetails heading={(<>Credential details<br/><br/> <span style="font-weight:normal"><small>The following Client ID and Organization ID are used to generate the access token:</small></span></>)} orderBy="ClientId,ImsOrgID">
           <GetCredential.Card.CredentialDetails.ClientId heading="Client ID (x-api-key)" />
           <GetCredential.Card.CredentialDetails.ImsOrgID heading="Organization ID (x-gw-ims-org-id)" />
           <GetCredential.Card.CredentialDetails.Scopes heading="Scopes" scope="openid,session,AdobeID,read_organizations,additional_info.projectedProductContext" />
