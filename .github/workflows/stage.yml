@@ -1,13 +1,18 @@
 ---
   name: Staging deployment
   on:
-    # Trigger the workflow on each push to develop
-    push:
-      branches:
-        - develop
+    workflow_dispatch:
+      inputs:
+        clean:
+          description: 'Clean cache'
+          required: true
+          default: 'yes'
+        excludeSubfolder:
+          description: 'Exclude subfolder'
+          required: false
+          default: ''
   jobs:
     set-state:
-      if: ${{ github.ref == 'refs/heads/develop' }}
       runs-on: ubuntu-latest
       outputs:
         clean_cache: ${{ contains(github.event.inputs.clean, 'yes') }}
