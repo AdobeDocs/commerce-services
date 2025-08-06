@@ -113,7 +113,7 @@ const GetCredentialOAuthS2s = () => {
 
         <GetCredential.Return.ManageDeveloperConsole label="Manage all your projects and credentials on Adobe Developer Console" direction='/console/projects' />
 
-        <GetCredential.Return.AccessToken helpText="" buttonLabel="Generate and copy token" heading={(<>Access token<br/><br/> <span style="font-weight:normal"><small>Paste the access token into the <strong>Authorization</strong> header in the <strong>Try it</strong> panel below. You only need to do this once; future requests will use it automatically.</small></span></>)} />
+        <GetCredential.Return.AccessToken helpText="" buttonLabel="Generate and copy token" heading={(<>Access token<br/><br/> <span style="font-weight:normal"><small>Paste the access token into the <strong>Authorization</strong> header in the <strong>Try it</strong> panel below. You only need to do this once; future requests will use it automatically. Then, add the <a href="https://developer.adobe.com/commerce/services/optimizer/data-ingestion/using-the-api/#base-url">tenant ID</a> to the <strong>tenant ID</strong> field. You only need to do this once; future requests reuse the values automatically.</small></span></>)} />
 
         <GetCredential.Return.DevConsoleLink heading="Developer Console project" />
 
