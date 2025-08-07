@@ -9,6 +9,8 @@ keywords:
 layout: none
 ---
 
-# API Reference
+import GetCredentialOAuthS2s from '/src/pages/credential/GetCredentialOAuthS2s.js'
 
-<RedoclyAPIBlock src="https://raw.githubusercontent.com/AdobeDocs/commerce-services/refs/heads/main/src/openapi/data-ingestion-schema-v1.yaml" scrollYOffset={64} hideTryItPanel="true" nativeScrollbars="true" />
+<GetCredentialOAuthS2s />
+
+<RedoclyAPIBlock src='/commerce/services/rest/data-ingestion-schema-v1.yaml' hideLoading />
