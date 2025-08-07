@@ -1580,6 +1580,7 @@ components:
       schema:
         type: string
         enum: [application/json]
+        default: application/json
     ContentEncoding:
       name: Content-Encoding
       in: header
