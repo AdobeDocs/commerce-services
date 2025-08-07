@@ -8,9 +8,9 @@ const GetCredentialOAuthS2s = () => {
 
     <GetCredential className="getCredentialContainer" templateId="6887db9dbaf36ca1f2c4539b" productName='Adobe Commerce Optimizer' >
 
-      <GetCredential.SignIn title="Get credentials" paragraph="After signing in, you can create credentials that can be used to call the catalog data ingestion REST API." buttonText="Sign in" />
+      <GetCredential.SignIn title="Get credentials" paragraph="After signing in, you can create credentials that can be used to call the Catalog Data Ingestion REST API." buttonText="Sign in" />
 
-      <GetCredential.Form title="Get credentials" paragraph="Create credentials that you can use to call the catalog data ingestion REST API. You also need the sandbox instance ID to call the API." className="formClass">
+      <GetCredential.Form title="Get credentials" paragraph="Create credentials that you can use to call the Catalog Data Ingestion REST API. You also need the sandbox instance ID to call the API." className="formClass">
 
         <GetCredential.Form.CredentialName label="Credential name" description="The credential name must be unique, use alphanumeric characters, and between 6 and 45 characters long. A project will be automatically created with the same name in Adobe Developer Console." range="45" />
 
