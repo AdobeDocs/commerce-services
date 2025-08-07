@@ -116,6 +116,8 @@ introspection:
   # URL of the GraphQL endpoint to hit if you want to generate the documentation based on live Introspection Query results
   # NOTE: If not using introspection.url OR servers[], you need to provide x-url below
   url: https://na1-sandbox.api.commerce.adobe.com/tenant-id/graphql
+  exclude:
+    excludeMutations: true
   #
   #
   ##############################################
@@ -279,13 +281,13 @@ introspection:
 
   # Whether to document any Mutations at all, in the absence of a metadata directive
   # Default: true
-  mutationsDocumentedDefault: true
+  mutationsDocumentedDefault: false
   # Whether to document an individual Mutation, in the absence of a metadata directive
   # Default: true
-  mutationDocumentedDefault: true
+  mutationDocumentedDefault: false
   # Whether to document a Mutation Argument, in the absence of a metadata directive
   # Default: true
-  mutationArgDocumentedDefault: true
+  mutationArgDocumentedDefault: false
   # Hide any Mutations with undocumented return types so as not to reference something
   # that seemingly does not exist.
   # Default: true
