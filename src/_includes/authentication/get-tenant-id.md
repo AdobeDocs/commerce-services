@@ -1,4 +1,4 @@
-From Cloud Manager, you can find your instance ID in the instance detailLs for your Commerce Optimizer project.
+From Cloud Manager, you can find your instance ID in the instance details for your Commerce Optimizer project.
 
 1. Log in to your [Adobe Experience Cloud](https://experience.adobe.com/) account.
 
