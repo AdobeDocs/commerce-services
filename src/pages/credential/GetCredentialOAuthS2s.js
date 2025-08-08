@@ -30,8 +30,7 @@ const GetCredentialOAuthS2s = () => {
                 This credential allows you to use industry standard OAuth2.0 libraries to generate access tokens using the OAuth 2.0 client credentials grant type.
               </p>
               <p className="spectrum-Body spectrum-Body--sizeM">
-                This credential only provides an access token. It does not return the instance ID associated with your Adobe Commerce Optimizer sandbox environment, which is required for API calls. In addition to the access token, you must manually copy and paste a instance ID from the Commerce Cloud Manager into the <code>tenantID</code> field in the <strong>Try it</strong> panel below. See the <a href="https://developer.adobe.com/commerce/services/optimizer/data-ingestion/using-the-api/">Get started</a> documentation for help finding your instance ID.
-              </p>
+                This credential only provides an access token. It does not return the instance ID associated with your Adobe Commerce Optimizer sandbox environment, which is required for API calls. To submit requests, you must copy your <a href="https://developer.adobe.com/commerce/services/optimizer/data-ingestion/using-the-api/#base-url">Instance ID</a> from the Commerce Cloud Manager and paste it into the <code>tenantID</code> field in the <strong>Try it</strong> panel below.
             </div>
             <div style={{ display: "flex", gap: "16px", flexDirection: "column" }}>
               <h3 className="spectrum-Heading spectrum-Heading--sizeS side-header">
