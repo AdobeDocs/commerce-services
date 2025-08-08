@@ -36,7 +36,7 @@ The URL structure is:
 &NewLine; <!--Add space between the collapsible section and the previous paragraph-->
 
 <details>
-      <summary><b>Get your tenant ID</b></summary>
+      <summary><b>Get your instance ID</b></summary>
 
 import GetTenantId from '/src/_includes/authentication/get-tenant-id.md'
 

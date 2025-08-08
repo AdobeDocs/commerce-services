@@ -15,9 +15,10 @@ info:
     - <strong>[Prices](#tag/Prices)</strong>—define and manage product SKU prices and their associated price books.
   version: 1.0.0
 servers:
-  - url: https://na1-sandbox.api.commerce.adobe.com/<TENANT_ID>
-    description: Production endpoint. The TENANT_ID value is the identifier of the Adobe Commerce instance. See [Adobe Commerce Cloud Manager](https://experience.adobe.com/#/commerce/cloud-service/instances) to see your available instances.
-
+  - url: https://na1-sandbox.api.commerce.adobe.com/{tenantId}
+    variables:
+      tenantId:
+        default: string
 tags:
   - name: Metadata
     description: |
@@ -183,8 +184,8 @@ paths:
 
       operationId: createProductMetadata
       parameters:
-        - $ref: "#/components/parameters/ContentType"
         - $ref: "#/components/parameters/Authorization"
+        - $ref: "#/components/parameters/ContentType"
         - $ref: "#/components/parameters/ContentEncoding"
       responses:
         "200":
@@ -300,8 +301,8 @@ paths:
         When the update is processed, the merge strategy is used to apply changes to `scalar` and `object` type fields. The replace strategy is used to apply changes for fields in an `array`.
       operationId: updateProductMetadata
       parameters:
-        - $ref: "#/components/parameters/ContentType"
         - $ref: "#/components/parameters/Authorization"
+        - $ref: "#/components/parameters/ContentType"
         - $ref: "#/components/parameters/ContentEncoding"
       responses:
         "200":
@@ -351,8 +352,8 @@ paths:
       description: Remove product attribute metadata resources from the catalog data.
       operationId: deleteProductMetadata
       parameters:
-        - $ref: "#/components/parameters/ContentType"
         - $ref: "#/components/parameters/Authorization"
+        - $ref: "#/components/parameters/ContentType"
         - $ref: "#/components/parameters/ContentEncoding"
       responses:
         "200":
@@ -485,8 +486,8 @@ paths:
         * Use the [Delete products API](#operation/deleteProducts) to remove items from the bundle
       operationId: createProducts
       parameters:
-        - $ref: "#/components/parameters/ContentType"
         - $ref: "#/components/parameters/Authorization"
+        - $ref: "#/components/parameters/ContentType"
         - $ref: "#/components/parameters/ContentEncoding"
       responses:
         "200":
@@ -890,8 +891,8 @@ paths:
         The replace strategy is used to apply changes for fields in an `array`.
       operationId: updateProducts
       parameters:
-        - $ref: "#/components/parameters/ContentType"
         - $ref: "#/components/parameters/Authorization"
+        - $ref: "#/components/parameters/ContentType"
         - $ref: "#/components/parameters/ContentEncoding"
       responses:
         "200":
@@ -1055,8 +1056,8 @@ paths:
         Delete products with specified `sku`` and `source`` values
       operationId: deleteProducts
       parameters:
-        - $ref: "#/components/parameters/ContentType"
         - $ref: "#/components/parameters/Authorization"
+        - $ref: "#/components/parameters/ContentType"
         - $ref: "#/components/parameters/ContentEncoding"
       responses:
         "200":
@@ -1101,8 +1102,8 @@ paths:
         <strong>Note:</strong> After you assign a `parentId` to a price book, you cannot change the parentId value using the update operation. If you want to define a different parent-child relationship, delete the child price book and create a new one with the desired parent-child relationship.
       operationId: createPriceBooks
       parameters:
-        - $ref: "#/components/parameters/ContentType"
         - $ref: "#/components/parameters/Authorization"
+        - $ref: "#/components/parameters/ContentType"
         - $ref: "#/components/parameters/ContentEncoding"
       responses:
         "200":
@@ -1151,8 +1152,8 @@ paths:
         When you submit the update request for a child price book, include the correct `parentId`. If the request includes a different `parentId`, the value is ignored.
       operationId: updatePriceBooks
       parameters:
-        - $ref: "#/components/parameters/ContentType"
         - $ref: "#/components/parameters/Authorization"
+        - $ref: "#/components/parameters/ContentType"
         - $ref: "#/components/parameters/ContentEncoding"
       responses:
         "200":
@@ -1195,8 +1196,8 @@ paths:
         If a price book is deleted by mistake, you have up to one week to restore the deleted price books and their associated prices. Restoring is done by recreating the top-level parent price book that was deleted, using the same payload submitted in the original create price book request. The state of the price books and prices are restored to the status and price values assigned when the price book was deleted.
       operationId: deletePriceBooks
       parameters:
-        - $ref: "#/components/parameters/ContentType"
         - $ref: "#/components/parameters/Authorization"
+        - $ref: "#/components/parameters/ContentType"
         - $ref: "#/components/parameters/ContentEncoding"
       responses:
         "200":
@@ -1261,8 +1262,8 @@ paths:
 
       operationId: createPrices
       parameters:
-        - $ref: "#/components/parameters/ContentType"
         - $ref: "#/components/parameters/Authorization"
+        - $ref: "#/components/parameters/ContentType"
         - $ref: "#/components/parameters/ContentEncoding"
       responses:
         "200":
@@ -1417,8 +1418,8 @@ paths:
 
       operationId: updatePrices
       parameters:
-        - $ref: "#/components/parameters/ContentType"
         - $ref: "#/components/parameters/Authorization"
+        - $ref: "#/components/parameters/ContentType"
         - $ref: "#/components/parameters/ContentEncoding"
       responses:
         "200":
@@ -1485,8 +1486,8 @@ paths:
 
       operationId: deletePrices
       parameters:
-        - $ref: "#/components/parameters/ContentType"
         - $ref: "#/components/parameters/Authorization"
+        - $ref: "#/components/parameters/ContentType"
         - $ref: "#/components/parameters/ContentEncoding"
       responses:
         "200":
@@ -1566,6 +1567,12 @@ components:
           schema:
             $ref: "#/components/schemas/429Response"
   parameters:
+    Authorization:
+      name: Authorization
+      in: header
+      required: true
+      schema:
+        type: string
     ContentType:
       name: Content-Type
       in: header
@@ -1573,13 +1580,7 @@ components:
       schema:
         type: string
         enum: [application/json]
-    Authorization:
-      name: Authorization
-      in: header
-      required: true
-      schema:
-        type: string
-      description: Authorization Bearer token
+        default: application/json
     ContentEncoding:
       name: Content-Encoding
       in: header
@@ -1588,7 +1589,6 @@ components:
         type: string
         enum: [gzip]
       description: Use this header if the payload is compressed with gzip.
-
   schemas:
     FeedItemFailedValidationResult:
       title: FeedItemFailedValidationResult

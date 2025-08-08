@@ -17,7 +17,7 @@ Use the Merchandising API to retrieve product data from your Commerce catalogs a
 
 Before using the Merchandising API, ensure you have:
 
-- **Adobe Commerce Optimizer Access**: Active subscription and the tenant ID associated with your Adobe Commerce Optimizer instance
+- **Adobe Commerce Optimizer Access**: Active subscription and the instance ID associated with your Adobe Commerce Optimizer instance
 - **Catalog Data**: Products and pricing data ingested via the [Data Ingestion API](../data-ingestion/index.md)
 - **Catalog Views**: Configured views and policies in Adobe Commerce Optimizer
 - **Authentication Setup**: Proper headers configured for API requests
@@ -48,7 +48,7 @@ The URL structure is:
 &NewLine; <!--Add space between the collapsible section and the previous paragraph-->
 
 <details>
-      <summary><b>Get your tenant ID</b></summary>
+      <summary><b>Get your instance ID</b></summary>
 
 import GetTenantId from '/src/_includes/authentication/get-tenant-id.md'
 
@@ -100,9 +100,9 @@ Get the values for catalog view, policy, catalog source locale, and price book d
 
 To get started with the Merchandising API, follow these steps to make your first request:
 
-1. Get values for the tenant ID and required headers.
+1. Get values for the instance ID and required headers.
 
-   - `tenantId`: Your unique tenant ID for Adobe Commerce Optimizer
+   - `tenantId`: Your unique instance ID for Adobe Commerce Optimizer
    - `AC-View-ID`: Catalog view ID from Adobe Commerce Optimizer
    - `AC-Source-Locale`: Locale for data filtering (for example, `en-US`, `en-GB`)
 
