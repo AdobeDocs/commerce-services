@@ -10,9 +10,11 @@ From Cloud Manager, you can find your instance ID in the instance details for yo
 
    ![Access URLs for Commerce Optimizer UI, REST, and GraphQL APIs](../../pages/_images/reporting/aco-instance-details.png)
 
-   The instance details page opens, displaying the instance ID and other instance information. The instance ID is displayed in the `Instance ID` field.
+   The instance details page opens, displaying instance information.
 
-You can also find the instance ID from the access URL for the Adobe Commerce Optimizer application interface, the value is in the path, for example `/in:XDevkG9W6UbwgQmPn995r3/`.
+1. Copy the `Instance ID` value and use it to replace the `tenantId` variables in API headers and operations .
+
+You can also find the instance ID from the access URL for the Adobe Commerce Optimizer application interface. The value is in the path, for example `/in:XDevkG9W6UbwgQmPn995r3/`.
 
 <InlineAlert variant="info" slots="text" />
 
