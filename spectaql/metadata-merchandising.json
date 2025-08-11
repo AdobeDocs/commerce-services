@@ -3321,14 +3321,19 @@
         "undocumented": true
       }
     },
+    "ProductSearchFilterInput": {
+      "documentation": {
+        "undocumented": false
+      }
+    },
     "ProductSearchSortInput": {
       "documentation": {
-        "undocumented": true
+        "undocumented": false
       }
     },
     "PurchaseHistory": {
       "documentation": {
-        "undocumented": true
+        "undocumented": false
       }
     },
     "PurchaseOrderApprovalRuleInput": {
@@ -3348,7 +3353,7 @@
     },
     "QueryContextInput": {
       "documentation": {
-        "undocumented": true
+        "undocumented": false
       }
     },
     "QuoteItemsSortInput": {
@@ -3643,7 +3648,7 @@
     },
     "ViewHistory": {
       "documentation": {
-        "undocumented": true
+        "undocumented": false
       }
     },
     "ViewHistoryInput": {
@@ -3860,7 +3865,7 @@
     },
     "PageType": {
       "documentation": {
-        "undocumented": true
+        "undocumented": false
       }
     },
     "PaymentLocation": {
