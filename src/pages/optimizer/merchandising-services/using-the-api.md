@@ -78,8 +78,6 @@ Use the following template to submit requests using [curl](https://curl.se/). Us
 curl --request POST \
 --url https://na1-sandbox.api.commerce.adobe.com/{{tenantId}}/graphql \
 --header 'AC-View-ID:  <catalogviewId>'  \
---header 'AC-Policy-<POLICY_NAME>: <policyValue>' \
---header 'AC-Price-Book-ID-<pricebookId>' \
 --data '<apiPayload>'
 ```
 
