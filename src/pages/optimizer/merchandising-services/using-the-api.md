@@ -69,7 +69,6 @@ When making requests to the storefront API, you must include required HTTP heade
 |`AC-View-ID` | Optional. The ID for the catalog view that products will be sold through. For example, in the automotive industry, the catalog view could be dealers. In the manufacturing industry, the view could be a manufacturing location for suppliers. You can view the list of available catalog views and find the viewID from the [Adobe Commerce Optimizer UI](https://experienceleague.adobe.com/en/docs/commerce/optimizer/catalog/channels).|
 `AC-Policy-{*}` | Optional. The trigger name configured for a policy that sets data access filters to restrict product access based on request attributes and context. Examples include POS physical stores, marketplaces, or advertisement pipelines like Google, Meta, or Instagram. You can view the list of available policies and associated ids from the [Adobe Commerce Optimizer UI](https://experienceleague.adobe.com/en/docs/commerce/optimizer/catalog/policies). You can specify multiple policy headers per request. Example: `AC-Policy-Brand`.
 `AC-Price-Book-ID` | Optional. Defines how prices are calculated for a specific catalog view. Supply this value if the merchant uses price books to calculate product pricing. If you do not include the Price Book ID, Merchandising Services provides a default price book `main` with currency in US dollars.
-`AC-Source-Locale`: | Optional. The catalog source locale (language or geography) to filter products for display or update, for example `en_US`. If you specify the `AC-View-ID` header, this header is not required because the catalog view definition includes the AC-Source-Locale.
 
 ### Request template
 
@@ -81,7 +80,6 @@ curl --request POST \
 --header 'AC-View-ID:  <catalogviewId>'  \
 --header 'AC-Policy-<POLICY_NAME>: <policyValue>' \
 --header 'AC-Price-Book-ID-<pricebookId>' \
---header 'AC-Source-Locale: <localeValue>' \
 --data '<apiPayload>'
 ```
 
@@ -104,7 +102,7 @@ To get started with the Merchandising API, follow these steps to make your first
 
    - `tenantId`: Your unique instance ID for Adobe Commerce Optimizer
    - `AC-View-ID`: Catalog view ID from Adobe Commerce Optimizer
-   - `AC-Source-Locale`: Locale for data filtering (for example, `en-US`, `en-GB`)
+
 
 2. Make your first query.
 
@@ -115,7 +113,6 @@ To get started with the Merchandising API, follow these steps to make your first
      'https://na1-sandbox.api.commerce.adobe.com/{{tenant-id}}/graphql' \
      -H 'Content-Type: application/json' \
      -H 'AC-View-ID: {{your-catalog-view-id}}' \
-     -H 'AC-Source-Locale: en-US' \
      -d '{"query": "query ProductSearch($search: String!) { productSearch( phrase: $search, page_size: 10) { items { productView { sku name description shortDescription images { url } ... on SimpleProductView { attributes { label name value } price { regular { amount { value currency } } roles } } } } } }", "variables": { "search": "your-string"}}'
    ```
 
