@@ -116,12 +116,7 @@ To get started with the Merchandising API, follow these steps to make your first
      -H 'Content-Type: application/json' \
      -H 'AC-View-ID: {{your-catalog-view-id}}' \
      -H 'AC-Source-Locale: en-US' \
-     -d '{
-     "query": "query ProductSearch($search: String!) { productSearch(search: $search, pageSize: 10) { items { id sku   name price { regularPrice { amount { value currency } } } } totalCount } }",
-     "variables": {
-     "search": ""
-       }
-     }'
+     -d '{"query": "query ProductSearch($search: String!) { productSearch( phrase: $search, page_size: 10) { items { productView { sku name description shortDescription images { url } ... on SimpleProductView { attributes { label name value } price { regular { amount { value currency } } roles } } } } } }", "variables": { "search": "your-string"}}'
    ```
 
    For sample requests and examples using the API, see the <a href="https://developer.adobe.com/commerce/services/reference/graphql/" target="_blank" rel="noopener noreferrer">Merchandising API Reference</a>.
