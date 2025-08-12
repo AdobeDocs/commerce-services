@@ -52,7 +52,7 @@ Include the following headers in REST API requests.
 |--------------|----------|-------------|
 | `Content-Encoding` | No  | Use this header only if the payload is compressed with gzip. Accepted value: `gzip`.                                                                           |
 | `Content-Type`  | Yes   | Media type of the resource. Accepted value: `application/json`. |
-| `Authorization: Bearer {access token}`  | Yes  | Bearer access token generated using credentials from the Adobe developer project for the API integration.  See [Authentication](authentication.md).                          |
+| `Authorization: {{access token}}`  | Yes  | Bearer access token generated using credentials from the Adobe developer project for the API integration.  See [Authentication](authentication.md).                          |
 
 ## Request template
 
@@ -62,8 +62,8 @@ Use the following template to submit requests using [curl](https://curl.se/) rep
 curl --request POST \
   --url https://na1-sandbox.api.commerce.adobe.com/{{tenantId}}/{{endpoint}} \
   --header "Content-Type:  application/json" \
-  --header "Authorization: Bearer {access token}" \
-  --data "{apiPayload}"
+  --header "Authorization: {{access token}}" \
+  --data "{{apiPayload}}"
 ```
 
 | Placeholder name | Description                                                                                                    |
@@ -88,7 +88,7 @@ To get started with the Data Ingestion API, follow these steps to make your firs
   curl -X POST \
     'https://na1-sandbox.api.commerce.adobe.com/{{tenantId}}/v1/catalog/attributes/metadata' \
     -H 'Content-Type: application/json' \
-    -H 'Authorization: Bearer {access token}' \
+    -H 'Authorization:{{access token}}' \
     -d '[
       {
         "code": "sku",
