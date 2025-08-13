@@ -76,7 +76,7 @@ Create the metadata to define the search characteristics and filters for display
 ```shell
 curl --request POST \
   --url https://na1-sandbox.api.commerce.adobe.com/{{tenantId}}/v1/catalog/products/metadata \
-  --header "Authorization: {{access token}}" \
+  --header "Authorization: {{accessToken}}" \
   --data "[
 [
     {
@@ -272,7 +272,7 @@ curl --request POST \
 curl --request POST \
   --url https://na1-sandbox.api.commerce.adobe.com/{{tenantId}}/v1/catalog/products/metadata \
   --header "Content-Type: application/json" \
-  --header "Authorization: {{access token}}" \
+  --header "Authorization: {{accessToken}}" \
   --data "[
     {
         "code": "sku",
@@ -465,7 +465,7 @@ Add the simple product *Aurora Prism Battery* with two attribute codes, `Brand` 
 curl --request POST \
   --url https://na1-sandbox.api.commerce.adobe.com/{{tenantId}}/api/v1/catalog/products \
   --header "Content-Type: application/json" \
-  --header "Authorization: {{access token}}" \
+  --header "Authorization: {{accessToken}}" \
 
   --data "[
         {
@@ -545,7 +545,7 @@ Add the product *Bolt Atlas Battery* with two attribute codes, `Brand` set to *B
 curl --request POST \
   --url https://na1-sandbox.api.commerce.adobe.com/{{tenantId}}/api/v1/catalog/products \
   --header "Content-Type: application/json" \
-  --header "Authorization: {{access token}}" \
+  --header "Authorization: {{accessToken}}" \
 
   --data "[
         {
