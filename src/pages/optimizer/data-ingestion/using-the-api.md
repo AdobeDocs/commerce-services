@@ -52,7 +52,7 @@ Include the following headers in REST API requests.
 |--------------|----------|-------------|
 | `Content-Encoding` | No  | Use this header only if the payload is compressed with gzip. Accepted value: `gzip`.                                                                           |
 | `Content-Type`  | Yes   | Media type of the resource. Accepted value: `application/json`. |
-| `Authorization: {{access token}}`  | Yes  | Bearer access token generated using credentials from the Adobe developer project for the API integration.  See [Authentication](authentication.md).                          |
+| `Authorization: {{accessToken}}`  | Yes  | Bearer access token generated using credentials from the Adobe developer project for the API integration.  See [Authentication](authentication.md).                          |
 
 ## Request template
 
@@ -62,14 +62,14 @@ Use the following template to submit requests using [curl](https://curl.se/) rep
 curl --request POST \
   --url https://na1-sandbox.api.commerce.adobe.com/{{tenantId}}/{{endpoint}} \
   --header "Content-Type:  application/json" \
-  --header "Authorization: {{access token}}" \
+  --header "Authorization: {{accessToken}}" \
   --data "{{apiPayload}}"
 ```
 
 | Placeholder name | Description                                                                                                    |
 |------------------|----------------------------------------------------------------------------------------------------------------|
 | `endpoint`       | Endpoint for specific Data Ingestion API, for example: `/v1/catalog/products/prices`  |
-| `access token`   | Bearer token generated from IMS credentials. See [Authentication](authentication.md).                                   |
+| `accessToken`   | Bearer token generated from IMS credentials. See [Authentication](authentication.md).                                   |
 | `apiPayload`     | API payload see examples in the [tutorial](../ccdm-use-case.md)                                                                             |
 
 For sample requests, see the [tutorial](../ccdm-use-case.md).
@@ -78,7 +78,7 @@ For sample requests, see the [tutorial](../ccdm-use-case.md).
 
 To get started with the Data Ingestion API, follow these steps to make your first request.
 
-1. Generate an access token for the `Authorization: Bearer {access-token}` header.
+1. Generate an access token for the `Authorization: {{accessToken}}` header.
 
 2. Submit your first request
    - Use the [curl](https://curl.se/) command line tool to submit a request to the Data Ingestion API.
@@ -88,7 +88,7 @@ To get started with the Data Ingestion API, follow these steps to make your firs
   curl -X POST \
     'https://na1-sandbox.api.commerce.adobe.com/{{tenantId}}/v1/catalog/attributes/metadata' \
     -H 'Content-Type: application/json' \
-    -H 'Authorization:{{access token}}' \
+    -H 'Authorization:{{accessToken}}' \
     -d '[
       {
         "code": "sku",
