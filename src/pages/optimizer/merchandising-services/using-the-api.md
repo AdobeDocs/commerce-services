@@ -66,9 +66,9 @@ When making requests to the storefront API, you must include required HTTP heade
 
 | Header name| Description
 | --- | ---
-|`AC-View-ID` | Optional. The ID for the catalog view that products will be sold through. For example, in the automotive industry, the catalog view could be dealers. In the manufacturing industry, the view could be a manufacturing location for suppliers. You can view the list of available catalog views and find the viewID from the [Adobe Commerce Optimizer UI](https://experienceleague.adobe.com/en/docs/commerce/optimizer/catalog/channels).|
+|`AC-View-ID` | Optional. The unique ID assigned to catalog view that products will be sold through. For example, in the automotive industry, the catalog view could be dealers. In the manufacturing industry, the view could be a manufacturing location for suppliers. You can view the list of available catalog views and find the viewID from the [Adobe Commerce Optimizer UI](https://experienceleague.adobe.com/en/docs/commerce/optimizer/setup/catalog-view).|
 `AC-Policy-{*}` | Optional. The trigger name configured for a policy that sets data access filters to restrict product access based on request attributes and context. Examples include POS physical stores, marketplaces, or advertisement pipelines like Google, Meta, or Instagram. You can view the list of available policies and associated ids from the [Adobe Commerce Optimizer UI](https://experienceleague.adobe.com/en/docs/commerce/optimizer/catalog/policies). You can specify multiple policy headers per request. Example: `AC-Policy-Brand`.
-`AC-Price-Book-ID` | Optional. Defines how prices are calculated for a specific catalog view. Supply this value if the merchant uses price books to calculate product pricing. If you do not include the Price Book ID, Merchandising Services provides a default price book `main` with currency in US dollars.
+`AC-Price-Book-ID` | Optional. Defines how prices are calculated for a specific catalog view. Supply this value if the merchant uses price books to calculate product pricing. If you do not include the Price Book ID, Merchandising Services provides a default price book `main` with currency in US dollars. See the Catalog View configuration for a list of price books available for use with the specifed Catalog View.
 
 ### Request template
 
@@ -76,18 +76,20 @@ Use the following template to submit requests using [curl](https://curl.se/). Us
 
 ```shell
 curl --request POST \
---url https://na1-sandbox.api.commerce.adobe.com/{{tenantId}}/graphql \
---header 'AC-View-ID:  <catalogviewId>'  \
+--url https://na1-sandbox.api.commerce.adobe.com/{{tenantUUID}}/graphql \
+--header 'AC-View-ID:  <catalogviewUUId>'  \
+--header 'AC-Price-Book-ID:  <priceBookID>'  \
+--header 'AC-Policy-{{attributeCode}}:  <attributeValue>'  \
+
 --data '<apiPayload>'
 ```
 
-| Placeholder name | Description                                                                                                     |
+| Placeholder name | Description                                                                               t                      |
 |------------------|-----------------------------------------------------------------------------------------------------------------|
-| `catalogviewID`   | The ID for the catalog view products will be sold through.|
-| `tenantId` | is the unique identifier for your organization's specific instance within the Adobe Experience Cloud.|
-| `policyName: policyValue` | Optional. The policy trigger name and value that sets data access filters to restrict product access based on request attributes.              |
-| `pricebookID`  | Optional. The price book ID used to retrieve the pricing schedule for a SKU. |
-| `localeValue` | The catalog source locale (language or geography) to filter products for display or update. |            |
+| `catalogviewID`   | Required. The unique identifer assigned to the catalog view to filter the catalog data you want to display on the storefront, for example, `51330428-3090-4650-8394-7a4a12b2c087`.|
+| `tenantId` | Required. The unique identifier for your organization's specific instance within the Adobe Experience Cloud, for example `Xyub6kdpvYCmeEdcCX7PTg`.|
+| `attributeCode: attributeValue` | Optional. The policy trigger name and value that sets data access filters to restrict product access based on request attributes, for example `Brand:Cruz`.|
+| `pricebookID`  | Optional. The price book ID used to retrieve the pricing schedule for a SKU, for example `west_coast_inc`. |
 | `apiPayload`      | API payload. See examples in the [tutorial](../ccdm-use-case.md). |
 
 Get the values for catalog view, policy, catalog source locale, and price book data from the [Adobe Commerce Optimizer UI](https://experienceleague.adobe.com/en/docs/commerce/optimizer/overview#quick-tour).
@@ -109,7 +111,7 @@ To get started with the Merchandising API, follow these steps to make your first
    curl -X POST \
      'https://na1-sandbox.api.commerce.adobe.com/{{tenant-id}}/graphql' \
      -H 'Content-Type: application/json' \
-     -H 'AC-View-ID: {{your-catalog-view-id}}' \
+     -H 'AC-View-ID: {{catalogViewUUId}}' \
      -d '{"query": "query ProductSearch($search: String!) { productSearch( phrase: $search, page_size: 10) { items { productView { sku name description shortDescription images { url } ... on SimpleProductView { attributes { label name value } price { regular { amount { value currency } } roles } } } } } }", "variables": { "search": "your-string"}}'
    ```
 
