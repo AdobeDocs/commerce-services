@@ -101,7 +101,6 @@ To get started with the Merchandising API, follow these steps to make your first
    - `tenantId`: Your unique instance ID for Adobe Commerce Optimizer
    - `AC-View-ID`: Catalog view ID from Adobe Commerce Optimizer
 
-
 2. Make your first query.
 
    Use the following example to search for products using the `productSearch` query, replacing the variable with your own values based on the catalog data and the configuration or your Adobe Commerce Optimizer instance This query retrieves a list of products based on a search term, including their IDs, SKUs, names, and prices.
