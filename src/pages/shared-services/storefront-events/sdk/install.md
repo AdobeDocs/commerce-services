@@ -16,17 +16,17 @@ This SDK can be used as a hosted script, or bundled in a JavaScript application.
 
 If you are using the Data Connection module, you can skip the installation process because the module [automatically deploys the SDK for you](https://experienceleague.adobe.com/en/docs/commerce/data-connection/fundamentals/connect-data#data-collection).
 
-To load the SDK as a script, use the following snippet.
+- **Use the SDK as a hosted script**—Use the following snippet to load the script from the [JSDelivr CDN](https://www.jsdelivr.com/).
 
-```html
-<script src="https://cdn.jsdelivr.net/npm/@adobe/magento-storefront-events-sdk@1/dist/index.js"></script>
-```
+  ```html
+  <script src="https://cdn.jsdelivr.net/npm/@adobe/magento-storefront-events-sdk@1/dist/index.js"></script>
+  ```
 
-To install the script as a dependency, run this command.
+- **Use the bundled version**—Run the following command to install the script as a dependency.
 
-```bash
-npm install @adobe/magento-storefront-events-sdk
-```
+  ```bash
+  npm install @adobe/magento-storefront-events-sdk
+  ```
 
 ### Confirm SDK is Available
 
