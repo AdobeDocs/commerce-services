@@ -19,15 +19,19 @@ properties:
         - Cloud
         - Configuration
         - Cron
+        - Data Import
+        - Data Export
         - Events
         - Extensibility
         - Extensions
         - GraphQL
         - Integration
         - Inventory
+        - Merchandising
         - Payments
         - Performance
         - Personalization
+        - Product discovery
         - Recommendations
         - Reporting
         - REST
@@ -37,6 +41,7 @@ properties:
         - Storefront
         - Tools
         - Upgrade
+        - Troubleshooting
 
 required:
   - title

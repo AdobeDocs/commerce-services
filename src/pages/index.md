@@ -1,6 +1,7 @@
 ---
-title: Commerce Cloud and Data Services
-description: Learn how about the APIs and tools available to manage and use commerce catalog and event data programmatically.
+title: Merchandising Services
+description: Learn about the APIs and tools available to manage and use commerce catalog and event data programmatically.
+edition: saas
 keywords:
   - GraphQL
   - REST
@@ -10,59 +11,39 @@ hideBreadcrumbNav: true
 
 <Hero slots="image, heading, text"/>
 
-![Commerce Cloud and Data Services](_images/pipeline-illustration.png)
+![Merchandising Services](_images/pipeline-illustration.png)
 
-# Commerce Cloud and Data Services
+# Merchandising Services
 
-A collection of APIs and tools to integrate with third-party services, manage catalog data, and build headless ecommerce applications.
+Use the Merchandising APIs and SDK to manage commerce catalog data for Adobe Commerce Optimizer, and use the data to create composable, scalable, and performant storefront experiences.
 
 <Resources slots="heading, links"/>
 
 ## Resources
 
-*  [Cloud Service User Guide](https://experienceleague.adobe.com/en/docs/commerce/cloud-service/overview)
-*  [Merchandising Services User Guides](https://experienceleague.adobe.com/en/docs/commerce/user-guides/home)
-*  [Commerce Admin User Guides](https://experienceleague.adobe.com/en/docs/commerce-admin/user-guides/home)
+*  [Commerce Optimizer Guide](https://experienceleague.adobe.com/en/docs/commerce/optimizer/overview)
+*  [Commerce Storefront Documentation](https://experienceleague.adobe.com/developer/commerce/storefront/)
+*  [Commerce Services user guides](https://experienceleague.adobe.com/docs/commerce/user-guides/home.html)
+*  [GraphQL Developer Guide](https://developer.adobe.com/commerce/webapi/graphql/)
+*  [Commerce Merchant Documentation](https://experienceleague.adobe.com/docs/commerce-admin/user-guides/home.html)
 
-<DiscoverBlock slots="heading, link, text"/>
+<DiscoverBlock slots="heading,link, text"/>
 
-## Commerce as a Cloud Service
+## Catalog Data APIs
 
-[REST & GraphQL API](cloud/guides/index.md)
+[Data Ingestion API](optimizer/data-ingestion/)
 
-Integrate with third-party services and build headless applications.
-
-<DiscoverBlock slots="link, text"/>
-
-[Custom attributes](cloud/guides/custom-attributes.md)
-
-Add custom attributes to core data model entities with REST and GraphQL APIs.
+Set up large, complex catalog assortments by ingesting commerce catalog data from backend systems into a centralized datastore.
 
 <DiscoverBlock slots="link, text"/>
 
-[Webhooks](cloud/guides/rest/webhooks.md)
+[Merchandising API](optimizer/)
 
-Subscribe to webhooks to trigger external calls when Adobe Commerce events occur.
+Retrieve catalog data product, price, search, and recommendations data from Merchandising Services and use it to create storefront experiences.
 
-<DiscoverBlock slots="heading, link, text"/>
+<DiscoverBlock slots="heading,link, text"/>
 
-## SaaS Catalog Services
-
-[Catalog Service API](graphql/catalog-service/)
-
-Deliver product-related content to frontend applications.
-
-<DiscoverBlock slots="link, text"/>
-
-[Live Search API](graphql/live-search/)
-
-Retrieve and filter search results using product faceting and other data.
-
-<DiscoverBlock slots="link, text"/>
-
-[Product Recommendations API](graphql/recommendations/)
-
-Retrieve recommended products based on a provided SKU.
+## SDKs and Reporting
 
 <DiscoverBlock slots="link, text"/>
 

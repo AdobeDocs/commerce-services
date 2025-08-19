@@ -1,0 +1,4069 @@
+{
+  "OBJECT": {
+    "AddCustomAttributesToCartItemOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "AddDownloadableProductsToCartOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "AddGiftRegistryRegistrantsOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "AddProductsToCartOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "AddProductsToRequisitionListOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "AddProductsToWishlistOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "AddPurchaseOrderCommentOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "AddRequisitionListItemToCartUserError": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "AddRequisitionListItemsToCartOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "AddReturnCommentOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "AddReturnTrackingOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "AddWishlistItemsToCartOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "AggregationOption": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "AggregationOptionInterface": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ApplePayConfig": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "AppliedCoupon": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "AppliedGiftCard": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "AppliedStoreCredit": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ApplyCouponToCartOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ApplyGiftCardToCartOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ApplyGiftCardToOrder": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ApplyRewardPointsToCartOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ApplyStoreCreditToCartOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "AssetImage": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "AssetVideo": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "AssignCompareListToCustomerOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "Attribute": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "AttributeMetadata": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "AttributeMetadataError": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "AttributeOption": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "AttributeOptionMetadata": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "AttributeSelectedOption": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "AttributeSelectedOptionInterface": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "AttributeSelectedOptions": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "AttributeValue": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "AttributeValueInterface": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "AttributesFormOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "AttributesMetadataOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "AvailableCurrency": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "AvailablePaymentMethod": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "AvailableShippingMethod": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "BillingCartAddress": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "Breadcrumb": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "BundleCartItem": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "BundleCreditMemoItem": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "BundleInvoiceItem": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "BundleItem": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "BundleItemOption": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "BundleOrderItem": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "BundleProduct": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "BundleRequisitionListItem": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "BundleShipmentItem": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "BundleWishlistItem": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ButtonStyles": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CancelOrderError": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CancelOrderOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CancellationReason": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "Card": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CardBin": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CardPaymentSourceOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "Cart": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CartAddressCountry": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CartAddressInterface": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CartAddressRegion": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CartItemError": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CartItemInterface": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CartItemPrices": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CartItemSelectedOptionValuePrice": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CartItems": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CartPrices": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CartRuleStorefront": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CartTaxItem": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CartUserInputError": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CatalogAttributeMetadata": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CategoryBucketInterface": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CategoryInterface": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CategoryTree": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CategoryViewInterface": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CheckoutAgreement": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CheckoutUserInputError": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ClearCustomerCartOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CloseNegotiableQuoteOperationFailure": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CloseNegotiableQuotesOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ColorSwatchData": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "Company": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CompanyAclResource": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CompanyAdmin": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CompanyBasicInfo": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CompanyCredit": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CompanyCreditHistory": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CompanyCreditOperation": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CompanyCreditOperationUser": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CompanyInvitationOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CompanyLegalAddress": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CompanyRole": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CompanyRoles": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CompanySalesRepresentative": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CompanyStructure": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CompanyStructureItem": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CompanyTeam": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CompanyUsers": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ComparableAttribute": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ComparableItem": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CompareList": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ComplexTextValue": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ConfigurableAttributeOption": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ConfigurableCartItem": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ConfigurableOptionAvailableForSelection": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ConfigurableOrderItem": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ConfigurableProduct": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ConfigurableProductOption": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ConfigurableProductOptionValue": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ConfigurableProductOptions": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ConfigurableProductOptionsSelection": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ConfigurableProductOptionsValues": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ConfigurableRequisitionListItem": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ConfigurableVariant": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ConfigurableWishlistItem": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ContactUsOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CopyItemsFromRequisitionListsOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CopyProductsBetweenWishlistsOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "Country": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CreateCompanyOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CreateCompanyRoleOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CreateCompanyTeamOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CreateCompanyUserOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CreateGiftRegistryOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CreateGuestCartOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CreatePaymentOrderOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CreateRequisitionListOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CreateVaultCardPaymentTokenOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CreateVaultCardSetupTokenOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CreateWishlistOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CreditMemo": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CreditMemoItem": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CreditMemoItemInterface": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CreditMemoOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CreditMemoTotal": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "Currency": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CustomAttribute": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CustomAttributeMetadataInterface": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CustomAttributeOptionInterface": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CustomConfigKeyValue": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "Customer": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CustomerAddress": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CustomerAddressAttribute": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CustomerAddressRegion": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CustomerAddresses": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CustomerAttributeMetadata": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CustomerDownloadableProduct": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CustomerDownloadableProducts": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CustomerGroupStorefront": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CustomerOrder": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CustomerOrders": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CustomerOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CustomerPaymentTokens": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CustomerSegmentStorefront": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CustomerStoreCredit": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CustomerStoreCreditHistory": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CustomerStoreCreditHistoryItem": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CustomerToken": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CustomizableAreaOption": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CustomizableAreaValue": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CustomizableCheckboxOption": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CustomizableCheckboxValue": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CustomizableDateOption": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CustomizableDateValue": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CustomizableDropDownOption": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CustomizableDropDownValue": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CustomizableFieldOption": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CustomizableFieldValue": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CustomizableFileOption": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CustomizableFileValue": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CustomizableMultipleOption": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CustomizableMultipleValue": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CustomizableOptionInterface": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CustomizableProductInterface": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CustomizableRadioOption": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CustomizableRadioValue": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "DeleteCompanyRoleOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "DeleteCompanyTeamOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "DeleteCompanyUserOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "DeleteCompareListOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "DeleteNegotiableQuoteOperationFailure": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "DeleteNegotiableQuoteTemplateOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "DeleteNegotiableQuotesOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "DeletePaymentTokenOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "DeletePurchaseOrderApprovalRuleError": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "DeletePurchaseOrderApprovalRuleOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "DeleteRequisitionListItemsOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "DeleteRequisitionListOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "DeleteWishlistOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "Discount": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "DownloadableCartItem": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "DownloadableCreditMemoItem": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "DownloadableInvoiceItem": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "DownloadableItemsLinks": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "DownloadableOrderItem": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "DownloadableProduct": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "DownloadableProductLinks": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "DownloadableProductSamples": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "DownloadableRequisitionListItem": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "DownloadableWishlistItem": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "DuplicateNegotiableQuoteOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "Error": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ErrorInterface": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "EstimateTotalsOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ExchangeExternalCustomerTokenOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ExchangeRate": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "FixedProductTax": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "GenerateCustomerTokenAsAdminOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "GenerateNegotiableQuoteFromTemplateOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "GetPaymentSDKOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "GiftCardAccount": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "GiftCardAmounts": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "GiftCardCartItem": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "GiftCardCreditMemoItem": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "GiftCardInvoiceItem": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "GiftCardItem": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "GiftCardOptions": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "GiftCardOrderItem": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "GiftCardProduct": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "GiftCardRequisitionListItem": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "GiftCardShipmentItem": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "GiftCardWishlistItem": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "GiftMessage": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "GiftOptionsPrices": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "GiftRegistry": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "GiftRegistryDynamicAttribute": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "GiftRegistryDynamicAttributeInterface": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "GiftRegistryDynamicAttributeMetadata": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "GiftRegistryDynamicAttributeMetadataInterface": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "GiftRegistryItem": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "GiftRegistryItemInterface": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "GiftRegistryItemUserErrorInterface": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "GiftRegistryItemUserErrors": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "GiftRegistryItemsUserError": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "GiftRegistryOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "GiftRegistryOutputInterface": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "GiftRegistryRegistrant": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "GiftRegistryRegistrantDynamicAttribute": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "GiftRegistrySearchResult": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "GiftRegistryType": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "GiftWrapping": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "GiftWrappingImage": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "GooglePayButtonStyles": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "GooglePayConfig": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "GroupedProduct": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "GroupedProductItem": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "GroupedProductWishlistItem": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "HostedFieldsConfig": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ImageSwatchData": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "InsufficientStockError": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "InternalError": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "Invoice": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "InvoiceItem": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "InvoiceItemInterface": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "InvoiceOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "InvoiceTotal": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "IsCompanyAdminEmailAvailableOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "IsCompanyEmailAvailableOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "IsCompanyRoleNameAvailableOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "IsCompanyUserEmailAvailableOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "IsEmailAvailableOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ItemNote": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ItemSelectedBundleOption": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ItemSelectedBundleOptionValue": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "KeyValue": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "MediaGalleryEntry": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "MediaGalleryInterface": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "MessageStyleLogo": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "MessageStyles": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "Money": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "MoveCartItemsToGiftRegistryOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "MoveItemsBetweenRequisitionListsOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "MoveLineItemToRequisitionListOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "MoveProductsBetweenWishlistsOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "Mutation": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "NegotiableQuote": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "NegotiableQuoteAddressCountry": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "NegotiableQuoteAddressInterface": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "NegotiableQuoteAddressRegion": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "NegotiableQuoteBillingAddress": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "NegotiableQuoteComment": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "NegotiableQuoteCustomLogChange": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "NegotiableQuoteHistoryChanges": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "NegotiableQuoteHistoryCommentChange": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "NegotiableQuoteHistoryEntry": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "NegotiableQuoteHistoryExpirationChange": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "NegotiableQuoteHistoryProductsRemovedChange": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "NegotiableQuoteHistoryStatusChange": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "NegotiableQuoteHistoryStatusesChange": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "NegotiableQuoteHistoryTotalChange": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "NegotiableQuoteInvalidStateError": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "NegotiableQuoteReferenceDocumentLink": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "NegotiableQuoteShippingAddress": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "NegotiableQuoteTemplate": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "NegotiableQuoteTemplateGridItem": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "NegotiableQuoteTemplatesOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "NegotiableQuoteUidNonFatalResultInterface": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "NegotiableQuoteUidOperationSuccess": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "NegotiableQuoteUser": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "NegotiableQuotesOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "NoSuchEntityUidError": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "OopePaymentMethodConfig": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "Order": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "OrderAddress": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "OrderCustomerInfo": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "OrderItem": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "OrderItemInterface": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "OrderItemOption": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "OrderItemPrices": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "OrderPaymentMethod": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "OrderShipment": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "OrderTotal": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "PaymentCommonConfig": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "PaymentConfigItem": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "PaymentConfigOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "PaymentOrderOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "PaymentSDKParamsItem": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "PaymentSourceDetails": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "PaymentSourceOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "PaymentToken": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "PhysicalProductInterface": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "PickupLocation": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "PickupLocations": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "PlaceNegotiableQuoteOrderOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "PlaceOrderError": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "PlaceOrderForPurchaseOrderOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "PlaceOrderOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "PlacePurchaseOrderOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "PriceDetails": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "PriceRange": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ProductAttribute": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ProductCustomAttributes": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ProductDiscount": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ProductImage": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ProductInterface": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ProductLinks": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ProductLinksInterface": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ProductMediaGalleryEntriesAssetImage": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ProductMediaGalleryEntriesAssetVideo": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ProductMediaGalleryEntriesContent": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ProductMediaGalleryEntriesVideoContent": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ProductPrice": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ProductVideo": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ProductViewInputOption": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ProductViewInputOptionImageSize": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ProductViewInputOptionRange": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "PurchaseOrder": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "PurchaseOrderActionError": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "PurchaseOrderApprovalFlowEvent": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "PurchaseOrderApprovalRule": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "PurchaseOrderApprovalRuleConditionAmount": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "PurchaseOrderApprovalRuleConditionInterface": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "PurchaseOrderApprovalRuleConditionQuantity": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "PurchaseOrderApprovalRuleMetadata": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "PurchaseOrderApprovalRules": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "PurchaseOrderComment": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "PurchaseOrderHistoryItem": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "PurchaseOrderRuleApprovalFlow": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "PurchaseOrders": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "PurchaseOrdersActionOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "QuoteTemplateNotificationMessage": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ReCaptchaConfigOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ReCaptchaConfiguration": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ReCaptchaConfigurationV3": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "Region": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "RemoveCouponFromCartOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "RemoveGiftCardFromCartOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "RemoveGiftRegistryItemsOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "RemoveGiftRegistryOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "RemoveGiftRegistryRegistrantsOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "RemoveItemFromCartOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "RemoveNegotiableQuoteItemsOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "RemoveProductsFromWishlistOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "RemoveReturnTrackingOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "RemoveRewardPointsFromCartOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "RemoveStoreCreditFromCartOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "RenameNegotiableQuoteOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ReorderItemsOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "RequestNegotiableQuoteOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "RequestReturnOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "RequisitionList": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "RequisitionListItemInterface": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "RequisitionLists": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "RequistionListItems": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "Return": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ReturnComment": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ReturnCustomAttribute": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ReturnCustomer": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ReturnItem": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ReturnItemAttributeMetadata": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ReturnShipping": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ReturnShippingAddress": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ReturnShippingCarrier": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ReturnShippingTracking": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ReturnShippingTrackingStatus": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "Returns": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "RevokeCustomerTokenOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "RewardPoints": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "RewardPointsAmount": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "RewardPointsBalanceHistoryItem": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "RewardPointsExchangeRates": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "RewardPointsRate": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "RewardPointsSubscriptionStatus": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "SDKParams": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "SalesCommentItem": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "SalesItemInterface": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "SearchSuggestion": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "SelectedBundleOption": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "SelectedBundleOptionValue": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "SelectedConfigurableOption": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "SelectedCustomizableOption": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "SelectedCustomizableOptionValue": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "SelectedPaymentMethod": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "SelectedShippingMethod": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "SendNegotiableQuoteForReviewOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "SetBillingAddressOnCartOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "SetCustomAttributesOnCompanyOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "SetCustomAttributesOnNegotiableQuoteOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "SetGiftOptionsOnCartOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "SetGuestEmailOnCartOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "SetLineItemNoteOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "SetNegotiableQuoteBillingAddressOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "SetNegotiableQuotePaymentMethodOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "SetNegotiableQuoteShippingAddressOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "SetNegotiableQuoteShippingMethodsOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "SetPaymentMethodOnCartOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "SetShippingAddressesOnCartOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "SetShippingMethodsOnCartOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ShareGiftRegistryOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ShipmentItem": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ShipmentItemInterface": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ShipmentTracking": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ShippingAdditionalData": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ShippingCartAddress": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ShippingDiscount": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ShippingHandling": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "SimpleCartItem": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "SimpleProduct": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "SimpleRequisitionListItem": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "SimpleWishlistItem": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "SmartButtonsConfig": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "SortField": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "SortFields": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "StoreConfig": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "StorefrontProperties": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "SubscribeEmailToNewsletterOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "SwatchData": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "SwatchDataInterface": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "TaxItem": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "TextSwatchData": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "TierPrice": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "UpdateCartItemsOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "UpdateCompanyOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "UpdateCompanyRoleOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "UpdateCompanyStructureOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "UpdateCompanyTeamOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "UpdateCompanyUserOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "UpdateGiftRegistryItemsOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "UpdateGiftRegistryOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "UpdateGiftRegistryRegistrantsOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "UpdateNegotiableQuoteItemsQuantityOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "UpdateNegotiableQuoteTemplateItemsQuantityOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "UpdateProductsInWishlistOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "UpdateRequisitionListItemsOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "UpdateRequisitionListOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "UpdateWishlistOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "UserCompaniesOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ValidatePurchaseOrderError": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ValidatePurchaseOrdersOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ValidationRule": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "VaultConfigOutput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "VaultCreditCardConfig": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "VirtualCartItem": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "VirtualProduct": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "VirtualRequisitionListItem": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "VirtualWishlistItem": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "WishListUserInputError": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "Wishlist": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "WishlistCartUserInputError": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "WishlistItemInterface": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "WishlistItems": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "Query": {
+      "fields": {
+        "attributesForm": {
+          "documentation": {
+            "undocumented": true
+          }
+        },
+        "attributesList": {
+          "documentation": {
+            "undocumented": true
+          }
+        },
+        "attributesSearch": {
+          "documentation": {
+            "undocumented": true
+          }
+        },
+        "availableStores": {
+          "documentation": {
+            "undocumented": true
+          }
+        },
+        "cart": {
+          "documentation": {
+            "undocumented": true
+          }
+        },
+        "categories": {
+          "documentation": {
+            "undocumented": true
+          }
+        },
+        "checkoutAgreements": {
+          "documentation": {
+            "undocumented": true
+          }
+        },
+        "categoryView": {
+          "documentation": {
+            "undocumented": true
+          }
+        },
+        "company": {
+          "documentation": {
+            "undocumented": true
+          }
+        },
+        "compareList": {
+          "documentation": {
+            "undocumented": true
+          }
+        },
+        "countries": {
+          "documentation": {
+            "undocumented": true
+          }
+        },
+        "country": {
+          "documentation": {
+            "undocumented": true
+          }
+        },
+        "currency": {
+          "documentation": {
+            "undocumented": true
+          }
+        },
+        "customerDownloadableProducts": {
+          "documentation": {
+            "undocumented": true
+          }
+        },
+        "customerGroup": {
+          "documentation": {
+            "undocumented": true
+          }
+        },
+        "customer": {
+          "documentation": {
+            "undocumented": true
+          }
+        },
+        "customerCart": {
+          "documentation": {
+            "undocumented": true
+          }
+        },
+        "customerDownloads": {
+          "documentation": {
+            "undocumented": true
+          }
+        },
+        "customerGroups": {
+          "documentation": {
+            "undocumented": true
+          }
+        },
+        "customerPaymentTokens": {
+          "documentation": {
+            "undocumented": true
+          }
+        },
+        "customerSegments": {
+          "documentation": {
+            "undocumented": true
+          }
+        },
+        "getPaymentConfig": {
+          "documentation": {
+            "undocumented": true
+          }
+        },
+        "getPaymentOrder": {
+          "documentation": {
+            "undocumented": true
+          }
+        },
+        "getPaymentSDK": {
+          "documentation": {
+            "undocumented": true
+          }
+        },
+        "getVaultConfig": {
+          "documentation": {
+            "undocumented": true
+          }
+        },
+        "giftCardAccount": {
+          "documentation": {
+            "undocumented": true
+          }
+        },
+        "giftRegistry": {
+          "documentation": {
+            "undocumented": true
+          }
+        },
+        "giftRegistryEmailSearch": {
+          "documentation": {
+            "undocumented": true
+          }
+        },
+        "giftRegistryIdSearch": {
+          "documentation": {
+            "undocumented": true
+          }
+        },
+        "giftRegistryTypeSearch": {
+          "documentation": {
+            "undocumented": true
+          }
+        },
+        "giftRegistryTypes": {
+          "documentation": {
+            "undocumented": true
+          }
+        },
+        "guestOrder": {
+          "documentation": {
+            "undocumented": true
+          }
+        },
+        "guestOrderByToken": {
+          "documentation": {
+            "undocumented": true
+          }
+        },
+        "guestOrderByTokenSearch": {
+          "documentation": {
+            "undocumented": true
+          }
+        },
+        "isCompanyAdminEmailAvailable": {
+          "documentation": {
+            "undocumented": true
+          }
+        },
+        "isCompanyEmailAvailable": {
+          "documentation": {
+            "undocumented": true
+          }
+        },
+        "isCompanyRoleNameAvailable": {
+          "documentation": {
+            "undocumented": true
+          }
+        },
+        "isCompanyUserEmailAvailable": {
+          "documentation": {
+            "undocumented": true
+          }
+        },
+        "isEmailAvailable": {
+          "documentation": {
+            "undocumented": true
+          }
+        },
+        "negotiableQuote": {
+          "documentation": {
+            "undocumented": true
+          }
+        },
+        "negotiableQuoteTemplate": {
+          "documentation": {
+            "undocumented": true
+          }
+        },
+        "negotiableQuoteTemplates": {
+          "documentation": {
+            "undocumented": true
+          }
+        },
+        "negotiableQuotes": {
+          "documentation": {
+            "undocumented": true
+          }
+        },
+        "pickupLocations": {
+          "documentation": {
+            "undocumented": true
+          }
+        },
+        "recaptchaFormConfig": {
+          "documentation": {
+            "undocumented": true
+          }
+        },
+        "recaptchaV3Config": {
+          "documentation": {
+            "undocumented": true
+          }
+        },
+        "storeConfig": {
+          "documentation": {
+            "undocumented": true
+          }
+        }
+      }
+    }
+  },
+  "INPUT_OBJECT": {
+    "AcceptNegotiableQuoteTemplateInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "AddDownloadableProductsToCartInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "AddGiftRegistryItemInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "AddGiftRegistryRegistrantInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "AddProductsToCompareListInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "AddPurchaseOrderCommentInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "AddPurchaseOrderItemsToCartInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "AddReturnCommentInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "AddReturnTrackingInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ApplePayMethodInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ApplyCouponToCartInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ApplyCouponsToCartInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ApplyGiftCardToCartInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ApplyStoreCreditToCartInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "AreaInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "AttributeFilterInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "AttributeInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "AttributeInputSelectedOption": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "AttributeValueInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "BillingAddressInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "BillingAddressPaymentSourceInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "BundleOptionInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CancelNegotiableQuoteTemplateInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CancelOrderInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CardPaymentSourceInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CartAddressInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CartCustomAttributesInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CartItemCustomAttributesInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CartItemInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CartItemUpdateInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CloseNegotiableQuotesInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CompaniesSortInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CompanyAdminInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CompanyCreateInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CompanyCreditHistoryFilterInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CompanyInvitationInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CompanyInvitationUserInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CompanyLegalAddressCreateInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CompanyLegalAddressUpdateInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CompanyRoleCreateInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CompanyRoleUpdateInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CompanyStructureUpdateInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CompanyTeamCreateInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CompanyTeamUpdateInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CompanyUpdateInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CompanyUserCreateInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CompanyUserUpdateInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CompanyUsersFilterInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ConfirmCancelOrderInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ConfirmEmailInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ConfirmReturnInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ContactUsInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CopyItemsBetweenRequisitionListsInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CreateCompareListInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CreateGiftRegistryInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CreateGuestCartInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CreatePaymentOrderInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CreatePurchaseOrderApprovalRuleConditionAmountInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CreatePurchaseOrderApprovalRuleConditionInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CreateRequisitionListInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CreateVaultCardPaymentTokenInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CreateVaultCardSetupTokenInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CreateWishlistInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CreditMemoCustomAttributesInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CreditMemoItemCustomAttributesInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CustomAttributeInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CustomerAddressAttributeInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CustomerAddressInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CustomerAddressRegionInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CustomerCreateInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CustomerInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CustomerOrderSortInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CustomerOrdersFilterInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CustomerUpdateInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CustomizableOptionInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "DeleteNegotiableQuoteTemplateInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "DeleteNegotiableQuotesInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "DeletePurchaseOrderApprovalRuleInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "DownloadableProductCartItemInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "DownloadableProductLinksInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "DuplicateNegotiableQuoteInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "EnteredCustomAttributeInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "EnteredOptionInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "EstimateAddressInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "EstimateTotalsInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ExchangeExternalCustomerTokenInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "FilterEqualTypeInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "FilterMatchTypeInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "FilterRangeTypeInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "FilterStringTypeInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "FilterTypeInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "GenerateCustomerTokenAsAdminInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "GenerateNegotiableQuoteFromTemplateInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "GiftCardAccountInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "GiftMessageInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "GiftRegistryDynamicAttributeInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "GiftRegistryShippingAddressInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "GooglePayMethodInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "GuestOrderCancelInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "GuestOrderInformationInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "HostedFieldsInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "InvoiceCustomAttributesInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "InvoiceItemCustomAttributesInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "LineItemNoteInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "MoveItemsBetweenRequisitionListsInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "MoveLineItemToRequisitionListInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "NegotiableQuoteAddressInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "NegotiableQuoteBillingAddressInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "NegotiableQuoteCommentInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "NegotiableQuoteFilterInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "NegotiableQuoteItemQuantityInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "NegotiableQuotePaymentMethodInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "NegotiableQuoteShippingAddressInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "NegotiableQuoteSortInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "NegotiableQuoteTemplateFilterInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "NegotiableQuoteTemplateItemQuantityInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "NegotiableQuoteTemplateReferenceDocumentLinkInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "NegotiableQuoteTemplateShippingAddressInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "NegotiableQuoteTemplateSortInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "OpenNegotiableQuoteTemplateInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "OrderInformationInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "OrderTokenInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "PaymentAttributeInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "PaymentMethodInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "PaymentSourceInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "PickupLocationFilterInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "PickupLocationSortInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "PlaceNegotiableQuoteOrderInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "PlaceOrderForPurchaseOrderInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "PlaceOrderInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "PlacePurchaseOrderInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ProductInfoInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ProductSearchFilterInput": {
+      "documentation": {
+        "undocumented": false
+      }
+    },
+    "ProductSearchSortInput": {
+      "documentation": {
+        "undocumented": false
+      }
+    },
+    "PurchaseHistory": {
+      "documentation": {
+        "undocumented": false
+      }
+    },
+    "PurchaseOrderApprovalRuleInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "PurchaseOrdersActionInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "PurchaseOrdersFilterInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "QueryContextInput": {
+      "documentation": {
+        "undocumented": false
+      }
+    },
+    "QuoteItemsSortInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "QuoteTemplateLineItemNoteInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "RemoveCouponFromCartInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "RemoveCouponsFromCartInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "RemoveGiftCardFromCartInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "RemoveItemFromCartInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "RemoveNegotiableQuoteItemsInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "RemoveNegotiableQuoteTemplateItemsInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "RemoveProductsFromCompareListInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "RemoveReturnTrackingInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "RemoveStoreCreditFromCartInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "RenameNegotiableQuoteInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "RequestGuestReturnInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "RequestNegotiableQuoteInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "RequestNegotiableQuoteTemplateInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "RequestReturnInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "RequestReturnItemInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "RequisitionListFilterInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "RequisitionListItemsInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "SearchClauseInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "SearchRangeInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "SelectedCustomAttributeInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "SendNegotiableQuoteForReviewInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "SetBillingAddressOnCartInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "SetCustomAttributesOnCompanyInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "SetCustomAttributesOnNegotiableQuoteInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "SetGiftOptionsOnCartInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "SetGuestEmailOnCartInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "SetNegotiableQuoteBillingAddressInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "SetNegotiableQuotePaymentMethodInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "SetNegotiableQuoteShippingAddressInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "SetNegotiableQuoteShippingMethodsInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "SetNegotiableQuoteTemplateShippingAddressInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "SetPaymentMethodAndPlaceOrderInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "SetPaymentMethodOnCartInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "SetShippingAddressesOnCartInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "SetShippingMethodsOnCartInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ShareGiftRegistryInviteeInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ShareGiftRegistrySenderInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ShippingAddressInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ShippingMethodInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "SmartButtonMethodInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "SubmitNegotiableQuoteTemplateForReviewInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "Subtree": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "SyncPaymentOrderInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "UpdateCartItemsInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "UpdateGiftRegistryInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "UpdateGiftRegistryItemInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "UpdateGiftRegistryRegistrantInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "UpdateNegotiableQuoteQuantitiesInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "UpdateNegotiableQuoteTemplateQuantitiesInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "UpdatePurchaseOrderApprovalRuleInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "UpdateRequisitionListInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "UpdateRequisitionListItemsInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "UserCompaniesInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ValidatePurchaseOrdersInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "VaultMethodInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "VaultSetupTokenInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ViewHistory": {
+      "documentation": {
+        "undocumented": false
+      }
+    },
+    "ViewHistoryInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "WishlistItemCopyInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "WishlistItemInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "WishlistItemMoveInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "WishlistItemUpdateInput": {
+      "documentation": {
+        "undocumented": true
+      }
+    }
+  },
+  "ENUM": {
+    "AddRequisitionListItemToCartUserErrorType": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ApplyCouponsStrategy": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "AttributeEntityTypeEnum": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "AttributeFrontendInputEnum": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "AttributeMetadataErrorType": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "BatchMutationStatus": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CancelOrderErrorCode": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CartDiscountType": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CartItemErrorType": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CartUserInputErrorType": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CatalogAttributeApplyToEnum": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CheckoutAgreementMode": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CheckoutUserInputErrorCodes": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CompaniesSortFieldEnum": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CompanyCreditOperationType": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CompanyCreditOperationUserType": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CompanyUserStatusEnum": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ConfirmationStatusEnum": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CountryCodeEnum": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CurrencyEnum": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CustomerOrderSortableField": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CustomizableDateTypeEnum": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "DeletePurchaseOrderApprovalRuleErrorType": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "FilterMatchTypeEnum": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "FixedProductTaxDisplaySettings": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "GiftCardTypeEnum": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "GiftRegistryDynamicAttributeGroup": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "GiftRegistryItemsUserErrorType": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "GiftRegistryPrivacySettings": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "GiftRegistryStatus": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "InputFilterEnum": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "NegotiableQuoteCommentCreatorType": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "NegotiableQuoteHistoryEntryChangeType": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "NegotiableQuoteSortableField": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "NegotiableQuoteStatus": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "NegotiableQuoteTemplateSortableField": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "OrderActionType": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "PageType": {
+      "documentation": {
+        "undocumented": false
+      }
+    },
+    "PaymentLocation": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "PaymentTokenTypeEnum": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "PlaceOrderErrorCodes": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "PriceTypeEnum": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "PriceViewEnum": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ProductImageThumbnail": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ProductStockStatus": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "PurchaseOrderAction": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "PurchaseOrderApprovalFlowItemStatus": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "PurchaseOrderApprovalRuleConditionOperator": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "PurchaseOrderApprovalRuleStatus": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "PurchaseOrderApprovalRuleType": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "PurchaseOrderErrorType": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "PurchaseOrderStatus": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ReCaptchaFormEnum": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ReCaptchaTypeEmum": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ReturnItemStatus": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ReturnShippingTrackingStatusType": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ReturnStatus": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "RewardPointsSubscriptionStatusesEnum": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ScopeTypeEnum": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ShipBundleItemsEnum": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "SortEnum": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "SortQuoteItemsEnum": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "SubscriptionStatusesEnum": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "SwatchInputTypeEnum": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "TaxWrappingEnum": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ThreeDSMode": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "UseInLayeredNavigationOptions": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ValidatePurchaseOrderErrorType": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "ValidationRuleEnum": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "WishListUserInputErrorType": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "WishlistCartUserInputErrorType": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "WishlistVisibilityEnum": {
+      "documentation": {
+        "undocumented": true
+      }
+    }
+  },
+  "UNION": {
+    "CloseNegotiableQuoteError": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CloseNegotiableQuoteOperationResult": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "CompanyStructureEntity": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "DeleteNegotiableQuoteError": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "DeleteNegotiableQuoteOperationResult": {
+      "documentation": {
+        "undocumented": true
+      }
+    }
+  }
+}
