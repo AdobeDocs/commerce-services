@@ -10,7 +10,7 @@ keywords:
 
 The storefront events SDK serves as the foundation for eventing on an Adobe Commerce storefront. It provides access to a common data layer, and an event publishing and subscription service. You can use the [Adobe Commerce Event Collector](../collector/index.md) package to listen for the events and send them to Adobe Commerce for processing.
 
-This SDK can be used as a hosted script, or bundled in a JavaScript application. The script version is hosted on [cdn](https://cdn.jsdelivr.net/npm/@adobe/magento-storefront-events-sdk@1/dist/index.js), and the bundled version is hosted on [npm](https://www.npmjs.com/package/@adobe/magento-storefront-events-sdk).
+This SDK can be used as a hosted script, or bundled in a JavaScript application. The script version is hosted on [cdn](https://cdn.jsdelivr.net/npm/@adobe/magento-storefront-event-collector@1/dist/index.js), and the bundled version is hosted on [npm](https://www.npmjs.com/package/@adobe/magento-storefront-events-sdk).
 
 <InlineAlert variant="info" slots="text"/>
 
