@@ -5,7 +5,6 @@ keywords:
   - Events
   - Services
   - Storefront
-  - Reference
 ---
 
 # Event reference

@@ -88,8 +88,8 @@ This table describes the events used by each recommendation type.
 The Live Search module collects behavioral data from the following events:
 
 - [searchProductClick](./reference/storefront-events.md#searchproductclick)
-- [searchRequestSent](./reference/storefront-events.md#searchrequestsent) (also part of the [Data Connection](./reference/storefront-events.md#data-connection) list.)
-- [searchResponseReceived](./reference/storefront-events.md#searchresponsereceived) (also part of the [Data Connection](./reference/storefront-events.md#data-connection) list.)
+- [searchRequestSent](./reference/storefront-events.md#searchrequestsent) (also part of the [Data Connection](#data-connection) list.)
+- [searchResponseReceived](./reference/storefront-events.md#searchresponsereceived) (also part of the [Data Connection](#data-connection) list.)
 - [searchResultsView](./reference/storefront-events.md#searchresultsview)
 - [searchSuggestionClick](./reference/storefront-events.md#searchsuggestionclick)
 
@@ -175,7 +175,7 @@ The Data Connection module collects behavioral data from the following categorie
 
 #### Search
 
-These events are also part of the [Live Search](./reference/storefront-events.md#live-search) collection of events.
+These events are also part of the [Live Search](#live-search) collection of events.
 
 - [searchRequestSent](./reference/storefront-events.md#searchrequestsent)
 - [searchResponseReceived](./reference/storefront-events.md#searchresponsereceived)
