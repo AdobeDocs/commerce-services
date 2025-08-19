@@ -1,65 +1,40 @@
 module.exports = [
   {
-    title: "Cloud and Data Services",
+    title: "Merchandising Services",
     path: "/",
   },
   {
-    title: "Guides",
-    menu: [
-      {
-        title: "Commerce as a Cloud Service",
-        description: "Learn the basics of using the Commerce as a Cloud Service APIs.",
-        path: "/cloud/guides/",
-      },
-      {
-        title: "Catalog Service",
-        description: "Learn how Catalog Service implements GraphQL.",
-        path: "/graphql/catalog-service/",
-      },
-      {
-        title: "Live Search",
-        description: "Learn how Live Search implements GraphQL.",
-        path: "/graphql/live-search/"
-      },
-      {
-        title: "Product Recommendations",
-        description: "Learn how Product Recommendations implements GraphQL.",
-        path: "/graphql/recommendations/"
-      }
-    ],
+    title: "Developer Guide",
+    path: "/optimizer/"
   },
   {
     title: "API Reference",
     menu: [
       {
-        title: "Cloud Service - REST API",
-        description: "View the reference documentation for the REST API.",
-        path: "/reference/cloud/rest/",
+        title: "Catalog data ingestion REST API",
+        path: "/reference/rest/"
       },
       {
-        title: "Cloud Service - GraphQL API",
-        description: "View the reference documentation for the GraphQL API.",
-        path: "/reference/cloud/graphql/",
+        title: "Merchandising GraphQL API",
+        path: "/reference/graphql/"
       },
-    ],
+    ]
   },
   {
     title: "Events and SDKs",
     menu: [
       {
-        title: "Storefront Events and SDK",
-        description: "Learn about the events deployed to your storefront and how to use the Storefront Events SDK.",
-        path: "/shared-services/storefront-events/",
+        title: "Storefront Events SDK",
+        path: "/shared-services/storefront-events/"
       },
       {
         title: "Product Recommendations SDK",
-        description: "Learn how to use the Product Recommendations SDK.",
-        path: "/product-recommendations/",
+        path: "/product-recommendations/"
       },
-    ],
+    ]
   },
   {
     title: "Reporting",
-    path: "/reporting/",
-  },
+    path: "/reporting/"
+  }
 ];
