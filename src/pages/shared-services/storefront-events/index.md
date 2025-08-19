@@ -124,7 +124,7 @@ Some events are required to populate the [Live Search dashboard](https://experie
 
 #### Required contexts
 
-All events require the `Page` and `Storefront` contexts. This should happen at the page level/storefront application layer rather than when generating individual events (for example, in a PHP storefront, the PHP application container is responsible for setting them at runtime).
+All events require the `Page` and `Storefront` contexts. This should happen at the page level/storefront application layer rather than when generating individual events. For example, in a PHP storefront, the PHP application container is responsible for setting them at runtime.
 
 #### Usage
 

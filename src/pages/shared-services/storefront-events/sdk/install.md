@@ -14,7 +14,7 @@ This SDK can be used as a hosted script, or bundled in a JavaScript application.
 
 <InlineAlert variant="info" slots="text"/>
 
-If you are using the Data Connection module, you can skip this installation topic as the module [automatically deploys the SDK for you](https://experienceleague.adobe.com/en/docs/commerce/data-connection/fundamentals/connect-data#data-collection).
+If you are using the Data Connection module, you can skip the installation process because the module [automatically deploys the SDK for you](https://experienceleague.adobe.com/en/docs/commerce/data-connection/fundamentals/connect-data#data-collection).
 
 To load the SDK as a script, use the following snippet.
 
@@ -30,7 +30,7 @@ npm install @adobe/magento-storefront-events-sdk
 
 ### Confirm SDK is Available
 
-If you used the CDN to install the script, you need to confirm the SDK asset has downloaded successfully. You can check if the download was successful by running the following code:
+If you used the CDN to install the script, confirm that the SDK asset has downloaded successfully by running the following code:
 
 ```bash
 //Module Load
@@ -79,6 +79,6 @@ mse.unsubscribe.pageView(pageViewHandler);
 
 ## Support
 
-If you have any questions or encounter any issues, reach out here:
+If you have any questions or encounter any issues, create a GitHub issue in the Commerce Events repository:
 
--  [GitHub](https://github.com/adobe/commerce-events)
+-  [GitHub](https://github.com/adobe/commerce-events/issues/new)
