@@ -19,17 +19,17 @@ If you are using the Data Connection module, you can skip this topic as the modu
 
 The collector can be used as a hosted script, or bundled in a JavaScript application. The script version is hosted on [cdn](https://cdn.jsdelivr.net/npm/@adobe/magento-storefront-event-collector@1/dist/index.js), and the bundled version is hosted on [npm](https://www.npmjs.com/package/@adobe/magento-storefront-event-collector).
 
-To load the SDK as a script, use the following snippet.
+- **Use the collector as a hosted script**—Use the following snippet to load the script from the [JSDelivr CDN](https://www.jsdelivr.com/).
 
-```html
-<script src="https://cdn.jsdelivr.net/npm/@adobe/magento-storefront-event-collector@1/dist/index.js"></script>
-```
+  ```html
+  <script src="https://cdn.jsdelivr.net/npm/@adobe/magento-storefront-event-collector@1/dist/index.js"></script>
+  ```
 
-To install the script as a dependency, run this command.
+- **Use the bundled version**—Run the following command to install the script as a dependency.
 
-```bash
-npm install @adobe/magento-storefront-event-collector
-```
+  ```bash
+  npm install @adobe/magento-storefront-event-collector
+  ```
 
 <InlineAlert variant="info" slots="text"/>
 
