@@ -29,6 +29,9 @@ yarn-error.log
 .cache
 public
 
+# spectaql temporary files
+spectaql/*-temp.*
+
 # cypress
 cypress/videos
 cypress/screenshots
