@@ -15,7 +15,7 @@ hideBreadcrumbNav: true
 
 # Merchandising Services
 
-Use the Merchandising APIs and SDK to manage commerce catalog data for Adobe Commerce Optimizer, and use the data to create composable, scalable, and performant storefront experiences.
+Learn about the APIs and tools available to manage and use commerce catalog and event data programmatically.
 
 <Resources slots="heading, links"/>
 
@@ -47,15 +47,21 @@ Retrieve catalog data product, price, search, and recommendations data from Merc
 
 <DiscoverBlock slots="link, text"/>
 
-[Commerce Reporting API](reporting/)
-
-Import data into your Commerce data warehouse and export raw data from your Commerce Reporting dashboards.
-
-<DiscoverBlock slots="link, text"/>
-
 [Storefront Events and SDK](shared-services/storefront-events/)
 
 Learn about the events deployed to your storefront and how to publish, subscribe, and handle the events programmatically.
+
+<DiscoverBlock slots="link, text"/>
+
+[Product Recommendations SDK](product-recommendations/)
+
+Dynamically fetch and display personalized product recommendations in your storefront experience.
+
+<DiscoverBlock slots="link, text"/>
+
+[Commerce Reporting API](reporting/)
+
+Import data into your Commerce data warehouse and export raw data from your Commerce Reporting dashboards.
 
 ## Contributing to this documentation
 
