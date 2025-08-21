@@ -7,4 +7,4 @@ keywords:
 
 # Shared services
 
-Explore common tools and SDKs shared across Adobe Commerce services.
+Learn about the events deployed to your storefront and how to publish, subscribe, and handle the events programmatically.
