@@ -314,9 +314,7 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
               <h4 class="example-heading">Example</h4>
               <div class="example-section example-section-is-code operation-query-example">
                 <h5>Query</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">query</span> channel<span class="hljs-tag">(<span class="hljs-code">$channelId</span>:<span class="hljs-type"> String!</span>)</span> <span class="hljs-tag">{
+                <pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">query</span> channel<span class="hljs-tag">(<span class="hljs-code">$channelId</span>:<span class="hljs-type"> String!</span>)</span> <span class="hljs-tag">{
   <span class="hljs-symbol">channel<span class="hljs-tag">(channelId: <span class="hljs-code">$channelId</span>)</span> <span class="hljs-tag">{
     <span class="hljs-symbol">allowedPriceBookIds</span>
     <span class="hljs-symbol">channelId</span>
@@ -334,40 +332,30 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
   }</span></span>
 }</span></span>
 </code></pre>
-                  </body>
-                </html>
               </div>
               <div class="example-section example-section-is-code operation-variables-example">
                 <h5>Variables</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"channelId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">}</span>
+                <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"channelId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
-                </html>
               </div>
               <div class="example-section example-section-is-code operation-response-example">
                 <h5>Response</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+                <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
   <span class="hljs-attr">"data"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
     <span class="hljs-attr">"channel"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
-      <span class="hljs-attr">"allowedPriceBookIds"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"abc123"</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
-      <span class="hljs-attr">"channelId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"allowedPriceBookIds"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"channelId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
       <span class="hljs-attr">"createdAt"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
       <span class="hljs-attr">"defaultPriceBookId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
       <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
       <span class="hljs-attr">"policies"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">PolicyResponse</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
       <span class="hljs-attr">"policyIds"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"abc123"</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
       <span class="hljs-attr">"scopes"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">ChannelScopeResponse</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
-      <span class="hljs-attr">"updatedAt"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span>
+      <span class="hljs-attr">"updatedAt"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span>
     <span class="hljs-punctuation">}</span>
   <span class="hljs-punctuation">}</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
-                </html>
               </div>
             </div>
             <a href="#top">back to top</a>
@@ -566,9 +554,7 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
               <h4 class="example-heading">Example</h4>
               <div class="example-section example-section-is-code operation-query-example">
                 <h5>Query</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">query</span> channels <span class="hljs-tag">{
+                <pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">query</span> channels <span class="hljs-tag">{
   <span class="hljs-symbol">channels <span class="hljs-tag">{
     <span class="hljs-symbol">allowedPriceBookIds</span>
     <span class="hljs-symbol">channelId</span>
@@ -586,21 +572,17 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
   }</span></span>
 }</span></span>
 </code></pre>
-                  </body>
-                </html>
               </div>
               <div class="example-section example-section-is-code operation-response-example">
                 <h5>Response</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+                <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
   <span class="hljs-attr">"data"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
     <span class="hljs-attr">"channels"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
       <span class="hljs-punctuation">{</span>
-        <span class="hljs-attr">"allowedPriceBookIds"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">"allowedPriceBookIds"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"abc123"</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
         <span class="hljs-attr">"channelId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
-        <span class="hljs-attr">"createdAt"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
-        <span class="hljs-attr">"defaultPriceBookId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">"createdAt"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">"defaultPriceBookId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
         <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
         <span class="hljs-attr">"policies"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">PolicyResponse</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
         <span class="hljs-attr">"policyIds"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
@@ -611,8 +593,6 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
   <span class="hljs-punctuation">}</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
-                </html>
               </div>
             </div>
             <a href="#top">back to top</a>
@@ -721,9 +701,7 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
               <h4 class="example-heading">Example</h4>
               <div class="example-section example-section-is-code operation-query-example">
                 <h5>Query</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">query</span> policies <span class="hljs-tag">{
+                <pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">query</span> policies <span class="hljs-tag">{
   <span class="hljs-symbol">policies <span class="hljs-tag">{
     <span class="hljs-symbol">actions <span class="hljs-tag">{
       <span class="hljs-type">...ActionResponseFragment</span>
@@ -736,30 +714,24 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
   }</span></span>
 }</span></span>
 </code></pre>
-                  </body>
-                </html>
               </div>
               <div class="example-section example-section-is-code operation-response-example">
                 <h5>Response</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+                <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
   <span class="hljs-attr">"data"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
     <span class="hljs-attr">"policies"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
       <span class="hljs-punctuation">{</span>
         <span class="hljs-attr">"actions"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">ActionResponse</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
-        <span class="hljs-attr">"createdAt"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">"createdAt"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
         <span class="hljs-attr">"mandatory"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span>
-        <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
-        <span class="hljs-attr">"policyId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">"policyId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
         <span class="hljs-attr">"updatedAt"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span>
       <span class="hljs-punctuation">}</span>
     <span class="hljs-punctuation">]</span>
   <span class="hljs-punctuation">}</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
-                </html>
               </div>
             </div>
             <a href="#top">back to top</a>
@@ -920,9 +892,7 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
               <h4 class="example-heading">Example</h4>
               <div class="example-section example-section-is-code operation-query-example">
                 <h5>Query</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">query</span> policy<span class="hljs-tag">(<span class="hljs-code">$policyId</span>:<span class="hljs-type"> String!</span>)</span> <span class="hljs-tag">{
+                <pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">query</span> policy<span class="hljs-tag">(<span class="hljs-code">$policyId</span>:<span class="hljs-type"> String!</span>)</span> <span class="hljs-tag">{
   <span class="hljs-symbol">policy<span class="hljs-tag">(policyId: <span class="hljs-code">$policyId</span>)</span> <span class="hljs-tag">{
     <span class="hljs-symbol">actions <span class="hljs-tag">{
       <span class="hljs-type">...ActionResponseFragment</span>
@@ -935,37 +905,27 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
   }</span></span>
 }</span></span>
 </code></pre>
-                  </body>
-                </html>
               </div>
               <div class="example-section example-section-is-code operation-variables-example">
                 <h5>Variables</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"policyId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">}</span>
+                <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"policyId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
-                </html>
               </div>
               <div class="example-section example-section-is-code operation-response-example">
                 <h5>Response</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+                <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
   <span class="hljs-attr">"data"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
     <span class="hljs-attr">"policy"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
       <span class="hljs-attr">"actions"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">ActionResponse</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
-      <span class="hljs-attr">"createdAt"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"createdAt"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
       <span class="hljs-attr">"mandatory"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span>
-      <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
       <span class="hljs-attr">"policyId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
-      <span class="hljs-attr">"updatedAt"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span>
+      <span class="hljs-attr">"updatedAt"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span>
     <span class="hljs-punctuation">}</span>
   <span class="hljs-punctuation">}</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
-                </html>
               </div>
             </div>
             <a href="#top">back to top</a>
@@ -1038,9 +998,7 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
               <h4 class="example-heading">Example</h4>
               <div class="example-section example-section-is-code operation-query-example">
                 <h5>Query</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">query</span> priceBooks<span class="hljs-tag">(
+                <pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">query</span> priceBooks<span class="hljs-tag">(
   <span class="hljs-code">$scrollId</span>:<span class="hljs-type"> String,</span>
   <span class="hljs-code">$searchTerm</span>:<span class="hljs-type"> String,</span>
   <span class="hljs-code">$size</span>:<span class="hljs-type"> Int
@@ -1057,37 +1015,27 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
   }</span></span>
 }</span></span>
 </code></pre>
-                  </body>
-                </html>
               </div>
               <div class="example-section example-section-is-code operation-variables-example">
                 <h5>Variables</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+                <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
   <span class="hljs-attr">"scrollId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"searchTerm"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"size"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">123</span>
+  <span class="hljs-attr">"searchTerm"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"size"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">987</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
-                </html>
               </div>
               <div class="example-section example-section-is-code operation-response-example">
                 <h5>Response</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+                <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
   <span class="hljs-attr">"data"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
     <span class="hljs-attr">"priceBooks"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
       <span class="hljs-attr">"items"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">PriceBook</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
-      <span class="hljs-attr">"scrollId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span>
+      <span class="hljs-attr">"scrollId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span>
     <span class="hljs-punctuation">}</span>
   <span class="hljs-punctuation">}</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
-                </html>
               </div>
             </div>
             <a href="#top">back to top</a>
@@ -1144,9 +1092,7 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
               <h4 class="example-heading">Example</h4>
               <div class="example-section example-section-is-code operation-query-example">
                 <h5>Query</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">query</span> priceBooksByIds<span class="hljs-tag">(<span class="hljs-code">$ids</span>: <span class="hljs-type">[String!</span>]!)</span> <span class="hljs-tag">{
+                <pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">query</span> priceBooksByIds<span class="hljs-tag">(<span class="hljs-code">$ids</span>: <span class="hljs-type">[String!</span>]!)</span> <span class="hljs-tag">{
   <span class="hljs-symbol">priceBooksByIds<span class="hljs-tag">(ids: <span class="hljs-code">$ids</span>)</span> <span class="hljs-tag">{
     <span class="hljs-symbol">items <span class="hljs-tag">{
       <span class="hljs-type">...PriceBookFragment</span>
@@ -1155,23 +1101,15 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
   }</span></span>
 }</span></span>
 </code></pre>
-                  </body>
-                </html>
               </div>
               <div class="example-section example-section-is-code operation-variables-example">
                 <h5>Variables</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"ids"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"abc123"</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">}</span>
+                <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"ids"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
-                </html>
               </div>
               <div class="example-section example-section-is-code operation-response-example">
                 <h5>Response</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+                <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
   <span class="hljs-attr">"data"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
     <span class="hljs-attr">"priceBooksByIds"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
       <span class="hljs-attr">"items"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">PriceBook</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
@@ -1180,8 +1118,6 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
   <span class="hljs-punctuation">}</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
-                </html>
               </div>
             </div>
             <a href="#top">back to top</a>
@@ -1214,25 +1150,17 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
               <h4 class="example-heading">Example</h4>
               <div class="example-section example-section-is-code operation-query-example">
                 <h5>Query</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">query</span> scopes <span class="hljs-tag">{
+                <pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">query</span> scopes <span class="hljs-tag">{
   <span class="hljs-symbol">scopes <span class="hljs-tag">{
     <span class="hljs-symbol">locale</span>
   }</span></span>
 }</span></span>
 </code></pre>
-                  </body>
-                </html>
               </div>
               <div class="example-section example-section-is-code operation-response-example">
                 <h5>Response</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"data"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span><span class="hljs-attr">"scopes"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">{</span><span class="hljs-attr">"locale"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">}</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">}</span><span class="hljs-punctuation">}</span>
+                <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"data"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span><span class="hljs-attr">"scopes"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">{</span><span class="hljs-attr">"locale"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">}</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">}</span><span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
-                </html>
               </div>
             </div>
             <a href="#top">back to top</a>
@@ -1262,37 +1190,37 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                 </ul>
                 <p><strong>Example</strong></p>
                 <pre><code class="hljs">mutation {
-    <span class="hljs-title function_ invoke__">batchChannel</span>(<span class="hljs-attr">channels</span>: [
+    batchChannel(<span class="hljs-params">channels:</span> [
         {
-            <span class="hljs-attr">channelId</span>: <span class="hljs-string">&quot;844ed921&quot;</span>,
-            <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Channel Web/Online &amp; Offline&quot;</span>,
-            <span class="hljs-attr">allowedPriceBookIds</span>: [
+            <span class="hljs-params">channelId:</span> <span class="hljs-string">&quot;844ed921&quot;</span>,
+            <span class="hljs-params">name:</span> <span class="hljs-string">&quot;Channel Web/Online &amp; Offline&quot;</span>,
+            <span class="hljs-params">allowedPriceBookIds:</span> [
                 <span class="hljs-string">&quot;PBA&quot;</span>,
                 <span class="hljs-string">&quot;PBB&quot;</span>
             ],
-            <span class="hljs-attr">defaultPriceBookId</span>: <span class="hljs-string">&quot;PBA&quot;</span>,
-            <span class="hljs-attr">scopes</span>: [
-                { locale : <span class="hljs-string">&quot;en_US&quot;</span> },
-                { locale : <span class="hljs-string">&quot;en_UK&quot;</span> },
-                { locale : <span class="hljs-string">&quot;es_ES&quot;</span> }
+            <span class="hljs-params">defaultPriceBookId:</span> <span class="hljs-string">&quot;PBA&quot;</span>,
+            <span class="hljs-params">scopes:</span> [
+                { <span class="hljs-params">locale :</span> <span class="hljs-string">&quot;en_US&quot;</span> },
+                { <span class="hljs-params">locale :</span> <span class="hljs-string">&quot;en_UK&quot;</span> },
+                { <span class="hljs-params">locale :</span> <span class="hljs-string">&quot;es_ES&quot;</span> }
             ]
         },
         {
-            <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Offline Channel&quot;</span>,
-            <span class="hljs-attr">allowedPriceBookIds</span>: [
+            <span class="hljs-params">name:</span> <span class="hljs-string">&quot;Offline Channel&quot;</span>,
+            <span class="hljs-params">allowedPriceBookIds:</span> [
                 <span class="hljs-string">&quot;PBA&quot;</span>,
                 <span class="hljs-string">&quot;PBB&quot;</span>
             ],
-            <span class="hljs-attr">defaultPriceBookId</span>: <span class="hljs-string">&quot;PBB&quot;</span>,
-            <span class="hljs-attr">scopes</span>: [
-                { locale : <span class="hljs-string">&quot;en_UK&quot;</span> },
-                { locale : <span class="hljs-string">&quot;fr_FR&quot;</span> }
+            <span class="hljs-params">defaultPriceBookId:</span> <span class="hljs-string">&quot;PBB&quot;</span>,
+            <span class="hljs-params">scopes:</span> [
+                { <span class="hljs-params">locale :</span> <span class="hljs-string">&quot;en_UK&quot;</span> },
+                { <span class="hljs-params">locale :</span> <span class="hljs-string">&quot;fr_FR&quot;</span> }
             ],
-            policyIds : [
+            <span class="hljs-params">policyIds :</span> [
                 <span class="hljs-string">&quot;c1bcfed9-4096-4068-aab5-d88f6f39cfad&quot;</span>,
                 <span class="hljs-string">&quot;a3f4e403-a720-4b27-a266-d69099ae2421&quot;</span>
             ],
-            allowedPriceBookIds : [
+            <span class="hljs-params">allowedPriceBookIds :</span> [
                 <span class="hljs-string">&quot;c1bcfed9-4096-4068-aab5-d88f6f39cfad&quot;</span>,
                 <span class="hljs-string">&quot;a3f4e403-a720-4b27-a266-d69099ae2421&quot;</span>
             ]
@@ -1404,9 +1332,7 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
               <h4 class="example-heading">Example</h4>
               <div class="example-section example-section-is-code operation-query-example">
                 <h5>Query</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">mutation</span> batchChannel<span class="hljs-tag">(<span class="hljs-code">$channels</span>: <span class="hljs-type">[UpdateChannelRequest!</span>]!)</span> <span class="hljs-tag">{
+                <pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">mutation</span> batchChannel<span class="hljs-tag">(<span class="hljs-code">$channels</span>: <span class="hljs-type">[UpdateChannelRequest!</span>]!)</span> <span class="hljs-tag">{
   <span class="hljs-symbol">batchChannel<span class="hljs-tag">(channels: <span class="hljs-code">$channels</span>)</span> <span class="hljs-tag">{
     <span class="hljs-symbol">channels <span class="hljs-tag">{
       <span class="hljs-type">...ChannelResponseFragment</span>
@@ -1415,33 +1341,23 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
   }</span></span>
 }</span></span>
 </code></pre>
-                  </body>
-                </html>
               </div>
               <div class="example-section example-section-is-code operation-variables-example">
                 <h5>Variables</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"channels"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">UpdateChannelRequest</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">}</span>
+                <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"channels"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">UpdateChannelRequest</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
-                </html>
               </div>
               <div class="example-section example-section-is-code operation-response-example">
                 <h5>Response</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+                <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
   <span class="hljs-attr">"data"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
     <span class="hljs-attr">"batchChannel"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
       <span class="hljs-attr">"channels"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">ChannelResponse</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
-      <span class="hljs-attr">"errors"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"abc123"</span><span class="hljs-punctuation">]</span>
+      <span class="hljs-attr">"errors"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">]</span>
     <span class="hljs-punctuation">}</span>
   <span class="hljs-punctuation">}</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
-                </html>
               </div>
             </div>
             <a href="#top">back to top</a>
@@ -1593,9 +1509,7 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
               <h4 class="example-heading">Example</h4>
               <div class="example-section example-section-is-code operation-query-example">
                 <h5>Query</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">mutation</span> batchPolicy<span class="hljs-tag">(<span class="hljs-code">$policies</span>: <span class="hljs-type">[UpdatePolicyRequest!</span>]!)</span> <span class="hljs-tag">{
+                <pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">mutation</span> batchPolicy<span class="hljs-tag">(<span class="hljs-code">$policies</span>: <span class="hljs-type">[UpdatePolicyRequest!</span>]!)</span> <span class="hljs-tag">{
   <span class="hljs-symbol">batchPolicy<span class="hljs-tag">(policies: <span class="hljs-code">$policies</span>)</span> <span class="hljs-tag">{
     <span class="hljs-symbol">errors</span>
     <span class="hljs-symbol">policies <span class="hljs-tag">{
@@ -1604,23 +1518,15 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
   }</span></span>
 }</span></span>
 </code></pre>
-                  </body>
-                </html>
               </div>
               <div class="example-section example-section-is-code operation-variables-example">
                 <h5>Variables</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"policies"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">UpdatePolicyRequest</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">}</span>
+                <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"policies"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">UpdatePolicyRequest</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
-                </html>
               </div>
               <div class="example-section example-section-is-code operation-response-example">
                 <h5>Response</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+                <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
   <span class="hljs-attr">"data"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
     <span class="hljs-attr">"batchPolicy"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
       <span class="hljs-attr">"errors"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"abc123"</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
@@ -1629,8 +1535,6 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
   <span class="hljs-punctuation">}</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
-                </html>
               </div>
             </div>
             <a href="#top">back to top</a>
@@ -1665,37 +1569,37 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
                 <ol>
                   <li>Create a new channel:</li>
                 </ol>
-                <pre><code class="hljs"><span class="hljs-symbol"><span class="hljs-keyword">mutation</span> <span class="hljs-tag">{
-    <span class="hljs-symbol">createChannel<span class="hljs-tag">(
-        channelRequest: {
-            name: <span class="hljs-type">&quot;Channel </span>Web<span class="hljs-type">/Online&quot;</span>,
-            scopes: [
-                { locale: &quot;en_US&quot; },
-                { locale: &quot;en_UK&quot; }
+                <pre><code class="hljs">mutation {
+    createChannel(
+        <span class="hljs-params">channelRequest:</span> {
+            <span class="hljs-params">name:</span> <span class="hljs-string">&quot;Channel Web/Online&quot;</span>,
+            <span class="hljs-params">scopes:</span> [
+                { <span class="hljs-params">locale:</span> <span class="hljs-string">&quot;en_US&quot;</span> },
+                { <span class="hljs-params">locale:</span> <span class="hljs-string">&quot;en_UK&quot;</span> }
             ]
-            policyIds : [
-                &quot;<span class="hljs-number">6</span>f8b5a55-b97c-<span class="hljs-number">481</span>a-<span class="hljs-number">94</span>f3-<span class="hljs-number">5</span>a813821c787&quot;,
-                &quot;<span class="hljs-number">63992079</span>-<span class="hljs-number">52</span>b5-<span class="hljs-number">49</span>b2-a739-<span class="hljs-number">312</span>a079c19b7&quot;,
+            <span class="hljs-params">policyIds :</span> [
+                <span class="hljs-string">&quot;6f8b5a55-b97c-481a-94f3-5a813821c787&quot;</span>,
+                <span class="hljs-string">&quot;63992079-52b5-49b2-a739-312a079c19b7&quot;</span>,
             ],
-            allowedPriceBookIds : [
-                &quot;c1bcfed9-<span class="hljs-number">4096</span>-<span class="hljs-number">4068</span>-aab5-d88f6f39cfad&quot;,
-                &quot;a3f4e403-a720-<span class="hljs-number">4</span>b27-a266-d69099ae2421&quot;
+            <span class="hljs-params">allowedPriceBookIds :</span> [
+                <span class="hljs-string">&quot;c1bcfed9-4096-4068-aab5-d88f6f39cfad&quot;</span>,
+                <span class="hljs-string">&quot;a3f4e403-a720-4b27-a266-d69099ae2421&quot;</span>
             ],
-            defaultPriceBookId: &quot;PBA&quot;
+            <span class="hljs-params">defaultPriceBookId:</span> <span class="hljs-string">&quot;PBA&quot;</span>
         }
-    )</span> <span class="hljs-tag">{
-        <span class="hljs-symbol">channelId</span>
-        <span class="hljs-symbol">name</span>
-        <span class="hljs-symbol">scopes <span class="hljs-tag">{
-          <span class="hljs-symbol">locale</span>
-        }</span></span>
-        <span class="hljs-symbol">policyIds</span>
-        <span class="hljs-symbol">allowedPriceBookIds</span>
-        <span class="hljs-symbol">defaultPriceBookId</span>
-        <span class="hljs-symbol">createdAt</span>
-        <span class="hljs-symbol">updatedAt</span>
-    }</span></span>
-}</span></span>
+    ) {
+        channelId
+        name
+        scopes {
+          locale
+        }
+        policyIds
+        allowedPriceBookIds
+        defaultPriceBookId
+        createdAt
+        updatedAt
+    }
+}
 </code></pre>
                 <p><strong>Response</strong></p>
                 <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
@@ -1897,9 +1801,7 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
               <h4 class="example-heading">Example</h4>
               <div class="example-section example-section-is-code operation-query-example">
                 <h5>Query</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">mutation</span> createChannel<span class="hljs-tag">(<span class="hljs-code">$channelRequest</span>:<span class="hljs-type"> CreateChannelRequest!</span>)</span> <span class="hljs-tag">{
+                <pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">mutation</span> createChannel<span class="hljs-tag">(<span class="hljs-code">$channelRequest</span>:<span class="hljs-type"> CreateChannelRequest!</span>)</span> <span class="hljs-tag">{
   <span class="hljs-symbol">createChannel<span class="hljs-tag">(channelRequest: <span class="hljs-code">$channelRequest</span>)</span> <span class="hljs-tag">{
     <span class="hljs-symbol">allowedPriceBookIds</span>
     <span class="hljs-symbol">channelId</span>
@@ -1917,40 +1819,30 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
   }</span></span>
 }</span></span>
 </code></pre>
-                  </body>
-                </html>
               </div>
               <div class="example-section example-section-is-code operation-variables-example">
                 <h5>Variables</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"channelRequest"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">CreateChannelRequest</span><span class="hljs-punctuation">}</span>
+                <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"channelRequest"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">CreateChannelRequest</span><span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
-                </html>
               </div>
               <div class="example-section example-section-is-code operation-response-example">
                 <h5>Response</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+                <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
   <span class="hljs-attr">"data"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
     <span class="hljs-attr">"createChannel"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
-      <span class="hljs-attr">"allowedPriceBookIds"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"allowedPriceBookIds"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"abc123"</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
       <span class="hljs-attr">"channelId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
-      <span class="hljs-attr">"createdAt"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
-      <span class="hljs-attr">"defaultPriceBookId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
-      <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"createdAt"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"defaultPriceBookId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
       <span class="hljs-attr">"policies"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">PolicyResponse</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
-      <span class="hljs-attr">"policyIds"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"abc123"</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"policyIds"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
       <span class="hljs-attr">"scopes"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">ChannelScopeResponse</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
       <span class="hljs-attr">"updatedAt"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span>
     <span class="hljs-punctuation">}</span>
   <span class="hljs-punctuation">}</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
-                </html>
               </div>
             </div>
             <a href="#top">back to top</a>
@@ -2114,9 +2006,7 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
               <h4 class="example-heading">Example</h4>
               <div class="example-section example-section-is-code operation-query-example">
                 <h5>Query</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">mutation</span> createPolicy<span class="hljs-tag">(<span class="hljs-code">$policyRequest</span>:<span class="hljs-type"> CreatePolicyRequest!</span>)</span> <span class="hljs-tag">{
+                <pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">mutation</span> createPolicy<span class="hljs-tag">(<span class="hljs-code">$policyRequest</span>:<span class="hljs-type"> CreatePolicyRequest!</span>)</span> <span class="hljs-tag">{
   <span class="hljs-symbol">createPolicy<span class="hljs-tag">(policyRequest: <span class="hljs-code">$policyRequest</span>)</span> <span class="hljs-tag">{
     <span class="hljs-symbol">actions <span class="hljs-tag">{
       <span class="hljs-type">...ActionResponseFragment</span>
@@ -2129,28 +2019,20 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
   }</span></span>
 }</span></span>
 </code></pre>
-                  </body>
-                </html>
               </div>
               <div class="example-section example-section-is-code operation-variables-example">
                 <h5>Variables</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"policyRequest"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">CreatePolicyRequest</span><span class="hljs-punctuation">}</span>
+                <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"policyRequest"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">CreatePolicyRequest</span><span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
-                </html>
               </div>
               <div class="example-section example-section-is-code operation-response-example">
                 <h5>Response</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+                <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
   <span class="hljs-attr">"data"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
     <span class="hljs-attr">"createPolicy"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
       <span class="hljs-attr">"actions"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">ActionResponse</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
-      <span class="hljs-attr">"createdAt"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
-      <span class="hljs-attr">"mandatory"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"createdAt"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"mandatory"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span><span class="hljs-punctuation">,</span>
       <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
       <span class="hljs-attr">"policyId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
       <span class="hljs-attr">"updatedAt"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span>
@@ -2158,8 +2040,6 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
   <span class="hljs-punctuation">}</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
-                </html>
               </div>
             </div>
             <a href="#top">back to top</a>
@@ -2263,32 +2143,20 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
               <h4 class="example-heading">Example</h4>
               <div class="example-section example-section-is-code operation-query-example">
                 <h5>Query</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">mutation</span> deleteChannel<span class="hljs-tag">(<span class="hljs-code">$channelId</span>:<span class="hljs-type"> String!</span>)</span> <span class="hljs-tag">{
+                <pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">mutation</span> deleteChannel<span class="hljs-tag">(<span class="hljs-code">$channelId</span>:<span class="hljs-type"> String!</span>)</span> <span class="hljs-tag">{
   <span class="hljs-symbol">deleteChannel<span class="hljs-tag">(channelId: <span class="hljs-code">$channelId</span>)</span></span>
 }</span></span>
 </code></pre>
-                  </body>
-                </html>
               </div>
               <div class="example-section example-section-is-code operation-variables-example">
                 <h5>Variables</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"channelId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">}</span>
+                <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"channelId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
-                </html>
               </div>
               <div class="example-section example-section-is-code operation-response-example">
                 <h5>Response</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"data"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span><span class="hljs-attr">"deleteChannel"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">}</span><span class="hljs-punctuation">}</span>
+                <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"data"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span><span class="hljs-attr">"deleteChannel"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">}</span><span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
-                </html>
               </div>
             </div>
             <a href="#top">back to top</a>
@@ -2390,32 +2258,20 @@ Authorization: Bearer &lt;YOUR_TOKEN_HERE&gt;</code></pre>
               <h4 class="example-heading">Example</h4>
               <div class="example-section example-section-is-code operation-query-example">
                 <h5>Query</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">mutation</span> deletePolicy<span class="hljs-tag">(<span class="hljs-code">$policyId</span>:<span class="hljs-type"> String!</span>)</span> <span class="hljs-tag">{
+                <pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">mutation</span> deletePolicy<span class="hljs-tag">(<span class="hljs-code">$policyId</span>:<span class="hljs-type"> String!</span>)</span> <span class="hljs-tag">{
   <span class="hljs-symbol">deletePolicy<span class="hljs-tag">(policyId: <span class="hljs-code">$policyId</span>)</span></span>
 }</span></span>
 </code></pre>
-                  </body>
-                </html>
               </div>
               <div class="example-section example-section-is-code operation-variables-example">
                 <h5>Variables</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"policyId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">}</span>
+                <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"policyId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
-                </html>
               </div>
               <div class="example-section example-section-is-code operation-response-example">
                 <h5>Response</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"data"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span><span class="hljs-attr">"deletePolicy"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">}</span><span class="hljs-punctuation">}</span>
+                <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"data"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span><span class="hljs-attr">"deletePolicy"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">}</span><span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
-                </html>
               </div>
             </div>
             <a href="#top">back to top</a>
@@ -2526,9 +2382,7 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
               <h4 class="example-heading">Example</h4>
               <div class="example-section example-section-is-code operation-query-example">
                 <h5>Query</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">mutation</span> updateChannel<span class="hljs-tag">(<span class="hljs-code">$channelRequest</span>:<span class="hljs-type"> UpdateChannelRequest!</span>)</span> <span class="hljs-tag">{
+                <pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">mutation</span> updateChannel<span class="hljs-tag">(<span class="hljs-code">$channelRequest</span>:<span class="hljs-type"> UpdateChannelRequest!</span>)</span> <span class="hljs-tag">{
   <span class="hljs-symbol">updateChannel<span class="hljs-tag">(channelRequest: <span class="hljs-code">$channelRequest</span>)</span> <span class="hljs-tag">{
     <span class="hljs-symbol">allowedPriceBookIds</span>
     <span class="hljs-symbol">channelId</span>
@@ -2546,30 +2400,22 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
   }</span></span>
 }</span></span>
 </code></pre>
-                  </body>
-                </html>
               </div>
               <div class="example-section example-section-is-code operation-variables-example">
                 <h5>Variables</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"channelRequest"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">UpdateChannelRequest</span><span class="hljs-punctuation">}</span>
+                <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"channelRequest"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">UpdateChannelRequest</span><span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
-                </html>
               </div>
               <div class="example-section example-section-is-code operation-response-example">
                 <h5>Response</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+                <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
   <span class="hljs-attr">"data"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
     <span class="hljs-attr">"updateChannel"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
-      <span class="hljs-attr">"allowedPriceBookIds"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"abc123"</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"allowedPriceBookIds"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
       <span class="hljs-attr">"channelId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
       <span class="hljs-attr">"createdAt"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
       <span class="hljs-attr">"defaultPriceBookId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
-      <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
       <span class="hljs-attr">"policies"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">PolicyResponse</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
       <span class="hljs-attr">"policyIds"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"abc123"</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
       <span class="hljs-attr">"scopes"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">ChannelScopeResponse</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
@@ -2578,8 +2424,6 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
   <span class="hljs-punctuation">}</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
-                </html>
               </div>
             </div>
             <a href="#top">back to top</a>
@@ -2794,9 +2638,7 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
               <h4 class="example-heading">Example</h4>
               <div class="example-section example-section-is-code operation-query-example">
                 <h5>Query</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">mutation</span> updatePolicy<span class="hljs-tag">(<span class="hljs-code">$policyRequest</span>:<span class="hljs-type"> UpdatePolicyRequest!</span>)</span> <span class="hljs-tag">{
+                <pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">mutation</span> updatePolicy<span class="hljs-tag">(<span class="hljs-code">$policyRequest</span>:<span class="hljs-type"> UpdatePolicyRequest!</span>)</span> <span class="hljs-tag">{
   <span class="hljs-symbol">updatePolicy<span class="hljs-tag">(policyRequest: <span class="hljs-code">$policyRequest</span>)</span> <span class="hljs-tag">{
     <span class="hljs-symbol">actions <span class="hljs-tag">{
       <span class="hljs-type">...ActionResponseFragment</span>
@@ -2809,37 +2651,27 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
   }</span></span>
 }</span></span>
 </code></pre>
-                  </body>
-                </html>
               </div>
               <div class="example-section example-section-is-code operation-variables-example">
                 <h5>Variables</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"policyRequest"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">UpdatePolicyRequest</span><span class="hljs-punctuation">}</span>
+                <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"policyRequest"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">UpdatePolicyRequest</span><span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
-                </html>
               </div>
               <div class="example-section example-section-is-code operation-response-example">
                 <h5>Response</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+                <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
   <span class="hljs-attr">"data"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
     <span class="hljs-attr">"updatePolicy"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
       <span class="hljs-attr">"actions"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">ActionResponse</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
       <span class="hljs-attr">"createdAt"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
       <span class="hljs-attr">"mandatory"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span><span class="hljs-punctuation">,</span>
-      <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
       <span class="hljs-attr">"policyId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
       <span class="hljs-attr">"updatedAt"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span>
     <span class="hljs-punctuation">}</span>
   <span class="hljs-punctuation">}</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
-                </html>
               </div>
             </div>
             <a href="#top">back to top</a>
@@ -2899,12 +2731,8 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
             <div class="doc-examples">
               <div class="example-section example-section-is-code">
                 <h5>Example</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-gql"><span class="hljs-symbol">"EQUALS"</span>
+                <pre><code class="hljs language-gql"><span class="hljs-symbol">"EQUALS"</span>
 </code></pre>
-                  </body>
-                </html>
               </div>
             </div>
             <a href="#top">back to top</a>
@@ -2981,19 +2809,15 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
             <div class="doc-examples">
               <div class="example-section example-section-is-code">
                 <h5>Example</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+                <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
   <span class="hljs-attr">"actionFilterOperator"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"EQUALS"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"attribute"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"enabled"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"enabled"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"value"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"valueSource"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"STATIC"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"values"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"abc123"</span><span class="hljs-punctuation">]</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
-                </html>
               </div>
             </div>
             <a href="#top">back to top</a>
@@ -3058,19 +2882,15 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
             <div class="doc-examples">
               <div class="example-section example-section-is-code">
                 <h5>Example</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+                <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
   <span class="hljs-attr">"actionFilterOperator"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"EQUALS"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"attribute"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"enabled"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"value"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"enabled"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"value"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"valueSource"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"STATIC"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"values"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"abc123"</span><span class="hljs-punctuation">]</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
-                </html>
               </div>
             </div>
             <a href="#top">back to top</a>
@@ -3118,12 +2938,8 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
             <div class="doc-examples">
               <div class="example-section example-section-is-code">
                 <h5>Example</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-gql"><span class="hljs-symbol">"STATIC"</span>
+                <pre><code class="hljs language-gql"><span class="hljs-symbol">"STATIC"</span>
 </code></pre>
-                  </body>
-                </html>
               </div>
             </div>
             <a href="#top">back to top</a>
@@ -3169,15 +2985,11 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
             <div class="doc-examples">
               <div class="example-section example-section-is-code">
                 <h5>Example</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+                <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
   <span class="hljs-attr">"filters"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">ActionFilterRequest</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"triggers"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">TriggerRequest</span><span class="hljs-punctuation">]</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
-                </html>
               </div>
             </div>
             <a href="#top">back to top</a>
@@ -3221,15 +3033,11 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
             <div class="doc-examples">
               <div class="example-section example-section-is-code">
                 <h5>Example</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+                <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
   <span class="hljs-attr">"filters"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">ActionFilterResponse</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"triggers"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">TriggerResponse</span><span class="hljs-punctuation">]</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
-                </html>
               </div>
             </div>
             <a href="#top">back to top</a>
@@ -3273,15 +3081,11 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
             <div class="doc-examples">
               <div class="example-section example-section-is-code">
                 <h5>Example</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+                <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
   <span class="hljs-attr">"channels"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">ChannelResponse</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"errors"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"abc123"</span><span class="hljs-punctuation">]</span>
+  <span class="hljs-attr">"errors"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">]</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
-                </html>
               </div>
             </div>
             <a href="#top">back to top</a>
@@ -3325,15 +3129,11 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
             <div class="doc-examples">
               <div class="example-section example-section-is-code">
                 <h5>Example</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
-  <span class="hljs-attr">"errors"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"abc123"</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+                <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"errors"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"policies"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">PolicyResponse</span><span class="hljs-punctuation">]</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
-                </html>
               </div>
             </div>
             <a href="#top">back to top</a>
@@ -3429,22 +3229,18 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
             <div class="doc-examples">
               <div class="example-section example-section-is-code">
                 <h5>Example</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
-  <span class="hljs-attr">"allowedPriceBookIds"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"abc123"</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+                <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"allowedPriceBookIds"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"channelId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"createdAt"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"defaultPriceBookId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"defaultPriceBookId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"policies"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">PolicyResponse</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"policyIds"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"abc123"</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"policyIds"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"scopes"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">ChannelScopeResponse</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"updatedAt"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span>
+  <span class="hljs-attr">"updatedAt"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
-                </html>
               </div>
             </div>
             <a href="#top">back to top</a>
@@ -3481,12 +3277,8 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
             <div class="doc-examples">
               <div class="example-section example-section-is-code">
                 <h5>Example</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"locale"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">}</span>
+                <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"locale"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
-                </html>
               </div>
             </div>
             <a href="#top">back to top</a>
@@ -3522,12 +3314,8 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
             <div class="doc-examples">
               <div class="example-section example-section-is-code">
                 <h5>Example</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"locale"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">}</span>
+                <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"locale"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
-                </html>
               </div>
             </div>
             <a href="#top">back to top</a>
@@ -3591,18 +3379,14 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
             <div class="doc-examples">
               <div class="example-section example-section-is-code">
                 <h5>Example</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
-  <span class="hljs-attr">"allowedPriceBookIds"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"abc123"</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"defaultPriceBookId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
+                <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"allowedPriceBookIds"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"defaultPriceBookId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"policyIds"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"scopes"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">ChannelScopeRequest</span><span class="hljs-punctuation">]</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
-                </html>
               </div>
             </div>
             <a href="#top">back to top</a>
@@ -3654,16 +3438,12 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
             <div class="doc-examples">
               <div class="example-section example-section-is-code">
                 <h5>Example</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+                <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
   <span class="hljs-attr">"actions"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">ActionRequest</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"mandatory"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span>
+  <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
-                </html>
               </div>
             </div>
             <a href="#top">back to top</a>
@@ -3684,12 +3464,8 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
             <div class="doc-examples">
               <div class="example-section example-section-is-code">
                 <h5>Example</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-number">123</span>
+                <pre><code class="hljs language-json"><span class="hljs-number">123</span>
 </code></pre>
-                  </body>
-                </html>
               </div>
             </div>
             <a href="#top">back to top</a>
@@ -3753,19 +3529,15 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
             <div class="doc-examples">
               <div class="example-section example-section-is-code">
                 <h5>Example</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+                <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
   <span class="hljs-attr">"actions"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">ActionResponse</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"createdAt"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"mandatory"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"mandatory"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"policyId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"updatedAt"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
-                </html>
               </div>
             </div>
             <a href="#top">back to top</a>
@@ -3828,19 +3600,15 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
             <div class="doc-examples">
               <div class="example-section example-section-is-code">
                 <h5>Example</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
-  <span class="hljs-attr">"currency"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
+                <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"currency"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"level"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">987</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"level"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">123</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"modifiedAt"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"parentIds"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">]</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
-                </html>
               </div>
             </div>
             <a href="#top">back to top</a>
@@ -3880,15 +3648,11 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
             <div class="doc-examples">
               <div class="example-section example-section-is-code">
                 <h5>Example</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+                <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
   <span class="hljs-attr">"items"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">PriceBook</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"scrollId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
-                </html>
               </div>
             </div>
             <a href="#top">back to top</a>
@@ -3924,12 +3688,8 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
             <div class="doc-examples">
               <div class="example-section example-section-is-code">
                 <h5>Example</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"locale"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">}</span>
+                <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"locale"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
-                </html>
               </div>
             </div>
             <a href="#top">back to top</a>
@@ -3950,12 +3710,8 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
             <div class="doc-examples">
               <div class="example-section example-section-is-code">
                 <h5>Example</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-gql"><span class="hljs-symbol">"abc123"</span>
+                <pre><code class="hljs language-gql"><span class="hljs-symbol">"xyz789"</span>
 </code></pre>
-                  </body>
-                </html>
               </div>
             </div>
             <a href="#top">back to top</a>
@@ -3996,12 +3752,8 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
             <div class="doc-examples">
               <div class="example-section example-section-is-code">
                 <h5>Example</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-gql"><span class="hljs-symbol">"HTTP_HEADER"</span>
+                <pre><code class="hljs language-gql"><span class="hljs-symbol">"HTTP_HEADER"</span>
 </code></pre>
-                  </body>
-                </html>
               </div>
             </div>
             <a href="#top">back to top</a>
@@ -4047,15 +3799,11 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
             <div class="doc-examples">
               <div class="example-section example-section-is-code">
                 <h5>Example</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+                <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
   <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"transportType"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"HTTP_HEADER"</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
-                </html>
               </div>
             </div>
             <a href="#top">back to top</a>
@@ -4099,15 +3847,11 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
             <div class="doc-examples">
               <div class="example-section example-section-is-code">
                 <h5>Example</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
-  <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
+                <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"transportType"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"HTTP_HEADER"</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
-                </html>
               </div>
             </div>
             <a href="#top">back to top</a>
@@ -4177,19 +3921,15 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
             <div class="doc-examples">
               <div class="example-section example-section-is-code">
                 <h5>Example</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
-  <span class="hljs-attr">"allowedPriceBookIds"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"channelId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
+                <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"allowedPriceBookIds"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"abc123"</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"channelId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"defaultPriceBookId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"policyIds"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"scopes"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">ChannelScopeRequest</span><span class="hljs-punctuation">]</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
-                </html>
               </div>
             </div>
             <a href="#top">back to top</a>
@@ -4247,17 +3987,13 @@ is <span class="hljs-keyword">an</span> all-<span class="hljs-keyword">or</span>
             <div class="doc-examples">
               <div class="example-section example-section-is-code">
                 <h5>Example</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+                <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
   <span class="hljs-attr">"actions"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">ActionRequest</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"mandatory"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"policyId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
-                  </body>
-                </html>
               </div>
             </div>
             <a href="#top">back to top</a>

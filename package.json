@@ -8,9 +8,11 @@
   },
   "dependencies": {
     "@adobe/gatsby-theme-aio": "4.15.3",
+    "dotenv": "^17.2.1",
     "gatsby": "4.22.0",
     "react": "^17.0.0",
-    "react-dom": "^17.0.0"
+    "react-dom": "^17.0.0",
+    "spectaql": "^3.0.5"
   },
   "devDependencies": {
     "browserslist": "latest",
@@ -31,8 +33,8 @@
     "test": "remark src/pages --frail",
     "build:admin-api": "spectaql --target-file index.html --config spectaql/config-admin.yml",
     "dev:admin-api": "spectaql --target-file index.html --config spectaql/config-admin.yml --development-mode",
-    "build:merchandising-api": "spectaql --target-file index.html --config spectaql/config-merchandising.yml",
-    "dev:merchandising-api": "spectaql --target-file index.html --config spectaql/config-merchandising.yml --development-mode",
+    "build:merchandising-api": "node scripts/run-spectaql-with-cleanup.js --target-file index.html --config spectaql/config-merchandising-temp.yml",
+    "dev:merchandising-api": "node scripts/run-spectaql-with-cleanup.js --target-file index.html --config spectaql/config-merchandising-temp.yml --development-mode",
     "build:graphql": "yarn build:admin-api && yarn build:merchandising-api",
     "lint": "docker run --rm -e RUN_LOCAL=true --env-file .github/super-linter.env -v \"$PWD\":/tmp/lint github/super-linter:slim-v5"
   },
