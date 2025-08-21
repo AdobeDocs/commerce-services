@@ -25,11 +25,10 @@ servers:
          - na-1 # Sandbox only
          - eu-1
       environment:
-        default: api    # Production server
+        default: sandbox    # Sandbox server
         enum:
-          - api         # Production server
-          - sandbox.api     # Development server
-          - api.staging # Staging server
+          - api          # Production server
+          - sandbox.api  # Development server
 tags:
   - name: Metadata
     description: |
