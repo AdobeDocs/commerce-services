@@ -15,10 +15,8 @@ info:
     - <strong>[Prices](#tag/Prices)</strong>—define and manage product SKU prices and their associated price books.
   version: 1.0.0
 servers:
-  - url: https://{{region}}-{{environment}}.commerce.adobe.com/{tenantId}
+  - url: https://{region){environment}.commerce.adobe.com/{tenantId}
     variables:
-      tenantId:
-        default: string
       region:
         default: na-1
         enum:
@@ -29,6 +27,8 @@ servers:
         enum:
           - api          # Production server
           - sandbox.api  # Development server
+      tenantId:
+        default: string
 tags:
   - name: Metadata
     description: |
