@@ -31,10 +31,6 @@ module.exports = [
         title: "Product Recommendations SDK",
         path: "/product-recommendations/"
       },
-      {
-        title: "Live Search Events",
-        path: "/live-search/"
-      },
     ]
   },
   {

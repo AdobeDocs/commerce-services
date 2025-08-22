@@ -15,7 +15,7 @@ hideBreadcrumbNav: true
 
 # Merchandising Services
 
-Use the Merchandising APIs and SDK to manage commerce catalog data for Adobe Commerce Optimizer, and use the data to create composable, scalable, and performant storefront experiences.
+Learn about the APIs and tools available to manage and use commerce catalog and event data programmatically.
 
 <Resources slots="heading, links"/>
 
@@ -47,15 +47,9 @@ Retrieve catalog data product, price, search, and recommendations data from Merc
 
 <DiscoverBlock slots="link, text"/>
 
-[Storefront Events SDK](shared-services/storefront-events/)
+[Storefront Events and SDK](shared-services/storefront-events/)
 
-Explore common tools and SDKs shared across Merchandising Services.
-
-<DiscoverBlock slots="link, text"/>
-
-[Live Search Events](live-search/)
-
-Learn about the events defined in the Adobe Commerce Event SDK that are applicable to Live Search.
+Learn about the events deployed to your storefront and how to publish, subscribe, and handle the events programmatically.
 
 <DiscoverBlock slots="link, text"/>
 
