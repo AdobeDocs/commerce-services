@@ -49,6 +49,10 @@ Although Product Recommendation metrics are optimized for Luma storefronts, they
 
 The following events are required to populate the [Product Recommendations dashboard](https://experienceleague.adobe.com/en/docs/commerce/product-recommendations/admin/workspace).
 
+<InlineAlert variant="info" slots="text"/>
+
+If your dashboard does not display any statistics, ensure that the required events are implemented and being tracked on your site. See [Verify event collection](collector/verify.md).
+
 | Dashboard column | Events    | Join field  |
 | ---------------- | --------- | ----------- |
 | Impressions      |`page-view`, `recs-request-sent`, `recs-response-received`, `recs-unit-render` | `unitId`  |
@@ -111,6 +115,10 @@ Data collection for the purposes of Live Search does not include personally iden
 #### Required dashboard events
 
 Some events are required to populate the [Live Search dashboard](https://experienceleague.adobe.com/en/docs/commerce/live-search/live-search-admin/performance).
+
+<InlineAlert variant="info" slots="text"/>
+
+If your dashboard does not display any statistics, ensure that the required events are implemented and being tracked on your site. See [Verify event collection](collector/verify.md).
 
 | Dashboard area        | Events      | Join field |
 | ------------------- | ------------- | ---------- |
