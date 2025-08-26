@@ -115,7 +115,9 @@ introspection:
 
   # URL of the GraphQL endpoint to hit if you want to generate the documentation based on live Introspection Query results
   # NOTE: If not using introspection.url OR servers[], you need to provide x-url below
-  url: https://na1-sandbox.api.commerce.adobe.com/tenant-id/graphql
+  url: https://na1-sandbox.api.commerce.adobe.com/${TENANT_ID}/graphql # TENANT_ID should be set as an environment variable. This value was previously hardcoded for the Instructor Instance in the Adobe Commerce Optimizer org.
+  exclude:
+    excludeMutations: true
   #
   #
   ##############################################
@@ -202,7 +204,7 @@ introspection:
   #
 
   # File that contains your metadata data in JS module export, or JSON format
-  metadataFile: spectaql/metadata-merchandising.json
+  metadataFile: spectaql/metadata-merchandising.json  # This file provides the configuration to filter the API reference to include only queries and types used to retrieve catalog data.
 
   # The path to a key from which to read the documentation-related metadata at each level of your metadata file.
   # Defaults to 'documentation', but in case you use a different name, or have a complex/nested metadata structure, you can
@@ -279,13 +281,13 @@ introspection:
 
   # Whether to document any Mutations at all, in the absence of a metadata directive
   # Default: true
-  mutationsDocumentedDefault: true
+  mutationsDocumentedDefault: false   # Merchandising API is read-only, so no mutations are documented.
   # Whether to document an individual Mutation, in the absence of a metadata directive
   # Default: true
-  mutationDocumentedDefault: true
+  mutationDocumentedDefault: false
   # Whether to document a Mutation Argument, in the absence of a metadata directive
   # Default: true
-  mutationArgDocumentedDefault: true
+  mutationArgDocumentedDefault: false
   # Hide any Mutations with undocumented return types so as not to reference something
   # that seemingly does not exist.
   # Default: true

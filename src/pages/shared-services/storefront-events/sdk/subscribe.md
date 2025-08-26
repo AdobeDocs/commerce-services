@@ -7,7 +7,7 @@ keywords:
   - Storefront
 ---
 
-Subscribe to storefront events
+# Subscribe to storefront events
 
 ## Functions
 

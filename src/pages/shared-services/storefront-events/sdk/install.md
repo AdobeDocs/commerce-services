@@ -1,0 +1,84 @@
+---
+title: Install the Storefront Events SDK | Commerce Services 
+description: Learn how to install the storefront events SDK.
+keywords:
+  - Events
+  - Services
+  - Storefront
+---
+# Install the Storefront Events SDK
+
+The storefront events SDK serves as the foundation for eventing on an Adobe Commerce storefront. It provides access to a common data layer, and an event publishing and subscription service. You can use the [Adobe Commerce Event Collector](../collector/index.md) package to listen for the events and send them to Adobe Commerce for processing.
+
+This SDK can be used as a hosted script, or bundled in a JavaScript application. The script version is hosted on [cdn](https://cdn.jsdelivr.net/npm/@adobe/magento-storefront-event-collector@1/dist/index.js), and the bundled version is hosted on [npm](https://www.npmjs.com/package/@adobe/magento-storefront-events-sdk).
+
+<InlineAlert variant="info" slots="text"/>
+
+If you are using the Data Connection module, you can skip the installation process because the module [automatically deploys the SDK for you](https://experienceleague.adobe.com/en/docs/commerce/data-connection/fundamentals/connect-data#data-collection).
+
+- **Use the SDK as a hosted script**—Use the following snippet to load the script from the [JSDelivr CDN](https://www.jsdelivr.com/).
+
+  ```html
+  <script src="https://cdn.jsdelivr.net/npm/@adobe/magento-storefront-events-sdk@1/dist/index.js"></script>
+  ```
+
+- **Use the bundled version**—Run the following command to install the script as a dependency.
+
+  ```bash
+  npm install @adobe/magento-storefront-events-sdk
+  ```
+
+### Confirm SDK is Available
+
+If you used the CDN to install the script, confirm that the SDK asset has downloaded successfully by running the following code:
+
+```bash
+//Module Load
+import mse from "@adobe/magento-storefront-events-sdk";
+if(!mse) return;
+
+//AMD Load
+require(['magentoStorefrontEvents'], function (magentoStorefrontEvents) {
+        if(!magentoStorefrontEvents) return; 
+```
+
+<InlineAlert variant="info" slots="text"/>
+
+To prevent issues, always keep the script or bundled version updated to the latest release.
+
+## Quick Start
+
+Once imported, you have access to the four main functions of the Events SDK.
+
+-  [Context](context.md) - Set context data
+-  [Publish](publish.md) - Publish events
+-  [Subscribe](subscribe.md) - Subscribe to events
+-  [Unsubscribe](unsubscribe.md) - Unsubscribe from events
+
+The following code example shows how to get started.
+
+<InlineAlert variant="warning" slots="text" />
+
+Relevant context data must be populated before publishing events that require it.
+
+```javascript
+import mse from "@adobe/magento-storefront-events-sdk";
+
+// subscribe to events
+mse.subscribe.pageView(pageViewHandler);
+
+// set context data
+mse.context.setPage(/* page context */);
+
+// publish events
+mse.publish.pageView();
+
+// unsubscribe from events
+mse.unsubscribe.pageView(pageViewHandler);
+```
+
+## Support
+
+If you have any questions or encounter any issues, create a GitHub issue in the Commerce Events repository:
+
+-  [GitHub](https://github.com/adobe/commerce-events/issues/new)
