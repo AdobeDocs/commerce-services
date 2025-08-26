@@ -51,7 +51,7 @@ The following events are required to populate the [Product Recommendations dashb
 
 <InlineAlert variant="info" slots="text"/>
 
-If you do not see any statistics appearing in your dashboard, ensure that the required events are implemented and being tracked on your site. See [Verify event collection](collector/verify.md).
+If your dashboard does not display any statistics, ensure that the required events are implemented and being tracked on your site. See [Verify event collection](collector/verify.md).
 
 | Dashboard column | Events    | Join field  |
 | ---------------- | --------- | ----------- |
@@ -118,7 +118,7 @@ Some events are required to populate the [Live Search dashboard](https://experie
 
 <InlineAlert variant="info" slots="text"/>
 
-If you do not see any statistics appearing in your dashboard, ensure that the required events are implemented and being tracked on your site. See [Verify event collection](collector/verify.md).
+If your dashboard does not display any statistics, ensure that the required events are implemented and being tracked on your site. See [Verify event collection](collector/verify.md).
 
 | Dashboard area        | Events      | Join field |
 | ------------------- | ------------- | ---------- |
