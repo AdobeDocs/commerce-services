@@ -47,7 +47,7 @@ Although Product Recommendation metrics are optimized for Luma storefronts, they
 
 #### Required dashboard events
 
-The following events are required to populate the [Product Recommendations dashboard](https://experienceleague.adobe.com/en/docs/commerce/product-recommendations/admin/workspace). 
+The following events are required to populate the [Product Recommendations dashboard](https://experienceleague.adobe.com/en/docs/commerce/product-recommendations/admin/workspace).
 
 <InlineAlert variant="info" slots="text"/>
 
