@@ -28,7 +28,7 @@ The following section lists the events from which each module collects behaviora
 
 <InlineAlert variant="info" slots="text"/>
 
-Product Recommendations and Live Search also use other non-module specific events to populate dashboards, inform ranking strategies, and help Adobe Sensei interpret shopper data correctly. Events 
+Product Recommendations and Live Search also use other non-module specific events to populate dashboards, inform ranking strategies, and help Adobe Sensei interpret shopper data correctly.
 
 ### Product Recommendations
 
