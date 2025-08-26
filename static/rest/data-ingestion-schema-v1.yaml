@@ -18,10 +18,10 @@ servers:
   - url: https://{region){environment}.commerce.adobe.com/{tenantId}
     variables:
       region:
-        default: na-1
+        default: na1
         enum:
-         - na-1 # Sandbox only
-         - eu-1
+         - na1 # Sandbox only
+         - eu1
       environment:
         default: sandbox    # Sandbox server
         enum:
