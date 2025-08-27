@@ -6,7 +6,7 @@ Creating projects for enterprise organizations requires a system administrator o
 
 1. Log in to the [Adobe Developer Console](https://developer.adobe.com/console).
 
-   You can also access the Developer Console from the **Get Credentials** section of the [Data Ingestion API Reference](https://developer.adobe.com/commerce/services/reference/rest/data-ingestion/). If you use this method, you are automatically directed to the correct organization, and complete the process to get credentials from there.
+   You can also access the Developer Console from the **Get Credentials** section of the [Data Ingestion API Reference](https://developer.adobe.com/commerce/services/reference/rest/data-ingestion/). If you use this method, you are automatically directed to the correct organization. You can complete the process to create credentials and generate an access token from there.
 
 1. Select the Experience Cloud Organization for the integration.
 
