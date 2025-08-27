@@ -18,7 +18,7 @@ For more information about IMS user authentication for other use cases, see the 
 ## Obtain IMS credentials
 
 For direct access to the Data Ingestion API, you must authenticate using a bearer token.
-`Authorization: Bearer {access token}`
+`Authorization: Bearer {{accessToken}}`
 
 This token is generated from the credentials of an Adobe developer project that is configured for API access.
 The token is valid for 24 hours. When it expires, use the Adobe developer project credentials to [generate a new one](#generate-a-new-access-token).

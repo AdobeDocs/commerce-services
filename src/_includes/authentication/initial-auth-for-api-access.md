@@ -2,9 +2,11 @@ To get API authentication credentials and tokens, create an Adobe developer proj
 
 <InlineAlert variant="info" slots="text" />
 
-To create Projects for enterprise organizations, you must have a system administrator or developer role with access to the **Adobe Commerce as a Cloud Service – Backend - Commerce Cloud Manager** product. For information on managing developers from the Admin console, see [Managing developers](https://helpx.adobe.com/enterprise/using/manage-developers.html) in the *Adobe Enterprise & Teams Administration Guide*.
+To create Projects for enterprise organizations requires a system administrator or developer role with access to the **Adobe Commerce as a Cloud Service – Backend - Commerce Cloud Manager** product. For information on managing developers from the Admin console, see [Managing developers](https://helpx.adobe.com/enterprise/using/manage-developers.html) in the *Adobe Enterprise & Teams Administration Guide*.
 
 1. Log in to the [Adobe Developer Console](https://developer.adobe.com/console).
+
+   You can also access the Developer Console from the **Get Credentials** section of the [Data Ingestion API Reference](https://developer.adobe.com/commerce/services/reference/rest/data-ingestion/). If you use this method, you are automatically directed to the correct organization, and complete the process to get credentials from there.
 
 1. Select the Experience Cloud Organization for the integration.
 
@@ -22,9 +24,7 @@ To create Projects for enterprise organizations, you must have a system administ
 
 1. Copy the Client ID and the Client Secret values to a secure location.
 
-   - Use the Client ID and Client Secret to refresh expired bearer tokens [using curl].
-
-   - Include the Client ID in the `x-api-key` header to authenticate API requests.
+   You use these values to refresh expired bearer tokens.
 
 1. Get the bearer access token.
 

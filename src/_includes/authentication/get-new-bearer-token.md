@@ -5,15 +5,15 @@ curl --request POST \
   --url 'https://ims-na1.adobelogin.com/ims/token/v3' \
   --header 'Content-Type: application/x-www-form-urlencoded' \
   --data 'grant_type=client_credentials' \
-  --data 'client_id={{client-id-value}}' \
-  --data 'client_secret={{client-secret-value}}' \
+  --data 'client_id={{clientId}}' \
+  --data 'client_secret={{clientSecret}}' \
   --data 'scope=openid,AdobeID,profile,email,commerce.aco.ingestion'
 ```
 
 Replace the following placeholders with your credentials:
 
-- `<client_id>`: The client ID generated for your Adobe developer project
-- `<client_secret>`: The client secret generated for your Adobe developer project
+- `{{clientId}}`: The client ID generated for your Adobe developer project
+- `{{clientSecret}}`: The client secret generated for your Adobe developer project
 
 You can get these credentials from the Adobe Developer Console project details page. If you don't have access to the developer console, contact your system administrator for assistance.
 

@@ -30,13 +30,17 @@ The URL structure is:
 `https://{{region}}-{{environment}}.api.commerce.adobe.com/{{tenantId}}`
 
 - `region` is the cloud region where your instance is deployed.
-- `environment-type` identifies non-production environments, for example, `sandbox` or `staging`.
+- `environment-type` is present only for non-production,`sandbox` environments.
 - `tenantId` is the unique identifier for your organization's specific instance within the Adobe Experience Cloud.
+
+<InlineAlert variant="info" slots="text" />
+
+Sandbox instances can only be created in the North America region.
 
 &NewLine; <!--Add space between the collapsible section and the previous paragraph-->
 
 <details>
-      <summary><b>Get your instance ID</b></summary>
+      <summary><b>Get your endpoint URL and tenant ID</b></summary>
 
 import GetTenantId from '/src/_includes/authentication/get-tenant-id.md'
 
@@ -88,7 +92,7 @@ To get started with the Data Ingestion API, follow these steps to make your firs
   curl -X POST \
     'https://na1-sandbox.api.commerce.adobe.com/{{tenantId}}/v1/catalog/attributes/metadata' \
     -H 'Content-Type: application/json' \
-    -H 'Authorization:{{accessToken}}' \
+    -H 'Authorization: {{accessToken}}' \
     -d '[
       {
         "code": "sku",
