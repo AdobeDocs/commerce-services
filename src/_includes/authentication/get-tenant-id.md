@@ -10,7 +10,6 @@ From Cloud Manager, you can find the endpoint URLs and tenant ID (instance ID) i
 
    ![Access URLs for Commerce Optimizer UI, REST, and GraphQL APIs](../../pages/_images/merchandising/aco-instance-details.png)
 
-
 <InlineAlert variant="info" slots="text" />
 
 If you don't have access to Cloud Manager, you can also find the region and tenant ID from the access URL for the Adobe Commerce Optimizer application interface.
