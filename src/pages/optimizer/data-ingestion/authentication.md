@@ -13,7 +13,7 @@ This guide covers direct API access using bearer tokens generated from your Adob
 
 <InlineAlert variant="info" slots="text" />
 
-For more information about IMS user authentication for other use cases, see the [User Authentication Implementation Guide](https://developer.adobe.com/developer-console/docs/guides/authentication/UserAuthentication/implementation/) in the *Adobe Developer Console documentation*.
+For more information about IMS user authentication for other use cases, see the [User Authentication Implementation Guide](https://developer.adobe.com/developer-console/docs/guides/authentication/UserAuthentication/implementation) in the *Adobe Developer Console documentation*.
 
 ## Obtain IMS credentials
 

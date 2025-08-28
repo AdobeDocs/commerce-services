@@ -128,7 +128,7 @@ For interactive testing and exploration, use the <a href="https://experienceleag
 
 ## Related documentation
 
-- **[Adobe Commerce Optimizer Guide](https://experienceleague.adobe.com/en/docs/commerce/optimizer/overview.html)**: Review comprehensive documentation for Adobe Commerce Optimizer.
-- **[Adobe Commerce Storefront Guide](https://experienceleague.adobe.com/docs/commerce-storefront.html)**: Get help integrating Adobe Commerce Optimizer with an Adobe Commerce storefront on Adobe Edge Delivery Services.
+- **[Adobe Commerce Optimizer Guide](https://experienceleague.adobe.com/en/docs/commerce/optimizer/overview)**: Review comprehensive documentation for Adobe Commerce Optimizer.
+- **[Adobe Commerce Storefront Guide](https://experienceleague.adobe.com/developer/commerce/storefront/)**: Get help integrating Adobe Commerce Optimizer with an Adobe Commerce storefront on Adobe Edge Delivery Services.
 - **[Adobe Developer App Builder for Commerce](https://experienceleague.adobe.com/en/docs/commerce-learn/tutorials/adobe-developer-app-builder/introduction-to-app-builder)**: Get documentation for building custom applications to integrate with Adobe Commerce solutions.
-- **[Adobe Commerce Knowledge Base](https://experienceleague.adobe.com/docs/commerce-knowledge-base.html)**: Search the Adobe Commerce knowledge base for self-service solutions
+- **[Adobe Commerce Knowledge Base](https://experienceleague.adobe.com/en/docs/commerce-knowledge-base/kb/overview)**: Search the Adobe Commerce knowledge base for self-service solutions
