@@ -227,4 +227,4 @@ For additional information about limits and boundaries, see the [Limits and boun
 
 <InlineAlert variant="info" slots="text" />
 
->This guide covers direct API access using bearer tokens. For user authentication workflows, see the [User Authentication Guide](https://developer.adobe.com/developer-console/docs/guides/authentication/UserAuthentication/implementation).
+>This guide covers direct API access using bearer tokens. For user authentication workflows, see the [User Authentication](https://developer.adobe.com/commerce/webapi/rest/authentication/user/) in the *Adobe Commerce REST Guide*.

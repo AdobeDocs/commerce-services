@@ -19,4 +19,4 @@ You can get these credentials from the Adobe Developer Console project details p
 
 <InlineAlert variant="info" slots="text" />
 
-This token request provisions the required scopes for Adobe Commerce Optimizer data ingestion as listed in the `scope` parameter. For information on managing, refreshing, and revoking bearer tokens, see the [User Authentication Implementation Guide](https://developer.adobe.com/developer-console/docs/guides/authentication/UserAuthentication) in the *Adobe Developer Console documentation*.
+This token request provisions the required scopes for Adobe Commerce Optimizer data ingestion as listed in the `scope` parameter. For information on managing, refreshing, and revoking bearer tokens, see [User Authentication](https://developer.adobe.com/commerce/webapi/rest/authentication/user/) in the *Adobe Commerce REST Guide*.
