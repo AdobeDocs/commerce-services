@@ -2,7 +2,7 @@ To get API authentication credentials and tokens, create an Adobe developer proj
 
 <InlineAlert variant="info" slots="text" />
 
-Creating projects for enterprise organizations requires a system administrator or developer role with access to the **Adobe Commerce as a Cloud Service – Backend - Commerce Cloud Manager** product. For information on managing developers from the Admin console, see [Managing developers](https://helpx.adobe.com/enterprise/using/manage-developers.html) in the *Adobe Enterprise & Teams Administration Guide*.
+Creating projects for enterprise organizations requires a system administrator or developer role with access to the **Adobe Commerce as a Cloud Service – Backend - Commerce Cloud Manager** product. For information on managing developers from the Admin console, see [Managing developers](https://experienceleague.adobe.com/en/docs/commerce/optimizer/user-management) in the *Adobe Commerce Optimizer Guide*.
 
 1. Log in to the [Adobe Developer Console](https://developer.adobe.com/console).
 
