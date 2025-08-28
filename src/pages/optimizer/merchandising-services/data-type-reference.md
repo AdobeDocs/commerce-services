@@ -3,10 +3,8 @@ title: Data type reference - Merchandising API
 description: Comprehensive reference for GraphQL data types used in the Merchandising API, including object types, interfaces, enums, and their relationships for product search, recommendations, and catalog operations.
 keywords:
   - GraphQL
-  - Data Types
   - Services
   - Backend Development
-  - API Reference
 ---
 
 # GraphQL API Types Summary - Merchandising API
