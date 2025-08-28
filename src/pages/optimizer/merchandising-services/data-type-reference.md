@@ -1,6 +1,6 @@
 ---
 title: Data type reference - Merchandising API
-description: Comprehensive reference for GraphQL data types used in the Merchandising API, including object types, interfaces, enums, and their relationships for product search, recommendations, and catalog operations.
+description: Comprehensive reference for GraphQL data types used in the Merchandising API.
 keywords:
   - GraphQL
   - Services
@@ -113,8 +113,6 @@ Abstract types that define common contracts:
 
 - **MediaGalleryInterface** - Interface for media gallery items
 
----
-
 ## Enum Types
 
 Enumeration types with predefined values:
@@ -123,8 +121,6 @@ Enumeration types with predefined values:
 - **AppliedQueryRuleActionType** - Types of query rule actions
 - **ProductViewCurrency** - Supported currency codes
 - **SwatchType** - Types of visual swatches (color, image, text)
-
----
 
 ## Key Supporting Type Relationships
 
