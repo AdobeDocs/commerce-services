@@ -78,6 +78,10 @@ curl --request POST \
 
 For sample requests, see the [tutorial](../ccdm-use-case.md).
 
+<InlineAlert variant="note" slots="text" />
+
+Use the Try It feature in the [API reference](api-reference.md) to test API requests directly from your browser. For details, see [Test API operations](https://developer.adobe.com/commerce/services/reference/rest/).
+
 ## Make your first request
 
 To get started with the Data Ingestion API, follow these steps to make your first request.
