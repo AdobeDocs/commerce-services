@@ -46,7 +46,7 @@ Every API request must include a bearer token in the request header:
 
 `Authorization: Bearer {{accessToken}}`
 
-The bearer token is generated using the credentials from the Adobe developer project for the API integration. The token is valid for 24 hours. When it expires, use the Adobe developer project credentials to [generate a new one](#generate-a-new-access-token).
+The bearer token is generated using the credentials from the Adobe developer project for the API integration. The token is valid for 24 hours. When it expires, use the Adobe developer project credentials to generate a new one.
 
 <br></br>
 
@@ -72,7 +72,7 @@ Include the following headers in GraphQL requests.
 | Header Name   | Required |Description |
 |---------------|----------|------------|
 | `Content-Type` | Yes     | Specifies the media type of the resource. Accepted value: `application/json`. |
-| `Authorization: Bearer {{accessToken}}`     | Yes      | Bearer token generated from IMS credentials. See [Authentication](#authentication).  |
+| `Authorization: Bearer {{accessToken}}`     | Yes      | Bearer token generated from IMS credentials.|
 
 ## Request template
 
