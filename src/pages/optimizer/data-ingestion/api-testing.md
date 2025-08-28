@@ -31,7 +31,7 @@ Requests sent using **Try it** modify the actual data in your sandbox instance. 
 Before testing the API, ensure you have:
 
 - **Developer access** to an Adobe Commerce Optimizer (ACO) sandbox environment
-- **Instance ID and tenant ID** for your ACO sandbox environment. See [Get your endpoint URL and tenant ID](using-the-api.md#get-your-endpoint-url-and-tenant-id) for instructions
+- **Instance ID and tenant ID** for your ACO sandbox environment. See [Get your endpoint URL and tenant ID](using-the-api.md#base-url) for instructions
 - **Basic understanding** of REST APIs and JSON format
 
 ## Step 1: Get credentials
@@ -54,7 +54,7 @@ You only need to set up credentials once. However, access tokens expire after 24
 
 Follow these steps to test any API operation using the interactive documentation:
 
-1. Choose an operation to test.
+1. **Choose an operation to test:**
 
    - Navigate to any endpoint in the [Data Ingestion API Reference](https://developer.adobe.com/commerce/services/reference/rest/).
 
@@ -64,7 +64,7 @@ Follow these steps to test any API operation using the interactive documentation
 
 1. **Add authentication:** Select the **Parameters** tab, and replace the **Authorization** value with the  access token you generated in Step 1.
 
-1. Modify the request body (if applicable) using the provided example as a starting point.
+1. **Modify the request body** (if applicable) using the provided example as a starting point.
 
    - Select the **Body** tab
    - Edit the JSON request body with your own values
