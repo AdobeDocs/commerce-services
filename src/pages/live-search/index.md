@@ -20,5 +20,5 @@ The [_Adobe Commerce Event SDK_](../shared-services/storefront-events/sdk/) prov
 
 ## Related information
 
-* [Introduction to Live Search](https://experienceleague.adobe.com/docs/commerce-merchant-services/live-search/overview.html?lang=en)
+* [Introduction to Live Search](https://experienceleague.adobe.com/en/docs/commerce/live-search/overview)
 * [GraphQL queries](https://developer.adobe.com/commerce/webapi/graphql/schema/live-search/)
