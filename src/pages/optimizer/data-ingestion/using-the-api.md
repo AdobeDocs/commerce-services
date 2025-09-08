@@ -94,7 +94,7 @@ To get started with the Data Ingestion API, follow these steps to make your firs
 
   ```shell
   curl -X POST \
-    'https://na1-sandbox.api.commerce.adobe.com/{{tenantId}}/v1/catalog/attributes/metadata' \
+    'https://na1-sandbox.api.commerce.adobe.com/{{tenantId}}/v1/catalog/products/metadata' \
     -H 'Content-Type: application/json' \
     -H 'Authorization: {{accessToken}}' \
     -d '[
