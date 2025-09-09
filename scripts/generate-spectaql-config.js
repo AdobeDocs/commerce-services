@@ -32,14 +32,51 @@ if (!tenantId) {
   process.exit(1);
 }
 
-// Replace the placeholder with the actual tenant ID
-const updatedConfig = configContent.replace(/\${TENANT_ID}/g, tenantId);
+// Get CATALOG_VIEW_ID from environment variable (from .env file or system)
+const catalogviewId = process.env.CATALOG_VIEW_ID;
+if (!catalogviewId) {
+  console.error('Error: CATALOG_VIEW_ID environment variable is required');
+  console.error('');
+  console.error('You can set it in several ways:');
+  console.error('1. Create a .env file in the project root with: CATALOG_VIEW_ID=your_view_id');
+  console.error('2. Set it as a system environment variable: export CATALOG_VIEW_ID=your_view_id');
+  console.error('3. Set it inline: CATALOG_VIEW_ID=your_view_id node scripts/generate-spectaql-config.js');
+  console.error('');
+  console.error('Example .env file:');
+  console.error('  CATALOG_VIEW_ID=cde0ab4c-1f7b-4e12-91f6-9c7840ab6523');
+  console.error('  # CATALOG_VIEW_ID=your_catalog_view_id_here');
+  process.exit(1);
+}
+
+// Get ENVIRONMENT_ID from environment variable (from .env file or system)
+const environmentId = process.env.ENVIRONMENT_ID;
+if (!environmentId) {
+  console.error('Error: ENVIRONMENT_ID environment variable is required');
+  console.error('');
+  console.error('You can set it in several ways:');
+  console.error('1. Create a .env file in the project root with: ENVIRONMENT_ID=your_environment_id');
+  console.error('2. Set it as a system environment variable: export ENVIRONMENT_ID=your_environment_id');
+  console.error('3. Set it inline: ENVIRONMENT_ID=your_environment_id node scripts/generate-spectaql-config.js');
+  console.error('');
+  console.error('Example .env file:');
+  console.error('  ENVIRONMENT_ID=prod');
+  console.error('  # ENVIRONMENT_ID=your_environment_id_here');
+  process.exit(1);
+}
+
+// Replace the placeholders with the actual values
+let updatedConfig = configContent.replace(/\${TENANT_ID}/g, tenantId);
+updatedConfig = updatedConfig.replace(/\${CATALOG_VIEW_ID}/g, catalogviewId);
+updatedConfig = updatedConfig.replace(/\${ENVIRONMENT_ID}/g, environmentId);
 
 // Write the updated configuration to a temporary file
 const tempConfigPath = path.join(__dirname, '../spectaql/config-merchandising-temp.yml');
 fs.writeFileSync(tempConfigPath, updatedConfig);
 
-console.log(`Generated SpectaQL config for tenant: ${tenantId}`);
+console.log(`Generated SpectaQL config with:`);
+console.log(`  Tenant ID: ${tenantId}`);
+console.log(`  Catalog View ID: ${catalogviewId}`);
+console.log(`  Environment ID: ${environmentId}`);
 console.log(`Temporary config file: ${tempConfigPath}`);
 console.log('Use this file with: spectaql --config spectaql/config-merchandising-temp.yml');
 

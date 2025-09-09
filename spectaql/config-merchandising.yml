@@ -371,7 +371,7 @@ introspection:
   #
   #
   ##############################################
-
+q
 extensions:
   # Utilize the 'graphql-scalars' library when generating examples for scalars it supports that
   # do not have an example already set via some other method. Usually this is a good
@@ -462,7 +462,7 @@ info:
       description: |
         All API requests must include the following headers:
 
-        - **AC-Environment-Id**: Environment ID for your Commerce Services instance
+        - **AC-Environment-Id**: Tenant ID for your Commerce Optimizer instance
         - **AC-View-Id**: View ID for catalog context
         - **Content-Type**: application/json
 

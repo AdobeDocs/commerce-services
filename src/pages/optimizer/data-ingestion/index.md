@@ -40,6 +40,7 @@ A product is any item or service offered for sale through online channels. Produ
 
   - **Simple Products**—Basic items with no variations, for example a single t-shirt in one size and color.
   - **Configurable Products**—Items with multiple options or variations, for example a t-shirt available in different sizes and colors.
+  - **Bundled Products**—Collections of simple or configurable products sold together as a package, for example a gift set containing a t-shirt, mug, and hat.
 
 Each product type has its own set of attributes and configurations to help you manage and present them effectively in your store.
 
