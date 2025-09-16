@@ -54,7 +54,7 @@ const TYPE_DESCRIPTIONS = {
     }
   },
   'ProductViewTierCondition': {
-    description: 'Union type that defines the conditions under which a tier price applies. Supports both quantity ranges (for example,, 10-49 items) and exact quantity matches (for example,, exactly 12, 24, or 36 items).',
+    description: 'Union type that defines the conditions under which a tier price applies. Supports both quantity ranges (for example, 10-49 items) and exact quantity matches (for example, exactly 12, 24, or 36 items).',
     isUnion: true
   }
 };
