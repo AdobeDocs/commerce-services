@@ -15,23 +15,23 @@ The Merchandising API supports various e-commerce scenarios. The catalog data de
 
 ### E-commerce Storefronts
 
-- **Product Catalogs**: Display product listings with filtering and sorting
-- **Search Functionality**: Implement product search with autocomplete
-- **Product Details**: Show comprehensive product information and variants
+* **Product Catalogs**: Display product listings with filtering and sorting
+* **Search Functionality**: Implement product search with autocomplete
+* **Product Details**: Show comprehensive product information and variants
 
 ### Multi-channel Commerce
 
-- **B2B Portals**: Customize catalogs for business customers
-- **Marketplace Integration**: Power third-party marketplace listings
-- **Mobile Apps**: Provide consistent data across mobile platforms
-- **Headless Commerce**: Support decoupled frontend architectures
+* **B2B Portals**: Customize catalogs for business customers
+* **Marketplace Integration**: Power third-party marketplace listings
+* **Mobile Apps**: Provide consistent data across mobile platforms
+* **Headless Commerce**: Support decoupled frontend architectures
 
 ### Personalization
 
-- **Customer Segmentation**: Deliver targeted product recommendations
-- **Regional Pricing**: Display locale-specific pricing and availability
-- **Dynamic Content**: Adapt product displays based on user behavior
-- **A/B Testing**: Support experimentation with different product presentations
+* **Customer Segmentation**: Deliver targeted product recommendations
+* **Regional Pricing**: Display locale-specific pricing and availability
+* **Dynamic Content**: Adapt product displays based on user behavior
+* **A/B Testing**: Support experimentation with different product presentations
 
 ## Available Queries
 
@@ -60,7 +60,6 @@ The Catalog Service for Adobe Commerce products query returns details about the 
 The Catalog Service query requires one or more SKU values as input. The query is primarily designed to retrieve information to render the following types of content:
 
 * Product detail pages - You can provide full details about the product identified by the specified SKU.
-
 * Product compare pages - You can retrieve selected information about multiple products, such as the name, price and image.
 
 <InlineAlert variant="info" slots="text"/>
@@ -670,7 +669,7 @@ query GetBundleProductDetails {
 
 ### Product Search
 
-Return information about simple products. This examples uses the productSearch query to return information about battery products for Cruz Verde 2014 models. 
+Return information about simple products. This examples uses the productSearch query to return information about battery products for Cruz Verde 2014 models.
 
 <CodeBlock slots="heading, code" repeat="2" languages="JSON" />
 
@@ -700,6 +699,7 @@ query {
   }
 }
 ```
+
 **Response:**
 
 ```json
