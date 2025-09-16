@@ -118,7 +118,7 @@ To get started with the Merchandising API, follow these steps to make your first
    curl -X POST \
      'https://na1-sandbox.api.commerce.adobe.com/{{tenantId}}/graphql' \
      -H 'Content-Type: application/json' \
-     -H 'AC-Environment-ID`: {{tenantId}} \
+     -H 'AC-Environment-ID: {{tenantId}}' \
      -H 'AC-View-ID: {{catalogViewId}}' \
      -d '{"query": "query ProductSearch($search: String!) { productSearch( phrase: $search, page_size: 10) { items { productView { sku name description shortDescription images { url } ... on SimpleProductView { attributes { label name value } price { regular { amount { value currency } } roles } } } } } }", "variables": { "search": "your-string"}}'
    ```
