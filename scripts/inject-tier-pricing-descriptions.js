@@ -14,7 +14,7 @@ const TYPE_DESCRIPTIONS = {
     description: 'Represents a single tier in a product\'s volume-based pricing structure. Each tier defines a specific price that applies when certain quantity conditions are met.',
     fields: {
       'tier': 'The discounted price that applies when the quantity conditions are satisfied',
-      'quantity': 'Array of conditions that determine when this tier price becomes active (for example,, quantity ranges or exact quantities)'
+      'quantity': 'Array of conditions that determine when this tier price becomes active (for example, quantity ranges or exact quantities)'
     }
   },
   'ProductViewPrice': {
@@ -37,7 +37,7 @@ const TYPE_DESCRIPTIONS = {
     description: 'Represents a monetary amount with its associated currency. Used throughout the pricing system to ensure currency information is always included with price values.',
     fields: {
       'currency': 'Three-letter ISO currency code (for example, USD, EUR, GBP)',
-      'value': 'Numeric price value in the specified currency (for example,, 99.99 for $99.99)'
+      'value': 'Numeric price value in the specified currency (for example, 99.99 for $99.99)'
     }
   },
   'ProductViewTierRangeCondition': {
