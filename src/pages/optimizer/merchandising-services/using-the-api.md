@@ -82,8 +82,7 @@ Use the following template to submit requests using [curl](https://curl.se/). Us
 ```shell
 curl --request POST \
 --url https://na1-sandbox.api.commerce.adobe.com/{{tenantId}}/graphql \
---header 'AC-Environment-ID: {{tenantId}}FYI — if you are trying to query the catalog service with ACO instance:
---header 'AC-EnvironmentId: {{tenantId}}' \
+--header 'AC-Environment-Id: {{tenantId}}' \
 --header 'AC-View-ID: {{catalogViewId}}'  \
 --header 'AC-Price-Book-ID: {{priceBookId}}'  \
 --header 'AC-Policy-{{attributeCode}}: {{attributeValue}}'  \
