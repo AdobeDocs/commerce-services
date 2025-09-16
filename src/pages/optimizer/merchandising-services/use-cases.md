@@ -74,7 +74,7 @@ The following query returns details about simple product with sku `cru-sus-prm-2
 
 <CodeBlock slots="heading, code" repeat="2" languages="JSON" />
 
-**Request:**
+**Request**
 
 ```graphql
 query {
@@ -144,7 +144,7 @@ query {
 }
 ```
 
-**Response:**
+**Response**
 
 ```json
 {
@@ -244,7 +244,7 @@ query {
 	}
 }
 
-### Return details about a complex product
+#### Return details about a complex product
 
 The following query returns details about a complex bundled product with sku `cru-2014-parts`. This bundle provides the optional selections to configure the quality level (standard, midrange, premium) for Cruz Verde 2014 product parts:
 
@@ -258,7 +258,7 @@ For each part type, the default configuration is to use the standard part qualit
 
 <CodeBlock slots="heading, code" repeat="2" languages="JSON" />
 
-**Request:**
+**Request**
 
 ```graphql
 query GetBundleProductDetails {
@@ -356,7 +356,7 @@ query GetBundleProductDetails {
 }
 ```
 
-**Response:**
+**Response**
 
 ```json
 {
@@ -700,7 +700,7 @@ query {
 }
 ```
 
-**Response:**
+**Response**
 
 ```json
 {
