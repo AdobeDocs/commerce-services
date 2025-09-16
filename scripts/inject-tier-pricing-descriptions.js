@@ -29,26 +29,26 @@ const TYPE_DESCRIPTIONS = {
   'Price': {
     description: 'Monetary value with currency information and any applied price adjustments. Can represent base prices, final calculated prices, or tier-specific prices.',
     fields: {
-      'adjustments': 'List of price modifications applied to the base amount (for example,, discounts, surcharges, taxes)',
+      'adjustments': 'List of price modifications applied to the base amount (for example, discounts, surcharges, taxes)',
       'amount': 'The monetary value including currency code'
     }
   },
   'ProductViewMoney': {
     description: 'Represents a monetary amount with its associated currency. Used throughout the pricing system to ensure currency information is always included with price values.',
     fields: {
-      'currency': 'Three-letter ISO currency code (for example,, USD, EUR, GBP)',
+      'currency': 'Three-letter ISO currency code (for example, USD, EUR, GBP)',
       'value': 'Numeric price value in the specified currency (for example,, 99.99 for $99.99)'
     }
   },
   'ProductViewTierRangeCondition': {
-    description: 'Defines a quantity range condition for tier pricing. Used when a tier price applies to a continuous range of quantities (for example,, bulk discounts that start at 10 items and go up to 49 items).',
+    description: 'Defines a quantity range condition for tier pricing. Used when a tier price applies to a continuous range of quantities (for example, bulk discounts that start at 10 items and go up to 49 items).',
     fields: {
       'gte': 'Minimum quantity required for this tier (greater than or equal to). Example: 10 means this tier applies starting at 10 items',
       'lt': 'Maximum quantity for this tier, exclusive (less than). Example: 50 means this tier applies up to but not including 50 items. Null value indicates no upper limit'
     }
   },
   'ProductViewTierExactMatchCondition': {
-    description: 'Defines exact quantity conditions for tier pricing. Used when special pricing applies only to specific quantities (for example,, case pricing for exactly 12 items, or bulk packages of exactly 100 items).',
+    description: 'Defines exact quantity conditions for tier pricing. Used when special pricing applies only to specific quantities (for example, case pricing for exactly 12 items, or bulk packages of exactly 100 items).',
     fields: {
       'in': 'Array of exact quantities where this tier price applies. Example: [12, 24, 36] means the tier price only applies when purchasing exactly 12, 24, or 36 items'
     }
