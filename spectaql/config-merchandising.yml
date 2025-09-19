@@ -393,7 +393,7 @@ servers:
     # A place to list any Headers for your GraphQL API calls
     headers:
       - name: AC-Environment-Id
-        example: :Fwus6kdpvYCmeEdcCX7PZg
+        example: Fwus6kdpvYCmeEdcCX7PZg
         comment: Required. Tenant ID for your Adobe Commerce Optimizer instance.
       - name: AC-View-Id
         example: cde0ab4c-1f7b-4e12-91f6-9c7840ab6523
