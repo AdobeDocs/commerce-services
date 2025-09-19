@@ -87,7 +87,6 @@
             <li><a href="#definition-ProductViewPrice">ProductViewPrice</a></li>
             <li><a href="#definition-ProductViewPriceRange">ProductViewPriceRange</a></li>
             <li><a href="#definition-ProductViewTierCondition">ProductViewTierCondition</a></li>
-            <li><a href="#definition-ProductViewTierExactMatchCondition">ProductViewTierExactMatchCondition</a></li>
             <li><a href="#definition-ProductViewTierPrice">ProductViewTierPrice</a></li>
             <li><a href="#definition-ProductViewTierRangeCondition">ProductViewTierRangeCondition</a></li>
             <li><a href="#definition-ProductViewVariant">ProductViewVariant</a></li>
@@ -5123,11 +5122,6 @@ AC-Policy-{*}: AC-Policy-Brand</code></pre>
                         <p><a href="#definition-ProductViewTierRangeCondition"><code>ProductViewTierRangeCondition</code></a></p>
                       </td>
                     </tr>
-                    <tr>
-                      <td>
-                        <p><a href="#definition-ProductViewTierExactMatchCondition"><code>ProductViewTierExactMatchCondition</code></a></p>
-                      </td>
-                    </tr>
                   </tbody>
                 </table>
               </div>
@@ -5136,46 +5130,6 @@ AC-Policy-{*}: AC-Policy-Brand</code></pre>
               <div class="example-section example-section-is-code">
                 <h5>Example</h5>
                 <pre><code class="hljs language-gql"><span class="hljs-symbol">ProductViewTierRangeCondition</span>
-</code></pre>
-              </div>
-            </div>
-            <a href="#top">back to top</a>
-          </div>
-        </section>
-        <section id="definition-ProductViewTierExactMatchCondition" class="definition definition-object" data-traverse-target="definition-ProductViewTierExactMatchCondition">
-          <div class="definition-group-name">
-            <a href="#group-Types">Types</a>
-          </div>
-          <h2 class="definition-heading">ProductViewTierExactMatchCondition</h2>
-          <div class="doc-row">
-            <div class="doc-copy">
-              <div class="definition-description doc-copy-section">
-                <h5>Description</h5>
-                <p>Not currently supported. Defines exact quantity conditions for tier pricing. Used when special pricing applies only to specific quantities (for example, case pricing for exactly 12 items, or bulk packages of exactly 100 items).</p>
-              </div>
-              <div class="definition-properties doc-copy-section">
-                <h5>Fields</h5>
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Field Name</th>
-                      <th>Description</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td data-property-name=""><span class="property-name"><code>in</code></span> - <span class="property-type"><a href="#definition-Float"><code>[Float]</code></a></span>
-                      </td>
-                      <td> Array of exact quantities where this tier price applies. Example: [12, 24, 36] means the tier price only applies when purchasing exactly 12, 24, or 36 items </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-            <div class="doc-examples">
-              <div class="example-section example-section-is-code">
-                <h5>Example</h5>
-                <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"in"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-number">987.65</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">}</span>
 </code></pre>
               </div>
             </div>
