@@ -48,13 +48,13 @@ const TYPE_DESCRIPTIONS = {
     }
   },
   'ProductViewTierExactMatchCondition': {
-    description: 'Defines exact quantity conditions for tier pricing. Used when special pricing applies only to specific quantities (for example, case pricing for exactly 12 items, or bulk packages of exactly 100 items).',
+    description: 'Not currently supported. Defines exact quantity conditions for tier pricing. Used when special pricing applies only to specific quantities (for example, case pricing for exactly 12 items, or bulk packages of exactly 100 items).',
     fields: {
       'in': 'Array of exact quantities where this tier price applies. Example: [12, 24, 36] means the tier price only applies when purchasing exactly 12, 24, or 36 items'
     }
   },
   'ProductViewTierCondition': {
-    description: 'Union type that defines the conditions under which a tier price applies. Supports both quantity ranges (for example, 10-49 items) and exact quantity matches (for example, exactly 12, 24, or 36 items).',
+    description: 'Union type that defines the conditions under which a tier price applies. Supports both quantity ranges (for example, 10-49 items) and exact quantity matches (for example, exactly 12, 24, or 36 items). Exact quantity matches are not currently supported.',
     isUnion: true
   }
 };
