@@ -85,16 +85,18 @@ curl --request POST \
 --url https://na1-sandbox.api.commerce.adobe.com/{{tenantId}}/graphql \
 --header 'AC-Environment-Id: {{tenantId}}' \
 --header 'AC-View-ID: {{catalogViewId}}'  \
+--header 'AC-Source-Locale: {{locale}}' 
 --header 'AC-Price-Book-ID: {{priceBookId}}'  \
 --header 'AC-Policy-{{attributeCode}}: {{attributeValue}}'  \
 
 --data '{{apiPayload}}'
 ```
 
-| Placeholder name | Description                                                                               t                      |
+| Placeholder name | Description                                                                                                     |
 |------------------|-----------------------------------------------------------------------------------------------------------------|
-| `catalogViewId`   | Required. The unique identifier assigned to the catalog view to filter the catalog data you want to display on the storefront, for example, `51330428-3090-4650-8394-7a4a12b2c087`.|
 | `tenantId` | Required. The unique identifier for your organization's specific instance within the Adobe Experience Cloud, for example `Xyub6kdpvYCmeEdcCX7PTg`.|
+| `catalogViewId`   | Required. The unique identifier assigned to the catalog view to filter the catalog data you want to display on the storefront, for example, `51330428-3090-4650-8394-7a4a12b2c087`.|
+| `locale`   | Required. The catalog source locale (language or geography) to filter products for display or update, for example `en_US`.|
 | `attributeCode: attributeValue` | Optional. The policy trigger name and value that sets data access filters to restrict product access based on request attributes, for example `Brand:Cruz`.|
 | `priceBookId`  | Optional. The price book ID used to retrieve the pricing schedule for a SKU, for example `west_coast_inc`. |
 | `apiPayload`      | API payload. See examples in the [tutorial](../ccdm-use-case.md). |
@@ -120,6 +122,7 @@ To get started with the Merchandising API, follow these steps to make your first
      -H 'Content-Type: application/json' \
      -H 'AC-Environment-ID: {{tenantId}}' \
      -H 'AC-View-ID: {{catalogViewId}}' \
+     -H 'Source:Locale: {{locale}}' \
      -d '{"query": "query ProductSearch($search: String!) { productSearch( phrase: $search, page_size: 10) { items { productView { sku name description shortDescription images { url } ... on SimpleProductView { attributes { label name value } price { regular { amount { value currency } } roles } } } } } }", "variables": { "search": "your-string"}}'
    ```
 
