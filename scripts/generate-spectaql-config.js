@@ -32,14 +32,15 @@ if (!tenantId) {
   process.exit(1);
 }
 
-// Replace the placeholder with the actual tenant ID
-const updatedConfig = configContent.replace(/\${TENANT_ID}/g, tenantId);
+// Replace the placeholders with the actual values
+let updatedConfig = configContent.replace(/\${TENANT_ID}/g, tenantId);
 
 // Write the updated configuration to a temporary file
 const tempConfigPath = path.join(__dirname, '../spectaql/config-merchandising-temp.yml');
 fs.writeFileSync(tempConfigPath, updatedConfig);
 
-console.log(`Generated SpectaQL config for tenant: ${tenantId}`);
+console.log(`Generated SpectaQL config with:`);
+console.log(`  Tenant ID: ${tenantId}`);
 console.log(`Temporary config file: ${tempConfigPath}`);
 console.log('Use this file with: spectaql --config spectaql/config-merchandising-temp.yml');
 
