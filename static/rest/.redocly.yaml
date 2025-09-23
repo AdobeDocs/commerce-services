@@ -1,0 +1,26 @@
+# See https://docs.redoc.ly/cli/configuration/ for more information.
+organization: adobe-developers
+extends:
+    - minimal
+apis:
+  Data Ingestion@1.0:
+    root: src/static/rest/data-ingestion-schema-v1.yaml
+    labels:
+      - main
+  Data Ingestion@1.0.0:
+    root: src/static/rest/data-ingestion-schema-v1.yaml
+theme:
+  openapi:
+    pagination: section
+    hideHostname: true
+    sortPropsAlphabetically: false
+    pathInMiddlePanel: true
+    hideDownloadButton: false
+    hideTryItPanel: true
+    layout: stacked
+    showExtensions: true
+    nativeScrollbars: true
+    ctrlFHijack: true
+    scrollYOffset: 64
+    disableSidebar: true
+    disableDeepLinks: false
