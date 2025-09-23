@@ -13,12 +13,12 @@ This guide covers direct API access using bearer tokens generated from your Adob
 
 <InlineAlert variant="info" slots="text" />
 
-For more information about IMS user authentication for other use cases, see the [User Authentication Implementation Guide](https://developer.adobe.com/developer-console/docs/guides/authentication/UserAuthentication/implementation/) in the *Adobe Developer Console documentation*.
+For more information about IMS user authentication for other use cases, see [User Authentication](https://developer.adobe.com/developer-console/docs/guides/authentication/UserAuthentication/implementation) in the *Adobe Commerce REST Guide*.
 
 ## Obtain IMS credentials
 
 For direct access to the Data Ingestion API, you must authenticate using a bearer token.
-`Authorization: Bearer {access token}`
+`Authorization: Bearer {{accessToken}}`
 
 This token is generated from the credentials of an Adobe developer project that is configured for API access.
 The token is valid for 24 hours. When it expires, use the Adobe developer project credentials to [generate a new one](#generate-a-new-access-token).

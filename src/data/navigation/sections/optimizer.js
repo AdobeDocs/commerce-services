@@ -16,6 +16,10 @@ module.exports = [
               title: "Get started",
               path: "/optimizer/data-ingestion/using-the-api.md"
             },
+           {
+              title: "Test API operations",
+              path: "/optimizer/data-ingestion/api-testing.md"
+            },
             {
               title: "API Reference",
               path: "https://developer.adobe.com/commerce/services/reference/rest/",
@@ -23,38 +27,38 @@ module.exports = [
             }
           ]
         },
-        {
-          title: "Retrieve catalog data",
-          path: "/optimizer/merchandising-services/",
-          header: "true",
-          pages: [
-            {
-              title: "Get started",
-              path: "/optimizer/merchandising-services/using-the-api.md"
-            },
-            {
-              title: "Use cases",
-              path: "/optimizer/merchandising-services/use-cases.md"
-            },
-            {
-              title: "Limitations",
-              path: "/optimizer/merchandising-services/limitations.md"
-            },
-            {
-              title: "Monitor and troubleshoot",
-              path: "/optimizer/merchandising-services/troubleshooting.md"
-            },
-            {
-              title: "API Reference",
-              path: "https://developer.adobe.com/commerce/services/reference/graphql/",
-              EventTarget: "_top"
-            }
-          ]
-        },
-        {
-          title: "Tutorial",
-          path: "/optimizer/ccdm-use-case.md"
-        }
+      {
+        title: "Retrieve catalog data",
+        path: "/optimizer/merchandising-services/",
+        header: "true",
+        pages: [
+          {
+            title: "Get started",
+            path: "/optimizer/merchandising-services/using-the-api.md"
+          },
+          {
+            title: "Use cases",
+            path: "/optimizer/merchandising-services/use-cases.md"
+          },
+          {
+            title: "Limitations",
+            path: "/optimizer/merchandising-services/limitations.md"
+          },
+          {
+            title: "Monitor and troubleshoot",
+            path: "/optimizer/merchandising-services/troubleshooting.md"
+          },
+          {
+            title: "API Reference",
+            path: "https://developer.adobe.com/commerce/services/reference/graphql/",
+            EventTarget: "_top"
+          }
+        ]
+      },
+      {
+        title: "Tutorial",
+        path: "/optimizer/ccdm-use-case.md"
+      }
     ]
   }
-];
+]

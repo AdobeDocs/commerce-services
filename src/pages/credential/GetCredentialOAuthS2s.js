@@ -81,7 +81,7 @@ const GetCredentialOAuthS2s = () => {
 
         <GetCredential.Card.DevConsoleLink heading="Developer Console Project" />
 
-        <GetCredential.Card.AccessToken helpText="" buttonLabel="Generate and copy token" heading={(<>Access token<br/><br/> <span style="font-weight:normal"><small>Paste the access token into the <strong>Authorization</strong> header in the <strong>Try it</strong> panel below. Then, add the <a href="https://developer.adobe.com/commerce/services/optimizer/data-ingestion/using-the-api/#base-url">instance ID</a> to the <strong>instance ID</strong> field. You only need to do this once; future requests reuse the values automatically.</small></span></>)}/>
+        <GetCredential.Card.AccessToken helpText="" buttonLabel="Generate and copy token" heading={(<>Access token<br/><br/> <span style="font-weight:normal"><small>Paste the access token into the <strong>Authorization</strong> header in the <strong>Try it</strong> panel below. Then, add the <a href="https://developer.adobe.com/commerce/services/optimizer/data-ingestion/using-the-api/#base-url">instance ID</a> to the <strong>tenantID</strong> field. You only need to do this once; future requests reuse the values automatically.</small></span></>)}/>
 
         <GetCredential.Card.CredentialDetails heading={(<>Credential details<br/><br/> <span style="font-weight:normal"><small>The following Client ID and Organization ID are used to generate the access token:</small></span></>)} orderBy="ClientId,ImsOrgID">
           <GetCredential.Card.CredentialDetails.ClientId heading="Client ID (x-api-key)" />
@@ -113,7 +113,7 @@ const GetCredentialOAuthS2s = () => {
 
         <GetCredential.Return.ManageDeveloperConsole label="Manage all your projects and credentials on Adobe Developer Console" direction='/console/projects' />
 
-        <GetCredential.Return.AccessToken helpText="" buttonLabel="Generate and copy token" heading={(<>Access token<br/><br/> <span style="font-weight:normal"><small>Paste the access token into the <strong>Authorization</strong> header in the <strong>Try it</strong> panel below. Then, add the <a href="https://developer.adobe.com/commerce/services/optimizer/data-ingestion/using-the-api/#base-url">instance ID</a> to the <strong>instance ID</strong> field. You only need to do this once; future requests reuse the values automatically.</small></span></>)} />
+        <GetCredential.Return.AccessToken helpText="" buttonLabel="Generate and copy token" heading={(<>Access token<br/><br/> <span style="font-weight:normal"><small>Paste the access token into the <strong>Authorization</strong> header in the <strong>Try it</strong> panel below. Then, add the <a href="https://developer.adobe.com/commerce/services/optimizer/data-ingestion/using-the-api/#base-url">instance ID</a> to the <strong>tenantID</strong> field. You only need to do this once; future requests reuse the values automatically.</small></span></>)} />
 
         <GetCredential.Return.DevConsoleLink heading="Developer Console project" />
 

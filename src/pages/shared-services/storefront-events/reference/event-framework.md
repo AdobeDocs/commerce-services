@@ -13,6 +13,8 @@ The list of supported events can differ between eventing frameworks. The followi
 
 ## Event names by framework
 
+The following table lists all storefront events that Adobe Commerce publishes to the Adobe Client Data Layer in the browser. These events send data to [Product Recommendations](../index.md#product-recommendations) and [Live Search](../index.md#live-search), and also send data to Adobe Experience Platform Edge, through the [Data Connection](../index.md#data-connection) extension for use in other Adobe Experience Cloud Solutions, such as Real-Time CDP, Adobe Journey Optimizer, Analytics, Target, and so on.
+
 | Event| Storefront Events SDK (adobeDataLayer) | Commerce (Snowplow)| Adobe Experience Platform   |
 | --- | --- | --- | --- |
 | add to requisition list      | addToRequisitionList    | ❌    | xdm namespace: commerce<br/>xdm type: requisitionListAdds     |
@@ -42,7 +44,9 @@ The list of supported events can differ between eventing frameworks. The followi
 | sign out      | signOut   | ❌    | xdm namespace: userAccount<br/>xdm type: logout|
 | start checkout| initiateCheckout        | category: shopping-cart<br/>action: initiate-checkout  | xdm namespace: commerce<br/>xdm type: checkouts|
 
-## Event support by framework
+## Event support by frontend technology
+
+The following table shows which frontend technologies support each event out of the box. A red ❌ indicates that an event is not supported natively. Use the [SDK](../sdk/index.md) to add support for unsupported events.
 
 | Event | Luma/PHP  ("Snowplow")  | Luma/PHP Adobe Experience Platform  | PWA Commerce ("Snowplow")| PWA Adobe Experience Platform  |
 | --- | --- | --- | --- | --- |

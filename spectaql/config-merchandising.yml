@@ -125,7 +125,8 @@ introspection:
   # If using the "url" option above, any headers (such as Authorization) can be added here. This
   # can also be added via the CLI options
   headers:
-    x-api-key: storefront-catalog-apollo
+    AC-Catalog-View-ID: ${CATALOG_VIEW_ID}
+    AC-Environment-ID: ${ENVIRONMENT_ID}
   #   Authorization: Bearer s3cretT0k2n
 
   # Some helpful options for those who are an "SDL-first" shop and/or want to get your metadata into
@@ -383,17 +384,29 @@ servers:
 
   # same format as for OpenAPI Specification https://swagger.io/specification/#server-object
 
-  - url: https://<your store>/graphql
-    description: Production Server
+  - url: https://na1-sandbox.api.commerce.adobe.com/{TENANT_ID}/graphql
+    description: Commerce Services GraphQL API
     # Indicates to use this server's URL as the typical GraphQL request base in the documentation
     # If no server entries have this indicator, the first server's URL will be used.
     # If no server entries are defined at all, the Introspection URL will be used.
     # production: true
     # A place to list any Headers for your GraphQL API calls
     headers:
-      - name: Authorization
-        example: Bearer <YOUR_TOKEN_HERE>
-        comment: Your API token from the dashboard. Must be included in all API calls.
+      - name: AC-Environment-Id
+        example: Fwus6kdpvYCmeEdcCX7PZg
+        comment: Required. Tenant ID for your Adobe Commerce Optimizer instance.
+      - name: AC-View-Id
+        example: cde0ab4c-1f7b-4e12-91f6-9c7840ab6523
+        comment: Required. View ID for catalog context.
+      - name: Content-Type
+        example: application/json
+        comment: Required. Content type header.
+      - name: AC-Price-Book-ID
+        example: us
+        comment: Price book identifier for pricing context.
+      - name: AC-Policy-{*}
+        example: AC-Policy-Brand
+        comment: Trigger name and value that sets data access filters to restrict product access based on request attributes.
 
 info:
   # Tries to adhere to OpenAPI Specification https://swagger.io/specification/#info-object
@@ -440,13 +453,20 @@ info:
   #   url: 'https://www.apache.org/licenses/LICENSE-2.0.html'
 
   # A non-standard array of items to display in your Introduction Area
-  # x-introItems:
+  x-introItems:
     # Can be a Title (for the Nav panel) + URL to simply add a link to somewhere
-    # - title: MerchandisingAPI Guide
-    # url: https://developer.adobe.com/commerce/services/optimizer/merchandising-services/
+    - title: Merchandising API Guide
+      url: https://developer.adobe.com/commerce/services/optimizer/merchandising-services/
     # Can be a Title (for the Nav panel) + description (for the Content panel)
-    # - title: Important thing 1
-    #   description: Some important stuff we wanted you to know. Supports `markdown`
+    - title: Required Headers
+      description: |
+        All API requests must include the following headers:
+
+        - **AC-Environment-Id**: Tenant ID for your Commerce Optimizer instance
+        - **AC-View-Id**: View ID for catalog context
+        - **Content-Type**: application/json
+
+        These headers ensure proper context for your API requests. See the server configuration below for example values.
     # Can be a Title (for the Nav panel) + file that gets loaded (for the Content panel)
     # - title: Content from file that supports markdown
     #   file: ./examples/data/intro-items-markdown.md
