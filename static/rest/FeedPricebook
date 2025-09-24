@@ -1095,27 +1095,54 @@ paths:
         - Price Books
       summary: Create price books
       description: |
-        Create or replace existing price books.
+        Create or replace existing price books with support for hierarchical pricing structures.
 
-        Use the [update price books operation](#operation/updatePriceBooks) to modify values for existing price books.
+        <h3>Creating Base Price Books</h3>
 
-        <strong>Note:</strong> After you assign a `parentId` to a price book, you cannot change the parentId value using the update operation. If you want to define a different parent-child relationship, delete the child price book and create a new one with the desired parent-child relationship.
+        Base price books are the foundation of your pricing hierarchy:
+
+        * **Required Fields**: `priceBookId`, `name`, `currency`
+        * **Currency Definition**: Sets the currency for the entire branch of child price books
+        * **No Parent**: Base price books cannot reference a parent price book
+        * **Unique ID**: Must have a unique `priceBookId` across all price books
+
+        <h3>Creating Child Price Books</h3>
+
+        Child price books inherit from their parent and can extend the hierarchy:
+
+        * **Required Fields**: `priceBookId`, `name`, `parentId`
+        * **Parent Reference**: Must reference an existing parent price book
+        * **Currency Inheritance**: Automatically inherits currency from parent
+        * **Hierarchy Depth**: Can create up to 3 levels of nesting
+
+        <h3>Hierarchy Management</h3>
+
+        * **Parent Assignment**: Once a `parentId` is assigned, it cannot be changed via update operations
+        * **Restructuring**: To change parent-child relationships, delete and recreate the child price book
+        * **Validation**: The system validates parent references and hierarchy depth limits
+
+        Use the [update price books operation](#operation/updatePriceBooks) to modify existing price book names or base price book currencies.
       operationId: createPriceBooks
       parameters:
-        - $ref: "#/components/parameters/Authorization"
-        - $ref: "#/components/parameters/ContentType"
-        - $ref: "#/components/parameters/ContentEncoding"
-      responses:
-        "200":
-          $ref: "#/components/responses/AcceptedResponse"
-        "400":
-          $ref: "#/components/responses/InvalidItemsResponse"
-        "401":
-          $ref: "#/components/responses/UnauthorizedResponse"
-        "403":
-          $ref: "#/components/responses/ForbiddenResponse"
-        "429":
-          $ref: "#/components/responses/TooManyRequestsResponse"
+        - name: Content-Type
+          in: header
+          required: true
+          schema:
+            type: string
+            enum: [application/json]
+        - name: Authorization
+          in: header
+          required: true
+          schema:
+            type: string
+          description: Authorization Bearer token
+        - name: Content-Encoding
+          in: header
+          required: false
+          schema:
+            type: string
+            enum: [gzip]
+          description: Use this header if the payload is compressed with gzip.
       requestBody:
         content:
           application/json:
@@ -1125,47 +1152,117 @@ paths:
                 $ref: "#/components/schemas/FeedPricebook"
             examples:
               FeedWithPricebookInformation:
-                summary: Create a base price book with child price books
-                description: Create a base price book and two child price books. The base price book specifies the `USD` currency for the parent and child price books.
+                summary: Create a hierarchical price book structure
+                description: |
+                  Create a comprehensive pricing hierarchy with a base price book and multiple child price books.
+                  This example demonstrates geographic pricing with regional variations.
                 value:
                   [
                     {
                       "priceBookId": "us",
-                      "name": "Dealer North price book name",
+                      "name": "US Base Price Book",
                       "currency": "USD"
-                    },                    {
-                      "priceBookId": "dealer-north",
+                    },
+                    {
+                      "priceBookId": "us-north",
                       "parentId": "us",
-                      "name": "Dealer North price book"
-                    },                    {
-                      "priceBookId": "dealer-west",
+                      "name": "US North Region"
+                    },
+                    {
+                      "priceBookId": "us-south",
                       "parentId": "us",
-                      "name": "Dealer West price book"
+                      "name": "US South Region"
+                    },
+                    {
+                      "priceBookId": "us-north-east",
+                      "parentId": "us-north",
+                      "name": "US Northeast Territory"
+                    },
+                    {
+                      "priceBookId": "us-north-west",
+                      "parentId": "us-north",
+                      "name": "US Northwest Territory"
                     }
                   ]
+      responses:
+        "200":
+          description: All items in the request are accepted for further processing.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/ProcessFeedResponse"
+        "400":
+          description: Request rejected. Some of the received items are invalid. Check the "invalidFeedItems" node for specific errors.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/400ProcessFeedResponse"
+        "401":
+          description: Unauthorized request. Verify that the Bearer token provided in the `Authorization` header is still valid.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/401Response"
+        "403":
+          description: Forbidden request. Verify that the `Authorization` header is present, and that the Bearer token is still valid.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/403Response"
+        "429":
+          description: |
+            Too many requests. Indicates that a client has exceeded the rate limit of 300 requests per minute.
+            Check the `retry-after` header to get the time (in seconds) to wait before sending the next request.
+          content:
+            text/html;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/429Response"
     patch:
       tags:
         - Price Books
       summary: Update price books
-      description: |-
-        Change the name of a base or child price book, or change the currency assigned to the base price book.
-        When you submit the update request for a child price book, include the correct `parentId`. If the request includes a different `parentId`, the value is ignored.
+      description: |
+        Update existing price books with limitations on hierarchical changes.
+
+        <h3>Updateable Fields</h3>
+
+        * **Name**: Can be updated for both base and child price books
+        * **Currency**: Can only be updated for base price books (affects entire hierarchy)
+        * **Parent ID**: Cannot be updated - use delete and recreate to change hierarchy
+
+        <h3>Update Restrictions</h3>
+
+        * **Parent Assignment**: Cannot change `parentId` via update operations
+        * **Hierarchy Changes**: To restructure the hierarchy, delete and recreate child price books
+        * **Currency Inheritance**: Child price books automatically inherit currency changes from parent
+        * **Validation**: System validates that `parentId` references exist and hierarchy depth is maintained
+
+        <h3>Update Strategies</h3>
+
+        * **Base Price Books**: Update name and currency as needed
+        * **Child Price Books**: Include correct `parentId` in request (will be ignored if different)
+        * **Hierarchy Restructuring**: Delete child price book and recreate with new parent reference
       operationId: updatePriceBooks
       parameters:
-        - $ref: "#/components/parameters/Authorization"
-        - $ref: "#/components/parameters/ContentType"
-        - $ref: "#/components/parameters/ContentEncoding"
-      responses:
-        "200":
-          $ref: "#/components/responses/AcceptedResponse"
-        "400":
-          $ref: "#/components/responses/InvalidItemsResponse"
-        "401":
-          $ref: "#/components/responses/UnauthorizedResponse"
-        "403":
-          $ref: "#/components/responses/ForbiddenResponse"
-        "429":
-          $ref: "#/components/responses/TooManyRequestsResponse"
+        - name: Content-Type
+          in: header
+          required: true
+          schema:
+            type: string
+            enum: [application/json]
+        - name: Authorization
+          in: header
+          required: true
+          schema:
+            type: string
+          description: Authorization Bearer token.
+        - name: Content-Encoding
+          in: header
+          required: false
+          schema:
+            type: string
+            enum: [gzip]
+          description: Use this header if the payload is compressed with gzip.
       requestBody:
         content:
           application/json:
@@ -1185,31 +1282,138 @@ paths:
                       "name": "North dealership"
                     }
                   ]
+              ComplexHierarchyExample:
+                summary: Create a complex multi-level pricing hierarchy
+                description: |
+                  Create a comprehensive pricing structure for a global business with multiple regions,
+                  customer segments, and sales channels. This demonstrates the full potential of
+                  hierarchical price books.
+                value:
+                  [
+                    {
+                      "priceBookId": "global",
+                      "name": "Global Base Pricing",
+                      "currency": "USD"
+                    },
+                    {
+                      "priceBookId": "us-retail",
+                      "parentId": "global",
+                      "name": "US Retail Channel"
+                    },
+                    {
+                      "priceBookId": "us-online",
+                      "parentId": "global",
+                      "name": "US Online Channel"
+                    },
+                    {
+                      "priceBookId": "us-retail-premium",
+                      "parentId": "us-retail",
+                      "name": "US Retail Premium Customers"
+                    },
+                    {
+                      "priceBookId": "us-retail-standard",
+                      "parentId": "us-retail",
+                      "name": "US Retail Standard Customers"
+                    },
+                    {
+                      "priceBookId": "us-online-vip",
+                      "parentId": "us-online",
+                      "name": "US Online VIP Members"
+                    },
+                    {
+                      "priceBookId": "us-online-regular",
+                      "parentId": "us-online",
+                      "name": "US Online Regular Customers"
+                    }
+                  ]
+      responses:
+        "200":
+          description: All items in the request are accepted for further processing.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/ProcessFeedResponse"
+        "400":
+          description: Request rejected. Some of the received items are invalid. Check the `invalidFeedItems` node for specific errors.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/400ProcessFeedResponse"
+        "401":
+          description: Unauthorized request. Verify that the Bearer token provided in the `Authorization` header is still valid.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/401Response"
+        "403":
+          description: Forbidden request. Verify that the `Authorization` header is present, and that the Bearer token is still valid.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/403Response"
+        "429":
+          description: |
+            Too many requests. Indicates that a client has exceeded the rate limit of 300 requests per minute.
+            Check the `retry-after` header to get the time (in seconds) to wait before sending the next request.
+          content:
+            text/html;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/429Response"
   /v1/catalog/price-books/delete:
     post:
       tags:
         - Price Books
       summary: Delete price books
       description: |
-        When you delete a price book, all its child price books and all prices assigned to the `priceBookId` and its children are also deleted.
+        Delete price books and their associated pricing data with cascading effects on the hierarchy.
 
-        If a price book is deleted by mistake, you have up to one week to restore the deleted price books and their associated prices. Restoring is done by recreating the top-level parent price book that was deleted, using the same payload submitted in the original create price book request. The state of the price books and prices are restored to the status and price values assigned when the price book was deleted.
+        <h3>Cascading Deletion</h3>
+
+        When you delete a price book:
+        * **Child Price Books**: All child price books in the hierarchy are automatically deleted
+        * **Associated Prices**: All prices assigned to the deleted price book and its children are removed
+        * **Hierarchy Impact**: The entire branch below the deleted price book is removed
+
+        <h3>Deletion Scenarios</h3>
+
+        * **Base Price Book**: Deletes entire pricing hierarchy and all associated prices
+        * **Child Price Book**: Deletes the specific price book and its children, but preserves sibling price books
+        * **Leaf Price Book**: Deletes only the specified price book and its associated prices
+
+        <h3>Recovery Options</h3>
+
+        If a price book is deleted by mistake:
+        * **Time Window**: You have up to one week to restore deleted price books
+        * **Restoration Method**: Recreate the top-level parent price book using the original create payload
+        * **State Recovery**: Price books and prices are restored to their state when deleted
+        * **Hierarchy Reconstruction**: The entire hierarchy is rebuilt from the restoration payload
+
+        <h3>Best Practices</h3>
+
+        * **Backup Strategy**: Keep copies of price book configurations for recovery
+        * **Validation**: Verify hierarchy structure before deletion
+        * **Impact Assessment**: Review associated prices before deleting price books
       operationId: deletePriceBooks
       parameters:
-        - $ref: "#/components/parameters/Authorization"
-        - $ref: "#/components/parameters/ContentType"
-        - $ref: "#/components/parameters/ContentEncoding"
-      responses:
-        "200":
-          $ref: "#/components/responses/AcceptedResponse"
-        "400":
-          $ref: "#/components/responses/InvalidItemsResponse"
-        "401":
-          $ref: "#/components/responses/UnauthorizedResponse"
-        "403":
-          $ref: "#/components/responses/ForbiddenResponse"
-        "429":
-          $ref: "#/components/responses/TooManyRequestsResponse"
+        - name: Content-Type
+          in: header
+          required: true
+          schema:
+            type: string
+            enum: [application/json]
+        - name: Authorization
+          in: header
+          required: true
+          schema:
+            type: string
+          description: Authorization Bearer token.
+        - name: Content-Encoding
+          in: header
+          required: false
+          schema:
+            type: string
+            enum: [gzip]
+          description: Use this header if the payload is compressed with gzip.
       requestBody:
         content:
           application/json:
@@ -1222,6 +1426,39 @@ paths:
                 summary: Delete price book "dealer-north"
                 description: Delete the "dealer-north" price book. All prices assigned to this price book are also deleted.
                 value: [{ "priceBookId": "dealer-north" }]
+      responses:
+        "200":
+          description: All items in the request are accepted for further processing.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/ProcessFeedResponse"
+        "400":
+          description: Request rejected. Some of the received items are invalid. Check the "invalidFeedItems" node for specific errors.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/400ProcessFeedResponse"
+        "401":
+          description: Unauthorized request. Verify that the Bearer token provided in the `Authorization` header is still valid.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/401Response"
+        "403":
+          description: Forbidden request. Verify that the `Authorization` header is present, and that the Bearer token is still valid.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/403Response"
+        "429":
+          description: |
+            Too many requests. Indicates that a client has exceeded the rate limit of 300 requests per minute.
+            Check the `retry-after` header to get the time (in seconds) to wait before sending the next request.
+          content:
+            text/html;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/429Response"
   /v1/catalog/products/prices:
     post:
       tags:
@@ -1257,7 +1494,7 @@ paths:
         Tier quantities must be greater than 1.
 
         <h3>Pricing for configurable products</h3>
-        Because configurable product price is calculated based on the price of the selected product variant, you don't need to send price
+        Because configurable product price is calculated based on the price of the selected product variant, you don't need to send the price
         data for configurable product SKUs. Sending price data for these SKUs can cause incorrect price calculations.
 
       operationId: createPrices
@@ -1954,7 +2191,9 @@ components:
           $ref: "#/components/schemas/Source"
     FeedPricebook:
       title: FeedPricebook
-      description: Price book information
+      description: |
+        Price book information supporting hierarchical pricing structures. Use base price books to define currency
+        and create child price books for specific pricing scenarios.
       oneOf:
         - $ref: '#/components/schemas/PriceBookBase'
         - $ref: '#/components/schemas/PriceBookChild'
@@ -1965,35 +2204,53 @@ components:
       properties:
         priceBookId:
           type: string
-          description: Base price book id
+          description: | 
+            Unique identifier for the base price book. Must be unique across all price books.
+            Used to reference this price book in child price books and pricing data.
           minLength: 1
           maxLength: 64
+          example: "us-base"
         name:
           type: string
-          description: Price book name
+          description: |
+             Human-readable name for the price book. Used for display and identification purposes.
           minLength: 1
+          example: "US Base Pricing"
         currency:
           type: string
-          description: Price book currency
+          description: |
+            Currency code that applies to this price book and all its child price books in ISO format.
+            Child price books inherit this currency and cannot override it.
           minLength: 1
           maxLength: 5
+          example: "USD"
     PriceBookChild:
       title: Child price book
+      description: |
+         Nested price book that inherits currency from its parent and can extend the pricing hierarchy.
+         Child price books can have up to 3 levels of nesting from the base price book.
       type: object
       required: [priceBookId, name, parentId]
       properties:
         priceBookId:
           type: string
-          description: Child price book id
+          description: |
+            Unique identifier for the child price book. Must be unique across all price books.
+            Used to reference this price book in pricing data and potential child price books.
           minLength: 1
           maxLength: 64
+          example: "us-retail"
         name:
           type: string
-          description: Price book name
+          description: |
+            Human-readable name for the child price book. Used for display and identification purposes.
           minLength: 1
+          example: "US Retail Channel"
         parentId:
           type: string
-          description: Base price book id
+          description: |
+             Reference to the parent price book ID. Must reference an existing price book.
+             Determines the currency inheritance and hierarchy level.
           minLength: 1
           maxLength: 64
     FeedPriceBookDelete:
@@ -2056,8 +2313,7 @@ components:
           type: array
           description: |
             Array of tiered pricing for quantity-based discounts.
-            Quantities must be greater than 1 and should be in ascending order.
-            Supports both percentage and fixed price tiers.
+            Quantities must be greater than 1. Supports both percentage and fixed price tiers.
           items:
             anyOf:
               - $ref: "#/components/schemas/TierFinalPrice"
@@ -2156,13 +2412,12 @@ components:
           type: number
           format: float
           description: |
-            Discount percentage as a positive number.
-            Valid range is 0.01 to 99.99 (1% to 99.99%).
+            Discount percentage as a positive number. Valid range is 0.01 to 99.99 (1% to 99.99%).
           example: 15.5
     TierFinalPrice:
-      title: Tier Fixed Price
+      title: Tier Final Price
       description: |
-        Fixed price offered for bulk purchases at a specific quantity threshold.
+        Final price offered for bulk purchases at a specific quantity threshold.
         Example: $100 regular price with tier price of $80 for quantity of 5 or more.
       type: object
       required:
@@ -2174,7 +2429,7 @@ components:
           format: float
           description: |
             Minimum quantity required to qualify for this tier price.
-            Must be greater than 1 and should be in ascending order with other tiers.
+            Must be greater than 1.
           example: 5
         price:
           type: number
@@ -2186,7 +2441,7 @@ components:
     TierPercentage:
       title: Tier Percentage Discount
       description: |
-        Percentage discount applied when purchasing at or above a specific quantity threshold.
+        Percentage discount applied to the regular price when purchasing at or above a specific quantity threshold.
         Example: $100 regular price with 20% discount for quantity of 10 or more.
       type: object
       required:
@@ -2198,13 +2453,13 @@ components:
           format: float
           description: |
             Minimum quantity required to qualify for this tier discount.
-            Must be greater than 1 and should be in ascending order with other tiers.
+            Must be greater than 1.
           example: 10
         percentage:
           type: number
           format: float
           description: |
-            Discount percentage applied for the specified quantity threshold.
+            Discount percentage applied to the specified quantity threshold.
             Valid range is 0.01 to 99.99 (1% to 99.99%).
           example: 20.0
     Source:
