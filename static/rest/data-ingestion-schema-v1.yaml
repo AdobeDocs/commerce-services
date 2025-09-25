@@ -1224,7 +1224,7 @@ paths:
       description: |
         Update existing price books with limitations on hierarchical changes.
 
-        <h3>Updateable Fields</h3>
+        <h3>Updatable Fields</h3>
 
         * **Name**: Can be updated for both base and child price books
         * **Currency**: Can only be updated for base price books (affects entire hierarchy)

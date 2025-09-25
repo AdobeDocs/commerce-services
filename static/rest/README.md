@@ -17,7 +17,7 @@ The Data Ingestion API Reference is embedded in the [Data Ingestion API referenc
 1. Regenerate the API reference locally to test changes:
 
    ```shell
-   npx @redocly/cli build-docs src/static/rest/data-ingestion-schema-v1.yaml --config src/static/rest/.redocly.yaml --output tmp/redoc-static.html
+   npx @redocly/cli build-docs static/rest/data-ingestion-schema-v1.yaml --config static/rest/.redocly.yaml --output tmp/redoc-static.html
    ```
 
    Review the updates by opening the `tmp/redoc-static.html` file in your browser.

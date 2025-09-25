@@ -3,12 +3,10 @@ organization: adobe-developers
 extends:
     - minimal
 apis:
-  Data Ingestion@1.0:
-    root: src/static/rest/data-ingestion-schema-v1.yaml
+  'data-ingestion@1.0.0':
+    root: data-ingestion-schema-v1.yaml
     labels:
       - main
-  Data Ingestion@1.0.0:
-    root: src/static/rest/data-ingestion-schema-v1.yaml
 theme:
   openapi:
     pagination: section
@@ -20,7 +18,6 @@ theme:
     layout: stacked
     showExtensions: true
     nativeScrollbars: true
-    ctrlFHijack: true
     scrollYOffset: 64
     disableSidebar: true
     disableDeepLinks: false
