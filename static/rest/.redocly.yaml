@@ -1,4 +1,4 @@
-# See https://docs.redoc.ly/cli/configuration/ for more information.
+# This file is used for local build configuration. See https://docs.redoc.ly/cli/configuration/ for more information.
 organization: adobe-developers
 extends:
     - minimal
