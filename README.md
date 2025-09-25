@@ -139,4 +139,4 @@ For more information about SpectaQL, refer to <https://github.com/anvilco/specta
 
 ## REST API Reference Generator
 
-See [Generate the Data Ingestion API Reference](src/openapi/README.md).
+See [Generate the Data Ingestion API Reference](src/static/rest/README.md).
