@@ -35,7 +35,6 @@
     "dev:admin-api": "spectaql --target-file index.html --config spectaql/config-admin.yml --development-mode",
     "build:merchandising-api": "node scripts/run-spectaql-with-cleanup.js --target-file index.html --config spectaql/config-merchandising-temp.yml",
     "dev:merchandising-api": "node scripts/run-spectaql-with-cleanup.js --target-file index.html --config spectaql/config-merchandising-temp.yml --development-mode",
-    "build:merchandising-api-with-descriptions": "node scripts/build-merchandising-with-descriptions.js",
     "build:graphql": "yarn build:admin-api && yarn build:merchandising-api",
     "lint": "docker run --rm -e RUN_LOCAL=true --env-file .github/super-linter.env -v \"$PWD\":/tmp/lint github/super-linter:slim-v5"
   },

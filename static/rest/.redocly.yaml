@@ -1,0 +1,23 @@
+# This file is used for local build configuration. See https://docs.redoc.ly/cli/configuration/ for more information.
+organization: adobe-developers
+extends:
+    - minimal
+apis:
+  'data-ingestion@1.0.0':
+    root: data-ingestion-schema-v1.yaml
+    labels:
+      - main
+theme:
+  openapi:
+    pagination: section
+    hideHostname: true
+    sortPropsAlphabetically: false
+    pathInMiddlePanel: true
+    hideDownloadButton: false
+    hideTryItPanel: true
+    layout: stacked
+    showExtensions: true
+    nativeScrollbars: true
+    scrollYOffset: 64
+    disableSidebar: true
+    disableDeepLinks: false
