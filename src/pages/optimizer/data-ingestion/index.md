@@ -32,6 +32,10 @@ You can also define custom metadata for additional product attributes. For examp
 
 For details, see <a href="https://developer.adobe.com/commerce/services/reference/rest/#tag/Metadata" target="_blank" rel="noopener noreferrer">Metadata API</a> in the *Data Ingestion API Reference*.
 
+## Categories
+
+Categories are used to organize products into a hierarchical structure, making it easier for customers to navigate and find products in the storefront. Categories can be nested, allowing you to create subcategories within main categories. For details on creating categories and category hierarchies using slug-based paths, see [Categories](https://developer.adobe.com/commerce/services/reference/rest/) resource in the API reference.
+
 ## Products
 
 A product is any item or service offered for sale through online channels. Products can be physical goods, digital downloads, or services. They are the core elements of your catalog. Product types are different categories of products that you can create and manage in your catalog. Merchandising Services simplifies product types to two use cases:
