@@ -1080,7 +1080,7 @@ paths:
         Update products with specified `sku` and `source` values to replace existing field data with the data supplied in the request.
         When the update is processed, the merge strategy is used to apply changes to `scalar` and `object` type fields.
 
-        For fields of an `array` type new value can be appended to the existing list. For a list of objects you can update specific object by matching on a key field. The following fields are supported:
+        For `array` type fields, a new value can be appended to the existing list. For an object list, you can update a specific object by matching on a key field. The following fields are supported:
         * `attributes` - match on `code`
         * `images` - match on `url`
         * `routes` - match on `path`
