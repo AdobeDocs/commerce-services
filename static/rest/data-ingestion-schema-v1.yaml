@@ -1818,8 +1818,8 @@ paths:
         <h3>Update strategies</h3>
 
         * **Regular Price** - Updated using merge strategy
-        * **Discounts Array** - Updated using append or merge strategy
-        * **Tiered Pricing Array** - Updated using append or merge strategy
+        * **Discounts Array** - Updated using the append or merge strategy
+        * **Tiered Pricing Array** - Updated using the append or merge strategy
 
         <h3>Discount and tier pricing updates</h3>
 
