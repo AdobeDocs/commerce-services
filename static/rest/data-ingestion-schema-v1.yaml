@@ -10,6 +10,7 @@ info:
     This API provides the following resource collections to create and update catalog data:
 
     - <strong>[Metadata](#tag/Metadata)</strong>—define and manage product attribute metadata including display settings, search characteristics, filtering options, and sorting rules.
+    - <strong>[Categories](#tag/Categories)</strong>—define and manage categories with hierarchical structure to build navigation menu.
     - <strong>[Products](#tag/Products)</strong>—define and manage catalog items with their attributes (name, description, SKU, images, and variants).
     - <strong>[Price books](#tag/Price-Books)</strong>—define and manage pricing scopes for different customer tiers and markets.
     - <strong>[Prices](#tag/Prices)</strong>—define and manage product SKU prices and their associated price books.
@@ -28,6 +29,19 @@ tags:
       Product attribute metadata specifies how product attributes are displayed on the storefront.
       For example, you can define a product attribute as searchable, filterable, and sortable.
       You can also define the search type for a product attribute, such as autocomplete or exact match.
+  - name: Categories
+    description: |
+      Manage categories in a hierarchical structure with localization support.
+      Categories organize products into logical groups and support nested hierarchies using slug-based paths.
+
+      Category management includes:
+      - Creating categories with localized names and hierarchical slugs
+      - Updating existing category information
+      - Deleting categories from the catalog
+      - Associating categories with product families for enhanced organization
+
+      Categories use a slug-based hierarchy format to represent parent-child relationships, for example, "men/clothing/pants'.
+
   - name: Products
     description: Create and manage product data including simple products, configurable products, and their variants. Control product visibility, attributes, images, and pricing
   - name: Price Books
@@ -215,7 +229,7 @@ paths:
                   [
                     {
                       "code": "sku",
-                      "source": { "locale": "en" },
+                      "source": { "locale": "en-US" },
                       "label": "Product Name",
                       "dataType": "TEXT",
                       "visibleIn":
@@ -233,7 +247,7 @@ paths:
                     },
                     {
                       "code": "name",
-                      "source": { "locale": "en" },
+                      "source": { "locale": "en-US" },
                       "label": "Product Name",
                       "dataType": "TEXT",
                       "visibleIn":
@@ -251,7 +265,7 @@ paths:
                     },
                     {
                       "code": "description",
-                      "source": { "locale": "en" },
+                      "source": { "locale": "en-US" },
                       "label": "Product Description",
                       "dataType": "TEXT",
                       "visibleIn": ["PRODUCT_DETAIL"],
@@ -263,7 +277,7 @@ paths:
                     },
                     {
                       "code": "shortDescription",
-                      "source": { "locale": "en" },
+                      "source": { "locale": "en-US" },
                       "label": "Product Short Description",
                       "dataType": "TEXT",
                       "visibleIn": ["PRODUCT_DETAIL"],
@@ -275,7 +289,7 @@ paths:
                     },
                     {
                       "code": "price",
-                      "source": { "locale": "en" },
+                      "source": { "locale": "en-US" },
                       "label": "Price",
                       "dataType": "DECIMAL",
                       "visibleIn":
@@ -335,7 +349,7 @@ paths:
                   [
                     {
                       "code": "name",
-                      "source": { "locale": "en" },
+                      "source": { "locale": "en-US" },
                       "label": "Updated - Product Name",
                       "visibleIn": [
                         "PRODUCT_DETAIL",
@@ -380,7 +394,184 @@ paths:
                 value: [
                   {
                     "code": "name",
-                    "source": { "locale": "en" }
+                    "source": { "locale": "en-US" }
+                  }
+                ]
+
+
+  /v1/catalog/categories:
+    post:
+      tags:
+        - Categories
+      summary: Create categories
+      description: |
+        Create new categories with hierarchical structure and slug-based paths.
+        Categories organize products into logical groups and support nested hierarchies.
+
+        When creating categories:
+          - Each category requires a unique `slug` and `source`.
+          - Use the `slug` field in a hierarchical format like men/clothing/pants' to create parent-child relationships
+          - The category `slug` string can contain only lowercase letters, numbers, and hyphens.
+          - Use the `name` field to define the display name for the category.
+          - Use the optional `families` field to associate categories with product families for enhanced organization.
+
+        To update existing categories, use the update operation.
+
+      operationId: createCategories
+      parameters:
+        - $ref: "#/components/parameters/Authorization"
+        - $ref: "#/components/parameters/ContentType"
+        - $ref: "#/components/parameters/ContentEncoding"
+      responses:
+        "200":
+          $ref: "#/components/responses/AcceptedResponse"
+        "400":
+          $ref: "#/components/responses/InvalidItemsResponse"
+        "401":
+          $ref: "#/components/responses/UnauthorizedResponse"
+        "403":
+          $ref: "#/components/responses/ForbiddenResponse"
+        "429":
+          $ref: "#/components/responses/TooManyRequestsResponse"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: "#/components/schemas/FeedCategory"
+            examples:
+              FeedWithCategoryInformation:
+                summary: Create product categories
+                description: |
+                  Creates hierarchical product categories. This example shows creating parent and child categories
+                  with product family associations.
+                value:
+                  [
+                    {
+                      "slug": "men",
+                      "source": { "locale": "en-US" },
+                      "name": "Men",
+                      "families": ["apparel", "accessories"]
+                    },
+                    {
+                      "slug": "men/clothing",
+                      "source": { "locale": "en-US" },
+                      "name": "Men's Clothing",
+                      "families": ["apparel"]
+                    },
+                    {
+                      "slug": "men/clothing/pants",
+                      "source": { "locale": "en-US" },
+                      "name": "Men's Pants",
+                      "families": ["apparel"]
+                    }
+                  ]
+    patch:
+      tags:
+        - Categories
+      summary: Update categories
+      description: |
+        Update existing product categories with new values.
+        When the update is processed, the merge strategy is used to apply changes to `scalar` and `object` type fields. The replace strategy is used to apply changes for fields in an `array`.
+      operationId: updateCategories
+      parameters:
+        - $ref: "#/components/parameters/Authorization"
+        - $ref: "#/components/parameters/ContentType"
+        - $ref: "#/components/parameters/ContentEncoding"
+      responses:
+        "200":
+          $ref: "#/components/responses/AcceptedResponse"
+        "400":
+          $ref: "#/components/responses/InvalidItemsResponse"
+        "401":
+          $ref: "#/components/responses/UnauthorizedResponse"
+        "403":
+          $ref: "#/components/responses/ForbiddenResponse"
+        "429":
+          $ref: "#/components/responses/TooManyRequestsResponse"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: "#/components/schemas/FeedCategoryUpdate"
+            examples:
+              FeedWithCategoryInformation:
+                summary: Example of category updates
+                description: |
+                  Update existing product categories with new values.
+                  Note that fields with the `array` type will replace existing data.
+                  The example below updates the following:
+                  * `name` - Change the category display name.
+                  * `families` - Replace the product families associated with the category.
+                value:
+                  [
+                    {
+                      "slug": "men/clothing",
+                      "source": { "locale": "en-US" },
+                      "name": "Men's Apparel",
+                      "families": ["clothing", "fashion"]
+                    }
+                  ]
+  /v1/catalog/categories/delete:
+    post:
+      tags:
+        - Categories
+      summary: Delete categories
+      description: |
+        Delete categories and all their associated children
+
+        <h3>Cascading Deletion</h3>
+
+        When you delete a category:
+        * **Child categories**: All child categories in the hierarchy are deleted automatically
+        * **Hierarchy Impact**: The entire branch below the deleted category is removed
+
+        <h3>Recovery Options</h3>
+
+        If a category is deleted by mistake:
+        * **Time Window**: You have up to one week to restore deleted categories
+        * **Restoration Method**: Recreate the top-level deleted category using the [update operation](#operation/createCategories)
+        * **State Recovery**: Categories are restored to their exact state from the time of deletion, including all metadata, family associations, and hierarchy relationships
+        * **Hierarchy Reconstruction**: The entire hierarchy is rebuilt from the restoration payload
+
+      operationId: deleteCategories
+      parameters:
+        - $ref: "#/components/parameters/Authorization"
+        - $ref: "#/components/parameters/ContentType"
+        - $ref: "#/components/parameters/ContentEncoding"
+      responses:
+        "200":
+          $ref: "#/components/responses/AcceptedResponse"
+        "400":
+          $ref: "#/components/responses/InvalidItemsResponse"
+        "401":
+          $ref: "#/components/responses/UnauthorizedResponse"
+        "403":
+          $ref: "#/components/responses/ForbiddenResponse"
+        "429":
+          $ref: "#/components/responses/TooManyRequestsResponse"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: "#/components/schemas/FeedCategoryDelete"
+            examples:
+              FeedWithCategoryInformation:
+                summary: Delete categories
+                description: Marks existing categories as deleted.
+                value: [
+                  {
+                    "slug": "men/clothing/pants",
+                    "source": { "locale": "en-US" }
+                  },
+                  {
+                    "slug": "women/shoes/boots",
+                    "source": { "locale": "en-US" }
                   }
                 ]
 
@@ -516,7 +707,7 @@ paths:
                   [
                     {
                       "sku": "red-pants",
-                      "source": { "locale": "en" },
+                      "source": { "locale": "en-US" },
                       "name": "red pants",
                       "slug": "red-pants.html",
                       "status": "ENABLED",
@@ -568,7 +759,7 @@ paths:
                   [
                     {
                       "sku": "pants",
-                      "source": { "locale": "en" },
+                      "source": { "locale": "en-US" },
                       "name": "Yoga pants",
                       "slug": "zeppelin-yoga-pant",
                       "status": "ENABLED",
@@ -615,7 +806,7 @@ paths:
                     },
                     {
                       "sku": "pants-red-32",
-                      "source": { "locale": "en" },
+                      "source": { "locale": "en-US" },
                       "name": "Zeppelin Yoga Pant Red 32 size",
                       "slug": "pants-red-32",
                       "status": "ENABLED",
@@ -642,7 +833,7 @@ paths:
                     },
                     {
                       "sku": "pants-red-44",
-                      "source": { "locale": "en" },
+                      "source": { "locale": "en-US" },
                       "name": "Zeppelin Yoga Pant Red 44 size",
                       "slug": "pants-red-44",
                       "status": "ENABLED",
@@ -669,7 +860,7 @@ paths:
                     },
                     {
                       "sku": "pants-green-32",
-                      "source": { "locale": "en" },
+                      "source": { "locale": "en-US" },
                       "name": "Zeppelin Yoga Pant Green 32 size",
                       "slug": "pants-green-32",
                       "status": "ENABLED",
@@ -696,7 +887,7 @@ paths:
                     },
                     {
                       "sku": "pants-green-44",
-                      "source": { "locale": "en" },
+                      "source": { "locale": "en-US" },
                       "name": "Zeppelin Yoga Pant green 44 size",
                       "slug": "pants-green-44",
                       "status": "ENABLED",
@@ -731,7 +922,7 @@ paths:
                   [
                     {
                       "sku": "bundle-outfit",
-                      "source": { "locale": "en" },
+                      "source": { "locale": "en-US" },
                       "name": "Bundle Outfit",
                       "slug": "bundle-outfit",
                       "status": "ENABLED",
@@ -798,7 +989,7 @@ paths:
                     },
                     {
                       "sku": "top-red",
-                      "source": { "locale": "en" },
+                      "source": { "locale": "en-US" },
                       "name": "Red Top",
                       "slug": "top-red",
                       "status": "ENABLED",
@@ -812,7 +1003,7 @@ paths:
                     },
                     {
                       "sku": "top-blue",
-                      "source": { "locale": "en" },
+                      "source": { "locale": "en-US" },
                       "name": "Blue Top",
                       "slug": "top-blue",
                       "status": "ENABLED",
@@ -826,7 +1017,7 @@ paths:
                     },
                     {
                       "sku": "bottom-black",
-                      "source": { "locale": "en" },
+                      "source": { "locale": "en-US" },
                       "name": "Black Bottom",
                       "slug": "bottom-black",
                       "status": "ENABLED",
@@ -840,7 +1031,7 @@ paths:
                     },
                     {
                       "sku": "bottom-white",
-                      "source": { "locale": "en" },
+                      "source": { "locale": "en-US" },
                       "name": "White Bottom",
                       "slug": "bottom-white",
                       "status": "ENABLED",
@@ -854,7 +1045,7 @@ paths:
                     },
                     {
                       "sku": "socks",
-                      "source": { "locale": "en" },
+                      "source": { "locale": "en-US" },
                       "name": "Socks",
                       "slug": "socks",
                       "status": "ENABLED",
@@ -868,7 +1059,7 @@ paths:
                     },
                     {
                       "sku": "headband",
-                      "source": { "locale": "en" },
+                      "source": { "locale": "en-US" },
                       "name": "Headband",
                       "slug": "headband",
                       "status": "ENABLED",
@@ -928,7 +1119,7 @@ paths:
                   [
                     {
                       "sku": "red-pants",
-                      "source": { "locale": "en" },
+                      "source": { "locale": "en-US" },
                       "name": "Red pants - discounts!",
                       "metaTags": { "title": "Updated - Red" },
                       "attributes":
@@ -954,7 +1145,7 @@ paths:
                   [
                     {
                       "sku": "pants-red-32",
-                      "source": { "locale": "en" },
+                      "source": { "locale": "en-US" },
                       "attributes":
                         [
                           {
@@ -980,7 +1171,7 @@ paths:
                   [
                     {
                       "sku": "bundle-outfit",
-                      "source": { "locale": "en" },
+                      "source": { "locale": "en-US" },
                       "bundles":
                         [
                           {
@@ -1086,7 +1277,7 @@ paths:
                   [
                     {
                       "sku": "red-pants",
-                      "source": { "locale": "en" }
+                      "source": { "locale": "en-US" }
                     }
                   ]
   /v1/catalog/price-books:
@@ -1135,7 +1326,7 @@ paths:
           required: true
           schema:
             type: string
-          description: Authorization Bearer token
+            description: Authorization Bearer token
         - name: Content-Encoding
           in: header
           required: false
@@ -1255,7 +1446,7 @@ paths:
           required: true
           schema:
             type: string
-          description: Authorization Bearer token.
+            description: Authorization Bearer token.
         - name: Content-Encoding
           in: header
           required: false
@@ -1406,7 +1597,7 @@ paths:
           required: true
           schema:
             type: string
-          description: Authorization Bearer token.
+            description: Authorization Bearer token.
         - name: Content-Encoding
           in: header
           required: false
@@ -1761,12 +1952,13 @@ components:
         application/json;charset=UTF-8:
           schema:
             $ref: "#/components/schemas/ProcessFeedResponse"
+
     InvalidItemsResponse:
       x-summary: Request rejected
       description: |
         Some of the received items are invalid. Check the "message" and "errors" fields for details.
 
-        Common validation errors include:
+        Common causes of validation errors include:
 
         * **Invalid SKU**: SKU does not exist in the catalog
         * **Invalid Price Book**: Price book ID does not exist
@@ -1774,6 +1966,8 @@ components:
         * **Invalid Tier Quantities**: Quantities not in ascending order or less than 2
         * **Configurable Product Price**: Attempting to set price for configurable product SKU
         * **Invalid Price Format**: Non-numeric or negative price values
+        * **Incorrect Category Slug**: Invalid category slug format
+        * **Incorrect hierarchy configuration**: Misconfiguration of price book parent-child relationship
       content:
         application/json;charset=UTF-8:
           schema:
@@ -1810,6 +2004,7 @@ components:
       required: true
       schema:
         type: string
+        description: Authorization Bearer token
     ContentType:
       name: Content-Type
       in: header
@@ -1995,6 +2190,102 @@ components:
           description: Attribute code
         source:
           $ref: "#/components/schemas/Source"
+    FeedCategory:
+      title: FeedCategory
+      description: Category information for organizing products with hierarchical structure and localization support.
+      required:
+        - slug
+        - source
+        - name
+      type: object
+      properties:
+        slug:
+          type: string
+          minLength: 1
+          maxLength: 1024
+          pattern: "^[a-z0-9-]+(?:\\/[a-z0-9-]+)*$"
+          description: |
+            Category slug using hierarchical format with forward slashes to represent parent-child relationships.
+            String can contain only lowercase letters, numbers, and hyphens.
+            Examples: 'men', 'men/clothing', 'men/clothing/pants'
+          example: "men/clothing/pants"
+        source:
+          $ref: "#/components/schemas/Source"
+        name:
+          type: string
+          minLength: 1
+          maxLength: 128
+          description: Display name of the category
+          example: "Men's Pants"
+        families:
+          type: array
+          nullable: true
+          items:
+            type: string
+          description: |
+            Optional array of product family identifiers that this category is associated with.
+            Used for enhanced product organization and filtering.
+          example: ["apparel", "clothing"]
+      additionalProperties: false
+    FeedCategoryUpdate:
+      title: FeedCategoryUpdate
+      description: Category information for updating existing categories.
+      required:
+        - slug
+        - source
+      type: object
+      properties:
+        slug:
+          type: string
+          minLength: 1
+          maxLength: 1024
+          pattern: "^[a-z0-9-]+(?:\\/[a-z0-9-]+)*$"
+          description: |
+            Category slug using hierarchical format with forward slashes to represent parent-child relationships.
+            String can contain only lowercase letters, numbers, and hyphens.
+            Examples: 'men', 'men/clothing', 'men/clothing/pants'
+          example: "men/clothing/pants"
+        source:
+          $ref: "#/components/schemas/Source"
+        name:
+          type: string
+          minLength: 1
+          maxLength: 128
+          description: Display name of the category
+          example: "Men's Pants"
+        families:
+          type: array
+          nullable: true
+          items:
+            type: string
+          description: |
+            Optional array of product family identifiers that this category is associated with.
+            Used for enhanced product organization and filtering. For example, for a clothing category,
+            you can associate it with the "apparel" family.
+            Note: This field uses the replace strategy to replace the entire array with the new values.
+          example: ["apparel", "clothing"]
+      additionalProperties: false
+    FeedCategoryDelete:
+      title: Delete category
+      description: Delete category information for removing categories from the catalog.
+      required:
+        - slug
+        - source
+      type: object
+      properties:
+        slug:
+          type: string
+          minLength: 1
+          maxLength: 1024
+          pattern: "^[a-z0-9-]+(?:\\/[a-z0-9-]+)*$"
+          description: |
+            Category slug using hierarchical format with forward slashes to represent parent-child relationships.
+            Must use only lowercase letters, numbers, and hyphens.
+            Examples: 'men', 'men/clothing', 'men/clothing/pants'
+          example: "men/clothing/pants"
+        source:
+          $ref: "#/components/schemas/Source"
+      additionalProperties: false
     FeedProduct:
       title: Catalog Product payload
       type: object
@@ -2464,7 +2755,7 @@ components:
           example: 20.0
     Source:
       title: Catalog source
-      description: Source of the entity. For example it's locale "English"
+      description: Source of the entity, for example, "en-US" for US English.
       type: object
       required:
         - locale
