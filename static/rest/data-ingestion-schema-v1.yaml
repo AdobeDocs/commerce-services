@@ -1079,7 +1079,16 @@ paths:
       description: |
         Update products with specified `sku` and `source` values to replace existing field data with the data supplied in the request.
         When the update is processed, the merge strategy is used to apply changes to `scalar` and `object` type fields.
-        The replace strategy is used to apply changes for fields in an `array`.
+
+        For `array` type fields, a new value can be appended to the existing list. For an object list, you can update a specific object by matching on a key field. The following fields are supported:
+        * `attributes` - match on `code`
+        * `images` - match on `url`
+        * `routes` - match on `path`
+        * `links` - match on `type` and `sku`
+        * `bundles` match on `type` and `group`
+        * `configurations` match on `type` and `attributeCode`
+        * `externalIds` match on `type` and `origin`
+
       operationId: updateProducts
       parameters:
         - $ref: "#/components/parameters/Authorization"
@@ -1114,25 +1123,13 @@ paths:
                   In the example below, the following attributes are updated.
                   * `name` - Change the product name.
                   * `metaTags.title` - Change the title of the product detail page.
-                  * `attributes` - Add a new state, `NM` to the `states` attribute.
                 value:
                   [
                     {
                       "sku": "red-pants",
                       "source": { "locale": "en-US" },
                       "name": "Red pants - discounts!",
-                      "metaTags": { "title": "Updated - Red" },
-                      "attributes":
-                        [
-                          {
-                            "code": "cost",
-                            "values": ["10.5"]
-                          },
-                          {
-                            "code": "states",
-                            "values": ["TX", "CA", "NM"]
-                          }
-                        ]
+                      "metaTags": { "title": "Updated - Red" }
                     }
                   ]
               UnassignProductVariant:
@@ -1166,6 +1163,7 @@ paths:
                 summary: Add a new item `gloves` to the accessories group of the bundle product `bundle-outfit`
                 description: |
                   To add a new item `gloves` to the accessories group of the bundle product `bundle-outfit`, include the new item in the `items` array of the `accessories` group.
+                  The previously created items `socks` and `headband` should be retained in the updated bundle.
                   Note that simple product `gloves` must be created separately using the create product API.
                 value:
                   [
@@ -1174,44 +1172,6 @@ paths:
                       "source": { "locale": "en-US" },
                       "bundles":
                         [
-                          {
-                            "group": "tops",
-                            "required": true,
-                            "multiSelect": false,
-                            "defaultItemSkus": ["top-red"],
-                            "items":
-                              [
-                                {
-                                  "sku": "top-red",
-                                  "qty": 1,
-                                  "userDefinedQty": false
-                                },
-                                {
-                                  "sku": "top-blue",
-                                  "qty": 1,
-                                  "userDefinedQty": false
-                                }
-                              ]
-                          },
-                          {
-                            "group": "bottoms",
-                            "required": true,
-                            "multiSelect": false,
-                            "defaultItemSkus": ["bottom-black"],
-                            "items":
-                              [
-                                {
-                                  "sku": "bottom-black",
-                                  "qty": 1,
-                                  "userDefinedQty": false
-                                },
-                                {
-                                  "sku": "bottom-white",
-                                  "qty": 1,
-                                  "userDefinedQty": false
-                                }
-                              ]
-                          },
                           {
                             "group": "accessories",
                             "required": false,
@@ -1234,6 +1194,35 @@ paths:
                                   "userDefinedQty": true
                                 }
                               ]
+                          }
+                        ]
+                    }
+                  ]
+              AddNewAttributeAndReplaceExisting:
+                summary: Add a new attribute and replace existing one
+                description: |
+                  Add a new attribute `warehouse`, and update the value of the existing `cost` attribute for the simple product `red-pants`
+
+                  In the example below:
+                  * A new attribute with the code `warehouse` is added to the attributes list
+                  * The value of the existing `cost` attribute is replaced with new value
+                  
+                  The previously created `states` attribute is preserved.
+                  Note: Don't forget to create the product attribute metadata (<a href="#operation/createProductMetadata">link</a> for the `warehouse` attribute if it doesn't exist yet.
+                value:
+                  [
+                    {
+                      "sku": "red-pants",
+                      "source": { "locale": "en-US" },
+                      "attributes":
+                        [
+                          {
+                            "code": "warehouse",
+                            "values": [ "Austin" ]
+                          },
+                          {
+                            "code": "cost",
+                            "values": ["12"]
                           }
                         ]
                     }
@@ -1820,13 +1809,17 @@ paths:
       description: |
         Change existing product prices, discounts, and tiered pricing.
 
-        When the update is processed, the merge strategy is used to apply changes to `scalar` and `object` type fields. The replace strategy is used to apply changes for fields in an `array`.
+        When the update is processed, the merge strategy is used to apply changes to `scalar` and `object` type fields.
+
+        For `array` type fields, a new value can be appended to the existing list. For an object list, you can update a specific object by matching on a key field. The following fields are supported:
+        * `discounts` - match on `code`
+        * `tierPrices` - match on `qty`
 
         <h3>Update strategies</h3>
 
         * **Regular Price** - Updated using merge strategy
-        * **Discounts Array** - Updated using replace strategy (entire array is replaced)
-        * **Tiered Pricing Array** - Updated using replace strategy (entire array is replaced)
+        * **Discounts Array** - Updated using the append or merge strategy
+        * **Tiered Pricing Array** - Updated using the append or merge strategy
 
         <h3>Discount and tier pricing updates</h3>
 
@@ -1872,7 +1865,9 @@ paths:
                 summary: Update product prices with enhanced discounts and tiered pricing
                 description: |
                   Update existing product prices for the given SKU ("red-pants") and price book id ("dealer-north").
-                  This example shows how to update both discounts and tiered pricing simultaneously.
+                  This example shows how to update both discounts and tiered pricing simultaneously:
+                  * **discounts**: Update the existing `seasonal_sale` discount and add a new `holiday_sale` discount
+                  * **tierPrices**: Update the existing  percentage discount for quantity 5 and add a new discount for quantity 20
                 value:
                   [
                     {
@@ -1880,11 +1875,11 @@ paths:
                       "priceBookId": "dealer-north",
                       "discounts": [
                         {
-                          "code": "holiday_sale",
+                          "code": "seasonal_sale",
                           "percentage": 30
                         },
                         {
-                          "code": "bulk_discount",
+                          "code": "holiday_sale",
                           "price": 5.00
                         }
                       ],
@@ -1894,12 +1889,8 @@ paths:
                           "percentage": 20
                         },
                         {
-                          "qty": 10,
-                          "percentage": 40
-                        },
-                        {
-                          "qty": 25,
-                          "price": 12.00
+                          "qty": 20,
+                          "price": 13
                         }
                       ]
                     }
