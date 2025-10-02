@@ -1208,7 +1208,7 @@ paths:
                   * The value of the existing `cost` attribute is replaced with new value
                   
                   The previously created `states` attribute is preserved.
-                  Note: Don't forget to <a href="#operation/createProductMetadata">create product attribute metadata</a> for the `warehouse` attribute if it doesn't exist yet.
+                  Note: Don't forget to create the product attribute metadata (<a href="#operation/createProductMetadata">link</a> for the `warehouse` attribute if it doesn't exist yet.
                 value:
                   [
                     {
