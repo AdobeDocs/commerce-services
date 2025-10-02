@@ -1811,7 +1811,7 @@ paths:
 
         When the update is processed, the merge strategy is used to apply changes to `scalar` and `object` type fields.
 
-        For fields of an `array` type new value can be appended to the existing list. For a list of objects you can update specific object by matching on a key field. The following fields are supported:
+        For `array` type fields, a new value can be appended to the existing list. For an object list, you can update a specific object by matching on a key field. The following fields are supported:
         * `discounts` - match on `code`
         * `tierPrices` - match on `qty`
 
