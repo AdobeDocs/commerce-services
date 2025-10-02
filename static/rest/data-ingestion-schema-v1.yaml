@@ -1205,7 +1205,7 @@ paths:
 
                   In the example below:
                   * a new attribute with the code `warehouse` added to the attributes list
-                  * value of existing attribute `cost` is replaced with new value
+                  * the value of the existing `cost` attribute is replaced with new value
                   
                   Previously created attribute `states` will be preserved.
                   Note, don't forget to <a href="#operation/createProductMetadata">Create product attribute metadata</a> for `warehouse` attribute if it doesn't exist yet.
