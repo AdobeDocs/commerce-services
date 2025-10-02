@@ -213,7 +213,7 @@ After you successfully make your first request, you can continue to use the Data
 
 You can also explore the [API reference](https://developer.adobe.com/commerce/services/reference/rest/) for detailed information about each endpoint and its parameters.
 
-## Create integrations with SDK
+## Create integrations using Adobe Commerce Optimizer SDKs
 
 The Adobe Commerce Optimizer SDKs simplify integration with the Data Ingestion API by providing pre-built methods for catalog ingestion and IMS authentication. The SDKs handle the complexity of API interactions, allowing you to focus on your business logic.
 
