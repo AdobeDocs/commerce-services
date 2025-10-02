@@ -1204,7 +1204,7 @@ paths:
                   Add a new attribute `warehouse`, and update the value of existing attribute `cost` for the simple product `red-pants`
 
                   In the example below:
-                  * a new attribute with the code `warehouse` added to the attributes list
+                  * a new attribute with the code `warehouse` is added to the attributes list
                   * the value of the existing `cost` attribute is replaced with new value
                   
                   Previously created attribute `states` will be preserved.
