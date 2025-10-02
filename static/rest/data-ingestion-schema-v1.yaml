@@ -1204,8 +1204,8 @@ paths:
                   Add a new attribute `warehouse`, and update the value of the existing `cost` attribute for the simple product `red-pants`
 
                   In the example below:
-                  * a new attribute with the code `warehouse` is added to the attributes list
-                  * the value of the existing `cost` attribute is replaced with new value
+                  * A new attribute with the code `warehouse` is added to the attributes list
+                  * The value of the existing `cost` attribute is replaced with new value
                   
                   The previously created `states` attribute is preserved.
                   Note: Don't forget to <a href="#operation/createProductMetadata">create product attribute metadata</a> for the `warehouse` attribute if it doesn't exist yet.
