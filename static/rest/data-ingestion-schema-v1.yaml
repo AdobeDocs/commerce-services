@@ -1867,7 +1867,7 @@ paths:
                   Update existing product prices for the given SKU ("red-pants") and price book id ("dealer-north").
                   This example shows how to update both discounts and tiered pricing simultaneously:
                   * **discounts**: Update the existing `seasonal_sale` discount and add a new `holiday_sale` discount
-                  * **tierPrices**: Update the existing  percentage discount for qty 5 and add a new discount for qty 20
+                  * **tierPrices**: Update the existing  percentage discount for quantity 5 and add a new discount for quantity 20
                 value:
                   [
                     {
