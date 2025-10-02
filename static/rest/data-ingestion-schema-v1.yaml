@@ -1201,7 +1201,7 @@ paths:
               AddNewAttributeAndReplaceExisting:
                 summary: Add a new attribute and replace existing one
                 description: |
-                  Add a new attribute `warehouse`, and update the value of existing attribute `cost` for the simple product `red-pants`
+                  Add a new attribute `warehouse`, and update the value of the existing `cost` attribute for the simple product `red-pants`
 
                   In the example below:
                   * a new attribute with the code `warehouse` is added to the attributes list
