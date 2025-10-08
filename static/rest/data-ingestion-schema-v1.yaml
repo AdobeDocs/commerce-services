@@ -410,10 +410,13 @@ paths:
 
         When creating categories:
           - Each category requires a unique `slug` and `source`.
-          - Use the `slug` field in a hierarchical format like men/clothing/pants' to create parent-child relationships
-          - The category `slug` string can contain only lowercase letters, numbers, and hyphens.
+          - To create parent-child relationships, create the `slug` field in a hierarchical format like `men/clothing/pants'
+          - A category `slug` string can contain only lowercase letters, numbers, and hyphens with `/` used as a separator for hierarchy
           - Use the `name` field to define the display name for the category.
           - Use the optional `families` field to associate categories with product families for enhanced organization.
+
+        After you have created categories, link a product to a category using the `product.routes.path` field.
+        The value of `path` in the route must match category.slug.
 
         To update existing categories, use the update operation.
 
@@ -591,6 +594,8 @@ paths:
          - Use the `links` field to define relationships between products, such as linking a product variant to its parent
          configurable product.
          - You can create multiple products in a single request, and also create product variants for configurable products in the same request.
+         - Use the `routes` field to set category paths. The `path` value must match an existing
+         category slug, for example `men/clothing`. 
 
         <h3 id="simpleProducts">Simple products</h3>
         Create products or replace existing products with specified `sku` and `source` values.
@@ -746,8 +751,9 @@ paths:
                         ],
                       "routes":
                         [
-                          { "path": "red-pants" },
-                          { "path": "pants/red-pants", "position": 1 }
+                          { "path": "men" },
+                          { "path": "men/clothing/", "position": 1 },
+                          { "path": "men/clothing/pants", "position": 1}
                         ]
                     }
                   ]
