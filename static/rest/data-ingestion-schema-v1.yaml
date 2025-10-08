@@ -593,8 +593,7 @@ paths:
          - Use the `links` field to define relationships between products, such as linking a product variant to its parent
          configurable product.
          - You can create multiple products in a single request, and also create product variants for configurable products in the same request.
-         - Use the `routes` field to set category paths. The `path` value must match an existing
-         category slug, for example `men/clothing`. 
+         - Use the `routes` field to set category paths. The `path` value must match an existing category slug, for example `men/clothing`. 
 
         <h3 id="simpleProducts">Simple products</h3>
         Create products or replace existing products with specified `sku` and `source` values.
