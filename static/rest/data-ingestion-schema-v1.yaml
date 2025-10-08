@@ -415,7 +415,7 @@ paths:
           - Use the `name` field to define the display name for the category.
           - Use the optional `families` field to associate categories with product families for enhanced organization.
 
-        After you create categories, link a product to a category using the `product.routes.path` field when you create or update products.  The value of `path` in the route must match the `category.slug` value.
+        After you create categories, link a product to a category using the `product.routes.path` field when you create or update products. The value of `path` in the route must match the `category.slug` value.
 
         To update existing categories, use the update operation.
 
