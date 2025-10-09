@@ -596,6 +596,8 @@ paths:
          configurable product.
          - You can create multiple products in a single request, and also create product variants for configurable products in the same request.
          - Use the `routes` field to set category paths. The `path` value must match an existing category slug, for example `men/clothing`. 
+         - If the product needs to be linked to a hierarchy, specify the final hierarchy path in the `routes.path` field.
+         
 
         <h3 id="simpleProducts">Simple products</h3>
         Create products or replace existing products with specified `sku` and `source` values.
