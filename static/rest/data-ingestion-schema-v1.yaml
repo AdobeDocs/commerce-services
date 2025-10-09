@@ -537,7 +537,7 @@ paths:
 
         If a category is deleted by mistake:
         * **Time Window**: You have up to one week to restore deleted categories
-        * **Restoration Method**: Recreate the top-level deleted category using the [update operation](#operation/updateCategories)
+        * **Restoration Method**: Recreate the top-level deleted category using the [create operation](#operation/createCategories)
         * **State Recovery**: Categories are restored to their exact state from the time of deletion, including all metadata, family associations, and hierarchy relationships
         * **Hierarchy Reconstruction**: The entire hierarchy is rebuilt from the restoration payload
 
