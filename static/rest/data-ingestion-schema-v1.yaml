@@ -412,6 +412,8 @@ paths:
           - Each category requires a unique `slug` and `source`.
           - To create parent-child relationships, create the `slug` field in a hierarchical format like `men/clothing/pants'
           - A category `slug` string can contain only lowercase letters, numbers, and hyphens with `/` used as a separator for hierarchy
+          - Each hierarchy path must be specified as a separate `category.slug` entry.
+          
           - Use the `name` field to define the display name for the category.
           - Use the optional `families` field to associate categories with product families for enhanced organization.
 
