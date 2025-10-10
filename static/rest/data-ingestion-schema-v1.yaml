@@ -410,7 +410,7 @@ paths:
 
         When creating categories:
           - Each category requires a unique `slug` and `source`.
-          - To create parent-child relationships, create the `slug` field in a hierarchical format like `men/clothing/pants'
+          - To create parent-child relationships, create the `slug` field in a hierarchical format, for example `men/clothing/pants'
           - A category `slug` string can contain only lowercase letters, numbers, and hyphens with `/` used as a separator for hierarchy
           - Create each category as a separate entity
           
