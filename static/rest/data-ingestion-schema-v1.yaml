@@ -596,7 +596,7 @@ paths:
          configurable product.
          - You can create multiple products in a single request, and also create product variants for configurable products in the same request.
          - Use the `routes` field to set category paths. The `path` value must match an existing category slug, for example `men/clothing`. 
-         - Create a route for each category path, for example to include a product in each of the following categories `men`, `men/clothing`, and `men/clothing/pants`, specify three `path` values, one for each category.
+         - Create a route for each category path. For example to include a product in each of the following categories `men`, `men/clothing`, and `men/clothing/pants`, specify three `path` values, one for each category.
          
 
         <h3 id="simpleProducts">Simple products</h3>
