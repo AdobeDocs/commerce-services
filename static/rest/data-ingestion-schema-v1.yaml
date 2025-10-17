@@ -1240,7 +1240,7 @@ paths:
         - Products
       summary: Delete products
       description: >
-        Delete products with specified `sku`` and `source`` values
+        Delete products with specified `sku` and `source` values
       operationId: deleteProducts
       parameters:
         - $ref: "#/components/parameters/Authorization"
@@ -1274,6 +1274,133 @@ paths:
                     {
                       "sku": "red-pants",
                       "source": { "locale": "en-US" }
+                    }
+                  ]
+  /v1/catalog/products/layers:
+    post:
+      tags:
+        - Product Layers
+      summary: Create or replace product layers
+      description: |
+        You can create a product layer, to merge and override of a base product.
+
+        When creating product layers:
+         - Each product layer requires a SKU identifier which matches to a base product.
+         - Product layer may have a defined catalog `source.locale`, and if absent is treated as a global layer for any locale.
+         - Product layer must have a defined catalog `source.layer`.
+         - All other fields are optional. If provided, they are used to override the base product.
+         - When merging array lists, the first array will be merged with the base list. All other inner lists of the same object will be treated as replace.
+           For example `attributes` is merged with base list, but `attributes.values` is a replacement.
+           <pre>
+           {
+             "sku": "pants-red-32",
+             "source": {
+               "locale": "en",
+               "layer": "custom-layer"
+             },
+             "attributes": [
+               {
+                 "code": "color",
+                 "values": ["Green", "Light Green"],
+                 "variantReferenceId": "pants-color-green"
+               }
+             ]
+           }
+           </pre>
+
+      operationId: createProductLayers
+      parameters:
+        - $ref: "#/components/parameters/Authorization"
+        - $ref: "#/components/parameters/ContentType"
+        - $ref: "#/components/parameters/ContentEncoding"
+      responses:
+        "200":
+          $ref: "#/components/responses/AcceptedResponse"
+        "400":
+          $ref: "#/components/responses/InvalidItemsResponse"
+        "401":
+          $ref: "#/components/responses/UnauthorizedResponse"
+        "403":
+          $ref: "#/components/responses/ForbiddenResponse"
+        "429":
+          $ref: "#/components/responses/TooManyRequestsResponse"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: "#/components/schemas/FeedProductLayer"
+            examples:
+              ProductLayerWithImages:
+                summary: Create a product layer
+                description: >
+                  Create a product layer with changes.
+                value:
+                  [
+                    {
+                      "sku": "red-pants",
+                      "source": {
+                        "locale": "en-US",
+                        "layer": "custom-layer"
+                      },
+                      "name": "red pants for my custom layer",
+                      "description": "long description about red pants for my custom layer",
+                      "shortDescription": "just pants for custom layer",
+                      "images":
+                        [
+                          {
+                            "url": "https://example.com/images/pants.jpg",
+                            "label": "photo of my pants for my custom layer",
+                            "roles": ["BASE", "SMALL"],
+                            "customRoles": ["widget"]
+                          }
+                        ]
+                    }
+                  ]
+  /v1/catalog/products/layers/delete:
+    post:
+      tags:
+        - Product Layers
+      summary: Delete product layers
+      description: >
+        Delete product layers with specified `sku` and `source` values
+      operationId: deleteProductLayers
+      parameters:
+        - $ref: "#/components/parameters/Authorization"
+        - $ref: "#/components/parameters/ContentType"
+        - $ref: "#/components/parameters/ContentEncoding"
+      responses:
+        "200":
+          $ref: "#/components/responses/AcceptedResponse"
+        "400":
+          $ref: "#/components/responses/InvalidItemsResponse"
+        "401":
+          $ref: "#/components/responses/UnauthorizedResponse"
+        "403":
+          $ref: "#/components/responses/ForbiddenResponse"
+        "429":
+          $ref: "#/components/responses/TooManyRequestsResponse"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: "#/components/schemas/FeedProductLayerDelete"
+            examples:
+              DeleteSimpleProduct:
+                summary: Delete product layer
+                description: >
+                  Delete a product layer with specified `sku` and `source` values
+                value:
+                  [
+                    {
+                      "sku": "red-pants",
+                      "source": {
+                        "locale": "en-US",
+                        "layer": "custom-layer"
+                      }
                     }
                   ]
   /v1/catalog/price-books:
@@ -2478,6 +2605,87 @@ components:
           example: MH01
         source:
           $ref: "#/components/schemas/Source"
+    FeedProductLayer:
+      title: Catalog Product Layer payload
+      type: object
+      required:
+        - sku
+        - source
+      properties:
+        sku:
+          type: string
+          description: SKU (Stock Keeping Unit) is a unique identifier for a product.
+          example: MH01
+        source:
+          $ref: "#/components/schemas/SourceLayer"
+        name:
+          type: string
+          description: Product name
+          example: Kangaroo Hoodie
+        slug:
+          type: string
+          description: The URL key for the product.
+          example: kangaroo-hoodie.html
+        description:
+          type: string
+          nullable: true
+          description: The main description for the product
+          example: A kangaroo hoodie for all seasons
+        shortDescription:
+          type: string
+          nullable: true
+          description: A short description of the product
+          example: A hoodie for all seasons with a kangaroo pocket
+        metaTags:
+          $ref: "#/components/schemas/ProductMetaAttribute"
+        attributes:
+          type: array
+          description: A list of product attributes.
+          items:
+            $ref: "#/components/schemas/ProductAttribute"
+        images:
+          type: array
+          description: A list of product images.
+          items:
+            $ref: "#/components/schemas/ProductImage"
+        links:
+          type: array
+          description: A list of linked SKUs.
+          items:
+            $ref: "#/components/schemas/ProductLink"
+        routes:
+          type: array
+          description: A list of product routes.
+          items:
+            $ref: "#/components/schemas/ProductRoutes"
+        configurations:
+          type: array
+          description: Composite products, such as configurable products, must provide a list of product options that a shopper can select (for example, "color", "size", etc.).
+          items:
+            $ref: "#/components/schemas/ProductConfiguration"
+        bundles:
+          type: array
+          description: Composite products, such as bundle products, must include a list of individual products that are part of the bundle, organized into groups (for example, "shirts", "pants", "accessories").
+          items:
+            $ref: "#/components/schemas/ProductBundle"
+        externalIds:
+          type: array
+          description: A list of external IDs for the product.
+          items:
+            $ref: "#/components/schemas/ProductExternalId"
+    FeedProductLayerDelete:
+      title: Catalog Product Layer delete payload
+      type: object
+      required:
+        - sku
+        - source
+      properties:
+        sku:
+          type: string
+          description: Product unique identifier
+          example: MH01
+        source:
+          $ref: "#/components/schemas/SourceLayer"
     FeedPricebook:
       title: FeedPricebook
       description: |
@@ -2762,6 +2970,21 @@ components:
           type: string
           description: A single value that represents content locale, for example, English.
           example: English
+    SourceLayer:
+      title: Catalog layer source
+      description: Source of the entity, for example, "en-US" for US English for layer "MyLayer"
+      type: object
+      required:
+        - layer
+      properties:
+        locale:
+          type: string
+          description: A single value that represents content locale. When absent layer is treated as global for any locale.
+          example: English
+        layer:
+          type: string
+          description: A single value that represents content layer.
+          example: MyLayer
     ProductMetaAttribute:
       title: Meta Attributes
       description: Meta attributes that are specified in <meta> tags.
