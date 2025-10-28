@@ -1,6 +1,6 @@
 # Data Ingestion REST API Reference documentation
 
-The Data Ingestion API Reference is embedded in the [Data Ingestion API reference topic](https://github.com/AdobeDocs/commerce-services/edit/ccdm-early-access/src/pages/optimizer/data-ingestion/api-reference.md)  using the `RedoclyAPIBlock` component from the Adobe I/O theme. The component configuration includes:
+The Data Ingestion API Reference is embedded in the [Data Ingestion API reference topic](../src/pages/optimizer/reference/rest/index.md)  using the `RedoclyAPIBlock` component from the Adobe I/O theme. The component configuration includes:
 
   - **Schema path**—The `src` variable provides the path to the schema file used to generate the API reference. The schema, `data-ingestion-schema-v1.yaml` is maintained by engineering in this documentation repository. If the schema is moved, update the path value.
 
@@ -10,14 +10,14 @@ The Data Ingestion API Reference is embedded in the [Data Ingestion API referenc
 
 ## Update schema and regenerate documentation
 
-1. Create a branch from the `ccdm-early-access` branch.
+1. Create a branch from the `main` branch.
 
-1. Update the `openapi/data-ingestion-schema-v1.yaml`.
+1. Update the API specification file, `static/rest/data-ingestion-schema-v1.yaml` file.
 
 1. Regenerate the API reference locally to test changes:
 
    ```shell
-   npx @redocly/cli build-docs src/openapi/data-ingestion-schema-v1.yaml --config src/openapi/.redocly.yaml --output tmp/redoc-static.html
+   npx @redocly/cli build-docs static/rest/data-ingestion-schema-v1.yaml --config static/rest/.redocly.yaml --output tmp/redoc-static.html
    ```
 
    Review the updates by opening the `tmp/redoc-static.html` file in your browser.

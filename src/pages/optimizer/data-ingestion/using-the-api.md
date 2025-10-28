@@ -30,13 +30,17 @@ The URL structure is:
 `https://{{region}}-{{environment}}.api.commerce.adobe.com/{{tenantId}}`
 
 - `region` is the cloud region where your instance is deployed.
-- `environment-type` identifies non-production environments, for example, `sandbox` or `staging`.
+- `environment-type` is present only for non-production,`sandbox` environments.
 - `tenantId` is the unique identifier for your organization's specific instance within the Adobe Experience Cloud.
+
+<InlineAlert variant="info" slots="text" />
+
+Sandbox instances can only be created in the North America region.
 
 &NewLine; <!--Add space between the collapsible section and the previous paragraph-->
 
 <details>
-      <summary><b>Get your instance ID</b></summary>
+      <summary><b>Get your endpoint URL and tenant ID</b></summary>
 
 import GetTenantId from '/src/_includes/authentication/get-tenant-id.md'
 
@@ -74,6 +78,10 @@ curl --request POST \
 
 For sample requests, see the [tutorial](../ccdm-use-case.md).
 
+<InlineAlert variant="note" slots="text" />
+
+Use the Try It feature in the API reference to test API requests directly from your browser. For details, see [Test API operations](https://developer.adobe.com/commerce/services/reference/rest/).
+
 ## Make your first request
 
 To get started with the Data Ingestion API, follow these steps to make your first request.
@@ -86,9 +94,9 @@ To get started with the Data Ingestion API, follow these steps to make your firs
 
   ```shell
   curl -X POST \
-    'https://na1-sandbox.api.commerce.adobe.com/{{tenantId}}/v1/catalog/attributes/metadata' \
+    'https://na1-sandbox.api.commerce.adobe.com/{{tenantId}}/v1/catalog/products/metadata' \
     -H 'Content-Type: application/json' \
-    -H 'Authorization:{{accessToken}}' \
+    -H 'Authorization: {{accessToken}}' \
     -d '[
       {
         "code": "sku",
@@ -205,7 +213,7 @@ After you successfully make your first request, you can continue to use the Data
 
 You can also explore the [API reference](https://developer.adobe.com/commerce/services/reference/rest/) for detailed information about each endpoint and its parameters.
 
-## Create integrations with SDK
+## Create integrations using Adobe Commerce Optimizer SDKs
 
 The Adobe Commerce Optimizer SDKs simplify integration with the Data Ingestion API by providing pre-built methods for catalog ingestion and IMS authentication. The SDKs handle the complexity of API interactions, allowing you to focus on your business logic.
 
@@ -219,8 +227,8 @@ Use the following GitHub repository links to download an available SDK and learn
 
 The Data Ingestion API has a rate limit of 300 requests per minute. If you exceed the limit, the API returns a 429 response.
 
-For additional information about limits and boundaries, see the [Limits and boundaries](https://experienceleague.adobe.com/en/docs/commerce-optimizer/boundaries-limits) section in the *Adobe Commerce Optimizer Guide*.
+For additional information about limits and boundaries, see the [Limits and boundaries](commerce-storefront.htmlhttps://experienceleague.adobe.com/en/docs/commerce/optimizer/boundaries-limits) section in the *Adobe Commerce Optimizer Guide*.
 
 <InlineAlert variant="info" slots="text" />
 
->This guide covers direct API access using bearer tokens. For user authentication workflows, see the [User Authentication Guide](https://developer.adobe.com/developer-console/docs/guides/authentication/UserAuthentication/implementation/).
+>This guide covers direct API access using bearer tokens. For user authentication workflows, see the [User Authentication](https://developer.adobe.com/commerce/webapi/rest/authentication/user/) in the *Adobe Commerce REST Guide*.

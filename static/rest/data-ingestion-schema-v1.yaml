@@ -10,6 +10,7 @@ info:
     This API provides the following resource collections to create and update catalog data:
 
     - <strong>[Metadata](#tag/Metadata)</strong>—define and manage product attribute metadata including display settings, search characteristics, filtering options, and sorting rules.
+    - <strong>[Categories](#tag/Categories)</strong>—define and manage categories with hierarchical structure to build navigation menu.
     - <strong>[Products](#tag/Products)</strong>—define and manage catalog items with their attributes (name, description, SKU, images, and variants).
     - <strong>[Price books](#tag/Price-Books)</strong>—define and manage pricing scopes for different customer tiers and markets.
     - <strong>[Prices](#tag/Prices)</strong>—define and manage product SKU prices and their associated price books.
@@ -28,6 +29,19 @@ tags:
       Product attribute metadata specifies how product attributes are displayed on the storefront.
       For example, you can define a product attribute as searchable, filterable, and sortable.
       You can also define the search type for a product attribute, such as autocomplete or exact match.
+  - name: Categories
+    description: |
+      Manage categories in a hierarchical structure with localization support.
+      Categories organize products into logical groups and support nested hierarchies using slug-based paths.
+
+      Category management includes:
+      - Creating categories with localized names and hierarchical slugs
+      - Updating existing category information
+      - Deleting categories from the catalog
+      - Associating categories with product families for enhanced organization
+
+      Categories use a slug-based hierarchy format to represent parent-child relationships, for example, "men/clothing/pants'.
+
   - name: Products
     description: Create and manage product data including simple products, configurable products, and their variants. Control product visibility, attributes, images, and pricing
   - name: Price Books
@@ -215,7 +229,7 @@ paths:
                   [
                     {
                       "code": "sku",
-                      "source": { "locale": "en" },
+                      "source": { "locale": "en-US" },
                       "label": "Product Name",
                       "dataType": "TEXT",
                       "visibleIn":
@@ -233,7 +247,7 @@ paths:
                     },
                     {
                       "code": "name",
-                      "source": { "locale": "en" },
+                      "source": { "locale": "en-US" },
                       "label": "Product Name",
                       "dataType": "TEXT",
                       "visibleIn":
@@ -251,7 +265,7 @@ paths:
                     },
                     {
                       "code": "description",
-                      "source": { "locale": "en" },
+                      "source": { "locale": "en-US" },
                       "label": "Product Description",
                       "dataType": "TEXT",
                       "visibleIn": ["PRODUCT_DETAIL"],
@@ -263,7 +277,7 @@ paths:
                     },
                     {
                       "code": "shortDescription",
-                      "source": { "locale": "en" },
+                      "source": { "locale": "en-US" },
                       "label": "Product Short Description",
                       "dataType": "TEXT",
                       "visibleIn": ["PRODUCT_DETAIL"],
@@ -275,7 +289,7 @@ paths:
                     },
                     {
                       "code": "price",
-                      "source": { "locale": "en" },
+                      "source": { "locale": "en-US" },
                       "label": "Price",
                       "dataType": "DECIMAL",
                       "visibleIn":
@@ -335,7 +349,7 @@ paths:
                   [
                     {
                       "code": "name",
-                      "source": { "locale": "en" },
+                      "source": { "locale": "en-US" },
                       "label": "Updated - Product Name",
                       "visibleIn": [
                         "PRODUCT_DETAIL",
@@ -380,7 +394,187 @@ paths:
                 value: [
                   {
                     "code": "name",
-                    "source": { "locale": "en" }
+                    "source": { "locale": "en-US" }
+                  }
+                ]
+
+
+  /v1/catalog/categories:
+    post:
+      tags:
+        - Categories
+      summary: Create categories
+      description: |
+        Create new categories with hierarchical structure and slug-based paths.
+        Categories organize products into logical groups and support nested hierarchies.
+
+        When creating categories:
+          - Each category requires a unique `slug` and `source`.
+          - To create parent-child relationships, create the `slug` field in a hierarchical format, for example `men/clothing/pants'.
+          - A category `slug` string can contain only lowercase letters, numbers, and hyphens with `/` used as a separator for hierarchy.
+          - Create each category as a separate entity.
+          - Use the `name` field to define the display name for the category.
+          - Use the optional `families` field to associate categories with product families for enhanced organization.
+
+        After you create categories, link a product to a category using the `path` value for the [routes](#operation/createProducts!path=routes&t=request) field. When you create or update products. The value of `path` in the route must match the `slug` value for the category.
+
+        To update existing categories, use the update operation.
+
+      operationId: createCategories
+      parameters:
+        - $ref: "#/components/parameters/Authorization"
+        - $ref: "#/components/parameters/ContentType"
+        - $ref: "#/components/parameters/ContentEncoding"
+      responses:
+        "200":
+          $ref: "#/components/responses/AcceptedResponse"
+        "400":
+          $ref: "#/components/responses/InvalidItemsResponse"
+        "401":
+          $ref: "#/components/responses/UnauthorizedResponse"
+        "403":
+          $ref: "#/components/responses/ForbiddenResponse"
+        "429":
+          $ref: "#/components/responses/TooManyRequestsResponse"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: "#/components/schemas/FeedCategory"
+            examples:
+              FeedWithCategoryInformation:
+                summary: Create product categories
+                description: |
+                  Creates hierarchical product categories. This example shows creating parent and child categories
+                  with product family associations.
+                value:
+                  [
+                    {
+                      "slug": "men",
+                      "source": { "locale": "en-US" },
+                      "name": "Men",
+                      "families": ["apparel", "accessories"]
+                    },
+                    {
+                      "slug": "men/clothing",
+                      "source": { "locale": "en-US" },
+                      "name": "Men's Clothing",
+                      "families": ["apparel"]
+                    },
+                    {
+                      "slug": "men/clothing/pants",
+                      "source": { "locale": "en-US" },
+                      "name": "Men's Pants",
+                      "families": ["apparel"]
+                    }
+                  ]
+    patch:
+      tags:
+        - Categories
+      summary: Update categories
+      description: |
+        Update existing product categories with new values.
+        When the update is processed, the merge strategy is used to apply changes to `scalar` and `object` type fields. The replace strategy is used to apply changes for fields in an `array`.
+      operationId: updateCategories
+      parameters:
+        - $ref: "#/components/parameters/Authorization"
+        - $ref: "#/components/parameters/ContentType"
+        - $ref: "#/components/parameters/ContentEncoding"
+      responses:
+        "200":
+          $ref: "#/components/responses/AcceptedResponse"
+        "400":
+          $ref: "#/components/responses/InvalidItemsResponse"
+        "401":
+          $ref: "#/components/responses/UnauthorizedResponse"
+        "403":
+          $ref: "#/components/responses/ForbiddenResponse"
+        "429":
+          $ref: "#/components/responses/TooManyRequestsResponse"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: "#/components/schemas/FeedCategoryUpdate"
+            examples:
+              FeedWithCategoryInformation:
+                summary: Example of category updates
+                description: |
+                  Update existing product categories with new values.
+                  Note that fields with the `array` type will replace existing data.
+                  The example below updates the following:
+                  * `name` - Change the category display name.
+                  * `families` - Replace the product families associated with the category.
+                value:
+                  [
+                    {
+                      "slug": "men/clothing",
+                      "source": { "locale": "en-US" },
+                      "name": "Men's Apparel",
+                      "families": ["clothing", "fashion"]
+                    }
+                  ]
+  /v1/catalog/categories/delete:
+    post:
+      tags:
+        - Categories
+      summary: Delete categories
+      description: |
+        Delete categories and all their associated children
+
+        <h3>Cascading Deletion</h3>
+
+        When you delete a category:
+        * **Child categories**: All child categories in the hierarchy are deleted automatically
+        * **Hierarchy Impact**: The entire branch below the deleted category is removed
+
+        <h3>Recovery Options</h3>
+
+        If a category is deleted by mistake:
+        * **Time Window**: You have up to one week to restore deleted categories
+        * **Restoration Method**: Recreate the top-level deleted category using the [Create category operation](#operation/createCategories)
+        * **State Recovery**: Categories are restored to their exact state from the time of deletion, including all metadata, family associations, and hierarchy relationships
+        * **Hierarchy Reconstruction**: The entire hierarchy is rebuilt from the restoration payload
+
+      operationId: deleteCategories
+      parameters:
+        - $ref: "#/components/parameters/Authorization"
+        - $ref: "#/components/parameters/ContentType"
+        - $ref: "#/components/parameters/ContentEncoding"
+      responses:
+        "200":
+          $ref: "#/components/responses/AcceptedResponse"
+        "400":
+          $ref: "#/components/responses/InvalidItemsResponse"
+        "401":
+          $ref: "#/components/responses/UnauthorizedResponse"
+        "403":
+          $ref: "#/components/responses/ForbiddenResponse"
+        "429":
+          $ref: "#/components/responses/TooManyRequestsResponse"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: "#/components/schemas/FeedCategoryDelete"
+            examples:
+              FeedWithCategoryInformation:
+                summary: Delete categories
+                description: Marks existing categories as deleted.
+                value: [
+                  {
+                    "slug": "men/clothing/pants",
+                    "source": { "locale": "en-US" }
+                  },
+                  {
+                    "slug": "women/shoes/boots",
+                    "source": { "locale": "en-US" }
                   }
                 ]
 
@@ -400,6 +594,9 @@ paths:
          - Use the `links` field to define relationships between products, such as linking a product variant to its parent
          configurable product.
          - You can create multiple products in a single request, and also create product variants for configurable products in the same request.
+         - Use the `routes` field to set category paths. The `path` value must match an existing category slug, for example `men/clothing`. 
+         - Create a route for each category path. For example to include a product in each of the following categories `men`, `men/clothing`, and `men/clothing/pants`, specify three `path` values, one for each category.
+         
 
         <h3 id="simpleProducts">Simple products</h3>
         Create products or replace existing products with specified `sku` and `source` values.
@@ -516,7 +713,7 @@ paths:
                   [
                     {
                       "sku": "red-pants",
-                      "source": { "locale": "en" },
+                      "source": { "locale": "en-US" },
                       "name": "red pants",
                       "slug": "red-pants.html",
                       "status": "ENABLED",
@@ -555,8 +752,9 @@ paths:
                         ],
                       "routes":
                         [
-                          { "path": "red-pants" },
-                          { "path": "pants/red-pants", "position": 1 }
+                          { "path": "men" },
+                          { "path": "men/clothing/", "position": 1 },
+                          { "path": "men/clothing/pants", "position": 1}
                         ]
                     }
                   ]
@@ -568,7 +766,7 @@ paths:
                   [
                     {
                       "sku": "pants",
-                      "source": { "locale": "en" },
+                      "source": { "locale": "en-US" },
                       "name": "Yoga pants",
                       "slug": "zeppelin-yoga-pant",
                       "status": "ENABLED",
@@ -615,7 +813,7 @@ paths:
                     },
                     {
                       "sku": "pants-red-32",
-                      "source": { "locale": "en" },
+                      "source": { "locale": "en-US" },
                       "name": "Zeppelin Yoga Pant Red 32 size",
                       "slug": "pants-red-32",
                       "status": "ENABLED",
@@ -642,7 +840,7 @@ paths:
                     },
                     {
                       "sku": "pants-red-44",
-                      "source": { "locale": "en" },
+                      "source": { "locale": "en-US" },
                       "name": "Zeppelin Yoga Pant Red 44 size",
                       "slug": "pants-red-44",
                       "status": "ENABLED",
@@ -669,7 +867,7 @@ paths:
                     },
                     {
                       "sku": "pants-green-32",
-                      "source": { "locale": "en" },
+                      "source": { "locale": "en-US" },
                       "name": "Zeppelin Yoga Pant Green 32 size",
                       "slug": "pants-green-32",
                       "status": "ENABLED",
@@ -696,7 +894,7 @@ paths:
                     },
                     {
                       "sku": "pants-green-44",
-                      "source": { "locale": "en" },
+                      "source": { "locale": "en-US" },
                       "name": "Zeppelin Yoga Pant green 44 size",
                       "slug": "pants-green-44",
                       "status": "ENABLED",
@@ -731,7 +929,7 @@ paths:
                   [
                     {
                       "sku": "bundle-outfit",
-                      "source": { "locale": "en" },
+                      "source": { "locale": "en-US" },
                       "name": "Bundle Outfit",
                       "slug": "bundle-outfit",
                       "status": "ENABLED",
@@ -798,7 +996,7 @@ paths:
                     },
                     {
                       "sku": "top-red",
-                      "source": { "locale": "en" },
+                      "source": { "locale": "en-US" },
                       "name": "Red Top",
                       "slug": "top-red",
                       "status": "ENABLED",
@@ -812,7 +1010,7 @@ paths:
                     },
                     {
                       "sku": "top-blue",
-                      "source": { "locale": "en" },
+                      "source": { "locale": "en-US" },
                       "name": "Blue Top",
                       "slug": "top-blue",
                       "status": "ENABLED",
@@ -826,7 +1024,7 @@ paths:
                     },
                     {
                       "sku": "bottom-black",
-                      "source": { "locale": "en" },
+                      "source": { "locale": "en-US" },
                       "name": "Black Bottom",
                       "slug": "bottom-black",
                       "status": "ENABLED",
@@ -840,7 +1038,7 @@ paths:
                     },
                     {
                       "sku": "bottom-white",
-                      "source": { "locale": "en" },
+                      "source": { "locale": "en-US" },
                       "name": "White Bottom",
                       "slug": "bottom-white",
                       "status": "ENABLED",
@@ -854,7 +1052,7 @@ paths:
                     },
                     {
                       "sku": "socks",
-                      "source": { "locale": "en" },
+                      "source": { "locale": "en-US" },
                       "name": "Socks",
                       "slug": "socks",
                       "status": "ENABLED",
@@ -868,7 +1066,7 @@ paths:
                     },
                     {
                       "sku": "headband",
-                      "source": { "locale": "en" },
+                      "source": { "locale": "en-US" },
                       "name": "Headband",
                       "slug": "headband",
                       "status": "ENABLED",
@@ -888,7 +1086,16 @@ paths:
       description: |
         Update products with specified `sku` and `source` values to replace existing field data with the data supplied in the request.
         When the update is processed, the merge strategy is used to apply changes to `scalar` and `object` type fields.
-        The replace strategy is used to apply changes for fields in an `array`.
+
+        For `array` type fields, a new value can be appended to the existing list. For an object list, you can update a specific object by matching on a key field. The following fields are supported:
+        * `attributes` - match on `code`
+        * `images` - match on `url`
+        * `routes` - match on `path`
+        * `links` - match on `type` and `sku`
+        * `bundles` match on `type` and `group`
+        * `configurations` match on `type` and `attributeCode`
+        * `externalIds` match on `type` and `origin`
+
       operationId: updateProducts
       parameters:
         - $ref: "#/components/parameters/Authorization"
@@ -923,25 +1130,13 @@ paths:
                   In the example below, the following attributes are updated.
                   * `name` - Change the product name.
                   * `metaTags.title` - Change the title of the product detail page.
-                  * `attributes` - Add a new state, `NM` to the `states` attribute.
                 value:
                   [
                     {
                       "sku": "red-pants",
-                      "source": { "locale": "en" },
+                      "source": { "locale": "en-US" },
                       "name": "Red pants - discounts!",
-                      "metaTags": { "title": "Updated - Red" },
-                      "attributes":
-                        [
-                          {
-                            "code": "cost",
-                            "values": ["10.5"]
-                          },
-                          {
-                            "code": "states",
-                            "values": ["TX", "CA", "NM"]
-                          }
-                        ]
+                      "metaTags": { "title": "Updated - Red" }
                     }
                   ]
               UnassignProductVariant:
@@ -954,7 +1149,7 @@ paths:
                   [
                     {
                       "sku": "pants-red-32",
-                      "source": { "locale": "en" },
+                      "source": { "locale": "en-US" },
                       "attributes":
                         [
                           {
@@ -975,52 +1170,15 @@ paths:
                 summary: Add a new item `gloves` to the accessories group of the bundle product `bundle-outfit`
                 description: |
                   To add a new item `gloves` to the accessories group of the bundle product `bundle-outfit`, include the new item in the `items` array of the `accessories` group.
+                  The previously created items `socks` and `headband` should be retained in the updated bundle.
                   Note that simple product `gloves` must be created separately using the create product API.
                 value:
                   [
                     {
                       "sku": "bundle-outfit",
-                      "source": { "locale": "en" },
+                      "source": { "locale": "en-US" },
                       "bundles":
                         [
-                          {
-                            "group": "tops",
-                            "required": true,
-                            "multiSelect": false,
-                            "defaultItemSkus": ["top-red"],
-                            "items":
-                              [
-                                {
-                                  "sku": "top-red",
-                                  "qty": 1,
-                                  "userDefinedQty": false
-                                },
-                                {
-                                  "sku": "top-blue",
-                                  "qty": 1,
-                                  "userDefinedQty": false
-                                }
-                              ]
-                          },
-                          {
-                            "group": "bottoms",
-                            "required": true,
-                            "multiSelect": false,
-                            "defaultItemSkus": ["bottom-black"],
-                            "items":
-                              [
-                                {
-                                  "sku": "bottom-black",
-                                  "qty": 1,
-                                  "userDefinedQty": false
-                                },
-                                {
-                                  "sku": "bottom-white",
-                                  "qty": 1,
-                                  "userDefinedQty": false
-                                }
-                              ]
-                          },
                           {
                             "group": "accessories",
                             "required": false,
@@ -1043,6 +1201,35 @@ paths:
                                   "userDefinedQty": true
                                 }
                               ]
+                          }
+                        ]
+                    }
+                  ]
+              AddNewAttributeAndReplaceExisting:
+                summary: Add a new attribute and replace existing one
+                description: |
+                  Add a new attribute `warehouse`, and update the value of the existing `cost` attribute for the simple product `red-pants`
+
+                  In the example below:
+                  * A new attribute with the code `warehouse` is added to the attributes list
+                  * The value of the existing `cost` attribute is replaced with new value
+                  
+                  The previously created `states` attribute is preserved.
+                  Note: Don't forget to create the product attribute metadata (<a href="#operation/createProductMetadata">link</a> for the `warehouse` attribute if it doesn't exist yet.
+                value:
+                  [
+                    {
+                      "sku": "red-pants",
+                      "source": { "locale": "en-US" },
+                      "attributes":
+                        [
+                          {
+                            "code": "warehouse",
+                            "values": [ "Austin" ]
+                          },
+                          {
+                            "code": "cost",
+                            "values": ["12"]
                           }
                         ]
                     }
@@ -1086,7 +1273,7 @@ paths:
                   [
                     {
                       "sku": "red-pants",
-                      "source": { "locale": "en" }
+                      "source": { "locale": "en-US" }
                     }
                   ]
   /v1/catalog/price-books:
@@ -1095,27 +1282,54 @@ paths:
         - Price Books
       summary: Create price books
       description: |
-        Create or replace existing price books.
+        Create or replace existing price books with support for hierarchical pricing structures.
 
-        Use the [update price books operation](#operation/updatePriceBooks) to modify values for existing price books.
+        <h3>Creating Base Price Books</h3>
 
-        <strong>Note:</strong> After you assign a `parentId` to a price book, you cannot change the parentId value using the update operation. If you want to define a different parent-child relationship, delete the child price book and create a new one with the desired parent-child relationship.
+        Base price books are the foundation of your pricing hierarchy:
+
+        * **Required Fields**: `priceBookId`, `name`, `currency`
+        * **Currency Definition**: Sets the currency for the entire branch of child price books
+        * **No Parent**: Base price books cannot reference a parent price book
+        * **Unique ID**: Must have a unique `priceBookId` across all price books
+
+        <h3>Creating Child Price Books</h3>
+
+        Child price books inherit from their parent and can extend the hierarchy:
+
+        * **Required Fields**: `priceBookId`, `name`, `parentId`
+        * **Parent Reference**: Must reference an existing parent price book
+        * **Currency Inheritance**: Automatically inherits currency from parent
+        * **Hierarchy Depth**: Can create up to 3 levels of nesting
+
+        <h3>Hierarchy Management</h3>
+
+        * **Parent Assignment**: Once a `parentId` is assigned, it cannot be changed via update operations
+        * **Restructuring**: To change parent-child relationships, delete and recreate the child price book
+        * **Validation**: The system validates parent references and hierarchy depth limits
+
+        Use the [update price books operation](#operation/updatePriceBooks) to modify existing price book names or base price book currencies.
       operationId: createPriceBooks
       parameters:
-        - $ref: "#/components/parameters/Authorization"
-        - $ref: "#/components/parameters/ContentType"
-        - $ref: "#/components/parameters/ContentEncoding"
-      responses:
-        "200":
-          $ref: "#/components/responses/AcceptedResponse"
-        "400":
-          $ref: "#/components/responses/InvalidItemsResponse"
-        "401":
-          $ref: "#/components/responses/UnauthorizedResponse"
-        "403":
-          $ref: "#/components/responses/ForbiddenResponse"
-        "429":
-          $ref: "#/components/responses/TooManyRequestsResponse"
+        - name: Content-Type
+          in: header
+          required: true
+          schema:
+            type: string
+            enum: [application/json]
+        - name: Authorization
+          in: header
+          required: true
+          schema:
+            type: string
+            description: Authorization Bearer token
+        - name: Content-Encoding
+          in: header
+          required: false
+          schema:
+            type: string
+            enum: [gzip]
+          description: Use this header if the payload is compressed with gzip.
       requestBody:
         content:
           application/json:
@@ -1125,47 +1339,117 @@ paths:
                 $ref: "#/components/schemas/FeedPricebook"
             examples:
               FeedWithPricebookInformation:
-                summary: Create a base price book with child price books
-                description: Create a base price book and two child price books. The base price book specifies the `USD` currency for the parent and child price books.
+                summary: Create a hierarchical price book structure
+                description: |
+                  Create a comprehensive pricing hierarchy with a base price book and multiple child price books.
+                  This example demonstrates geographic pricing with regional variations.
                 value:
                   [
                     {
                       "priceBookId": "us",
-                      "name": "Dealer North price book name",
+                      "name": "US Base Price Book",
                       "currency": "USD"
-                    },                    {
-                      "priceBookId": "dealer-north",
+                    },
+                    {
+                      "priceBookId": "us-north",
                       "parentId": "us",
-                      "name": "Dealer North price book"
-                    },                    {
-                      "priceBookId": "dealer-west",
+                      "name": "US North Region"
+                    },
+                    {
+                      "priceBookId": "us-south",
                       "parentId": "us",
-                      "name": "Dealer West price book"
+                      "name": "US South Region"
+                    },
+                    {
+                      "priceBookId": "us-north-east",
+                      "parentId": "us-north",
+                      "name": "US Northeast Territory"
+                    },
+                    {
+                      "priceBookId": "us-north-west",
+                      "parentId": "us-north",
+                      "name": "US Northwest Territory"
                     }
                   ]
+      responses:
+        "200":
+          description: All items in the request are accepted for further processing.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/ProcessFeedResponse"
+        "400":
+          description: Request rejected. Some of the received items are invalid. Check the "invalidFeedItems" node for specific errors.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/400ProcessFeedResponse"
+        "401":
+          description: Unauthorized request. Verify that the Bearer token provided in the `Authorization` header is still valid.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/401Response"
+        "403":
+          description: Forbidden request. Verify that the `Authorization` header is present, and that the Bearer token is still valid.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/403Response"
+        "429":
+          description: |
+            Too many requests. Indicates that a client has exceeded the rate limit of 300 requests per minute.
+            Check the `retry-after` header to get the time (in seconds) to wait before sending the next request.
+          content:
+            text/html;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/429Response"
     patch:
       tags:
         - Price Books
       summary: Update price books
-      description: |-
-        Change the name of a base or child price book, or change the currency assigned to the base price book.
-        When you submit the update request for a child price book, include the correct `parentId`. If the request includes a different `parentId`, the value is ignored.
+      description: |
+        Update existing price books with limitations on hierarchical changes.
+
+        <h3>Updatable Fields</h3>
+
+        * **Name**: Can be updated for both base and child price books
+        * **Currency**: Can only be updated for base price books (affects entire hierarchy)
+        * **Parent ID**: Cannot be updated - use delete and recreate to change hierarchy
+
+        <h3>Update Restrictions</h3>
+
+        * **Parent Assignment**: Cannot change `parentId` via update operations
+        * **Hierarchy Changes**: To restructure the hierarchy, delete and recreate child price books
+        * **Currency Inheritance**: Child price books automatically inherit currency changes from parent
+        * **Validation**: System validates that `parentId` references exist and hierarchy depth is maintained
+
+        <h3>Update Strategies</h3>
+
+        * **Base Price Books**: Update name and currency as needed
+        * **Child Price Books**: Include correct `parentId` in request (will be ignored if different)
+        * **Hierarchy Restructuring**: Delete child price book and recreate with new parent reference
       operationId: updatePriceBooks
       parameters:
-        - $ref: "#/components/parameters/Authorization"
-        - $ref: "#/components/parameters/ContentType"
-        - $ref: "#/components/parameters/ContentEncoding"
-      responses:
-        "200":
-          $ref: "#/components/responses/AcceptedResponse"
-        "400":
-          $ref: "#/components/responses/InvalidItemsResponse"
-        "401":
-          $ref: "#/components/responses/UnauthorizedResponse"
-        "403":
-          $ref: "#/components/responses/ForbiddenResponse"
-        "429":
-          $ref: "#/components/responses/TooManyRequestsResponse"
+        - name: Content-Type
+          in: header
+          required: true
+          schema:
+            type: string
+            enum: [application/json]
+        - name: Authorization
+          in: header
+          required: true
+          schema:
+            type: string
+            description: Authorization Bearer token.
+        - name: Content-Encoding
+          in: header
+          required: false
+          schema:
+            type: string
+            enum: [gzip]
+          description: Use this header if the payload is compressed with gzip.
       requestBody:
         content:
           application/json:
@@ -1185,31 +1469,138 @@ paths:
                       "name": "North dealership"
                     }
                   ]
+              ComplexHierarchyExample:
+                summary: Create a complex multi-level pricing hierarchy
+                description: |
+                  Create a comprehensive pricing structure for a global business with multiple regions,
+                  customer segments, and sales channels. This demonstrates the full potential of
+                  hierarchical price books.
+                value:
+                  [
+                    {
+                      "priceBookId": "global",
+                      "name": "Global Base Pricing",
+                      "currency": "USD"
+                    },
+                    {
+                      "priceBookId": "us-retail",
+                      "parentId": "global",
+                      "name": "US Retail Channel"
+                    },
+                    {
+                      "priceBookId": "us-online",
+                      "parentId": "global",
+                      "name": "US Online Channel"
+                    },
+                    {
+                      "priceBookId": "us-retail-premium",
+                      "parentId": "us-retail",
+                      "name": "US Retail Premium Customers"
+                    },
+                    {
+                      "priceBookId": "us-retail-standard",
+                      "parentId": "us-retail",
+                      "name": "US Retail Standard Customers"
+                    },
+                    {
+                      "priceBookId": "us-online-vip",
+                      "parentId": "us-online",
+                      "name": "US Online VIP Members"
+                    },
+                    {
+                      "priceBookId": "us-online-regular",
+                      "parentId": "us-online",
+                      "name": "US Online Regular Customers"
+                    }
+                  ]
+      responses:
+        "200":
+          description: All items in the request are accepted for further processing.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/ProcessFeedResponse"
+        "400":
+          description: Request rejected. Some of the received items are invalid. Check the `invalidFeedItems` node for specific errors.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/400ProcessFeedResponse"
+        "401":
+          description: Unauthorized request. Verify that the Bearer token provided in the `Authorization` header is still valid.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/401Response"
+        "403":
+          description: Forbidden request. Verify that the `Authorization` header is present, and that the Bearer token is still valid.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/403Response"
+        "429":
+          description: |
+            Too many requests. Indicates that a client has exceeded the rate limit of 300 requests per minute.
+            Check the `retry-after` header to get the time (in seconds) to wait before sending the next request.
+          content:
+            text/html;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/429Response"
   /v1/catalog/price-books/delete:
     post:
       tags:
         - Price Books
       summary: Delete price books
       description: |
-        When you delete a price book, all its child price books and all prices assigned to the `priceBookId` and its children are also deleted.
+        Delete price books and their associated pricing data with cascading effects on the hierarchy.
 
-        If a price book is deleted by mistake, you have up to one week to restore the deleted price books and their associated prices. Restoring is done by recreating the top-level parent price book that was deleted, using the same payload submitted in the original create price book request. The state of the price books and prices are restored to the status and price values assigned when the price book was deleted.
+        <h3>Cascading Deletion</h3>
+
+        When you delete a price book:
+        * **Child Price Books**: All child price books in the hierarchy are automatically deleted
+        * **Associated Prices**: All prices assigned to the deleted price book and its children are removed
+        * **Hierarchy Impact**: The entire branch below the deleted price book is removed
+
+        <h3>Deletion Scenarios</h3>
+
+        * **Base Price Book**: Deletes entire pricing hierarchy and all associated prices
+        * **Child Price Book**: Deletes the specific price book and its children, but preserves sibling price books
+        * **Leaf Price Book**: Deletes only the specified price book and its associated prices
+
+        <h3>Recovery Options</h3>
+
+        If a price book is deleted by mistake:
+        * **Time Window**: You have up to one week to restore deleted price books
+        * **Restoration Method**: Recreate the top-level parent price book using the original create payload
+        * **State Recovery**: Price books and prices are restored to their state when deleted
+        * **Hierarchy Reconstruction**: The entire hierarchy is rebuilt from the restoration payload
+
+        <h3>Best Practices</h3>
+
+        * **Backup Strategy**: Keep copies of price book configurations for recovery
+        * **Validation**: Verify hierarchy structure before deletion
+        * **Impact Assessment**: Review associated prices before deleting price books
       operationId: deletePriceBooks
       parameters:
-        - $ref: "#/components/parameters/Authorization"
-        - $ref: "#/components/parameters/ContentType"
-        - $ref: "#/components/parameters/ContentEncoding"
-      responses:
-        "200":
-          $ref: "#/components/responses/AcceptedResponse"
-        "400":
-          $ref: "#/components/responses/InvalidItemsResponse"
-        "401":
-          $ref: "#/components/responses/UnauthorizedResponse"
-        "403":
-          $ref: "#/components/responses/ForbiddenResponse"
-        "429":
-          $ref: "#/components/responses/TooManyRequestsResponse"
+        - name: Content-Type
+          in: header
+          required: true
+          schema:
+            type: string
+            enum: [application/json]
+        - name: Authorization
+          in: header
+          required: true
+          schema:
+            type: string
+            description: Authorization Bearer token.
+        - name: Content-Encoding
+          in: header
+          required: false
+          schema:
+            type: string
+            enum: [gzip]
+          description: Use this header if the payload is compressed with gzip.
       requestBody:
         content:
           application/json:
@@ -1222,6 +1613,39 @@ paths:
                 summary: Delete price book "dealer-north"
                 description: Delete the "dealer-north" price book. All prices assigned to this price book are also deleted.
                 value: [{ "priceBookId": "dealer-north" }]
+      responses:
+        "200":
+          description: All items in the request are accepted for further processing.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/ProcessFeedResponse"
+        "400":
+          description: Request rejected. Some of the received items are invalid. Check the "invalidFeedItems" node for specific errors.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/400ProcessFeedResponse"
+        "401":
+          description: Unauthorized request. Verify that the Bearer token provided in the `Authorization` header is still valid.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/401Response"
+        "403":
+          description: Forbidden request. Verify that the `Authorization` header is present, and that the Bearer token is still valid.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/403Response"
+        "429":
+          description: |
+            Too many requests. Indicates that a client has exceeded the rate limit of 300 requests per minute.
+            Check the `retry-after` header to get the time (in seconds) to wait before sending the next request.
+          content:
+            text/html;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/429Response"
   /v1/catalog/products/prices:
     post:
       tags:
@@ -1257,7 +1681,7 @@ paths:
         Tier quantities must be greater than 1.
 
         <h3>Pricing for configurable products</h3>
-        Because configurable product price is calculated based on the price of the selected product variant, you don't need to send price
+        Because configurable product price is calculated based on the price of the selected product variant, you don't need to send the price
         data for configurable product SKUs. Sending price data for these SKUs can cause incorrect price calculations.
 
       operationId: createPrices
@@ -1392,13 +1816,17 @@ paths:
       description: |
         Change existing product prices, discounts, and tiered pricing.
 
-        When the update is processed, the merge strategy is used to apply changes to `scalar` and `object` type fields. The replace strategy is used to apply changes for fields in an `array`.
+        When the update is processed, the merge strategy is used to apply changes to `scalar` and `object` type fields.
+
+        For `array` type fields, a new value can be appended to the existing list. For an object list, you can update a specific object by matching on a key field. The following fields are supported:
+        * `discounts` - match on `code`
+        * `tierPrices` - match on `qty`
 
         <h3>Update strategies</h3>
 
         * **Regular Price** - Updated using merge strategy
-        * **Discounts Array** - Updated using replace strategy (entire array is replaced)
-        * **Tiered Pricing Array** - Updated using replace strategy (entire array is replaced)
+        * **Discounts Array** - Updated using the append or merge strategy
+        * **Tiered Pricing Array** - Updated using the append or merge strategy
 
         <h3>Discount and tier pricing updates</h3>
 
@@ -1444,7 +1872,9 @@ paths:
                 summary: Update product prices with enhanced discounts and tiered pricing
                 description: |
                   Update existing product prices for the given SKU ("red-pants") and price book id ("dealer-north").
-                  This example shows how to update both discounts and tiered pricing simultaneously.
+                  This example shows how to update both discounts and tiered pricing simultaneously:
+                  * **discounts**: Update the existing `seasonal_sale` discount and add a new `holiday_sale` discount
+                  * **tierPrices**: Update the existing  percentage discount for quantity 5 and add a new discount for quantity 20
                 value:
                   [
                     {
@@ -1452,11 +1882,11 @@ paths:
                       "priceBookId": "dealer-north",
                       "discounts": [
                         {
-                          "code": "holiday_sale",
+                          "code": "seasonal_sale",
                           "percentage": 30
                         },
                         {
-                          "code": "bulk_discount",
+                          "code": "holiday_sale",
                           "price": 5.00
                         }
                       ],
@@ -1466,12 +1896,8 @@ paths:
                           "percentage": 20
                         },
                         {
-                          "qty": 10,
-                          "percentage": 40
-                        },
-                        {
-                          "qty": 25,
-                          "price": 12.00
+                          "qty": 20,
+                          "price": 13
                         }
                       ]
                     }
@@ -1524,12 +1950,13 @@ components:
         application/json;charset=UTF-8:
           schema:
             $ref: "#/components/schemas/ProcessFeedResponse"
+
     InvalidItemsResponse:
       x-summary: Request rejected
       description: |
         Some of the received items are invalid. Check the "message" and "errors" fields for details.
 
-        Common validation errors include:
+        Common causes of validation errors include:
 
         * **Invalid SKU**: SKU does not exist in the catalog
         * **Invalid Price Book**: Price book ID does not exist
@@ -1537,6 +1964,8 @@ components:
         * **Invalid Tier Quantities**: Quantities not in ascending order or less than 2
         * **Configurable Product Price**: Attempting to set price for configurable product SKU
         * **Invalid Price Format**: Non-numeric or negative price values
+        * **Incorrect Category Slug**: Invalid category slug format
+        * **Incorrect hierarchy configuration**: Misconfiguration of price book parent-child relationship
       content:
         application/json;charset=UTF-8:
           schema:
@@ -1573,6 +2002,7 @@ components:
       required: true
       schema:
         type: string
+        description: Authorization Bearer token
     ContentType:
       name: Content-Type
       in: header
@@ -1758,6 +2188,102 @@ components:
           description: Attribute code
         source:
           $ref: "#/components/schemas/Source"
+    FeedCategory:
+      title: FeedCategory
+      description: Category information for organizing products with hierarchical structure and localization support.
+      required:
+        - slug
+        - source
+        - name
+      type: object
+      properties:
+        slug:
+          type: string
+          minLength: 1
+          maxLength: 1024
+          pattern: "^[a-z0-9-]+(?:\\/[a-z0-9-]+)*$"
+          description: |
+            Category slug using hierarchical format with forward slashes to represent parent-child relationships.
+            String can contain only lowercase letters, numbers, and hyphens.
+            Examples: 'men', 'men/clothing', 'men/clothing/pants'
+          example: "men/clothing/pants"
+        source:
+          $ref: "#/components/schemas/Source"
+        name:
+          type: string
+          minLength: 1
+          maxLength: 128
+          description: Display name of the category
+          example: "Men's Pants"
+        families:
+          type: array
+          nullable: true
+          items:
+            type: string
+          description: |
+            Optional array of product family identifiers that this category is associated with.
+            Used for enhanced product organization and filtering.
+          example: ["apparel", "clothing"]
+      additionalProperties: false
+    FeedCategoryUpdate:
+      title: FeedCategoryUpdate
+      description: Category information for updating existing categories.
+      required:
+        - slug
+        - source
+      type: object
+      properties:
+        slug:
+          type: string
+          minLength: 1
+          maxLength: 1024
+          pattern: "^[a-z0-9-]+(?:\\/[a-z0-9-]+)*$"
+          description: |
+            Category slug using hierarchical format with forward slashes to represent parent-child relationships.
+            String can contain only lowercase letters, numbers, and hyphens.
+            Examples: 'men', 'men/clothing', 'men/clothing/pants'
+          example: "men/clothing/pants"
+        source:
+          $ref: "#/components/schemas/Source"
+        name:
+          type: string
+          minLength: 1
+          maxLength: 128
+          description: Display name of the category
+          example: "Men's Pants"
+        families:
+          type: array
+          nullable: true
+          items:
+            type: string
+          description: |
+            Optional array of product family identifiers that this category is associated with.
+            Used for enhanced product organization and filtering. For example, for a clothing category,
+            you can associate it with the "apparel" family.
+            Note: This field uses the replace strategy to replace the entire array with the new values.
+          example: ["apparel", "clothing"]
+      additionalProperties: false
+    FeedCategoryDelete:
+      title: Delete category
+      description: Delete category information for removing categories from the catalog.
+      required:
+        - slug
+        - source
+      type: object
+      properties:
+        slug:
+          type: string
+          minLength: 1
+          maxLength: 1024
+          pattern: "^[a-z0-9-]+(?:\\/[a-z0-9-]+)*$"
+          description: |
+            Category slug using hierarchical format with forward slashes to represent parent-child relationships.
+            Must use only lowercase letters, numbers, and hyphens.
+            Examples: 'men', 'men/clothing', 'men/clothing/pants'
+          example: "men/clothing/pants"
+        source:
+          $ref: "#/components/schemas/Source"
+      additionalProperties: false
     FeedProduct:
       title: Catalog Product payload
       type: object
@@ -1954,7 +2480,9 @@ components:
           $ref: "#/components/schemas/Source"
     FeedPricebook:
       title: FeedPricebook
-      description: Price book information
+      description: |
+        Price book information supporting hierarchical pricing structures. Use base price books to define currency
+        and create child price books for specific pricing scenarios.
       oneOf:
         - $ref: '#/components/schemas/PriceBookBase'
         - $ref: '#/components/schemas/PriceBookChild'
@@ -1965,35 +2493,53 @@ components:
       properties:
         priceBookId:
           type: string
-          description: Base price book id
+          description: | 
+            Unique identifier for the base price book. Must be unique across all price books.
+            Used to reference this price book in child price books and pricing data.
           minLength: 1
           maxLength: 64
+          example: "us-base"
         name:
           type: string
-          description: Price book name
+          description: |
+             Human-readable name for the price book. Used for display and identification purposes.
           minLength: 1
+          example: "US Base Pricing"
         currency:
           type: string
-          description: Price book currency
+          description: |
+            Currency code that applies to this price book and all its child price books in ISO format.
+            Child price books inherit this currency and cannot override it.
           minLength: 1
           maxLength: 5
+          example: "USD"
     PriceBookChild:
       title: Child price book
+      description: |
+         Nested price book that inherits currency from its parent and can extend the pricing hierarchy.
+         Child price books can have up to 3 levels of nesting from the base price book.
       type: object
       required: [priceBookId, name, parentId]
       properties:
         priceBookId:
           type: string
-          description: Child price book id
+          description: |
+            Unique identifier for the child price book. Must be unique across all price books.
+            Used to reference this price book in pricing data and potential child price books.
           minLength: 1
           maxLength: 64
+          example: "us-retail"
         name:
           type: string
-          description: Price book name
+          description: |
+            Human-readable name for the child price book. Used for display and identification purposes.
           minLength: 1
+          example: "US Retail Channel"
         parentId:
           type: string
-          description: Base price book id
+          description: |
+             Reference to the parent price book ID. Must reference an existing price book.
+             Determines the currency inheritance and hierarchy level.
           minLength: 1
           maxLength: 64
     FeedPriceBookDelete:
@@ -2056,8 +2602,7 @@ components:
           type: array
           description: |
             Array of tiered pricing for quantity-based discounts.
-            Quantities must be greater than 1 and should be in ascending order.
-            Supports both percentage and fixed price tiers.
+            Quantities must be greater than 1. Supports both percentage and fixed price tiers.
           items:
             anyOf:
               - $ref: "#/components/schemas/TierFinalPrice"
@@ -2156,13 +2701,12 @@ components:
           type: number
           format: float
           description: |
-            Discount percentage as a positive number.
-            Valid range is 0.01 to 99.99 (1% to 99.99%).
+            Discount percentage as a positive number. Valid range is 0.01 to 99.99 (1% to 99.99%).
           example: 15.5
     TierFinalPrice:
-      title: Tier Fixed Price
+      title: Tier Final Price
       description: |
-        Fixed price offered for bulk purchases at a specific quantity threshold.
+        Final price offered for bulk purchases at a specific quantity threshold.
         Example: $100 regular price with tier price of $80 for quantity of 5 or more.
       type: object
       required:
@@ -2174,7 +2718,7 @@ components:
           format: float
           description: |
             Minimum quantity required to qualify for this tier price.
-            Must be greater than 1 and should be in ascending order with other tiers.
+            Must be greater than 1.
           example: 5
         price:
           type: number
@@ -2186,7 +2730,7 @@ components:
     TierPercentage:
       title: Tier Percentage Discount
       description: |
-        Percentage discount applied when purchasing at or above a specific quantity threshold.
+        Percentage discount applied to the regular price when purchasing at or above a specific quantity threshold.
         Example: $100 regular price with 20% discount for quantity of 10 or more.
       type: object
       required:
@@ -2198,18 +2742,18 @@ components:
           format: float
           description: |
             Minimum quantity required to qualify for this tier discount.
-            Must be greater than 1 and should be in ascending order with other tiers.
+            Must be greater than 1.
           example: 10
         percentage:
           type: number
           format: float
           description: |
-            Discount percentage applied for the specified quantity threshold.
+            Discount percentage applied to the specified quantity threshold.
             Valid range is 0.01 to 99.99 (1% to 99.99%).
           example: 20.0
     Source:
       title: Catalog source
-      description: Source of the entity. For example it's locale "English"
+      description: Source of the entity, for example, "en-US" for US English.
       type: object
       required:
         - locale

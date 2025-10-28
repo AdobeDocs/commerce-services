@@ -32,14 +32,25 @@ You can also define custom metadata for additional product attributes. For examp
 
 For details, see <a href="https://developer.adobe.com/commerce/services/reference/rest/#tag/Metadata" target="_blank" rel="noopener noreferrer">Metadata API</a> in the *Data Ingestion API Reference*.
 
+## Categories
+
+Categories are used to organize products into a hierarchical structure, making it easier for customers to navigate and find products in the storefront. Categories can be nested, allowing you to create subcategories within main categories. For details on creating categories and category hierarchies using slug-based paths, see [Categories](https://developer.adobe.com/commerce/services/reference/rest/) resource in the API reference.
+
 ## Products
 
-A product is any item or service offered for sale through online channels. Products can be physical goods, digital downloads, or services. They are the core elements of your catalog. In the context of the Merchandising Services, products are categorized into different types.
+A product is any item or service offered for sale through online channels. Products can be physical goods, digital downloads, or services. They are the core elements of your catalog. Product types are different categories of products that you can create and manage in your catalog. Merchandising Services simplifies product types to two use cases:
 
-**Product types** are different categories of products that you can create and manage in your catalog. Merchandising Services supports the following product types:
+- **Simple products**–Basic items with no variations, for example a single t-shirt in one size and color.
+  - A single, fixed price and quantity
+  - A regular price (before discounts) and final price (after discounts)
+  - Support for product attributes, such as color, size, and other characteristics
+  - Adobe Commerce [simple](https://experienceleague.adobe.com/en/docs/commerce-admin/catalog/products/types/product-create-simple), [virtual](https://experienceleague.adobe.com/en/docs/commerce-admin/catalog/products/types/product-create-virtual), [downloadable](https://experienceleague.adobe.com/en/docs/commerce-admin/catalog/products/types/product-create-downloadable), and [gift card](https://experienceleague.adobe.com/en/docs/commerce-admin/catalog/products/types/product-gift-card-create) product types are mapped to the simple product type.
 
-  - **Simple Products**—Basic items with no variations, for example a single t-shirt in one size and color.
-  - **Configurable Products**—Items with multiple options or variations, for example a t-shirt available in different sizes and colors.
+- **Complex products**–Complex products are collections of multiple simple products that can be configured or bundled together.
+  - Each component simple product can have its own price.
+  - Shoppers can specify quantities for individual component products.
+  - Product options (like size, color, material) are unified and work the same way regardless of product type. Each option selection points to a specific simple product with its own attributes and price. The final product remains undefined until the shopper selects all required options.
+  - Adobe Commerce [configurable](https://experienceleague.adobe.com/en/docs/commerce-admin/catalog/products/types/product-create-configurable) and [bundle product](https://experienceleague.adobe.com/en/docs/commerce-admin/catalog/products/types/product-create-bundle) types map to the complex product type.
 
 Each product type has its own set of attributes and configurations to help you manage and present them effectively in your store.
 
@@ -47,7 +58,7 @@ Each product type has its own set of attributes and configurations to help you m
 
 For example, if you're selling a t-shirt, the product variants might include different sizes (small, medium, large) and colors (red, blue, green). Each combination of size and color represents a unique product variant.
 
-For details, see <a href="https://developer.adobe.com/commerce/services/reference/rest/#tag/Products" target="_blank" rel="noopener noreferrer">Products API</a> in the *Data Ingestion API Reference*.
+For details and examples of different product types and product variations, see the <a href="https://developer.adobe.com/commerce/services/reference/rest/#tag/Products" target="_blank" rel="noopener noreferrer">Products API</a> in the *Data Ingestion API Reference*.
 
 ## Price books and prices
 
