@@ -1286,8 +1286,8 @@ paths:
 
         When creating product layers:
          - Each product layer requires a SKU identifier which matches to a base product.
-         - Product layer may have a defined catalog `source.locale`, and if absent is treated as a global layer for any locale.
-         - Product layer must have a defined catalog `source.layer`.
+         - A product layer may have a defined catalog `source.locale`, and if absent is treated as a global layer for any locale.
+         - A product layer must have a defined catalog `source.layer`.
          - All other fields are optional. If provided, they are used to override the base product.
          - When merging array lists, the first array will be merged with the base list. All other inner lists of the same object will be treated as replace.
            For example `attributes` is merged with base list, but `attributes.values` is a replacement.
