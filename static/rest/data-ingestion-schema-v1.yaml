@@ -1282,7 +1282,7 @@ paths:
         - Product Layers
       summary: Create or replace product layers
       description: |
-        You can create a product layer, to merge and override of a base product.
+        You can create a product layer to merge and override a base product.
 
         When creating product layers:
          - Each product layer requires a SKU identifier which matches to a base product.
