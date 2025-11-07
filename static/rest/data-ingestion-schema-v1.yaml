@@ -1394,7 +1394,7 @@ paths:
         **Important Notes:**
         - Only the specified layer is deleted; base product and other layers remain intact
         - Both `sku` and `source` (locale + layer) must match exactly for successful deletion
-        - Deletion is immediate and cannot be undone
+        
       operationId: deleteProductLayers
       parameters:
         - $ref: "#/components/parameters/Authorization"
