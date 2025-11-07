@@ -2656,6 +2656,102 @@
           "documentation": {
             "undocumented": true
           }
+        },
+        "categoryTree": {
+          "documentation": {
+            "description": "Retrieve hierarchical category data in a tree structure. This query allows you to fetch category information with parent-child relationships, useful for building category navigation menus and breadcrumbs.",
+            "undocumented": false
+          }
+        },
+        "navigation": {
+          "documentation": {
+            "description": "Retrieve category navigation data optimized for building storefront navigation menus. Returns a flattened structure of categories with their immediate children, ideal for creating responsive navigation components.",
+            "undocumented": false
+          }
+        }
+      }
+    },
+    "CategoryTreeView": {
+      "documentation": {
+        "description": "Represents a category in a hierarchical tree structure with parent-child relationships and level information.",
+        "undocumented": false
+      },
+      "fields": {
+        "slug": {
+          "documentation": {
+            "description": "The unique URL-friendly identifier for the category, used in routing and navigation.",
+            "undocumented": false
+          }
+        },
+        "name": {
+          "documentation": {
+            "description": "The display name of the category as shown to customers in the storefront.",
+            "undocumented": false
+          }
+        },
+        "level": {
+          "documentation": {
+            "description": "The hierarchical level of the category in the tree structure, where root categories have level 0.",
+            "undocumented": false
+          }
+        },
+        "parentSlug": {
+          "documentation": {
+            "description": "The slug of the parent category. Null for root-level categories.",
+            "undocumented": false
+          }
+        },
+        "childrenSlugs": {
+          "documentation": {
+            "description": "Array of slugs for all direct child categories. Empty array if the category has no children.",
+            "undocumented": false
+          }
+        }
+      }
+    },
+    "CategoryViewV2": {
+      "documentation": {
+        "description": "Base interface for category view models that provides common category properties like slug and name. This interface is implemented by specialized category types for different use cases.",
+        "undocumented": false
+      },
+      "fields": {
+        "slug": {
+          "documentation": {
+            "description": "The unique URL-friendly identifier for the category, used in routing and navigation.",
+            "undocumented": false
+          }
+        },
+        "name": {
+          "documentation": {
+            "description": "The display name of the category as shown to customers in the storefront.",
+            "undocumented": false
+          }
+        }
+      }
+    },
+    "CategoryNavigationView": {
+      "documentation": {
+        "description": "Represents a category optimized for navigation purposes with recursive child category structure.",
+        "undocumented": false
+      },
+      "fields": {
+        "slug": {
+          "documentation": {
+            "description": "The unique URL-friendly identifier for the category, used in routing and navigation.",
+            "undocumented": false
+          }
+        },
+        "name": {
+          "documentation": {
+            "description": "The display name of the category as shown to customers in the storefront navigation.",
+            "undocumented": false
+          }
+        },
+        "children": {
+          "documentation": {
+            "description": "Array of direct child categories, each containing their own children in a recursive structure. Used to build multi-level navigation menus.",
+            "undocumented": false
+          }
         }
       }
     }
@@ -4063,6 +4159,38 @@
     "DeleteNegotiableQuoteOperationResult": {
       "documentation": {
         "undocumented": true
+      }
+    }
+  },
+  "FIELD_ARGUMENT": {
+    "Query": {
+      "categoryTree": {
+        "family": {
+          "documentation": {
+            "description": "The catalog family identifier that determines which catalog's categories to retrieve. This is typically your store's catalog ID.",
+            "undocumented": false
+          }
+        },
+        "slugs": {
+          "documentation": {
+            "description": "Optional array of specific category slugs to retrieve. If provided, only these categories and their hierarchical relationships will be returned. If omitted, all categories in the family are returned.",
+            "undocumented": false
+          }
+        },
+        "depth": {
+          "documentation": {
+            "description": "Optional maximum depth level to retrieve in the category tree. Use this to limit how deep the hierarchy goes. If omitted, all levels are returned.",
+            "undocumented": false
+          }
+        }
+      },
+      "navigation": {
+        "family": {
+          "documentation": {
+            "description": "The catalog family identifier that determines which catalog's navigation structure to retrieve. This is typically your store's catalog ID.",
+            "undocumented": false
+          }
+        }
       }
     }
   }
