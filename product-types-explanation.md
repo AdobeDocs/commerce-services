@@ -49,8 +49,8 @@ products types are simplified are categorized into different types.
   - Shoppers can specify quantities for individual component products.
   - Product options (like size, color, material) are unified and work the same way regardless of product type. Each option selection points to a specific simple product with its own attributes and price. The final product remains undefined until the shopper selects all required options.
 
-  * Simple product types (simple, virtual, downloadable, gift card) are represented as simpleProductViews.
-  * Complex product types (configurable, bundle, grouped) are represented as complexProductViews in the GraphQL schema.
+  - Simple product types (simple, virtual, downloadable, gift card) are represented as simpleProductViews.
+  - Complex product types (configurable, bundle, grouped) are represented as complexProductViews in the GraphQL schema.
 
   - **Simple Products**—Basic items with no variations, for example a single t-shirt in one size and color.
   - **Complex Products**

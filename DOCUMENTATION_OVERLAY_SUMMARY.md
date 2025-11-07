@@ -18,6 +18,7 @@ The main metadata file now contains comprehensive documentation for:
 ### 2. Updated: `spectaql/config-merchandising.yml`
 
 SpectaQL configuration updated to use enhanced schema file instead of live introspection:
+
 - `introspectionFile: spectaql/enhanced-schema.json`
 - Commented out live introspection URL and headers
 - Enhanced metadata processing settings enabled
@@ -39,6 +40,7 @@ node scripts/build-with-enhanced-schema.js
 ```
 
 This process:
+
 1. Fetches the live GraphQL schema via introspection
 2. Injects custom descriptions from `spectaql/metadata-merchandising.json`
 3. Saves enhanced schema to `spectaql/enhanced-schema.json`

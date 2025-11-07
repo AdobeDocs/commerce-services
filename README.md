@@ -259,15 +259,19 @@ ENVIRONMENT_ID=your_environment_id
 #### Troubleshooting Enhanced Build
 
 **Issue: "Missing required environment variables"**
+
 - Solution: Ensure your `.env` file contains `TENANT_ID`, `CATALOG_VIEW_ID`, and `ENVIRONMENT_ID`
 
 **Issue: "Server responded with status code 404"**
+
 - Solution: Verify your environment variables are correct and the API endpoint is accessible
 
 **Issue: Descriptions not appearing in generated HTML**
+
 - Solution: Check that your metadata follows the correct JSON structure and run the enhanced build process
 
 **Issue: Build fails with permission errors**
+
 - Solution: The enhanced build may require network permissions to fetch the live schema
 
 ### How to get the schema
@@ -326,4 +330,3 @@ For more information about SpectaQL, refer to <https://github.com/anvilco/specta
 ## REST API Reference Generator
 
 See [Generate the Data Ingestion API Reference](src/static/rest/README.md).
-
