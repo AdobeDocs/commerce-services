@@ -1291,17 +1291,17 @@ paths:
         - Create seasonal or promotional variations without duplicating entire product records
         - Implement A/B testing scenarios with different product presentations
 
-        ## Layer Behavior and Requirements
+        ## Layer behavior and requirements
 
-        **Required Fields:**
+        **Required fields:**
         - `sku`: Must match an existing base product SKU
         - `source.layer`: Identifies the layer name for organization and retrieval
 
         **Optional Fields:**
         - `source.locale`: When specified, layer applies only to that locale. When omitted, layer applies globally across all locales
-        - All product fields (name, description, images, etc.): Override corresponding base product values
+        - All product fields (name, description, images, and so on): Override corresponding base product values
 
-        ## Merging Logic
+        ## Merging logic
 
         Product layers use intelligent merging:
         - **Simple fields** (name, description, etc.): Complete replacement of base values
