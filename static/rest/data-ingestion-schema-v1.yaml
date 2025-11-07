@@ -1304,7 +1304,7 @@ paths:
         ## Merging logic
 
         Product layers use intelligent merging:
-        - **Simple fields** (name, description, etc.): Complete replacement of base values
+        - **Simple fields** (name, description, and so on): Complete replacement of base values
         - **Array fields** (attributes, images, etc.): First-level arrays are merged with base arrays
         - **Nested arrays** (attribute.values, etc.): Complete replacement of nested arrays
 
