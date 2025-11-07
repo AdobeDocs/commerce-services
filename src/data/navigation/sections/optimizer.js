@@ -38,7 +38,13 @@ module.exports = [
           },
           {
             title: "Use cases",
-            path: "/optimizer/merchandising-services/use-cases.md"
+            path: "/optimizer/merchandising-services/use-cases.md",
+            pages: [
+              {
+                title: "Manage categories",
+                path: "/optimizer/merchandising-services/categories-v2.md"
+              }
+            ]
           },
           {
             title: "Limitations",
