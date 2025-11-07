@@ -9,11 +9,12 @@ info:
 
     This API provides the following resource collections to create and update catalog data:
 
-    - <strong>[Metadata](#tag/Metadata)</strong>—define and manage product attribute metadata including display settings, search characteristics, filtering options, and sorting rules.
-    - <strong>[Categories](#tag/Categories)</strong>—define and manage categories with hierarchical structure to build navigation menu.
-    - <strong>[Products](#tag/Products)</strong>—define and manage catalog items with their attributes (name, description, SKU, images, and variants).
-    - <strong>[Price books](#tag/Price-Books)</strong>—define and manage pricing scopes for different customer tiers and markets.
-    - <strong>[Prices](#tag/Prices)</strong>—define and manage product SKU prices and their associated price books.
+    - <strong>[Metadata](#tag/Metadata)</strong>—define and manage product attribute metadata including display settings, search characteristics, filtering options, and sorting rules
+    - <strong>[Categories](#tag/Categories)</strong>—define and manage categories with hierarchical structure to build navigation menu
+    - <strong>[Products](#tag/Products)</strong>—define and manage catalog items with their attributes (name, description, SKU, images, and variants)
+    - <strong>[Price books](#tag/Price-Books)</strong>—define and manage pricing scopes for different customer tiers and markets
+    - <strong>[Prices](#tag/Prices)</strong>—define and manage product SKU prices and their associated price books
+    - <strong>[Product Layers](#tag/Product-Layers)</strong>—define and manage product layers to customize and override base product data for specific contexts, locales, or business requirements
   version: 1.0.0
 servers:
   - url: https://na1-sandbox.api.commerce.adobe.com/{tenantId}
