@@ -184,36 +184,86 @@ To add documentation for new queries, types, or fields:
    }
    ```
 
-   **Complete Example:**
+   **Complete Example (categoryTree and navigation queries):**
 
    ```json
    {
      "OBJECT": {
        "Query": {
          "fields": {
-           "productSearch": {
+           "categoryTree": {
              "documentation": {
-               "description": "Search for products using various filters and criteria. Returns paginated results with product details.",
+               "description": "Retrieve hierarchical category data in a tree structure. This query allows you to fetch category information with parent-child relationships, useful for building category navigation menus and breadcrumbs.",
+               "undocumented": false
+             }
+           },
+           "navigation": {
+             "documentation": {
+               "description": "Retrieve category navigation data optimized for building storefront navigation menus. Returns a flattened structure of categories with their immediate children, ideal for creating responsive navigation components.",
                "undocumented": false
              }
            }
          }
        },
-       "ProductSearchResult": {
+       "CategoryTreeView": {
          "documentation": {
-           "description": "Contains search results with products and pagination information",
+           "description": "Represents a category in a hierarchical tree structure with parent-child relationships and level information.",
            "undocumented": false
          },
          "fields": {
-           "products": {
+           "slug": {
              "documentation": {
-               "description": "Array of products matching the search criteria",
+               "description": "The unique URL-friendly identifier for the category, used in routing and navigation.",
                "undocumented": false
              }
            },
-           "totalCount": {
+           "name": {
              "documentation": {
-               "description": "Total number of products found (before pagination)",
+               "description": "The display name of the category as shown to customers in the storefront.",
+               "undocumented": false
+             }
+           },
+           "level": {
+             "documentation": {
+               "description": "The hierarchical level of the category in the tree structure, where root categories have level 0.",
+               "undocumented": false
+             }
+           },
+           "parentSlug": {
+             "documentation": {
+               "description": "The slug of the parent category. Null for root-level categories.",
+               "undocumented": false
+             }
+           },
+           "childrenSlugs": {
+             "documentation": {
+               "description": "Array of slugs for all direct child categories. Empty array if the category has no children.",
+               "undocumented": false
+             }
+           }
+         }
+       },
+       "CategoryNavigationView": {
+         "documentation": {
+           "description": "Represents a category optimized for navigation purposes with recursive child category structure.",
+           "undocumented": false
+         },
+         "fields": {
+           "slug": {
+             "documentation": {
+               "description": "The unique URL-friendly identifier for the category, used in routing and navigation.",
+               "undocumented": false
+             }
+           },
+           "name": {
+             "documentation": {
+               "description": "The display name of the category as shown to customers in the storefront navigation.",
+               "undocumented": false
+             }
+           },
+           "children": {
+             "documentation": {
+               "description": "Array of direct child categories, each containing their own children in a recursive structure. Used to build multi-level navigation menus.",
                "undocumented": false
              }
            }
@@ -222,16 +272,30 @@ To add documentation for new queries, types, or fields:
      },
      "FIELD_ARGUMENT": {
        "Query": {
-         "productSearch": {
-           "query": {
+         "categoryTree": {
+           "family": {
              "documentation": {
-               "description": "Search term to match against product names and descriptions",
+               "description": "The catalog family identifier that determines which catalog's categories to retrieve. This is typically your store's catalog ID.",
                "undocumented": false
              }
            },
-           "filters": {
+           "slugs": {
              "documentation": {
-               "description": "Optional filters to narrow down search results by category, price, etc.",
+               "description": "Optional array of specific category slugs to retrieve. If provided, only these categories and their hierarchical relationships will be returned. If omitted, all categories in the family are returned.",
+               "undocumented": false
+             }
+           },
+           "depth": {
+             "documentation": {
+               "description": "Optional maximum depth level to retrieve in the category tree. Use this to limit how deep the hierarchy goes. If omitted, all levels are returned.",
+               "undocumented": false
+             }
+           }
+         },
+         "navigation": {
+           "family": {
+             "documentation": {
+               "description": "The catalog family identifier that determines which catalog's navigation structure to retrieve. This is typically your store's catalog ID.",
                "undocumented": false
              }
            }
@@ -244,6 +308,48 @@ To add documentation for new queries, types, or fields:
 2. **Rebuild with enhanced process**: Run `node scripts/build-with-enhanced-schema.js`
 
 3. **Verify**: Check the generated `static/graphql-api/merchandising-api/index.html` for your descriptions
+
+#### GraphQL Query Examples
+
+Here are practical examples of how the documented queries would be used:
+
+**categoryTree Query:**
+```graphql
+query GetCategoryTree($family: String!) {
+  categoryTree(family: $family, depth: 3) {
+    slug
+    name
+    level
+    parentSlug
+    childrenSlugs
+  }
+}
+```
+
+**navigation Query:**
+```graphql
+query GetNavigation($family: String!) {
+  navigation(family: $family) {
+    slug
+    name
+    children {
+      slug
+      name
+      children {
+        slug
+        name
+      }
+    }
+  }
+}
+```
+
+**Variables:**
+```json
+{
+  "family": "your-catalog-id"
+}
+```
 
 #### Environment Variables Required
 
@@ -325,3 +431,4 @@ For more information about SpectaQL, refer to <https://github.com/anvilco/specta
 ## REST API Reference Generator
 
 See [Generate the Data Ingestion API Reference](src/static/rest/README.md).
+
