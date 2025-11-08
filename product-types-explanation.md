@@ -40,7 +40,7 @@ products types are simplified are categorized into different types.
 **Product types** are different categories of products that you can create and manage in your catalog. Merchandising Services supports the following product types:
 
 - **Simple products**—The Catalog Service maps the Adobe Commerce simple, virtual, downloadable, and gift card product types to `simpleProductViews`. This type has:
-  - A single, fixed price and quantity
+  - A single, fixed price and quantity.
   - A regular price (before discounts) and final price (after discounts)
   - Support for product attributes, such as color, size, and other characteristics
 
