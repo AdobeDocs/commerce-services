@@ -10,10 +10,11 @@ info:
     This API provides the following resource collections to create and update catalog data:
 
     - <strong>[Metadata](#tag/Metadata)</strong>—define and manage product attribute metadata including display settings, search characteristics, filtering options, and sorting rules.
-    - <strong>[Categories](#tag/Categories)</strong>—define and manage categories with hierarchical structure to build navigation menu.
-    - <strong>[Products](#tag/Products)</strong>—define and manage catalog items with their attributes (name, description, SKU, images, and variants).
-    - <strong>[Price books](#tag/Price-Books)</strong>—define and manage pricing scopes for different customer tiers and markets.
-    - <strong>[Prices](#tag/Prices)</strong>—define and manage product SKU prices and their associated price books.
+    - <strong>[Categories](#tag/Categories)</strong>—Define and manage categories with hierarchical structure to build navigation menu.
+    - <strong>[Products](#tag/Products)</strong>—Define and manage catalog items with their attributes (name, description, SKU, images, and variants).
+    - <strong>[Price books](#tag/Price-Books)</strong>—Define and manage pricing scopes for different customer tiers and markets.
+    - <strong>[Prices](#tag/Prices)</strong>—Define and manage product SKU prices and their associated price books.
+    - <strong>[Product Layers](#tag/Product-Layers)</strong>—Define and manage product layers to customize and override base product data for specific contexts, locales, or business requirements.
   version: 1.0.0
 servers:
   - url: https://na1-sandbox.api.commerce.adobe.com/{tenantId}
@@ -1282,31 +1283,48 @@ paths:
         - Product Layers
       summary: Create or replace product layers
       description: |
-        You can create a product layer to merge and override a base product.
+        Create product layers to customize and override base product data for specific contexts, locales, or business requirements.
+        
+        Product layers enable you to:
+        - Override product attributes for specific markets or channels
+        - Provide locale-specific content while maintaining a global base product
+        - Create seasonal or promotional variations without duplicating entire product records
+        - Implement A/B testing scenarios with different product presentations
 
-        When creating product layers:
-         - Each product layer requires a SKU identifier which matches to a base product.
-         - A product layer may have a defined catalog `source.locale`, and if absent is treated as a global layer for any locale.
-         - A product layer must have a defined catalog `source.layer`.
-         - All other fields are optional. If provided, they are used to override the base product.
-         - When merging array lists, the first array is merged with the base list. All other inner lists of the same object are treated as replace values.
-           For example `attributes` is merged with base list, but `attributes.values` is a replacement.
-           <pre>
-           {
-             "sku": "pants-red-32",
-             "source": {
-               "locale": "en",
-               "layer": "custom-layer"
-             },
-             "attributes": [
-               {
-                 "code": "color",
-                 "values": ["Green", "Light Green"],
-                 "variantReferenceId": "pants-color-green"
-               }
-             ]
-           }
-           </pre>
+        ## Layer behavior and requirements
+
+        **Required fields:**
+        - `sku`: Must match an existing base product SKU
+        - `source.layer`: Identifies the layer name for organization and retrieval
+
+        **Optional Fields:**
+        - `source.locale`: When specified, layer applies only to that locale. When omitted, layer applies globally across all locales
+        - All product fields (name, description, images, and so on): Override corresponding base product values
+
+        ## Merging logic
+
+        Product layers use intelligent merging:
+        - **Simple fields** (name, description, and so on): Complete replacement of base values
+        - **Array fields** (attributes, images, etc.): First-level arrays are merged with base arrays
+        - **Nested arrays** (attribute.values, etc.): Complete replacement of nested arrays
+
+        **Example:** Adding a color variant while preserving existing attributes:
+        ```json
+        {
+          "sku": "red-pants",
+          "source": {
+            "locale": "en-US",
+            "layer": "seasonal-colors"
+          },
+          "attributes": [
+            {
+              "code": "color",
+              "values": ["Crimson Red", "Deep Red"],
+              "variantReferenceId": "pants-color-crimson"
+            }
+          ]
+        }
+        ```
 
       operationId: createProductLayers
       parameters:
@@ -1333,29 +1351,29 @@ paths:
                 $ref: "#/components/schemas/FeedProductLayer"
             examples:
               ProductLayerWithImages:
-                summary: Create a product layer
+                summary: Create a seasonal product layer
                 description: >
-                  Create a product layer with changes.
+                  Create a product layer that overrides the base product with seasonal branding, 
+                  localized content, and updated imagery for the US market.
                 value:
                   [
                     {
                       "sku": "red-pants",
                       "source": {
                         "locale": "en-US",
-                        "layer": "custom-layer"
+                        "layer": "seasonal-winter-2024"
                       },
-                      "name": "red pants for my custom layer",
-                      "description": "long description about red pants for my custom layer",
-                      "shortDescription": "just pants for custom layer",
-                      "images":
-                        [
-                          {
-                            "url": "https://example.com/images/pants.jpg",
-                            "label": "photo of my pants for my custom layer",
-                            "roles": ["BASE", "SMALL"],
-                            "customRoles": ["widget"]
-                          }
-                        ]
+                      "name": "Premium Red Winter Pants - Limited Edition",
+                      "description": "Stay warm and stylish with our premium red winter pants. Features thermal lining and water-resistant fabric perfect for cold weather adventures.",
+                      "shortDescription": "Premium thermal-lined winter pants in classic red",
+                      "images": [
+                        {
+                          "url": "https://cdn.example.com/products/red-pants-winter-2024.jpg",
+                          "label": "Premium Red Winter Pants - Front View",
+                          "roles": ["BASE", "THUMBNAIL"],
+                          "customRoles": ["hero", "seasonal-banner"]
+                        }
+                      ]
                     }
                   ]
   /v1/catalog/products/layers/delete:
@@ -1363,8 +1381,20 @@ paths:
       tags:
         - Product Layers
       summary: Delete product layers
-      description: >
-        Delete product layers with specified `sku` and `source` values
+      description: |
+        Remove specific product layers by SKU and source identifiers. This operation permanently deletes 
+        the layer data while preserving the base product.
+        
+        **Use Cases:**
+        - Remove expired seasonal or promotional layers
+        - Clean up test layers after A/B testing completion
+        - Delete locale-specific layers when discontinuing market support
+        - Remove outdated customizations
+        
+        **Important Notes:**
+        - Only the specified layer is deleted; base product and other layers remain intact
+        - Both `sku` and `source` (locale + layer) must match exactly for successful deletion
+        
       operationId: deleteProductLayers
       parameters:
         - $ref: "#/components/parameters/Authorization"
@@ -1389,17 +1419,18 @@ paths:
               items:
                 $ref: "#/components/schemas/FeedProductLayerDelete"
             examples:
-              DeleteSimpleProduct:
-                summary: Delete product layer
+              DeleteSeasonalLayer:
+                summary: Delete seasonal product layer
                 description: >
-                  Delete a product layer with specified `sku` and `source` values
+                  Delete a seasonal product layer after the promotion period ends, 
+                  reverting the product to its base configuration.
                 value:
                   [
                     {
                       "sku": "red-pants",
                       "source": {
                         "locale": "en-US",
-                        "layer": "custom-layer"
+                        "layer": "seasonal-winter-2024"
                       }
                     }
                   ]
@@ -2614,63 +2645,63 @@ components:
       properties:
         sku:
           type: string
-          description: SKU (Stock Keeping Unit) is a unique identifier for a product.
-          example: MH01
+          description: SKU (Stock Keeping Unit) that uniquely identifies the base product this layer will modify. Must match an existing product SKU in the catalog.
+          example: red-pants
         source:
           $ref: "#/components/schemas/SourceLayer"
         name:
           type: string
-          description: Product name
-          example: Kangaroo Hoodie
+          description: Product display name that will override the base product name. Use for localized names, seasonal branding, or promotional titles.
+          example: Premium Red Winter Pants - Limited Edition
         slug:
           type: string
-          description: The URL key for the product.
-          example: kangaroo-hoodie.html
+          description: URL-friendly identifier for the product page. Override to create layer-specific URLs for SEO or campaign tracking.
+          example: premium-red-winter-pants-limited-edition
         description:
           type: string
           nullable: true
-          description: The main description for the product
-          example: A kangaroo hoodie for all seasons
+          description: Detailed product description that replaces the base product description. Use for localized content, seasonal messaging, or enhanced marketing copy.
+          example: Stay warm and stylish with our premium red winter pants. Features thermal lining and water-resistant fabric perfect for cold weather adventures.
         shortDescription:
           type: string
           nullable: true
-          description: A short description of the product
-          example: A hoodie for all seasons with a kangaroo pocket
+          description: Brief product summary that appears in product listings and search results. Override for concise, layer-specific messaging.
+          example: Premium thermal-lined winter pants in classic red
         metaTags:
           $ref: "#/components/schemas/ProductMetaAttribute"
         attributes:
           type: array
-          description: A list of product attributes.
+          description: Product attributes that will be merged with base product attributes. Use to add layer-specific variants, localized values, or seasonal properties.
           items:
             $ref: "#/components/schemas/ProductAttribute"
         images:
           type: array
-          description: A list of product images.
+          description: Product images that will be merged with base product images. Use to add seasonal imagery, locale-specific photos, or promotional visuals.
           items:
             $ref: "#/components/schemas/ProductImage"
         links:
           type: array
-          description: A list of linked SKUs.
+          description: Related product SKUs that will be merged with base product links. Use to add seasonal recommendations, locale-specific cross-sells, or promotional bundles.
           items:
             $ref: "#/components/schemas/ProductLink"
         routes:
           type: array
-          description: A list of product routes.
+          description: URL routing configurations that will be merged with base product routes. Use to add layer-specific navigation paths or campaign-specific URLs.
           items:
             $ref: "#/components/schemas/ProductRoutes"
         configurations:
           type: array
-          description: Composite products, such as configurable products, must provide a list of product options that a shopper can select (for example, "color", "size", etc.).
+          description: Product configuration options for composite products (for example, configurable products) that will be merged with base configurations. Use to add layer-specific variants or seasonal options.
           items:
             $ref: "#/components/schemas/ProductConfiguration"
         bundles:
           type: array
-          description: Composite products, such as bundle products, must include a list of individual products that are part of the bundle, organized into groups (for example, "shirts", "pants", "accessories").
+          description: Bundle product definitions that will be merged with base product bundles. Use to create seasonal bundles, promotional packages, or locale-specific product groupings.
           items:
             $ref: "#/components/schemas/ProductBundle"
         externalIds:
           type: array
-          description: A list of external IDs for the product.
+          description: External system identifiers that will be merged with base product external IDs. Use to add layer-specific tracking codes, campaign IDs, or integration references.
           items:
             $ref: "#/components/schemas/ProductExternalId"
     FeedProductLayerDelete:
@@ -2682,8 +2713,8 @@ components:
       properties:
         sku:
           type: string
-          description: Product unique identifier
-          example: MH01
+          description: SKU (Stock Keeping Unit) that identifies the base product containing the layer to delete. Must match an existing product SKU in the catalog.
+          example: red-pants
         source:
           $ref: "#/components/schemas/SourceLayer"
     FeedPricebook:
@@ -2972,19 +3003,25 @@ components:
           example: English
     SourceLayer:
       title: Catalog layer source
-      description: Source of the entity, for example, "en-US" for US English for layer "MyLayer"
+      description: |
+        Identifies the source context for a product layer, combining locale and layer name to create 
+        a unique layer identifier. This allows for precise targeting of content overrides.
       type: object
       required:
         - layer
       properties:
         locale:
           type: string
-          description: A single value that represents content locale. When absent layer is treated as global for any locale.
-          example: English
+          description: |
+            ISO locale code (for example, "en-US", "fr-FR", "de-DE") that specifies the target market or language. 
+            When omitted, the layer applies globally across all locales. Use for market-specific customizations.
+          example: en-US
         layer:
           type: string
-          description: A single value that represents content layer.
-          example: MyLayer
+          description: |
+            Unique identifier for the layer within the product's layer hierarchy. Use descriptive names 
+            that indicate the layer's purpose (for example, "seasonal-winter-2024", "promotional-black-friday", "a-b-test-variant").
+          example: seasonal-winter-2024
     ProductMetaAttribute:
       title: Meta Attributes
       description: Meta attributes that are specified in <meta> tags.
