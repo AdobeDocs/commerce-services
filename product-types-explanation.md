@@ -45,8 +45,8 @@ products types are simplified are categorized into different types.
   - Support for product attributes, such as color, size, and other characteristics
 
 - **Complex products**—The Catalog Service maps the Adobe Commerce configurable, bundle, and grouped product types to `complexProductViews`. Complex products are collections of multiple simple products that can be configured or bundled together.
-  - Each component simple product can have its own price.
-  - Shoppers can specify quantities for individual component products.
+  - Each simple product can have its own price.
+  - Shoppers can specify quantities for individual products.
   - Product options (like size, color, material) are unified and work the same way regardless of product type. Each option selection points to a specific simple product with its own attributes and price. The final product remains undefined until the shopper selects all required options.
 
   - Simple product types (simple, virtual, downloadable, gift card) are represented as simpleProductViews.
@@ -77,11 +77,11 @@ For details, see <a href="https://developer.adobe.com/commerce/services/referenc
 
 ## Load sample data using the Adobe Commerce Optimizer SDK
 
-To help you get started with the data ingestion, you can load sample catalog data into your Adobe Commerce Optimizer instance using the Adobe Commerce Optimizer TypeScript and JavaScript SDK. This loads initial product and price data that you can use to
+To help you get started with the data ingestion, you can load sample catalog data into your Adobe Commerce Optimizer instance using the Adobe Commerce Optimizer TypeScript and JavaScript SDK. This loads initial product and price data that you can use to:
 
-- Test the Data Ingestion API by submitting updates to the sample data
-- Explore the capabilities of the Merchandising Services
-- Understand the data structure and relationships
+- Test the Data Ingestion API by submitting updates to the sample data.
+- Explore the capabilities of the Merchandising Services.
+- Understand the data structure and relationships.
 
 ### About the sample data
 
@@ -91,8 +91,8 @@ To load the sample data, follow the instructions in the [Sample catalog data ing
 
 After loading the sample data, you can:
 
-- Set up your first storefront
-- Complete the end-to-end workflow for the Carvelo use case
+- Set up your first storefront.
+- Complete the end-to-end workflow for the Carvelo use case.
 
 See the [Carvelo use case](https://experienceleague.adobe.com/en/docs/commerce/optimizer/use-case/admin-use-case#business-scenario--carvelo-automobile) in the *Adobe Commerce Optimizer User Guide* for details on how to set up the storefront and complete the workflow.
 
