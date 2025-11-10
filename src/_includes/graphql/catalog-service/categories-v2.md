@@ -1,4 +1,15 @@
-# Categories API V2
+---
+title: Implement categories on the storefront
+edition: saas
+description: Use the `navigation` and `categoryTree` queries to render storefront menus and retrieve hierarchical category data in a tree structure with parent-child relationships and level information.
+keywords:
+  - GraphQL
+  - Services
+  - Backend Development
+  - Performance
+---
+
+# Implement Categories on the Storefront
 
 Categories API V2 is the category management solution for Commerce projects using Merchandising Services for Adobe Commerce Optimizer. Categories are created and managed using the `categories` operations available in the [Data Ingestion API](https://developer.adobe.com/commerce/services/reference/rest/#tag/Categories) for Merchandising Services.
 
