@@ -2656,6 +2656,102 @@
           "documentation": {
             "undocumented": true
           }
+        },
+        "categoryTree": {
+          "documentation": {
+            "description": "Retrieve hierarchical category data in a tree structure with parent-child relationships and level information.\n\n**Primary Use Case:** RetailCMS applications requiring full category tree management.",
+            "undocumented": false
+          }
+        },
+        "navigation": {
+          "documentation": {
+            "description": "Retrieve category navigation data optimized for storefront menu rendering with built-in performance safeguards.\n\n**Performance Features:**\n- Limited to 4 levels deep for optimal rendering\n- Single database query per family\n- Heavily cached responses\n- Excludes heavyweight category attributes",
+            "undocumented": false
+          }
+        }
+      }
+    },
+    "CategoryTreeView": {
+      "documentation": {
+        "description": "Represents a category in a hierarchical tree structure with comprehensive parent-child relationship metadata.\n\n**Key Features:**\n- Implements CategoryViewV2 interface\n- Designed for RetailCMS applications\n- Full category tree management capabilities\n\n**Provides:**\n- Level depth information\n- Parent slug references\n- Children slug collections\n- Complete hierarchy metadata",
+        "undocumented": false
+      },
+      "fields": {
+        "slug": {
+          "documentation": {
+            "description": "The unique URL-friendly identifier for the category, used in routing and navigation.",
+            "undocumented": false
+          }
+        },
+        "name": {
+          "documentation": {
+            "description": "The display name of the category as shown to customers in the storefront.",
+            "undocumented": false
+          }
+        },
+        "level": {
+          "documentation": {
+            "description": "The hierarchical depth level of the category in the tree structure.\n\n**Level Structure:**\n- Root categories: level 0\n- First-level children: level 1\n- Second-level children: level 2\n- And so on...\n\n**Used For:** Tree traversal and hierarchy management in RetailCMS applications.",
+            "undocumented": false
+          }
+        },
+        "parentSlug": {
+          "documentation": {
+            "description": "The slug of the immediate parent category in the hierarchy.\n\n**Values:**\n- Parent category slug for child categories\n- `null` for root-level categories\n\n**Common Uses:**\n- Building breadcrumb navigation\n- Understanding category relationships\n- Tree management system operations",
+            "undocumented": false
+          }
+        },
+        "childrenSlugs": {
+          "documentation": {
+            "description": "Array of slugs for all direct child categories (immediate descendants only).\n\n**Contains:**\n- Slugs of immediate children only (not grandchildren)\n- Empty array if no children exist\n\n**Benefits:**\n- Determine subcategory existence without fetching full objects\n- Efficient category tree management\n- Quick hierarchy assessment",
+            "undocumented": false
+          }
+        }
+      }
+    },
+    "CategoryViewV2": {
+      "documentation": {
+        "description": "Lightweight base interface for category view models designed for storefront APIs without backward compatibility constraints.\n\n**Design Principles:**\n- Minimal essential properties (slug and name only)\n- Optimal performance for storefront use cases\n- No coupling with search facets\n\n**Replaces:** The heavyweight CategoryView interface\n\n**Implemented By:**\n- CategoryNavigationView (menu rendering)\n- CategoryTreeView (hierarchy management)",
+        "undocumented": false
+      },
+      "fields": {
+        "slug": {
+          "documentation": {
+            "description": "The unique URL-friendly identifier for the category, used in routing and navigation.",
+            "undocumented": false
+          }
+        },
+        "name": {
+          "documentation": {
+            "description": "The display name of the category as shown to customers in the storefront.",
+            "undocumented": false
+          }
+        }
+      }
+    },
+    "CategoryNavigationView": {
+      "documentation": {
+        "description": "Represents a category optimized for storefront menu rendering with recursive child category structure.\n\n**Performance Safeguards:**\n- Limited to 4 levels deep\n- Excludes heavyweight category attributes\n- Supports heavy caching\n- Single query optimization\n\n**Ideal For:**\n- Responsive navigation components\n- Dropdown menus\n- Mobile navigation\n- Breadcrumb systems",
+        "undocumented": false
+      },
+      "fields": {
+        "slug": {
+          "documentation": {
+            "description": "The unique URL-friendly identifier for the category, used in routing and navigation.",
+            "undocumented": false
+          }
+        },
+        "name": {
+          "documentation": {
+            "description": "The display name of the category as shown to customers in the storefront navigation.",
+            "undocumented": false
+          }
+        },
+        "children": {
+          "documentation": {
+            "description": "Array of direct child categories in a recursive structure.\n\n**Structure:**\n- Each child contains their own children (recursive)\n- Limited to 4 levels deep for performance\n- Empty array if no children or max depth reached\n\n**Optimized For:** Multi-level navigation menu rendering with built-in performance safeguards.",
+            "undocumented": false
+          }
         }
       }
     }
@@ -4063,6 +4159,38 @@
     "DeleteNegotiableQuoteOperationResult": {
       "documentation": {
         "undocumented": true
+      }
+    }
+  },
+  "FIELD_ARGUMENT": {
+    "Query": {
+      "categoryTree": {
+        "family": {
+          "documentation": {
+            "description": "**Required.** The catalog family identifier that determines which catalog's categories to retrieve.\n\n**Typically:** Your store's catalog ID",
+            "undocumented": false
+          }
+        },
+        "slugs": {
+          "documentation": {
+            "description": "Optional array of specific category slugs to retrieve.\n\n**When Provided:**\n- Returns only specified categories\n- Includes their hierarchical relationships (parents and children)\n- Enables targeted category tree queries\n\n**When Omitted:** All categories in the specified family are returned\n\n**Use Cases:**\n- Fetching specific category branches\n- Retrieving category subtrees\n- Targeted hierarchy queries",
+            "undocumented": false
+          }
+        },
+        "depth": {
+          "documentation": {
+            "description": "Optional maximum depth level to retrieve in the category tree structure.\n\n**Depth Levels:**\n- `0`: Root categories only\n- `1`: Root categories + immediate children\n- `2`: Root + children + grandchildren\n- And so on...\n\n**Benefits:**\n- Improves performance for large category trees\n- Controls response payload size\n- Enables progressive tree loading\n\n**Default:** All available levels are returned if omitted",
+            "undocumented": false
+          }
+        }
+      },
+      "navigation": {
+        "family": {
+          "documentation": {
+            "description": "**Required.** The catalog family identifier that determines which catalog's navigation structure to retrieve.\n\n**Typically:** Your store's catalog ID\n\n**Performance Optimizations:**\n- Entire family structure retrieved in single query\n- Heavily cached responses\n- Optimized for frequent navigation requests\n- Minimal database load for menu rendering",
+            "undocumented": false
+          }
+        }
       }
     }
   }

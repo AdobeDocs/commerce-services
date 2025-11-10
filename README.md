@@ -80,19 +80,199 @@ The references are embedded in the API Reference page using the `frameSrc` featu
 
 ### Build commands
 
-To rebuild the GraphQL API references after any updates, use yarn locally to run the following build scripts as needed:
+To rebuild the GraphQL API references after any updates, use the following build scripts:
+
+#### Standard Build Commands
 
 Command | Description
 ------- |------------
-`build:merchandising-api` | Regenerates the Merchandising API reference
+`build:merchandising-api` | Regenerates the Merchandising API reference using live introspection
 `dev:merchandising-api` | Regenerates the Merchandising API reference with a live preview of updated output
 `build:graphql` | Regenerates both references
 
-For example, to rebuild the Catalog management and rules API, run the command:
+#### Enhanced Build with Description Injection
+
+For the Merchandising API, you can use the enhanced build process that injects custom descriptions:
 
 ```shell
-yarn build:admin-api
+node scripts/build-with-enhanced-schema.js
 ```
+
+This enhanced build process:
+
+1. Fetches the live GraphQL schema via introspection
+2. Injects custom descriptions from `spectaql/metadata-merchandising.json`
+3. Generates documentation with enhanced descriptions for queries, types, and fields
+
+**Use the enhanced build when:**
+
+- You've added new documentation to `spectaql/metadata-merchandising.json`
+- You want descriptions to appear for queries like `categoryTree` and `navigation`
+- You need custom field and argument descriptions that aren't in the live schema
+
+**Use the standard build when:**
+
+- You only need basic schema documentation without custom descriptions
+- You're working with schemas that already have complete descriptions
+
+### Managing Custom Descriptions
+
+The enhanced build process uses custom descriptions stored in `spectaql/metadata-merchandising.json`. This file contains documentation for:
+
+- **Queries**: Descriptions for GraphQL queries like `categoryTree` and `navigation`
+- **Types**: Descriptions for GraphQL types like `CategoryTreeView` and `CategoryNavigationView`
+- **Fields**: Descriptions for individual fields within types
+- **Arguments**: Descriptions for query and field arguments
+
+#### Adding New Documentation
+
+To add documentation for new queries, types, or fields:
+
+1. **Edit the metadata file**: Add entries to `spectaql/metadata-merchandising.json` following the existing structure:
+
+   **For Query Documentation:**
+
+   ```json
+   {
+     "OBJECT": {
+       "Query": {
+         "fields": {
+           "yourQueryName": {
+             "documentation": {
+               "description": "Description of what your query does and when to use it",
+               "undocumented": false
+             }
+           }
+         }
+       }
+     },
+     "FIELD_ARGUMENT": {
+       "Query": {
+         "yourQueryName": {
+           "argumentName": {
+             "documentation": {
+               "description": "Description of what this argument does",
+               "undocumented": false
+             }
+           }
+         }
+       }
+     }
+   }
+   ```
+
+   **For Type Documentation:**
+
+   ```json
+   {
+     "OBJECT": {
+       "YourTypeName": {
+         "documentation": {
+           "description": "Description of your type and its purpose",
+           "undocumented": false
+         },
+         "fields": {
+           "fieldName": {
+             "documentation": {
+               "description": "Description of the field and its usage",
+               "undocumented": false
+             }
+           }
+         }
+       }
+     }
+   }
+   ```
+
+   **Complete Example:**
+
+   ```json
+   {
+     "OBJECT": {
+       "Query": {
+         "fields": {
+           "productSearch": {
+             "documentation": {
+               "description": "Search for products using various filters and criteria. Returns paginated results with product details.",
+               "undocumented": false
+             }
+           }
+         }
+       },
+       "ProductSearchResult": {
+         "documentation": {
+           "description": "Contains search results with products and pagination information",
+           "undocumented": false
+         },
+         "fields": {
+           "products": {
+             "documentation": {
+               "description": "Array of products matching the search criteria",
+               "undocumented": false
+             }
+           },
+           "totalCount": {
+             "documentation": {
+               "description": "Total number of products found (before pagination)",
+               "undocumented": false
+             }
+           }
+         }
+       }
+     },
+     "FIELD_ARGUMENT": {
+       "Query": {
+         "productSearch": {
+           "query": {
+             "documentation": {
+               "description": "Search term to match against product names and descriptions",
+               "undocumented": false
+             }
+
+           },
+           "filters": {
+             "documentation": {
+               "description": "Optional filters to narrow down search results by category, price, etc.",
+               "undocumented": false
+             }
+           }
+         }
+       }
+     }
+   }
+   ```
+
+2. **Rebuild with enhanced process**: Run `node scripts/build-with-enhanced-schema.js`
+
+3. **Verify**: Check the generated `static/graphql-api/merchandising-api/index.html` for your descriptions
+
+#### Environment Variables Required
+
+The enhanced build process requires these environment variables in your `.env` file:
+
+```bash
+TENANT_ID=your_tenant_id
+CATALOG_VIEW_ID=your_catalog_view_id
+ENVIRONMENT_ID=your_environment_id
+```
+
+#### Troubleshooting Enhanced Build
+
+**Issue: "Missing required environment variables"**
+
+- Solution: Ensure your `.env` file contains `TENANT_ID`, `CATALOG_VIEW_ID`, and `ENVIRONMENT_ID`
+
+**Issue: "Server responded with status code 404"**
+
+- Solution: Verify your environment variables are correct and the API endpoint is accessible
+
+**Issue: Descriptions not appearing in generated HTML**
+
+- Solution: Check that your metadata follows the correct JSON structure and run the enhanced build process
+
+**Issue: Build fails with permission errors**
+
+- Solution: The enhanced build may require network permissions to fetch the live schema
 
 ### How to get the schema
 
@@ -117,11 +297,21 @@ For local builds, ensure that your environment has the following installed:
 
 1. Create a branch from the `ccdm-early-access` branch.
 
-1. To regenerate an API reference locally and test changes in live preview, use either of the following commands:
+1. To regenerate an API reference locally and test changes:
+
+   **For standard schema updates:**
 
    ```shell
-   yarn `dev:merchandising-api`
+   yarn dev:merchandising-api
    ```
+
+   **For enhanced documentation with custom descriptions:**
+
+   ```shell
+   node scripts/build-with-enhanced-schema.js
+   ```
+
+   Use the enhanced build if you've added or modified descriptions in `spectaql/metadata-merchandising.json`.
 
 1. Commit changes and push them to your remote branch.
 

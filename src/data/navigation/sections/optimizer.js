@@ -38,7 +38,13 @@ module.exports = [
           },
           {
             title: "Use cases",
-            path: "/optimizer/merchandising-services/use-cases.md"
+            path: "/optimizer/merchandising-services/use-cases.md",
+            pages: [
+              {
+                title: "Implement categories on the storefront",
+                path: "/optimizer/merchandising-services/categories-storefront-implementation.md"
+              }
+            ]
           },
           {
             title: "Limitations",

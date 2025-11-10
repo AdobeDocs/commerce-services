@@ -78,7 +78,7 @@ The following query returns details about simple product with sku `cru-sus-prm-2
 
 ```graphql
 query {
-	products(skus: ["cru-sus-prm-2014"]) {
+    products(skus: ["cru-sus-prm-2014"]) {
         __typename
         id
         sku
@@ -148,100 +148,100 @@ query {
 
 ```json
 {
-	"data": {
-		"products": [
-			{
-				"__typename": "SimpleProductView",
-				"id": "Y3J1LXN1cy1wcm0tMjAxNABlbi1VUwBGd3VzNmtkcHZZQ21lRWRjQ1g3UFpnAFNUT1JFX0NPREUAV0VCU0lURV9DT0RF",
-				"sku": "cru-sus-prm-2014",
-				"name": "Cruz Verde Suspension Premium (2014)",
-				"description": "Premium suspension for the Cruz Verde, delivering top-tier comfort and handling for eco-conscious drivers.",
-				"shortDescription": "Cruz Verde part",
-				"images": [
-					{
-						"url": "https://i.imgur.com/PvrH35S.jpg",
-						"label": "Cruz Verde Suspension Premium (2014)",
-						"roles": [
-							"thumbnail",
-							"image",
-							"small_image"
-						]
-					}
-				],
-				"attributes": [
-					{
-						"name": "brand",
-						"label": "Brand",
-						"value": "Cruz",
-						"roles": [
-							"visible_in_pdp",
-							"visible_in_compare_list",
-							"visible_in_plp",
-							"visible_in_search"
-						]
-					},
-					{
-						"name": "model",
-						"label": "Vehicle Model",
-						"value": "Verde",
-						"roles": [
-							"visible_in_pdp",
-							"visible_in_compare_list",
-							"visible_in_plp",
-							"visible_in_search"
-						]
-					},
-					{
-						"name": "model_year",
-						"label": "Vehicle Model Year",
-						"value": "2014",
-						"roles": [
-							"visible_in_pdp",
-							"visible_in_compare_list",
-							"visible_in_plp",
-							"visible_in_search"
-						]
-					},
-					{
-						"name": "country",
-						"label": "Dealer Country",
-						"value": "USA",
-						"roles": [
-							"visible_in_pdp",
-							"visible_in_compare_list",
-							"visible_in_plp",
-							"visible_in_search"
-						]
-					},
-					{
-						"name": "part_category",
-						"label": "Part Category",
-						"value": "suspension",
-						"roles": [
-							"visible_in_pdp",
-							"visible_in_compare_list",
-							"visible_in_plp",
-							"visible_in_search"
-						]
-					}
-				],
-				"price": null,
-				"links": [
-					{
-						"product": {
-							"sku": "cru-sus-std-2014"
-						},
-						"linkTypes": [
-							"related"
-						]
-					}
-				]
-			}
-		]
-	},
-	"extensions": {
-		"request-id": "a95140e9-47f5-4f51-9386-8b6bbf50fd48"
-	}
+    "data": {
+        "products": [
+            {
+                "__typename": "SimpleProductView",
+                "id": "Y3J1LXN1cy1wcm0tMjAxNABlbi1VUwBGd3VzNmtkcHZZQ21lRWRjQ1g3UFpnAFNUT1JFX0NPREUAV0VCU0lURV9DT0RF",
+                "sku": "cru-sus-prm-2014",
+                "name": "Cruz Verde Suspension Premium (2014)",
+                "description": "Premium suspension for the Cruz Verde, delivering top-tier comfort and handling for eco-conscious drivers.",
+                "shortDescription": "Cruz Verde part",
+                "images": [
+                    {
+                        "url": "https://i.imgur.com/PvrH35S.jpg",
+                        "label": "Cruz Verde Suspension Premium (2014)",
+                        "roles": [
+                            "thumbnail",
+                            "image",
+                            "small_image"
+                        ]
+                    }
+                ],
+                "attributes": [
+                    {
+                        "name": "brand",
+                        "label": "Brand",
+                        "value": "Cruz",
+                        "roles": [
+                            "visible_in_pdp",
+                            "visible_in_compare_list",
+                            "visible_in_plp",
+                            "visible_in_search"
+                        ]
+                    },
+                    {
+                        "name": "model",
+                        "label": "Vehicle Model",
+                        "value": "Verde",
+                        "roles": [
+                            "visible_in_pdp",
+                            "visible_in_compare_list",
+                            "visible_in_plp",
+                            "visible_in_search"
+                        ]
+                    },
+                    {
+                        "name": "model_year",
+                        "label": "Vehicle Model Year",
+                        "value": "2014",
+                        "roles": [
+                            "visible_in_pdp",
+                            "visible_in_compare_list",
+                            "visible_in_plp",
+                            "visible_in_search"
+                        ]
+                    },
+                    {
+                        "name": "country",
+                        "label": "Dealer Country",
+                        "value": "USA",
+                        "roles": [
+                            "visible_in_pdp",
+                            "visible_in_compare_list",
+                            "visible_in_plp",
+                            "visible_in_search"
+                        ]
+                    },
+                    {
+                        "name": "part_category",
+                        "label": "Part Category",
+                        "value": "suspension",
+                        "roles": [
+                            "visible_in_pdp",
+                            "visible_in_compare_list",
+                            "visible_in_plp",
+                            "visible_in_search"
+                        ]
+                    }
+                ],
+                "price": null,
+                "links": [
+                    {
+                        "product": {
+                            "sku": "cru-sus-std-2014"
+                        },
+                        "linkTypes": [
+                            "related"
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "extensions": {
+        "request-id": "a95140e9-47f5-4f51-9386-8b6bbf50fd48"
+    }
 }
 
 #### Return details about a complex product
@@ -253,7 +253,7 @@ The following query returns details about a complex bundled product with sku `cr
 * `batteries`
 * `suspension`
 * `motor`
-  
+
 For each part type, the default configuration is to use the standard part quality.
 
 <CodeBlock slots="heading, code" repeat="2" languages="JSON" />
@@ -274,7 +274,7 @@ query GetBundleProductDetails {
     metaKeyword
     metaTitle
     lastModifiedAt
-    
+
     attributes(roles: ["PDP", "PLP", "Search"]) {
       name
       label
@@ -303,7 +303,7 @@ query GetBundleProductDetails {
         name
       }
     }
-    ... on ComplexProductView {    
+    ... on ComplexProductView {
       options {
         id
         title
@@ -360,310 +360,310 @@ query GetBundleProductDetails {
 
 ```json
 {
-	"data": {
-		"products": [
-			{
-				"__typename": "ComplexProductView",
-				"id": "Y3J1LTIwMTQtcGFydHMAZW4tVVMARnd1czZrZHB2WUNtZUVkY0NYN1BaZwBTVE9SRV9DT0RFAFdFQlNJVEVfQ09ERQ",
-				"sku": "cru-2014-parts",
-				"name": "Cruz Verde parts build",
-				"urlKey": "bundle-cru-verde-parts",
-				"description": "",
-				"shortDescription": "",
-				"metaDescription": "",
-				"metaKeyword": "",
-				"metaTitle": "",
-				"lastModifiedAt": "2025-09-16T03:52:36.957Z",
-				"attributes": [],
-				"images": [],
-				"videos": [],
-				"links": [],
-				"options": [
-					{
-						"id": "tires",
-						"title": "tires",
-						"required": false,
-						"multi": false,
-						"values": [
-							{
-								"id": "YnVuZGxlX2l0ZW0veyJza3UiOiJjcnUtdGlyLXN0ZC0yMDE0IiwgInF0eSI6MS4wfQ==",
-								"title": "Cruz Verde Tires Standard (2014)",
-								"inStock": true,
-								"quantity": 1.0,
-								"isDefault": true,
-								"product": {
-									"__typename": "SimpleProductView",
-									"id": "Y3J1LXRpci1zdGQtMjAxNABlbi1VUwBGd3VzNmtkcHZZQ21lRWRjQ1g3UFpnAFNUT1JFX0NPREUAV0VCU0lURV9DT0RF",
-									"sku": "cru-tir-std-2014",
-									"name": "Cruz Verde Tires Standard (2014)",
-									"description": "",
-									"shortDescription": "",
-									"urlKey": "cruz-verde-tires-standard-2014",
-									"images": [],
-									"attributes": []
-								}
-							},
-							{
-								"id": "YnVuZGxlX2l0ZW0veyJza3UiOiJjcnUtdGlyLW1pZC0yMDE0IiwgInF0eSI6MS4wfQ==",
-								"title": "Cruz Verde Tires Midrange (2014)",
-								"inStock": true,
-								"quantity": 1.0,
-								"isDefault": false,
-								"product": {
-									"__typename": "SimpleProductView",
-									"id": "Y3J1LXRpci1taWQtMjAxNABlbi1VUwBGd3VzNmtkcHZZQ21lRWRjQ1g3UFpnAFNUT1JFX0NPREUAV0VCU0lURV9DT0RF",
-									"sku": "cru-tir-mid-2014",
-									"name": "Cruz Verde Tires Midrange (2014)",
-									"description": "",
-									"shortDescription": "",
-									"urlKey": "cruz-verde-tires-midrange-2014",
-									"images": [],
-									"attributes": []
-								}
-							},
-							{
-								"id": "YnVuZGxlX2l0ZW0veyJza3UiOiJjcnUtdGlyLXBybS0yMDE0IiwgInF0eSI6MS4wfQ==",
-								"title": "Cruz Verde Tires Premium (2014)",
-								"inStock": true,
-								"quantity": 1.0,
-								"isDefault": false,
-								"product": {
-									"__typename": "SimpleProductView",
-									"id": "Y3J1LXRpci1wcm0tMjAxNABlbi1VUwBGd3VzNmtkcHZZQ21lRWRjQ1g3UFpnAFNUT1JFX0NPREUAV0VCU0lURV9DT0RF",
-									"sku": "cru-tir-prm-2014",
-									"name": "Cruz Verde Tires Premium (2014)",
-									"description": "",
-									"shortDescription": "",
-									"urlKey": "cruz-verde-tires-premium-2014",
-									"images": [],
-									"attributes": []
-								}
-							}
-						]
-					},
-					{
-						"id": "brakes",
-						"title": "brakes",
-						"required": false,
-						"multi": false,
-						"values": [
-							{
-								"id": "YnVuZGxlX2l0ZW0veyJza3UiOiJjcnUtYmF0LXN0ZC0yMDE0IiwgInF0eSI6MS4wfQ==",
-								"title": "Cruz Verde Battery Standard (2014)",
-								"inStock": true,
-								"quantity": 1.0,
-								"isDefault": true,
-								"product": {
-									"__typename": "SimpleProductView",
-									"id": "Y3J1LWJhdC1zdGQtMjAxNABlbi1VUwBGd3VzNmtkcHZZQ21lRWRjQ1g3UFpnAFNUT1JFX0NPREUAV0VCU0lURV9DT0RF",
-									"sku": "cru-bat-std-2014",
-									"name": "Cruz Verde Battery Standard (2014)",
-									"description": "Standard battery for the Cruz Verde, providing reliable power for eco-friendly driving.",
-									"shortDescription": "Cruz Verde part",
-									"urlKey": "cruz-verde-battery-standard-2014",
-									"images": [
-										{
-											"url": "https://i.imgur.com/Juozyen.jpg",
-											"label": "Cruz Verde Battery Standard (2014)",
-											"roles": [
-												"thumbnail",
-												"image",
-												"small_image"
-											]
-										}
-									],
-									"attributes": []
-								}
-							},
-							{
-								"id": "YnVuZGxlX2l0ZW0veyJza3UiOiJjcnUtYmF0LW1pZC0yMDE0IiwgInF0eSI6MS4wfQ==",
-								"title": "Cruz Verde Battery Midrange (2014)",
-								"inStock": true,
-								"quantity": 1.0,
-								"isDefault": false,
-								"product": {
-									"__typename": "SimpleProductView",
-									"id": "Y3J1LWJhdC1taWQtMjAxNABlbi1VUwBGd3VzNmtkcHZZQ21lRWRjQ1g3UFpnAFNUT1JFX0NPREUAV0VCU0lURV9DT0RF",
-									"sku": "cru-bat-mid-2014",
-									"name": "Cruz Verde Battery Midrange (2014)",
-									"description": "Mid-range battery for the Cruz Verde, offering improved capacity and longevity.",
-									"shortDescription": "Cruz Verde part",
-									"urlKey": "cruz-verde-battery-midrange-2014",
-									"images": [
-										{
-											"url": "https://i.imgur.com/UDgjM4g.jpg",
-											"label": "Cruz Verde Battery Midrange (2014)",
-											"roles": [
-												"thumbnail",
-												"image",
-												"small_image"
-											]
-										}
-									],
-									"attributes": []
-								}
-							},
-							{
-								"id": "YnVuZGxlX2l0ZW0veyJza3UiOiJjcnUtYmF0LXBybS0yMDE0IiwgInF0eSI6MS4wfQ==",
-								"title": "Cruz Verde Battery Premium (2014)",
-								"inStock": true,
-								"quantity": 1.0,
-								"isDefault": false,
-								"product": {
-									"__typename": "SimpleProductView",
-									"id": "Y3J1LWJhdC1wcm0tMjAxNABlbi1VUwBGd3VzNmtkcHZZQ21lRWRjQ1g3UFpnAFNUT1JFX0NPREUAV0VCU0lURV9DT0RF",
-									"sku": "cru-bat-prm-2014",
-									"name": "Cruz Verde Battery Premium (2014)",
-									"description": "Premium battery for the Cruz Verde, delivering maximum power and efficiency for eco-conscious drivers.",
-									"shortDescription": "Cruz Verde part",
-									"urlKey": "cruz-verde-battery-premium-2014",
-									"images": [
-										{
-											"url": "https://i.imgur.com/pD5e160.jpg",
-											"label": "Cruz Verde Battery Premium (2014)",
-											"roles": [
-												"thumbnail",
-												"image",
-												"small_image"
-											]
-										}
-									],
-									"attributes": []
-								}
-							}
-						]
-					},
-					{
-						"id": "suspension",
-						"title": "suspension",
-						"required": false,
-						"multi": false,
-						"values": [
-							{
-								"id": "YnVuZGxlX2l0ZW0veyJza3UiOiJjcnUtc3VzLXN0ZC0yMDE0IiwgInF0eSI6MS4wfQ==",
-								"title": "Cruz Verde Suspension Standard (2014)",
-								"inStock": true,
-								"quantity": 1.0,
-								"isDefault": true,
-								"product": {
-									"__typename": "SimpleProductView",
-									"id": "Y3J1LXN1cy1zdGQtMjAxNABlbi1VUwBGd3VzNmtkcHZZQ21lRWRjQ1g3UFpnAFNUT1JFX0NPREUAV0VCU0lURV9DT0RF",
-									"sku": "cru-sus-std-2014",
-									"name": "Cruz Verde Suspension Standard (2014)",
-									"description": "",
-									"shortDescription": "",
-									"urlKey": "cruz-verde-suspension-standard-2014",
-									"images": [],
-									"attributes": []
-								}
-							},
-							{
-								"id": "YnVuZGxlX2l0ZW0veyJza3UiOiJjcnUtc3VzLW1pZC0yMDE0IiwgInF0eSI6MS4wfQ==",
-								"title": "Cruz Verde Suspension Midrange (2014)",
-								"inStock": true,
-								"quantity": 1.0,
-								"isDefault": false,
-								"product": {
-									"__typename": "SimpleProductView",
-									"id": "Y3J1LXN1cy1taWQtMjAxNABlbi1VUwBGd3VzNmtkcHZZQ21lRWRjQ1g3UFpnAFNUT1JFX0NPREUAV0VCU0lURV9DT0RF",
-									"sku": "cru-sus-mid-2014",
-									"name": "Cruz Verde Suspension Midrange (2014)",
-									"description": "",
-									"shortDescription": "",
-									"urlKey": "cruz-verde-suspension-midrange-2014",
-									"images": [],
-									"attributes": []
-								}
-							},
-							{
-								"id": "YnVuZGxlX2l0ZW0veyJza3UiOiJjcnUtc3VzLXBybS0yMDE0IiwgInF0eSI6MS4wfQ==",
-								"title": "Cruz Verde Suspension Premium (2014)",
-								"inStock": true,
-								"quantity": 1.0,
-								"isDefault": false,
-								"product": {
-									"__typename": "SimpleProductView",
-									"id": "Y3J1LXN1cy1wcm0tMjAxNABlbi1VUwBGd3VzNmtkcHZZQ21lRWRjQ1g3UFpnAFNUT1JFX0NPREUAV0VCU0lURV9DT0RF",
-									"sku": "cru-sus-prm-2014",
-									"name": "Cruz Verde Suspension Premium (2014)",
-									"description": "",
-									"shortDescription": "",
-									"urlKey": "cruz-verde-suspension-premium-2014",
-									"images": [],
-									"attributes": []
-								}
-							}
-						]
-					},
-					{
-						"id": "motor",
-						"title": "motor",
-						"required": false,
-						"multi": false,
-						"values": [
-							{
-								"id": "YnVuZGxlX2l0ZW0veyJza3UiOiJjcnUtbW90LXN0ZC0yMDE0IiwgInF0eSI6MS4wfQ==",
-								"title": "Cruz Verde Motor Standard (2014)",
-								"inStock": true,
-								"quantity": 1.0,
-								"isDefault": true,
-								"product": {
-									"__typename": "SimpleProductView",
-									"id": "Y3J1LW1vdC1zdGQtMjAxNABlbi1VUwBGd3VzNmtkcHZZQ21lRWRjQ1g3UFpnAFNUT1JFX0NPREUAV0VCU0lURV9DT0RF",
-									"sku": "cru-mot-std-2014",
-									"name": "Cruz Verde Motor Standard (2014)",
-									"description": "",
-									"shortDescription": "",
-									"urlKey": "cruz-verde-motor-standard-2014",
-									"images": [],
-									"attributes": []
-								}
-							},
-							{
-								"id": "YnVuZGxlX2l0ZW0veyJza3UiOiJjcnUtbW90LW1pZC0yMDE0IiwgInF0eSI6MS4wfQ==",
-								"title": "Cruz Verde Motor Midrange (2014)",
-								"inStock": true,
-								"quantity": 1.0,
-								"isDefault": false,
-								"product": {
-									"__typename": "SimpleProductView",
-									"id": "Y3J1LW1vdC1taWQtMjAxNABlbi1VUwBGd3VzNmtkcHZZQ21lRWRjQ1g3UFpnAFNUT1JFX0NPREUAV0VCU0lURV9DT0RF",
-									"sku": "cru-mot-mid-2014",
-									"name": "Cruz Verde Motor Midrange (2014)",
-									"description": "",
-									"shortDescription": "",
-									"urlKey": "cruz-verde-motor-midrange-2014",
-									"images": [],
-									"attributes": []
-								}
-							},
-							{
-								"id": "YnVuZGxlX2l0ZW0veyJza3UiOiJjcnUtbW90LXBybS0yMDE0IiwgInF0eSI6MS4wfQ==",
-								"title": "Cruz Verde Motor Premium (2014)",
-								"inStock": true,
-								"quantity": 1.0,
-								"isDefault": false,
-								"product": {
-									"__typename": "SimpleProductView",
-									"id": "Y3J1LW1vdC1wcm0tMjAxNABlbi1VUwBGd3VzNmtkcHZZQ21lRWRjQ1g3UFpnAFNUT1JFX0NPREUAV0VCU0lURV9DT0RF",
-									"sku": "cru-mot-prm-2014",
-									"name": "Cruz Verde Motor Premium (2014)",
-									"description": "",
-									"shortDescription": "",
-									"urlKey": "cruz-verde-motor-premium-2014",
-									"images": [],
-									"attributes": []
-								}
-							}
-						]
-					}
-				]
-			}
-		]
-	},
-	"extensions": {
-		"request-id": "e804166e-d456-430a-9c65-00409d6ef326"
-	}
+    "data": {
+        "products": [
+            {
+                "__typename": "ComplexProductView",
+                "id": "Y3J1LTIwMTQtcGFydHMAZW4tVVMARnd1czZrZHB2WUNtZUVkY0NYN1BaZwBTVE9SRV9DT0RFAFdFQlNJVEVfQ09ERQ",
+                "sku": "cru-2014-parts",
+                "name": "Cruz Verde parts build",
+                "urlKey": "bundle-cru-verde-parts",
+                "description": "",
+                "shortDescription": "",
+                "metaDescription": "",
+                "metaKeyword": "",
+                "metaTitle": "",
+                "lastModifiedAt": "2025-09-16T03:52:36.957Z",
+                "attributes": [],
+                "images": [],
+                "videos": [],
+                "links": [],
+                "options": [
+                    {
+                        "id": "tires",
+                        "title": "tires",
+                        "required": false,
+                        "multi": false,
+                        "values": [
+                            {
+                                "id": "YnVuZGxlX2l0ZW0veyJza3UiOiJjcnUtdGlyLXN0ZC0yMDE0IiwgInF0eSI6MS4wfQ==",
+                                "title": "Cruz Verde Tires Standard (2014)",
+                                "inStock": true,
+                                "quantity": 1.0,
+                                "isDefault": true,
+                                "product": {
+                                    "__typename": "SimpleProductView",
+                                    "id": "Y3J1LXRpci1zdGQtMjAxNABlbi1VUwBGd3VzNmtkcHZZQ21lRWRjQ1g3UFpnAFNUT1JFX0NPREUAV0VCU0lURV9DT0RF",
+                                    "sku": "cru-tir-std-2014",
+                                    "name": "Cruz Verde Tires Standard (2014)",
+                                    "description": "",
+                                    "shortDescription": "",
+                                    "urlKey": "cruz-verde-tires-standard-2014",
+                                    "images": [],
+                                    "attributes": []
+                                }
+                            },
+                            {
+                                "id": "YnVuZGxlX2l0ZW0veyJza3UiOiJjcnUtdGlyLW1pZC0yMDE0IiwgInF0eSI6MS4wfQ==",
+                                "title": "Cruz Verde Tires Midrange (2014)",
+                                "inStock": true,
+                                "quantity": 1.0,
+                                "isDefault": false,
+                                "product": {
+                                    "__typename": "SimpleProductView",
+                                    "id": "Y3J1LXRpci1taWQtMjAxNABlbi1VUwBGd3VzNmtkcHZZQ21lRWRjQ1g3UFpnAFNUT1JFX0NPREUAV0VCU0lURV9DT0RF",
+                                    "sku": "cru-tir-mid-2014",
+                                    "name": "Cruz Verde Tires Midrange (2014)",
+                                    "description": "",
+                                    "shortDescription": "",
+                                    "urlKey": "cruz-verde-tires-midrange-2014",
+                                    "images": [],
+                                    "attributes": []
+                                }
+                            },
+                            {
+                                "id": "YnVuZGxlX2l0ZW0veyJza3UiOiJjcnUtdGlyLXBybS0yMDE0IiwgInF0eSI6MS4wfQ==",
+                                "title": "Cruz Verde Tires Premium (2014)",
+                                "inStock": true,
+                                "quantity": 1.0,
+                                "isDefault": false,
+                                "product": {
+                                    "__typename": "SimpleProductView",
+                                    "id": "Y3J1LXRpci1wcm0tMjAxNABlbi1VUwBGd3VzNmtkcHZZQ21lRWRjQ1g3UFpnAFNUT1JFX0NPREUAV0VCU0lURV9DT0RF",
+                                    "sku": "cru-tir-prm-2014",
+                                    "name": "Cruz Verde Tires Premium (2014)",
+                                    "description": "",
+                                    "shortDescription": "",
+                                    "urlKey": "cruz-verde-tires-premium-2014",
+                                    "images": [],
+                                    "attributes": []
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "brakes",
+                        "title": "brakes",
+                        "required": false,
+                        "multi": false,
+                        "values": [
+                            {
+                                "id": "YnVuZGxlX2l0ZW0veyJza3UiOiJjcnUtYmF0LXN0ZC0yMDE0IiwgInF0eSI6MS4wfQ==",
+                                "title": "Cruz Verde Battery Standard (2014)",
+                                "inStock": true,
+                                "quantity": 1.0,
+                                "isDefault": true,
+                                "product": {
+                                    "__typename": "SimpleProductView",
+                                    "id": "Y3J1LWJhdC1zdGQtMjAxNABlbi1VUwBGd3VzNmtkcHZZQ21lRWRjQ1g3UFpnAFNUT1JFX0NPREUAV0VCU0lURV9DT0RF",
+                                    "sku": "cru-bat-std-2014",
+                                    "name": "Cruz Verde Battery Standard (2014)",
+                                    "description": "Standard battery for the Cruz Verde, providing reliable power for eco-friendly driving.",
+                                    "shortDescription": "Cruz Verde part",
+                                    "urlKey": "cruz-verde-battery-standard-2014",
+                                    "images": [
+                                        {
+                                            "url": "https://i.imgur.com/Juozyen.jpg",
+                                            "label": "Cruz Verde Battery Standard (2014)",
+                                            "roles": [
+                                                "thumbnail",
+                                                "image",
+                                                "small_image"
+                                            ]
+                                        }
+                                    ],
+                                    "attributes": []
+                                }
+                            },
+                            {
+                                "id": "YnVuZGxlX2l0ZW0veyJza3UiOiJjcnUtYmF0LW1pZC0yMDE0IiwgInF0eSI6MS4wfQ==",
+                                "title": "Cruz Verde Battery Midrange (2014)",
+                                "inStock": true,
+                                "quantity": 1.0,
+                                "isDefault": false,
+                                "product": {
+                                    "__typename": "SimpleProductView",
+                                    "id": "Y3J1LWJhdC1taWQtMjAxNABlbi1VUwBGd3VzNmtkcHZZQ21lRWRjQ1g3UFpnAFNUT1JFX0NPREUAV0VCU0lURV9DT0RF",
+                                    "sku": "cru-bat-mid-2014",
+                                    "name": "Cruz Verde Battery Midrange (2014)",
+                                    "description": "Mid-range battery for the Cruz Verde, offering improved capacity and longevity.",
+                                    "shortDescription": "Cruz Verde part",
+                                    "urlKey": "cruz-verde-battery-midrange-2014",
+                                    "images": [
+                                        {
+                                            "url": "https://i.imgur.com/UDgjM4g.jpg",
+                                            "label": "Cruz Verde Battery Midrange (2014)",
+                                            "roles": [
+                                                "thumbnail",
+                                                "image",
+                                                "small_image"
+                                            ]
+                                        }
+                                    ],
+                                    "attributes": []
+                                }
+                            },
+                            {
+                                "id": "YnVuZGxlX2l0ZW0veyJza3UiOiJjcnUtYmF0LXBybS0yMDE0IiwgInF0eSI6MS4wfQ==",
+                                "title": "Cruz Verde Battery Premium (2014)",
+                                "inStock": true,
+                                "quantity": 1.0,
+                                "isDefault": false,
+                                "product": {
+                                    "__typename": "SimpleProductView",
+                                    "id": "Y3J1LWJhdC1wcm0tMjAxNABlbi1VUwBGd3VzNmtkcHZZQ21lRWRjQ1g3UFpnAFNUT1JFX0NPREUAV0VCU0lURV9DT0RF",
+                                    "sku": "cru-bat-prm-2014",
+                                    "name": "Cruz Verde Battery Premium (2014)",
+                                    "description": "Premium battery for the Cruz Verde, delivering maximum power and efficiency for eco-conscious drivers.",
+                                    "shortDescription": "Cruz Verde part",
+                                    "urlKey": "cruz-verde-battery-premium-2014",
+                                    "images": [
+                                        {
+                                            "url": "https://i.imgur.com/pD5e160.jpg",
+                                            "label": "Cruz Verde Battery Premium (2014)",
+                                            "roles": [
+                                                "thumbnail",
+                                                "image",
+                                                "small_image"
+                                            ]
+                                        }
+                                    ],
+                                    "attributes": []
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "suspension",
+                        "title": "suspension",
+                        "required": false,
+                        "multi": false,
+                        "values": [
+                            {
+                                "id": "YnVuZGxlX2l0ZW0veyJza3UiOiJjcnUtc3VzLXN0ZC0yMDE0IiwgInF0eSI6MS4wfQ==",
+                                "title": "Cruz Verde Suspension Standard (2014)",
+                                "inStock": true,
+                                "quantity": 1.0,
+                                "isDefault": true,
+                                "product": {
+                                    "__typename": "SimpleProductView",
+                                    "id": "Y3J1LXN1cy1zdGQtMjAxNABlbi1VUwBGd3VzNmtkcHZZQ21lRWRjQ1g3UFpnAFNUT1JFX0NPREUAV0VCU0lURV9DT0RF",
+                                    "sku": "cru-sus-std-2014",
+                                    "name": "Cruz Verde Suspension Standard (2014)",
+                                    "description": "",
+                                    "shortDescription": "",
+                                    "urlKey": "cruz-verde-suspension-standard-2014",
+                                    "images": [],
+                                    "attributes": []
+                                }
+                            },
+                            {
+                                "id": "YnVuZGxlX2l0ZW0veyJza3UiOiJjcnUtc3VzLW1pZC0yMDE0IiwgInF0eSI6MS4wfQ==",
+                                "title": "Cruz Verde Suspension Midrange (2014)",
+                                "inStock": true,
+                                "quantity": 1.0,
+                                "isDefault": false,
+                                "product": {
+                                    "__typename": "SimpleProductView",
+                                    "id": "Y3J1LXN1cy1taWQtMjAxNABlbi1VUwBGd3VzNmtkcHZZQ21lRWRjQ1g3UFpnAFNUT1JFX0NPREUAV0VCU0lURV9DT0RF",
+                                    "sku": "cru-sus-mid-2014",
+                                    "name": "Cruz Verde Suspension Midrange (2014)",
+                                    "description": "",
+                                    "shortDescription": "",
+                                    "urlKey": "cruz-verde-suspension-midrange-2014",
+                                    "images": [],
+                                    "attributes": []
+                                }
+                            },
+                            {
+                                "id": "YnVuZGxlX2l0ZW0veyJza3UiOiJjcnUtc3VzLXBybS0yMDE0IiwgInF0eSI6MS4wfQ==",
+                                "title": "Cruz Verde Suspension Premium (2014)",
+                                "inStock": true,
+                                "quantity": 1.0,
+                                "isDefault": false,
+                                "product": {
+                                    "__typename": "SimpleProductView",
+                                    "id": "Y3J1LXN1cy1wcm0tMjAxNABlbi1VUwBGd3VzNmtkcHZZQ21lRWRjQ1g3UFpnAFNUT1JFX0NPREUAV0VCU0lURV9DT0RF",
+                                    "sku": "cru-sus-prm-2014",
+                                    "name": "Cruz Verde Suspension Premium (2014)",
+                                    "description": "",
+                                    "shortDescription": "",
+                                    "urlKey": "cruz-verde-suspension-premium-2014",
+                                    "images": [],
+                                    "attributes": []
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "motor",
+                        "title": "motor",
+                        "required": false,
+                        "multi": false,
+                        "values": [
+                            {
+                                "id": "YnVuZGxlX2l0ZW0veyJza3UiOiJjcnUtbW90LXN0ZC0yMDE0IiwgInF0eSI6MS4wfQ==",
+                                "title": "Cruz Verde Motor Standard (2014)",
+                                "inStock": true,
+                                "quantity": 1.0,
+                                "isDefault": true,
+                                "product": {
+                                    "__typename": "SimpleProductView",
+                                    "id": "Y3J1LW1vdC1zdGQtMjAxNABlbi1VUwBGd3VzNmtkcHZZQ21lRWRjQ1g3UFpnAFNUT1JFX0NPREUAV0VCU0lURV9DT0RF",
+                                    "sku": "cru-mot-std-2014",
+                                    "name": "Cruz Verde Motor Standard (2014)",
+                                    "description": "",
+                                    "shortDescription": "",
+                                    "urlKey": "cruz-verde-motor-standard-2014",
+                                    "images": [],
+                                    "attributes": []
+                                }
+                            },
+                            {
+                                "id": "YnVuZGxlX2l0ZW0veyJza3UiOiJjcnUtbW90LW1pZC0yMDE0IiwgInF0eSI6MS4wfQ==",
+                                "title": "Cruz Verde Motor Midrange (2014)",
+                                "inStock": true,
+                                "quantity": 1.0,
+                                "isDefault": false,
+                                "product": {
+                                    "__typename": "SimpleProductView",
+                                    "id": "Y3J1LW1vdC1taWQtMjAxNABlbi1VUwBGd3VzNmtkcHZZQ21lRWRjQ1g3UFpnAFNUT1JFX0NPREUAV0VCU0lURV9DT0RF",
+                                    "sku": "cru-mot-mid-2014",
+                                    "name": "Cruz Verde Motor Midrange (2014)",
+                                    "description": "",
+                                    "shortDescription": "",
+                                    "urlKey": "cruz-verde-motor-midrange-2014",
+                                    "images": [],
+                                    "attributes": []
+                                }
+                            },
+                            {
+                                "id": "YnVuZGxlX2l0ZW0veyJza3UiOiJjcnUtbW90LXBybS0yMDE0IiwgInF0eSI6MS4wfQ==",
+                                "title": "Cruz Verde Motor Premium (2014)",
+                                "inStock": true,
+                                "quantity": 1.0,
+                                "isDefault": false,
+                                "product": {
+                                    "__typename": "SimpleProductView",
+                                    "id": "Y3J1LW1vdC1wcm0tMjAxNABlbi1VUwBGd3VzNmtkcHZZQ21lRWRjQ1g3UFpnAFNUT1JFX0NPREUAV0VCU0lURV9DT0RF",
+                                    "sku": "cru-mot-prm-2014",
+                                    "name": "Cruz Verde Motor Premium (2014)",
+                                    "description": "",
+                                    "shortDescription": "",
+                                    "urlKey": "cruz-verde-motor-premium-2014",
+                                    "images": [],
+                                    "attributes": []
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "extensions": {
+        "request-id": "e804166e-d456-430a-9c65-00409d6ef326"
+    }
 }
 ```
 
@@ -704,134 +704,134 @@ query {
 
 ```json
 {
-	"data": {
-		"productSearch": {
-			"items": [
-				{
-					"productView": {
-						"sku": "cru-bat-std-2014",
-						"name": "Cruz Verde Battery Standard (2014)",
-						"description": "Standard battery for the Cruz Verde, providing reliable power for eco-friendly driving.",
-						"shortDescription": "Cruz Verde part",
-						"images": [
-							{
-								"url": "https://i.imgur.com/Juozyen.jpg"
-							}
-						],
-						"attributes": [
-							{
-								"label": "Brand",
-								"name": "brand",
-								"value": "Cruz"
-							},
-							{
-								"label": "Vehicle Model",
-								"name": "model",
-								"value": "Verde"
-							},
-							{
-								"label": "Vehicle Model Year",
-								"name": "model_year",
-								"value": "2014"
-							},
-							{
-								"label": "Dealer Country",
-								"name": "country",
-								"value": "USA"
-							},
-							{
-								"label": "Part Category",
-								"name": "part_category",
-								"value": "battery"
-							}
-						]
-					}
-				},
-				{
-					"productView": {
-						"sku": "cru-bat-mid-2014",
-						"name": "Cruz Verde Battery Midrange (2014)",
-						"description": "Mid-range battery for the Cruz Verde, offering improved capacity and longevity.",
-						"shortDescription": "Cruz Verde part",
-						"images": [
-							{
-								"url": "https://i.imgur.com/UDgjM4g.jpg"
-							}
-						],
-						"attributes": [
-							{
-								"label": "Brand",
-								"name": "brand",
-								"value": "Cruz"
-							},
-							{
-								"label": "Vehicle Model",
-								"name": "model",
-								"value": "Verde"
-							},
-							{
-								"label": "Vehicle Model Year",
-								"name": "model_year",
-								"value": "2014"
-							},
-							{
-								"label": "Dealer Country",
-								"name": "country",
-								"value": "USA"
-							},
-							{
-								"label": "Part Category",
-								"name": "part_category",
-								"value": "battery"
-							}
-						]
-					}
-				},
-				{
-					"productView": {
-						"sku": "cru-bat-prm-2014",
-						"name": "Cruz Verde Battery Premium (2014)",
-						"description": "Premium battery for the Cruz Verde, delivering maximum power and efficiency for eco-conscious drivers.",
-						"shortDescription": "Cruz Verde part",
-						"images": [
-							{
-								"url": "https://i.imgur.com/pD5e160.jpg"
-							}
-						],
-						"attributes": [
-							{
-								"label": "Brand",
-								"name": "brand",
-								"value": "Cruz"
-							},
-							{
-								"label": "Vehicle Model",
-								"name": "model",
-								"value": "Verde"
-							},
-							{
-								"label": "Vehicle Model Year",
-								"name": "model_year",
-								"value": "2014"
-							},
-							{
-								"label": "Dealer Country",
-								"name": "country",
-								"value": "USA"
-							},
-							{
-								"label": "Part Category",
-								"name": "part_category",
-								"value": "battery"
-							}
-						]
-					}
-				}
-			]
-		}
-	},
-	"extensions": {
-		"request-id": "e16c1e38-bd1f-4c06-ad72-8a1166087d2a"
-	}
+    "data": {
+        "productSearch": {
+            "items": [
+                {
+                    "productView": {
+                        "sku": "cru-bat-std-2014",
+                        "name": "Cruz Verde Battery Standard (2014)",
+                        "description": "Standard battery for the Cruz Verde, providing reliable power for eco-friendly driving.",
+                        "shortDescription": "Cruz Verde part",
+                        "images": [
+                            {
+                                "url": "https://i.imgur.com/Juozyen.jpg"
+                            }
+                        ],
+                        "attributes": [
+                            {
+                                "label": "Brand",
+                                "name": "brand",
+                                "value": "Cruz"
+                            },
+                            {
+                                "label": "Vehicle Model",
+                                "name": "model",
+                                "value": "Verde"
+                            },
+                            {
+                                "label": "Vehicle Model Year",
+                                "name": "model_year",
+                                "value": "2014"
+                            },
+                            {
+                                "label": "Dealer Country",
+                                "name": "country",
+                                "value": "USA"
+                            },
+                            {
+                                "label": "Part Category",
+                                "name": "part_category",
+                                "value": "battery"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "productView": {
+                        "sku": "cru-bat-mid-2014",
+                        "name": "Cruz Verde Battery Midrange (2014)",
+                        "description": "Mid-range battery for the Cruz Verde, offering improved capacity and longevity.",
+                        "shortDescription": "Cruz Verde part",
+                        "images": [
+                            {
+                                "url": "https://i.imgur.com/UDgjM4g.jpg"
+                            }
+                        ],
+                        "attributes": [
+                            {
+                                "label": "Brand",
+                                "name": "brand",
+                                "value": "Cruz"
+                            },
+                            {
+                                "label": "Vehicle Model",
+                                "name": "model",
+                                "value": "Verde"
+                            },
+                            {
+                                "label": "Vehicle Model Year",
+                                "name": "model_year",
+                                "value": "2014"
+                            },
+                            {
+                                "label": "Dealer Country",
+                                "name": "country",
+                                "value": "USA"
+                            },
+                            {
+                                "label": "Part Category",
+                                "name": "part_category",
+                                "value": "battery"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "productView": {
+                        "sku": "cru-bat-prm-2014",
+                        "name": "Cruz Verde Battery Premium (2014)",
+                        "description": "Premium battery for the Cruz Verde, delivering maximum power and efficiency for eco-conscious drivers.",
+                        "shortDescription": "Cruz Verde part",
+                        "images": [
+                            {
+                                "url": "https://i.imgur.com/pD5e160.jpg"
+                            }
+                        ],
+                        "attributes": [
+                            {
+                                "label": "Brand",
+                                "name": "brand",
+                                "value": "Cruz"
+                            },
+                            {
+                                "label": "Vehicle Model",
+                                "name": "model",
+                                "value": "Verde"
+                            },
+                            {
+                                "label": "Vehicle Model Year",
+                                "name": "model_year",
+                                "value": "2014"
+                            },
+                            {
+                                "label": "Dealer Country",
+                                "name": "country",
+                                "value": "USA"
+                            },
+                            {
+                                "label": "Part Category",
+                                "name": "part_category",
+                                "value": "battery"
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    },
+    "extensions": {
+        "request-id": "e16c1e38-bd1f-4c06-ad72-8a1166087d2a"
+    }
 }
 ```

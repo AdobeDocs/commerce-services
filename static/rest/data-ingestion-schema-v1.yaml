@@ -43,6 +43,10 @@ tags:
 
       Categories use a slug-based hierarchy format to represent parent-child relationships, for example, "men/clothing/pants'.
 
+      After you create categories and assign them to products, you can retrieve category data to render storefront menus and manage hierarchical category
+      trees using the GraphQL `navigation` and `categorytree` queries. See
+      [Implement categories on the storefront](https://developer-stage.adobe.com/commerce/services/optimizer/merchandising-services/categories-v2/).
+
   - name: Products
     description: Create and manage product data including simple products, configurable products, and their variants. Control product visibility, attributes, images, and pricing
   - name: Price Books
