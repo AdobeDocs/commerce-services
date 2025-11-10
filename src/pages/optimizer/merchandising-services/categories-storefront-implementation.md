@@ -11,7 +11,7 @@ keywords:
 
 # Implement Categories on the Storefront
 
-Managing categories with Commerce projects that use Merchandising Services for Adobe Commerce Optimizer requires managing two types of operations:
+Managing categories with Commerce projects that use Merchandising Services composable catalog data model requires two types of API operations:
 
 - Create category data using the `categories` operations available in the [Data Ingestion API](https://developer.adobe.com/commerce/services/reference/rest/#tag/Categories), and using the `products` operations to manage product category assignments.
 
