@@ -17,11 +17,11 @@ Categories API V2 is the category management solution for Commerce projects usin
 
 If you are using Adobe Commerce as a Cloud Service or Adobe Commerce on Cloud infrastructure, manage categories using the [Commerce Services Catalog Service](https://developer.adobe.com/commerce/webapi/graphql/schema/catalog-service/). For details, see the [Categories](https://developer.adobe.com/commerce/webapi/graphql/schema/catalog-service/queries/categories/) query in the *GraphQL Developer Guide*.
 
-## CategoryViewV2 Interface
+## CategoryViewV2 interface
 
 The `CategoryViewV2` interface provides a minimal, streamlined set of category fields—`slug` and `name`—optimized for typical storefront display and navigation scenarios.
 
-### Interface Definition
+### Interface definition
 
 ```graphql
 interface CategoryViewV2 {
@@ -32,12 +32,12 @@ interface CategoryViewV2 {
 
 ### Fields
 
-Field | Data Type | Description
+Field | Data type | Description
 --- | --- | ---
 `slug` | String! | The unique URL-friendly identifier for the category, used in routing and navigation
 `name` | String! | The display name of the category as shown to customers
 
-### Key Benefits
+### Key benefits
 
 - **Lightweight Design**: Contains essential fields (slug and name) for optimal performance
 - **Extensible**: Serves as a base interface for specialized category types
@@ -53,7 +53,7 @@ The `CategoryViewV2` interface is implemented by two specialized types:
 
 The `CategoryNavigationView` type implements `CategoryViewV2` and is specifically designed for building storefront navigation menus with built-in performance optimizations.
 
-#### Type Definition
+#### Type definition
 
 ```graphql
 type CategoryNavigationView implements CategoryViewV2 {
@@ -63,18 +63,18 @@ type CategoryNavigationView implements CategoryViewV2 {
 }
 ```
 
-#### Performance Safeguards
+#### Performance safeguards
 
 - **Depth Limitation**: Menu depth is limited to 4 levels maximum
 - **Lightweight Attributes**: Excludes heavyweight category attributes redundant for menu rendering
 - **Single Query**: Retrieves entire family in one database query
 - **Heavy Caching**: Query responses are heavily cached for optimal performance
 
-### CategoryTreeView Type
+### CategoryTreeView type
 
 The `CategoryTreeView` type implements `CategoryViewV2` and provides comprehensive hierarchical category data, primarily designed for RetailCMS applications.
 
-#### Type Definition
+#### Type definition
 
 ```graphql
 type CategoryTreeView implements CategoryViewV2 {
@@ -86,7 +86,7 @@ type CategoryTreeView implements CategoryViewV2 {
 }
 ```
 
-## Navigation Query
+## Navigation query
 
 Retrieve category navigation data optimized for storefront menu rendering with built-in performance safeguards.
 
@@ -96,9 +96,7 @@ type Query {
 }
 ```
 
-### Practical Examples
-
-#### Example 1: Basic Top Menu Navigation
+### Example: Basic Top Menu Navigation
 
 **Query:**
 
@@ -135,7 +133,7 @@ query GetTopMenuNavigation {
 }
 ```
 
-#### Example 2: Multi-Level Menu Navigation
+### Example: Multi-Level Menu Navigation
 
 **Query:**
 
@@ -188,7 +186,7 @@ query GetFullMenuNavigation {
 }
 ```
 
-## CategoryTree Query
+## CategoryTree query
 
 Retrieve hierarchical category data in a tree structure with parent-child relationships and level information.
 
@@ -198,9 +196,7 @@ type Query {
 }
 ```
 
-### Practical Examples
-
-#### Example 3: Full Category Tree Retrieval
+### Example: Full Category Tree Retrieval
 
 **Query:**
 
@@ -248,7 +244,7 @@ query GetFullCategoryTree {
 }
 ```
 
-#### Example 4: Specific Category Subtree
+### Example: Specific Category Subtree
 
 **Query:**
 
@@ -300,7 +296,7 @@ query GetSpecificCategorySubtree {
 }
 ```
 
-#### Example 5: Root Categories Only
+### Example: Root Categories Only
 
 **Query:**
 
@@ -368,13 +364,13 @@ Use `categoryTree` query with `CategoryTreeView` for:
 ### Performance Considerations
 
 1. **Navigation Query**:
-   - Heavily cached responses
-   - Single database query per family
-   - Limited to 4 levels for performance
-   - Excludes heavyweight attributes
+   - Heavily cached responses.
+   - Single database query per family.
+   - Limited to four levels for performance.
+   - Excludes heavyweight attributes.
 
 2. **CategoryTree Query**:
-   - Use `depth` parameter to limit tree traversal
-   - Use `slugs` parameter for targeted queries
-   - Ideal for administrative interfaces
-   - Provides complete hierarchy metadata
+   - Use `depth` parameter to limit tree traversal.
+   - Use `slugs` parameter for targeted queries.
+   - Ideal for administrative interfaces.
+   - Provides complete hierarchy metadata.
