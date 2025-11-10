@@ -34,7 +34,7 @@ For details, see <a href="https://developer.adobe.com/commerce/services/referenc
 
 ## Products
 
-A product is any item or service offered for sale through online channels. Products can be physical goods, digital downloads, or services. They are the core elements of your catalog. In the context of the Merchandising Services, the schemas simplify the product types product types to two use cases:
+A product is any item or service offered for sale through online channels. Products can be physical goods, digital downloads, or services. They are the core elements of your catalog. In the context of the Merchandising Services, the schemas simplify the product types to two use cases:
 products types are simplified are categorized into different types.
 
 **Product types** are different categories of products that you can create and manage in your catalog. Merchandising Services supports the following product types:
