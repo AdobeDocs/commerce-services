@@ -1,6 +1,6 @@
 # Categories API V2
 
-Categories API V2 is a modernized solution for category management in Adobe Commerce Services, purpose-built for storefront applications. It offers a simplified and efficient approach, free from the legacy limitations of the original CategoryView interface.
+Categories API V2 is a modernized solution for category management in Adobe Commerce Services, purpose-built for storefront applications.
 
 ## CategoryViewV2 Interface
 
@@ -24,42 +24,22 @@ Field | Data Type | Description
 
 ### Key Benefits
 
-- **Lightweight Design**: Contains only essential fields (slug and name) for optimal performance
-- **Fresh Start**: Not bound by backward compatibility with the legacy CategoryView interface
-- **Storefront Optimized**: Designed specifically for storefront APIs without search facet coupling
+- **Lightweight Design**: Contains essential fields (slug and name) for optimal performance
 - **Extensible**: Serves as a base interface for specialized category types
 
-## Implementing Types
+## Category types
 
 The `CategoryViewV2` interface is implemented by two specialized types:
 
 1. **CategoryNavigationView** - For menu rendering and navigation
 2. **CategoryTreeView** - For hierarchical category management (primarily RetailCMS)
 
-### Comparison with Legacy CategoryView
 
-The original `CategoryView` type was coupled with search facets and contained many fields that were not needed for basic category display:
-
-**Legacy CategoryView** (deprecated):
-
-- `availableSortBy`, `defaultSortBy` - Search-related fields
-- `id`, `parentId` - Internal identifiers
-- `path`, `urlKey`, `urlPath` - Multiple URL representations
-- `roles` - SEO-specific fields
-- `level` - Hierarchy information
-
-**New CategoryViewV2**:
-
-- `slug` - Single URL identifier
-- `name` - Display name only
-
-This streamlined approach reduces payload size and improves performance for common storefront use cases.
-
-## CategoryNavigationView Type
+## CategoryNavigationView 
 
 The `CategoryNavigationView` type implements `CategoryViewV2` and is specifically designed for building storefront navigation menus with built-in performance optimizations.
 
-### Type Definition
+#### Type Definition
 
 ```graphql
 type CategoryNavigationView implements CategoryViewV2 {
@@ -76,7 +56,7 @@ type CategoryNavigationView implements CategoryViewV2 {
 - **Single Query**: Retrieves entire family in one database query
 - **Heavy Caching**: Query responses are heavily cached for optimal performance
 
-### Navigation Query
+## Navigation Query
 
 ```graphql
 type Query {
@@ -192,7 +172,7 @@ type CategoryTreeView implements CategoryViewV2 {
 }
 ```
 
-### CategoryTree Query
+## CategoryTree Query
 
 ```graphql
 type Query {
