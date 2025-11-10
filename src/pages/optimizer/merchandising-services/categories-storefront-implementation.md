@@ -1,7 +1,7 @@
 ---
 title: Implement Categories on the Storefront
 edition: saas
-description: Use the GraphQL category queries to build storefront menus and fetch hierarchical category data with parent-child and level details. 
+description: Use the GraphQL category queries to build storefront menus and fetch hierarchical category data with parent-child and level details.
 keywords:
   - GraphQL
   - Services
@@ -11,15 +11,19 @@ keywords:
 
 # Implement Categories on the Storefront
 
-Categories API V2 is the category management solution for Commerce projects using Merchandising Services for Adobe Commerce Optimizer. Categories are created and managed using the `categories` operations available in the [Data Ingestion API](https://developer.adobe.com/commerce/services/reference/rest/#tag/Categories) for Merchandising Services.
+Managing categories with Commerce projects that use Merchandising Services for Adobe Commerce Optimizer requires managing two types of operations:
+
+- Create category data using the `categories` operations available in the [Data Ingestion API](https://developer.adobe.com/commerce/services/reference/rest/#tag/Categories), and using the `products` operations to manage product category assignments.
+
+- Retrieve category data for storefront display and navigation using the `navigation` and `categoryTree` queries available in the [Merchandising Services GraphQL API](https://developer.adobe.com/commerce/webapi/graphql/merchandising/).
 
 <InlineAlert variant="warning" slots="text" />
 
-If you are using Adobe Commerce as a Cloud Service or Adobe Commerce on Cloud infrastructure, manage categories using the [Commerce Services Catalog Service](https://developer.adobe.com/commerce/webapi/graphql/schema/catalog-service/). For details, see the [Categories](https://developer.adobe.com/commerce/webapi/graphql/schema/catalog-service/queries/categories/) query in the *GraphQL Developer Guide*.
+For Commerce sites with an Adobe Commerce as a Cloud Service or Adobe Commerce on Cloud infrastructure backend, use the [Commerce REST API](https://developer.adobe.com/commerce/webapi/rest/) and the [Catalog Service GraphQL API](https://developer.adobe.com/commerce/webapi/graphql/schema/catalog-service/) to manage categories.
 
-## CategoryViewV2 interface
+## CategoryView2 interface
 
-The `CategoryViewV2` interface provides a minimal, streamlined set of category fields—`slug` and `name`—optimized for typical storefront display and navigation scenarios.
+The `CategoryView2` interface provides a minimal, streamlined set of category fields—`slug` and `name`—optimized for typical storefront display and navigation scenarios.
 
 ### Interface definition
 
@@ -96,7 +100,7 @@ type Query {
 }
 ```
 
-### Example: Basic Top Menu Navigation
+### Example: Retrieve basic top menu navigation
 
 **Query:**
 
@@ -133,7 +137,7 @@ query GetTopMenuNavigation {
 }
 ```
 
-### Example: Multi-Level Menu Navigation
+### Example: Retrieve multi-Level menu navigation
 
 **Query:**
 
@@ -196,7 +200,7 @@ type Query {
 }
 ```
 
-### Example: Full Category Tree Retrieval
+### Example: Retrieve full category tree
 
 **Query:**
 
@@ -244,7 +248,7 @@ query GetFullCategoryTree {
 }
 ```
 
-### Example: Specific Category Subtree
+### Example: Retrieve specific category subtree
 
 **Query:**
 
@@ -296,7 +300,7 @@ query GetSpecificCategorySubtree {
 }
 ```
 
-### Example: Root Categories Only
+### Example: Retrieve root categories only
 
 **Query:**
 

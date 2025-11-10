@@ -42,7 +42,7 @@ module.exports = [
             pages: [
               {
                 title: "Implement categories on the storefront",
-                path: "/optimizer/merchandising-services/categories-v2.md"
+                path: "/optimizer/merchandising-services/categories-storefront-implementation.md"
               }
             ]
           },
