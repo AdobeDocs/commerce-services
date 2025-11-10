@@ -1,7 +1,7 @@
 ---
 title: Implement categories on the storefront
 edition: saas
-description: Use the `navigation` and `categoryTree` queries to render storefront menus and retrieve hierarchical category data in a tree structure with parent-child relationships and level information.
+description: Use the GraphQL category queries to build storefront menus and fetch hierarchical category data with parent-child and level details. 
 keywords:
   - GraphQL
   - Services
