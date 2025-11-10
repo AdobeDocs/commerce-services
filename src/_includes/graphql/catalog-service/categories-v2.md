@@ -1,6 +1,10 @@
 # Categories API V2
 
-Categories API V2 is a modernized solution for category management in Adobe Commerce Services, purpose-built for storefront applications.
+Categories API V2 is the category management solution for Commerce projects using Merchandising Services for Adobe Commerce Optimizer. Categories are created and managed using the `categories` operations available in the [Data Ingestion API](https://developer.adobe.com/commerce/services/reference/rest/#tag/Categories) for Merchandising Services.
+
+<InlineAlert variant="warning" slots="text" />
+
+If you are using Adobe Commerce as a Cloud Service or Adobe Commerce on Cloud infrastructure, manage categories using the [Commerce Services Catalog Service](https://developer.adobe.com/commerce/webapi/graphql/schema/catalog-service/). For details, see the [Categories](https://developer.adobe.com/commerce/webapi/graphql/schema/catalog-service/queries/categories/) query in the *GraphQL Developer Guide*.
 
 ## CategoryViewV2 Interface
 
@@ -34,8 +38,7 @@ The `CategoryViewV2` interface is implemented by two specialized types:
 1. **CategoryNavigationView** - For menu rendering and navigation
 2. **CategoryTreeView** - For hierarchical category management (primarily RetailCMS)
 
-
-## CategoryNavigationView 
+### CategoryNavigationView 
 
 The `CategoryNavigationView` type implements `CategoryViewV2` and is specifically designed for building storefront navigation menus with built-in performance optimizations.
 
@@ -49,14 +52,32 @@ type CategoryNavigationView implements CategoryViewV2 {
 }
 ```
 
-### Performance Safeguards
+#### Performance Safeguards
 
 - **Depth Limitation**: Menu depth is limited to 4 levels maximum
 - **Lightweight Attributes**: Excludes heavyweight category attributes redundant for menu rendering
 - **Single Query**: Retrieves entire family in one database query
 - **Heavy Caching**: Query responses are heavily cached for optimal performance
 
+### CategoryTreeView Type
+
+The `CategoryTreeView` type implements `CategoryViewV2` and provides comprehensive hierarchical category data, primarily designed for RetailCMS applications.
+
+#### Type Definition
+
+```graphql
+type CategoryTreeView implements CategoryViewV2 {
+    slug: String!
+    name: String!
+    level: Int
+    parentSlug: String
+    childrenSlugs: [String]
+}
+```
+
 ## Navigation Query
+
+Retrieve category navigation data optimized for storefront menu rendering with built-in performance safeguards.
 
 ```graphql
 type Query {
@@ -156,23 +177,9 @@ query GetFullMenuNavigation {
 }
 ```
 
-## CategoryTreeView Type
-
-The `CategoryTreeView` type implements `CategoryViewV2` and provides comprehensive hierarchical category data, primarily designed for RetailCMS applications.
-
-### Type Definition
-
-```graphql
-type CategoryTreeView implements CategoryViewV2 {
-    slug: String!
-    name: String!
-    level: Int
-    parentSlug: String
-    childrenSlugs: [String]
-}
-```
-
 ## CategoryTree Query
+
+Retrieve hierarchical category data in a tree structure with parent-child relationships and level information.
 
 ```graphql
 type Query {
