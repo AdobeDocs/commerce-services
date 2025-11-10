@@ -1,7 +1,7 @@
 ---
-title: Use cases for the Merchandising API
+title: Implement categories on the storefront
 edition: saas
-description: Learn about the limitations and considerations when using the Merchandising API to retrieve catalog data from Adobe Commerce Optimizer.
+description: Use the `navigation` and `categoryTree` queries to render storefront menus and retrieve hierarchical category data in a tree structure with parent-child relationships and level information.
 keywords:
   - GraphQL
   - Services
@@ -9,15 +9,19 @@ keywords:
   - Performance
 ---
 
-# Manage categories with Categories API V2
+# Implement Categories on the Storefront
 
-The Categories API V2 is a modernized solution for category management to support the [Commerce Merchandising Services](../index.md) composable catalog data model. It introduces a new `CategoryViewV2` interface along with two implementing types: `CategoryNavigationView` and `CategoryTreeView`. These types are designed to provide efficient and optimized access to category data for storefront navigation and hierarchical category management, respectively.
+Categories API V2 is the category management solution for Commerce projects using Merchandising Services for Adobe Commerce Optimizer. Categories are created and managed using the `categories` operations available in the [Data Ingestion API](https://developer.adobe.com/commerce/services/reference/rest/#tag/Categories) for Merchandising Services.
 
-## CategoryViewV2 Interface
+<InlineAlert variant="warning" slots="text" />
+
+If you are using Adobe Commerce as a Cloud Service or Adobe Commerce on Cloud infrastructure, manage categories using the [Commerce Services Catalog Service](https://developer.adobe.com/commerce/webapi/graphql/schema/catalog-service/). For details, see the [Categories](https://developer.adobe.com/commerce/webapi/graphql/schema/catalog-service/queries/categories/) query in the *GraphQL Developer Guide*.
+
+## CategoryViewV2 interface
 
 The `CategoryViewV2` interface provides a minimal, streamlined set of category fields—`slug` and `name`—optimized for typical storefront display and navigation scenarios.
 
-### Interface Definition
+### Interface definition
 
 ```graphql
 interface CategoryViewV2 {
@@ -26,44 +30,30 @@ interface CategoryViewV2 {
 }
 ```
 
-### Key Benefits
+### Fields
 
-- **Lightweight Design**: Contains only essential fields (slug and name) for optimal performance
-- **Fresh Start**: Not bound by backward compatibility with the legacy CategoryView interface available with Commerce Services GraphQL APIs for Live Search and Catalog Service
-- **Storefront Optimized**: Designed specifically for storefront APIs without search facet coupling
+Field | Data type | Description
+--- | --- | ---
+`slug` | String! | The unique URL-friendly identifier for the category, used in routing and navigation
+`name` | String! | The display name of the category as shown to customers
+
+### Key benefits
+
+- **Lightweight Design**: Contains essential fields (slug and name) for optimal performance
 - **Extensible**: Serves as a base interface for specialized category types
 
-## Implementing Types
+## Category types
 
 The `CategoryViewV2` interface is implemented by two specialized types:
 
 1. **CategoryNavigationView** - For menu rendering and navigation
 2. **CategoryTreeView** - For hierarchical category management (primarily RetailCMS)
 
-### Comparison with Legacy CategoryView
-
-The original `CategoryView` type was coupled with search facets and contained many fields that were not needed for basic category display:
-
-**Legacy CategoryView** (deprecated):
-
-- `availableSortBy`, `defaultSortBy` - Search-related fields
-- `id`, `parentId` - Internal identifiers
-- `path`, `urlKey`, `urlPath` - Multiple URL representations
-- `roles` - SEO-specific fields
-- `level` - Hierarchy information
-
-**New CategoryViewV2**:
-
-- `slug` - Single URL identifier
-- `name` - Display name only
-
-This streamlined approach reduces payload size and improves performance for common storefront use cases.
-
-## CategoryNavigationView Type
+### CategoryNavigationView
 
 The `CategoryNavigationView` type implements `CategoryViewV2` and is specifically designed for building storefront navigation menus with built-in performance optimizations.
 
-### Type Definition
+#### Type definition
 
 ```graphql
 type CategoryNavigationView implements CategoryViewV2 {
@@ -73,14 +63,32 @@ type CategoryNavigationView implements CategoryViewV2 {
 }
 ```
 
-### Performance Safeguards
+#### Performance safeguards
 
 - **Depth Limitation**: Menu depth is limited to 4 levels maximum
 - **Lightweight Attributes**: Excludes heavyweight category attributes redundant for menu rendering
 - **Single Query**: Retrieves entire family in one database query
 - **Heavy Caching**: Query responses are heavily cached for optimal performance
 
-### Navigation Query
+### CategoryTreeView type
+
+The `CategoryTreeView` type implements `CategoryViewV2` and provides comprehensive hierarchical category data, primarily designed for RetailCMS applications.
+
+#### Type definition
+
+```graphql
+type CategoryTreeView implements CategoryViewV2 {
+    slug: String!
+    name: String!
+    level: Int
+    parentSlug: String
+    childrenSlugs: [String]
+}
+```
+
+## Navigation query
+
+Retrieve category navigation data optimized for storefront menu rendering with built-in performance safeguards.
 
 ```graphql
 type Query {
@@ -88,9 +96,7 @@ type Query {
 }
 ```
 
-### Practical Examples
-
-#### Example 1: Basic Top Menu Navigation
+### Example: Basic Top Menu Navigation
 
 **Query:**
 
@@ -127,7 +133,7 @@ query GetTopMenuNavigation {
 }
 ```
 
-#### Example 2: Multi-Level Menu Navigation
+### Example: Multi-Level Menu Navigation
 
 **Query:**
 
@@ -180,23 +186,9 @@ query GetFullMenuNavigation {
 }
 ```
 
-## CategoryTreeView Type
+## CategoryTree query
 
-The `CategoryTreeView` type implements `CategoryViewV2` and provides comprehensive hierarchical category data, primarily designed for RetailCMS applications.
-
-### Type Definition
-
-```graphql
-type CategoryTreeView implements CategoryViewV2 {
-    slug: String!
-    name: String!
-    level: Int
-    parentSlug: String
-    childrenSlugs: [String]
-}
-```
-
-### CategoryTree Query
+Retrieve hierarchical category data in a tree structure with parent-child relationships and level information.
 
 ```graphql
 type Query {
@@ -204,9 +196,7 @@ type Query {
 }
 ```
 
-### Practical Examples
-
-#### Example 3: Full Category Tree Retrieval
+### Example: Full Category Tree Retrieval
 
 **Query:**
 
@@ -254,7 +244,7 @@ query GetFullCategoryTree {
 }
 ```
 
-#### Example 4: Specific Category Subtree
+### Example: Specific Category Subtree
 
 **Query:**
 
@@ -306,7 +296,7 @@ query GetSpecificCategorySubtree {
 }
 ```
 
-#### Example 5: Root Categories Only
+### Example: Root Categories Only
 
 **Query:**
 
@@ -374,13 +364,13 @@ Use `categoryTree` query with `CategoryTreeView` for:
 ### Performance Considerations
 
 1. **Navigation Query**:
-   - Heavily cached responses
-   - Single database query per family
-   - Limited to 4 levels for performance
-   - Excludes heavyweight attributes
+   - Heavily cached responses.
+   - Single database query per family.
+   - Limited to four levels for performance.
+   - Excludes heavyweight attributes.
 
 2. **CategoryTree Query**:
-   - Use `depth` parameter to limit tree traversal
-   - Use `slugs` parameter for targeted queries
-   - Ideal for administrative interfaces
-   - Provides complete hierarchy metadata
+   - Use `depth` parameter to limit tree traversal.
+   - Use `slugs` parameter for targeted queries.
+   - Ideal for administrative interfaces.
+   - Provides complete hierarchy metadata.
