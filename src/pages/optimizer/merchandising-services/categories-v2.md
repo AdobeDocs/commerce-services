@@ -1,5 +1,5 @@
 ---
-title: Implement categories on the storefront
+title: Implement Categories on the Storefront
 edition: saas
 description: Use the GraphQL category queries to build storefront menus and fetch hierarchical category data with parent-child and level details. 
 keywords:
