@@ -41,7 +41,7 @@ module.exports = [
             path: "/optimizer/merchandising-services/use-cases.md",
             pages: [
               {
-                title: "Manage categories",
+                title: "Implement categories on the storefront",
                 path: "/optimizer/merchandising-services/categories-v2.md"
               }
             ]
