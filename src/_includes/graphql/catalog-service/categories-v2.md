@@ -49,7 +49,7 @@ The `CategoryViewV2` interface is implemented by two specialized types:
 1. **CategoryNavigationView** - For menu rendering and navigation
 2. **CategoryTreeView** - For hierarchical category management (primarily RetailCMS)
 
-### CategoryNavigationView 
+### CategoryNavigationView
 
 The `CategoryNavigationView` type implements `CategoryViewV2` and is specifically designed for building storefront navigation menus with built-in performance optimizations.
 
