@@ -34,29 +34,19 @@ For details, see <a href="https://developer.adobe.com/commerce/services/referenc
 
 ## Products
 
-A product is any item or service offered for sale through online channels. Products can be physical goods, digital downloads, or services. They are the core elements of your catalog.
+A product is any item or service offered for sale through online channels. Products can be physical goods, digital downloads, or services. They are the core elements of your catalog. Each product type has its own set of attributes and configurations to help you manage and present them effectively in your store.
 
 **Product types** are different categories of products that you can create and manage in your catalog. Merchandising Services supports the following product types:
 
-- **Simple products**—The Catalog Service maps the Adobe Commerce simple, virtual, downloadable, and gift card product types to `simpleProductViews`. This type has:
+- **Simple products**——Basic items with no variations, for example a single t-shirt in one size and color. The Catalog Service maps the Adobe Commerce simple, virtual, downloadable, and gift card product types to `simpleProductViews`. This type has:
   - A single, fixed price and quantity.
-  - A regular price (before discounts) and final price (after discounts)
-  - Support for product attributes, such as color, size, and other characteristics
+  - A regular price (before discounts) and final price (after discounts).
+  - Support for product attributes, such as color, size, and other characteristics.
 
-- **Complex products**—The Catalog Service maps the Adobe Commerce configurable, bundle, and grouped product types to `complexProductViews`. Complex products are collections of multiple simple products that can be configured or bundled together.
-  - Each simple product can have its own price.
-  - Shoppers can specify quantities for individual products.
-  - Product options (like size, color, material) are unified and work the same way regardless of product type. Each option selection points to a specific simple product with its own attributes and price. The final product remains undefined until the shopper selects all required options.
+- **Complex products**—The Catalog Service maps the Adobe Commerce configurable, bundle, and grouped product types to `complexProductViews`.
 
-  - Simple product types (simple, virtual, downloadable, gift card) are represented as simpleProductViews.
-  - Complex product types (configurable, bundle, grouped) are represented as complexProductViews in the GraphQL schema.
-
-  - **Simple Products**—Basic items with no variations, for example a single t-shirt in one size and color.
-  - **Complex Products**
   - **Configurable Products**—Items with multiple options or variations, for example a t-shirt available in different sizes and colors.
   - **Bundled Products**—Collections of simple or configurable products sold together as a package, for example a gift set containing a t-shirt, mug, and hat.
-
-Each product type has its own set of attributes and configurations to help you manage and present them effectively in your store.
 
 **Product variants** are a specific version of a product that differs from other versions based on certain attributes like size, color, or material. These variants are typically part of a configurable product, allowing customers to choose from different options on a single product page.
 
