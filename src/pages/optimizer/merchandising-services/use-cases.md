@@ -39,6 +39,9 @@ The Merchandising API provides several GraphQL queries designed for different us
 
 | Query | Description | Use Case |
 |-------|-------------|----------|
+|`attributeMetadata`| Return a list of product attribue codes that can be used for sorting or filtering |
+|`categoryTree` | Retrieve hierarchical category data in a tree structure with parent-child relationships and level information | - Catalog hierarchy management<br>- Build category administration interfaces<br>- Implement catalog tree editors<br>Manage parent-child relationships | 
+|`navigation` | Retrieve category navigation data optimized for storefront menu rendering with built-in performance safeguards. | Build intuitive, personalized menus navigation
 | `products` | Retrieve detailed information about specific products by SKU | Product detail pages, product comparison |
 | `productSearch` | Search products with filters, sorting, and pagination | Search results, category pages, product listings |
 | `refineProduct` | Get variant-specific information for configurable products | Product option selection, variant switching |
