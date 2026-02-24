@@ -32,7 +32,7 @@
           },
           {
             "name": "refineProduct",
-            "description": null,
+            "description": "Retrieves refined product search results by applying additional filters, sorting, or facets to an existing product result set, enabling incremental narrowing of product lists without running a completely new product query.",
             "args": [
               {
                 "name": "optionIds",
@@ -1257,7 +1257,7 @@
           },
           {
             "name": "recommendationsByUnitIds",
-            "description": null,
+            "description": "Retrieve recommendation units by their unique ID to use on the storefront.",
             "args": [
               {
                 "name": "unitIds",
@@ -1338,7 +1338,7 @@
           },
           {
             "name": "productSearch",
-            "description": "Search products using Live Search",
+            "description": "Runs a search or browse request against an Adobe Commerce Optimizer catalog view based on a query phrase, filters, and sort options. It applies Product Discovery configuration (merchandising rules, intelligent ranking, and facets) and returns matching products, facet buckets with counts, and pagination metadata for use by headless storefronts (AEM, Edge Delivery Services, custom SPAs).",
             "args": [
               {
                 "name": "context",
@@ -60105,7 +60105,7 @@
             },
             {
               "name": "refineProduct",
-              "description": null,
+              "description": "Retrieves refined product search results by applying additional filters, sorting, or facets to an existing product result set, enabling incremental narrowing of product lists without running a completely new product query.",
               "args": [
                 {
                   "name": "optionIds",
@@ -61624,7 +61624,7 @@
             },
             {
               "name": "recommendationsByUnitIds",
-              "description": null,
+              "description": "Retrieve recommendation units by their unique ID to use on the storefront.",
               "args": [
                 {
                   "name": "unitIds",
@@ -61727,7 +61727,7 @@
             },
             {
               "name": "productSearch",
-              "description": "Search products using Live Search",
+              "description": "Runs a search or browse request against an Adobe Commerce Optimizer catalog view based on a query phrase, filters, and sort options. It applies Product Discovery configuration (merchandising rules, intelligent ranking, and facets) and returns matching products, facet buckets with counts, and pagination metadata for use by headless storefronts (AEM, Edge Delivery Services, custom SPAs).",
               "args": [
                 {
                   "name": "context",
@@ -77228,6 +77228,6 @@
     }
   },
   "extensions": {
-    "request-id": "a66dc877-4f7b-4cc5-9810-56df320e9477"
+    "request-id": "e7346d73-a69c-4ebe-a726-183599c99faa"
   }
 }

@@ -33,7 +33,6 @@
                 <li><a href="#query-navigation">navigation</a></li>
                 <li><a href="#query-productSearch">productSearch</a></li>
                 <li><a href="#query-products">products</a></li>
-                <li><a href="#query-recommendations">recommendations</a></li>
                 <li><a href="#query-recommendationsByUnitIds">recommendationsByUnitIds</a></li>
                 <li><a href="#query-refineProduct">refineProduct</a></li>
                 <li><a href="#query-variants">variants</a></li>
@@ -64,25 +63,13 @@
             <li><a href="#definition-CategoryViewInterface">CategoryViewInterface</a></li>
             <li><a href="#definition-CategoryViewV2">CategoryViewV2</a></li>
             <li><a href="#definition-ComplexProductView">ComplexProductView</a></li>
-            <li><a href="#definition-ConditionInput">ConditionInput</a></li>
-            <li><a href="#definition-CustomOperatorInput">CustomOperatorInput</a></li>
-            <li><a href="#definition-CustomOperatorType">CustomOperatorType</a></li>
             <li><a href="#definition-DateTime">DateTime</a></li>
-            <li><a href="#definition-Field">Field</a></li>
-            <li><a href="#definition-FilterRuleInput">FilterRuleInput</a></li>
-            <li><a href="#definition-FilterRuleType">FilterRuleType</a></li>
             <li><a href="#definition-FilterableInSearchAttribute">FilterableInSearchAttribute</a></li>
             <li><a href="#definition-Float">Float</a></li>
             <li><a href="#definition-Highlight">Highlight</a></li>
             <li><a href="#definition-ID">ID</a></li>
             <li><a href="#definition-Int">Int</a></li>
-            <li><a href="#definition-IsOperatorInput">IsOperatorInput</a></li>
-            <li><a href="#definition-IsOperatorType">IsOperatorType</a></li>
             <li><a href="#definition-JSON">JSON</a></li>
-            <li><a href="#definition-NumericOperatorInput">NumericOperatorInput</a></li>
-            <li><a href="#definition-NumericOperatorType">NumericOperatorType</a></li>
-            <li><a href="#definition-OperatorInput">OperatorInput</a></li>
-            <li><a href="#definition-PageType">PageType</a></li>
             <li><a href="#definition-Price">Price</a></li>
             <li><a href="#definition-PriceAdjustment">PriceAdjustment</a></li>
             <li><a href="#definition-ProductSearchItem">ProductSearchItem</a></li>
@@ -115,9 +102,6 @@
             <li><a href="#definition-PurchaseHistory">PurchaseHistory</a></li>
             <li><a href="#definition-QueryContextInput">QueryContextInput</a></li>
             <li><a href="#definition-RangeBucket">RangeBucket</a></li>
-            <li><a href="#definition-RangeOperatorInput">RangeOperatorInput</a></li>
-            <li><a href="#definition-RangeType">RangeType</a></li>
-            <li><a href="#definition-RangeValueInput">RangeValueInput</a></li>
             <li><a href="#definition-RecommendationUnit">RecommendationUnit</a></li>
             <li><a href="#definition-Recommendations">Recommendations</a></li>
             <li><a href="#definition-ScalarBucket">ScalarBucket</a></li>
@@ -129,10 +113,7 @@
             <li><a href="#definition-SortableAttribute">SortableAttribute</a></li>
             <li><a href="#definition-StatsBucket">StatsBucket</a></li>
             <li><a href="#definition-String">String</a></li>
-            <li><a href="#definition-StringOperatorInput">StringOperatorInput</a></li>
-            <li><a href="#definition-StringOperatorType">StringOperatorType</a></li>
             <li><a href="#definition-SwatchType">SwatchType</a></li>
-            <li><a href="#definition-UnitConfigInput">UnitConfigInput</a></li>
             <li><a href="#definition-ViewHistory">ViewHistory</a></li>
             <li><a href="#definition-ViewHistoryInput">ViewHistoryInput</a></li>
           </ul>
@@ -147,11 +128,11 @@
         </button>
       </div>
       <article id="content">
-        <h1 class="doc-heading">Merchandising GraphQL API</h1>
+        <h1 class="doc-heading"></h1>
         <div id="introduction" data-traverse-target="introduction">
           <div id="welcome" class="doc-row">
             <div class="doc-copy">
-              <p>Use the Merchandising GraphQL API to access rich view-model (read-only) catalog data to build product-related storefront experiences. For more information about the API, see the <a href="https://developer.adobe.com/commerce/services/optimizer/merchandising-services/" target="_blank">developer documentation</a>.</p>
+              <p>The Merchandising GraphQL API enables developers to build rich, dynamic storefront experiences by providing efficient access to catalog data from Adobe Commerce Optimizer. This API is designed for frontend applications that need to retrieve product information, pricing, search results, and recommendations in real-time. For more information about the API, see the <a href="https://developer.adobe.com/commerce/services/optimizer/merchandising-services/" target="_blank">developer documentation</a>.</p>
             </div>
             <div class="doc-examples">
               <div class="example-section welcome-api-endpoints-section example-section-is-code">
@@ -377,9 +358,9 @@ AC-Policy-{*}: AC-Policy-Brand</code></pre>
                 <html>
                   <head></head>
                   <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
-  <span class="hljs-attr">"family"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"family"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"slugs"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"depth"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">123</span>
+  <span class="hljs-attr">"depth"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">987</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
                   </body>
@@ -393,14 +374,14 @@ AC-Policy-{*}: AC-Policy-Brand</code></pre>
   <span class="hljs-attr">"data"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
     <span class="hljs-attr">"categoryTree"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
       <span class="hljs-punctuation">{</span>
-        <span class="hljs-attr">"slug"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
-        <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">"slug"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
         <span class="hljs-attr">"description"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
         <span class="hljs-attr">"metaTags"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">CategoryMetaTags</span><span class="hljs-punctuation">,</span>
         <span class="hljs-attr">"images"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">CategoryImage</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
         <span class="hljs-attr">"level"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">123</span><span class="hljs-punctuation">,</span>
         <span class="hljs-attr">"parentSlug"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
-        <span class="hljs-attr">"childrenSlugs"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">]</span>
+        <span class="hljs-attr">"childrenSlugs"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"abc123"</span><span class="hljs-punctuation">]</span>
       <span class="hljs-punctuation">}</span>
     <span class="hljs-punctuation">]</span>
   <span class="hljs-punctuation">}</span>
@@ -488,7 +469,7 @@ AC-Policy-{*}: AC-Policy-Brand</code></pre>
                 <h5>Variables</h5>
                 <html>
                   <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"family"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">}</span>
+                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"family"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">}</span>
 </code></pre>
                   </body>
                 </html>
@@ -501,7 +482,7 @@ AC-Policy-{*}: AC-Policy-Brand</code></pre>
   <span class="hljs-attr">"data"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
     <span class="hljs-attr">"navigation"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
       <span class="hljs-punctuation">{</span>
-        <span class="hljs-attr">"slug"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">"slug"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
         <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
         <span class="hljs-attr">"children"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">CategoryNavigationView</span><span class="hljs-punctuation">]</span>
       <span class="hljs-punctuation">}</span>
@@ -527,7 +508,7 @@ AC-Policy-{*}: AC-Policy-Brand</code></pre>
             <div class="doc-copy">
               <div class="operation-description doc-copy-section">
                 <h5>Description</h5>
-                <p>Search products using Live Search</p>
+                <p>Runs a search or browse request against an Adobe Commerce Optimizer catalog view based on a query phrase, filters, and sort options. It applies Product Discovery configuration (merchandising rules, intelligent ranking, and facets) and returns matching products, facet buckets with counts, and pagination metadata for use by headless storefronts (AEM, Edge Delivery Services, custom SPAs).</p>
               </div>
             </div>
           </div>
@@ -657,7 +638,7 @@ AC-Policy-{*}: AC-Policy-Brand</code></pre>
       <span class="hljs-attr">"facets"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">Aggregation</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
       <span class="hljs-attr">"items"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">ProductSearchItem</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
       <span class="hljs-attr">"page_info"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">SearchResultPageInfo</span><span class="hljs-punctuation">,</span>
-      <span class="hljs-attr">"related_terms"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"abc123"</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"related_terms"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
       <span class="hljs-attr">"suggestions"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"abc123"</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
       <span class="hljs-attr">"total_count"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">987</span><span class="hljs-punctuation">,</span>
       <span class="hljs-attr">"warnings"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">ProductSearchWarning</span><span class="hljs-punctuation">]</span>
@@ -782,179 +763,30 @@ AC-Policy-{*}: AC-Policy-Brand</code></pre>
     <span class="hljs-attr">"products"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
       <span class="hljs-punctuation">{</span>
         <span class="hljs-attr">"addToCartAllowed"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span>
-        <span class="hljs-attr">"inStock"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">"inStock"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span>
         <span class="hljs-attr">"lowStock"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span><span class="hljs-punctuation">,</span>
         <span class="hljs-attr">"attributes"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">ProductViewAttribute</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
         <span class="hljs-attr">"description"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
-        <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">4</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"4"</span><span class="hljs-punctuation">,</span>
         <span class="hljs-attr">"images"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">ProductViewImage</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
         <span class="hljs-attr">"videos"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">ProductViewVideo</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
         <span class="hljs-attr">"lastModifiedAt"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"2007-12-03T10:15:30Z"</span><span class="hljs-punctuation">,</span>
         <span class="hljs-attr">"metaDescription"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
-        <span class="hljs-attr">"metaKeyword"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">"metaKeyword"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
         <span class="hljs-attr">"metaTitle"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
         <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
-        <span class="hljs-attr">"shortDescription"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">"shortDescription"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
         <span class="hljs-attr">"inputOptions"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">ProductViewInputOption</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
-        <span class="hljs-attr">"sku"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">"sku"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
         <span class="hljs-attr">"externalId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
-        <span class="hljs-attr">"url"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
-        <span class="hljs-attr">"urlKey"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">"url"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">"urlKey"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
         <span class="hljs-attr">"links"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">ProductViewLink</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
         <span class="hljs-attr">"categories"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">CategoryProductView</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
-        <span class="hljs-attr">"queryType"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
-        <span class="hljs-attr">"visibility"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span>
+        <span class="hljs-attr">"queryType"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">"visibility"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span>
       <span class="hljs-punctuation">}</span>
     <span class="hljs-punctuation">]</span>
-  <span class="hljs-punctuation">}</span>
-<span class="hljs-punctuation">}</span>
-</code></pre>
-                  </body>
-                </html>
-              </div>
-            </div>
-            <a href="#top">back to top</a>
-          </div>
-        </section>
-        <section id="query-recommendations" class="operation operation-query" data-traverse-target="query-recommendations">
-          <div class="operation-group-name">
-            <a href="#group-Operations-Queries">Queries</a>
-          </div>
-          <h2 class="operation-heading ">
-            <code>recommendations</code>
-          </h2>
-          <div class="doc-row">
-            <div class="doc-copy">
-              <div class="operation-description doc-copy-section">
-                <h5>Description</h5>
-                <p>Get Recommendations</p>
-              </div>
-            </div>
-          </div>
-          <div class="doc-row">
-            <div class="doc-copy">
-              <div class="operation-response doc-copy-section">
-                <h5>Response</h5>
-                <p> Returns a <a href="#definition-Recommendations"><code>Recommendations</code></a>
-                </p>
-              </div>
-              <div class="operation-arguments doc-copy-section">
-                <h5>Arguments</h5>
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Name</th>
-                      <th>Description</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <span class="property-name"><code>cartSkus</code></span> - <span class="property-type"><a href="#definition-String"><code>[String]</code></a></span>
-                      </td>
-                      <td> SKUs of products in the cart </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <span class="property-name"><code>category</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
-                      </td>
-                      <td> Category currently being viewed </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <span class="property-name"><code>currentSku</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
-                      </td>
-                      <td> SKU of the product currently being viewed on PDP </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <span class="property-name"><code>pageType</code></span> - <span class="property-type"><a href="#definition-PageType"><code>PageType</code></a></span>
-                      </td>
-                      <td> Type of page on which recommendations are requested </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <span class="property-name"><code>userPurchaseHistory</code></span> - <span class="property-type"><a href="#definition-PurchaseHistory"><code>[PurchaseHistory]</code></a></span>
-                      </td>
-                      <td> User purchase history with timestamp </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <span class="property-name"><code>userViewHistory</code></span> - <span class="property-type"><a href="#definition-ViewHistory"><code>[ViewHistory]</code></a></span>
-                      </td>
-                      <td> User view history with timestamp </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <span class="property-name"><code>config</code></span> - <span class="property-type"><a href="#definition-UnitConfigInput"><code>UnitConfigInput</code></a></span>
-                      </td>
-                      <td> Optional unit configuration </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-            <div class="doc-examples">
-              <h4 class="example-heading">Example</h4>
-              <div class="example-section example-section-is-code operation-query-example">
-                <h5>Query</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">query</span> recommendations<span class="hljs-tag">(
-  <span class="hljs-code">$cartSkus</span>: <span class="hljs-type">[String]</span>,
-  <span class="hljs-code">$category</span>:<span class="hljs-type"> String,</span>
-  <span class="hljs-code">$currentSku</span>:<span class="hljs-type"> String,</span>
-  <span class="hljs-code">$pageType</span>:<span class="hljs-type"> PageType,</span>
-  <span class="hljs-code">$userPurchaseHistory</span>: <span class="hljs-type">[PurchaseHistory]</span>,
-  <span class="hljs-code">$userViewHistory</span>: <span class="hljs-type">[ViewHistory]</span>,
-  <span class="hljs-code">$config</span>:<span class="hljs-type"> UnitConfigInput
-</span>)</span> <span class="hljs-tag">{
-  <span class="hljs-symbol">recommendations<span class="hljs-tag">(
-    cartSkus: <span class="hljs-code">$cartSkus</span>,
-    category: <span class="hljs-code">$category</span>,
-    currentSku: <span class="hljs-code">$currentSku</span>,
-    pageType: <span class="hljs-code">$pageType</span>,
-    userPurchaseHistory: <span class="hljs-code">$userPurchaseHistory</span>,
-    userViewHistory: <span class="hljs-code">$userViewHistory</span>,
-    config: <span class="hljs-code">$config</span>
-  )</span> <span class="hljs-tag">{
-    <span class="hljs-symbol">results <span class="hljs-tag">{
-      <span class="hljs-type">...RecommendationUnitFragment</span>
-    }</span></span>
-    <span class="hljs-symbol">totalResults</span>
-  }</span></span>
-}</span></span>
-</code></pre>
-                  </body>
-                </html>
-              </div>
-              <div class="example-section example-section-is-code operation-variables-example">
-                <h5>Variables</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
-  <span class="hljs-attr">"cartSkus"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"category"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"currentSku"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"pageType"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"CMS"</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"userPurchaseHistory"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">PurchaseHistory</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"userViewHistory"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">ViewHistory</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"config"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">UnitConfigInput</span>
-<span class="hljs-punctuation">}</span>
-</code></pre>
-                  </body>
-                </html>
-              </div>
-              <div class="example-section example-section-is-code operation-response-example">
-                <h5>Response</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
-  <span class="hljs-attr">"data"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
-    <span class="hljs-attr">"recommendations"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
-      <span class="hljs-attr">"results"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">RecommendationUnit</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
-      <span class="hljs-attr">"totalResults"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">987</span>
-    <span class="hljs-punctuation">}</span>
   <span class="hljs-punctuation">}</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
@@ -972,6 +804,14 @@ AC-Policy-{*}: AC-Policy-Brand</code></pre>
           <h2 class="operation-heading ">
             <code>recommendationsByUnitIds</code>
           </h2>
+          <div class="doc-row">
+            <div class="doc-copy">
+              <div class="operation-description doc-copy-section">
+                <h5>Description</h5>
+                <p>Retrieve recommendation units by their unique ID to use on the storefront.</p>
+              </div>
+            </div>
+          </div>
           <div class="doc-row">
             <div class="doc-copy">
               <div class="operation-response doc-copy-section">
@@ -1058,7 +898,7 @@ AC-Policy-{*}: AC-Policy-Brand</code></pre>
                 <html>
                   <head></head>
                   <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
-  <span class="hljs-attr">"unitIds"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"unitIds"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"abc123"</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"currentSku"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"userPurchaseHistory"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">PurchaseHistory</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"userViewHistory"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">ViewHistory</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
@@ -1076,7 +916,7 @@ AC-Policy-{*}: AC-Policy-Brand</code></pre>
   <span class="hljs-attr">"data"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
     <span class="hljs-attr">"recommendationsByUnitIds"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
       <span class="hljs-attr">"results"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">RecommendationUnit</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
-      <span class="hljs-attr">"totalResults"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">123</span>
+      <span class="hljs-attr">"totalResults"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">987</span>
     <span class="hljs-punctuation">}</span>
   <span class="hljs-punctuation">}</span>
 <span class="hljs-punctuation">}</span>
@@ -1095,6 +935,14 @@ AC-Policy-{*}: AC-Policy-Brand</code></pre>
           <h2 class="operation-heading ">
             <code>refineProduct</code>
           </h2>
+          <div class="doc-row">
+            <div class="doc-copy">
+              <div class="operation-description doc-copy-section">
+                <h5>Description</h5>
+                <p>Retrieves refined product search results by applying additional filters, sorting, or facets to an existing product result set, enabling incremental narrowing of product lists without running a completely new product query.</p>
+              </div>
+            </div>
+          </div>
           <div class="doc-row">
             <div class="doc-copy">
               <div class="operation-response doc-copy-section">
@@ -1205,8 +1053,8 @@ AC-Policy-{*}: AC-Policy-Brand</code></pre>
   <span class="hljs-attr">"data"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
     <span class="hljs-attr">"refineProduct"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
       <span class="hljs-attr">"addToCartAllowed"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span><span class="hljs-punctuation">,</span>
-      <span class="hljs-attr">"inStock"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span><span class="hljs-punctuation">,</span>
-      <span class="hljs-attr">"lowStock"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"inStock"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"lowStock"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span>
       <span class="hljs-attr">"attributes"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">ProductViewAttribute</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
       <span class="hljs-attr">"description"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
       <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">4</span><span class="hljs-punctuation">,</span>
@@ -1215,17 +1063,17 @@ AC-Policy-{*}: AC-Policy-Brand</code></pre>
       <span class="hljs-attr">"lastModifiedAt"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"2007-12-03T10:15:30Z"</span><span class="hljs-punctuation">,</span>
       <span class="hljs-attr">"metaDescription"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
       <span class="hljs-attr">"metaKeyword"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
-      <span class="hljs-attr">"metaTitle"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
-      <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"metaTitle"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
       <span class="hljs-attr">"shortDescription"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
       <span class="hljs-attr">"inputOptions"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">ProductViewInputOption</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
-      <span class="hljs-attr">"sku"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"sku"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
       <span class="hljs-attr">"externalId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
-      <span class="hljs-attr">"url"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"url"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
       <span class="hljs-attr">"urlKey"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
       <span class="hljs-attr">"links"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">ProductViewLink</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
       <span class="hljs-attr">"categories"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">CategoryProductView</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
-      <span class="hljs-attr">"queryType"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"queryType"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
       <span class="hljs-attr">"visibility"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span>
     <span class="hljs-punctuation">}</span>
   <span class="hljs-punctuation">}</span>
@@ -1328,8 +1176,8 @@ AC-Policy-{*}: AC-Policy-Brand</code></pre>
                   <head></head>
                   <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
   <span class="hljs-attr">"sku"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"optionIds"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"pageSize"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">123</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"optionIds"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"abc123"</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"pageSize"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">987</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"cursor"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
@@ -1344,7 +1192,7 @@ AC-Policy-{*}: AC-Policy-Brand</code></pre>
   <span class="hljs-attr">"data"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
     <span class="hljs-attr">"variants"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
       <span class="hljs-attr">"variants"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">ProductViewVariant</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
-      <span class="hljs-attr">"cursor"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span>
+      <span class="hljs-attr">"cursor"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span>
     <span class="hljs-punctuation">}</span>
   <span class="hljs-punctuation">}</span>
 <span class="hljs-punctuation">}</span>
@@ -1405,7 +1253,7 @@ AC-Policy-{*}: AC-Policy-Brand</code></pre>
                 <html>
                   <head></head>
                   <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
-  <span class="hljs-attr">"attribute"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"attribute"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"buckets"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">Bucket</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"title"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"type"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"INTELLIGENT"</span>
@@ -1525,8 +1373,8 @@ AC-Policy-{*}: AC-Policy-Brand</code></pre>
                   <head></head>
                   <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
   <span class="hljs-attr">"action_type"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"BOOST"</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"rule_id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"rule_name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span>
+  <span class="hljs-attr">"rule_id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"rule_name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
                   </body>
@@ -1661,15 +1509,6 @@ AC-Policy-{*}: AC-Policy-Brand</code></pre>
               </div>
             </div>
             <div class="doc-examples">
-              <div class="example-section example-section-is-code">
-                <h5>Example</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-literal"><span class="hljs-keyword">true</span></span>
-</code></pre>
-                  </body>
-                </html>
-              </div>
             </div>
             <a href="#top">back to top</a>
           </div>
@@ -1746,7 +1585,7 @@ AC-Policy-{*}: AC-Policy-Brand</code></pre>
                 <h5>Example</h5>
                 <html>
                   <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"title"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">}</span>
+                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"title"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">}</span>
 </code></pre>
                   </body>
                 </html>
@@ -1810,9 +1649,9 @@ AC-Policy-{*}: AC-Policy-Brand</code></pre>
                 <html>
                   <head></head>
                   <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
-  <span class="hljs-attr">"count"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">987</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"4"</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"path"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"count"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">123</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">4</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"path"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"title"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
@@ -1872,7 +1711,7 @@ AC-Policy-{*}: AC-Policy-Brand</code></pre>
                 <h5>Example</h5>
                 <html>
                   <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"4"</span><span class="hljs-punctuation">}</span>
+                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">4</span><span class="hljs-punctuation">}</span>
 </code></pre>
                   </body>
                 </html>
@@ -1934,8 +1773,8 @@ AC-Policy-{*}: AC-Policy-Brand</code></pre>
                   <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
   <span class="hljs-attr">"url"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"label"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"roles"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"customRoles"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">]</span>
+  <span class="hljs-attr">"roles"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"abc123"</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"customRoles"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"abc123"</span><span class="hljs-punctuation">]</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
                   </body>
@@ -1991,7 +1830,7 @@ AC-Policy-{*}: AC-Policy-Brand</code></pre>
                 <html>
                   <head></head>
                   <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
-  <span class="hljs-attr">"title"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"title"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"description"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"keywords"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">]</span>
 <span class="hljs-punctuation">}</span>
@@ -2114,7 +1953,7 @@ AC-Policy-{*}: AC-Policy-Brand</code></pre>
                   <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
   <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"slug"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"level"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">987</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"level"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">123</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"parents"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">CategoryProductView</span><span class="hljs-punctuation">]</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
@@ -2197,8 +2036,8 @@ AC-Policy-{*}: AC-Policy-Brand</code></pre>
                   <head></head>
                   <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
   <span class="hljs-attr">"slug"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"description"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"description"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"metaTags"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">CategoryMetaTags</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"images"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">CategoryImage</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"level"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">987</span><span class="hljs-punctuation">,</span>
@@ -2326,10 +2165,10 @@ AC-Policy-{*}: AC-Policy-Brand</code></pre>
                 <html>
                   <head></head>
                   <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
-  <span class="hljs-attr">"availableSortBy"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"abc123"</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"children"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"defaultSortBy"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">4</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"availableSortBy"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"children"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"abc123"</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"defaultSortBy"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"4"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"level"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">123</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"parentId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
@@ -2337,7 +2176,7 @@ AC-Policy-{*}: AC-Policy-Brand</code></pre>
   <span class="hljs-attr">"roles"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"urlKey"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"urlPath"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"count"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">123</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"count"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">987</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"title"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
@@ -2449,13 +2288,13 @@ AC-Policy-{*}: AC-Policy-Brand</code></pre>
                   <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
   <span class="hljs-attr">"availableSortBy"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"abc123"</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"defaultSortBy"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">4</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"4"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"level"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">123</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"path"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"roles"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"roles"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"abc123"</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"urlKey"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"urlPath"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span>
+  <span class="hljs-attr">"urlPath"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
                   </body>
@@ -2533,7 +2372,7 @@ AC-Policy-{*}: AC-Policy-Brand</code></pre>
                 <html>
                   <head></head>
                   <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
-  <span class="hljs-attr">"slug"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"slug"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
@@ -2762,16 +2601,16 @@ AC-Policy-{*}: AC-Policy-Brand</code></pre>
                 <html>
                   <head></head>
                   <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
-  <span class="hljs-attr">"addToCartAllowed"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"addToCartAllowed"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"inStock"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"lowStock"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"lowStock"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"attributes"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">ProductViewAttribute</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"description"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">4</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"description"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"4"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"images"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">ProductViewImage</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"videos"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">ProductViewVideo</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"lastModifiedAt"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"2007-12-03T10:15:30Z"</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"metaDescription"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"metaDescription"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"metaKeyword"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"metaTitle"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
@@ -2780,175 +2619,14 @@ AC-Policy-{*}: AC-Policy-Brand</code></pre>
   <span class="hljs-attr">"priceRange"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">ProductViewPriceRange</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"shortDescription"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"sku"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"externalId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"url"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"urlKey"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"externalId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"url"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"urlKey"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"links"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">ProductViewLink</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"categories"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">CategoryProductView</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"queryType"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"visibility"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span>
+  <span class="hljs-attr">"queryType"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"visibility"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span>
 <span class="hljs-punctuation">}</span>
-</code></pre>
-                  </body>
-                </html>
-              </div>
-            </div>
-            <a href="#top">back to top</a>
-          </div>
-        </section>
-        <section id="definition-ConditionInput" class="definition definition-input-object" data-traverse-target="definition-ConditionInput">
-          <div class="definition-group-name">
-            <a href="#group-Types">Types</a>
-          </div>
-          <h2 class="definition-heading">ConditionInput</h2>
-          <div class="doc-row">
-            <div class="doc-copy">
-              <div class="definition-properties doc-copy-section">
-                <h5>Fields</h5>
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Input Field</th>
-                      <th>Description</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <span class="property-name"><code>field</code></span> - <span class="property-type"><a href="#definition-Field"><code>Field</code></a></span>
-                      </td>
-                      <td>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <span class="property-name"><code>operator</code></span> - <span class="property-type"><a href="#definition-OperatorInput"><code>OperatorInput</code></a></span>
-                      </td>
-                      <td>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <span class="property-name"><code>enabled</code></span> - <span class="property-type"><a href="#definition-Boolean"><code>Boolean</code></a></span>
-                      </td>
-                      <td>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-            <div class="doc-examples">
-              <div class="example-section example-section-is-code">
-                <h5>Example</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
-  <span class="hljs-attr">"field"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"UNKNOWN_FIELD"</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"operator"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">OperatorInput</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"enabled"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span>
-<span class="hljs-punctuation">}</span>
-</code></pre>
-                  </body>
-                </html>
-              </div>
-            </div>
-            <a href="#top">back to top</a>
-          </div>
-        </section>
-        <section id="definition-CustomOperatorInput" class="definition definition-input-object" data-traverse-target="definition-CustomOperatorInput">
-          <div class="definition-group-name">
-            <a href="#group-Types">Types</a>
-          </div>
-          <h2 class="definition-heading">CustomOperatorInput</h2>
-          <div class="doc-row">
-            <div class="doc-copy">
-              <div class="definition-properties doc-copy-section">
-                <h5>Fields</h5>
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Input Field</th>
-                      <th>Description</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <span class="property-name"><code>type</code></span> - <span class="property-type"><a href="#definition-CustomOperatorType"><code>CustomOperatorType</code></a></span>
-                      </td>
-                      <td>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <span class="property-name"><code>value</code></span> - <span class="property-type"><a href="#definition-String"><code>[String]</code></a></span>
-                      </td>
-                      <td>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-            <div class="doc-examples">
-              <div class="example-section example-section-is-code">
-                <h5>Example</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
-  <span class="hljs-attr">"type"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"UNKNOWN_CUSTOMOPERATOR_TYPE"</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"value"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"abc123"</span><span class="hljs-punctuation">]</span>
-<span class="hljs-punctuation">}</span>
-</code></pre>
-                  </body>
-                </html>
-              </div>
-            </div>
-            <a href="#top">back to top</a>
-          </div>
-        </section>
-        <section id="definition-CustomOperatorType" class="definition definition-enum" data-traverse-target="definition-CustomOperatorType">
-          <div class="definition-group-name">
-            <a href="#group-Types">Types</a>
-          </div>
-          <h2 class="definition-heading">CustomOperatorType</h2>
-          <div class="doc-row">
-            <div class="doc-copy">
-              <div class="definition-properties doc-copy-section">
-                <h5>Values</h5>
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Enum Value</th>
-                      <th>Description</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <p><code>UNKNOWN_CUSTOMOPERATOR_TYPE</code></p>
-                      </td>
-                      <td>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <p><code>CUSTOM</code></p>
-                      </td>
-                      <td>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-            <div class="doc-examples">
-              <div class="example-section example-section-is-code">
-                <h5>Example</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-gql"><span class="hljs-symbol">"UNKNOWN_CUSTOMOPERATOR_TYPE"</span>
 </code></pre>
                   </body>
                 </html>
@@ -2975,213 +2653,6 @@ AC-Policy-{*}: AC-Policy-Brand</code></pre>
                 <html>
                   <head></head>
                   <body><pre><code class="hljs language-gql"><span class="hljs-symbol">"2007-12-03T10:15:30Z"</span>
-</code></pre>
-                  </body>
-                </html>
-              </div>
-            </div>
-            <a href="#top">back to top</a>
-          </div>
-        </section>
-        <section id="definition-Field" class="definition definition-enum" data-traverse-target="definition-Field">
-          <div class="definition-group-name">
-            <a href="#group-Types">Types</a>
-          </div>
-          <h2 class="definition-heading">Field</h2>
-          <div class="doc-row">
-            <div class="doc-copy">
-              <div class="definition-properties doc-copy-section">
-                <h5>Values</h5>
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Enum Value</th>
-                      <th>Description</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <p><code>UNKNOWN_FIELD</code></p>
-                      </td>
-                      <td>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <p><code>CATEGORY</code></p>
-                      </td>
-                      <td>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <p><code>PRICE</code></p>
-                      </td>
-                      <td>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <p><code>PRODUCT</code></p>
-                      </td>
-                      <td>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <p><code>OUT_OF_STOCK</code></p>
-                      </td>
-                      <td>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <p><code>LOW_STOCK</code></p>
-                      </td>
-                      <td>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <p><code>TYPE</code></p>
-                      </td>
-                      <td>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <p><code>VISIBILITY</code></p>
-                      </td>
-                      <td>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-            <div class="doc-examples">
-              <div class="example-section example-section-is-code">
-                <h5>Example</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-gql"><span class="hljs-symbol">"UNKNOWN_FIELD"</span>
-</code></pre>
-                  </body>
-                </html>
-              </div>
-            </div>
-            <a href="#top">back to top</a>
-          </div>
-        </section>
-        <section id="definition-FilterRuleInput" class="definition definition-input-object" data-traverse-target="definition-FilterRuleInput">
-          <div class="definition-group-name">
-            <a href="#group-Types">Types</a>
-          </div>
-          <h2 class="definition-heading">FilterRuleInput</h2>
-          <div class="doc-row">
-            <div class="doc-copy">
-              <div class="definition-properties doc-copy-section">
-                <h5>Fields</h5>
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Input Field</th>
-                      <th>Description</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <span class="property-name"><code>name</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
-                      </td>
-                      <td>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <span class="property-name"><code>type</code></span> - <span class="property-type"><a href="#definition-FilterRuleType"><code>FilterRuleType</code></a></span>
-                      </td>
-                      <td>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <span class="property-name"><code>conditions</code></span> - <span class="property-type"><a href="#definition-ConditionInput"><code>[ConditionInput]</code></a></span>
-                      </td>
-                      <td>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-            <div class="doc-examples">
-              <div class="example-section example-section-is-code">
-                <h5>Example</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
-  <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"type"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"UNKNOWN_FILTER_RULE_TYPE"</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"conditions"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">ConditionInput</span><span class="hljs-punctuation">]</span>
-<span class="hljs-punctuation">}</span>
-</code></pre>
-                  </body>
-                </html>
-              </div>
-            </div>
-            <a href="#top">back to top</a>
-          </div>
-        </section>
-        <section id="definition-FilterRuleType" class="definition definition-enum" data-traverse-target="definition-FilterRuleType">
-          <div class="definition-group-name">
-            <a href="#group-Types">Types</a>
-          </div>
-          <h2 class="definition-heading">FilterRuleType</h2>
-          <div class="doc-row">
-            <div class="doc-copy">
-              <div class="definition-properties doc-copy-section">
-                <h5>Values</h5>
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Enum Value</th>
-                      <th>Description</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <p><code>UNKNOWN_FILTER_RULE_TYPE</code></p>
-                      </td>
-                      <td>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <p><code>INCLUSION</code></p>
-                      </td>
-                      <td>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <p><code>EXCLUSION</code></p>
-                      </td>
-                      <td>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-            <div class="doc-examples">
-              <div class="example-section example-section-is-code">
-                <h5>Example</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-gql"><span class="hljs-symbol">"UNKNOWN_FILTER_RULE_TYPE"</span>
 </code></pre>
                   </body>
                 </html>
@@ -3242,7 +2713,7 @@ AC-Policy-{*}: AC-Policy-Brand</code></pre>
                   <head></head>
                   <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
   <span class="hljs-attr">"attribute"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"frontendInput"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"frontendInput"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"label"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"numeric"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span>
 <span class="hljs-punctuation">}</span>
@@ -3327,7 +2798,7 @@ AC-Policy-{*}: AC-Policy-Brand</code></pre>
                   <head></head>
                   <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
   <span class="hljs-attr">"attribute"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"matched_words"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"matched_words"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"abc123"</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"value"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
@@ -3355,7 +2826,7 @@ AC-Policy-{*}: AC-Policy-Brand</code></pre>
                 <h5>Example</h5>
                 <html>
                   <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-number">4</span>
+                  <body><pre><code class="hljs language-gql"><span class="hljs-symbol">"4"</span>
 </code></pre>
                   </body>
                 </html>
@@ -3381,105 +2852,7 @@ AC-Policy-{*}: AC-Policy-Brand</code></pre>
                 <h5>Example</h5>
                 <html>
                   <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-number">987</span>
-</code></pre>
-                  </body>
-                </html>
-              </div>
-            </div>
-            <a href="#top">back to top</a>
-          </div>
-        </section>
-        <section id="definition-IsOperatorInput" class="definition definition-input-object" data-traverse-target="definition-IsOperatorInput">
-          <div class="definition-group-name">
-            <a href="#group-Types">Types</a>
-          </div>
-          <h2 class="definition-heading">IsOperatorInput</h2>
-          <div class="doc-row">
-            <div class="doc-copy">
-              <div class="definition-properties doc-copy-section">
-                <h5>Fields</h5>
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Input Field</th>
-                      <th>Description</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <span class="property-name"><code>type</code></span> - <span class="property-type"><a href="#definition-IsOperatorType"><code>IsOperatorType</code></a></span>
-                      </td>
-                      <td>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <span class="property-name"><code>value</code></span> - <span class="property-type"><a href="#definition-Boolean"><code>Boolean</code></a></span>
-                      </td>
-                      <td>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-            <div class="doc-examples">
-              <div class="example-section example-section-is-code">
-                <h5>Example</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"type"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"UNKNOWN_ISOPERATOR_TYPE"</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">"value"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span><span class="hljs-punctuation">}</span>
-</code></pre>
-                  </body>
-                </html>
-              </div>
-            </div>
-            <a href="#top">back to top</a>
-          </div>
-        </section>
-        <section id="definition-IsOperatorType" class="definition definition-enum" data-traverse-target="definition-IsOperatorType">
-          <div class="definition-group-name">
-            <a href="#group-Types">Types</a>
-          </div>
-          <h2 class="definition-heading">IsOperatorType</h2>
-          <div class="doc-row">
-            <div class="doc-copy">
-              <div class="definition-properties doc-copy-section">
-                <h5>Values</h5>
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Enum Value</th>
-                      <th>Description</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <p><code>UNKNOWN_ISOPERATOR_TYPE</code></p>
-                      </td>
-                      <td>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <p><code>IS</code></p>
-                      </td>
-                      <td>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-            <div class="doc-examples">
-              <div class="example-section example-section-is-code">
-                <h5>Example</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-gql"><span class="hljs-symbol">"UNKNOWN_ISOPERATOR_TYPE"</span>
+                  <body><pre><code class="hljs language-json"><span class="hljs-number">123</span>
 </code></pre>
                   </body>
                 </html>
@@ -3506,262 +2879,6 @@ AC-Policy-{*}: AC-Policy-Brand</code></pre>
                 <html>
                   <head></head>
                   <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-punctuation">}</span>
-</code></pre>
-                  </body>
-                </html>
-              </div>
-            </div>
-            <a href="#top">back to top</a>
-          </div>
-        </section>
-        <section id="definition-NumericOperatorInput" class="definition definition-input-object" data-traverse-target="definition-NumericOperatorInput">
-          <div class="definition-group-name">
-            <a href="#group-Types">Types</a>
-          </div>
-          <h2 class="definition-heading">NumericOperatorInput</h2>
-          <div class="doc-row">
-            <div class="doc-copy">
-              <div class="definition-properties doc-copy-section">
-                <h5>Fields</h5>
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Input Field</th>
-                      <th>Description</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <span class="property-name"><code>type</code></span> - <span class="property-type"><a href="#definition-NumericOperatorType"><code>NumericOperatorType</code></a></span>
-                      </td>
-                      <td>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-            <div class="doc-examples">
-              <div class="example-section example-section-is-code">
-                <h5>Example</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"type"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"UNKNOWN_NUMERIC_OPERATOR"</span><span class="hljs-punctuation">}</span>
-</code></pre>
-                  </body>
-                </html>
-              </div>
-            </div>
-            <a href="#top">back to top</a>
-          </div>
-        </section>
-        <section id="definition-NumericOperatorType" class="definition definition-enum" data-traverse-target="definition-NumericOperatorType">
-          <div class="definition-group-name">
-            <a href="#group-Types">Types</a>
-          </div>
-          <h2 class="definition-heading">NumericOperatorType</h2>
-          <div class="doc-row">
-            <div class="doc-copy">
-              <div class="definition-properties doc-copy-section">
-                <h5>Values</h5>
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Enum Value</th>
-                      <th>Description</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <p><code>UNKNOWN_NUMERIC_OPERATOR</code></p>
-                      </td>
-                      <td>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <p><code>GREATER_THAN_CURRENT</code></p>
-                      </td>
-                      <td>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <p><code>LESS_THAN_CURRENT</code></p>
-                      </td>
-                      <td>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-            <div class="doc-examples">
-              <div class="example-section example-section-is-code">
-                <h5>Example</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-gql"><span class="hljs-symbol">"UNKNOWN_NUMERIC_OPERATOR"</span>
-</code></pre>
-                  </body>
-                </html>
-              </div>
-            </div>
-            <a href="#top">back to top</a>
-          </div>
-        </section>
-        <section id="definition-OperatorInput" class="definition definition-input-object" data-traverse-target="definition-OperatorInput">
-          <div class="definition-group-name">
-            <a href="#group-Types">Types</a>
-          </div>
-          <h2 class="definition-heading">OperatorInput</h2>
-          <div class="doc-row">
-            <div class="doc-copy">
-              <div class="definition-properties doc-copy-section">
-                <h5>Fields</h5>
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Input Field</th>
-                      <th>Description</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <span class="property-name"><code>rangeOperator</code></span> - <span class="property-type"><a href="#definition-RangeOperatorInput"><code>RangeOperatorInput</code></a></span>
-                      </td>
-                      <td>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <span class="property-name"><code>customOperator</code></span> - <span class="property-type"><a href="#definition-CustomOperatorInput"><code>CustomOperatorInput</code></a></span>
-                      </td>
-                      <td>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <span class="property-name"><code>isOperator</code></span> - <span class="property-type"><a href="#definition-IsOperatorInput"><code>IsOperatorInput</code></a></span>
-                      </td>
-                      <td>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <span class="property-name"><code>numericOperator</code></span> - <span class="property-type"><a href="#definition-NumericOperatorInput"><code>NumericOperatorInput</code></a></span>
-                      </td>
-                      <td>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <span class="property-name"><code>stringOperator</code></span> - <span class="property-type"><a href="#definition-StringOperatorInput"><code>StringOperatorInput</code></a></span>
-                      </td>
-                      <td>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-            <div class="doc-examples">
-              <div class="example-section example-section-is-code">
-                <h5>Example</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
-  <span class="hljs-attr">"rangeOperator"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">RangeOperatorInput</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"customOperator"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">CustomOperatorInput</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"isOperator"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">IsOperatorInput</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"numericOperator"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">NumericOperatorInput</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"stringOperator"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">StringOperatorInput</span>
-<span class="hljs-punctuation">}</span>
-</code></pre>
-                  </body>
-                </html>
-              </div>
-            </div>
-            <a href="#top">back to top</a>
-          </div>
-        </section>
-        <section id="definition-PageType" class="definition definition-enum" data-traverse-target="definition-PageType">
-          <div class="definition-group-name">
-            <a href="#group-Types">Types</a>
-          </div>
-          <h2 class="definition-heading">PageType</h2>
-          <div class="doc-row">
-            <div class="doc-copy">
-              <div class="definition-description doc-copy-section">
-                <h5>Description</h5>
-                <p>Type of page on which recommendations are requested</p>
-              </div>
-              <div class="definition-properties doc-copy-section">
-                <h5>Values</h5>
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Enum Value</th>
-                      <th>Description</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <p><code>CMS</code></p>
-                      </td>
-                      <td>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <p><code>Cart</code></p>
-                      </td>
-                      <td>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <p class="definition-deprecated"><code>Category</code></p>
-                      </td>
-                      <td>
-                        <span class="deprecation-reason definition-enum-deprecation-reason">This field is deprecated and will be removed.</span>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <p><code>Checkout</code></p>
-                      </td>
-                      <td>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <p><code>PageBuilder</code></p>
-                      </td>
-                      <td>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <p><code>Product</code></p>
-                      </td>
-                      <td>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-            <div class="doc-examples">
-              <div class="example-section example-section-is-code">
-                <h5>Example</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-gql"><span class="hljs-symbol">"CMS"</span>
 </code></pre>
                   </body>
                 </html>
@@ -3862,7 +2979,7 @@ AC-Policy-{*}: AC-Policy-Brand</code></pre>
                 <h5>Example</h5>
                 <html>
                   <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"amount"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">987.65</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">"code"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">}</span>
+                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"amount"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">987.65</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">"code"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">}</span>
 </code></pre>
                   </body>
                 </html>
@@ -4103,7 +3220,7 @@ AC-Policy-{*}: AC-Policy-Brand</code></pre>
                 <html>
                   <head></head>
                   <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
-  <span class="hljs-attr">"code"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"code"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"message"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
@@ -4344,29 +3461,29 @@ AC-Policy-{*}: AC-Policy-Brand</code></pre>
                 <html>
                   <head></head>
                   <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
-  <span class="hljs-attr">"addToCartAllowed"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"addToCartAllowed"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"inStock"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"lowStock"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"lowStock"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"attributes"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">ProductViewAttribute</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"description"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"4"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"description"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">4</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"images"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">ProductViewImage</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"videos"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">ProductViewVideo</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"lastModifiedAt"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"2007-12-03T10:15:30Z"</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"metaDescription"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"metaDescription"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"metaKeyword"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"metaTitle"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"shortDescription"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"inputOptions"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">ProductViewInputOption</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"sku"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"externalId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"externalId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"url"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"urlKey"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"links"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">ProductViewLink</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"categories"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">CategoryProductView</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"queryType"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"visibility"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span>
+  <span class="hljs-attr">"visibility"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
                   </body>
@@ -4427,8 +3544,8 @@ AC-Policy-{*}: AC-Policy-Brand</code></pre>
                 <html>
                   <head></head>
                   <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
-  <span class="hljs-attr">"label"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"label"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"roles"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"value"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span><span class="hljs-punctuation">}</span>
 <span class="hljs-punctuation">}</span>
@@ -5715,9 +4832,9 @@ AC-Policy-{*}: AC-Policy-Brand</code></pre>
                 <html>
                   <head></head>
                   <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
-  <span class="hljs-attr">"label"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"roles"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"url"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span>
+  <span class="hljs-attr">"label"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"roles"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"abc123"</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"url"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
                   </body>
@@ -5812,15 +4929,15 @@ AC-Policy-{*}: AC-Policy-Brand</code></pre>
                   <head></head>
                   <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
   <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">4</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"title"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"title"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"required"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"type"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"markupAmount"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">987.65</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"suffix"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"type"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"markupAmount"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">123.45</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"suffix"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"sortOrder"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">123</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"range"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">ProductViewInputOptionRange</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"imageSize"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">ProductViewInputOptionImageSize</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"fileExtensions"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span>
+  <span class="hljs-attr">"fileExtensions"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
                   </body>
@@ -5868,7 +4985,7 @@ AC-Policy-{*}: AC-Policy-Brand</code></pre>
                 <h5>Example</h5>
                 <html>
                   <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"width"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">123</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">"height"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">123</span><span class="hljs-punctuation">}</span>
+                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"width"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">123</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">"height"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">987</span><span class="hljs-punctuation">}</span>
 </code></pre>
                   </body>
                 </html>
@@ -5915,7 +5032,7 @@ AC-Policy-{*}: AC-Policy-Brand</code></pre>
                 <h5>Example</h5>
                 <html>
                   <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"from"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">987.65</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">"to"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">987.65</span><span class="hljs-punctuation">}</span>
+                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"from"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">123.45</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">"to"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">987.65</span><span class="hljs-punctuation">}</span>
 </code></pre>
                   </body>
                 </html>
@@ -6016,7 +5133,7 @@ AC-Policy-{*}: AC-Policy-Brand</code></pre>
                 <h5>Example</h5>
                 <html>
                   <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"currency"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"AED"</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">"value"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">123.45</span><span class="hljs-punctuation">}</span>
+                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"currency"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"AED"</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">"value"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">987.65</span><span class="hljs-punctuation">}</span>
 </code></pre>
                   </body>
                 </html>
@@ -6081,10 +5198,10 @@ AC-Policy-{*}: AC-Policy-Brand</code></pre>
                 <html>
                   <head></head>
                   <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
-  <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"4"</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"multi"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">4</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"multi"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"required"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"title"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"title"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"values"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">ProductViewOptionValue</span><span class="hljs-punctuation">]</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
@@ -6226,8 +5343,8 @@ AC-Policy-{*}: AC-Policy-Brand</code></pre>
                 <html>
                   <head></head>
                   <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
-  <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"4"</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"title"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">4</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"title"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"inStock"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
@@ -6299,7 +5416,7 @@ AC-Policy-{*}: AC-Policy-Brand</code></pre>
                 <html>
                   <head></head>
                   <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
-  <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">4</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"4"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"isDefault"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"product"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">SimpleProductView</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"quantity"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">987.65</span><span class="hljs-punctuation">,</span>
@@ -6370,11 +5487,11 @@ AC-Policy-{*}: AC-Policy-Brand</code></pre>
                 <html>
                   <head></head>
                   <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
-  <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">4</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"title"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"4"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"title"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"type"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"TEXT"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"value"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"inStock"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span>
+  <span class="hljs-attr">"inStock"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
                   </body>
@@ -6438,7 +5555,7 @@ AC-Policy-{*}: AC-Policy-Brand</code></pre>
   <span class="hljs-attr">"final"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">Price</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"regular"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">Price</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"tiers"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">ProductViewTierPrice</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"roles"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">]</span>
+  <span class="hljs-attr">"roles"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"abc123"</span><span class="hljs-punctuation">]</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
                   </body>
@@ -6576,7 +5693,7 @@ AC-Policy-{*}: AC-Policy-Brand</code></pre>
                 <h5>Example</h5>
                 <html>
                   <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"in"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-number">987.65</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">}</span>
+                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"in"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-number">123.45</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">}</span>
 </code></pre>
                   </body>
                 </html>
@@ -6766,7 +5883,7 @@ AC-Policy-{*}: AC-Policy-Brand</code></pre>
                   <head></head>
                   <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
   <span class="hljs-attr">"variants"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">ProductViewVariant</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"cursor"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span>
+  <span class="hljs-attr">"cursor"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
                   </body>
@@ -6830,7 +5947,7 @@ AC-Policy-{*}: AC-Policy-Brand</code></pre>
   <span class="hljs-attr">"preview"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">ProductViewImage</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"url"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"description"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"title"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span>
+  <span class="hljs-attr">"title"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
                   </body>
@@ -6999,170 +6116,9 @@ AC-Policy-{*}: AC-Policy-Brand</code></pre>
                   <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
   <span class="hljs-attr">"count"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">987</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"from"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">123.45</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"title"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"title"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"to"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">123.45</span>
 <span class="hljs-punctuation">}</span>
-</code></pre>
-                  </body>
-                </html>
-              </div>
-            </div>
-            <a href="#top">back to top</a>
-          </div>
-        </section>
-        <section id="definition-RangeOperatorInput" class="definition definition-input-object" data-traverse-target="definition-RangeOperatorInput">
-          <div class="definition-group-name">
-            <a href="#group-Types">Types</a>
-          </div>
-          <h2 class="definition-heading">RangeOperatorInput</h2>
-          <div class="doc-row">
-            <div class="doc-copy">
-              <div class="definition-properties doc-copy-section">
-                <h5>Fields</h5>
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Input Field</th>
-                      <th>Description</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <span class="property-name"><code>type</code></span> - <span class="property-type"><a href="#definition-RangeType"><code>RangeType</code></a></span>
-                      </td>
-                      <td>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <span class="property-name"><code>value</code></span> - <span class="property-type"><a href="#definition-RangeValueInput"><code>RangeValueInput</code></a></span>
-                      </td>
-                      <td>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-            <div class="doc-examples">
-              <div class="example-section example-section-is-code">
-                <h5>Example</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"type"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"UNKNOWN_RANGE_TYPE"</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">"value"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">RangeValueInput</span><span class="hljs-punctuation">}</span>
-</code></pre>
-                  </body>
-                </html>
-              </div>
-            </div>
-            <a href="#top">back to top</a>
-          </div>
-        </section>
-        <section id="definition-RangeType" class="definition definition-enum" data-traverse-target="definition-RangeType">
-          <div class="definition-group-name">
-            <a href="#group-Types">Types</a>
-          </div>
-          <h2 class="definition-heading">RangeType</h2>
-          <div class="doc-row">
-            <div class="doc-copy">
-              <div class="definition-properties doc-copy-section">
-                <h5>Values</h5>
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Enum Value</th>
-                      <th>Description</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <p><code>UNKNOWN_RANGE_TYPE</code></p>
-                      </td>
-                      <td>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <p><code>STATIC</code></p>
-                      </td>
-                      <td>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <p><code>PERCENTAGE</code></p>
-                      </td>
-                      <td>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <p><code>DYNAMIC</code></p>
-                      </td>
-                      <td>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-            <div class="doc-examples">
-              <div class="example-section example-section-is-code">
-                <h5>Example</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-gql"><span class="hljs-symbol">"UNKNOWN_RANGE_TYPE"</span>
-</code></pre>
-                  </body>
-                </html>
-              </div>
-            </div>
-            <a href="#top">back to top</a>
-          </div>
-        </section>
-        <section id="definition-RangeValueInput" class="definition definition-input-object" data-traverse-target="definition-RangeValueInput">
-          <div class="definition-group-name">
-            <a href="#group-Types">Types</a>
-          </div>
-          <h2 class="definition-heading">RangeValueInput</h2>
-          <div class="doc-row">
-            <div class="doc-copy">
-              <div class="definition-properties doc-copy-section">
-                <h5>Fields</h5>
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Input Field</th>
-                      <th>Description</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <span class="property-name"><code>from</code></span> - <span class="property-type"><a href="#definition-Float"><code>Float</code></a></span>
-                      </td>
-                      <td>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <span class="property-name"><code>to</code></span> - <span class="property-type"><a href="#definition-Float"><code>Float</code></a></span>
-                      </td>
-                      <td>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-            <div class="doc-examples">
-              <div class="example-section example-section-is-code">
-                <h5>Example</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"from"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">987.65</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">"to"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">123.45</span><span class="hljs-punctuation">}</span>
 </code></pre>
                   </body>
                 </html>
@@ -7242,11 +6198,11 @@ AC-Policy-{*}: AC-Policy-Brand</code></pre>
                 <html>
                   <head></head>
                   <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
-  <span class="hljs-attr">"displayOrder"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">123</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"displayOrder"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">987</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"pageType"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"productsView"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">ProductView</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"storefrontLabel"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"totalProducts"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">987</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"totalProducts"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">123</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"typeId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"unitId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"unitName"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span>
@@ -7353,7 +6309,7 @@ AC-Policy-{*}: AC-Policy-Brand</code></pre>
                 <h5>Example</h5>
                 <html>
                   <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"count"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">123</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">4</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">"title"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">}</span>
+                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"count"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">987</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">4</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">"title"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">}</span>
 </code></pre>
                   </body>
                 </html>
@@ -7431,8 +6387,8 @@ AC-Policy-{*}: AC-Policy-Brand</code></pre>
                   <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
   <span class="hljs-attr">"attribute"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"contains"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"eq"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"in"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"eq"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"in"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"abc123"</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"range"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">SearchRangeInput</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"startsWith"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span>
 <span class="hljs-punctuation">}</span>
@@ -7486,7 +6442,7 @@ AC-Policy-{*}: AC-Policy-Brand</code></pre>
                 <h5>Example</h5>
                 <html>
                   <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"from"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">123.45</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">"to"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">987.65</span><span class="hljs-punctuation">}</span>
+                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"from"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">987.65</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">"to"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">987.65</span><span class="hljs-punctuation">}</span>
 </code></pre>
                   </body>
                 </html>
@@ -7540,7 +6496,7 @@ AC-Policy-{*}: AC-Policy-Brand</code></pre>
                 <h5>Example</h5>
                 <html>
                   <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"current_page"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">987</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">"page_size"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">987</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">"total_pages"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">123</span><span class="hljs-punctuation">}</span>
+                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"current_page"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">123</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">"page_size"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">123</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">"total_pages"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">123</span><span class="hljs-punctuation">}</span>
 </code></pre>
                   </body>
                 </html>
@@ -7762,30 +6718,30 @@ AC-Policy-{*}: AC-Policy-Brand</code></pre>
                 <html>
                   <head></head>
                   <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
-  <span class="hljs-attr">"addToCartAllowed"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"inStock"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"lowStock"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"addToCartAllowed"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"inStock"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"lowStock"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"attributes"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">ProductViewAttribute</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"description"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"4"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"description"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">4</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"images"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">ProductViewImage</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"videos"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">ProductViewVideo</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"inputOptions"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">ProductViewInputOption</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"lastModifiedAt"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"2007-12-03T10:15:30Z"</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"metaDescription"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"metaDescription"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"metaKeyword"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"metaTitle"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"price"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">ProductViewPrice</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"shortDescription"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"shortDescription"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"sku"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"externalId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"externalId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"url"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"urlKey"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"urlKey"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"links"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">ProductViewLink</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"categories"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">CategoryProductView</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"queryType"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"visibility"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span>
+  <span class="hljs-attr">"visibility"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
                   </body>
@@ -7901,8 +6857,8 @@ AC-Policy-{*}: AC-Policy-Brand</code></pre>
                   <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
   <span class="hljs-attr">"attribute"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"frontendInput"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"label"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"numeric"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span>
+  <span class="hljs-attr">"label"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"numeric"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
                   </body>
@@ -7958,9 +6914,9 @@ AC-Policy-{*}: AC-Policy-Brand</code></pre>
                 <html>
                   <head></head>
                   <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
-  <span class="hljs-attr">"max"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">123.45</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"max"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">987.65</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"min"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">123.45</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"title"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span>
+  <span class="hljs-attr">"title"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
                   </body>
@@ -7988,104 +6944,6 @@ AC-Policy-{*}: AC-Policy-Brand</code></pre>
                 <html>
                   <head></head>
                   <body><pre><code class="hljs language-gql"><span class="hljs-symbol">"abc123"</span>
-</code></pre>
-                  </body>
-                </html>
-              </div>
-            </div>
-            <a href="#top">back to top</a>
-          </div>
-        </section>
-        <section id="definition-StringOperatorInput" class="definition definition-input-object" data-traverse-target="definition-StringOperatorInput">
-          <div class="definition-group-name">
-            <a href="#group-Types">Types</a>
-          </div>
-          <h2 class="definition-heading">StringOperatorInput</h2>
-          <div class="doc-row">
-            <div class="doc-copy">
-              <div class="definition-properties doc-copy-section">
-                <h5>Fields</h5>
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Input Field</th>
-                      <th>Description</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <span class="property-name"><code>type</code></span> - <span class="property-type"><a href="#definition-StringOperatorType"><code>StringOperatorType</code></a></span>
-                      </td>
-                      <td>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-            <div class="doc-examples">
-              <div class="example-section example-section-is-code">
-                <h5>Example</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"type"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"UNKNOWN_STRING_OPERATOR"</span><span class="hljs-punctuation">}</span>
-</code></pre>
-                  </body>
-                </html>
-              </div>
-            </div>
-            <a href="#top">back to top</a>
-          </div>
-        </section>
-        <section id="definition-StringOperatorType" class="definition definition-enum" data-traverse-target="definition-StringOperatorType">
-          <div class="definition-group-name">
-            <a href="#group-Types">Types</a>
-          </div>
-          <h2 class="definition-heading">StringOperatorType</h2>
-          <div class="doc-row">
-            <div class="doc-copy">
-              <div class="definition-properties doc-copy-section">
-                <h5>Values</h5>
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Enum Value</th>
-                      <th>Description</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <p><code>UNKNOWN_STRING_OPERATOR</code></p>
-                      </td>
-                      <td>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <p><code>SAME_AS_CURRENT</code></p>
-                      </td>
-                      <td>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <p><code>ALL_EXCEPT_CURRENT</code></p>
-                      </td>
-                      <td>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-            <div class="doc-examples">
-              <div class="example-section example-section-is-code">
-                <h5>Example</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-gql"><span class="hljs-symbol">"UNKNOWN_STRING_OPERATOR"</span>
 </code></pre>
                   </body>
                 </html>
@@ -8157,106 +7015,6 @@ AC-Policy-{*}: AC-Policy-Brand</code></pre>
             <a href="#top">back to top</a>
           </div>
         </section>
-        <section id="definition-UnitConfigInput" class="definition definition-input-object" data-traverse-target="definition-UnitConfigInput">
-          <div class="definition-group-name">
-            <a href="#group-Types">Types</a>
-          </div>
-          <h2 class="definition-heading">UnitConfigInput</h2>
-          <div class="doc-row">
-            <div class="doc-copy">
-              <div class="definition-properties doc-copy-section">
-                <h5>Fields</h5>
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Input Field</th>
-                      <th>Description</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <span class="property-name"><code>unitName</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
-                      </td>
-                      <td>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <span class="property-name"><code>storefrontLabel</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
-                      </td>
-                      <td>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <span class="property-name"><code>pagePlacement</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
-                      </td>
-                      <td>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <span class="property-name"><code>displayNumber</code></span> - <span class="property-type"><a href="#definition-Int"><code>Int</code></a></span>
-                      </td>
-                      <td>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <span class="property-name"><code>pageType</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
-                      </td>
-                      <td>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <span class="property-name"><code>unitStatus</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
-                      </td>
-                      <td>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <span class="property-name"><code>typeId</code></span> - <span class="property-type"><a href="#definition-String"><code>String</code></a></span>
-                      </td>
-                      <td>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <span class="property-name"><code>filterRules</code></span> - <span class="property-type"><a href="#definition-FilterRuleInput"><code>[FilterRuleInput]</code></a></span>
-                      </td>
-                      <td>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-            <div class="doc-examples">
-              <div class="example-section example-section-is-code">
-                <h5>Example</h5>
-                <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
-  <span class="hljs-attr">"unitName"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"storefrontLabel"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"pagePlacement"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"displayNumber"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">123</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"pageType"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"unitStatus"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"typeId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"filterRules"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">FilterRuleInput</span><span class="hljs-punctuation">]</span>
-<span class="hljs-punctuation">}</span>
-</code></pre>
-                  </body>
-                </html>
-              </div>
-            </div>
-            <a href="#top">back to top</a>
-          </div>
-        </section>
         <section id="definition-ViewHistory" class="definition definition-input-object" data-traverse-target="definition-ViewHistory">
           <div class="definition-group-name">
             <a href="#group-Types">Types</a>
@@ -8303,7 +7061,7 @@ AC-Policy-{*}: AC-Policy-Brand</code></pre>
                   <head></head>
                   <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
   <span class="hljs-attr">"date"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"2007-12-03T10:15:30Z"</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"sku"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span>
+  <span class="hljs-attr">"sku"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
                   </body>
@@ -8359,7 +7117,7 @@ AC-Policy-{*}: AC-Policy-Brand</code></pre>
                   <head></head>
                   <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
   <span class="hljs-attr">"dateTime"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"2007-12-03T10:15:30Z"</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"sku"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span>
+  <span class="hljs-attr">"sku"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
                   </body>
