@@ -83,6 +83,36 @@ The metadata file uses SpectaQL's metadata format with these sections:
 - **`INTERFACE.*`** — Marks unwanted Interface types as `undocumented: true`
 - **`FIELD_ARGUMENT`** — Provides custom descriptions for query arguments (e.g., `categoryTree` and `navigation` arguments)
 
+## Choosing the schema source
+
+The `config-merchandising.yml` file supports two mutually exclusive schema sources under the `introspection:` section. Only one should be active at a time.
+
+### Live endpoint (default)
+
+By default, the config uses the live GraphQL endpoint. This requires the `TENANT_ID` and `CATALOG_VIEW_ID` environment variables to be set in your `.env` file:
+
+```yaml
+  # introspectionFile: spectaql/enhanced-schema.json
+  url: https://na1-qa.api.commerce.adobe.com/${TENANT_ID}/graphql
+```
+
+### Static schema file
+
+To generate documentation offline without hitting the live endpoint, comment out the `url` line and uncomment the `introspectionFile` line:
+
+```yaml
+  introspectionFile: spectaql/enhanced-schema.json
+  # url: https://na1-qa.api.commerce.adobe.com/${TENANT_ID}/graphql
+```
+
+The static schema file (`enhanced-schema.json`) is a cached introspection result with custom descriptions already injected. You can update it at any time by running:
+
+```bash
+node scripts/fetch-and-enhance-schema.js
+```
+
+> **Note:** Only one of `url` or `introspectionFile` should be uncommented. If both are active, SpectaQL will raise an error.
+
 ## Build commands
 
 There are two build paths. Both produce `static/graphql-api/merchandising-api/index.html`.

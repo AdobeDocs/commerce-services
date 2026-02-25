@@ -207,7 +207,7 @@ query GetTopMenuNavigation {
 
 The response returns a single root node with no nested children:
 
-```plaintext
+```text
 Men clothing
 └── (no children)
 ```
@@ -269,7 +269,7 @@ query GetFullMenuNavigation {
 
 The response returns a three-level nested hierarchy:
 
-```plaintext
+```text
 Men clothing
 └── Men tops
     └── Jackets

@@ -18,6 +18,8 @@ The Merchandising API supports various e-commerce scenarios. The catalog data de
 * **Product Catalogs**: Display product listings with filtering and sorting
 * **Search Functionality**: Implement product search with autocomplete
 * **Product Details**: Show comprehensive product information and variants
+* **Category Management**: Build category navigation trees, menus, and breadcrumbs
+* **Recommendations**: Display personalized, cross-sell, and upsell product recommendations
 
 ### Multi-channel Commerce
 

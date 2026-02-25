@@ -111,11 +111,11 @@ introspection:
   # schemaFile: path/to/schema.gql
 
   # File containing Introspection Query response in JS module export, or JSON format
-  introspectionFile: spectaql/enhanced-schema.json
+  # introspectionFile: spectaql/enhanced-schema.json
 
   # URL of the GraphQL endpoint to hit if you want to generate the documentation based on live Introspection Query results
   # NOTE: If not using introspection.url OR servers[], you need to provide x-url below
-  # url: https://na1-qa.api.commerce.adobe.com/${TENANT_ID}/graphql # TENANT_ID should be set as an environment variable. This value was previously hardcoded for the Instructor Instance in the Adobe Commerce Optimizer org.
+  url: https://na1-qa.api.commerce.adobe.com/${TENANT_ID}/graphql # TENANT_ID should be set as an environment variable. This value was previously hardcoded for the Instructor Instance in the Adobe Commerce Optimizer org.
   exclude:
     excludeMutations: true
   #
