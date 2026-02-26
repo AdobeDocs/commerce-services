@@ -48,7 +48,7 @@ The Merchandising API provides several GraphQL queries designed for different us
 | `productSearch` | Search products with filters, sorting, and pagination | Search results, category pages, product listings |
 | `refineProduct` | Get variant-specific information for configurable products | Product option selection, variant switching |
 | `variants` | Retrieve all variants of a configurable product | Product detail pages, variant galleries |
-| `recommendationsByUnitIds` | Retrieve recommendation units by their unique ID to use on the storefront | Display recommendations on the storefront. [Supported types](https://experienceleague.adobe.com/en/docs/commerce/optimizer/merchandising/recommendations/types) include personalized, cross-sell and up-sells, popularity, high-performing Related products, cross-sells, and upsells |
+| `recommendationsByUnitIds` | Retrieve recommendation units by their unique ID to use on the storefront | Display recommendations on the storefront. [Supported types](https://experienceleague.adobe.com/en/docs/commerce/optimizer/merchandising/recommendations/types) include personalized, cross-sell and up-sells, popularity, and high-performing.|
 
 ## Query Examples
 
