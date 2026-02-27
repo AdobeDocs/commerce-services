@@ -14,7 +14,7 @@ keywords:
 
 # Retrieve catalog data with the Merchandising API
 
-The Merchandising GraphQL API enables developers to build rich, dynamic storefront experiences by providing efficient access to catalog data from Adobe Commerce Optimizer. This API is designed for frontend applications that need to retrieve product information, pricing, search results, and recommendations in real-time.
+The Merchandising GraphQL API enables developers to build rich, dynamic storefront experiences by providing efficient access to catalog data from Adobe Commerce Optimizer. This API is designed for frontend applications that need to retrieve catalog information including category, product, pricing, search results, and recommendations in real-time.
 
 The Merchandising API is part of Adobe Commerce Optimizer's composable commerce architecture, which separates product data from business context. This separation allows you to:
 
