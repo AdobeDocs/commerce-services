@@ -233,28 +233,39 @@ function injectQueryDescriptions(queryType) {
 }
 
 /**
+ * Look up metadata for a type across all metadata sections (OBJECT, INPUT_OBJECT, ENUM, UNION, INTERFACE)
+ */
+function findTypeMetadata(typeName) {
+  const sections = ['OBJECT', 'INPUT_OBJECT', 'ENUM', 'UNION', 'INTERFACE'];
+  for (const section of sections) {
+    if (metadata[section] && metadata[section][typeName]) {
+      return metadata[section][typeName];
+    }
+  }
+  return null;
+}
+
+/**
  * Inject descriptions into types and their fields
  */
 function injectTypeDescriptions(types) {
-  if (!metadata.OBJECT) return;
-  
   types.forEach(type => {
-    // Inject type description
-    const typeMetadata = metadata.OBJECT[type.name];
-    if (typeMetadata && typeMetadata.documentation && typeMetadata.documentation.description) {
+    const typeMetadata = findTypeMetadata(type.name);
+    if (!typeMetadata) return;
+
+    if (typeMetadata.documentation && typeMetadata.documentation.description) {
       type.description = typeMetadata.documentation.description;
       console.log(`📝 Injected description for type: ${type.name}`);
     }
-    
-    // Inject field descriptions
-    if (type.fields && typeMetadata && typeMetadata.fields) {
+
+    // Inject field descriptions (OBJECT types)
+    if (type.fields && typeMetadata.fields) {
       type.fields.forEach(field => {
         const fieldMetadata = typeMetadata.fields[field.name];
         if (fieldMetadata && fieldMetadata.documentation && fieldMetadata.documentation.description) {
           field.description = fieldMetadata.documentation.description;
           console.log(`📝 Injected description for field: ${type.name}.${field.name}`);
-          
-          // Also inject argument descriptions for field arguments
+
           if (field.args && metadata.FIELD_ARGUMENT && metadata.FIELD_ARGUMENT[type.name] && metadata.FIELD_ARGUMENT[type.name][field.name]) {
             field.args.forEach(arg => {
               const argMetadata = metadata.FIELD_ARGUMENT[type.name][field.name][arg.name];
@@ -264,6 +275,17 @@ function injectTypeDescriptions(types) {
               }
             });
           }
+        }
+      });
+    }
+
+    // Inject inputField descriptions (INPUT_OBJECT types)
+    if (type.inputFields && typeMetadata.fields) {
+      type.inputFields.forEach(field => {
+        const fieldMetadata = typeMetadata.fields[field.name];
+        if (fieldMetadata && fieldMetadata.documentation && fieldMetadata.documentation.description) {
+          field.description = fieldMetadata.documentation.description;
+          console.log(`📝 Injected description for input field: ${type.name}.${field.name}`);
         }
       });
     }

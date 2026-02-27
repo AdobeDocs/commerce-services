@@ -1174,7 +1174,7 @@
           },
           {
             "name": "recommendations",
-            "description": "Get Recommendations",
+            "description": "Returns information about product recommendation blocks for a given SKU.",
             "args": [
               {
                 "name": "cartSkus",
@@ -61529,7 +61529,7 @@
             },
             {
               "name": "recommendations",
-              "description": "Get Recommendations",
+              "description": "Returns information about product recommendation blocks for a given SKU.",
               "args": [
                 {
                   "name": "cartSkus",
@@ -73715,7 +73715,7 @@
         {
           "kind": "INPUT_OBJECT",
           "name": "UnitConfigInput",
-          "description": null,
+          "description": "Optional unit configuration",
           "fields": null,
           "inputFields": [
             {
@@ -77228,6 +77228,6 @@
     }
   },
   "extensions": {
-    "request-id": "e7346d73-a69c-4ebe-a726-183599c99faa"
+    "request-id": "92dcf788-51ee-4112-b818-def67fe8e3ef"
   }
 }

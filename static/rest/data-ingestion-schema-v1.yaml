@@ -321,7 +321,8 @@ paths:
         Update existing product attribute metadata with new values.
         When the update is processed, the merge strategy is used to apply changes to `scalar` and `object` type fields. The replace strategy is used to apply changes for fields in an `array`.
 
-        > **Note:** Before submitting an update request, verify that the target entity already exists. Update operations do not validate the existence of the entity — if it does not exist, the request is accepted, but the update is silently ignored.
+        > **Note:** Before submitting an update request, verify that the target entity exists using the
+        [attributeMetadata](https://developer.adobe.com/commerce/services/graphql-api/merchandising-api/index.html#query-attributeMetadata) GraphQL query. Update operations do not verify that the entity exists. Requests targeting a nonexistent entity are accepted, but the update has no effect.
       operationId: updateProductMetadata
       parameters:
         - $ref: "#/components/parameters/Authorization"
@@ -478,7 +479,7 @@ paths:
                         {
                           "url": "https://example.com/images/men-category.png",
                           "label": "Men's Category",
-                          "roles": ["SMALL"],
+                          "roles": ["BASE"],
                           "customRoles": []
                         }
                       ]
@@ -505,7 +506,7 @@ paths:
         Update existing product categories with new values.
         When the update is processed, the merge strategy is used to apply changes to `scalar` and `object` type fields. The replace strategy is used to apply changes for fields in an `array`.
 
-        > **Note:** Before submitting an update request, verify that the target entity already exists. Update operations do not validate the existence of the entity — if it does not exist, the request is accepted, but the update is silently ignored.
+        > **Note:** Update operations do not verify that the entity exists. Requests targeting a nonexistent entity are accepted, but the update has no effect.
       operationId: updateCategories
       parameters:
         - $ref: "#/components/parameters/Authorization"
@@ -557,7 +558,7 @@ paths:
                         {
                           "url": "https://example.com/images/mens-apparel.png",
                           "label": "Men's Apparel",
-                          "roles": ["SMALL"],
+                          "roles": ["BASE"],
                           "customRoles": []
                         }
                       ]
@@ -641,7 +642,6 @@ paths:
          - You can create multiple products in a single request, and also create product variants for configurable products in the same request.
          - Use the `routes` field to set category paths. The `path` value must match an existing category slug, for example `men/clothing`. 
          - Create a route for each category path. For example to include a product in each of the following categories `men`, `men/clothing`, and `men/clothing/pants`, specify three `path` values, one for each category.
-         
 
         <h3 id="simpleProducts">Simple products</h3>
         Create products or replace existing products with specified `sku` and `source` values.
@@ -791,7 +791,7 @@ paths:
                           {
                             "url": "https://example.com/images/pants.jpg",
                             "label": "photo of my pants!",
-                            "roles": ["BASE", "SMALL"],
+                            "roles": ["BASE", "THUMBNAIL"],
                             "customRoles": ["widget"]
                           }
                         ],
@@ -1141,7 +1141,7 @@ paths:
         * `configurations` match on `type` and `attributeCode`
         * `externalIds` match on `type` and `origin`
 
-        > **Note:** Before submitting an update request, verify that the target entity already exists. Update operations do not validate the existence of the entity — if it does not exist, the request is accepted, but the update is silently ignored.
+        > **Note:** Before submitting an update request, verify that the target entity exists using the [products](https://developer.adobe.com/commerce/services/graphql-api/merchandising-api/index.html#query-products) GraphQL query. Update operations do not verify that the entity exists. Requests targeting a nonexistent entity are accepted, but the update has no effect.
       operationId: updateProducts
       parameters:
         - $ref: "#/components/parameters/Authorization"
@@ -1259,7 +1259,7 @@ paths:
                   In the example below:
                   * A new attribute with the code `warehouse` is added to the attributes list
                   * The value of the existing `cost` attribute is replaced with new value
-                  
+
                   The previously created `states` attribute is preserved.
                   Note: Don't forget to create the product attribute metadata (<a href="#operation/createProductMetadata">link</a> for the `warehouse` attribute if it doesn't exist yet.
                 value:
@@ -1329,12 +1329,16 @@ paths:
       summary: Create or replace product layers
       description: |
         Create product layers to customize and override base product data for specific contexts, locales, or business requirements.
-        
+
         Product layers enable you to:
         - Override product attributes for specific markets or channels
         - Provide locale-specific content while maintaining a global base product
         - Create seasonal or promotional variations without duplicating entire product records
         - Implement A/B testing scenarios with different product presentations
+
+        For details on how to use layers with Adobe Commerce Optimizer, see
+        [Catalog Layers](https://experienceleague.adobe.com/en/docs/commerce/optimizer/setup/catalog-layer) in the
+        Adobe Commerce Optimizer documentation.
 
         ## Layer behavior and requirements
 
@@ -1427,19 +1431,19 @@ paths:
         - Product Layers
       summary: Delete product layers
       description: |
-        Remove specific product layers by SKU and source identifiers. This operation permanently deletes 
+        Remove specific product layers by SKU and source identifiers. This operation permanently deletes
         the layer data while preserving the base product.
-        
+
         **Use Cases:**
         - Remove expired seasonal or promotional layers
         - Clean up test layers after A/B testing completion
         - Delete locale-specific layers when discontinuing market support
         - Remove outdated customizations
-        
+
         **Important Notes:**
         - Only the specified layer is deleted; base product and other layers remain intact
         - Both `sku` and `source` (locale + layer) must match exactly for successful deletion
-        
+
       operationId: deleteProductLayers
       parameters:
         - $ref: "#/components/parameters/Authorization"
@@ -1633,7 +1637,7 @@ paths:
         * **Child Price Books**: Include correct `parentId` in request (will be ignored if different)
         * **Hierarchy Restructuring**: Delete child price book and recreate with new parent reference
 
-        > **Note:** Before submitting an update request, verify that the target entity already exists. Update operations do not validate the existence of the entity — if it does not exist, the request is accepted, but the update is silently ignored.
+        > **Note:** Before submitting an update request, verify that the target entity exists by checking the available price books in [Commerce Optimizer](https://experienceleague.adobe.com/en/docs/commerce/optimizer/setup/pricebooks#view-price-books-in-commerce-optimizer). Update operations do not verify that the entity exists. Requests targeting a nonexistent entity are accepted, but the update has no effect.
       operationId: updatePriceBooks
       parameters:
         - name: Content-Type
@@ -2049,7 +2053,7 @@ paths:
         * Ensure tier quantities are in ascending order
         * Test updates in a development environment first
 
-        > **Note:** Before submitting an update request, verify that the target entity already exists. Update operations do not validate the existence of the entity — if it does not exist, the request is accepted, but the update is silently ignored.
+        > **Note:** Before submitting an update request, verify that the target entity exists using the [products GraphQL query](https://developer.adobe.com/commerce/services/graphql-api/merchandising-api/index.html#query-products) to check the prices assigned to the product SKU. Update operations do not verify that the entity exists. Requests targeting a nonexistent entity are accepted, but the update has no effect.
       operationId: updatePrices
       parameters:
         - $ref: "#/components/parameters/Authorization"

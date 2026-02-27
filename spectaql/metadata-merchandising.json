@@ -224,7 +224,7 @@
         },
         "recommendations": {
           "documentation": {
-            "undocumented": true
+            "description": "Returns information about product recommendation blocks for a given SKU."
           }
         },
         "recommendationsByUnitIds": {
@@ -1944,6 +1944,16 @@
         "undocumented": true
       }
     },
+    "RecommendationUnit": {
+      "documentation": {
+        "description": "Recommendation Unit containing product and other details"
+      }
+    },
+    "Recommendations": {
+      "documentation": {
+        "description": "Recommendations response"
+      }
+    },
     "Region": {
       "documentation": {
         "undocumented": true
@@ -3216,6 +3226,11 @@
         "undocumented": true
       }
     },
+    "PurchaseHistory": {
+      "documentation": {
+        "description": "User purchase history"
+      }
+    },
     "QuoteItemsSortInput": {
       "documentation": {
         "undocumented": true
@@ -3476,6 +3491,11 @@
         "undocumented": true
       }
     },
+    "UnitConfigInput": {
+      "documentation": {
+        "description": "Optional unit configuration"
+      }
+    },
     "UserCompaniesInput": {
       "documentation": {
         "undocumented": true
@@ -3494,6 +3514,11 @@
     "VaultSetupTokenInput": {
       "documentation": {
         "undocumented": true
+      }
+    },
+    "ViewHistory": {
+      "documentation": {
+        "description": "User view history"
       }
     },
     "WishlistItemCopyInput": {
@@ -3720,7 +3745,7 @@
     },
     "PageType": {
       "documentation": {
-        "undocumented": true
+        "description": "Type of page on which recommendations are requested"
       }
     },
     "PaymentLocation": {

@@ -131,12 +131,12 @@ yarn dev:merchandising-api
 What happens during a standard build:
 
 1. `generate-spectaql-config.js` reads the YAML config, replaces `${TENANT_ID}`, and writes the temp config
-2. `run-spectaql-with-cleanup.js` spawns SpectaQL with the temp config
-3. SpectaQL introspects the live GraphQL endpoint
-4. SpectaQL applies `metadata-merchandising.json` to filter out unwanted queries/types and inject descriptions via its built-in metadata system
-5. The custom theme partials override the default rendering
-6. Output lands in `static/graphql-api/merchandising-api/index.html`
-7. The temp config file is cleaned up
+1. `run-spectaql-with-cleanup.js` spawns SpectaQL with the temp config.
+1. SpectaQL introspects the live GraphQL endpoint.
+1. SpectaQL applies `metadata-merchandising.json` to filter out unwanted queries/types and inject descriptions via its built-in metadata system
+1. The custom theme partials override the default rendering.
+1. Output lands in `static/graphql-api/merchandising-api/index.html`.
+1. The temp config file is cleaned up.
 
 ### Enhanced build (with description injection)
 
@@ -157,11 +157,11 @@ If you omit all arguments, it defaults to `--target-file index.html --config spe
 What happens during an enhanced build:
 
 1. `fetch-and-enhance-schema.js` fetches the live introspection result and injects `FIELD_ARGUMENT` descriptions directly into the schema JSON
-2. The result is saved to `enhanced-schema.json`
-3. The temp config is generated and rewritten to use `introspectionFile: spectaql/enhanced-schema.json` instead of the live URL
-4. SpectaQL runs against the local enhanced schema file
-5. Output lands in `static/graphql-api/merchandising-api/index.html`
-6. The temp config file is cleaned up
+1. The result is saved to `enhanced-schema.json`.
+1. The temp config is generated and rewritten to use `introspectionFile: spectaql/enhanced-schema.json` instead of the live URL.
+1. SpectaQL runs against the local enhanced schema file.
+1. Output lands in `static/graphql-api/merchandising-api/index.html`.
+1. The temp config file is cleaned up.
 
 Use the enhanced build whenever `metadata-merchandising.json` includes custom descriptions that you want reflected in the generated API reference.
 
