@@ -435,8 +435,10 @@ info:
   ##############################################
 
   description: |
-     Use the Merchandising GraphQL API to access rich view-model (read-only) catalog data to build product-related storefront experiences.
-     For more information about the API, see the <a href="https://developer.adobe.com/commerce/services/optimizer/merchandising-services/" target="_blank">developer documentation</a>.
+     The Merchandising GraphQL API enables developers to build rich, dynamic storefront experiences by providing efficient
+     access to catalog data from Adobe Commerce Optimizer. This API is designed for frontend applications that need to
+     retrieve product information, pricing, search results, and recommendations in real-time. For more information about
+     the API, see the <a href="https://developer.adobe.com/commerce/services/optimizer/merchandising-services/" target="_blank">developer documentation</a>.
   title: Merchandising GraphQL API
   # This is non-standard and optional. If omitted, will use "title". Also, only relevant
   # when building non-embedded.
@@ -460,9 +462,7 @@ info:
       description: |
         All API requests must include the following headers:
 
-        - **AC-Environment-Id**: Tenant ID for your Commerce Optimizer instance
         - **AC-View-Id**: View ID for catalog context
-        - **AC-Source-Locale**: Catalog source locale to filter products for display or update
         - **Content-Type**: application/json
 
         These headers ensure proper context for your API requests. See the server configuration below for example values.
