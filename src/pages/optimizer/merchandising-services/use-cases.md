@@ -15,9 +15,11 @@ The Merchandising API supports various e-commerce scenarios. The catalog data de
 
 ### E-commerce Storefronts
 
+* **Category Management**: Build category navigation trees, menus, and breadcrumbs
 * **Product Catalogs**: Display product listings with filtering and sorting
-* **Search Functionality**: Implement product search with autocomplete
 * **Product Details**: Show comprehensive product information and variants
+* **Recommendations**: Display personalized, cross-sell, and upsell product recommendations
+* **Search Functionality**: Implement product search with autocomplete
 
 ### Multi-channel Commerce
 
@@ -39,11 +41,14 @@ The Merchandising API provides several GraphQL queries designed for different us
 
 | Query | Description | Use Case |
 |-------|-------------|----------|
+| `attributeMetadata` | Return a list of product attribute codes that can be used for sorting or filtering in a `productSearch` query | Dynamic filter UIs, sorting options for search and listing pages |
+| `categoryTree` | Retrieve category tree nodes, optionally filtered by slugs and limited by depth | Category navigation, building category menus, breadcrumbs |
+| `navigation` | Retrieve the navigation tree for a given product family | Site navigation menus, header and footer navigation |
 | `products` | Retrieve detailed information about specific products by SKU | Product detail pages, product comparison |
 | `productSearch` | Search products with filters, sorting, and pagination | Search results, category pages, product listings |
+| `recommendations` | Retrieve personalized product recommendations | Related products, cross-sells, and upsells |
 | `refineProduct` | Get variant-specific information for configurable products | Product option selection, variant switching |
 | `variants` | Retrieve all variants of a configurable product | Product detail pages, variant galleries |
-| `recommendations` | Retrieve personalized product recommendations | Related products, cross-sells, and upsells |
 
 ## Query Examples
 
