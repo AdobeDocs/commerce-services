@@ -224,7 +224,7 @@
         },
         "recommendations": {
           "documentation": {
-            "description": "Returns information about product recommendation blocks for a given SKU."
+            "undocumented": true
           }
         },
         "recommendationsByUnitIds": {
@@ -1946,12 +1946,13 @@
     },
     "RecommendationUnit": {
       "documentation": {
-        "description": "Recommendation Unit containing product and other details"
+        "undocumented": false
       }
     },
     "Recommendations": {
       "documentation": {
-        "description": "Recommendations response"
+        "undocumented": false,
+        "description": "Returns a Recommendations response."
       }
     },
     "Region": {
@@ -3745,7 +3746,7 @@
     },
     "PageType": {
       "documentation": {
-        "description": "Type of page on which recommendations are requested"
+        "undocumented": true
       }
     },
     "PaymentLocation": {

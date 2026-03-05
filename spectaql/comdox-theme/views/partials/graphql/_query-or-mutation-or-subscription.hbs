@@ -42,12 +42,7 @@
         <div class="operation-response doc-copy-section">
           <h5>Response</h5>
           <p>
-            Returns
-            {{! If it's got items, then it's an array, and we don't care about the indefiniteArticle }}
-            {{#unless response.isArray }}
-              {{ indefiniteArticle response.underlyingType.name }}
-            {{/unless}}
-            {{~ md (mdTypeLink . codify=true) stripParagraph=true }}
+            Returns {{ md (mdTypeLink . codify=true) stripParagraph=true }}
           </p>
         </div>
       {{/if}}
