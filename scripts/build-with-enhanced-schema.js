@@ -21,8 +21,6 @@ async function buildWithEnhancedSchema() {
     
     // Step 2: Generate SpectaQL config pointing to the enhanced schema
     console.log('🚀 Step 2: Generating SpectaQL configuration...');
-    require('./generate-spectaql-config');
-    
     const fs = require('fs');
     const { tempConfigPath } = require('./generate-spectaql-config');
     let tempConfig = fs.readFileSync(tempConfigPath, 'utf8');
@@ -88,9 +86,4 @@ async function buildWithEnhancedSchema() {
   }
 }
 
-// Run if called directly
-if (require.main === module) {
-  buildWithEnhancedSchema();
-}
-
-module.exports = { buildWithEnhancedSchema };
+buildWithEnhancedSchema();

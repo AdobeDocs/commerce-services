@@ -323,4 +323,4 @@ if (require.main === module) {
   main();
 }
 
-module.exports = { main, injectDescriptions };
+module.exports = { main };

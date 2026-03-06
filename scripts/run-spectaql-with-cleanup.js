@@ -21,7 +21,6 @@ if (args.length === 0) {
 
 // First, generate the config file
 console.log('Generating SpectaQL configuration...');
-const generateConfig = require('./generate-spectaql-config');
 
 // Switch the temp config to use the enhanced schema file instead of the live URL.
 // The enhanced-schema.json contains descriptions injected from the metadata file
