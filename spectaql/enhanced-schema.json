@@ -6,11 +6,11 @@
         "fields": [
           {
             "name": "products",
-            "description": "Search for products that match the specified SKU values.",
+            "description": "Search for products that match the specified SKU values. In Adobe Commerce as a Cloud Service, this query replaces the `products` query defined in the Commerce Foundation.",
             "args": [
               {
                 "name": "skus",
-                "description": null,
+                "description": "List of SKUs to search for. For example, `123`, `456` or `789`.",
                 "type": {
                   "name": null,
                   "kind": "LIST",
@@ -32,11 +32,11 @@
           },
           {
             "name": "refineProduct",
-            "description": null,
+            "description": "Retrieves refined product search results by applying additional filters, sorting, or facets to an existing product result set, enabling incremental narrowing of product lists without running a completely new product query.",
             "args": [
               {
                 "name": "optionIds",
-                "description": null,
+                "description": "List of option IDs to refine the product by. For example, `123`, `456` or `789`.",
                 "type": {
                   "name": null,
                   "kind": "NON_NULL",
@@ -48,7 +48,7 @@
               },
               {
                 "name": "sku",
-                "description": null,
+                "description": "SKU of the product to refine. For example, `RF903`, `DG90-54` or `789-001`.",
                 "type": {
                   "name": null,
                   "kind": "NON_NULL",
@@ -71,7 +71,7 @@
             "args": [
               {
                 "name": "sku",
-                "description": null,
+                "description": "SKU of the product to get variants for. For example, `UR123`, `MZ456` or `KS789`.",
                 "type": {
                   "name": null,
                   "kind": "NON_NULL",
@@ -83,7 +83,7 @@
               },
               {
                 "name": "optionIds",
-                "description": null,
+                "description": "List of option IDs to get variants for. For example, `123`, `456` or `789`.",
                 "type": {
                   "name": null,
                   "kind": "LIST",
@@ -95,7 +95,7 @@
               },
               {
                 "name": "pageSize",
-                "description": null,
+                "description": "Page size for pagination. For example, `10` for a page size of 10 or `20` for a page size of 20.",
                 "type": {
                   "name": "Int",
                   "kind": "SCALAR",
@@ -104,7 +104,7 @@
               },
               {
                 "name": "cursor",
-                "description": null,
+                "description": "Pagination cursor. For example, `123` for the first variant, `456` for the second variant.",
                 "type": {
                   "name": "String",
                   "kind": "SCALAR",
@@ -373,7 +373,7 @@
             "args": [
               {
                 "name": "id",
-                "description": null,
+                "description": "The ID of the country to search for. For example, `1`, `2` or `3`.",
                 "type": {
                   "name": "String",
                   "kind": "SCALAR",
@@ -403,7 +403,7 @@
             "args": [
               {
                 "name": "attributes",
-                "description": null,
+                "description": "List of attributes to retrieve metadata for. For example, `color`, `size` or `material`.",
                 "type": {
                   "name": null,
                   "kind": "LIST",
@@ -760,7 +760,7 @@
             "args": [
               {
                 "name": "input",
-                "description": null,
+                "description": "Input object that defines the guest order information.",
                 "type": {
                   "name": null,
                   "kind": "NON_NULL",
@@ -786,7 +786,7 @@
             "args": [
               {
                 "name": "input",
-                "description": null,
+                "description": "Input object that defines the order token information.",
                 "type": {
                   "name": null,
                   "kind": "NON_NULL",
@@ -812,7 +812,7 @@
             "args": [
               {
                 "name": "email",
-                "description": null,
+                "description": "The email address to check.",
                 "type": {
                   "name": null,
                   "kind": "NON_NULL",
@@ -835,7 +835,7 @@
             "args": [
               {
                 "name": "email",
-                "description": null,
+                "description": "The email address to check.",
                 "type": {
                   "name": null,
                   "kind": "NON_NULL",
@@ -858,7 +858,7 @@
             "args": [
               {
                 "name": "name",
-                "description": null,
+                "description": "The role name to check.",
                 "type": {
                   "name": null,
                   "kind": "NON_NULL",
@@ -881,7 +881,7 @@
             "args": [
               {
                 "name": "email",
-                "description": null,
+                "description": "The email address to check.",
                 "type": {
                   "name": null,
                   "kind": "NON_NULL",
@@ -927,7 +927,7 @@
             "args": [
               {
                 "name": "uid",
-                "description": null,
+                "description": "The unique ID of the negotiable quote to retrieve.",
                 "type": {
                   "name": null,
                   "kind": "NON_NULL",
@@ -950,7 +950,7 @@
             "args": [
               {
                 "name": "templateId",
-                "description": null,
+                "description": "The unique ID of the negotiable quote template to retrieve.",
                 "type": {
                   "name": null,
                   "kind": "NON_NULL",
@@ -1135,7 +1135,7 @@
             "args": [
               {
                 "name": "formType",
-                "description": null,
+                "description": "The type of reCAPTCHA form to retrieve.",
                 "type": {
                   "name": null,
                   "kind": "NON_NULL",
@@ -1257,7 +1257,7 @@
           },
           {
             "name": "recommendationsByUnitIds",
-            "description": null,
+            "description": "Retrieve recommendation units by their unique ID to use on the storefront.",
             "args": [
               {
                 "name": "unitIds",
@@ -1338,7 +1338,7 @@
           },
           {
             "name": "productSearch",
-            "description": "Search products using Live Search",
+            "description": "Runs a search or browse request against an Adobe Commerce Optimizer catalog view based on a query phrase, filters, and sort options. It applies Product Discovery configuration (merchandising rules, intelligent ranking, and facets) and returns matching products, facet buckets with counts, and pagination metadata for use by headless storefronts (AEM, Edge Delivery Services, custom SPAs).",
             "args": [
               {
                 "name": "context",
@@ -4484,7 +4484,7 @@
         {
           "kind": "OBJECT",
           "name": "Attribute",
-          "description": "Contains details about the attribute, including the code and type.",
+          "description": "Represents details about the attribute, including the code and type.",
           "fields": [
             {
               "name": "attribute_code",
@@ -5338,7 +5338,7 @@
         {
           "kind": "OBJECT",
           "name": "AttributeOption",
-          "description": "Defines an attribute option.",
+          "description": "Represents an attribute option.",
           "fields": [
             {
               "name": "label",
@@ -5438,7 +5438,7 @@
         {
           "kind": "OBJECT",
           "name": "AttributeSelectedOption",
-          "description": "",
+          "description": "Represents a selected option for an attribute. Contains details about a selected option for an attribute, including the label and the value.",
           "fields": [
             {
               "name": "label",
@@ -5487,7 +5487,7 @@
         {
           "kind": "INTERFACE",
           "name": "AttributeSelectedOptionInterface",
-          "description": "",
+          "description": "Represents a selected option for an attribute. Contains details about a selected option for an attribute, including the label and the value.",
           "fields": [
             {
               "name": "label",
@@ -5536,7 +5536,7 @@
         {
           "kind": "OBJECT",
           "name": "AttributeSelectedOptions",
-          "description": "",
+          "description": "Represents selected options for an attribute.",
           "fields": [
             {
               "name": "attribute_type",
@@ -5703,7 +5703,7 @@
         {
           "kind": "OBJECT",
           "name": "AttributeValue",
-          "description": "",
+          "description": "Represents an attribute value.",
           "fields": [
             {
               "name": "attribute_type",
@@ -5813,7 +5813,7 @@
         {
           "kind": "INTERFACE",
           "name": "AttributeValueInterface",
-          "description": "",
+          "description": "An interface containing fields that define the attribute value.",
           "fields": [
             {
               "name": "attribute_type",
@@ -7794,7 +7794,7 @@
             },
             {
               "name": "product_type",
-              "description": "The type of product, such as simple, configurable, etc.",
+              "description": "The type of product, such as simple or configurable.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -10075,7 +10075,7 @@
         {
           "kind": "INTERFACE",
           "name": "CartAddressInterface",
-          "description": "",
+          "description": "An interface containing fields that define the cart address.",
           "fields": [
             {
               "name": "city",
@@ -12521,7 +12521,7 @@
             },
             {
               "name": "name",
-              "description": "The display name of the category.",
+              "description": "Category name. For example, `Electronics`, `Clothing` or `Books`.",
               "args": [],
               "type": {
                 "kind": "NON_NULL",
@@ -12570,7 +12570,7 @@
           "fields": [
             {
               "name": "name",
-              "description": "The display name of the category.",
+              "description": "Category name. For example, `Electronics`, `Clothing` or `Books`.",
               "args": [],
               "type": {
                 "kind": "NON_NULL",
@@ -12602,7 +12602,7 @@
             },
             {
               "name": "level",
-              "description": "The depth level of the category in the hierarchy (0 for root categories).",
+              "description": "The level of the category. The root category is a level 1 category. For example, men -> level 1, men/clothing -> level 2, men/clothing/shorts -> level 3",
               "args": [],
               "type": {
                 "kind": "NON_NULL",
@@ -13000,7 +13000,7 @@
             },
             {
               "name": "name",
-              "description": "The display name of the category.",
+              "description": "Category name. For example, `Electronics`, `Clothing` or `Books`.",
               "args": [],
               "type": {
                 "kind": "NON_NULL",
@@ -13056,7 +13056,7 @@
             },
             {
               "name": "level",
-              "description": "The depth level of the category in the tree hierarchy (0 for root categories).",
+              "description": "The root category is a level 1 category. For example, men -> level 1, men/clothing -> level 2, men/clothing/shorts -> level 3",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -13080,7 +13080,7 @@
             },
             {
               "name": "childrenSlugs",
-              "description": "The slugs of all direct child categories.",
+              "description": "The slugs of all direct child categories. Ex: men/clothing/shorts -> [men/clothing/shorts/athletic, men/clothing/shorts/swimwear]",
               "args": [],
               "type": {
                 "kind": "LIST",
@@ -13109,11 +13109,11 @@
         {
           "kind": "OBJECT",
           "name": "CategoryView",
-          "description": "Old category bucket for federation",
+          "description": "Represents a category. Contains information about a category, including the category ID, the category name, the category path, the category URL key, the category URL path, and the category roles.",
           "fields": [
             {
               "name": "availableSortBy",
-              "description": null,
+              "description": "List of available sort by options. For example, `name`, `position` or `size`.",
               "args": [],
               "type": {
                 "kind": "LIST",
@@ -13129,7 +13129,7 @@
             },
             {
               "name": "children",
-              "description": null,
+              "description": "List of child category IDs. For example, `123`, `456` or `789`.",
               "args": [],
               "type": {
                 "kind": "LIST",
@@ -13149,7 +13149,7 @@
             },
             {
               "name": "defaultSortBy",
-              "description": null,
+              "description": "Default sort by option. For example, `name`, `position` or `size`.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -13161,7 +13161,7 @@
             },
             {
               "name": "id",
-              "description": null,
+              "description": "Category ID. For example, `123`, `456` or `789`.",
               "args": [],
               "type": {
                 "kind": "NON_NULL",
@@ -13177,7 +13177,7 @@
             },
             {
               "name": "level",
-              "description": null,
+              "description": "The level of the category. The root category is a level 1 category. For example, men -> level 1, men/clothing -> level 2, men/clothing/shorts -> level 3",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -13189,7 +13189,7 @@
             },
             {
               "name": "name",
-              "description": null,
+              "description": "Category name. For example, `Electronics`, `Clothing` or `Books`.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -13201,7 +13201,7 @@
             },
             {
               "name": "parentId",
-              "description": null,
+              "description": "Parent category ID. For example, `123`, `456` or `789`.",
               "args": [],
               "type": {
                 "kind": "NON_NULL",
@@ -13217,7 +13217,7 @@
             },
             {
               "name": "path",
-              "description": null,
+              "description": "Category path. For example, `/electronics/laptops`, `/clothing/shirts` or `/books/fiction`.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -13229,7 +13229,7 @@
             },
             {
               "name": "roles",
-              "description": null,
+              "description": "List of roles for the category. For example, `show_on_plp`, `show_in_pdp` or `show_in_search`.",
               "args": [],
               "type": {
                 "kind": "NON_NULL",
@@ -13253,7 +13253,7 @@
             },
             {
               "name": "urlKey",
-              "description": null,
+              "description": "Category URL key. For example, `electronics`, `clothing` or `books`.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -13265,7 +13265,7 @@
             },
             {
               "name": "urlPath",
-              "description": null,
+              "description": "Category URL path. For example, `/electronics/laptops`, `/clothing/shirts` or `/books/fiction`.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -13327,11 +13327,11 @@
         {
           "kind": "INTERFACE",
           "name": "CategoryViewInterface",
-          "description": null,
+          "description": "Base interface defining essential category fields shared across all category views.",
           "fields": [
             {
               "name": "availableSortBy",
-              "description": null,
+              "description": "List of available sort by options. For example, name, size or position.",
               "args": [],
               "type": {
                 "kind": "LIST",
@@ -13347,7 +13347,7 @@
             },
             {
               "name": "defaultSortBy",
-              "description": null,
+              "description": "Default sort by option. For example, name, size or position.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -13359,7 +13359,7 @@
             },
             {
               "name": "id",
-              "description": null,
+              "description": "Category ID. For example, `123`, `456` or `789`.",
               "args": [],
               "type": {
                 "kind": "NON_NULL",
@@ -13375,7 +13375,7 @@
             },
             {
               "name": "level",
-              "description": null,
+              "description": "The level of the category. The root category is a level 1 category. For example, men -> level 1, men/clothing -> level 2, men/clothing/shorts -> level 3",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -13387,7 +13387,7 @@
             },
             {
               "name": "name",
-              "description": null,
+              "description": "Category name. For example, `Electronics`, `Clothing` or `Books`.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -13399,7 +13399,7 @@
             },
             {
               "name": "path",
-              "description": null,
+              "description": "Category path. For example, `/electronics/laptops`, `/clothing/shirts` or `/books/fiction`.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -13411,7 +13411,7 @@
             },
             {
               "name": "roles",
-              "description": null,
+              "description": "List of roles for the category. For example, `show_on_plp`, `show_in_pdp` or `show_in_search`.",
               "args": [],
               "type": {
                 "kind": "LIST",
@@ -13427,7 +13427,7 @@
             },
             {
               "name": "urlKey",
-              "description": null,
+              "description": "Category URL key. For example, `electronics`, `clothing` or `books`.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -13439,7 +13439,7 @@
             },
             {
               "name": "urlPath",
-              "description": null,
+              "description": "Category URL path. For example, `/electronics/laptops`, `/clothing/shirts` or `/books/fiction`.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -13484,7 +13484,7 @@
             },
             {
               "name": "name",
-              "description": "The display name of the category.",
+              "description": "Category name. For example, `Electronics`, `Clothing` or `Books`.",
               "args": [],
               "type": {
                 "kind": "NON_NULL",
@@ -14031,7 +14031,7 @@
         {
           "kind": "OBJECT",
           "name": "ColorSwatchData",
-          "description": "",
+          "description": null,
           "fields": [
             {
               "name": "value",
@@ -14227,7 +14227,7 @@
               "args": [
                 {
                   "name": "filter",
-                  "description": null,
+                  "description": "The filter to use for searching company credit history.",
                   "type": {
                     "kind": "INPUT_OBJECT",
                     "name": "CompanyCreditHistoryFilterInput",
@@ -14237,7 +14237,7 @@
                 },
                 {
                   "name": "pageSize",
-                  "description": null,
+                  "description": "Specifies the maximum number of results to return at once.",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Int",
@@ -14247,7 +14247,7 @@
                 },
                 {
                   "name": "currentPage",
-                  "description": null,
+                  "description": "",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Int",
@@ -17081,7 +17081,7 @@
             },
             {
               "name": "lowStock",
-              "description": "A flag stating if the product stock is low",
+              "description": "Indicates whether the remaining quantity of the product has reached the Only X Left threshold.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -17097,7 +17097,7 @@
               "args": [
                 {
                   "name": "roles",
-                  "description": null,
+                  "description": "A list of roles to filter attributes by. Possible values are `show_on_plp`, `show_in_pdp`, or `show_in_search`",
                   "type": {
                     "kind": "LIST",
                     "name": null,
@@ -17111,7 +17111,7 @@
                 },
                 {
                   "name": "names",
-                  "description": null,
+                  "description": "A list of attribute names to filter attributes by. For example, `color`, `size` or `material`",
                   "type": {
                     "kind": "LIST",
                     "name": null,
@@ -17166,11 +17166,11 @@
             },
             {
               "name": "images",
-              "description": "A list of images defined for the product.",
+              "description": "A list of images defined for the product. Possible values include `image`, `small_image` or `swatch`.",
               "args": [
                 {
                   "name": "roles",
-                  "description": null,
+                  "description": "List of roles to filter images by, for example `image`, `small_image`, `thumbnail`, or `swatch`.",
                   "type": {
                     "kind": "LIST",
                     "name": null,
@@ -17329,7 +17329,7 @@
             },
             {
               "name": "sku",
-              "description": "Product SKU.",
+              "description": "A unique code used for identification of a product.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -17377,11 +17377,11 @@
             },
             {
               "name": "links",
-              "description": "A list of product links",
+              "description": "A list of product links. Links are used to navigate from one product to another.",
               "args": [
                 {
                   "name": "linkTypes",
-                  "description": null,
+                  "description": "Contains details about product links for related products and cross selling. For example, `related`, `up_sell` or `cross_sell`",
                   "type": {
                     "kind": "LIST",
                     "name": null,
@@ -17416,7 +17416,7 @@
               "args": [
                 {
                   "name": "family",
-                  "description": null,
+                  "description": "The product family to filter the categories by. For example, 'clothing', 'electronics' or 'books'",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -17480,7 +17480,7 @@
         {
           "kind": "OBJECT",
           "name": "ComplexTextValue",
-          "description": "",
+          "description": "Represents a complex text value.",
           "fields": [
             {
               "name": "html",
@@ -17967,7 +17967,7 @@
         {
           "kind": "OBJECT",
           "name": "ConfigurableOrderItem",
-          "description": "",
+          "description": "Contains details about a configurable order item.",
           "fields": [
             {
               "name": "custom_attributes",
@@ -18151,7 +18151,7 @@
             },
             {
               "name": "product_type",
-              "description": "The type of product, such as simple, configurable, etc.",
+              "description": "The type of product, such as simple or configurable.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -18352,7 +18352,7 @@
               "args": [
                 {
                   "name": "configurableOptionValueUids",
-                  "description": null,
+                  "description": "An input object that contains the data to get configurable product options selection.",
                   "type": {
                     "kind": "LIST",
                     "name": null,
@@ -18411,7 +18411,7 @@
               "args": [
                 {
                   "name": "filters",
-                  "description": null,
+                  "description": "An input object that contains the data to get product custom attributes.",
                   "type": {
                     "kind": "INPUT_OBJECT",
                     "name": "AttributeFilterInput",
@@ -21858,7 +21858,7 @@
         {
           "kind": "OBJECT",
           "name": "CreateGuestCartOutput",
-          "description": "",
+          "description": "Contains the response to the request to create a guest cart.",
           "fields": [
             {
               "name": "cart",
@@ -24399,7 +24399,7 @@
         {
           "kind": "INTERFACE",
           "name": "CustomAttributeOptionInterface",
-          "description": "",
+          "description": "An interface containing fields that define the custom attribute option.",
           "fields": [
             {
               "name": "is_default",
@@ -24572,7 +24572,7 @@
               "args": [
                 {
                   "name": "input",
-                  "description": null,
+                  "description": "Input object that defines the companies to return.",
                   "type": {
                     "kind": "INPUT_OBJECT",
                     "name": "UserCompaniesInput",
@@ -24639,7 +24639,7 @@
               "args": [
                 {
                   "name": "attributeCodes",
-                  "description": null,
+                  "description": "List of attribute codes to filter the custom attributes by.",
                   "type": {
                     "kind": "LIST",
                     "name": null,
@@ -24762,7 +24762,7 @@
               "args": [
                 {
                   "name": "giftRegistryUid",
-                  "description": null,
+                  "description": "The unique ID of the gift registry to search for.",
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -24861,7 +24861,7 @@
             },
             {
               "name": "orders",
-              "description": null,
+              "description": "Orders for the customer.",
               "args": [
                 {
                   "name": "filter",
@@ -24940,7 +24940,7 @@
               "args": [
                 {
                   "name": "uid",
-                  "description": null,
+                  "description": "The unique ID of the purchase order to search for.",
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -24967,7 +24967,7 @@
               "args": [
                 {
                   "name": "uid",
-                  "description": null,
+                  "description": "The unique ID of the purchase order approval rule to search for.",
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -25006,7 +25006,7 @@
               "args": [
                 {
                   "name": "currentPage",
-                  "description": null,
+                  "description": "Specifies which page of results to return. The default value is 1.",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Int",
@@ -25016,7 +25016,7 @@
                 },
                 {
                   "name": "pageSize",
-                  "description": null,
+                  "description": "Specifies the maximum number of results to return at once.",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Int",
@@ -25039,7 +25039,7 @@
               "args": [
                 {
                   "name": "filter",
-                  "description": null,
+                  "description": "The filter to use for searching customer orders.",
                   "type": {
                     "kind": "INPUT_OBJECT",
                     "name": "PurchaseOrdersFilterInput",
@@ -25049,7 +25049,7 @@
                 },
                 {
                   "name": "currentPage",
-                  "description": null,
+                  "description": "Specifies which page of results to return. The default value is 1.",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Int",
@@ -25059,7 +25059,7 @@
                 },
                 {
                   "name": "pageSize",
-                  "description": null,
+                  "description": "Specifies the maximum number of results to return at once.",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Int",
@@ -25167,7 +25167,7 @@
               "args": [
                 {
                   "name": "uid",
-                  "description": null,
+                  "description": "The unique ID of the return request to search for.",
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -25355,7 +25355,7 @@
               "args": [
                 {
                   "name": "id",
-                  "description": null,
+                  "description": "The unique ID of the wish list to search for.",
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -25470,7 +25470,7 @@
               "args": [
                 {
                   "name": "attributeCodes",
-                  "description": null,
+                  "description": "List of attribute codes to filter the custom attributes by.",
                   "type": {
                     "kind": "LIST",
                     "name": null,
@@ -29537,7 +29537,7 @@
         {
           "kind": "SCALAR",
           "name": "DateTime",
-          "description": "An RFC-3339 compliant DateTime Scalar",
+          "description": "A slightly refined version of RFC-3339 compliant DateTime Scalar",
           "fields": null,
           "inputFields": null,
           "interfaces": null,
@@ -31113,7 +31113,7 @@
             },
             {
               "name": "product_type",
-              "description": "The type of product, such as simple, configurable, etc.",
+              "description": "The type of product, such as simple or configurable.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -31326,7 +31326,7 @@
               "args": [
                 {
                   "name": "filters",
-                  "description": null,
+                  "description": "An input object that contains the data to get product custom attributes.",
                   "type": {
                     "kind": "INPUT_OBJECT",
                     "name": "AttributeFilterInput",
@@ -32535,7 +32535,7 @@
         {
           "kind": "INTERFACE",
           "name": "ErrorInterface",
-          "description": "",
+          "description": "An interface containing fields that define the error.",
           "fields": [
             {
               "name": "message",
@@ -34911,7 +34911,7 @@
             },
             {
               "name": "product_type",
-              "description": "The type of product, such as simple, configurable, etc.",
+              "description": "The type of product, such as simple or configurable.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -36703,7 +36703,7 @@
         {
           "kind": "INTERFACE",
           "name": "GiftRegistryDynamicAttributeInterface",
-          "description": "",
+          "description": "An interface containing fields that define the gift registry dynamic attribute.",
           "fields": [
             {
               "name": "code",
@@ -36882,7 +36882,7 @@
         {
           "kind": "INTERFACE",
           "name": "GiftRegistryDynamicAttributeMetadataInterface",
-          "description": "",
+          "description": "An interface containing fields that define the dynamic attribute metadata.",
           "fields": [
             {
               "name": "attribute_group",
@@ -37100,7 +37100,7 @@
         {
           "kind": "INTERFACE",
           "name": "GiftRegistryItemInterface",
-          "description": "",
+          "description": "An interface containing fields that define the gift registry item.",
           "fields": [
             {
               "name": "created_at",
@@ -39472,7 +39472,7 @@
         {
           "kind": "OBJECT",
           "name": "ImageSwatchData",
-          "description": "",
+          "description": "Represents an image swatch data. Contains details about an image swatch data, including the URL assigned to the thumbnail of the swatch image, and the value.",
           "fields": [
             {
               "name": "thumbnail",
@@ -39713,7 +39713,7 @@
         {
           "kind": "OBJECT",
           "name": "InternalError",
-          "description": "Contains an error message when an internal error occurred.",
+          "description": "Represents an error message when an internal error occurred.",
           "fields": [
             {
               "name": "message",
@@ -41214,7 +41214,7 @@
         {
           "kind": "OBJECT",
           "name": "Money",
-          "description": "Defines a monetary value, including a numeric value and a currency code.",
+          "description": "Represents a monetary value, including a numeric value and a currency code.",
           "fields": [
             {
               "name": "currency",
@@ -41522,7 +41522,7 @@
         {
           "kind": "OBJECT",
           "name": "Mutation",
-          "description": "",
+          "description": "Represents the mutation for the core saas service.",
           "fields": [
             {
               "name": "acceptCompanyInvitation",
@@ -41530,7 +41530,7 @@
               "args": [
                 {
                   "name": "input",
-                  "description": null,
+                  "description": "An input object that contains the data to accept a company invitation.",
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -41861,7 +41861,7 @@
               "args": [
                 {
                   "name": "input",
-                  "description": null,
+                  "description": "An input object that contains the data to add a comment to a purchase order.",
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -41888,7 +41888,7 @@
               "args": [
                 {
                   "name": "input",
-                  "description": null,
+                  "description": "An input object that contains the data to add purchase order items to the cart.",
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -42128,7 +42128,7 @@
               "args": [
                 {
                   "name": "cartId",
-                  "description": null,
+                  "description": "The ID of the cart to apply reward points to.",
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -42182,7 +42182,7 @@
               "args": [
                 {
                   "name": "input",
-                  "description": null,
+                  "description": "An input object that contains the data to approve purchase orders.",
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -42236,7 +42236,7 @@
               "args": [
                 {
                   "name": "cart_id",
-                  "description": null,
+                  "description": "The ID of the cart to assign the customer to.",
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -42294,7 +42294,7 @@
               "args": [
                 {
                   "name": "input",
-                  "description": null,
+                  "description": "An input object that contains the data to cancel an order.",
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -42321,7 +42321,7 @@
               "args": [
                 {
                   "name": "input",
-                  "description": null,
+                  "description": "An input object that contains the data to cancel purchase orders.",
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -42493,7 +42493,7 @@
               "args": [
                 {
                   "name": "input",
-                  "description": null,
+                  "description": "An input object that contains the data to confirm the cancellation of the customer order.",
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -42547,7 +42547,7 @@
               "args": [
                 {
                   "name": "input",
-                  "description": null,
+                  "description": "An input object that contains the data to confirm the return.",
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -42711,7 +42711,7 @@
               "args": [
                 {
                   "name": "input",
-                  "description": null,
+                  "description": "An input object that contains the data to create a company.",
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -42738,7 +42738,7 @@
               "args": [
                 {
                   "name": "input",
-                  "description": null,
+                  "description": "An input object that contains the data to create a company role.",
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -42765,7 +42765,7 @@
               "args": [
                 {
                   "name": "input",
-                  "description": null,
+                  "description": "An input object that contains the data to create a company team.",
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -42792,7 +42792,7 @@
               "args": [
                 {
                   "name": "input",
-                  "description": null,
+                  "description": "An input object that contains the data to create a company user.",
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -42819,7 +42819,7 @@
               "args": [
                 {
                   "name": "input",
-                  "description": null,
+                  "description": "An input object that contains the data to create a compare list.",
                   "type": {
                     "kind": "INPUT_OBJECT",
                     "name": "CreateCompareListInput",
@@ -42842,7 +42842,7 @@
               "args": [
                 {
                   "name": "input",
-                  "description": null,
+                  "description": "An input object that contains the data to create a customer address.",
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -42923,7 +42923,7 @@
               "args": [
                 {
                   "name": "input",
-                  "description": null,
+                  "description": "An input object that contains the data to create a guest cart.",
                   "type": {
                     "kind": "INPUT_OBJECT",
                     "name": "CreateGuestCartInput",
@@ -42973,7 +42973,7 @@
               "args": [
                 {
                   "name": "input",
-                  "description": null,
+                  "description": "An input object that contains the data to create a purchase order approval rule.",
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -43000,7 +43000,7 @@
               "args": [
                 {
                   "name": "input",
-                  "description": null,
+                  "description": "An input object that contains the data to create a requisition list.",
                   "type": {
                     "kind": "INPUT_OBJECT",
                     "name": "CreateRequisitionListInput",
@@ -43104,7 +43104,7 @@
               "args": [
                 {
                   "name": "id",
-                  "description": null,
+                  "description": "The ID of the company role to be deleted.",
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -43131,7 +43131,7 @@
               "args": [
                 {
                   "name": "id",
-                  "description": null,
+                  "description": "The ID of the company team to be deleted.",
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -43158,7 +43158,7 @@
               "args": [
                 {
                   "name": "id",
-                  "description": null,
+                  "description": "The ID of the company user to be deleted.",
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -43363,7 +43363,7 @@
               "args": [
                 {
                   "name": "input",
-                  "description": null,
+                  "description": "An input object that contains the data to delete a purchase order approval rule.",
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -43646,7 +43646,7 @@
               "args": [
                 {
                   "name": "input",
-                  "description": null,
+                  "description": "An input object that contains the data to finish the upload.",
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -43768,7 +43768,7 @@
               "args": [
                 {
                   "name": "input",
-                  "description": null,
+                  "description": "An input object that contains the data to initiate the upload.",
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -44118,7 +44118,7 @@
               "args": [
                 {
                   "name": "input",
-                  "description": null,
+                  "description": "An input object that contains the data to place the order for a purchase order.",
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -44145,7 +44145,7 @@
               "args": [
                 {
                   "name": "input",
-                  "description": null,
+                  "description": "An input object that contains the data to place the purchase order.",
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -44199,7 +44199,7 @@
               "args": [
                 {
                   "name": "input",
-                  "description": null,
+                  "description": "An input object that contains the data to reject purchase orders.",
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -44596,7 +44596,7 @@
               "args": [
                 {
                   "name": "cartId",
-                  "description": null,
+                  "description": "The ID of the cart to remove reward points from.",
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -44677,7 +44677,7 @@
               "args": [
                 {
                   "name": "orderNumber",
-                  "description": null,
+                  "description": "The order number to reorder items from.",
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -44704,7 +44704,7 @@
               "args": [
                 {
                   "name": "input",
-                  "description": null,
+                  "description": "An input object that contains the data to request a guest order cancel.",
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -44727,7 +44727,7 @@
             },
             {
               "name": "requestGuestReturn",
-              "description": null,
+              "description": "Request to start a return request for guest.",
               "args": [
                 {
                   "name": "input",
@@ -45037,7 +45037,7 @@
               "args": [
                 {
                   "name": "input",
-                  "description": null,
+                  "description": "An input object that contains the data to add custom attributes to the cart.",
                   "type": {
                     "kind": "INPUT_OBJECT",
                     "name": "CartCustomAttributesInput",
@@ -45060,7 +45060,7 @@
               "args": [
                 {
                   "name": "input",
-                  "description": null,
+                  "description": "An input object that contains the data to add custom attributes to item in the cart.",
                   "type": {
                     "kind": "INPUT_OBJECT",
                     "name": "CartItemCustomAttributesInput",
@@ -45110,7 +45110,7 @@
               "args": [
                 {
                   "name": "input",
-                  "description": null,
+                  "description": "An input object that contains the data to add custom attributes to the credit memo.",
                   "type": {
                     "kind": "INPUT_OBJECT",
                     "name": "CreditMemoCustomAttributesInput",
@@ -45133,7 +45133,7 @@
               "args": [
                 {
                   "name": "input",
-                  "description": null,
+                  "description": "An input object that contains the data to add custom attributes to the credit memo item.",
                   "type": {
                     "kind": "INPUT_OBJECT",
                     "name": "CreditMemoItemCustomAttributesInput",
@@ -45156,7 +45156,7 @@
               "args": [
                 {
                   "name": "input",
-                  "description": null,
+                  "description": "An input object that contains the data to add custom attributes to the invoice.",
                   "type": {
                     "kind": "INPUT_OBJECT",
                     "name": "InvoiceCustomAttributesInput",
@@ -45179,7 +45179,7 @@
               "args": [
                 {
                   "name": "input",
-                  "description": null,
+                  "description": "An input object that contains the data to add custom attributes to the invoice item.",
                   "type": {
                     "kind": "INPUT_OBJECT",
                     "name": "InvoiceItemCustomAttributesInput",
@@ -45723,7 +45723,7 @@
               "args": [
                 {
                   "name": "input",
-                  "description": null,
+                  "description": "An input object that contains the data to update company information.",
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -45750,7 +45750,7 @@
               "args": [
                 {
                   "name": "input",
-                  "description": null,
+                  "description": "An input object that contains the data to update company role information.",
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -45777,7 +45777,7 @@
               "args": [
                 {
                   "name": "input",
-                  "description": null,
+                  "description": "An input object that contains the data to update company structure.",
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -45804,7 +45804,7 @@
               "args": [
                 {
                   "name": "input",
-                  "description": null,
+                  "description": "An input object that contains the data to update company team data.",
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -45831,7 +45831,7 @@
               "args": [
                 {
                   "name": "input",
-                  "description": null,
+                  "description": "An input object that contains the data to update a company user.",
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -46242,7 +46242,7 @@
               "args": [
                 {
                   "name": "input",
-                  "description": null,
+                  "description": "An input object that contains the data to update a purchase order approval rule.",
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -46283,7 +46283,7 @@
                 },
                 {
                   "name": "input",
-                  "description": "",
+                  "description": "An input object that contains the data to update a requisition list.",
                   "type": {
                     "kind": "INPUT_OBJECT",
                     "name": "UpdateRequisitionListInput",
@@ -46402,7 +46402,7 @@
               "args": [
                 {
                   "name": "input",
-                  "description": null,
+                  "description": "An input object that contains the data to validate purchase orders.",
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -47031,7 +47031,7 @@
         {
           "kind": "INTERFACE",
           "name": "NegotiableQuoteAddressInterface",
-          "description": "",
+          "description": "An interface containing fields that define the negotiable quote address.",
           "fields": [
             {
               "name": "city",
@@ -50355,7 +50355,7 @@
         {
           "kind": "INTERFACE",
           "name": "NegotiableQuoteUidNonFatalResultInterface",
-          "description": "",
+          "description": "An interface containing fields that define the negotiable quote UID non fatal result.",
           "fields": [
             {
               "name": "quote_uid",
@@ -50464,7 +50464,7 @@
         {
           "kind": "OBJECT",
           "name": "NoSuchEntityUidError",
-          "description": "Contains an error message when an invalid UID was specified.",
+          "description": "Represents an error message when an invalid UID was specified.",
           "fields": [
             {
               "name": "message",
@@ -51312,7 +51312,7 @@
             },
             {
               "name": "product_type",
-              "description": "The type of product, such as simple, configurable, etc.",
+              "description": "The type of product, such as simple or configurable.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -51633,7 +51633,7 @@
             },
             {
               "name": "product_type",
-              "description": "The type of product, such as simple, configurable, etc.",
+              "description": "The type of product, such as simple or configurable.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -54107,7 +54107,7 @@
           "fields": [
             {
               "name": "adjustments",
-              "description": "A list of price adjustments.",
+              "description": "The signed value of the price adjustment (positive for markup, negative for markdown).",
               "args": [],
               "type": {
                 "kind": "LIST",
@@ -54621,7 +54621,7 @@
               "args": [
                 {
                   "name": "filters",
-                  "description": null,
+                  "description": "An input object that contains the data to get product custom attributes.",
                   "type": {
                     "kind": "INPUT_OBJECT",
                     "name": "AttributeFilterInput",
@@ -55952,7 +55952,7 @@
             },
             {
               "name": "lowStock",
-              "description": "A flag stating if the product stock is low",
+              "description": "Indicates whether the remaining quantity of the product has reached the Only X Left threshold.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -56132,7 +56132,7 @@
             },
             {
               "name": "name",
-              "description": "Product name.",
+              "description": "Product title for search results listings.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -56144,7 +56144,7 @@
             },
             {
               "name": "shortDescription",
-              "description": "A summary of the product.",
+              "description": "A summary of the product for search results listings.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -56156,7 +56156,7 @@
             },
             {
               "name": "inputOptions",
-              "description": "A list of input options.",
+              "description": "A list of input options. For example, a text field, a number field or a date field.",
               "args": [],
               "type": {
                 "kind": "LIST",
@@ -56172,7 +56172,7 @@
             },
             {
               "name": "sku",
-              "description": "Product SKU.",
+              "description": "A unique code used for identification of a product.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -56208,7 +56208,7 @@
             },
             {
               "name": "urlKey",
-              "description": "The URL key of the product.",
+              "description": "The URL key of the product. This is a unique identifier for the product that is used to create the product's URL.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -56220,11 +56220,11 @@
             },
             {
               "name": "links",
-              "description": "A list of product links.",
+              "description": "A list of product links. For example, related, up-sell, and cross-sell links.",
               "args": [
                 {
                   "name": "linkTypes",
-                  "description": null,
+                  "description": "Contains details about product links for related products and cross selling.",
                   "type": {
                     "kind": "LIST",
                     "name": null,
@@ -56259,7 +56259,7 @@
               "args": [
                 {
                   "name": "family",
-                  "description": null,
+                  "description": "The product family to filter the categories by. For example, 'clothing', 'electronics' or 'books'",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -56344,7 +56344,7 @@
             },
             {
               "name": "name",
-              "description": "Name of an attribute code.",
+              "description": "Name of an attribute code. For example, `color`, `size` or `material`",
               "args": [],
               "type": {
                 "kind": "NON_NULL",
@@ -56360,7 +56360,7 @@
             },
             {
               "name": "roles",
-              "description": "Roles designated for an attribute on the storefront, such as \"Show on PLP\", \"Show in PDP\", or \"Show in Search\".",
+              "description": "Roles designated for an attribute on the storefront. For example, `show_on_plp`, `show_in_pdp` or `show_in_search`",
               "args": [],
               "type": {
                 "kind": "LIST",
@@ -56376,7 +56376,7 @@
             },
             {
               "name": "value",
-              "description": "Attribute value, arbitrary of type.",
+              "description": "Attribute value, arbitrary of type. For example, `red`, `blue` or `green`",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -57430,7 +57430,7 @@
           "fields": [
             {
               "name": "label",
-              "description": "The display label of the product image.",
+              "description": "The display label of the product image. For example, `Main Image`, `Small Image` or `Thumbnail Image`",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -57442,7 +57442,7 @@
             },
             {
               "name": "roles",
-              "description": "A list that describes how the image is used. Can be image, small_image, or thumbnail.",
+              "description": "A list that describes how the image is used. Can be `image`, `small_image` or `thumbnail`",
               "args": [],
               "type": {
                 "kind": "LIST",
@@ -57458,7 +57458,7 @@
             },
             {
               "name": "url",
-              "description": "The URL to the product image.",
+              "description": "The URL to the product image. For example, `https://example.com/image.jpg`.",
               "args": [],
               "type": {
                 "kind": "NON_NULL",
@@ -57485,7 +57485,7 @@
           "fields": [
             {
               "name": "id",
-              "description": "The ID of an option value",
+              "description": "The ID of an option value. For example, `123` for the first option value, `456` for the second option value. ",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -57497,7 +57497,7 @@
             },
             {
               "name": "title",
-              "description": "The display name of the option value",
+              "description": "The display name of the option value. For example, `Red`, `Blue` or `Green`",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -57509,7 +57509,7 @@
             },
             {
               "name": "required",
-              "description": "Wether this option is required or not",
+              "description": "Indicates whether this input option is required.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -57521,7 +57521,7 @@
             },
             {
               "name": "type",
-              "description": "The type of data entry",
+              "description": "The type of data entry. For example, `text`, `number` or `date`",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -57533,7 +57533,7 @@
             },
             {
               "name": "markupAmount",
-              "description": "Price markup or markdown",
+              "description": "The percentage the prices is marked up or down. A positive value, such as `10.00`, indicates the product is marked up 10%. A negative value, such as `-10.00`, indicates the price is marked down 10%.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -57545,7 +57545,7 @@
             },
             {
               "name": "suffix",
-              "description": "SKU suffix to add to the product",
+              "description": "SKU suffix to add to the product. For example, `-red`, `-blue` or `-green`",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -57557,7 +57557,7 @@
             },
             {
               "name": "sortOrder",
-              "description": "Sort order",
+              "description": "Sort order for the input option. For example, `1` for the first input option, `2` for the second input option.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -57569,7 +57569,7 @@
             },
             {
               "name": "range",
-              "description": null,
+              "description": "The range of values for the input option. For example, if the input option is a text field, the range represents the number of characters.",
               "args": [],
               "type": {
                 "kind": "OBJECT",
@@ -57581,7 +57581,7 @@
             },
             {
               "name": "imageSize",
-              "description": null,
+              "description": "The size of the image for the input option.",
               "args": [],
               "type": {
                 "kind": "OBJECT",
@@ -57593,7 +57593,7 @@
             },
             {
               "name": "fileExtensions",
-              "description": null,
+              "description": "The file extensions allowed for the image. For example, `jpg`, `png`, `gif`, or `svg`",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -57612,11 +57612,11 @@
         {
           "kind": "OBJECT",
           "name": "ProductViewInputOptionImageSize",
-          "description": null,
+          "description": "Dimensions of the image associated with the input option.",
           "fields": [
             {
               "name": "width",
-              "description": null,
+              "description": "The width of the image in pixels. For example, `100` for a 100px width.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -57628,7 +57628,7 @@
             },
             {
               "name": "height",
-              "description": null,
+              "description": "The height of the image, in pixels. For example, `100` for a 100px height.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -57647,11 +57647,11 @@
         {
           "kind": "OBJECT",
           "name": "ProductViewInputOptionRange",
-          "description": null,
+          "description": "Lists the value range associated with a `ProductViewInputOption`. For example, if the input option is a text field, the range represents the number of characters.",
           "fields": [
             {
               "name": "from",
-              "description": null,
+              "description": "The starting value of the range. For example, if the input option is a text field, the starting value represents the minimum number of characters.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -57663,7 +57663,7 @@
             },
             {
               "name": "to",
-              "description": null,
+              "description": "The ending value of the range. For example, if the input option is a text field, the ending value represents the maximum number of characters.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -57682,7 +57682,7 @@
         {
           "kind": "OBJECT",
           "name": "ProductViewLink",
-          "description": "The product link type.",
+          "description": "The product link type. Contains details about product links for related products and cross selling. For example, `related`, `up_sell` or `cross_sell`",
           "fields": [
             {
               "name": "product",
@@ -57772,7 +57772,7 @@
           "fields": [
             {
               "name": "id",
-              "description": "The ID of the option.",
+              "description": "The ID of the option. For example, `123` for the first option, `456` for the second option.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -57784,7 +57784,7 @@
             },
             {
               "name": "multi",
-              "description": "Indicates whether the option allows multiple choices.",
+              "description": "Indicates whether the option allows multiple choices. The value is `true` for a multi-select option, `false` for a single-select option.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -57808,7 +57808,7 @@
             },
             {
               "name": "title",
-              "description": "The display name of the option.",
+              "description": "The display name of the option. For example, `Color`, `Size` or `Material`",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -57820,7 +57820,7 @@
             },
             {
               "name": "values",
-              "description": "List of available option values.",
+              "description": "List of available option values. For example, `Red`, `Blue` or `Green`",
               "args": [],
               "type": {
                 "kind": "LIST",
@@ -57875,7 +57875,7 @@
             },
             {
               "name": "inStock",
-              "description": "Indicates if the option is in stock.",
+              "description": "Indicates whether the remaining quantity of the product has reached the out-of-stock threshold.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -57914,7 +57914,7 @@
           "fields": [
             {
               "name": "id",
-              "description": "The ID of an option value.",
+              "description": "The ID of an option value. For example, `123` for the first option value, `456` for the second option value.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -57926,7 +57926,7 @@
             },
             {
               "name": "title",
-              "description": "The display name of the option value.",
+              "description": "The display name of the option value. For example, `Red`, `Blue` or `Green`",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -57938,7 +57938,7 @@
             },
             {
               "name": "inStock",
-              "description": "Indicates if the option is in stock.",
+              "description": "Indicates whether the remaining quantity of the product option value has reached the out-of-stock threshold.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -57967,7 +57967,7 @@
           "fields": [
             {
               "name": "id",
-              "description": "The ID of an option value.",
+              "description": "The ID of an option value. For example, `123` for the first option value, `456` for the second option value.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -57979,7 +57979,7 @@
             },
             {
               "name": "isDefault",
-              "description": "States if the option value is default or not.",
+              "description": "Indicates whether the option value is the default.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -57991,7 +57991,7 @@
             },
             {
               "name": "product",
-              "description": "Details about a simple product.",
+              "description": "Details about a simple product. For example, a product with a SKU of `123`, a name of `Product 1`, a price of `100.00`.",
               "args": [],
               "type": {
                 "kind": "OBJECT",
@@ -58015,7 +58015,7 @@
             },
             {
               "name": "title",
-              "description": "The display name of the option value.",
+              "description": "The display name of the option value. For example, `Red`, `Blue` or `Green`",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -58027,7 +58027,7 @@
             },
             {
               "name": "inStock",
-              "description": "Indicates if the option is in stock.",
+              "description": "Indicates whether the remaining quantity of the product option value has reached the out-of-stock threshold.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -58056,7 +58056,7 @@
           "fields": [
             {
               "name": "id",
-              "description": "The ID of an option value.",
+              "description": "The ID of an option value. For example, `123` for the first option value, `456` for the second option value.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -58068,7 +58068,7 @@
             },
             {
               "name": "title",
-              "description": "The display name of the option value.",
+              "description": "The display name of the option value. For example, `Red`, `Blue` or `Green`",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -58104,7 +58104,7 @@
             },
             {
               "name": "inStock",
-              "description": "Indicates if the option is in stock.",
+              "description": "Indicates whether the remaining quantity of the product option value has reached the out-of-stock threshold.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -58129,7 +58129,7 @@
         {
           "kind": "OBJECT",
           "name": "ProductViewPrice",
-          "description": "Base product price view, inherent for simple products.",
+          "description": "Base product price view. Contains the final price after discounts, the regular price, and the list of tier prices.",
           "fields": [
             {
               "name": "final",
@@ -58157,7 +58157,7 @@
             },
             {
               "name": "tiers",
-              "description": "Volume based pricing",
+              "description": "Volume based pricing.",
               "args": [],
               "type": {
                 "kind": "LIST",
@@ -58173,7 +58173,7 @@
             },
             {
               "name": "roles",
-              "description": "Price roles, stating if the price should be visible or hidden.",
+              "description": "Price roles, stating if the price should be visible or hidden. For example, `show_on_plp`, `show_in_pdp` or `show_in_search`",
               "args": [],
               "type": {
                 "kind": "LIST",
@@ -58252,11 +58252,11 @@
         {
           "kind": "OBJECT",
           "name": "ProductViewTierExactMatchCondition",
-          "description": null,
+          "description": "Minimum quantity (inclusive) required to activate this tier price. For example, a value of `10` means this tier applies when 10 or more items are purchased.",
           "fields": [
             {
               "name": "in",
-              "description": null,
+              "description": "Exact quantity values that activate this tier price. For example, `[5, 10]` means the tier applies only when the purchased quantity is exactly 5 or exactly 10.",
               "args": [],
               "type": {
                 "kind": "LIST",
@@ -58279,11 +58279,11 @@
         {
           "kind": "OBJECT",
           "name": "ProductViewTierPrice",
-          "description": null,
+          "description": "The discounted price that applies when the quantity conditions in `quantity` are satisfied. Contains the monetary amount and any price adjustments applied to this tier.",
           "fields": [
             {
               "name": "tier",
-              "description": "Volume based price",
+              "description": "The discounted price that applies when the quantity conditions in `quantity` are satisfied. Contains the monetary amount and any price adjustments applied to this tier.",
               "args": [],
               "type": {
                 "kind": "OBJECT",
@@ -58295,7 +58295,7 @@
             },
             {
               "name": "quantity",
-              "description": "Condition to active price",
+              "description": "The quantity conditions that must be met to activate the tier price. For example, `10` for a quantity of 10 or `20` for a quantity of 20.",
               "args": [],
               "type": {
                 "kind": "NON_NULL",
@@ -58326,11 +58326,11 @@
         {
           "kind": "OBJECT",
           "name": "ProductViewTierRangeCondition",
-          "description": null,
+          "description": "Minimum quantity (inclusive) required to activate this tier price. For example, a value of `10` means this tier applies when 10 or more items are purchased. Maximum quantity (exclusive) required to activate this tier price. For example, a value of `20` means this tier applies when less than 20 items are purchased.",
           "fields": [
             {
               "name": "gte",
-              "description": null,
+              "description": "The minimum quantity that must be purchased to activate the tier price. Must be greater than or equal to the value in `gte`.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -58342,7 +58342,7 @@
             },
             {
               "name": "lt",
-              "description": null,
+              "description": "Maximum quantity (exclusive) for this tier price. For example, a value of `20` means this tier applies only when fewer than 20 items are purchased.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -58361,11 +58361,11 @@
         {
           "kind": "OBJECT",
           "name": "ProductViewVariant",
-          "description": null,
+          "description": "Represents a product variant.",
           "fields": [
             {
               "name": "selections",
-              "description": "List of option values that make up the variant.",
+              "description": "List of option values that make up the variant. For example, `red`, `blue` or `green`",
               "args": [],
               "type": {
                 "kind": "LIST",
@@ -58385,7 +58385,7 @@
             },
             {
               "name": "product",
-              "description": "Product corresponding to the variant.",
+              "description": "Product corresponding to the variant. For example, a product with a SKU of `123`, a name of `Product 1`, a price of `100.00`.",
               "args": [],
               "type": {
                 "kind": "INTERFACE",
@@ -58404,11 +58404,11 @@
         {
           "kind": "OBJECT",
           "name": "ProductViewVariantResults",
-          "description": null,
+          "description": "Represents the results of a product variant search.",
           "fields": [
             {
               "name": "variants",
-              "description": "List of product variants.",
+              "description": "List of product variants. For example, a variant with a selection of `red`, `blue` or `green`",
               "args": [],
               "type": {
                 "kind": "NON_NULL",
@@ -58428,7 +58428,7 @@
             },
             {
               "name": "cursor",
-              "description": "Pagination cursor",
+              "description": "Pagination cursor. For example, `123` for the first variant, `456` for the second variant.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -58447,11 +58447,11 @@
         {
           "kind": "OBJECT",
           "name": "ProductViewVideo",
-          "description": "Contains details about a product video",
+          "description": "Contains details about a product video. For example, a video of the product being used or a video of the product being assembled.",
           "fields": [
             {
               "name": "preview",
-              "description": "Preview image for the video",
+              "description": "Preview image for the video. For example, a screenshot of the video.",
               "args": [],
               "type": {
                 "kind": "OBJECT",
@@ -58463,7 +58463,7 @@
             },
             {
               "name": "url",
-              "description": "The URL to the product video.",
+              "description": "The URL to the product video. For example, `https://example.com/video.mp4` or `https://example.com/video.webm`",
               "args": [],
               "type": {
                 "kind": "NON_NULL",
@@ -58479,7 +58479,7 @@
             },
             {
               "name": "description",
-              "description": "Description of the product video.",
+              "description": "Description of the product video. For example, `A video of the product being used` or `A video of the product being assembled`",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -58491,7 +58491,7 @@
             },
             {
               "name": "title",
-              "description": "The title of the product video.",
+              "description": "The title of the product video. For example, `Product Video` or `Product Assembly Video`",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -60070,15 +60070,15 @@
         {
           "kind": "OBJECT",
           "name": "Query",
-          "description": "",
+          "description": null,
           "fields": [
             {
               "name": "products",
-              "description": "Search for products that match the specified SKU values.",
+              "description": "Search for products that match the specified SKU values. In Adobe Commerce as a Cloud Service, this query replaces the `products` query defined in the Commerce Foundation.",
               "args": [
                 {
                   "name": "skus",
-                  "description": null,
+                  "description": "List of SKUs to search for. For example, `123`, `456` or `789`.",
                   "type": {
                     "kind": "LIST",
                     "name": null,
@@ -60105,11 +60105,11 @@
             },
             {
               "name": "refineProduct",
-              "description": null,
+              "description": "Retrieves refined product search results by applying additional filters, sorting, or facets to an existing product result set, enabling incremental narrowing of product lists without running a completely new product query.",
               "args": [
                 {
                   "name": "optionIds",
-                  "description": null,
+                  "description": "List of option IDs to refine the product by. For example, `123`, `456` or `789`.",
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -60131,7 +60131,7 @@
                 },
                 {
                   "name": "sku",
-                  "description": null,
+                  "description": "SKU of the product to refine. For example, `RF903`, `DG90-54` or `789-001`.",
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -60158,7 +60158,7 @@
               "args": [
                 {
                   "name": "sku",
-                  "description": null,
+                  "description": "SKU of the product to get variants for. For example, `UR123`, `MZ456` or `KS789`.",
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -60172,7 +60172,7 @@
                 },
                 {
                   "name": "optionIds",
-                  "description": null,
+                  "description": "List of option IDs to get variants for. For example, `123`, `456` or `789`.",
                   "type": {
                     "kind": "LIST",
                     "name": null,
@@ -60190,7 +60190,7 @@
                 },
                 {
                   "name": "pageSize",
-                  "description": null,
+                  "description": "Page size for pagination. For example, `10` for a page size of 10 or `20` for a page size of 20.",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Int",
@@ -60200,7 +60200,7 @@
                 },
                 {
                   "name": "cursor",
-                  "description": null,
+                  "description": "Pagination cursor. For example, `123` for the first variant, `456` for the second variant.",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -60219,11 +60219,11 @@
             },
             {
               "name": "categories",
-              "description": null,
+              "description": "Return category views by IDs, with optional role filters and subtree scopes. In Adobe Commerce as a Cloud Service, this query replaces the `categories` query defined in the Commerce Foundation.",
               "args": [
                 {
                   "name": "ids",
-                  "description": null,
+                  "description": "List of category IDs to retrieve. For example, `123`, `456` or `789`.",
                   "type": {
                     "kind": "LIST",
                     "name": null,
@@ -60241,7 +60241,7 @@
                 },
                 {
                   "name": "roles",
-                  "description": null,
+                  "description": "List of roles to filter the categories by. For example, `show_on_plp`, `show_in_pdp` or `show_in_search`.",
                   "type": {
                     "kind": "LIST",
                     "name": null,
@@ -60259,7 +60259,7 @@
                 },
                 {
                   "name": "subtree",
-                  "description": null,
+                  "description": "Subtree of the categories to retrieve. `startLevel` uses absolute category levels (root = 1). For example, `depth: 1`, `startLevel: 1`.",
                   "type": {
                     "kind": "INPUT_OBJECT",
                     "name": "Subtree",
@@ -60585,7 +60585,7 @@
               "args": [
                 {
                   "name": "id",
-                  "description": null,
+                  "description": "The ID of the country to search for. For example, `1`, `2` or `3`.",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -60620,7 +60620,7 @@
               "args": [
                 {
                   "name": "attributes",
-                  "description": null,
+                  "description": "List of attributes to retrieve metadata for. For example, `color`, `size` or `material`.",
                   "type": {
                     "kind": "LIST",
                     "name": null,
@@ -61048,7 +61048,7 @@
               "args": [
                 {
                   "name": "input",
-                  "description": null,
+                  "description": "Input object that defines the guest order information.",
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -61079,7 +61079,7 @@
               "args": [
                 {
                   "name": "input",
-                  "description": null,
+                  "description": "Input object that defines the order token information.",
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -61110,7 +61110,7 @@
               "args": [
                 {
                   "name": "email",
-                  "description": null,
+                  "description": "The email address to check.",
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -61137,7 +61137,7 @@
               "args": [
                 {
                   "name": "email",
-                  "description": null,
+                  "description": "The email address to check.",
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -61164,7 +61164,7 @@
               "args": [
                 {
                   "name": "name",
-                  "description": null,
+                  "description": "The role name to check.",
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -61191,7 +61191,7 @@
               "args": [
                 {
                   "name": "email",
-                  "description": null,
+                  "description": "The email address to check.",
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -61245,7 +61245,7 @@
               "args": [
                 {
                   "name": "uid",
-                  "description": null,
+                  "description": "The unique ID of the negotiable quote to retrieve.",
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -61272,7 +61272,7 @@
               "args": [
                 {
                   "name": "templateId",
-                  "description": null,
+                  "description": "The unique ID of the negotiable quote template to retrieve.",
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -61482,7 +61482,7 @@
               "args": [
                 {
                   "name": "formType",
-                  "description": null,
+                  "description": "The type of reCAPTCHA form to retrieve.",
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -61624,7 +61624,7 @@
             },
             {
               "name": "recommendationsByUnitIds",
-              "description": null,
+              "description": "Retrieve recommendation units by their unique ID to use on the storefront.",
               "args": [
                 {
                   "name": "unitIds",
@@ -61727,7 +61727,7 @@
             },
             {
               "name": "productSearch",
-              "description": "Search products using Live Search",
+              "description": "Runs a search or browse request against an Adobe Commerce Optimizer catalog view based on a query phrase, filters, and sort options. It applies Product Discovery configuration (merchandising rules, intelligent ranking, and facets) and returns matching products, facet buckets with counts, and pagination metadata for use by headless storefronts (AEM, Edge Delivery Services, custom SPAs).",
               "args": [
                 {
                   "name": "context",
@@ -62641,7 +62641,7 @@
         {
           "kind": "OBJECT",
           "name": "Recommendations",
-          "description": "Recommendations response",
+          "description": "Returns a Recommendations response.",
           "fields": [
             {
               "name": "results",
@@ -69386,7 +69386,7 @@
               "args": [
                 {
                   "name": "filters",
-                  "description": null,
+                  "description": "An input object that contains the data to get product custom attributes.",
                   "type": {
                     "kind": "INPUT_OBJECT",
                     "name": "AttributeFilterInput",
@@ -69900,7 +69900,7 @@
         {
           "kind": "OBJECT",
           "name": "SimpleProductView",
-          "description": "Represents simple products. Simple product prices do not contain price ranges.",
+          "description": "Represents a single-SKU product without selectable variants. Because there are no variant combinations, pricing is returned as a single price (not a price range).",
           "fields": [
             {
               "name": "addToCartAllowed",
@@ -69928,7 +69928,7 @@
             },
             {
               "name": "lowStock",
-              "description": "A flag stating if the product stock is low",
+              "description": "Indicates whether the remaining quantity of the product has reached the Only X Left threshold.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -69944,7 +69944,7 @@
               "args": [
                 {
                   "name": "roles",
-                  "description": null,
+                  "description": "List of roles to filter the attributes by. For example, `show_on_plp`, `show_in_pdp` or `show_in_search`",
                   "type": {
                     "kind": "LIST",
                     "name": null,
@@ -69958,7 +69958,7 @@
                 },
                 {
                   "name": "names",
-                  "description": null,
+                  "description": "List of names to filter the attributes by. For example, `color`, `size` or `material`",
                   "type": {
                     "kind": "LIST",
                     "name": null,
@@ -70013,7 +70013,7 @@
             },
             {
               "name": "images",
-              "description": "A list of images defined for the product.",
+              "description": "A list of images defined for the product. Possible values include `image`, `small_image`, and `swatch`.",
               "args": [
                 {
                   "name": "roles",
@@ -70060,7 +70060,7 @@
             },
             {
               "name": "inputOptions",
-              "description": "A list of input options.",
+              "description": "A list of input options. For example, a text field, a number field or a date field.",
               "args": [],
               "type": {
                 "kind": "LIST",
@@ -70160,7 +70160,7 @@
             },
             {
               "name": "sku",
-              "description": "Product SKU.",
+              "description": "A unique code used for identification of a product.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -70172,7 +70172,7 @@
             },
             {
               "name": "externalId",
-              "description": "External Id",
+              "description": "External Id. For example, `123`, `456` or `789`.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -70184,7 +70184,7 @@
             },
             {
               "name": "url",
-              "description": "Canonical URL of the product.",
+              "description": "Canonical URL of the product. For example, `https://example.com/product-1` or `https://example.com/product-2`.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -70196,7 +70196,7 @@
             },
             {
               "name": "urlKey",
-              "description": "The URL key of the product.",
+              "description": "The URL key of the product. For example, `product-1`, `product-2` or `product-3`.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -70208,11 +70208,11 @@
             },
             {
               "name": "links",
-              "description": "A list of product links",
+              "description": "A list of product links. For example, a related product, an up-sell product or a cross-sell product.",
               "args": [
                 {
                   "name": "linkTypes",
-                  "description": null,
+                  "description": "List of link types to filter links by, for example `related`, `up_sell`, or `cross_sell`.",
                   "type": {
                     "kind": "LIST",
                     "name": null,
@@ -70243,11 +70243,11 @@
             },
             {
               "name": "categories",
-              "description": "A list of categories in which the product is present.",
+              "description": "A list of categories in which the product is present. Categories are used to group products by category. ",
               "args": [
                 {
                   "name": "family",
-                  "description": null,
+                  "description": "The product family to filter categories by, for example `clothing`, `electronics`, or `books`.",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -72944,7 +72944,7 @@
         {
           "kind": "OBJECT",
           "name": "StorefrontProperties",
-          "description": "Indicates where an attribute can be displayed.",
+          "description": "Represents where an attribute can be displayed.",
           "fields": [
             {
               "name": "position",
@@ -73216,12 +73216,12 @@
         {
           "kind": "INPUT_OBJECT",
           "name": "Subtree",
-          "description": null,
+          "description": "Represents the subtree of the categories to retrieve.",
           "fields": null,
           "inputFields": [
             {
               "name": "depth",
-              "description": null,
+              "description": "The depth of the subcategories to retrieve. For example, a value of `2` returns two levels of subcategories beneath the value specified in `startLevel`.",
               "type": {
                 "kind": "NON_NULL",
                 "name": null,
@@ -73235,7 +73235,7 @@
             },
             {
               "name": "startLevel",
-              "description": null,
+              "description": "The level of the category tree to use as the starting point of the query. For example, `1` indicates the topmost category is the starting point.",
               "type": {
                 "kind": "NON_NULL",
                 "name": null,
@@ -73290,7 +73290,7 @@
         {
           "kind": "INTERFACE",
           "name": "SwatchDataInterface",
-          "description": "",
+          "description": "An interface containing fields that define the swatch data.",
           "fields": [
             {
               "name": "value",
@@ -73448,7 +73448,7 @@
         {
           "kind": "ENUM",
           "name": "SwatchType",
-          "description": null,
+          "description": "The type of the swatch.",
           "fields": null,
           "inputFields": null,
           "interfaces": null,
@@ -73610,7 +73610,7 @@
         {
           "kind": "OBJECT",
           "name": "TextSwatchData",
-          "description": "",
+          "description": "Represents a text swatch data. Contains details about a text swatch data, including the value.",
           "fields": [
             {
               "name": "value",
@@ -73715,7 +73715,7 @@
         {
           "kind": "INPUT_OBJECT",
           "name": "UnitConfigInput",
-          "description": null,
+          "description": "Optional unit configuration",
           "fields": null,
           "inputFields": [
             {
@@ -75670,7 +75670,7 @@
               "args": [
                 {
                   "name": "filters",
-                  "description": null,
+                  "description": "An input object that contains the data to get product custom attributes.",
                   "type": {
                     "kind": "INPUT_OBJECT",
                     "name": "AttributeFilterInput",
@@ -77228,6 +77228,6 @@
     }
   },
   "extensions": {
-    "request-id": "89734b72-a7e7-4825-b538-e19845a3e63d"
+    "request-id": "a75167ce-c2a3-4c78-82c4-d114a98c1411"
   }
 }

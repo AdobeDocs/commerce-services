@@ -202,6 +202,11 @@
             "undocumented": true
           }
         },
+        "productSearch": {
+          "documentation": {
+            "description": "Runs a search or browse request against an Adobe Commerce Optimizer catalog view based on a query phrase, filters, and sort options. It applies Product Discovery configuration (merchandising rules, intelligent ranking, and facets) and returns matching products, facet buckets with counts, and pagination metadata for use by headless storefronts (AEM, Edge Delivery Services, custom SPAs)."
+          }
+        },
         "pickupLocations": {
           "documentation": {
             "undocumented": true
@@ -215,6 +220,21 @@
         "recaptchaV3Config": {
           "documentation": {
             "undocumented": true
+          }
+        },
+        "recommendations": {
+          "documentation": {
+            "undocumented": true
+          }
+        },
+        "recommendationsByUnitIds": {
+          "documentation": {
+            "description": "Retrieve recommendation units by their unique ID to use on the storefront."
+          }
+        },
+        "refineProduct": {
+          "documentation": {
+            "description": "Retrieves refined product search results by applying additional filters, sorting, or facets to an existing product result set, enabling incremental narrowing of product lists without running a completely new product query."
           }
         },
         "storeConfig": {
@@ -1924,6 +1944,17 @@
         "undocumented": true
       }
     },
+    "RecommendationUnit": {
+      "documentation": {
+        "undocumented": false
+      }
+    },
+    "Recommendations": {
+      "documentation": {
+        "undocumented": false,
+        "description": "Returns a Recommendations response."
+      }
+    },
     "Region": {
       "documentation": {
         "undocumented": true
@@ -3196,6 +3227,11 @@
         "undocumented": true
       }
     },
+    "PurchaseHistory": {
+      "documentation": {
+        "description": "User purchase history"
+      }
+    },
     "QuoteItemsSortInput": {
       "documentation": {
         "undocumented": true
@@ -3456,6 +3492,11 @@
         "undocumented": true
       }
     },
+    "UnitConfigInput": {
+      "documentation": {
+        "description": "Optional unit configuration"
+      }
+    },
     "UserCompaniesInput": {
       "documentation": {
         "undocumented": true
@@ -3474,6 +3515,11 @@
     "VaultSetupTokenInput": {
       "documentation": {
         "undocumented": true
+      }
+    },
+    "ViewHistory": {
+      "documentation": {
+        "description": "User view history"
       }
     },
     "WishlistItemCopyInput": {
@@ -3694,6 +3740,11 @@
       }
     },
     "OrderActionType": {
+      "documentation": {
+        "undocumented": true
+      }
+    },
+    "PageType": {
       "documentation": {
         "undocumented": true
       }

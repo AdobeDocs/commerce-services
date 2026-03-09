@@ -60,7 +60,7 @@ If you have questions, open an issue and ask us. We look forward to hearing from
 
 ## GraphQL API reference generator
 
-The Merchandising GraphQL API reference is generated using [SpectaQL](https://github.com/anvilco/spectaql). It uses live introspection against the GraphQL endpoint and a metadata overlay to filter the schema down to the documented queries and types.
+The Merchandising GraphQL API reference is generated using [SpectaQL](https://github.com/anvilco/spectaql). It fetches the live schema via introspection, injects custom descriptions from a metadata overlay, and filters the schema down to the include only the queries and types supported by Adobe Commerce Optimizer catalog service operations.
 
 ### Quick start
 
@@ -90,10 +90,10 @@ To generate a live preview during local development, run: `yarn dev:merchandisin
 If the schema or metadata descriptions change, rebuild and test the API reference locally:
 
 1. Create a branch from `main`.
-2. Regenerate the API reference using the enhanced build (includes custom descriptions):
+2. Regenerate the API reference:
 
    ```bash
-   node scripts/build-with-enhanced-schema.js
+   yarn build:merchandising-api
    ```
 
 3. Verify the output in your browser.
