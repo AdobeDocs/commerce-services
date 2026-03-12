@@ -156,7 +156,7 @@ See the [CategoryTree query examples](#categorytree-query-examples) section belo
 
 ## Navigation query examples
 
-Retrieve category navigation data optimized for storefront menu rendering with built-in performance safeguards.
+Retrieve category navigation data optimized for storefront menu rendering with built-in performance safeguards. This query is specifically designed for navigation use cases, with a focus on performance and simplicity. It returns a lightweight category hierarchy with a maximum depth of 4 levels, making it ideal for rendering top menus, dropdowns, and mobile navigation.
 
 ```graphql
 type Query {
@@ -174,7 +174,7 @@ The `family` parameter is required and specifies which category family to retrie
 
 ```graphql
 query GetTopMenuNavigation {
-    navigation(family: "Top-menu") {
+    navigation(family: "top-menu") {
         slug
         name
         children {
@@ -348,7 +348,7 @@ query {
 
 The `parents` array provides the full ancestor chain, which you can use to render a breadcrumb path:
 
-```
+```text
 Men (level 1) → Clothes (level 2) → Shorts (level 3)
                                       └── product: Red Shorts (M)
 ```
@@ -468,7 +468,7 @@ query GetRootCategories {
 
 The flat list represents the root-level categories and their immediate children.
 
-```
+```text
 Men's Category (level 1)
 └── Men's Clothing (level 2)
 Women's Category (level 1)
@@ -552,7 +552,7 @@ query GetSpecificCategorySubtree {
 
 The depth parameter counts levels relative to the specified starting slugs, while the level field reflects each category's absolute position in the hierarchy based on its slug path.
 
-```
+```text
 Men's Clothing (level 2)      Women's Clothing (level 2)
 ├── Men's Tops (level 3)      ├── Women's Tops (level 3)
 └── Men's Bottoms (level 3)   └── Women's Bottoms (level 3)
