@@ -1,7 +1,7 @@
 ---
 title: Implement Categories on the Storefront
 edition: saas
-description: Use the GraphQL category queries to build storefront menus and fetch hierarchical category data with parent-child and level details.
+description: Learn how to ingest category data and use GraphQL navigation and categoryTree queries to build storefront menus with Merchandising Services.
 keywords:
   - GraphQL
   - Services
@@ -291,7 +291,7 @@ The `categories` field is available on product types such as `ProductView`. Use 
 
 <CodeBlock slots="heading, code" repeat="2" languages="JSON" />
 
-**Request:**
+**GraphQL request:**
 
 ```graphql
 query {
@@ -325,17 +325,17 @@ query {
                     {
                         "name": "Shorts",
                         "slug": "men/clothes/shorts",
-                        "level": 2,
+                        "level": 3,
                         "parents": [
                             {
                                 "name": "Men",
                                 "slug": "men",
-                                "level": 0
+                                "level": 1
                             },
                             {
                                 "name": "Clothes",
                                 "slug": "men/clothes",
-                                "level": 1
+                                "level": 2
                             }
                         ]
                     }
@@ -348,8 +348,8 @@ query {
 
 The `parents` array provides the full ancestor chain, which you can use to render a breadcrumb path:
 
-```plaintext
-Men (level 0) → Clothes (level 1) → Shorts (level 2)
+```
+Men (level 1) → Clothes (level 2) → Shorts (level 3)
                                       └── product: Red Shorts (M)
 ```
 
@@ -393,12 +393,12 @@ query {
                     {
                         "name": "Summer Essentials",
                         "slug": "summer/essentials",
-                        "level": 1,
+                        "level": 2,
                         "parents": [
                             {
                                 "name": "Summer",
                                 "slug": "summer",
-                                "level": 0
+                                "level": 1
                             }
                         ]
                     }
@@ -421,14 +421,16 @@ type Query {
 }
 ```
 
-### Retrieve full category tree
+### Retrieve root-level categories
+
+The categoryTree query implements a discovery-first pattern. When called without slugs, it returns only top-level categories regardless of the depth parameter, allowing clients to discover category tree entry points.
 
 <CodeBlock slots="heading, code" repeat="2" languages="JSON" />
 
 **Request:**
 
 ```graphql
-query GetFullCategoryTree {
+query GetRootCategories {
     categoryTree(family: "main-catalog") {
         slug
         name
@@ -447,38 +449,30 @@ query GetFullCategoryTree {
         "categoryTree": [
             {
                 "slug": "men",
-                "name": "Men's Clothing",
-                "level": 0,
-                "parentSlug": null,
-                "childrenSlugs": ["men/tops", "men/bottoms"]
-            },
-            {
-                "slug": "men/tops",
-                "name": "Men's Tops",
+                "name": "Men's Category",
                 "level": 1,
-                "parentSlug": "men",
-                "childrenSlugs": ["men/tops/shirts", "men/tops/jackets"]
+                "parentSlug": "",
+                "childrenSlugs": ["men/clothing"]
             },
             {
-                "slug": "men/tops/shirts",
-                "name": "Shirts",
-                "level": 2,
-                "parentSlug": "men/tops",
-                "childrenSlugs": []
+                "slug": "women",
+                "name": "Women's Category",
+                "level": 1,
+                "parentSlug": "",
+                "childrenSlugs": ["women/clothing"]
             }
         ]
     }
 }
 ```
 
-The flat list represents this tree, reconstructed via `parentSlug` and `childrenSlugs`:
+The flat list represents the root-level categories and their immediate children.
 
-```plaintext
-Men's Clothing (level 0)
-├── Men's Tops (level 1)
-│   ├── Shirts (level 2)
-│   └── Jackets
-└── Men's Bottoms
+```
+Men's Category (level 1)
+└── Men's Clothing (level 2)
+Women's Category (level 1)
+└── Women's Clothing (level 2)
 ```
 
 ### Retrieve specific category subtree
@@ -491,7 +485,7 @@ Men's Clothing (level 0)
 query GetSpecificCategorySubtree {
     categoryTree(
         family: "main-catalog"
-        slugs: ["men/tops", "men/bottoms"]
+        slugs: ["men/clothing", "women/clothing"]
         depth: 2
     ) {
         slug
@@ -510,111 +504,58 @@ query GetSpecificCategorySubtree {
     "data": {
         "categoryTree": [
             {
-                "slug": "men/tops",
-                "name": "Men's Tops",
-                "level": 1,
-                "parentSlug": "men",
-                "childrenSlugs": ["men/tops/shirts", "men/tops/jackets"]
-            },
-            {
-                "slug": "men/tops/shirts",
-                "name": "Shirts",
-                "level": 2,
-                "parentSlug": "men/tops",
-                "childrenSlugs": []
-            },
-            {
-                "slug": "men/tops/jackets",
-                "name": "Jackets",
-                "level": 2,
-                "parentSlug": "men/tops",
-                "childrenSlugs": []
-            },
-            {
-                "slug": "men/bottoms",
-                "name": "Men's Bottoms",
-                "level": 1,
-                "parentSlug": "men",
-                "childrenSlugs": ["men/bottoms/pants", "men/bottoms/shorts"]
-            },
-            {
-                "slug": "men/bottoms/pants",
-                "name": "Pants",
-                "level": 2,
-                "parentSlug": "men/bottoms",
-                "childrenSlugs": []
-            },
-            {
-                "slug": "men/bottoms/shorts",
-                "name": "Shorts",
-                "level": 2,
-                "parentSlug": "men/bottoms",
-                "childrenSlugs": []
-            }
-        ]
-    }
-}
-```
-
-The response is a flat list. Each node's `parentSlug` and `childrenSlugs` fields let you reconstruct the tree:
-
-```plaintext
-Men's Tops (level 1)          Men's Bottoms (level 1)
-├── Shirts (level 2)          ├── Pants (level 2)
-└── Jackets (level 2)         └── Shorts (level 2)
-```
-
-### Retrieve root categories only
-
-<CodeBlock slots="heading, code" repeat="2" languages="JSON" />
-
-**Request:**
-
-```graphql
-query GetRootCategories {
-    categoryTree(family: "main-catalog", depth: 0) {
-        slug
-        name
-        level
-        parentSlug
-        childrenSlugs
-    }
-}
-```
-
-**Response:**
-
-```json
-{
-    "data": {
-        "categoryTree": [
-            {
-                "slug": "men",
+                "slug": "men/clothing",
                 "name": "Men's Clothing",
-                "level": 0,
-                "parentSlug": null,
-                "childrenSlugs": ["men/tops", "men/bottoms"]
+                "level": 2,
+                "parentSlug": "men",
+                "childrenSlugs": ["men/clothing/tops", "men/clothing/bottoms"]
             },
             {
-                "slug": "women",
+                "slug": "men/clothing/tops",
+                "name": "Men's Tops",
+                "level": 3,
+                "parentSlug": "men/clothing",
+                "childrenSlugs": []
+            },
+            {
+                "slug": "men/clothing/bottoms",
+                "name": "Men's Bottoms",
+                "level": 3,
+                "parentSlug": "men/clothing",
+                "childrenSlugs": []
+            },
+            {
+                "slug": "women/clothing",
                 "name": "Women's Clothing",
-                "level": 0,
-                "parentSlug": null,
-                "childrenSlugs": ["women/tops", "women/bottoms"]
+                "level": 2,
+                "parentSlug": "women",
+                "childrenSlugs": ["women/clothing/tops", "women/clothing/bottoms"]
+            },
+            {
+                "slug": "women/clothing/tops",
+                "name": "Women's Tops",
+                "level": 3,
+                "parentSlug": "women/clothing",
+                "childrenSlugs": []
+            },
+            {
+                "slug": "women/clothing/bottoms",
+                "name": "Women's Bottoms",
+                "level": 3,
+                "parentSlug": "women/clothing",
+                "childrenSlugs": []
             }
         ]
     }
 }
 ```
 
-With `depth: 0`, only the top-level roots are returned:
+The depth parameter counts levels relative to the specified starting slugs, while the level field reflects each category's absolute position in the hierarchy based on its slug path.
 
-```plaintext
-Men's Clothing (level 0)     Women's Clothing (level 0)
-  childrenSlugs:               childrenSlugs:
-  ├── men/tops                 ├── women/tops
-  └── men/bottoms              └── women/bottoms
-  (referenced but not fetched) (referenced but not fetched)
+```
+Men's Clothing (level 2)      Women's Clothing (level 2)
+├── Men's Tops (level 3)      ├── Women's Tops (level 3)
+└── Men's Bottoms (level 3)   └── Women's Bottoms (level 3)
 ```
 
 ### Retrieve category details with metadata and images
