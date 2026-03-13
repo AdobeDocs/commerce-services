@@ -1,7 +1,7 @@
 ---
 title: Implement Categories on the Storefront
 edition: saas
-description: Learn how to ingest category data and use GraphQL navigation and categoryTree queries to build storefront menus with Merchandising Services.
+description: Learn how to ingest category data, build storefront menus with navigation and categoryTree queries, and retrieve product category context using the products query.
 keywords:
   - GraphQL
   - Services
@@ -11,7 +11,7 @@ keywords:
 
 # Implement categories on the storefront
 
-Managing categories with Commerce projects that use the Merchandising Services composable catalog data model requires two types of API operations:
+Use the following API operations to manage categories for Commerce projects that use the Merchandising Services composable catalog data model:
 
 - Create category data using the `categories` operations available in the [Data Ingestion REST API](https://developer.adobe.com/commerce/services/reference/rest/#tag/Categories), and using the `products` operations to manage product category assignments.
 
@@ -21,7 +21,7 @@ Managing categories with Commerce projects that use the Merchandising Services c
 
 <InlineAlert variant="warning" slots="text" />
 
-For Commerce sites with an Adobe Commerce as a Cloud Service or an Adobe Commerce on Cloud infrastructure or on-premises backend, use the [Commerce REST API](https://developer.adobe.com/commerce/webapi/rest/) and the [Catalog Service GraphQL API](https://developer.adobe.com/commerce/webapi/graphql/schema/catalog-service/) to manage categories.
+For Commerce sites with an Adobe Commerce as a Cloud Service or an Adobe Commerce on Cloud infrastructure or on-premises backend, manage [categories configuration](https://experienceleague.adobe.com/en/docs/commerce-admin/catalog/categories/categories) from the Commerce Amin, and use the [categories query](https://developer.adobe.com/commerce/webapi/graphql/schema/catalog-service/queries/categories/) available in the [Catalog Service GraphQL API](https://developer.adobe.com/commerce/webapi/graphql/schema/catalog-service/) to manage categories.
 
 ## Category types
 
@@ -50,7 +50,7 @@ type CategoryNavigationView implements CategoryViewV2 {
 }
 ```
 
-For complete field details, see [`CategoryNavigationView`](https://developer.adobe.com/commerce/webapi/graphql/merchandising/#definition-CategoryNavigationView) in the Merchandising Services GraphQL API reference.
+For complete field details, see `[CategoryNavigationView](https://developer.adobe.com/commerce/webapi/graphql/merchandising/#definition-CategoryNavigationView)` in the Merchandising Services GraphQL API reference.
 
 See the [Navigation query examples](#navigation-query-examples) section for example queries and responses using this type.
 
