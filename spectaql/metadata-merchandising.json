@@ -4103,37 +4103,5 @@
         "undocumented": true
       }
     }
-  },
-  "FIELD_ARGUMENT": {
-    "Query": {
-      "categoryTree": {
-        "family": {
-          "documentation": {
-            "description": "**Required.** The catalog family identifier that determines which catalog's categories to retrieve.\n\n**Typically:** Your store's catalog ID",
-            "undocumented": false
-          }
-        },
-        "slugs": {
-          "documentation": {
-            "description": "Optional array of specific category slugs to retrieve.\n\n**When Provided:**\n- Returns only specified categories\n- Includes their hierarchical relationships (parents and children)\n- Enables targeted category tree queries\n\n**When Omitted:** All categories in the specified family are returned\n\n**Use Cases:**\n- Fetching specific category branches\n- Retrieving category subtrees\n- Targeted hierarchy queries",
-            "undocumented": false
-          }
-        },
-        "depth": {
-          "documentation": {
-            "description": "Optional maximum depth level to retrieve in the category tree structure.\n\n**Depth Levels:**\n- `0`: Root categories only\n- `1`: Root categories + immediate children\n- `2`: Root + children + grandchildren\n- And so on...\n\n**Benefits:**\n- Improves performance for large category trees\n- Controls response payload size\n- Enables progressive tree loading\n\n**Default:** All available levels are returned if omitted",
-            "undocumented": false
-          }
-        }
-      },
-      "navigation": {
-        "family": {
-          "documentation": {
-            "description": "**Required.** The catalog family identifier that determines which catalog's navigation structure to retrieve.\n\n**Typically:** Your store's catalog ID\n\n**Performance Optimizations:**\n- Entire family structure retrieved in single query\n- Heavily cached responses\n- Optimized for frequent navigation requests\n- Minimal database load for menu rendering",
-            "undocumented": false
-          }
-        }
-      }
-    }
   }
 }
