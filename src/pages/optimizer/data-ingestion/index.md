@@ -60,6 +60,21 @@ For example, if you're selling a t-shirt, the product variants might include dif
 
 For details and examples of different product types and product variations, see the <a href="https://developer.adobe.com/commerce/services/reference/rest/#tag/Products" target="_blank" rel="noopener noreferrer">Products API</a> in the *Data Ingestion API Reference*.
 
+## Product layers
+
+Catalog layers allow you to modify product data without changing the original source data. Layers apply changes to specific product attributes, such as name, description, images, links, and metadata, by creating a layer on top of your base catalog. Your original product data remains intact, allowing you to safely customize products and revert changes at any time.
+
+Use product layers to:
+
+- Override product attributes for specific markets or channels
+- Provide locale-specific content while maintaining a global base product
+- Create seasonal or promotional variations without duplicating entire product records
+- Implement A/B testing scenarios with different product presentations
+
+Use the [Product layers](https://developer.adobe.com/commerce/services/reference/rest/#tag/Product-Layers) API to create and delete product layers.
+
+Once layers are created, you can add them to catalog view definitions to customize the catalog data delivered to the storefront. For details on how layers are managed and applied, see [Catalog Layers](https://experienceleague.adobe.com/en/docs/commerce/optimizer/setup/catalog-layer) in the Adobe Commerce Optimizer documentation.
+
 ## Price books and prices
 
 In Merchandising Services, a product SKU and its price are decoupled. This decoupling allows you to define multiple price books for a single SKU, supporting different customer tiers, business units, and geographies. When defining prices for a product SKU, you can set both regular and discounted prices within the catalog source for each price book.
