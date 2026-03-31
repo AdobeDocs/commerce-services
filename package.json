@@ -8,11 +8,18 @@
   },
   "dependencies": {
     "@adobe/gatsby-theme-aio": "4.15.5",
+    "axios": "0.30.0",
     "dotenv": "^17.2.1",
     "gatsby": "4.22.0",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
     "spectaql": "^3.0.5"
+  },
+  "overrides": {
+    "axios": "0.30.0"
+  },
+  "resolutions": {
+    "axios": "0.30.0"
   },
   "devDependencies": {
     "browserslist": "latest",
