@@ -6219,12 +6219,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios@npm:^0.21.1":
-  version: 0.21.4
-  resolution: "axios@npm:0.21.4"
+"axios@npm:0.30.0":
+  version: 0.30.0
+  resolution: "axios@npm:0.30.0"
   dependencies:
-    follow-redirects: "npm:^1.14.0"
-  checksum: 10/da644592cb6f8f9f8c64fdabd7e1396d6769d7a4c1ea5f8ae8beb5c2eb90a823e3a574352b0b934ac62edc762c0f52647753dc54f7d07279127a7e5c4cd20272
+    follow-redirects: ^1.15.4
+    form-data: ^4.0.0
+    proxy-from-env: ^1.1.0
+  checksum: 5179e93f4d8a4f8fc6fce3d46b4087aff60d1f2aeb36fad289e506dfd327c3436aafe1a91b371f47ffc2ef1b0a3f7ea278a24f6b1af88216d691b1e6c262b32f
   languageName: node
   linkType: hard
 
@@ -7702,18 +7704,19 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "commerce-services@workspace:."
   dependencies:
-    "@adobe/gatsby-theme-aio": "npm:4.15.5"
-    browserslist: "npm:latest"
-    dotenv: "npm:^17.2.1"
-    gatsby: "npm:4.22.0"
-    react: "npm:^17.0.0"
-    react-dom: "npm:^17.0.0"
-    remark-cli: "npm:^12.0.1"
-    remark-frontmatter: "npm:^5.0.0"
-    remark-heading-id: "npm:^1.0.1"
-    remark-lint-frontmatter-schema: "npm:^3.15.4"
-    remark-validate-links: "npm:^13.0.1"
-    spectaql: "npm:^3.0.5"
+    "@adobe/gatsby-theme-aio": 4.15.5
+    axios: 0.30.0
+    browserslist: latest
+    dotenv: ^17.2.1
+    gatsby: 4.22.0
+    react: ^17.0.0
+    react-dom: ^17.0.0
+    remark-cli: ^12.0.1
+    remark-frontmatter: ^5.0.0
+    remark-heading-id: ^1.0.1
+    remark-lint-frontmatter-schema: ^3.15.4
+    remark-validate-links: ^13.0.1
+    spectaql: ^3.0.5
   languageName: unknown
   linkType: soft
 
@@ -10773,7 +10776,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"follow-redirects@npm:^1.14.0, follow-redirects@npm:^1.15.6":
+"follow-redirects@npm:^1.15.4, follow-redirects@npm:^1.15.6":
   version: 1.15.11
   resolution: "follow-redirects@npm:1.15.11"
   peerDependenciesMeta:
@@ -18852,6 +18855,13 @@ __metadata:
     forwarded: "npm:0.2.0"
     ipaddr.js: "npm:1.9.1"
   checksum: 10/f24a0c80af0e75d31e3451398670d73406ec642914da11a2965b80b1898ca6f66a0e3e091a11a4327079b2b268795f6fa06691923fef91887215c3d0e8ea3f68
+  languageName: node
+  linkType: hard
+
+"proxy-from-env@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "proxy-from-env@npm:1.1.0"
+  checksum: ed7fcc2ba0a33404958e34d95d18638249a68c430e30fcb6c478497d72739ba64ce9810a24f53a7d921d0c065e5b78e3822759800698167256b04659366ca4d4
   languageName: node
   linkType: hard
 
