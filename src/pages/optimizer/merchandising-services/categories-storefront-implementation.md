@@ -15,9 +15,9 @@ Use the following API operations to manage categories for Commerce projects that
 
 - Create category data using the `categories` operations available in the [Data Ingestion REST API](https://developer.adobe.com/commerce/services/reference/rest/#tag/Categories), and using the `products` operations to manage product category assignments.
 
-- Retrieve category navigation and hierarchy data using the `navigation` and `categoryTree` queries available in the [Merchandising Services GraphQL API](https://developer.adobe.com/commerce/webapi/graphql/merchandising/).
+- Retrieve category navigation and hierarchy data using the [`navigation`](https://developer.adobe.com/commerce/services/graphql-api/merchandising-api/index.html#query-navigation) and [`categoryTree`](https://developer.adobe.com/commerce/services/graphql-api/merchandising-api/index.html#query-categoryTree) queries.
 
-- Retrieve category context for products — such as breadcrumbs — using the `categories` field on product queries in the [Merchandising Services GraphQL API](https://developer.adobe.com/commerce/webapi/graphql/merchandising/).
+- Retrieve category context for products — such as breadcrumbs — using the `categories` field on [product queries](https://developer.adobe.com/commerce/services/graphql-api/merchandising-api/index.html#query-products).
 
 <InlineAlert variant="warning" slots="text" />
 
@@ -50,8 +50,8 @@ type CategoryNavigationView implements CategoryViewV2 {
 }
 ```
 
-For complete field details, see `[CategoryNavigationView](https://developer.adobe.com/commerce/services/graphql-api/merchandising-api/index.html#definition-CategoryTreeView
-)` in the Merchandising Services GraphQL API reference.
+For complete field details, see [`CategoryNavigationView`](https://developer.adobe.com/commerce/services/graphql-api/merchandising-api/index.html#definition-CategoryTreeView)
+ in the Merchandising Services GraphQL API reference.
 
 See the [Navigation query examples](#navigation-query-examples) section for example queries and responses using this type.
 
@@ -122,7 +122,7 @@ type CategoryImage {
 }
 ```
 
-For complete field details, including the [`CategoryMetaTags`](https://developer.adobe.com/commerce/services/graphql-api/merchandising-api/index.html#definition-CategoryMetaTags) and [`CategoryImage`](https://developer.adobe.com/commerce/services/graphql-api/merchandising-api/index.html#definition-CategoryImage) types, see [`CategoryTreeView`]([https://developer.adobe.com/commerce/webapi/graphql/merchandising/#definition-CategoryTreeView](https://developer.adobe.com/commerce/services/graphql-api/merchandising-api/index.html#definition-CategoryTreeView)) in the Merchandising Services GraphQL API reference.
+For complete field details, including the `CategoryMetaTags` and `CategoryImage` types, see [`CategoryTreeView`](https://developer.adobe.com/commerce/services/graphql-api/merchandising-api/index.html#definition-CategoryTreeView) in the Merchandising Services GraphQL API reference.
 
 See the [CategoryTree query examples](#categorytree-query-examples) section for example queries and responses using this type.
 

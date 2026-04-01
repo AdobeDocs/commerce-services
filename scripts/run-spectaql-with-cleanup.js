@@ -6,9 +6,11 @@
  *  Dissemination of this information or reproduction of this material is strictly forbidden unless prior written permission is obtained from Adobe.
  */
 
-const fs = require('fs');
 const { spawn } = require('child_process');
-const { cleanupTempFile, tempConfigPath } = require('./generate-spectaql-config');
+const {
+  cleanupTempFile,
+  writeTempMerchandisingConfig
+} = require('./generate-spectaql-config');
 
 // Get command line arguments (everything after the script name)
 const args = process.argv.slice(2);
@@ -19,24 +21,11 @@ if (args.length === 0) {
   process.exit(1);
 }
 
-// First, generate the config file
 console.log('Generating SpectaQL configuration...');
-
-// Switch the temp config to use the enhanced schema file instead of the live URL.
-// The enhanced-schema.json contains descriptions injected from the metadata file
-// that the live introspection endpoint does not return.
-// The original config is never modified — the temp file is cleaned up after the build.
-let tempConfig = fs.readFileSync(tempConfigPath, 'utf8');
-tempConfig = tempConfig.replace(
-  /^(\s*)#\s*(introspectionFile:\s*spectaql\/enhanced-schema\.json)/m,
-  '$1$2'
+writeTempMerchandisingConfig();
+console.log(
+  'SpectaQL will introspect the live GraphQL URL from the temp config (not enhanced-schema.json).'
 );
-tempConfig = tempConfig.replace(
-  /^(\s*)(url:\s*https:\/\/.*\/graphql.*)/gm,
-  '$1# $2'
-);
-fs.writeFileSync(tempConfigPath, tempConfig);
-console.log('Configured SpectaQL to use enhanced schema file');
 
 // Now run SpectaQL with the provided arguments
 console.log('Running SpectaQL...');
