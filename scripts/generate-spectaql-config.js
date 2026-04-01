@@ -9,40 +9,43 @@
 const fs = require('fs');
 const path = require('path');
 
-// Load environment variables from .env file
+// Load environment variables from .env file (needed when this module is required or run as CLI)
 require('dotenv').config();
 
-// Read the base configuration
-const configPath = path.join(__dirname, '../spectaql/config-merchandising.yml');
-const configContent = fs.readFileSync(configPath, 'utf8');
-
-// Get TENANT_ID from environment variable (from .env file or system)
-const tenantId = process.env.TENANT_ID;
-if (!tenantId) {
-  console.error('Error: TENANT_ID environment variable is required');
-  console.error('');
-  console.error('You can set it in several ways:');
-  console.error('1. Create a .env file in the project root with: TENANT_ID=your_tenant_id');
-  console.error('2. Set it as a system environment variable: export TENANT_ID=your_tenant_id');
-  console.error('3. Set it inline: TENANT_ID=your_tenant_id node scripts/generate-spectaql-config.js');
-  console.error('');
-  console.error('Example .env file:');
-  console.error('  TENANT_ID=abc123');
-  console.error('  # API_KEY=your_api_key_here');
-  process.exit(1);
-}
-
-// Replace the placeholders with the actual values
-let updatedConfig = configContent.replace(/\${TENANT_ID}/g, tenantId);
-
-// Write the updated configuration to a temporary file
 const tempConfigPath = path.join(__dirname, '../spectaql/config-merchandising-temp.yml');
-fs.writeFileSync(tempConfigPath, updatedConfig);
 
-console.log(`Generated SpectaQL config with:`);
-console.log(`  Tenant ID: ${tenantId}`);
-console.log(`Temporary config file: ${tempConfigPath}`);
-console.log('Use this file with: spectaql --config spectaql/config-merchandising-temp.yml');
+/**
+ * Writes `config-merchandising-temp.yml` with `${TENANT_ID}` substituted.
+ * Call this before SpectaQL when using the merchandising temp config.
+ */
+function writeTempMerchandisingConfig() {
+  const tenantId = process.env.TENANT_ID;
+  if (!tenantId) {
+    console.error('Error: TENANT_ID environment variable is required');
+    console.error('');
+    console.error('You can set it in several ways:');
+    console.error('1. Create a .env file in the project root with: TENANT_ID=your_tenant_id');
+    console.error('2. Set it as a system environment variable: export TENANT_ID=your_tenant_id');
+    console.error('3. Set it inline: TENANT_ID=your_tenant_id node scripts/generate-spectaql-config.js');
+    console.error('');
+    console.error('Example .env file:');
+    console.error('  TENANT_ID=abc123');
+    console.error('  # API_KEY=your_api_key_here');
+    process.exit(1);
+  }
+
+  const configContent = fs.readFileSync(
+    path.join(__dirname, '../spectaql/config-merchandising.yml'),
+    'utf8'
+  );
+  const updatedConfig = configContent.replace(/\${TENANT_ID}/g, tenantId);
+  fs.writeFileSync(tempConfigPath, updatedConfig);
+
+  console.log(`Generated SpectaQL config with:`);
+  console.log(`  Tenant ID: ${tenantId}`);
+  console.log(`Temporary config file: ${tempConfigPath}`);
+  console.log('Use this file with: spectaql --config spectaql/config-merchandising-temp.yml');
+}
 
 // Function to clean up temporary file
 function cleanupTempFile() {
@@ -56,16 +59,22 @@ function cleanupTempFile() {
   }
 }
 
-// Clean up on script exit
-process.on('exit', cleanupTempFile);
-process.on('SIGINT', () => {
-  cleanupTempFile();
-  process.exit(0);
-});
-process.on('SIGTERM', () => {
-  cleanupTempFile();
-  process.exit(0);
-});
+if (require.main === module) {
+  writeTempMerchandisingConfig();
 
-// Export the cleanup function for use by other scripts
-module.exports = { cleanupTempFile, tempConfigPath };
+  process.on('exit', cleanupTempFile);
+  process.on('SIGINT', () => {
+    cleanupTempFile();
+    process.exit(0);
+  });
+  process.on('SIGTERM', () => {
+    cleanupTempFile();
+    process.exit(0);
+  });
+}
+
+module.exports = {
+  cleanupTempFile,
+  tempConfigPath,
+  writeTempMerchandisingConfig
+};

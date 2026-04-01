@@ -22,7 +22,8 @@ async function buildWithEnhancedSchema() {
     // Step 2: Generate SpectaQL config pointing to the enhanced schema
     console.log('🚀 Step 2: Generating SpectaQL configuration...');
     const fs = require('fs');
-    const { tempConfigPath } = require('./generate-spectaql-config');
+    const { tempConfigPath, writeTempMerchandisingConfig } = require('./generate-spectaql-config');
+    writeTempMerchandisingConfig();
     let tempConfig = fs.readFileSync(tempConfigPath, 'utf8');
     tempConfig = tempConfig.replace(
       /^(\s*)#(introspectionFile:\s*spectaql\/enhanced-schema\.json)/m,

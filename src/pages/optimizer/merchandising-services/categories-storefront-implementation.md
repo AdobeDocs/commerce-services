@@ -15,9 +15,9 @@ Use the following API operations to manage categories for Commerce projects that
 
 - Create category data using the `categories` operations available in the [Data Ingestion REST API](https://developer.adobe.com/commerce/services/reference/rest/#tag/Categories), and using the `products` operations to manage product category assignments.
 
-- Retrieve category navigation and hierarchy data using the `navigation` and `categoryTree` queries available in the [Merchandising Services GraphQL API](https://developer.adobe.com/commerce/webapi/graphql/merchandising/).
+- Retrieve category navigation and hierarchy data using the [`navigation`](https://developer.adobe.com/commerce/services/graphql-api/merchandising-api/index.html#query-navigation) and [`categoryTree`](https://developer.adobe.com/commerce/services/graphql-api/merchandising-api/index.html#query-categoryTree) queries.
 
-- Retrieve category context for products — such as breadcrumbs — using the `categories` field on product queries in the [Merchandising Services GraphQL API](https://developer.adobe.com/commerce/webapi/graphql/merchandising/).
+- Retrieve category context for products — such as breadcrumbs — using the `categories` field on [product queries](https://developer.adobe.com/commerce/services/graphql-api/merchandising-api/index.html#query-products).
 
 <InlineAlert variant="warning" slots="text" />
 
@@ -25,7 +25,7 @@ For Commerce sites with an Adobe Commerce as a Cloud Service or an Adobe Commerc
 
 ## Category types
 
-The `navigation` query, `categoryTree` query, and `categories` field on product queries each return a different category type, optimized for its specific use case. All three types implement the `CategoryViewV2` interface, which defines the two required fields shared by every category: `slug` and `name`. For complete field details, see [`CategoryViewV2`](https://developer.adobe.com/commerce/webapi/graphql/merchandising/#definition-CategoryViewInterface) in the Merchandising Services GraphQL API reference.
+The `navigation` query, `categoryTree` query, and `categories` field on product queries each return a different category type, optimized for its specific use case. All three types implement the `CategoryViewV2` interface, which defines the two required fields shared by every category: `slug` and `name`. For complete field details, see [`CategoryViewV2`](https://developer.adobe.com/commerce/services/graphql-api/merchandising-api/index.html#definition-CategoryViewV2) in the Merchandising Services GraphQL API reference.
 
 1. **[CategoryNavigationView](#categorynavigationview-type)** — For menu rendering and navigation
 2. **[CategoryProductView](#categoryproductview-type)** — For category data returned with product queries
@@ -50,7 +50,8 @@ type CategoryNavigationView implements CategoryViewV2 {
 }
 ```
 
-For complete field details, see `[CategoryNavigationView](https://developer.adobe.com/commerce/webapi/graphql/merchandising/#definition-CategoryNavigationView)` in the Merchandising Services GraphQL API reference.
+For complete field details, see [`CategoryNavigationView`](https://developer.adobe.com/commerce/services/graphql-api/merchandising-api/index.html#definition-CategoryTreeView)
+ in the Merchandising Services GraphQL API reference.
 
 See the [Navigation query examples](#navigation-query-examples) section for example queries and responses using this type.
 
@@ -77,7 +78,7 @@ type CategoryProductView implements CategoryViewV2 {
 
 The `parents` field is self-referencing—each parent entry is itself a `CategoryProductView` with its own `name`, `slug`, `level`, and `parents`. This allows you to reconstruct the full breadcrumb path for any category a product belongs to.
 
-For complete field details, see [`CategoryProductView`](https://developer.adobe.com/commerce/webapi/graphql/merchandising/#definition-CategoryProductView) in the Merchandising Services GraphQL API reference.
+For complete field details, see [`CategoryProductView`](https://developer.adobe.com/commerce/services/graphql-api/merchandising-api/index.html#definition-CategoryProductView) in the Merchandising Services GraphQL API reference.
 
 See the [Products query with categories examples](#products-query-with-categories-examples) section for example queries and responses using this type.
 
@@ -121,7 +122,7 @@ type CategoryImage {
 }
 ```
 
-For complete field details, including the [`CategoryMetaTags`](https://developer.adobe.com/commerce/webapi/graphql/merchandising/#definition-CategoryMetaTags) and [`CategoryImage`](https://developer.adobe.com/commerce/webapi/graphql/merchandising/#definition-CategoryImage) types, see [`CategoryTreeView`](https://developer.adobe.com/commerce/webapi/graphql/merchandising/#definition-CategoryTreeView) in the Merchandising Services GraphQL API reference.
+For complete field details, including the `CategoryMetaTags` and `CategoryImage` types, see [`CategoryTreeView`](https://developer.adobe.com/commerce/services/graphql-api/merchandising-api/index.html#definition-CategoryTreeView) in the Merchandising Services GraphQL API reference.
 
 See the [CategoryTree query examples](#categorytree-query-examples) section for example queries and responses using this type.
 
