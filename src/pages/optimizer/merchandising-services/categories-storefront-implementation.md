@@ -1,7 +1,7 @@
 ---
 title: Implement Categories on the Storefront
 edition: saas
-description: Learn to ingest category data, build storefront menus using navigation and categoryTree queries, and retrieve product category context with the products query.
+description: Learn to ingest category data, build storefront menus using navigation and categoryTree queries, search categories by name with searchCategory, and retrieve product category context with the products query.
 keywords:
   - GraphQL
   - Services
@@ -15,21 +15,23 @@ Use the following API operations to manage categories for Commerce projects that
 
 - Create category data using the `categories` operations available in the [Data Ingestion REST API](https://developer.adobe.com/commerce/services/reference/rest/#tag/Categories), and using the `products` operations to manage product category assignments.
 
-- Retrieve category navigation and hierarchy data using the [`navigation`](https://developer.adobe.com/commerce/services/graphql-api/merchandising-api/index.html#query-navigation) and [`categoryTree`](https://developer.adobe.com/commerce/services/graphql-api/merchandising-api/index.html#query-categoryTree) queries.
+- Retrieve category navigation and hierarchy data using the [`navigation`](https://developer.adobe.com/commerce/services/graphql-api/merchandising-api/index.html#query-navigation) and [`categoryTree`](https://developer.adobe.com/commerce/services/graphql-api/merchandising-api/index.html#query-categoryTree) queries. Both queries take a `family` argument where applicable; on `categoryTree`, `family` is optional—pass it to scope results when your catalog uses multiple category families.
+
+- Search categories by name with optional family filtering and pagination using the [`searchCategory`](https://developer.adobe.com/commerce/services/graphql-api/merchandising-api/index.html#query-searchCategory) query.
 
 - Retrieve category context for products — such as breadcrumbs — using the `categories` field on [product queries](https://developer.adobe.com/commerce/services/graphql-api/merchandising-api/index.html#query-products).
 
 <InlineAlert variant="warning" slots="text" />
 
-For Commerce sites with an Adobe Commerce as a Cloud Service or an Adobe Commerce on Cloud infrastructure or on-premises backend, manage [categories configuration](https://experienceleague.adobe.com/en/docs/commerce-admin/catalog/categories/categories) from the Commerce Amin, and use the [categories query](https://developer.adobe.com/commerce/webapi/graphql/schema/catalog-service/queries/categories/) available in the [Catalog Service GraphQL API](https://developer.adobe.com/commerce/webapi/graphql/schema/catalog-service/) to manage categories.
+For Commerce sites with an Adobe Commerce as a Cloud Service or an Adobe Commerce on Cloud infrastructure or on-premises backend, manage [categories configuration](https://experienceleague.adobe.com/en/docs/commerce-admin/catalog/categories/categories) from the Commerce Admin, and use the [categories query](https://developer.adobe.com/commerce/webapi/graphql/schema/catalog-service/queries/categories/) available in the [Catalog Service GraphQL API](https://developer.adobe.com/commerce/webapi/graphql/schema/catalog-service/) to manage categories.
 
 ## Category types
 
-The `navigation` query, `categoryTree` query, and `categories` field on product queries each return a different category type, optimized for its specific use case. All three types implement the `CategoryViewV2` interface, which defines the two required fields shared by every category: `slug` and `name`. For complete field details, see [`CategoryViewV2`](https://developer.adobe.com/commerce/services/graphql-api/merchandising-api/index.html#definition-CategoryViewV2) in the Merchandising Services GraphQL API reference.
+The `navigation` query, `categoryTree` query, `searchCategory` query, and `categories` field on product queries each return data shaped for a specific use case. Navigation, tree, and search results use types that implement the `CategoryViewV2` interface, which defines the two required fields shared by every category: `slug` and `name`. For complete field details, see [`CategoryViewV2`](https://developer.adobe.com/commerce/services/graphql-api/merchandising-api/index.html#definition-CategoryViewV2) in the Merchandising Services GraphQL API reference.
 
 1. **[CategoryNavigationView](#categorynavigationview-type)** — For menu rendering and navigation
 2. **[CategoryProductView](#categoryproductview-type)** — For category data returned with product queries
-3. **[CategoryTreeView](#categorytreeview-type)** — For hierarchical category management and rich category pages
+3. **[CategoryTreeView](#categorytreeview-type)** — For hierarchical category management, rich category pages, and each matching category from the [`searchCategory`](#searchcategory-query-examples) query
 
 ### CategoryNavigationView type
 
@@ -50,7 +52,7 @@ type CategoryNavigationView implements CategoryViewV2 {
 }
 ```
 
-For complete field details, see [`CategoryNavigationView`](https://developer.adobe.com/commerce/services/graphql-api/merchandising-api/index.html#definition-CategoryTreeView)
+For complete field details, see [`CategoryNavigationView`](https://developer.adobe.com/commerce/services/graphql-api/merchandising-api/index.html#definition-CategoryNavigationView)
  in the Merchandising Services GraphQL API reference.
 
 See the [Navigation query examples](#navigation-query-examples) section for example queries and responses using this type.
@@ -84,7 +86,9 @@ See the [Products query with categories examples](#products-query-with-categorie
 
 ### CategoryTreeView type
 
-The `CategoryTreeView` type implements `CategoryViewV2` and provides the richest category data. It contains:
+The `CategoryTreeView` type implements `CategoryViewV2` and provides the richest category data. The [`categoryTree`](https://developer.adobe.com/commerce/services/graphql-api/merchandising-api/index.html#query-categoryTree) query returns this type directly. The [`searchCategory`](https://developer.adobe.com/commerce/services/graphql-api/merchandising-api/index.html#query-searchCategory) query returns the same type inside [`SearchCategoryResultPage.items`](https://developer.adobe.com/commerce/services/graphql-api/merchandising-api/index.html#definition-SearchCategoryResultPage), so search hits can use the same fields as tree results.
+
+It contains:
 
 - **name** and **slug** — Category identity
 - **level** and **parentSlug** / **childrenSlugs** — Hierarchy and relationships
@@ -92,7 +96,7 @@ The `CategoryTreeView` type implements `CategoryViewV2` and provides the richest
 - **metaTags** — SEO metadata (title, description, keywords)
 - **images** — Category images
 
-Use this type for rich category landing pages, SEO-driven content, and CMS administration.
+Use this type for rich category landing pages, SEO-driven content, CMS administration, and displaying full category details for [`searchCategory`](#searchcategory-query-examples) matches (for example, typeahead previews or picker dialogs).
 
 #### Type definition
 
@@ -124,7 +128,7 @@ type CategoryImage {
 
 For complete field details, including the `CategoryMetaTags` and `CategoryImage` types, see [`CategoryTreeView`](https://developer.adobe.com/commerce/services/graphql-api/merchandising-api/index.html#definition-CategoryTreeView) in the Merchandising Services GraphQL API reference.
 
-See the [CategoryTree query examples](#categorytree-query-examples) section for example queries and responses using this type.
+See the [CategoryTree query examples](#categorytree-query-examples) and [searchCategory query examples](#searchcategory-query-examples) sections for example queries and responses using this type.
 
 ## Limitations and considerations
 
@@ -132,15 +136,21 @@ See the [CategoryTree query examples](#categorytree-query-examples) section for 
 
 - Use the `navigation` query for storefront menus. It is heavily cached, limited to four levels, and returns only the lightweight fields needed for rendering.
 - Use the `categoryTree` query when you need full hierarchy metadata, descriptions, images, or SEO fields.
+- Use the `searchCategory` query when the shopper or CMS workflow needs to find categories by name (for example, search-as-you-type or admin pickers), with optional `family` scoping and pagination.
 - Use the `categories` field on product queries only when category context (such as breadcrumbs) is needed on a product page. Omit it when it is not needed to avoid unnecessary overhead.
 
 ### Navigation query depth limit
 
 The `navigation` query returns a maximum of four levels of nested categories. Nesting `children` beyond four levels in your query returns no additional data. Design your category hierarchy and query depth accordingly.
 
-### `categoryTree` discovery-first behavior
+### `categoryTree` depth and discovery behavior
 
-When `slugs` is omitted from a `categoryTree` query, the `depth` parameter is ignored and only root-level (level 1) categories are returned. This is by design — the query uses a discovery-first pattern that lets clients find category tree entry points before fetching subtrees. To retrieve descendants, always pass `slugs` along with the desired `depth`.
+The `depth` argument behaves differently depending on whether you pass starting `slugs`:
+
+- **Without starting `slugs`:** `depth` sets the **maximum category level** included in the result for the requested scope (for example, your `family` filter). Use this to discover entry points and shallow slices of the tree without naming a subtree root first.
+- **With starting `slugs`:** `depth` is measured **from each starting slug**, counting that slug as **level 1** of the window. Deeper descendants extend until the depth limit is reached.
+
+Pass `slugs` when you need a specific branch rather than a level-capped slice from the top of the tree. The `family` argument is optional on `categoryTree`; supply it when you must limit results to one category family.
 
 ### Optional fields add overhead
 
@@ -148,7 +158,7 @@ The `description`, `metaTags`, and `images` fields on `categoryTree` are optiona
 
 ### Limit `categoryTree` depth
 
-Pass the `depth` parameter to `categoryTree` to avoid fetching deeper levels than you need.
+Pass the `depth` parameter to `categoryTree` to avoid fetching deeper levels than you need. Remember that its meaning depends on whether `slugs` are present; see [`categoryTree` depth and discovery behavior](#categorytree-depth-and-discovery-behavior).
 
 ### Target specific subtrees
 
@@ -415,13 +425,15 @@ The `categoryTree` query signature:
 
 ```graphql
 type Query {
-    categoryTree(family: String!, slugs: [String!], depth: Int): [CategoryTreeView]
+    categoryTree(family: String, slugs: [String!], depth: Int): [CategoryTreeView]
 }
 ```
 
+The `family` argument is optional. Include it when you need to restrict the tree to one category family.
+
 ### Retrieve root-level categories
 
-When called without `slugs`, the query returns only root-level categories. See [`categoryTree` discovery-first behavior](#categorytree-discovery-first-behavior) for details.
+When called without `slugs`, omitting or setting `depth` controls how far down the hierarchy results extend by **category level**. (See [`categoryTree` depth and discovery behavior](#categorytree-depth-and-discovery-behavior)). The example below requests roots for a single family and does not pass `depth`. Submitting this type of request is useful to list top-level entry points before loading deeper nodes.
 
 <CodeBlock slots="heading, code" repeat="2" languages="JSON" />
 
@@ -548,7 +560,7 @@ query GetSpecificCategorySubtree {
 }
 ```
 
-The `depth` parameter counts levels relative to the specified starting slugs, while the `level` field reflects each category's absolute position in the hierarchy based on its slug path.
+With starting `slugs`, the `depth` argument counts levels from each starting slug (the slug itself is level 1). The `level` field on each `CategoryTreeView` still reflects that category's absolute position in the full hierarchy for its slug path.
 
 ```text
 Men's Clothing (level 2)      Women's Clothing (level 2)
@@ -628,6 +640,145 @@ query CategoryTree {
 }
 ```
 
+## searchCategory query examples
+
+The `searchCategory` query matches category **names** against a `searchTerm` and returns a paginated [`SearchCategoryResultPage`](https://developer.adobe.com/commerce/services/graphql-api/merchandising-api/index.html#definition-SearchCategoryResultPage). Each `items` entry is a [`CategoryTreeView`](https://developer.adobe.com/commerce/services/graphql-api/merchandising-api/index.html#definition-CategoryTreeView), so you can reuse the same fields as in `categoryTree` responses (for example, `slug`, `name`, `description`, and `images`).
+
+```graphql
+type Query {
+    searchCategory(
+        searchTerm: String!
+        family: String
+        pageSize: Int
+        currentPage: Int
+    ): SearchCategoryResultPage
+}
+
+type SearchCategoryResultPage {
+    items: [CategoryTreeView!]!
+    totalCount: Int!
+    pageInfo: PageInfo!
+}
+
+type PageInfo {
+    currentPage: Int!
+    pageSize: Int!
+    totalPages: Int!
+}
+```
+
+`pageSize` defaults to **20** and `currentPage` defaults to **1** (1-based). Use `family` to limit matches to one category family when needed.
+
+### Search categories by name
+
+<CodeBlock slots="heading, code" repeat="2" languages="JSON" />
+
+**Request:**
+
+```graphql
+query SearchCategoriesByName {
+    searchCategory(searchTerm: "Shorts") {
+        totalCount
+        items {
+            slug
+            name
+            level
+        }
+        pageInfo {
+            currentPage
+            pageSize
+            totalPages
+        }
+    }
+}
+```
+
+**Response:**
+
+```json
+{
+    "data": {
+        "searchCategory": {
+            "totalCount": 2,
+            "items": [
+                {
+                    "slug": "men/clothes/shorts",
+                    "name": "Shorts",
+                    "level": 3
+                },
+                {
+                    "slug": "women/clothes/shorts",
+                    "name": "Shorts",
+                    "level": 3
+                }
+            ],
+            "pageInfo": {
+                "currentPage": 1,
+                "pageSize": 20,
+                "totalPages": 1
+            }
+        }
+    }
+}
+```
+
+### Search within a family and paginate
+
+<CodeBlock slots="heading, code" repeat="2" languages="JSON" />
+
+**Request:**
+
+```graphql
+query SearchCategoriesInFamily {
+    searchCategory(
+        searchTerm: "tops"
+        family: "main-catalog"
+        pageSize: 10
+        currentPage: 1
+    ) {
+        totalCount
+        items {
+            slug
+            name
+            parentSlug
+            childrenSlugs
+        }
+        pageInfo {
+            currentPage
+            pageSize
+            totalPages
+        }
+    }
+}
+```
+
+**Response:**
+
+```json
+{
+    "data": {
+        "searchCategory": {
+            "totalCount": 15,
+            "items": [
+                {
+                    "slug": "men/clothing/tops",
+                    "name": "Men's Tops",
+                    "parentSlug": "men/clothing",
+                    "childrenSlugs": []
+                }
+            ],
+            "pageInfo": {
+                "currentPage": 1,
+                "pageSize": 10,
+                "totalPages": 2
+            }
+        }
+    }
+}
+```
+
+For complete field details, see [`searchCategory`](https://developer.adobe.com/commerce/services/graphql-api/merchandising-api/index.html#query-searchCategory) and [`PageInfo`](https://developer.adobe.com/commerce/services/graphql-api/merchandising-api/index.html#definition-PageInfo) in the Merchandising Services GraphQL API reference.
+
 ## Query quick reference
 
 | Use case | Query | Type |
@@ -636,3 +787,4 @@ query CategoryTree {
 | Category landing pages with SEO metadata and images | `categoryTree` | `CategoryTreeView` |
 | Breadcrumbs and category context on product pages | `products` (`categories` field) | `CategoryProductView` |
 | Category hierarchy management and CMS administration | `categoryTree` | `CategoryTreeView` |
+| Search or browse categories by name (typeahead, admin pickers) | `searchCategory` | `CategoryTreeView` (in `SearchCategoryResultPage.items`) |
