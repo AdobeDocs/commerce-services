@@ -1,7 +1,7 @@
 ---
 title: Implement Categories on the Storefront
 edition: saas
-description: Learn to ingest category data, build storefront menus using navigation and categoryTree queries, search categories by name with searchCategory, and retrieve product category context with the products query.
+description: Learn to ingest category data, build storefront menus with navigation and categoryTree queries, search categories by name, and get product category context.
 keywords:
   - GraphQL
   - Services
