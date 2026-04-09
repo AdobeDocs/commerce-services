@@ -146,18 +146,15 @@
           },
           {
             "name": "categoryTree",
-            "description": "Retrieves category tree nodes, optionally filtered by slugs and limited by depth.",
+            "description": "Retrieves category tree nodes, optionally filtered by family, slugs and limited by depth.",
             "args": [
               {
                 "name": "family",
                 "description": "The product family to retrieve the category tree for. Ex: clothing, electronics, books",
                 "type": {
-                  "name": null,
-                  "kind": "NON_NULL",
-                  "ofType": {
-                    "name": "String",
-                    "kind": "SCALAR"
-                  }
+                  "name": "String",
+                  "kind": "SCALAR",
+                  "ofType": null
                 }
               },
               {
@@ -174,7 +171,7 @@
               },
               {
                 "name": "depth",
-                "description": "The depth of the category tree to retrieve. For example, depth 1 will retrieve only root categories (categories with level 1), depth 2 will retrieve root categories and their primary children (level 1 & level 2 categories).",
+                "description": "The depth of the category tree to retrieve. When used without an initial slug, it will specify the maximum level allowed for a category. When used with a starting slug, it specifies depth from that slug, counting the slug itself as level 1.",
                 "type": {
                   "name": "Int",
                   "kind": "SCALAR",
@@ -189,6 +186,56 @@
                 "name": "CategoryTreeView",
                 "kind": "OBJECT"
               }
+            }
+          },
+          {
+            "name": "searchCategory",
+            "description": "Search for categories by name with optional filtering and pagination.",
+            "args": [
+              {
+                "name": "searchTerm",
+                "description": "The search term to match against category names.",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "String",
+                    "kind": "SCALAR"
+                  }
+                }
+              },
+              {
+                "name": "family",
+                "description": "Optional product family filter to limit search results. For example, clothing, electronics or books.",
+                "type": {
+                  "name": "String",
+                  "kind": "SCALAR",
+                  "ofType": null
+                }
+              },
+              {
+                "name": "pageSize",
+                "description": "The number of results to return per page (default: 20).",
+                "type": {
+                  "name": "Int",
+                  "kind": "SCALAR",
+                  "ofType": null
+                }
+              },
+              {
+                "name": "currentPage",
+                "description": "The page number to retrieve (1-based indexing, default: 1).",
+                "type": {
+                  "name": "Int",
+                  "kind": "SCALAR",
+                  "ofType": null
+                }
+              }
+            ],
+            "type": {
+              "name": "SearchCategoryResultPage",
+              "kind": "OBJECT",
+              "ofType": null
             }
           },
           {
@@ -373,7 +420,7 @@
             "args": [
               {
                 "name": "id",
-                "description": "The ID of the country to search for. For example, `1`, `2` or `3`.",
+                "description": null,
                 "type": {
                   "name": "String",
                   "kind": "SCALAR",
@@ -403,7 +450,7 @@
             "args": [
               {
                 "name": "attributes",
-                "description": "List of attributes to retrieve metadata for. For example, `color`, `size` or `material`.",
+                "description": null,
                 "type": {
                   "name": null,
                   "kind": "LIST",
@@ -760,7 +807,7 @@
             "args": [
               {
                 "name": "input",
-                "description": "Input object that defines the guest order information.",
+                "description": null,
                 "type": {
                   "name": null,
                   "kind": "NON_NULL",
@@ -786,7 +833,7 @@
             "args": [
               {
                 "name": "input",
-                "description": "Input object that defines the order token information.",
+                "description": null,
                 "type": {
                   "name": null,
                   "kind": "NON_NULL",
@@ -812,7 +859,7 @@
             "args": [
               {
                 "name": "email",
-                "description": "The email address to check.",
+                "description": null,
                 "type": {
                   "name": null,
                   "kind": "NON_NULL",
@@ -835,7 +882,7 @@
             "args": [
               {
                 "name": "email",
-                "description": "The email address to check.",
+                "description": null,
                 "type": {
                   "name": null,
                   "kind": "NON_NULL",
@@ -858,7 +905,7 @@
             "args": [
               {
                 "name": "name",
-                "description": "The role name to check.",
+                "description": null,
                 "type": {
                   "name": null,
                   "kind": "NON_NULL",
@@ -881,7 +928,7 @@
             "args": [
               {
                 "name": "email",
-                "description": "The email address to check.",
+                "description": null,
                 "type": {
                   "name": null,
                   "kind": "NON_NULL",
@@ -922,12 +969,64 @@
             }
           },
           {
+            "name": "isSubscribedProductAlertPrice",
+            "description": "Check if logged-in customer is subscribed to price alert for a product.",
+            "args": [
+              {
+                "name": "input",
+                "description": null,
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "ProductAlertPriceInput",
+                    "kind": "INPUT_OBJECT"
+                  }
+                }
+              }
+            ],
+            "type": {
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "name": "IsProductAlertSubscriptionResult",
+                "kind": "OBJECT"
+              }
+            }
+          },
+          {
+            "name": "isSubscribedProductAlertStock",
+            "description": "Check if logged-in customer is subscribed to stock alert for a product.",
+            "args": [
+              {
+                "name": "input",
+                "description": null,
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "ProductAlertStockInput",
+                    "kind": "INPUT_OBJECT"
+                  }
+                }
+              }
+            ],
+            "type": {
+              "name": null,
+              "kind": "NON_NULL",
+              "ofType": {
+                "name": "IsProductAlertSubscriptionResult",
+                "kind": "OBJECT"
+              }
+            }
+          },
+          {
             "name": "negotiableQuote",
             "description": "Retrieve the specified negotiable quote.",
             "args": [
               {
                 "name": "uid",
-                "description": "The unique ID of the negotiable quote to retrieve.",
+                "description": null,
                 "type": {
                   "name": null,
                   "kind": "NON_NULL",
@@ -950,7 +1049,7 @@
             "args": [
               {
                 "name": "templateId",
-                "description": "The unique ID of the negotiable quote template to retrieve.",
+                "description": null,
                 "type": {
                   "name": null,
                   "kind": "NON_NULL",
@@ -1135,7 +1234,7 @@
             "args": [
               {
                 "name": "formType",
-                "description": "The type of reCAPTCHA form to retrieve.",
+                "description": null,
                 "type": {
                   "name": null,
                   "kind": "NON_NULL",
@@ -1150,6 +1249,32 @@
               "name": "ReCaptchaConfigOutput",
               "kind": "OBJECT",
               "ofType": null
+            }
+          },
+          {
+            "name": "recaptchaFormConfigs",
+            "description": "Returns reCAPTCHA configuration details for multiple form types in a single request.",
+            "args": [
+              {
+                "name": "formTypes",
+                "description": null,
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": null,
+                    "kind": "LIST"
+                  }
+                }
+              }
+            ],
+            "type": {
+              "name": null,
+              "kind": "LIST",
+              "ofType": {
+                "name": "ReCaptchaFormConfigItem",
+                "kind": "OBJECT"
+              }
             }
           },
           {
@@ -4484,7 +4609,7 @@
         {
           "kind": "OBJECT",
           "name": "Attribute",
-          "description": "Represents details about the attribute, including the code and type.",
+          "description": "Contains details about the attribute, including the code and type.",
           "fields": [
             {
               "name": "attribute_code",
@@ -5338,7 +5463,7 @@
         {
           "kind": "OBJECT",
           "name": "AttributeOption",
-          "description": "Represents an attribute option.",
+          "description": "Defines an attribute option.",
           "fields": [
             {
               "name": "label",
@@ -5438,7 +5563,7 @@
         {
           "kind": "OBJECT",
           "name": "AttributeSelectedOption",
-          "description": "Represents a selected option for an attribute. Contains details about a selected option for an attribute, including the label and the value.",
+          "description": "",
           "fields": [
             {
               "name": "label",
@@ -5487,7 +5612,7 @@
         {
           "kind": "INTERFACE",
           "name": "AttributeSelectedOptionInterface",
-          "description": "Represents a selected option for an attribute. Contains details about a selected option for an attribute, including the label and the value.",
+          "description": "",
           "fields": [
             {
               "name": "label",
@@ -5536,7 +5661,7 @@
         {
           "kind": "OBJECT",
           "name": "AttributeSelectedOptions",
-          "description": "Represents selected options for an attribute.",
+          "description": "",
           "fields": [
             {
               "name": "attribute_type",
@@ -5703,7 +5828,7 @@
         {
           "kind": "OBJECT",
           "name": "AttributeValue",
-          "description": "Represents an attribute value.",
+          "description": "",
           "fields": [
             {
               "name": "attribute_type",
@@ -5813,7 +5938,7 @@
         {
           "kind": "INTERFACE",
           "name": "AttributeValueInterface",
-          "description": "An interface containing fields that define the attribute value.",
+          "description": "",
           "fields": [
             {
               "name": "attribute_type",
@@ -5866,6 +5991,11 @@
             {
               "kind": "OBJECT",
               "name": "AttributeValue",
+              "ofType": null
+            },
+            {
+              "kind": "OBJECT",
+              "name": "ProductAttributeFile",
               "ofType": null
             }
           ]
@@ -7794,7 +7924,7 @@
             },
             {
               "name": "product_type",
-              "description": "The type of product, such as simple or configurable.",
+              "description": "The type of product, such as simple, configurable, etc.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -8677,6 +8807,22 @@
                 "ofType": {
                   "kind": "SCALAR",
                   "name": "Float",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "sku",
+              "description": "The product SKU.",
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
                   "ofType": null
                 }
               },
@@ -10075,7 +10221,7 @@
         {
           "kind": "INTERFACE",
           "name": "CartAddressInterface",
-          "description": "An interface containing fields that define the cart address.",
+          "description": "",
           "fields": [
             {
               "name": "city",
@@ -14031,7 +14177,7 @@
         {
           "kind": "OBJECT",
           "name": "ColorSwatchData",
-          "description": null,
+          "description": "",
           "fields": [
             {
               "name": "value",
@@ -14227,7 +14373,7 @@
               "args": [
                 {
                   "name": "filter",
-                  "description": "The filter to use for searching company credit history.",
+                  "description": null,
                   "type": {
                     "kind": "INPUT_OBJECT",
                     "name": "CompanyCreditHistoryFilterInput",
@@ -14237,7 +14383,7 @@
                 },
                 {
                   "name": "pageSize",
-                  "description": "Specifies the maximum number of results to return at once.",
+                  "description": null,
                   "type": {
                     "kind": "SCALAR",
                     "name": "Int",
@@ -14247,7 +14393,7 @@
                 },
                 {
                   "name": "currentPage",
-                  "description": "",
+                  "description": null,
                   "type": {
                     "kind": "SCALAR",
                     "name": "Int",
@@ -17480,7 +17626,7 @@
         {
           "kind": "OBJECT",
           "name": "ComplexTextValue",
-          "description": "Represents a complex text value.",
+          "description": "",
           "fields": [
             {
               "name": "html",
@@ -17967,7 +18113,7 @@
         {
           "kind": "OBJECT",
           "name": "ConfigurableOrderItem",
-          "description": "Contains details about a configurable order item.",
+          "description": "",
           "fields": [
             {
               "name": "custom_attributes",
@@ -18151,7 +18297,7 @@
             },
             {
               "name": "product_type",
-              "description": "The type of product, such as simple or configurable.",
+              "description": "The type of product, such as simple, configurable, etc.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -18352,7 +18498,7 @@
               "args": [
                 {
                   "name": "configurableOptionValueUids",
-                  "description": "An input object that contains the data to get configurable product options selection.",
+                  "description": null,
                   "type": {
                     "kind": "LIST",
                     "name": null,
@@ -18411,7 +18557,7 @@
               "args": [
                 {
                   "name": "filters",
-                  "description": "An input object that contains the data to get product custom attributes.",
+                  "description": null,
                   "type": {
                     "kind": "INPUT_OBJECT",
                     "name": "AttributeFilterInput",
@@ -19428,6 +19574,22 @@
                 "ofType": {
                   "kind": "SCALAR",
                   "name": "Float",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "sku",
+              "description": "The product SKU.",
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
                   "ofType": null
                 }
               },
@@ -21858,7 +22020,7 @@
         {
           "kind": "OBJECT",
           "name": "CreateGuestCartOutput",
-          "description": "Contains the response to the request to create a guest cart.",
+          "description": "",
           "fields": [
             {
               "name": "cart",
@@ -24399,7 +24561,7 @@
         {
           "kind": "INTERFACE",
           "name": "CustomAttributeOptionInterface",
-          "description": "An interface containing fields that define the custom attribute option.",
+          "description": "",
           "fields": [
             {
               "name": "is_default",
@@ -24572,7 +24734,7 @@
               "args": [
                 {
                   "name": "input",
-                  "description": "Input object that defines the companies to return.",
+                  "description": null,
                   "type": {
                     "kind": "INPUT_OBJECT",
                     "name": "UserCompaniesInput",
@@ -24639,7 +24801,7 @@
               "args": [
                 {
                   "name": "attributeCodes",
-                  "description": "List of attribute codes to filter the custom attributes by.",
+                  "description": null,
                   "type": {
                     "kind": "LIST",
                     "name": null,
@@ -24762,7 +24924,7 @@
               "args": [
                 {
                   "name": "giftRegistryUid",
-                  "description": "The unique ID of the gift registry to search for.",
+                  "description": null,
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -24861,7 +25023,7 @@
             },
             {
               "name": "orders",
-              "description": "Orders for the customer.",
+              "description": null,
               "args": [
                 {
                   "name": "filter",
@@ -24940,7 +25102,7 @@
               "args": [
                 {
                   "name": "uid",
-                  "description": "The unique ID of the purchase order to search for.",
+                  "description": null,
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -24967,7 +25129,7 @@
               "args": [
                 {
                   "name": "uid",
-                  "description": "The unique ID of the purchase order approval rule to search for.",
+                  "description": null,
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -25006,7 +25168,7 @@
               "args": [
                 {
                   "name": "currentPage",
-                  "description": "Specifies which page of results to return. The default value is 1.",
+                  "description": null,
                   "type": {
                     "kind": "SCALAR",
                     "name": "Int",
@@ -25016,7 +25178,7 @@
                 },
                 {
                   "name": "pageSize",
-                  "description": "Specifies the maximum number of results to return at once.",
+                  "description": null,
                   "type": {
                     "kind": "SCALAR",
                     "name": "Int",
@@ -25039,7 +25201,7 @@
               "args": [
                 {
                   "name": "filter",
-                  "description": "The filter to use for searching customer orders.",
+                  "description": null,
                   "type": {
                     "kind": "INPUT_OBJECT",
                     "name": "PurchaseOrdersFilterInput",
@@ -25049,7 +25211,7 @@
                 },
                 {
                   "name": "currentPage",
-                  "description": "Specifies which page of results to return. The default value is 1.",
+                  "description": null,
                   "type": {
                     "kind": "SCALAR",
                     "name": "Int",
@@ -25059,7 +25221,7 @@
                 },
                 {
                   "name": "pageSize",
-                  "description": "Specifies the maximum number of results to return at once.",
+                  "description": null,
                   "type": {
                     "kind": "SCALAR",
                     "name": "Int",
@@ -25167,7 +25329,7 @@
               "args": [
                 {
                   "name": "uid",
-                  "description": "The unique ID of the return request to search for.",
+                  "description": null,
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -25355,7 +25517,7 @@
               "args": [
                 {
                   "name": "id",
-                  "description": "The unique ID of the wish list to search for.",
+                  "description": null,
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -25470,7 +25632,7 @@
               "args": [
                 {
                   "name": "attributeCodes",
-                  "description": "List of attribute codes to filter the custom attributes by.",
+                  "description": null,
                   "type": {
                     "kind": "LIST",
                     "name": null,
@@ -31113,7 +31275,7 @@
             },
             {
               "name": "product_type",
-              "description": "The type of product, such as simple or configurable.",
+              "description": "The type of product, such as simple, configurable, etc.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -31326,7 +31488,7 @@
               "args": [
                 {
                   "name": "filters",
-                  "description": "An input object that contains the data to get product custom attributes.",
+                  "description": null,
                   "type": {
                     "kind": "INPUT_OBJECT",
                     "name": "AttributeFilterInput",
@@ -32166,6 +32328,22 @@
               "deprecationReason": null
             },
             {
+              "name": "sku",
+              "description": "The product SKU.",
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "uid",
               "description": "The unique ID of an item in a requisition list.",
               "args": [],
@@ -32535,7 +32713,7 @@
         {
           "kind": "INTERFACE",
           "name": "ErrorInterface",
-          "description": "An interface containing fields that define the error.",
+          "description": "",
           "fields": [
             {
               "name": "message",
@@ -34911,7 +35089,7 @@
             },
             {
               "name": "product_type",
-              "description": "The type of product, such as simple or configurable.",
+              "description": "The type of product, such as simple, configurable, etc.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -35841,6 +36019,22 @@
               "deprecationReason": null
             },
             {
+              "name": "sku",
+              "description": "The product SKU.",
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "uid",
               "description": "The unique ID for the requisition list item.",
               "args": [],
@@ -36703,7 +36897,7 @@
         {
           "kind": "INTERFACE",
           "name": "GiftRegistryDynamicAttributeInterface",
-          "description": "An interface containing fields that define the gift registry dynamic attribute.",
+          "description": "",
           "fields": [
             {
               "name": "code",
@@ -36882,7 +37076,7 @@
         {
           "kind": "INTERFACE",
           "name": "GiftRegistryDynamicAttributeMetadataInterface",
-          "description": "An interface containing fields that define the dynamic attribute metadata.",
+          "description": "",
           "fields": [
             {
               "name": "attribute_group",
@@ -37100,7 +37294,7 @@
         {
           "kind": "INTERFACE",
           "name": "GiftRegistryItemInterface",
-          "description": "An interface containing fields that define the gift registry item.",
+          "description": "",
           "fields": [
             {
               "name": "created_at",
@@ -39472,7 +39666,7 @@
         {
           "kind": "OBJECT",
           "name": "ImageSwatchData",
-          "description": "Represents an image swatch data. Contains details about an image swatch data, including the URL assigned to the thumbnail of the swatch image, and the value.",
+          "description": "",
           "fields": [
             {
               "name": "thumbnail",
@@ -39713,7 +39907,7 @@
         {
           "kind": "OBJECT",
           "name": "InternalError",
-          "description": "Represents an error message when an internal error occurred.",
+          "description": "Contains an error message when an internal error occurred.",
           "fields": [
             {
               "name": "message",
@@ -40568,6 +40762,45 @@
         },
         {
           "kind": "OBJECT",
+          "name": "IsProductAlertSubscriptionResult",
+          "description": "",
+          "fields": [
+            {
+              "name": "isSubscribed",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "Boolean",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "message",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
           "name": "ItemNote",
           "description": "The note object for quote line item.",
           "fields": [
@@ -41214,7 +41447,7 @@
         {
           "kind": "OBJECT",
           "name": "Money",
-          "description": "Represents a monetary value, including a numeric value and a currency code.",
+          "description": "Defines a monetary value, including a numeric value and a currency code.",
           "fields": [
             {
               "name": "currency",
@@ -41522,7 +41755,7 @@
         {
           "kind": "OBJECT",
           "name": "Mutation",
-          "description": "Represents the mutation for the core saas service.",
+          "description": "",
           "fields": [
             {
               "name": "acceptCompanyInvitation",
@@ -41530,7 +41763,7 @@
               "args": [
                 {
                   "name": "input",
-                  "description": "An input object that contains the data to accept a company invitation.",
+                  "description": null,
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -41861,7 +42094,7 @@
               "args": [
                 {
                   "name": "input",
-                  "description": "An input object that contains the data to add a comment to a purchase order.",
+                  "description": null,
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -41888,7 +42121,7 @@
               "args": [
                 {
                   "name": "input",
-                  "description": "An input object that contains the data to add purchase order items to the cart.",
+                  "description": null,
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -42128,7 +42361,7 @@
               "args": [
                 {
                   "name": "cartId",
-                  "description": "The ID of the cart to apply reward points to.",
+                  "description": null,
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -42182,7 +42415,7 @@
               "args": [
                 {
                   "name": "input",
-                  "description": "An input object that contains the data to approve purchase orders.",
+                  "description": null,
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -42236,7 +42469,7 @@
               "args": [
                 {
                   "name": "cart_id",
-                  "description": "The ID of the cart to assign the customer to.",
+                  "description": null,
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -42294,7 +42527,7 @@
               "args": [
                 {
                   "name": "input",
-                  "description": "An input object that contains the data to cancel an order.",
+                  "description": null,
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -42321,7 +42554,7 @@
               "args": [
                 {
                   "name": "input",
-                  "description": "An input object that contains the data to cancel purchase orders.",
+                  "description": null,
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -42493,7 +42726,7 @@
               "args": [
                 {
                   "name": "input",
-                  "description": "An input object that contains the data to confirm the cancellation of the customer order.",
+                  "description": null,
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -42547,7 +42780,7 @@
               "args": [
                 {
                   "name": "input",
-                  "description": "An input object that contains the data to confirm the return.",
+                  "description": null,
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -42711,7 +42944,7 @@
               "args": [
                 {
                   "name": "input",
-                  "description": "An input object that contains the data to create a company.",
+                  "description": null,
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -42738,7 +42971,7 @@
               "args": [
                 {
                   "name": "input",
-                  "description": "An input object that contains the data to create a company role.",
+                  "description": null,
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -42765,7 +42998,7 @@
               "args": [
                 {
                   "name": "input",
-                  "description": "An input object that contains the data to create a company team.",
+                  "description": null,
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -42792,7 +43025,7 @@
               "args": [
                 {
                   "name": "input",
-                  "description": "An input object that contains the data to create a company user.",
+                  "description": null,
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -42819,7 +43052,7 @@
               "args": [
                 {
                   "name": "input",
-                  "description": "An input object that contains the data to create a compare list.",
+                  "description": null,
                   "type": {
                     "kind": "INPUT_OBJECT",
                     "name": "CreateCompareListInput",
@@ -42842,7 +43075,7 @@
               "args": [
                 {
                   "name": "input",
-                  "description": "An input object that contains the data to create a customer address.",
+                  "description": null,
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -42923,7 +43156,7 @@
               "args": [
                 {
                   "name": "input",
-                  "description": "An input object that contains the data to create a guest cart.",
+                  "description": null,
                   "type": {
                     "kind": "INPUT_OBJECT",
                     "name": "CreateGuestCartInput",
@@ -42973,7 +43206,7 @@
               "args": [
                 {
                   "name": "input",
-                  "description": "An input object that contains the data to create a purchase order approval rule.",
+                  "description": null,
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -43000,7 +43233,7 @@
               "args": [
                 {
                   "name": "input",
-                  "description": "An input object that contains the data to create a requisition list.",
+                  "description": null,
                   "type": {
                     "kind": "INPUT_OBJECT",
                     "name": "CreateRequisitionListInput",
@@ -43104,7 +43337,7 @@
               "args": [
                 {
                   "name": "id",
-                  "description": "The ID of the company role to be deleted.",
+                  "description": null,
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -43131,7 +43364,7 @@
               "args": [
                 {
                   "name": "id",
-                  "description": "The ID of the company team to be deleted.",
+                  "description": null,
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -43158,7 +43391,7 @@
               "args": [
                 {
                   "name": "id",
-                  "description": "The ID of the company user to be deleted.",
+                  "description": null,
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -43363,7 +43596,7 @@
               "args": [
                 {
                   "name": "input",
-                  "description": "An input object that contains the data to delete a purchase order approval rule.",
+                  "description": null,
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -43646,7 +43879,7 @@
               "args": [
                 {
                   "name": "input",
-                  "description": "An input object that contains the data to finish the upload.",
+                  "description": null,
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -43768,7 +44001,7 @@
               "args": [
                 {
                   "name": "input",
-                  "description": "An input object that contains the data to initiate the upload.",
+                  "description": null,
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -44118,7 +44351,7 @@
               "args": [
                 {
                   "name": "input",
-                  "description": "An input object that contains the data to place the order for a purchase order.",
+                  "description": null,
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -44145,7 +44378,7 @@
               "args": [
                 {
                   "name": "input",
-                  "description": "An input object that contains the data to place the purchase order.",
+                  "description": null,
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -44199,7 +44432,7 @@
               "args": [
                 {
                   "name": "input",
-                  "description": "An input object that contains the data to reject purchase orders.",
+                  "description": null,
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -44596,7 +44829,7 @@
               "args": [
                 {
                   "name": "cartId",
-                  "description": "The ID of the cart to remove reward points from.",
+                  "description": null,
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -44677,7 +44910,7 @@
               "args": [
                 {
                   "name": "orderNumber",
-                  "description": "The order number to reorder items from.",
+                  "description": null,
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -44704,7 +44937,7 @@
               "args": [
                 {
                   "name": "input",
-                  "description": "An input object that contains the data to request a guest order cancel.",
+                  "description": null,
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -44727,7 +44960,7 @@
             },
             {
               "name": "requestGuestReturn",
-              "description": "Request to start a return request for guest.",
+              "description": null,
               "args": [
                 {
                   "name": "input",
@@ -45037,7 +45270,7 @@
               "args": [
                 {
                   "name": "input",
-                  "description": "An input object that contains the data to add custom attributes to the cart.",
+                  "description": null,
                   "type": {
                     "kind": "INPUT_OBJECT",
                     "name": "CartCustomAttributesInput",
@@ -45060,7 +45293,7 @@
               "args": [
                 {
                   "name": "input",
-                  "description": "An input object that contains the data to add custom attributes to item in the cart.",
+                  "description": null,
                   "type": {
                     "kind": "INPUT_OBJECT",
                     "name": "CartItemCustomAttributesInput",
@@ -45110,7 +45343,7 @@
               "args": [
                 {
                   "name": "input",
-                  "description": "An input object that contains the data to add custom attributes to the credit memo.",
+                  "description": null,
                   "type": {
                     "kind": "INPUT_OBJECT",
                     "name": "CreditMemoCustomAttributesInput",
@@ -45133,7 +45366,7 @@
               "args": [
                 {
                   "name": "input",
-                  "description": "An input object that contains the data to add custom attributes to the credit memo item.",
+                  "description": null,
                   "type": {
                     "kind": "INPUT_OBJECT",
                     "name": "CreditMemoItemCustomAttributesInput",
@@ -45156,7 +45389,7 @@
               "args": [
                 {
                   "name": "input",
-                  "description": "An input object that contains the data to add custom attributes to the invoice.",
+                  "description": null,
                   "type": {
                     "kind": "INPUT_OBJECT",
                     "name": "InvoiceCustomAttributesInput",
@@ -45179,7 +45412,7 @@
               "args": [
                 {
                   "name": "input",
-                  "description": "An input object that contains the data to add custom attributes to the invoice item.",
+                  "description": null,
                   "type": {
                     "kind": "INPUT_OBJECT",
                     "name": "InvoiceItemCustomAttributesInput",
@@ -45672,6 +45905,60 @@
               "deprecationReason": null
             },
             {
+              "name": "subscribeProductAlertPrice",
+              "description": "Subscribe logged-in customer to price alert for a product.",
+              "args": [
+                {
+                  "name": "input",
+                  "description": null,
+                  "type": {
+                    "kind": "NON_NULL",
+                    "name": null,
+                    "ofType": {
+                      "kind": "INPUT_OBJECT",
+                      "name": "ProductAlertPriceInput",
+                      "ofType": null
+                    }
+                  },
+                  "defaultValue": null
+                }
+              ],
+              "type": {
+                "kind": "OBJECT",
+                "name": "ProductAlertSubscriptionResult",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "subscribeProductAlertStock",
+              "description": "Subscribe logged-in customer to stock alert for a product.",
+              "args": [
+                {
+                  "name": "input",
+                  "description": null,
+                  "type": {
+                    "kind": "NON_NULL",
+                    "name": null,
+                    "ofType": {
+                      "kind": "INPUT_OBJECT",
+                      "name": "ProductAlertStockInput",
+                      "ofType": null
+                    }
+                  },
+                  "defaultValue": null
+                }
+              ],
+              "type": {
+                "kind": "OBJECT",
+                "name": "ProductAlertSubscriptionResult",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "syncPaymentOrder",
               "description": "Synchronizes the payment order details for further payment processing",
               "args": [
@@ -45689,6 +45976,84 @@
               "type": {
                 "kind": "SCALAR",
                 "name": "Boolean",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "unsubscribeProductAlertPrice",
+              "description": "Unsubscribe logged-in customer to price alert for a product.",
+              "args": [
+                {
+                  "name": "input",
+                  "description": null,
+                  "type": {
+                    "kind": "NON_NULL",
+                    "name": null,
+                    "ofType": {
+                      "kind": "INPUT_OBJECT",
+                      "name": "ProductAlertPriceInput",
+                      "ofType": null
+                    }
+                  },
+                  "defaultValue": null
+                }
+              ],
+              "type": {
+                "kind": "OBJECT",
+                "name": "ProductAlertSubscriptionResult",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "unsubscribeProductAlertPriceAll",
+              "description": "Unsubscribe logged-in customer to price alert for all product.",
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "ProductAlertSubscriptionResult",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "unsubscribeProductAlertStock",
+              "description": "Unsubscribe logged-in customer to stock alert for a product.",
+              "args": [
+                {
+                  "name": "input",
+                  "description": null,
+                  "type": {
+                    "kind": "NON_NULL",
+                    "name": null,
+                    "ofType": {
+                      "kind": "INPUT_OBJECT",
+                      "name": "ProductAlertStockInput",
+                      "ofType": null
+                    }
+                  },
+                  "defaultValue": null
+                }
+              ],
+              "type": {
+                "kind": "OBJECT",
+                "name": "ProductAlertSubscriptionResult",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "unsubscribeProductAlertStockAll",
+              "description": "Unsubscribe logged-in customer to stock alert for all product.",
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "ProductAlertSubscriptionResult",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -45723,7 +46088,7 @@
               "args": [
                 {
                   "name": "input",
-                  "description": "An input object that contains the data to update company information.",
+                  "description": null,
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -45750,7 +46115,7 @@
               "args": [
                 {
                   "name": "input",
-                  "description": "An input object that contains the data to update company role information.",
+                  "description": null,
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -45777,7 +46142,7 @@
               "args": [
                 {
                   "name": "input",
-                  "description": "An input object that contains the data to update company structure.",
+                  "description": null,
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -45804,7 +46169,7 @@
               "args": [
                 {
                   "name": "input",
-                  "description": "An input object that contains the data to update company team data.",
+                  "description": null,
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -45831,7 +46196,7 @@
               "args": [
                 {
                   "name": "input",
-                  "description": "An input object that contains the data to update a company user.",
+                  "description": null,
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -46242,7 +46607,7 @@
               "args": [
                 {
                   "name": "input",
-                  "description": "An input object that contains the data to update a purchase order approval rule.",
+                  "description": null,
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -46283,7 +46648,7 @@
                 },
                 {
                   "name": "input",
-                  "description": "An input object that contains the data to update a requisition list.",
+                  "description": "",
                   "type": {
                     "kind": "INPUT_OBJECT",
                     "name": "UpdateRequisitionListInput",
@@ -46402,7 +46767,7 @@
               "args": [
                 {
                   "name": "input",
-                  "description": "An input object that contains the data to validate purchase orders.",
+                  "description": null,
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -47031,7 +47396,7 @@
         {
           "kind": "INTERFACE",
           "name": "NegotiableQuoteAddressInterface",
-          "description": "An interface containing fields that define the negotiable quote address.",
+          "description": "",
           "fields": [
             {
               "name": "city",
@@ -50355,7 +50720,7 @@
         {
           "kind": "INTERFACE",
           "name": "NegotiableQuoteUidNonFatalResultInterface",
-          "description": "An interface containing fields that define the negotiable quote UID non fatal result.",
+          "description": "",
           "fields": [
             {
               "name": "quote_uid",
@@ -50464,7 +50829,7 @@
         {
           "kind": "OBJECT",
           "name": "NoSuchEntityUidError",
-          "description": "Represents an error message when an invalid UID was specified.",
+          "description": "Contains an error message when an invalid UID was specified.",
           "fields": [
             {
               "name": "message",
@@ -51312,7 +51677,7 @@
             },
             {
               "name": "product_type",
-              "description": "The type of product, such as simple or configurable.",
+              "description": "The type of product, such as simple, configurable, etc.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -51633,7 +51998,7 @@
             },
             {
               "name": "product_type",
-              "description": "The type of product, such as simple or configurable.",
+              "description": "The type of product, such as simple, configurable, etc.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -52403,6 +52768,65 @@
                 "ofType": {
                   "kind": "OBJECT",
                   "name": "Money",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
+          "name": "PageInfo",
+          "description": "Provides pagination information for navigating through paginated result sets.",
+          "fields": [
+            {
+              "name": "currentPage",
+              "description": "The current page number (1-based indexing).",
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "pageSize",
+              "description": "The number of items per page.",
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "totalPages",
+              "description": "The total number of pages available.",
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "Int",
                   "ofType": null
                 }
               },
@@ -54313,6 +54737,95 @@
           "possibleTypes": null
         },
         {
+          "kind": "INPUT_OBJECT",
+          "name": "ProductAlertPriceInput",
+          "description": "",
+          "fields": null,
+          "inputFields": [
+            {
+              "name": "sku",
+              "description": "",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              },
+              "defaultValue": null
+            }
+          ],
+          "interfaces": null,
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "INPUT_OBJECT",
+          "name": "ProductAlertStockInput",
+          "description": "",
+          "fields": null,
+          "inputFields": [
+            {
+              "name": "sku",
+              "description": "",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              },
+              "defaultValue": null
+            }
+          ],
+          "interfaces": null,
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
+          "name": "ProductAlertSubscriptionResult",
+          "description": "",
+          "fields": [
+            {
+              "name": "message",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "success",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "Boolean",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
           "kind": "OBJECT",
           "name": "ProductAttribute",
           "description": "Contains a product attribute code and value.",
@@ -54352,6 +54865,83 @@
           ],
           "inputFields": null,
           "interfaces": [],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
+          "name": "ProductAttributeFile",
+          "description": "",
+          "fields": [
+            {
+              "name": "attribute_type",
+              "description": "Attribute type code.",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "code",
+              "description": "The attribute code.",
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "ID",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "url",
+              "description": "Public URL to download the file.",
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "value",
+              "description": "Stored filename only (e.g. file_xyz.pdf). Use url for download.",
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [
+            {
+              "kind": "INTERFACE",
+              "name": "AttributeValueInterface",
+              "ofType": null
+            }
+          ],
           "enumValues": null,
           "possibleTypes": null
         },
@@ -54621,7 +55211,7 @@
               "args": [
                 {
                   "name": "filters",
-                  "description": "An input object that contains the data to get product custom attributes.",
+                  "description": null,
                   "type": {
                     "kind": "INPUT_OBJECT",
                     "name": "AttributeFilterInput",
@@ -60070,7 +60660,7 @@
         {
           "kind": "OBJECT",
           "name": "Query",
-          "description": null,
+          "description": "",
           "fields": [
             {
               "name": "products",
@@ -60313,19 +60903,15 @@
             },
             {
               "name": "categoryTree",
-              "description": "Retrieves category tree nodes, optionally filtered by slugs and limited by depth.",
+              "description": "Retrieves category tree nodes, optionally filtered by family, slugs and limited by depth.",
               "args": [
                 {
                   "name": "family",
                   "description": "The product family to retrieve the category tree for. Ex: clothing, electronics, books",
                   "type": {
-                    "kind": "NON_NULL",
-                    "name": null,
-                    "ofType": {
-                      "kind": "SCALAR",
-                      "name": "String",
-                      "ofType": null
-                    }
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
                   },
                   "defaultValue": null
                 },
@@ -60349,7 +60935,7 @@
                 },
                 {
                   "name": "depth",
-                  "description": "The depth of the category tree to retrieve. For example, depth 1 will retrieve only root categories (categories with level 1), depth 2 will retrieve root categories and their primary children (level 1 & level 2 categories).",
+                  "description": "The depth of the category tree to retrieve. When used without an initial slug, it will specify the maximum level allowed for a category. When used with a starting slug, it specifies depth from that slug, counting the slug itself as level 1.",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Int",
@@ -60366,6 +60952,63 @@
                   "name": "CategoryTreeView",
                   "ofType": null
                 }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "searchCategory",
+              "description": "Search for categories by name with optional filtering and pagination.",
+              "args": [
+                {
+                  "name": "searchTerm",
+                  "description": "The search term to match against category names.",
+                  "type": {
+                    "kind": "NON_NULL",
+                    "name": null,
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "String",
+                      "ofType": null
+                    }
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "family",
+                  "description": "Optional product family filter to limit search results. For example, clothing, electronics or books.",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "pageSize",
+                  "description": "The number of results to return per page (default: 20).",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Int",
+                    "ofType": null
+                  },
+                  "defaultValue": "20"
+                },
+                {
+                  "name": "currentPage",
+                  "description": "The page number to retrieve (1-based indexing, default: 1).",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Int",
+                    "ofType": null
+                  },
+                  "defaultValue": "1"
+                }
+              ],
+              "type": {
+                "kind": "OBJECT",
+                "name": "SearchCategoryResultPage",
+                "ofType": null
               },
               "isDeprecated": false,
               "deprecationReason": null
@@ -60585,7 +61228,7 @@
               "args": [
                 {
                   "name": "id",
-                  "description": "The ID of the country to search for. For example, `1`, `2` or `3`.",
+                  "description": null,
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -60620,7 +61263,7 @@
               "args": [
                 {
                   "name": "attributes",
-                  "description": "List of attributes to retrieve metadata for. For example, `color`, `size` or `material`.",
+                  "description": null,
                   "type": {
                     "kind": "LIST",
                     "name": null,
@@ -61048,7 +61691,7 @@
               "args": [
                 {
                   "name": "input",
-                  "description": "Input object that defines the guest order information.",
+                  "description": null,
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -61079,7 +61722,7 @@
               "args": [
                 {
                   "name": "input",
-                  "description": "Input object that defines the order token information.",
+                  "description": null,
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -61110,7 +61753,7 @@
               "args": [
                 {
                   "name": "email",
-                  "description": "The email address to check.",
+                  "description": null,
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -61137,7 +61780,7 @@
               "args": [
                 {
                   "name": "email",
-                  "description": "The email address to check.",
+                  "description": null,
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -61164,7 +61807,7 @@
               "args": [
                 {
                   "name": "name",
-                  "description": "The role name to check.",
+                  "description": null,
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -61191,7 +61834,7 @@
               "args": [
                 {
                   "name": "email",
-                  "description": "The email address to check.",
+                  "description": null,
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -61240,12 +61883,74 @@
               "deprecationReason": null
             },
             {
+              "name": "isSubscribedProductAlertPrice",
+              "description": "Check if logged-in customer is subscribed to price alert for a product.",
+              "args": [
+                {
+                  "name": "input",
+                  "description": null,
+                  "type": {
+                    "kind": "NON_NULL",
+                    "name": null,
+                    "ofType": {
+                      "kind": "INPUT_OBJECT",
+                      "name": "ProductAlertPriceInput",
+                      "ofType": null
+                    }
+                  },
+                  "defaultValue": null
+                }
+              ],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "IsProductAlertSubscriptionResult",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "isSubscribedProductAlertStock",
+              "description": "Check if logged-in customer is subscribed to stock alert for a product.",
+              "args": [
+                {
+                  "name": "input",
+                  "description": null,
+                  "type": {
+                    "kind": "NON_NULL",
+                    "name": null,
+                    "ofType": {
+                      "kind": "INPUT_OBJECT",
+                      "name": "ProductAlertStockInput",
+                      "ofType": null
+                    }
+                  },
+                  "defaultValue": null
+                }
+              ],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "IsProductAlertSubscriptionResult",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "negotiableQuote",
               "description": "Retrieve the specified negotiable quote.",
               "args": [
                 {
                   "name": "uid",
-                  "description": "The unique ID of the negotiable quote to retrieve.",
+                  "description": null,
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -61272,7 +61977,7 @@
               "args": [
                 {
                   "name": "templateId",
-                  "description": "The unique ID of the negotiable quote template to retrieve.",
+                  "description": null,
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -61482,7 +62187,7 @@
               "args": [
                 {
                   "name": "formType",
-                  "description": "The type of reCAPTCHA form to retrieve.",
+                  "description": null,
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
@@ -61499,6 +62204,45 @@
                 "kind": "OBJECT",
                 "name": "ReCaptchaConfigOutput",
                 "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "recaptchaFormConfigs",
+              "description": "Returns reCAPTCHA configuration details for multiple form types in a single request.",
+              "args": [
+                {
+                  "name": "formTypes",
+                  "description": null,
+                  "type": {
+                    "kind": "NON_NULL",
+                    "name": null,
+                    "ofType": {
+                      "kind": "LIST",
+                      "name": null,
+                      "ofType": {
+                        "kind": "NON_NULL",
+                        "name": null,
+                        "ofType": {
+                          "kind": "ENUM",
+                          "name": "ReCaptchaFormEnum",
+                          "ofType": null
+                        }
+                      }
+                    }
+                  },
+                  "defaultValue": null
+                }
+              ],
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "ReCaptchaFormConfigItem",
+                  "ofType": null
+                }
               },
               "isDeprecated": false,
               "deprecationReason": null
@@ -62514,6 +63258,61 @@
                 "ofType": {
                   "kind": "SCALAR",
                   "name": "String",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
+          "name": "ReCaptchaFormConfigItem",
+          "description": "Contains reCAPTCHA configuration for a specific form type.",
+          "fields": [
+            {
+              "name": "configurations",
+              "description": "Configuration details for reCaptcha type.",
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "ReCaptchaConfiguration",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "form_type",
+              "description": "The form type identifier.",
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "ENUM",
+                  "name": "ReCaptchaFormEnum",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "is_enabled",
+              "description": "Indicates whether reCaptcha is enabled for this form type.",
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "Boolean",
                   "ofType": null
                 }
               },
@@ -64130,6 +64929,22 @@
                 "ofType": {
                   "kind": "SCALAR",
                   "name": "Float",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "sku",
+              "description": "The product SKU.",
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
                   "ofType": null
                 }
               },
@@ -66163,6 +66978,73 @@
                 "kind": "SCALAR",
                 "name": "String",
                 "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
+          "name": "SearchCategoryResultPage",
+          "description": "Represents a paginated result set of category search results.",
+          "fields": [
+            {
+              "name": "items",
+              "description": "The list of categories matching the search criteria.",
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "LIST",
+                  "name": null,
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "name": null,
+                    "ofType": {
+                      "kind": "OBJECT",
+                      "name": "CategoryTreeView",
+                      "ofType": null
+                    }
+                  }
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "totalCount",
+              "description": "The total number of categories matching the search criteria across all pages.",
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "pageInfo",
+              "description": "Pagination information for navigating through results.",
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "PageInfo",
+                  "ofType": null
+                }
               },
               "isDeprecated": false,
               "deprecationReason": null
@@ -69386,7 +70268,7 @@
               "args": [
                 {
                   "name": "filters",
-                  "description": "An input object that contains the data to get product custom attributes.",
+                  "description": null,
                   "type": {
                     "kind": "INPUT_OBJECT",
                     "name": "AttributeFilterInput",
@@ -70359,6 +71241,22 @@
                 "ofType": {
                   "kind": "SCALAR",
                   "name": "Float",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "sku",
+              "description": "The product SKU.",
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
                   "ofType": null
                 }
               },
@@ -72944,7 +73842,7 @@
         {
           "kind": "OBJECT",
           "name": "StorefrontProperties",
-          "description": "Represents where an attribute can be displayed.",
+          "description": "Indicates where an attribute can be displayed.",
           "fields": [
             {
               "name": "position",
@@ -73290,7 +74188,7 @@
         {
           "kind": "INTERFACE",
           "name": "SwatchDataInterface",
-          "description": "An interface containing fields that define the swatch data.",
+          "description": "",
           "fields": [
             {
               "name": "value",
@@ -73610,7 +74508,7 @@
         {
           "kind": "OBJECT",
           "name": "TextSwatchData",
-          "description": "Represents a text swatch data. Contains details about a text swatch data, including the value.",
+          "description": "",
           "fields": [
             {
               "name": "value",
@@ -75670,7 +76568,7 @@
               "args": [
                 {
                   "name": "filters",
-                  "description": "An input object that contains the data to get product custom attributes.",
+                  "description": null,
                   "type": {
                     "kind": "INPUT_OBJECT",
                     "name": "AttributeFilterInput",
@@ -76215,6 +77113,22 @@
                 "ofType": {
                   "kind": "SCALAR",
                   "name": "Float",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "sku",
+              "description": "The product SKU.",
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
                   "ofType": null
                 }
               },
@@ -77228,6 +78142,6 @@
     }
   },
   "extensions": {
-    "request-id": "f42542dc-84eb-472c-8bf5-5d271fcf89e0"
+    "request-id": "ba49e965-f7ed-4d09-9c62-668f8240f436"
   }
 }

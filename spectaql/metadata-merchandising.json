@@ -182,6 +182,16 @@
             "undocumented": true
           }
         },
+        "isSubscribedProductAlertPrice": {
+          "documentation": {
+            "undocumented": true
+          }
+        },
+        "isSubscribedProductAlertStock": {
+          "documentation": {
+            "undocumented": true
+          }
+        },
         "negotiableQuote": {
           "documentation": {
             "undocumented": true
@@ -213,6 +223,11 @@
           }
         },
         "recaptchaFormConfig": {
+          "documentation": {
+            "undocumented": true
+          }
+        },
+        "recaptchaFormConfigs": {
           "documentation": {
             "undocumented": true
           }
