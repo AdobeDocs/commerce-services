@@ -655,10 +655,10 @@ query CategoryTree {
 
 The `searchCategory` query matches category **names** against a `searchTerm` and returns a paginated [`SearchCategoryResultPage`](https://developer.adobe.com/commerce/services/graphql-api/merchandising-api/index.html#definition-SearchCategoryResultPage).
 
-- If the `family` argument is omitted, it returns categories across all families. 
+- If the `family` argument is omitted, it returns categories across all families.
 -  The `searchTerm` argument is case-insensitive and must be a minimum of three characters.
 
-Each `items` entry is a [`CategoryTreeView`](https://developer.adobe.com/commerce/services/graphql-api/merchandising-api/index.html#definition-CategoryTreeView), so you can reuse the same fields as in `categoryTree` responses (for example, `slug`, `name`, `description`, and `images`). 
+Each `items` entry is a [`CategoryTreeView`](https://developer.adobe.com/commerce/services/graphql-api/merchandising-api/index.html#definition-CategoryTreeView), so you can reuse the same fields as in `categoryTree` responses (for example, `slug`, `name`, `description`, and `images`).
 
 ```graphql
 type Query {
