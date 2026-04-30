@@ -1,0 +1,55 @@
+- pathPrefix:
+    - /commerce/services/
+
+- home:
+    - [Commerce](/commerce/docs.md)
+
+- pages:
+    - [Merchandising Services](/index.md)
+    - [Developer Guide](/optimizer/index.md)
+    - API Reference
+        - [Catalog data ingestion REST API](/reference/rest/index.md)
+        - [Merchandising GraphQL API](/reference/graphql/index.md)
+    - Events and SDKs
+        - [Storefront Events SDK](/shared-services/storefront-events/index.md)
+        - [Product Recommendations SDK](/product-recommendations/index.md)
+    - [Reporting](/reporting/index.md)
+
+- subPages:
+    - [Merchandising Services](/optimizer/index.md)
+        - [Ingest product and price data](/optimizer/data-ingestion/index.md)
+            - [Authentication](/optimizer/data-ingestion/authentication.md)
+            - [Get started](/optimizer/data-ingestion/using-the-api.md)
+            - [Test API operations](/optimizer/data-ingestion/api-testing.md)
+            - [API Reference](/reference/rest/index.md)
+        - [Retrieve catalog data](/optimizer/merchandising-services/index.md)
+            - [Get started](/optimizer/merchandising-services/using-the-api.md)
+            - [Use cases](/optimizer/merchandising-services/use-cases.md)
+                - [Implement categories on the storefront](/optimizer/merchandising-services/categories-storefront-implementation.md)
+            - [Limitations](/optimizer/merchandising-services/limitations.md)
+            - [Monitor and troubleshoot](/optimizer/merchandising-services/troubleshooting.md)
+            - [API Reference](https://developer.adobe.com/commerce/services/reference/graphql/)
+        - [Tutorial](/optimizer/ccdm-use-case.md)
+    - [Live Search Events](/live-search/index.md)
+    - [Product Recommendations SDK](/product-recommendations/index.md)
+    - [Introduction](/shared-services/index.md)
+    - [Adobe Commerce storefront events](/shared-services/storefront-events/index.md)
+        - [Customize event handling](/shared-services/storefront-events/sdk/index.md)
+            - [Install the storefront events SDK](/shared-services/storefront-events/sdk/install.md)
+                - [Context functions](/shared-services/storefront-events/sdk/context.md)
+                - [Publish functions](/shared-services/storefront-events/sdk/publish.md)
+                - [Subscribe functions](/shared-services/storefront-events/sdk/subscribe.md)
+                - [Unsubscribe functions](/shared-services/storefront-events/sdk/unsubscribe.md)
+            - [Install the storefront events collector](/shared-services/storefront-events/collector/index.md)
+            - [Verify event collection](/shared-services/storefront-events/collector/verify.md)
+        - [Event reference](/shared-services/storefront-events/reference/index.md)
+            - [Storefront events by framework](/shared-services/storefront-events/reference/event-framework.md)
+            - [Complete list of storefront events](/shared-services/storefront-events/reference/storefront-events.md)
+    - [Adobe Commerce Reporting API](/reporting/index.md)
+        - [Export API](/reporting/export-api.md)
+        - [Import API](/reporting/import-api.md)
+        - [Libraries](/reporting/libraries.md)
+        - [Update Cycle Status API](/reporting/update-cycle.md)
+    - [Reference](/reference/index.md)
+        - [Data Ingestion API](/reference/rest/index.md)
+        - [Merchandising API](/reference/graphql/index.md)
