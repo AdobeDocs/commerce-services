@@ -58,7 +58,7 @@ The following examples show how to retrieve product information using the produc
 
 <InlineAlert variant="info" slots="text" />
 
-For details about query input and output fields with additional examples, see the <a href="https://developer.adobe.com/commerce/services/reference/graphql/" target="_blank" rel="noopener noreferrer">Merchandising API Reference</a>.
+For details about query input and output fields with additional examples, see the [Merchandising API Reference](https://developer.adobe.com/commerce/services/reference/graphql/).
 
 ### Return product details
 

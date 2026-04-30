@@ -268,7 +268,7 @@ The following table describes the data collected for this event.
 |`commerce.order.createdDate`|The time and date when a new order is created in the commerce system. For example, `2022-10-15T20:20:39+00:00`.|
 |`commerce.shipping`|Shipping details for one or more products.|
 |`commerce.shipping.shippingMethod`|The method of shipping chosen by the customer, such as standard delivery, expedited delivery, pick up in store, and so on.|
-|`commerce.shipping.shippingAmount`|The amount the customer had to pay for shipping.||`shipping`|Shipping details for one or more products.|
+|`commerce.shipping.shippingAmount`|The amount the customer had to pay for shipping.|
 |`commerce.shipping.currencyCode`|The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code used, such as `USD` or `EUR`.|
 |`commerce.commerceScope`|Indicates where an event occurred (store view, store, website, and so on).|
 |`commerce.commerceScope.environmentID`|The environment ID. A 32-digit alphanumeric ID separated by hyphens.|

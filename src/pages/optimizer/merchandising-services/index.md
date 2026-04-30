@@ -96,8 +96,8 @@ See the [Get Started with the Merchandising API](using-the-api.md) section for i
 ## Related Documentation
 
 - **[Data Ingestion API](../data-ingestion/index.md)**: Ingest and manage product and pricing data
-- **<a href="https://experienceleague.adobe.com/docs/commerce/optimizer/setup/catalog-view.html" target="_blank" rel="noopener noreferrer">Catalog Management</a>**: Set up catalog views and policies in Adobe Commerce Optimizer
-- **<a href="https://developer.adobe.com/commerce/services/reference/graphql/" target="_blank" rel="noopener noreferrer">Merchandising API Reference</a>**: Merchandising API Reference
+- **[Catalog Management](https://experienceleague.adobe.com/docs/commerce/optimizer/setup/catalog-view.html)**: Set up catalog views and policies in Adobe Commerce Optimizer
+- **[Merchandising API Reference](https://developer.adobe.com/commerce/services/reference/graphql/)**: Merchandising API Reference
 - **[GraphQL Queries](use-cases.md#available-queries)**: Available queries
 
 For additional support and community resources, visit the [Adobe Commerce Developer Portal](https://developer.adobe.com/commerce/).

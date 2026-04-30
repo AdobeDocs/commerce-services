@@ -29,16 +29,13 @@ The URL structure is:
 - `environment-type` is included only for non-production URLs (`sandbox`).
 - `tenantId` is the unique identifier for your organization's specific instance within the Adobe Experience Cloud.
 
-&NewLine; <!--Add space between the collapsible section and the previous paragraph-->
+&NewLine; \<!--Add space between the collapsible section and the previous paragraph--\>
 
-<details>
-      <summary><b>Get your instance ID</b></summary>
+<DiscoverBlock slots="link, text"/>
 
-import GetTenantId from '/src/_includes/authentication/get-tenant-id.md'
+[Get your instance ID](../data-ingestion/authentication.md#obtain-ims-credentials)
 
-<GetTenantId />
-
-</details>
+Find the endpoint URLs and tenant ID (instance ID) in the instance details for your Commerce Optimizer project in Cloud Manager.
 
 ## Authentication
 
@@ -48,22 +45,21 @@ Every API request must include a bearer token in the request header:
 
 The bearer token is generated using the credentials from the Adobe developer project for the API integration. The token is valid for 24 hours. When it expires, use the Adobe developer project credentials to generate a new one.
 
-<br></br>
+\<br/\>
 
-<details>
-      <summary><b>Get credentials and bearer access tokens</b></summary>
+<DiscoverBlock slots="link, text"/>
 
-import IMSAuth from '/src/_includes/authentication/initial-auth-for-api-access.md'
+[Get credentials and bearer access tokens](../data-ingestion/authentication.md#obtain-ims-credentials)
 
-<IMSAuth />
-
-</details>
+Create an Adobe developer project to get API authentication credentials and generate bearer access tokens.
 
 ### Generate a new access token
 
-import GetBearerToken from '/src/_includes/authentication/initial-auth-for-api-access.md'
+<DiscoverBlock slots="link, text"/>
 
-<GetBearerToken />
+[Generate a new access token](../data-ingestion/authentication.md#generate-a-new-access-token)
+
+Use your IMS credentials to generate a new bearer token after the current token expires.
 
 ## Headers
 

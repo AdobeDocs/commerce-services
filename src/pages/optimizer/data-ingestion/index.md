@@ -30,7 +30,7 @@ Metadata is required to index product data for discovery. Consequently, it must 
 
 You can also define custom metadata for additional product attributes. For example, you can define a `brand` attribute to allow product discovery and filtering by brand name.
 
-For details, see <a href="https://developer.adobe.com/commerce/services/reference/rest/#tag/Metadata" target="_blank" rel="noopener noreferrer">Metadata API</a> in the *Data Ingestion API Reference*.
+For details, see [Metadata API](https://developer.adobe.com/commerce/services/reference/rest/#tag/Metadata) in the *Data Ingestion API Reference*.
 
 ## Categories
 
@@ -58,7 +58,7 @@ Each product type has its own set of attributes and configurations to help you m
 
 For example, if you're selling a t-shirt, the product variants might include different sizes (small, medium, large) and colors (red, blue, green). Each combination of size and color represents a unique product variant.
 
-For details and examples of different product types and product variations, see the <a href="https://developer.adobe.com/commerce/services/reference/rest/#tag/Products" target="_blank" rel="noopener noreferrer">Products API</a> in the *Data Ingestion API Reference*.
+For details and examples of different product types and product variations, see the [Products API](https://developer.adobe.com/commerce/services/reference/rest/#tag/Products) in the *Data Ingestion API Reference*.
 
 ## Product layers
 
@@ -83,7 +83,7 @@ In Merchandising Services, a product SKU and its price are decoupled. This decou
 
 **Prices** are the monetary values assigned to products within a price book. To create prices for each product SKU, specify the associated price books and define the pricing schedule for each price book.
 
-For details, see <a href="https://developer.adobe.com/commerce/services/reference/rest/#tag/Price-Books" target="_blank" rel="noopener noreferrer">Price Books</a> and <a href="https://developer.adobe.com/commerce/services/reference/rest/#operation/createPrices" target="_blank" rel="noopener noreferrer">Prices</a> in the *Data Ingestion API Reference*.
+For details, see [Price Books](https://developer.adobe.com/commerce/services/reference/rest/#tag/Price-Books) and [Prices](https://developer.adobe.com/commerce/services/reference/rest/#operation/createPrices) in the *Data Ingestion API Reference*.
 
 ## Load sample data using the Adobe Commerce Optimizer SDK
 
@@ -95,7 +95,7 @@ To help you get started with the data ingestion, you can load sample catalog dat
 
 ### About the sample data
 
-The sample data is based on the <a href="https://experienceleague.adobe.com/en/docs/commerce/optimizer/use-case/admin-use-case#business-scenario--carvelo-automobile" target="_blank" rel="noopener noreferrer">Carvelo use case</a> described in the *Adobe Commerce Optimizer User Guide*. It includes a variety of products, price books, and prices to demonstrate how to use the API effectively.
+The sample data is based on the [Carvelo use case](https://experienceleague.adobe.com/en/docs/commerce/optimizer/use-case/admin-use-case#business-scenario--carvelo-automobile) described in the *Adobe Commerce Optimizer User Guide*. It includes a variety of products, price books, and prices to demonstrate how to use the API effectively.
 
 To load the sample data, follow the instructions in the [Sample catalog data ingestion GitHub repository](https://github.com/adobe-commerce/aco-sample-catalog-data-ingestion).
 

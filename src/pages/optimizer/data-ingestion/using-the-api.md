@@ -37,16 +37,13 @@ The URL structure is:
 
 Sandbox instances can only be created in the North America region.
 
-&NewLine; <!--Add space between the collapsible section and the previous paragraph-->
+&NewLine; \<!--Add space between the collapsible section and the previous paragraph--\>
 
-<details>
-      <summary><b>Get your endpoint URL and tenant ID</b></summary>
+<DiscoverBlock slots="link, text"/>
 
-import GetTenantId from '/src/_includes/authentication/get-tenant-id.md'
+[Get your endpoint URL and tenant ID](authentication.md#obtain-ims-credentials)
 
-<GetTenantId />
-
-</details>
+Find the endpoint URLs and tenant ID (instance ID) in the instance details for your Commerce Optimizer project in Cloud Manager.
 
 ## Header parameters
 

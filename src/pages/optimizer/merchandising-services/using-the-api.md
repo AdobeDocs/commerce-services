@@ -49,16 +49,13 @@ The URL structure is:
 
 Sandbox instances are available only in the North America region.
 
-&NewLine; <!--Add space between the collapsible section and the previous paragraph-->
+&NewLine; \<!--Add space between the collapsible section and the previous paragraph--\>
 
-<details>
-      <summary><b>Get your endpoint URL and tenant ID</b></summary>
+<DiscoverBlock slots="link, text"/>
 
-import GetTenantId from '/src/_includes/authentication/get-tenant-id.md'
+[Get your endpoint URL and tenant ID](../data-ingestion/authentication.md#obtain-ims-credentials)
 
-<GetTenantId />
-
-</details>
+Find the endpoint URLs and tenant ID (instance ID) in the instance details for your Commerce Optimizer project in Cloud Manager.
 
 ### Authentication
 
@@ -120,11 +117,11 @@ To get started with the Merchandising API, follow these steps to make your first
      -d '{"query": "query ProductSearch($search: String!) { productSearch( phrase: $search, page_size: 10) { items { productView { sku name description shortDescription images { url } ... on SimpleProductView { attributes { label name value } price { regular { amount { value currency } } roles } } } } } }", "variables": { "search": "your-string"}}'
    ```
 
-   For sample requests and examples using the API, see the <a href="https://developer.adobe.com/commerce/services/reference/graphql/" target="_blank" rel="noopener noreferrer">Merchandising API Reference</a>.
+   For sample requests and examples using the API, see the [Merchandising API Reference](https://developer.adobe.com/commerce/services/reference/graphql/).
 
 ## Test with the GraphQL Playground
 
-For interactive testing and exploration, use the <a href="https://experienceleague.adobe.com/developer/commerce/storefront/playgrounds/commerce-optimizer/" target="_blank" rel="noopener noreferrer">Adobe Commerce Optimizer API Playground</a>.
+For interactive testing and exploration, use the [Adobe Commerce Optimizer API Playground](https://experienceleague.adobe.com/developer/commerce/storefront/playgrounds/commerce-optimizer/).
 
 ## Related documentation
 

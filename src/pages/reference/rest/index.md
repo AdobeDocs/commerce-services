@@ -9,8 +9,12 @@ keywords:
 layout: none
 ---
 
-import GetCredentialOAuthS2s from '/src/pages/credential/GetCredentialOAuthS2s.js'
+<DiscoverBlock slots="heading, link, text"/>
 
-<GetCredentialOAuthS2s />
+## Get API Credentials
+
+[Set up authentication for the Data Ingestion API](../../optimizer/data-ingestion/authentication.md)
+
+Create an Adobe developer project with OAuth server-to-server credentials to call the Catalog Data Ingestion REST API.
 
 <RedoclyAPIBlock src='/commerce/services/rest/data-ingestion-schema-v1.yaml' hideLoading />
