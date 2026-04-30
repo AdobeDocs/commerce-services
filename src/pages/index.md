@@ -27,7 +27,7 @@ Learn about the APIs and tools available to manage and use commerce catalog and 
 *  [GraphQL Developer Guide](https://developer.adobe.com/commerce/webapi/graphql/)
 *  [Commerce Merchant Documentation](https://experienceleague.adobe.com/docs/commerce-admin/user-guides/home.html)
 
-<DiscoverBlock slots="heading,link, text"/>
+<DiscoverBlock slots="heading, link, text"/>
 
 ## Catalog Data APIs
 
@@ -41,11 +41,9 @@ Set up large, complex catalog assortments by ingesting commerce catalog data fro
 
 Retrieve catalog data product, price, search, and recommendations data from Merchandising Services and use it to create storefront experiences.
 
-<DiscoverBlock slots="heading,link, text"/>
+<DiscoverBlock slots="heading, link, text"/>
 
 ## SDKs and Reporting
-
-<DiscoverBlock slots="link, text"/>
 
 [Storefront Events and SDK](shared-services/storefront-events/index.md)
 
