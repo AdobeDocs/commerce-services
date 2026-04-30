@@ -9,7 +9,7 @@ keywords:
 hideBreadcrumbNav: true
 ---
 
-<Hero slots="image, heading, text"/>
+<Superhero slots="image, heading, text"/>
 
 ![Merchandising Services](images/pipeline-illustration.png)
 
