@@ -19,7 +19,7 @@ This guide provides API reference and usage information for developers and comme
 
 Developers can use Adobe Commerce Optimizer Merchandising Services to implement large, complex catalogs, and develop highly performant storefront experiences. Merchandising Services provides a data model that separates product data from product context, allowing businesses to compose custom catalogs for different business models, such as B2B, B2C, and D2C and to manage the catalogs in a way that aligns with their go-to-market strategies.
 
-![Merchandising Services product data and context](../_images/merchandising/merchandising-svcs-parts.png)
+![Merchandising Services product data and context](../images/merchandising/merchandising-svcs-parts.png)
 
 - **Product data** provides the details about the products to be sold-sku, attributes, metadata, and assets data, and prices for each item.
 

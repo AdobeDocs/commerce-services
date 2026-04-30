@@ -8,7 +8,7 @@ keywords:
 
 # Live Search events
 
-The [_Adobe Commerce Event SDK_](../shared-services/storefront-events/sdk/) provides access to a common data layer, with event publishing and subscription services.  The [_Adobe Commerce Event Collector_](../shared-services/storefront-events/collector/) package listens for events and includes the following search-related functions:
+The [_Adobe Commerce Event SDK_](../shared-services/storefront-events/sdk/index.md) provides access to a common data layer, with event publishing and subscription services.  The [_Adobe Commerce Event Collector_](../shared-services/storefront-events/collector/index.md) package listens for events and includes the following search-related functions:
 
 |Function|Description|
 |---|---|

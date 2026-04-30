@@ -25,7 +25,7 @@ To ensure that the event collector JS file is loading on all site pages:
 1. Reload the page.
    You should see entries labeled `ds.js` or `ds.min.js` in the **Name** column.
 
-![Event collector JS](../_images/filter-ds.png)
+![Event collector JS](../images/filter-ds.png)
 _Event Collector JS_
 
 To ensure that events are firing on pages across your site (home, product, checkout, and so on):
@@ -36,7 +36,7 @@ To ensure that events are firing on pages across your site (home, product, check
 1. Reload the page.
    You should see entries labeled `tp2` in the **Name** column.
 
-![Firing events](../_images/filter-tp2.png)
+![Firing events](../images/filter-tp2.png)
 _Verify that events are firing_
 
 ## Verify using Snowplow Chrome extension
@@ -55,7 +55,7 @@ Install the [Snowplow Analytics Debugger extension for Chrome](https://chrome.go
 
 1. Verify that the [SaaS Data Space ID](https://experienceleague.adobe.com/docs/commerce-admin/config/services/saas.html) is set correctly.
 
-![Snowplow filter](../_images/snowplow-filter.png)
+![Snowplow filter](../images/snowplow-filter.png)
 _Snowplow Filter_
 
 <InlineAlert variant="info" slots="text"/>

@@ -48,7 +48,7 @@ The Merchandising API is ideal for:
 
 The Merchandising API sits between your storefront applications and the Adobe Commerce Optimizer data layer:
 
-![Merchandising Services API](../../_images/merchandising/merchandising-data-flow.png)
+![Merchandising Services API](../../images/merchandising/merchandising-data-flow.png)
 
 This diagram illustrates the flow of data between the storefront, the Merchandising API, and the Adobe Commerce Optimizer backend:
 

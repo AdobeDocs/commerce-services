@@ -34,10 +34,10 @@ Product Recommendations and Live Search also use other non-module specific event
 
 The Product Recommendations module collects behavioral data from the following events:
 
-- [impression-render](./reference/storefront-events.md#impression-render)
-- [rec-add-to-cart-click](./reference/storefront-events.md#rec-add-to-cart-click)
-- [rec-click](./reference/storefront-events.md#rec-click)
-- [view](./reference/storefront-events.md#view)
+- [impression-render](reference/storefront-events.md#impression-render)
+- [rec-add-to-cart-click](reference/storefront-events.md#rec-add-to-cart-click)
+- [rec-click](reference/storefront-events.md#rec-click)
+- [view](reference/storefront-events.md#view)
 
 Although Product Recommendation metrics are optimized for Luma storefronts, they also work with other storefront implementations:
 
@@ -91,11 +91,11 @@ This table describes the events used by each recommendation type.
 
 The Live Search module collects behavioral data from the following events:
 
-- [searchProductClick](./reference/storefront-events.md#searchproductclick)
-- [searchRequestSent](./reference/storefront-events.md#searchrequestsent) (also part of the [Data Connection](#data-connection) list.)
-- [searchResponseReceived](./reference/storefront-events.md#searchresponsereceived) (also part of the [Data Connection](#data-connection) list.)
-- [searchResultsView](./reference/storefront-events.md#searchresultsview)
-- [searchSuggestionClick](./reference/storefront-events.md#searchsuggestionclick)
+- [searchProductClick](reference/storefront-events.md#searchproductclick)
+- [searchRequestSent](reference/storefront-events.md#searchrequestsent) (also part of the [Data Connection](#data-connection) list.)
+- [searchResponseReceived](reference/storefront-events.md#searchresponsereceived) (also part of the [Data Connection](#data-connection) list.)
+- [searchResultsView](reference/storefront-events.md#searchresultsview)
+- [searchSuggestionClick](reference/storefront-events.md#searchsuggestionclick)
 
 #### Events used for ranking strategy
 
@@ -169,34 +169,34 @@ The Data Connection module collects behavioral data from the following categorie
 
 #### General
 
-- [addToCart](./reference/storefront-events.md#addtocart)
-- [openCart](./reference/storefront-events.md#opencart)
-- [removeFromCart](./reference/storefront-events.md#removefromcart)
-- [shoppingCartView](./reference/storefront-events.md#shoppingcartview)
-- [pageView](./reference/storefront-events.md#pageview)
-- [productPageView](./reference/storefront-events.md#productpageview)
-- [startCheckout](./reference/storefront-events.md#startcheckout)
-- [completeCheckout](./reference/storefront-events.md#completecheckout)
+- [addToCart](reference/storefront-events.md#addtocart)
+- [openCart](reference/storefront-events.md#opencart)
+- [removeFromCart](reference/storefront-events.md#removefromcart)
+- [shoppingCartView](reference/storefront-events.md#shoppingcartview)
+- [pageView](reference/storefront-events.md#pageview)
+- [productPageView](reference/storefront-events.md#productpageview)
+- [startCheckout](reference/storefront-events.md#startcheckout)
+- [completeCheckout](reference/storefront-events.md#completecheckout)
 
 #### Profile
 
-- [signIn](./reference/storefront-events.md#signin)
-- [signOut](./reference/storefront-events.md#signout)
-- [createAccount](./reference/storefront-events.md#createaccount)
-- [editAccount](./reference/storefront-events.md#editaccount)
+- [signIn](reference/storefront-events.md#signin)
+- [signOut](reference/storefront-events.md#signout)
+- [createAccount](reference/storefront-events.md#createaccount)
+- [editAccount](reference/storefront-events.md#editaccount)
 
 #### Search
 
 These events are also part of the [Live Search](#live-search) collection of events.
 
-- [searchRequestSent](./reference/storefront-events.md#searchrequestsent)
-- [searchResponseReceived](./reference/storefront-events.md#searchresponsereceived)
+- [searchRequestSent](reference/storefront-events.md#searchrequestsent)
+- [searchResponseReceived](reference/storefront-events.md#searchresponsereceived)
 
 #### B2B
 
-- [createRequisitionList](./reference/storefront-events.md#createrequisitionlist)
-- [addToRequisitionList](./reference/storefront-events.md#addtorequisitionlist)
-- [removeFromRequisitionList](./reference/storefront-events.md#removefromrequisitionlist)
-- [deleteRequisitionList](./reference/storefront-events.md#deleterequisitionlist)
+- [createRequisitionList](reference/storefront-events.md#createrequisitionlist)
+- [addToRequisitionList](reference/storefront-events.md#addtorequisitionlist)
+- [removeFromRequisitionList](reference/storefront-events.md#removefromrequisitionlist)
+- [deleteRequisitionList](reference/storefront-events.md#deleterequisitionlist)
 
 [Learn more](https://experienceleague.adobe.com/en/docs/commerce/data-connection/fundamentals/connect-data#data-collection) about how Data Connection uses behavioral data.

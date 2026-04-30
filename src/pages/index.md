@@ -11,7 +11,7 @@ hideBreadcrumbNav: true
 
 <Hero slots="image, heading, text"/>
 
-![Merchandising Services](_images/pipeline-illustration.png)
+![Merchandising Services](images/pipeline-illustration.png)
 
 # Merchandising Services
 
@@ -31,13 +31,13 @@ Learn about the APIs and tools available to manage and use commerce catalog and 
 
 ## Catalog Data APIs
 
-[Data Ingestion API](optimizer/data-ingestion/)
+[Data Ingestion API](optimizer/data-ingestion/index.md)
 
 Set up large, complex catalog assortments by ingesting commerce catalog data from backend systems into a centralized datastore.
 
 <DiscoverBlock slots="link, text"/>
 
-[Merchandising API](optimizer/)
+[Merchandising API](optimizer/index.md)
 
 Retrieve catalog data product, price, search, and recommendations data from Merchandising Services and use it to create storefront experiences.
 
@@ -47,19 +47,19 @@ Retrieve catalog data product, price, search, and recommendations data from Merc
 
 <DiscoverBlock slots="link, text"/>
 
-[Storefront Events and SDK](shared-services/storefront-events/)
+[Storefront Events and SDK](shared-services/storefront-events/index.md)
 
 Learn about the events deployed to your storefront and how to publish, subscribe, and handle the events programmatically.
 
 <DiscoverBlock slots="link, text"/>
 
-[Product Recommendations SDK](product-recommendations/)
+[Product Recommendations SDK](product-recommendations/index.md)
 
 Dynamically fetch and display personalized product recommendations in your storefront experience.
 
 <DiscoverBlock slots="link, text"/>
 
-[Commerce Reporting API](reporting/)
+[Commerce Reporting API](reporting/index.md)
 
 Import data into your Commerce data warehouse and export raw data from your Commerce Reporting dashboards.
 
