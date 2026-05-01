@@ -9,5 +9,11 @@ keywords:
   - Services
   - Storefront
   - Merchandising
-frameSrc: /graphql-api/merchandising-api/index.html
+layout: none
+hideBreadcrumbNav: true
+hideEditInGitHub: true
+hideLogIssue: true
+hideCopyMarkdown: true
 ---
+
+<iframe src="https://developer.adobe.com/commerce/services/graphql-api/merchandising-api/index.html"/>
