@@ -687,7 +687,7 @@ type PageInfo {
 
 ### Search categories by name
 
-Shoppers and internal tools often find categories by typing a fragment of the display name rather than browsing the tree. The following example calls `searchCategory` with `searchTerm: "Men"` and no `family`, then requests `totalCount`, a page of `items` with `slug`, `name`, and `level`, plus `pageInfo` for pagination. The response lists every category whose name matches across the catalog scope your API uses.
+Shoppers and internal tools often find categories by typing a fragment of the display name rather than browsing the tree. The following example calls `searchCategory` with `searchTerm: "Men"` and no `family`, then requests `totalCount`, a page of `items` with `slug`, `name`, and `level`,  plus `pageInfo` for pagination.. The response lists every category whose name matches across the catalog scope your API uses.
 
 <CodeBlock slots="heading, code" repeat="2" languages="JSON" />
 
