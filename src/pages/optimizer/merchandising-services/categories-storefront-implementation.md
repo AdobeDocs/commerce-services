@@ -653,7 +653,12 @@ query CategoryTree {
 
 ## searchCategory query examples
 
-The `searchCategory` query matches category **names** against a `searchTerm` and returns a paginated [`SearchCategoryResultPage`](https://developer.adobe.com/commerce/services/graphql-api/merchandising-api/index.html#definition-SearchCategoryResultPage). Each `items` entry is a [`CategoryTreeView`](https://developer.adobe.com/commerce/services/graphql-api/merchandising-api/index.html#definition-CategoryTreeView), so you can reuse the same fields as in `categoryTree` responses (for example, `slug`, `name`, `description`, and `images`).
+The `searchCategory` query matches category **names** against a `searchTerm` and returns a paginated [`SearchCategoryResultPage`](https://developer.adobe.com/commerce/services/graphql-api/merchandising-api/index.html#definition-SearchCategoryResultPage).
+
+- If the `family` argument is omitted, it returns categories across all families.
+- The `searchTerm` argument is case-insensitive and must be a minimum of three characters.
+
+Each `items` entry is a [`CategoryTreeView`](https://developer.adobe.com/commerce/services/graphql-api/merchandising-api/index.html#definition-CategoryTreeView), so you can reuse the same fields as in `categoryTree` responses (for example, `slug`, `name`, `description`, and `images`).
 
 ```graphql
 type Query {
@@ -682,27 +687,23 @@ type PageInfo {
 
 ### Search categories by name
 
-Shoppers and internal tools often find categories by typing a fragment of the display name rather than browsing the tree. The following example calls `searchCategory` with `searchTerm: "Shorts"` and no `family`, then requests `totalCount`, a page of `items` with `slug`, `name`, and `level`, plus `pageInfo` for pagination. The response lists every category whose name matches across the catalog scope your API uses.
+Shoppers and internal tools often find categories by typing a fragment of the display name rather than browsing the tree. The following example calls `searchCategory` with `searchTerm: "Men"` and no `family`, then requests `totalCount`, a page of `items` with `slug`, `name`, and `level`,  plus `pageInfo` for pagination.. The response lists every category whose name matches across the catalog scope your API uses.
 
 <CodeBlock slots="heading, code" repeat="2" languages="JSON" />
 
 **Request:**
 
 ```graphql
-query SearchCategoriesByName {
-    searchCategory(searchTerm: "Shorts") {
-        totalCount
-        items {
-            slug
-            name
-            level
-        }
-        pageInfo {
-            currentPage
-            pageSize
-            totalPages
-        }
+query {
+  searchCategory(searchTerm: "Men", pageSize: 20, currentPage: 1) {
+    totalCount
+    items {
+      name
+      slug
+      parentSlug
+      childrenSlugs
     }
+  }
 }
 ```
 
@@ -710,28 +711,59 @@ query SearchCategoriesByName {
 
 ```json
 {
-    "data": {
-        "searchCategory": {
-            "totalCount": 2,
-            "items": [
-                {
-                    "slug": "men/clothes/shorts",
-                    "name": "Shorts",
-                    "level": 3
-                },
-                {
-                    "slug": "women/clothes/shorts",
-                    "name": "Shorts",
-                    "level": 3
-                }
-            ],
-            "pageInfo": {
-                "currentPage": 1,
-                "pageSize": 20,
-                "totalPages": 1
-            }
+  "data": {
+    "searchCategory": {
+      "totalCount": 5,
+      "items": [
+        {
+          "name": "Men",
+          "slug": "men",
+          "parentSlug": "",
+          "childrenSlugs": [
+            "men/tops",
+            "men/bottoms",
+            "men/accessories",
+            "men/footwear"
+          ]
+        },
+        {
+          "name": "Men Footwear",
+          "slug": "men/footwear",
+          "parentSlug": "men",
+          "childrenSlugs": [
+            "men/footwear/sneakers"
+          ]
+        },
+        {
+          "name": "Men Accessories",
+          "slug": "men/accessories",
+          "parentSlug": "men",
+          "childrenSlugs": [
+            "men/accessories/socks"
+          ]
+        },
+        {
+          "name": "Men Bottoms",
+          "slug": "men/bottoms",
+          "parentSlug": "men",
+          "childrenSlugs": [
+            "men/bottoms/shorts"
+          ]
+        },
+        {
+          "name": "Men Tops test",
+          "slug": "men/tops",
+          "parentSlug": "men",
+          "childrenSlugs": [
+            "men/tops/shirts"
+          ]
         }
+      ]
     }
+  },
+  "extensions": {
+    "request-id": "c1d2e6a3-6671-408f-8674-14aae3ae890f"
+  }
 }
 ```
 
@@ -792,14 +824,13 @@ query SearchCategoriesInFamily {
 }
 ```
 
-For complete field details, see [`searchCategory`](https://developer.adobe.com/commerce/services/graphql-api/merchandising-api/index.html#query-searchCategory) and [`PageInfo`](https://developer.adobe.com/commerce/services/graphql-api/merchandising-api/index.html#definition-PageInfo) in the Merchandising Services GraphQL API reference.
+For additional information, see [`searchCategory`](https://developer.adobe.com/commerce/services/graphql-api/merchandising-api/index.html#query-searchCategory) and [`PageInfo`](https://developer.adobe.com/commerce/services/graphql-api/merchandising-api/index.html#definition-PageInfo) in the Merchandising Services GraphQL API reference.
 
 ## Query quick reference
 
 | Use case | Query | Type |
 |---|---|---|
 | Storefront menus, dropdowns, mobile navigation | `navigation` | `CategoryNavigationView` |
-| Category landing pages with SEO metadata and images | `categoryTree` | `CategoryTreeView` |
+| Category hierarchy management, landing pages with SEO metadata and images | `categoryTree` | `CategoryTreeView` |
 | Breadcrumbs and category context on product pages | `products` (`categories` field) | `CategoryProductView` |
-| Category hierarchy management and CMS administration | `categoryTree` | `CategoryTreeView` |
 | Search or browse categories by name (typeahead, admin pickers) | `searchCategory` | `CategoryTreeView` (in `SearchCategoryResultPage.items`) |
