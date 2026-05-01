@@ -9,12 +9,6 @@ keywords:
 layout: none
 ---
 
-<DiscoverBlock slots="heading, link, text"/>
-
-## Get API Credentials
-
-[Set up authentication for the Data Ingestion API](../../optimizer/data-ingestion/authentication.md)
-
-Create an Adobe developer project with OAuth server-to-server credentials to call the Catalog Data Ingestion REST API.
+<GetCredential />
 
 <RedoclyAPIBlock src='/commerce/services/rest/data-ingestion-schema-v1.yaml' hideLoading />
