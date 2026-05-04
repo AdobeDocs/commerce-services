@@ -22,13 +22,13 @@ For direct access to the Data Ingestion API, you must authenticate using an acce
 
 This token is generated from the credentials of an Adobe developer project that is configured for API access. The token is valid for 24 hours. When it expires, use the Adobe developer project credentials to [generate a new one](#generate-a-new-access-token).
 
-\<br/\>
-
-To get API authentication credentials and tokens, create an Adobe developer project to enable communication between your Commerce project and Merchandising Services APIs.
-
 <InlineAlert variant="info" slots="text" />
 
 Creating projects for enterprise organizations requires a system administrator or developer role with access to the **Adobe Commerce – Commerce Cloud Manager** product. For information on managing developers from the Admin console, see [Managing developers](https://experienceleague.adobe.com/en/docs/commerce/optimizer/user-management) in the *Adobe Commerce Optimizer Guide*.
+
+<Details slots="text, list" repeat="1" summary="Get credentials and access tokens" />
+
+To get API authentication credentials and tokens, create an Adobe developer project to enable communication between your Commerce project and Merchandising Services APIs.
 
 1. Log in to the [Adobe Developer Console](https://developer.adobe.com/console).
 
