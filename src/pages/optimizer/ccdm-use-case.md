@@ -257,7 +257,7 @@ curl --request POST \
 ]"
 ```
 
-**Response**
+**Response:**
 
 ```shell
 {
@@ -266,7 +266,7 @@ curl --request POST \
 }
 ```
 
-**Request to add metadata for the `en-GB` catalog source**
+**Request to add metadata for the `en-GB` catalog source:**
 
 ```shell
 curl --request POST \
@@ -459,7 +459,7 @@ Add products by submitting a [createProducts](https://developer.adobe.com/commer
 
 Add the simple product *Aurora Prism Battery* with two attribute codes, `Brand` set to *Aurora*, and `Country` set to *USA* by sending the following payload in the Create products request.
 
-**Create product request**
+**Create product request:**
 
 ```shell
 curl --request POST \
@@ -539,7 +539,7 @@ curl --request POST \
 
 Add the product *Bolt Atlas Battery* with two attribute codes, `Brand` set to *Bolt*, and `Country` set to *UK* by sending the following payload in the [createProducts](https://developer.adobe.com/commerce/services/reference/rest/#operation/createProductMetadata) request.
 
-**Create product request**
+**Create product request:**
 
 ```shell
 curl --request POST \

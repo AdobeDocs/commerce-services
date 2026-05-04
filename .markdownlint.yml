@@ -31,16 +31,19 @@ MD030: false
 MD033:
   allowed_elements:
     - Announcement
-    - HeroSimple
-    - Resources
-    - DiscoverBlock
-    - InlineAlert
-    - Edition
-    - SuperHero
-    - CodeBlock
-    - Fragment
     - Cards
+    - CodeBlock
+    - DiscoverBlock
+    - Edition
+    - Fragment
+    - HeroSimple
     - HorizontalLine
+    - RedoclyAPIBlock
+    - Resources
+    - SuperHero
+    - InlineAlert
+    - GetCredential
+    - Details
 
 # MD034/no-bare-urls - Bare URL used
 MD034: false

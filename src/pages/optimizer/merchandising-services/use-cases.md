@@ -13,7 +13,7 @@ keywords:
 
 The Merchandising API supports various e-commerce scenarios. The catalog data delivered by the API is filtered based on the request headers and the catalog view, catalog source, policy, and price book configuration in Adobe Commerce Optimizer. This allows you to create tailored storefront experiences for different customer segments, channels, and regions.
 
-### E-commerce Storefronts
+**E-commerce Storefronts:**
 
 * **Category Management**: Build category navigation trees, menus, and breadcrumbs
 * **Product Catalogs**: Display product listings with filtering and sorting
@@ -22,14 +22,14 @@ The Merchandising API supports various e-commerce scenarios. The catalog data de
 * **Recommendations**: Display personalized, cross-sell, and upsell product recommendations
 * **Search Functionality**: Implement product search with autocomplete
 
-### Multi-channel Commerce
+**Multi-channel Commerce:**
 
 * **B2B Portals**: Customize catalogs for business customers
 * **Marketplace Integration**: Power third-party marketplace listings
 * **Mobile Apps**: Provide consistent data across mobile platforms
 * **Headless Commerce**: Support decoupled frontend architectures
 
-### Personalization
+**Personalization:**
 
 * **Customer Segmentation**: Deliver targeted product recommendations
 * **Regional Pricing**: Display locale-specific pricing and availability
@@ -81,7 +81,7 @@ The following query returns details about simple product with sku `cru-sus-prm-2
 
 <CodeBlock slots="heading, code" repeat="2" languages="JSON" />
 
-**Request**
+**Request:**
 
 ```graphql
 query {
@@ -151,7 +151,7 @@ query {
 }
 ```
 
-**Response**
+**Response:**
 
 ```json
 {
@@ -266,7 +266,7 @@ For each part type, the default configuration is to use the standard part qualit
 
 <CodeBlock slots="heading, code" repeat="2" languages="JSON" />
 
-**Request**
+**Request:**
 
 ```graphql
 query GetBundleProductDetails {
@@ -364,7 +364,7 @@ query GetBundleProductDetails {
 }
 ```
 
-**Response**
+**Response:**
 
 ```json
 {
@@ -681,7 +681,7 @@ Return information about simple products. This examples uses the productSearch q
 
 <CodeBlock slots="heading, code" repeat="2" languages="JSON" />
 
-**Request**
+**Request:**
 
 ```graphql
 query {
@@ -708,7 +708,7 @@ query {
 }
 ```
 
-**Response**
+**Response:**
 
 ```json
 {

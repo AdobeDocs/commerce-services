@@ -16,7 +16,7 @@ For headless Commerce implementations, see the [Headless](https://experienceleag
 
 This SDK can be pulled down from a CDN or installed as a module from NPM.
 
-#### CDN
+### CDN
 
 The SDK is published on a CDN in versioned directories.
 
@@ -24,7 +24,7 @@ The SDK is published on a CDN in versioned directories.
 <script src="https://magento-recs-sdk.adobe.net/v1/index.js"></script>
 ```
 
-#### NPM
+### NPM
 
 ```bash
 npm install @magento/recommendations-js-sdk
@@ -83,7 +83,7 @@ The `client.register()` function contains the following inputs.
 
 Currently, you can filter on categories and prices.
 
-**Category**
+**Category:**
 
 To include specific categories:
 
@@ -93,7 +93,7 @@ To exclude specific categories (note the `-` at the beginning):
 
 `-categories: (<url-key-1> OR <url-key-2> OR ...)`
 
-**Prices**
+**Prices:**
 
 To filter based on a specific price point (note that these filters use `$50` as the price point):
 

@@ -326,7 +326,7 @@ Publishes the `searchSuggestionClick` event.
 
 |Name|Required|Description|
 |---|---|---|
-|`searchUnitId`|Yes Search `unitId`|
+|`searchUnitId`|Yes|Search `unitId`|
 |`suggestion`|Yes|Query `suggestion`|
 |`context`|No|Custom context|
 

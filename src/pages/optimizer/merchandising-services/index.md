@@ -23,7 +23,7 @@ The Merchandising API is part of Adobe Commerce Optimizer's composable commerce 
 - **Scale efficiently** with optimized GraphQL queries that fetch only the data you need
 - **Maintain performance** with built-in caching and CDN integration
 
-### Key Benefits
+## Key Benefits
 
 - **Real-time data access** to product catalogs, pricing, and inventory
 - **Flexible querying** with GraphQL for efficient data retrieval
@@ -31,7 +31,7 @@ The Merchandising API is part of Adobe Commerce Optimizer's composable commerce 
 - **Localization ready** with built-in support for multiple locales and currencies
 - **Performance optimized** with intelligent caching and query optimization
 
-### When to Use the Merchandising API
+## When to Use the Merchandising API
 
 The Merchandising API is ideal for:
 

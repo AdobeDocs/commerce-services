@@ -85,117 +85,117 @@ To get started with the Data Ingestion API, follow these steps to make your firs
 
 1. Generate an access token for the `Authorization: {{accessToken}}` header.
 
-2. Submit your first request
+1. Submit your first request
    - Use the [curl](https://curl.se/) command line tool to submit a request to the Data Ingestion API.
    - Use the following endpoint to create the required product metadata for a catalog source (`locale`):
 
-  ```shell
-  curl -X POST \
-    'https://na1-sandbox.api.commerce.adobe.com/{{tenantId}}/v1/catalog/products/metadata' \
-    -H 'Content-Type: application/json' \
-    -H 'Authorization: {{accessToken}}' \
-    -d '[
-      {
-        "code": "sku",
-        "source": {
-          "locale": "en"
+    ```shell
+    curl -X POST \
+      'https://na1-sandbox.api.commerce.adobe.com/{{tenantId}}/v1/catalog/products/metadata' \
+      -H 'Content-Type: application/json' \
+      -H 'Authorization: {{accessToken}}' \
+      -d '[
+        {
+          "code": "sku",
+          "source": {
+            "locale": "en"
+          },
+          "label": "Product Name",
+          "dataType": "TEXT",
+          "visibleIn": [
+            "PRODUCT_DETAIL",
+            "PRODUCT_LISTING",
+            "SEARCH_RESULTS",
+            "PRODUCT_COMPARE"
+          ],
+          "filterable": true,
+          "sortable": false,
+          "searchable": true,
+          "searchWeight": 1,
+          "searchTypes": [
+            "AUTOCOMPLETE"
+          ]
         },
-        "label": "Product Name",
-        "dataType": "TEXT",
-        "visibleIn": [
-          "PRODUCT_DETAIL",
-          "PRODUCT_LISTING",
-          "SEARCH_RESULTS",
-          "PRODUCT_COMPARE"
-        ],
-        "filterable": true,
-        "sortable": false,
-        "searchable": true,
-        "searchWeight": 1,
-        "searchTypes": [
-          "AUTOCOMPLETE"
-        ]
-      },
-      {
-        "code": "name",
-        "source": {
-          "locale": "en"
+        {
+          "code": "name",
+          "source": {
+            "locale": "en"
+          },
+          "label": "Product Name",
+          "dataType": "TEXT",
+          "visibleIn": [
+            "PRODUCT_DETAIL",
+            "PRODUCT_LISTING",
+            "SEARCH_RESULTS",
+            "PRODUCT_COMPARE"
+          ],
+          "filterable": false,
+          "sortable": true,
+          "searchable": true,
+          "searchWeight": 1,
+          "searchTypes": [
+            "AUTOCOMPLETE"
+          ]
         },
-        "label": "Product Name",
-        "dataType": "TEXT",
-        "visibleIn": [
-          "PRODUCT_DETAIL",
-          "PRODUCT_LISTING",
-          "SEARCH_RESULTS",
-          "PRODUCT_COMPARE"
-        ],
-        "filterable": false,
-        "sortable": true,
-        "searchable": true,
-        "searchWeight": 1,
-        "searchTypes": [
-          "AUTOCOMPLETE"
-        ]
-      },
-      {
-        "code": "description",
-        "source": {
-          "locale": "en"
+        {
+          "code": "description",
+          "source": {
+            "locale": "en"
+          },
+          "label": "Product Description",
+          "dataType": "TEXT",
+          "visibleIn": [
+            "PRODUCT_DETAIL"
+          ],
+          "filterable": false,
+          "sortable": false,
+          "searchable": false,
+          "searchWeight": 1,
+          "searchTypes": [
+            "AUTOCOMPLETE"
+          ]
         },
-        "label": "Product Description",
-        "dataType": "TEXT",
-        "visibleIn": [
-          "PRODUCT_DETAIL"
-        ],
-        "filterable": false,
-        "sortable": false,
-        "searchable": false,
-        "searchWeight": 1,
-        "searchTypes": [
-          "AUTOCOMPLETE"
-        ]
-      },
-      {
-        "code": "shortDescription",
-        "source": {
-          "locale": "en"
+        {
+          "code": "shortDescription",
+          "source": {
+            "locale": "en"
+          },
+          "label": "Product Short Description",
+          "dataType": "TEXT",
+          "visibleIn": [
+            "PRODUCT_DETAIL"
+          ],
+          "filterable": false,
+          "sortable": false,
+          "searchable": true,
+          "searchWeight": 1,
+          "searchTypes": [
+            "AUTOCOMPLETE"
+          ]
         },
-        "label": "Product Short Description",
-        "dataType": "TEXT",
-        "visibleIn": [
-          "PRODUCT_DETAIL"
-        ],
-        "filterable": false,
-        "sortable": false,
-        "searchable": true,
-        "searchWeight": 1,
-        "searchTypes": [
-          "AUTOCOMPLETE"
-        ]
-      },
-      {
-        "code": "price",
-        "source": {
-          "locale": "en"
-        },
-        "label": "Price",
-        "dataType": "DECIMAL",
-        "visibleIn": [
-          "PRODUCT_DETAIL",
-          "PRODUCT_LISTING",
-          "SEARCH_RESULTS",
-          "PRODUCT_COMPARE"
-        ],
-        "filterable": true,
-        "sortable": true,
-        "searchable": false,
-        "searchWeight": 1,
-        "searchTypes": []
-      }
-    ]'
-  ```
+        {
+          "code": "price",
+          "source": {
+            "locale": "en"
+          },
+          "label": "Price",
+          "dataType": "DECIMAL",
+          "visibleIn": [
+            "PRODUCT_DETAIL",
+            "PRODUCT_LISTING",
+            "SEARCH_RESULTS",
+            "PRODUCT_COMPARE"
+          ],
+          "filterable": true,
+          "sortable": true,
+          "searchable": false,
+          "searchWeight": 1,
+          "searchTypes": []
+        }
+      ]'
+    ```
 
-3. Verify the response
+1. Verify the response
    - If the request is successful, you receive a `200 Created` response with the metadata for the product attributes.
    - If the request fails, you receive an error message with details about the issue.
 
