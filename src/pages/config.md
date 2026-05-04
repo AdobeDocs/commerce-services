@@ -26,7 +26,7 @@
                 - [Implement categories on the storefront](/optimizer/merchandising-services/categories-storefront-implementation.md)
             - [Limitations](/optimizer/merchandising-services/limitations.md)
             - [Monitor and troubleshoot](/optimizer/merchandising-services/troubleshooting.md)
-            - [API Reference](https://developer.adobe.com/commerce/services/reference/graphql/)
+            - [API Reference](/reference/graphql/index.md)
         - [Tutorial](/optimizer/ccdm-use-case.md)
     - [Live Search Events](/live-search/index.md)
     - [Product Recommendations SDK](/product-recommendations/index.md)

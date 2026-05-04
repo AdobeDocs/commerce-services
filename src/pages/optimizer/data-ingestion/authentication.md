@@ -32,7 +32,7 @@ To get API authentication credentials and tokens, create an Adobe developer proj
 
 1. Log in to the [Adobe Developer Console](https://developer.adobe.com/console).
 
-   You can also access the Developer Console from the **Get Credentials** section of the [Data Ingestion API Reference](https://developer.adobe.com/commerce/services/reference/rest/). If you use this method, you are automatically directed to the correct organization. You can complete the process to create credentials and generate an access token from there.
+   You can also access the Developer Console from the **Get Credentials** section of the [Data Ingestion API Reference](../../reference/rest/index.md). If you use this method, you are automatically directed to the correct organization. You can complete the process to create credentials and generate an access token from there.
 
 1. Select the Experience Cloud Organization for the integration.
 

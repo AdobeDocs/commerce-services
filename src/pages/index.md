@@ -23,9 +23,9 @@ Learn about the APIs and tools available to manage and use commerce catalog and 
 
 *  [Commerce Optimizer Guide](https://experienceleague.adobe.com/en/docs/commerce/optimizer/overview)
 *  [Commerce Storefront Documentation](https://experienceleague.adobe.com/developer/commerce/storefront/)
-*  [Commerce Services user guides](https://experienceleague.adobe.com/docs/commerce/user-guides/home.html)
+*  [Commerce Services user guides](https://experienceleague.adobe.com/en/docs/commerce/user-guides/home)
 *  [GraphQL Developer Guide](https://developer.adobe.com/commerce/webapi/graphql/)
-*  [Commerce Merchant Documentation](https://experienceleague.adobe.com/docs/commerce-admin/user-guides/home.html)
+*  [Commerce Merchant Documentation](https://experienceleague.adobe.com/en/docs/commerce-admin/user-guides/home)
 
 <DiscoverBlock slots="heading, link, text"/>
 

@@ -9,7 +9,7 @@ keywords:
 
 # GraphQL API Types Summary - Merchandising API
 
-This summary provides a detailed overview of the types used in the GraphQL API Merchandising API to  clarify the structure and relationships of the data managed by the API. For detailed information on each type and its fields, see the [Merchandising API reference](https://developer.adobe.com/commerce/services/reference/graphql/).
+This summary provides a detailed overview of the types used in the GraphQL API Merchandising API to  clarify the structure and relationships of the data managed by the API. For detailed information on each type and its fields, see the [Merchandising API reference](../../reference/graphql/index.md).
 
 This document provides a comprehensive overview of the types used in the following queries in the GraphQL API Merchandising API:
 

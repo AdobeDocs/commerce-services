@@ -9,7 +9,7 @@ keywords:
 
 # Verify event collection
 
-After you install and configure the [Product Recommendations](https://experienceleague.adobe.com/en/docs/commerce/product-recommendations/getting-started/install-configure) or [Live Search](https://experienceleague.adobe.com/en/docs/commerce/live-search/install) modules, you can verify that the behavioral data is being sent to Adobe Commerce. Use developer tools available in Chrome or the Snowplow Chrome extension to check. For more help, see the troubleshooting guides for [Product Recommendations](https://experienceleague.adobe.com/docs/commerce-knowledge-base/kb/troubleshooting/miscellaneous/troubleshoot-product-recommendations-module-in-magento-commerce.html) and [Live Search](https://experienceleague.adobe.com/en/docs/commerce/live-search/boundaries-limits#troubleshooting).
+After you install and configure the [Product Recommendations](https://experienceleague.adobe.com/en/docs/commerce/product-recommendations/getting-started/install-configure) or [Live Search](https://experienceleague.adobe.com/en/docs/commerce/live-search/install) modules, you can verify that the behavioral data is being sent to Adobe Commerce. Use developer tools available in Chrome or the Snowplow Chrome extension to check. For more help, see the troubleshooting guides for [Product Recommendations](https://experienceleague.adobe.com/en/docs/commerce-knowledge-base/kb/troubleshooting/miscellaneous/troubleshoot-product-recommendations-module-in-magento-commerce) and [Live Search](https://experienceleague.adobe.com/en/docs/commerce/live-search/boundaries-limits#troubleshooting).
 
 <InlineAlert variant="info" slots="text"/>
 
@@ -41,7 +41,7 @@ _Verify that events are firing_
 
 ## Verify using Snowplow Chrome extension
 
-Install the [Snowplow Analytics Debugger extension for Chrome](https://chrome.google.com/webstore/detail/snowplow-analytics-debugg/jbnlcgeengmijcghameodeaenefieedm). This extension displays the events being collected and sent to Adobe Commerce.
+Install the [Snowplow Analytics Debugger extension for Chrome](https://chromewebstore.google.com/detail/snowplow-debugger/jbnlcgeengmijcghameodeaenefieedm). This extension displays the events being collected and sent to Adobe Commerce.
 
 1. Disable any ad blockers on your browser and accept cookies on the site.
 
@@ -53,7 +53,7 @@ Install the [Snowplow Analytics Debugger extension for Chrome](https://chrome.go
 
 1. Scroll down until you see **Context Data _n_**. Look for the storefront instance in the **Schema**.
 
-1. Verify that the [SaaS Data Space ID](https://experienceleague.adobe.com/docs/commerce-admin/config/services/saas.html) is set correctly.
+1. Verify that the [SaaS Data Space ID](https://experienceleague.adobe.com/en/docs/commerce-admin/config/services/saas) is set correctly.
 
 ![Snowplow filter](../images/snowplow-filter.png)
 _Snowplow Filter_
@@ -68,4 +68,4 @@ To verify that the events used for metrics are firing correctly, look for the `i
 
 <InlineAlert variant="info" slots="text"/>
 
-If [Cookie Restriction Mode](https://experienceleague.adobe.com/docs/commerce-admin/start/compliance/privacy/compliance-cookie-law.html) is _enabled_, Adobe Commerce does not collect behavioral data until the shopper consents. If Cookie Restriction Mode is _disabled_, behavioral data is collected by default.
+If [Cookie Restriction Mode](https://experienceleague.adobe.com/en/docs/commerce-admin/start/compliance/privacy/compliance-cookie-law) is _enabled_, Adobe Commerce does not collect behavioral data until the shopper consents. If Cookie Restriction Mode is _disabled_, behavioral data is collected by default.

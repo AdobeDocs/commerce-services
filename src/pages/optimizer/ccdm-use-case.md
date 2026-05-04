@@ -53,7 +53,7 @@ Add two simple products, "Aurora Prism battery" and "Bolt Atlas battery" and the
 
 ### Add product attribute metadata
 
-Create the metadata to define the search characteristics and filters for displaying product attributes on the storefront by submitting a [Create product attribute metadata](https://developer.adobe.com/commerce/services/reference/rest/#operation/createProductMetadata) POST request.
+Create the metadata to define the search characteristics and filters for displaying product attributes on the storefront by submitting a [Create product attribute metadata](../reference/rest/index.md#operation/createProductMetadata) POST request.
 
 You must specify the product attribute metadata for each locale you want to support.
 
@@ -69,7 +69,7 @@ For the Zenith Automotive catalog, each product has the following attributes.
 - `is_vehicle` is a boolean attribute that indicates whether the product is a vehicle or a battery.
 - `part_category` is a string attribute that indicates the category of the product.
 
-Create the metadata to define the search characteristics and filters for displaying product attributes on the storefront by submitting a [Create product attribute metadata](https://developer.adobe.com/commerce/services/reference/rest/#operation/createProductMetadata) POST request.
+Create the metadata to define the search characteristics and filters for displaying product attributes on the storefront by submitting a [Create product attribute metadata](../reference/rest/index.md#operation/createProductMetadata) POST request.
 
 #### Request to add metadata for the `en-US` catalog source
 
@@ -453,7 +453,7 @@ curl --request POST \
 
 ### Add products
 
-Add products by submitting a [createProducts](https://developer.adobe.com/commerce/services/reference/rest/#operation/createProducts) POST request using the Data Ingestion API.
+Add products by submitting a [createProducts](../reference/rest/index.md#operation/createProducts) POST request using the Data Ingestion API.
 
 #### Create Aurora product
 
@@ -537,7 +537,7 @@ curl --request POST \
 
 #### Create Bolt product
 
-Add the product *Bolt Atlas Battery* with two attribute codes, `Brand` set to *Bolt*, and `Country` set to *UK* by sending the following payload in the [createProducts](https://developer.adobe.com/commerce/services/reference/rest/#operation/createProductMetadata) request.
+Add the product *Bolt Atlas Battery* with two attribute codes, `Brand` set to *Bolt*, and `Country` set to *UK* by sending the following payload in the [createProducts](../reference/rest/index.md#operation/createProductMetadata) request.
 
 **Create product request:**
 
@@ -619,22 +619,22 @@ curl --request POST \
 
 <InlineAlert variant="info" slots="text"/>
 
-Catalog views and policies must be created from the [Adobe Commerce Optimizer user interface](https://experienceleague.adobe.com/en/docs/commerce/optimizer/catalog/overview).
+Catalog views and policies must be created from the [Adobe Commerce Optimizer user interface](https://experienceleague.adobe.com/en/docs/commerce/optimizer/setup/catalog-view).
 
 In this step, create the following policies and catalog view for Zenith Automotive:
 
-- **[Create Policies](https://experienceleague.adobe.com/en/docs/commerce/optimizer/catalog/channels)**:
+- **[Create Policies](https://experienceleague.adobe.com/en/docs/commerce/optimizer/setup/catalog-view)**:
 
   - `Location Policy` with "USA" and "UK" as locations.
   - `Brand Policy` with "Aurora" and "Bolt".
 
-- **[Create the Catalog View](https://experienceleague.adobe.com/en/docs/commerce/optimizer/catalog/channels)**:
+- **[Create the Catalog View](https://experienceleague.adobe.com/en/docs/commerce/optimizer/setup/catalog-view)**:
 
   - `Zenith Automotive` with a single catalog source, `en-US`, and assign the Location and Brand policies to the catalog view.
 
 ## Step 3. Retrieve SKUs
 
-Use the Merchandising GraphQL API [productSearch](https://developer.adobe.com/commerce/services/graphql-api/storefront-api/index.html#query-productSearch) query to retrieve the SKUs you created.
+Use the Merchandising GraphQL API [productSearch](https://developer.adobe.com/commerce/services/graphql-api/merchandising-api/index.html#query-productSearch) query to retrieve the SKUs you created.
 
 Send GraphQL requests for Merchandising APIs to the following base URL:
 

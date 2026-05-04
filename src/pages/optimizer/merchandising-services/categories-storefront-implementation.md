@@ -13,7 +13,7 @@ keywords:
 
 Use the following API operations to manage categories for Commerce projects that use the Merchandising Services composable catalog data model:
 
-- Create category data using the `categories` operations available in the [Data Ingestion REST API](https://developer.adobe.com/commerce/services/reference/rest/#tag/Categories), and using the `products` operations to manage product category assignments.
+- Create category data using the `categories` operations available in the [Data Ingestion REST API](../../reference/rest/index.md#tag/Categories), and using the `products` operations to manage product category assignments.
 
 - Retrieve category navigation and hierarchy data using the [`navigation`](https://developer.adobe.com/commerce/services/graphql-api/merchandising-api/index.html#query-navigation) and [`categoryTree`](https://developer.adobe.com/commerce/services/graphql-api/merchandising-api/index.html#query-categoryTree) queries. Both queries take a `family` argument where applicable; on `categoryTree`, `family` is optional—pass it to scope results when your catalog uses multiple category families.
 

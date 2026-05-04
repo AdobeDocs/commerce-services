@@ -33,6 +33,13 @@
           "src/pages/_includes"
         ]
       }
-    }
+    },
+    "skipUrlPatterns": [
+      "https://www.npmjs.com/package/@magento/recommendations-js-sdk",
+      "https://www.npmjs.com/package/@adobe/magento-storefront-event-collector",
+      "https://www.npmjs.com/package/@adobe/magento-storefront-events-sdk",
+      "https://www.jsdelivr.com/",
+      "https://www.adobe.com/privacy/experience-cloud.html"
+    ]
   }
 }

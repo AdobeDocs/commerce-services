@@ -77,7 +77,7 @@ For sample requests, see the [tutorial](../ccdm-use-case.md).
 
 <InlineAlert variant="note" slots="text" />
 
-Use the Try It feature in the API reference to test API requests directly from your browser. For details, see [Test API operations](https://developer.adobe.com/commerce/services/reference/rest/).
+Use the Try It feature in the API reference to test API requests directly from your browser. For details, see [Test API operations](../../reference/rest/index.md).
 
 ## Make your first request
 
@@ -212,7 +212,7 @@ After you successfully make your first request, you can continue to use the Data
 - Create price books to manage pricing for different customer segments, regions, or sales channels.
 - Create prices to set the monetary values for your products within the price books.
 
-You can also explore the [API reference](https://developer.adobe.com/commerce/services/reference/rest/) for detailed information about each endpoint and its parameters.
+You can also explore the [API reference](../../reference/rest/index.md) for detailed information about each endpoint and its parameters.
 
 ## Create integrations using Adobe Commerce Optimizer SDKs
 

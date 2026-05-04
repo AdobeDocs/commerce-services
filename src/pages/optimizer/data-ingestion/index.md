@@ -30,11 +30,11 @@ Metadata is required to index product data for discovery. Consequently, it must 
 
 You can also define custom metadata for additional product attributes. For example, you can define a `brand` attribute to allow product discovery and filtering by brand name.
 
-For details, see [Metadata API](https://developer.adobe.com/commerce/services/reference/rest/#tag/Metadata) in the *Data Ingestion API Reference*.
+For details, see [Metadata API](../../reference/rest/index.md#tag/Metadata) in the *Data Ingestion API Reference*.
 
 ## Categories
 
-Categories are used to organize products into a hierarchical structure, making it easier for customers to navigate and find products in the storefront. Categories can be nested, allowing you to create subcategories within main categories. For details on creating categories and category hierarchies using slug-based paths, see [Categories](https://developer.adobe.com/commerce/services/reference/rest/) resource in the API reference.
+Categories are used to organize products into a hierarchical structure, making it easier for customers to navigate and find products in the storefront. Categories can be nested, allowing you to create subcategories within main categories. For details on creating categories and category hierarchies using slug-based paths, see [Categories](../../reference/rest/index.md) resource in the API reference.
 
 ## Products
 
@@ -58,7 +58,7 @@ Each product type has its own set of attributes and configurations to help you m
 
 For example, if you're selling a t-shirt, the product variants might include different sizes (small, medium, large) and colors (red, blue, green). Each combination of size and color represents a unique product variant.
 
-For details and examples of different product types and product variations, see the [Products API](https://developer.adobe.com/commerce/services/reference/rest/#tag/Products) in the *Data Ingestion API Reference*.
+For details and examples of different product types and product variations, see the [Products API](../../reference/rest/index.md#tag/Products) in the *Data Ingestion API Reference*.
 
 ## Product layers
 
@@ -71,7 +71,7 @@ Use product layers to:
 - Create seasonal or promotional variations without duplicating entire product records
 - Implement A/B testing scenarios with different product presentations
 
-Use the [Product layers](https://developer.adobe.com/commerce/services/reference/rest/#tag/Product-Layers) API to create and delete product layers.
+Use the [Product layers](../../reference/rest/index.md#tag/Product-Layers) API to create and delete product layers.
 
 Once layers are created, you can add them to catalog view definitions to customize the catalog data delivered to the storefront. For details on how layers are managed and applied, see [Catalog Layers](https://experienceleague.adobe.com/en/docs/commerce/optimizer/setup/catalog-layer) in the Adobe Commerce Optimizer documentation.
 
@@ -83,7 +83,7 @@ In Merchandising Services, a product SKU and its price are decoupled. This decou
 
 **Prices** are the monetary values assigned to products within a price book. To create prices for each product SKU, specify the associated price books and define the pricing schedule for each price book.
 
-For details, see [Price Books](https://developer.adobe.com/commerce/services/reference/rest/#tag/Price-Books) and [Prices](https://developer.adobe.com/commerce/services/reference/rest/#operation/createPrices) in the *Data Ingestion API Reference*.
+For details, see [Price Books](../../reference/rest/index.md#tag/Price-Books) and [Prices](../../reference/rest/index.md#operation/createPrices) in the *Data Ingestion API Reference*.
 
 ## Load sample data using the Adobe Commerce Optimizer SDK
 
