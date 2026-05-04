@@ -1,10 +1,8 @@
 - pathPrefix:
     - /commerce/services/
 
-- home:
-    - [Commerce](/commerce/docs.md)
-
 - pages:
+    - [Commerce](https://developer.adobe.com/commerce/docs)
     - [Merchandising Services](/index.md)
     - [Developer Guide](/optimizer/index.md)
     - API Reference

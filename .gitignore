@@ -52,3 +52,4 @@ yalc.lock
 
 # other
 tmp/*
+linter-report.txt
