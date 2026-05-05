@@ -20,7 +20,7 @@ Creating projects for enterprise organizations requires a system administrator o
 
 1. In the Connected Credentials section, view API configuration details by selecting **OAUTH Server-to-Server**.
 
-  ![Adobe developer project - Credential Details](../../pages/_images/dev-console-credential-details.png)
+  ![Adobe developer project - Credential Details](../../images/dev-console-credential-details.png)
 
 1. Copy the Client ID and the Client Secret values to a secure location.
 

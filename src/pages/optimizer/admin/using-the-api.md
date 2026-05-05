@@ -29,13 +29,9 @@ The URL structure is:
 - `environment-type` is included only for non-production URLs (`sandbox`).
 - `tenantId` is the unique identifier for your organization's specific instance within the Adobe Experience Cloud.
 
-&NewLine; \<!--Add space between the collapsible section and the previous paragraph--\>
+### Get your instance ID
 
-<DiscoverBlock slots="link, text"/>
-
-[Get your instance ID](../data-ingestion/authentication.md#obtain-ims-credentials)
-
-Find the endpoint URLs and tenant ID (instance ID) in the instance details for your Commerce Optimizer project in Cloud Manager.
+<Fragment src="../../includes/authentication/get-tenant-id.md" />
 
 ## Authentication
 
@@ -45,21 +41,13 @@ Every API request must include a bearer token in the request header:
 
 The bearer token is generated using the credentials from the Adobe developer project for the API integration. The token is valid for 24 hours. When it expires, use the Adobe developer project credentials to generate a new one.
 
-\<br/\>
+### Get credentials and bearer access tokens
 
-<DiscoverBlock slots="link, text"/>
-
-[Get credentials and bearer access tokens](../data-ingestion/authentication.md#obtain-ims-credentials)
-
-Create an Adobe developer project to get API authentication credentials and generate bearer access tokens.
+<Fragment src="../../includes/authentication/initial-auth-for-api-access.md" />
 
 ### Generate a new access token
 
-<DiscoverBlock slots="link, text"/>
-
-[Generate a new access token](../data-ingestion/authentication.md#generate-a-new-access-token)
-
-Use your IMS credentials to generate a new bearer token after the current token expires.
+<Fragment src="../../includes/authentication/get-new-bearer-token.md" />
 
 ## Headers
 
@@ -72,7 +60,7 @@ Include the following headers in GraphQL requests.
 
 ## Request template
 
-Use the following template to submit requests using [curl](https://curl.se/), replacing the placeholders as required.
+Use the following template to submit requests using [curl](https://curl.se), replacing the placeholders as required.
 
 ```shell
 curl --request POST \

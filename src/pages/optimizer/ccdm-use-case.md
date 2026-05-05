@@ -634,7 +634,7 @@ In this step, create the following policies and catalog view for Zenith Automoti
 
 ## Step 3. Retrieve SKUs
 
-Use the Merchandising GraphQL API [productSearch](https://developer.adobe.com/commerce/services/graphql-api/merchandising-api/index.html#query-productSearch) query to retrieve the SKUs you created.
+Use the Merchandising GraphQL API [productSearch](../reference/graphql/index.md#productsearch) query to retrieve the SKUs you created.
 
 Send GraphQL requests for Merchandising APIs to the following base URL:
 

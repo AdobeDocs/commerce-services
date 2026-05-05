@@ -15,11 +15,11 @@ Use the following API operations to manage categories for Commerce projects that
 
 - Create category data using the `categories` operations available in the [Data Ingestion REST API](../../reference/rest/index.md#tag/Categories), and using the `products` operations to manage product category assignments.
 
-- Retrieve category navigation and hierarchy data using the [`navigation`](https://developer.adobe.com/commerce/services/graphql-api/merchandising-api/index.html#query-navigation) and [`categoryTree`](https://developer.adobe.com/commerce/services/graphql-api/merchandising-api/index.html#query-categoryTree) queries. Both queries take a `family` argument where applicable; on `categoryTree`, `family` is optional—pass it to scope results when your catalog uses multiple category families.
+- Retrieve category navigation and hierarchy data using the [`navigation`](../../reference/graphql/index.md#navigation) and [`categoryTree`](../../reference/graphql/index.md#categorytree) queries. Both queries take a `family` argument where applicable; on `categoryTree`, `family` is optional—pass it to scope results when your catalog uses multiple category families.
 
-- Search categories by name with optional family filtering and pagination using the [`searchCategory`](https://developer.adobe.com/commerce/services/graphql-api/merchandising-api/index.html#query-searchCategory) query.
+- Search categories by name with optional family filtering and pagination using the [`searchCategory`](../../reference/graphql/index.md#searchcategory) query.
 
-- Retrieve category context for products — such as breadcrumbs — using the `categories` field on [product queries](https://developer.adobe.com/commerce/services/graphql-api/merchandising-api/index.html#query-products).
+- Retrieve category context for products — such as breadcrumbs — using the `categories` field on [product queries](../../reference/graphql/index.md#products).
 
 <InlineAlert variant="warning" slots="text" />
 
@@ -27,7 +27,7 @@ For Commerce sites with an Adobe Commerce as a Cloud Service or an Adobe Commerc
 
 ## Category types
 
-The `navigation` query, `categoryTree` query, `searchCategory` query, and `categories` field on product queries each return data shaped for a specific use case. Navigation, tree, and search results use types that implement the `CategoryViewV2` interface, which defines the two required fields shared by every category: `slug` and `name`. For complete field details, see [`CategoryViewV2`](https://developer.adobe.com/commerce/services/graphql-api/merchandising-api/index.html#definition-CategoryViewV2) in the Merchandising Services GraphQL API reference.
+The `navigation` query, `categoryTree` query, `searchCategory` query, and `categories` field on product queries each return data shaped for a specific use case. Navigation, tree, and search results use types that implement the `CategoryViewV2` interface, which defines the two required fields shared by every category: `slug` and `name`. For complete field details, see [`CategoryViewV2`](../../reference/graphql/index.md#categoryviewv2) in the Merchandising Services GraphQL API reference.
 
 1. **[CategoryNavigationView](#categorynavigationview-type)** — For menu rendering and navigation
 1. **[CategoryProductView](#categoryproductview-type)** — For category data returned with product queries
@@ -52,7 +52,7 @@ type CategoryNavigationView implements CategoryViewV2 {
 }
 ```
 
-For complete field details, see [`CategoryNavigationView`](https://developer.adobe.com/commerce/services/graphql-api/merchandising-api/index.html#definition-CategoryNavigationView)
+For complete field details, see [`CategoryNavigationView`](../../reference/graphql/index.md#categorynavigationview)
  in the Merchandising Services GraphQL API reference.
 
 See the [Navigation query examples](#navigation-query-examples) section for example queries and responses using this type.
@@ -80,13 +80,13 @@ type CategoryProductView implements CategoryViewV2 {
 
 The `parents` field is self-referencing—each parent entry is itself a `CategoryProductView` with its own `name`, `slug`, `level`, and `parents`. This allows you to reconstruct the full breadcrumb path for any category a product belongs to.
 
-For complete field details, see [`CategoryProductView`](https://developer.adobe.com/commerce/services/graphql-api/merchandising-api/index.html#definition-CategoryProductView) in the Merchandising Services GraphQL API reference.
+For complete field details, see [`CategoryProductView`](../../reference/graphql/index.md#categoryproductview) in the Merchandising Services GraphQL API reference.
 
 See the [Products query with categories examples](#products-query-with-categories-examples) section for example queries and responses using this type.
 
 ### CategoryTreeView type
 
-The `CategoryTreeView` type implements `CategoryViewV2` and provides the richest category data. The [`categoryTree`](https://developer.adobe.com/commerce/services/graphql-api/merchandising-api/index.html#query-categoryTree) query returns this type directly. The [`searchCategory`](https://developer.adobe.com/commerce/services/graphql-api/merchandising-api/index.html#query-searchCategory) query returns the same type inside [`SearchCategoryResultPage.items`](https://developer.adobe.com/commerce/services/graphql-api/merchandising-api/index.html#definition-SearchCategoryResultPage), so search hits can use the same fields as tree results.
+The `CategoryTreeView` type implements `CategoryViewV2` and provides the richest category data. The [`categoryTree`](../../reference/graphql/index.md#categorytree) query returns this type directly. The [`searchCategory`](../../reference/graphql/index.md#searchcategory) query returns the same type inside [`SearchCategoryResultPage.items`](../../reference/graphql/index.md#searchcategoryresultpage), so search hits can use the same fields as tree results.
 
 It contains:
 
@@ -126,7 +126,7 @@ type CategoryImage {
 }
 ```
 
-For complete field details, including the `CategoryMetaTags` and `CategoryImage` types, see [`CategoryTreeView`](https://developer.adobe.com/commerce/services/graphql-api/merchandising-api/index.html#definition-CategoryTreeView) in the Merchandising Services GraphQL API reference.
+For complete field details, including the `CategoryMetaTags` and `CategoryImage` types, see [`CategoryTreeView`](../../reference/graphql/index.md#categorytreeview) in the Merchandising Services GraphQL API reference.
 
 See the [CategoryTree query examples](#categorytree-query-examples) and [searchCategory query examples](#searchcategory-query-examples) sections for example queries and responses using this type.
 
@@ -653,12 +653,12 @@ query CategoryTree {
 
 ## searchCategory query examples
 
-The `searchCategory` query matches category **names** against a `searchTerm` and returns a paginated [`SearchCategoryResultPage`](https://developer.adobe.com/commerce/services/graphql-api/merchandising-api/index.html#definition-SearchCategoryResultPage).
+The `searchCategory` query matches category **names** against a `searchTerm` and returns a paginated [`SearchCategoryResultPage`](../../reference/graphql/index.md#searchcategoryresultpage).
 
 - If the `family` argument is omitted, it returns categories across all families.
 - The `searchTerm` argument is case-insensitive and must be a minimum of three characters.
 
-Each `items` entry is a [`CategoryTreeView`](https://developer.adobe.com/commerce/services/graphql-api/merchandising-api/index.html#definition-CategoryTreeView), so you can reuse the same fields as in `categoryTree` responses (for example, `slug`, `name`, `description`, and `images`).
+Each `items` entry is a [`CategoryTreeView`](../../reference/graphql/index.md#categorytreeview), so you can reuse the same fields as in `categoryTree` responses (for example, `slug`, `name`, `description`, and `images`).
 
 ```graphql
 type Query {
@@ -824,7 +824,7 @@ query SearchCategoriesInFamily {
 }
 ```
 
-For additional information, see [`searchCategory`](https://developer.adobe.com/commerce/services/graphql-api/merchandising-api/index.html#query-searchCategory) and [`PageInfo`](https://developer.adobe.com/commerce/services/graphql-api/merchandising-api/index.html#definition-PageInfo) in the Merchandising Services GraphQL API reference.
+For additional information, see [`searchCategory`](../../reference/graphql/index.md#searchcategory) and [`PageInfo`](../../reference/graphql/index.md#pageinfo) in the Merchandising Services GraphQL API reference.
 
 ## Query quick reference
 
