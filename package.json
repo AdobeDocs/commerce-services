@@ -8,6 +8,8 @@
   },
   "scripts": {
     "dev": "npx --yes github:AdobeDocs/adp-devsite-utils dev",
+    "generate-graphql-md": "node scripts/generate-graphql-md.js",
+    "generate-graphql-md:full": "node scripts/fetch-and-enhance-schema.js && node scripts/generate-graphql-md.js",
     "buildNavigation": "npx --yes github:AdobeDocs/adp-devsite-utils buildNavigation -v",
     "buildRedirections": "npx --yes github:AdobeDocs/adp-devsite-utils buildRedirections -v",
     "renameFiles": "npx --yes github:AdobeDocs/adp-devsite-utils renameFiles -v",
