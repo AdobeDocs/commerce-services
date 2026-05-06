@@ -294,7 +294,7 @@ mse.publish.searchRequestSent(searchUnitId, ctx);
 
 Publishes the `searchResponseReceived` event.
 
-||Name|Required|Description|
+|Name|Required|Description|
 |---|---|---|
 |`searchUnitId`|Yes|Search `unitId`|
 |`context`|No|Custom context|
@@ -382,7 +382,7 @@ mse.publish.signOut(ctx);
 
 Publishes the `updateCart` event.
 
-||Name|Required|Description|
+|Name|Required|Description|
 |---|---|---|
 |`context`|No|Custom context|
 
