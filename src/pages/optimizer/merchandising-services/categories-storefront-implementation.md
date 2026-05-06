@@ -1,6 +1,5 @@
 ---
 title: Implement Categories on the Storefront
-edition: saas
 description: Learn to ingest categories, build storefront menus (navigation, categoryTree), search with searchCategory, and get category context from the products query.
 keywords:
   - GraphQL
@@ -8,6 +7,9 @@ keywords:
   - Backend Development
   - Performance
 ---
+
+<Edition slots="text" backgroundColor="green"/>
+[SaaS only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions)
 
 # Implement categories on the storefront
 
@@ -216,7 +218,7 @@ Sports
 
 ### Retrieve multi-level menu navigation
 
-Storefront menus that expand into submenus or mega panels need nested `children` on each `CategoryNavigationView`. The following example nests `children` selection sets through three levels (within the `navigation` query’s four-level cap). The response illustrates how indoor and outdoor branches attach under the same root so you can render a full hierarchy in one round trip.
+Storefront menus that expand into submenus or mega panels need nested `children` on each `CategoryNavigationView`. The following example nests `children` selection sets through three levels (within the `navigation` query's four-level cap). The response illustrates how indoor and outdoor branches attach under the same root so you can render a full hierarchy in one round trip.
 
 <CodeBlock slots="heading, code" repeat="2" languages="JSON" />
 
@@ -304,7 +306,7 @@ The `categories` field is available on product types such as `ProductView`. Use 
 
 ### Retrieve product categories with breadcrumb ancestors
 
-Product detail pages often need the category path from the root down to the product. The following example queries `products` by SKU and requests `categories` for the `clothing` family with `name`, `slug`, `level`, and each category’s `parents`, so you can order ancestors by `level` and render a breadcrumb trail.
+Product detail pages often need the category path from the root down to the product. The following example queries `products` by SKU and requests `categories` for the `clothing` family with `name`, `slug`, `level`, and each category's `parents`, so you can order ancestors by `level` and render a breadcrumb trail.
 
 <CodeBlock slots="heading, code" repeat="2" languages="JSON" />
 
@@ -372,7 +374,7 @@ Men (level 1) → Clothes (level 2) → Shorts (level 3)
 
 ### Filter product categories by family
 
-A single product can appear in categories from more than one family; returning every family at once is not always what the page needs. The following example uses the same SKU as the breadcrumb sample but passes `family: "seasonal"` on `categories`, so only seasonal taxonomy nodes come back. That pattern fits seasonal campaigns, alternate merchandising trees, or any UI that should show one family’s context at a time.
+A single product can appear in categories from more than one family; returning every family at once is not always what the page needs. The following example uses the same SKU as the breadcrumb sample but passes `family: "seasonal"` on `categories`, so only seasonal taxonomy nodes come back. That pattern fits seasonal campaigns, alternate merchandising trees, or any UI that should show one family's context at a time.
 
 <CodeBlock slots="heading, code" repeat="2" languages="JSON" />
 
@@ -496,7 +498,7 @@ Women's Category (level 1)
 
 ### Retrieve specific category subtree
 
-When you already know which branches matter—such as men’s and women’s clothing—pass those starting `slugs` so you do not pull the entire catalog. With `slugs` present, `depth` counts **from each starting slug** (that slug is level 1 of the window). The following example requests two clothing subtrees under `main-catalog` with `depth: 2` and returns nodes with hierarchy fields so you can wire category pages or admin trees for just those paths.
+When you already know which branches matter—such as men's and women's clothing—pass those starting `slugs` so you do not pull the entire catalog. With `slugs` present, `depth` counts **from each starting slug** (that slug is level 1 of the window). The following example requests two clothing subtrees under `main-catalog` with `depth: 2` and returns nodes with hierarchy fields so you can wire category pages or admin trees for just those paths.
 
 <CodeBlock slots="heading, code" repeat="2" languages="JSON" />
 

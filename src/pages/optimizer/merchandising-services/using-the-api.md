@@ -1,6 +1,5 @@
 ---
 title: Get Started with the Merchandising API
-edition: saas
 description: Learn how to use the Merchandising GraphQL API to access real-time catalog, product discovery, and recommendations data from Adobe Commerce Optimizer.
 keywords:
   - GraphQL
@@ -8,6 +7,9 @@ keywords:
   - Backend Development
   - Performance
 ---
+
+<Edition slots="text" backgroundColor="green"/>
+[SaaS only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions)
 
 # Get started with the Merchandising API
 

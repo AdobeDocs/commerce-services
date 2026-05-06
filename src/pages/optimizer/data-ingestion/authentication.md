@@ -1,9 +1,11 @@
 ---
 title: REST authentication
 description: Learn about REST API authentication with Adobe Commerce Optimizer.
-edition: saas
 noIndex: true
 ---
+
+<Edition slots="text" backgroundColor="green"/>
+[SaaS only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions)
 
 # REST authentication
 

@@ -1,6 +1,5 @@
 ---
 title: Merchandising API Reference
-edition: saas
 description: Get information about the merchandising APIs to retrieve product and catalog data to create storefront experiences.
 keywords:
   - GraphQL
@@ -10,6 +9,9 @@ keywords:
   - Storefront
   - Merchandising
 ---
+
+<Edition slots="text" backgroundColor="green"/>
+[SaaS only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions)
 
 # Merchandising GraphQL API
 

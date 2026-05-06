@@ -1,6 +1,5 @@
 ---
 title: Get Started with the Data Ingestion API
-edition: saas
 description: Get information about using the data ingestion API to create and manage product, price book, and price data for you commerce catalog.
 keywords:
   - REST
@@ -8,6 +7,9 @@ keywords:
   - Backend Development
   - Performance
 ---
+
+<Edition slots="text" backgroundColor="green"/>
+[SaaS only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions)
 
 # Get started with the data ingestion API
 

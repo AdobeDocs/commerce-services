@@ -1,6 +1,5 @@
 ---
 title: Test Data Ingestion API operations
-edition: saas
 description: Learn how to test Data Ingestion REST API operations using the interactive Try It feature in the API Reference documentation
 keywords:
   - REST
@@ -8,6 +7,9 @@ keywords:
   - Backend Development
   - Troubleshooting
 ---
+
+<Edition slots="text" backgroundColor="green"/>
+[SaaS only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions)
 
 # Test Data Ingestion API operations
 

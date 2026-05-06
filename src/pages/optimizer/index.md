@@ -1,6 +1,5 @@
 ---
 title: Merchandising Services Developer Guide
-edition: saas
 description: Use the Merchandising Services powered by Channels and Polices to implement large, complex catalogs and develop highly performant storefront experiences.
 keywords:
   - GraphQL
@@ -12,6 +11,9 @@ keywords:
   - Integration
   - Storefront
 ---
+
+<Edition slots="text" backgroundColor="green"/>
+[SaaS only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions)
 
 # Merchandising Services Developer Guide
 

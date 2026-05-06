@@ -1,6 +1,5 @@
 ---
 title:  Merchandising Services API References
-edition: saas
 description: Get reference information and examples for the Data Ingestion REST API and the Merchandising GraphQL API for use with Adobe Commerce Optimizer.
 keywords:
   - GraphQL
@@ -8,6 +7,9 @@ keywords:
   - Backend Development
   - Configuration
 ---
+
+<Edition slots="text" backgroundColor="green"/>
+[SaaS only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions)
 
 # Merchandising Services API References
 

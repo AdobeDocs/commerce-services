@@ -1,6 +1,5 @@
 ---
 title:  Catalog Views and Policies APIs
-edition: saas
 description: Use the Channels and Policies API to set up the channels, policies, and scopes for commerce catalogs.
 keywords:
   - GraphQL
@@ -8,6 +7,9 @@ keywords:
   - Backend Development
   - Configuration
 ---
+
+<Edition slots="text" backgroundColor="green"/>
+[SaaS only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions)
 
 # Channels and Policies API
 

@@ -1,6 +1,5 @@
 ---
 title: Using the Catalog Views and Policies API
-edition: saas
 description: Get information about using GraphQL queries and mutations to manage catalog views, policies, and configuration for search and recommendations capabilities.
 keywords:
   - GraphQL
@@ -8,6 +7,9 @@ keywords:
   - Backend Development
   - Performance
 ---
+
+<Edition slots="text" backgroundColor="green"/>
+[SaaS only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions)
 
 # Using the Catalog Views and Policies API
 

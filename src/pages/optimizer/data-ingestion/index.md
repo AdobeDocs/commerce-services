@@ -1,12 +1,14 @@
 ---
 title: Ingest product and price data with the Data Ingestion API
-edition: saas
 description: Learn how to use the Data Ingestion REST API to add and manage product data using the composable catalog data model.
 keywords:
   - REST
   - Services
   - Backend Development
 ---
+
+<Edition slots="text" backgroundColor="green"/>
+[SaaS only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions)
 
 # Ingest product and price data with the Data Ingestion API
 

@@ -1,6 +1,5 @@
 ---
 title: Retrieve catalog data
-edition: saas
 description: Build dynamic commerce storefronts with the Merchandising GraphQL API. Access real-time catalog, product discovery, and recommendations data.
 keywords:
   - GraphQL
@@ -11,6 +10,9 @@ keywords:
   - Recommendations
   - Security
 ---
+
+<Edition slots="text" backgroundColor="green"/>
+[SaaS only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions)
 
 # Retrieve catalog data with the Merchandising API
 

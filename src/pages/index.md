@@ -1,13 +1,15 @@
 ---
 title: Merchandising Services
 description: Learn about the APIs and tools available to manage and use commerce catalog and event data programmatically.
-edition: saas
 keywords:
   - GraphQL
   - REST
   - Services
 hideBreadcrumbNav: true
 ---
+
+<Edition slots="text" backgroundColor="green"/>
+[SaaS only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions)
 
 <Superhero slots="image, heading, text"/>
 
