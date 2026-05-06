@@ -33,9 +33,11 @@ All API requests must include the following headers:
 
 Return a list of product attribute codes that can be used for sorting or filtering in a `productSearch` query
 
-**Response**: [`AttributeMetadataResponse!`](#attributemetadataresponse)
+**Response:** [`AttributeMetadataResponse!`](#attributemetadataresponse)
 
 #### Example
+
+##### Query
 
 ```graphql
 query attributeMetadata {
@@ -50,24 +52,26 @@ query attributeMetadata {
 }
 ```
 
-#### Response
+##### Response
 
 ```json
 {
   "data": {
     "attributeMetadata": {
-      "filterableInSearch": ["FilterableInSearchAttribute"],
-      "sortable": ["SortableAttribute"]
+      "filterableInSearch": [FilterableInSearchAttribute],
+      "sortable": [SortableAttribute]
     }
   }
 }
 ```
 
+<HorizontalLine />
+
 ### categoryTree
 
 Retrieves category tree nodes, optionally filtered by family, slugs and limited by depth.
 
-**Response**: [`[CategoryTreeView]`](#categorytreeview)
+**Response:** [`[CategoryTreeView]`](#categorytreeview)
 
 #### Arguments
 
@@ -78,6 +82,8 @@ Retrieves category tree nodes, optionally filtered by family, slugs and limited 
 | `depth` - [`Int`](#int) | The depth of the category tree to retrieve. When used without an initial slug, it will specify the maximum level allowed for a category. When used with a starting slug, it specifies depth from that slug, counting the slug itself as level 1. |
 
 #### Example
+
+##### Query
 
 ```graphql
 query categoryTree(
@@ -106,26 +112,30 @@ query categoryTree(
 }
 ```
 
-#### Variables
+##### Variables
 
 ```json
-{"family": "xyz789", "slugs": ["xyz789"], "depth": 987}
+{
+  "family": "xyz789",
+  "slugs": ["xyz789"],
+  "depth": 987
+}
 ```
 
-#### Response
+##### Response
 
 ```json
 {
   "data": {
     "categoryTree": [
       {
-        "slug": "xyz789",
+        "slug": "abc123",
         "name": "abc123",
         "description": "xyz789",
-        "metaTags": "CategoryMetaTags",
-        "images": ["CategoryImage"],
-        "level": 123,
-        "parentSlug": "xyz789",
+        "metaTags": CategoryMetaTags,
+        "images": [CategoryImage],
+        "level": 987,
+        "parentSlug": "abc123",
         "childrenSlugs": ["xyz789"]
       }
     ]
@@ -133,11 +143,13 @@ query categoryTree(
 }
 ```
 
+<HorizontalLine />
+
 ### navigation
 
 Retrieves the navigation tree for a given product family.
 
-**Response**: [`[CategoryNavigationView]`](#categorynavigationview)
+**Response:** [`[CategoryNavigationView]`](#categorynavigationview)
 
 #### Arguments
 
@@ -146,6 +158,8 @@ Retrieves the navigation tree for a given product family.
 | `family` - [`String!`](#string) | The product family to retrieve the navigation tree for. For example, clothing, electronics or books |
 
 #### Example
+
+##### Query
 
 ```graphql
 query navigation($family: String!) {
@@ -159,33 +173,35 @@ query navigation($family: String!) {
 }
 ```
 
-#### Variables
+##### Variables
 
 ```json
-{"family": "abc123"}
+{"family": "xyz789"}
 ```
 
-#### Response
+##### Response
 
 ```json
 {
   "data": {
     "navigation": [
       {
-        "slug": "xyz789",
-        "name": "xyz789",
-        "children": ["CategoryNavigationView"]
+        "slug": "abc123",
+        "name": "abc123",
+        "children": [CategoryNavigationView]
       }
     ]
   }
 }
 ```
 
+<HorizontalLine />
+
 ### productSearch
 
 Search products using Live Search
 
-**Response**: [`ProductSearchResponse!`](#productsearchresponse)
+**Response:** [`ProductSearchResponse!`](#productsearchresponse)
 
 #### Arguments
 
@@ -199,6 +215,8 @@ Search products using Live Search
 | `sort` - [`[ProductSearchSortInput!]`](#productsearchsortinput) | Attributes and direction to sort on |
 
 #### Example
+
+##### Query
 
 ```graphql
 query productSearch(
@@ -236,42 +254,44 @@ query productSearch(
 }
 ```
 
-#### Variables
+##### Variables
 
 ```json
 {
-  "context": "QueryContextInput",
+  "context": QueryContextInput,
   "current_page": 1,
-  "filter": ["SearchClauseInput"],
+  "filter": [SearchClauseInput],
   "page_size": 20,
   "phrase": "abc123",
-  "sort": ["ProductSearchSortInput"]
+  "sort": [ProductSearchSortInput]
 }
 ```
 
-#### Response
+##### Response
 
 ```json
 {
   "data": {
     "productSearch": {
-      "facets": ["Aggregation"],
-      "items": ["ProductSearchItem"],
-      "page_info": "SearchResultPageInfo",
-      "related_terms": ["xyz789"],
-      "suggestions": ["xyz789"],
+      "facets": [Aggregation],
+      "items": [ProductSearchItem],
+      "page_info": SearchResultPageInfo,
+      "related_terms": ["abc123"],
+      "suggestions": ["abc123"],
       "total_count": 987,
-      "warnings": ["ProductSearchWarning"]
+      "warnings": [ProductSearchWarning]
     }
   }
 }
 ```
 
+<HorizontalLine />
+
 ### products
 
 Search for products that match the specified SKU values. In Adobe Commerce as a Cloud Service, this query replaces the `products` query defined in the Commerce Foundation.
 
-**Response**: [`[ProductView]`](#productview)
+**Response:** [`[ProductView]`](#productview)
 
 #### Arguments
 
@@ -280,6 +300,8 @@ Search for products that match the specified SKU values. In Adobe Commerce as a 
 | `skus` - [`[String]`](#string) | List of SKUs to search for. For example, &#x60;123&#x60;, &#x60;456&#x60; or &#x60;789&#x60;. |
 
 #### Example
+
+##### Query
 
 ```graphql
 query products($skus: [String]) {
@@ -323,40 +345,40 @@ query products($skus: [String]) {
 }
 ```
 
-#### Variables
+##### Variables
 
 ```json
 {"skus": ["xyz789"]}
 ```
 
-#### Response
+##### Response
 
 ```json
 {
   "data": {
     "products": [
       {
-        "addToCartAllowed": true,
-        "inStock": true,
-        "lowStock": false,
-        "attributes": ["ProductViewAttribute"],
-        "description": "abc123",
+        "addToCartAllowed": false,
+        "inStock": false,
+        "lowStock": true,
+        "attributes": [ProductViewAttribute],
+        "description": "xyz789",
         "id": "4",
-        "images": ["ProductViewImage"],
-        "videos": ["ProductViewVideo"],
+        "images": [ProductViewImage],
+        "videos": [ProductViewVideo],
         "lastModifiedAt": "2007-12-03T10:15:30Z",
-        "metaDescription": "xyz789",
-        "metaKeyword": "xyz789",
+        "metaDescription": "abc123",
+        "metaKeyword": "abc123",
         "metaTitle": "abc123",
-        "name": "abc123",
-        "shortDescription": "abc123",
-        "inputOptions": ["ProductViewInputOption"],
-        "sku": "abc123",
-        "externalId": "abc123",
-        "url": "xyz789",
-        "urlKey": "xyz789",
-        "links": ["ProductViewLink"],
-        "categories": ["CategoryProductView"],
+        "name": "xyz789",
+        "shortDescription": "xyz789",
+        "inputOptions": [ProductViewInputOption],
+        "sku": "xyz789",
+        "externalId": "xyz789",
+        "url": "abc123",
+        "urlKey": "abc123",
+        "links": [ProductViewLink],
+        "categories": [CategoryProductView],
         "queryType": "abc123",
         "visibility": "abc123"
       }
@@ -365,9 +387,11 @@ query products($skus: [String]) {
 }
 ```
 
+<HorizontalLine />
+
 ### recommendationsByUnitIds
 
-**Response**: [`Recommendations`](#recommendations)
+**Response:** [`Recommendations`](#recommendations)
 
 #### Arguments
 
@@ -375,16 +399,20 @@ query products($skus: [String]) {
 |------|-------------|
 | `unitIds` - [`[String!]!`](#string) | List unit IDs of preconfigured units |
 | `currentSku` - [`String`](#string) | SKU of the product currently being viewed on PDP |
+| `currentProduct` - [`CurrentProductInput`](#currentproductinput) | Current product context from PDP (SKU, price, category, etc.) |
 | `userPurchaseHistory` - [`[PurchaseHistory]`](#purchasehistory) | User purchase history with timestamp |
 | `userViewHistory` - [`[ViewHistory]`](#viewhistory) | User view history with timestamp |
 | `cartSkus` - [`[String]`](#string) | SKUs of products in the cart |
 
 #### Example
 
+##### Query
+
 ```graphql
 query recommendationsByUnitIds(
   $unitIds: [String!]!,
   $currentSku: String,
+  $currentProduct: CurrentProductInput,
   $userPurchaseHistory: [PurchaseHistory],
   $userViewHistory: [ViewHistory],
   $cartSkus: [String]
@@ -392,6 +420,7 @@ query recommendationsByUnitIds(
   recommendationsByUnitIds(
     unitIds: $unitIds,
     currentSku: $currentSku,
+    currentProduct: $currentProduct,
     userPurchaseHistory: $userPurchaseHistory,
     userViewHistory: $userViewHistory,
     cartSkus: $cartSkus
@@ -404,36 +433,39 @@ query recommendationsByUnitIds(
 }
 ```
 
-#### Variables
+##### Variables
 
 ```json
 {
-  "unitIds": ["abc123"],
-  "currentSku": "xyz789",
-  "userPurchaseHistory": ["PurchaseHistory"],
-  "userViewHistory": ["ViewHistory"],
-  "cartSkus": ["abc123"]
+  "unitIds": ["xyz789"],
+  "currentSku": "abc123",
+  "currentProduct": CurrentProductInput,
+  "userPurchaseHistory": [PurchaseHistory],
+  "userViewHistory": [ViewHistory],
+  "cartSkus": ["xyz789"]
 }
 ```
 
-#### Response
+##### Response
 
 ```json
 {
   "data": {
     "recommendationsByUnitIds": {
-      "results": ["RecommendationUnit"],
+      "results": [RecommendationUnit],
       "totalResults": 123
     }
   }
 }
 ```
 
+<HorizontalLine />
+
 ### refineProduct
 
 Narrow down the results of a `products` query that was run against a complex product. Specify option IDs and SKUs to refine the product.
 
-**Response**: [`ProductView`](#productview)
+**Response:** [`ProductView`](#productview)
 
 #### Arguments
 
@@ -443,6 +475,8 @@ Narrow down the results of a `products` query that was run against a complex pro
 | `sku` - [`String!`](#string) | SKU of the product to refine. For example, &#x60;RF903&#x60;, &#x60;DG90-54&#x60; or &#x60;789-001&#x60;. |
 
 #### Example
+
+##### Query
 
 ```graphql
 query refineProduct(
@@ -492,51 +526,56 @@ query refineProduct(
 }
 ```
 
-#### Variables
+##### Variables
 
 ```json
-{"optionIds": ["xyz789"], "sku": "xyz789"}
+{
+  "optionIds": ["xyz789"],
+  "sku": "abc123"
+}
 ```
 
-#### Response
+##### Response
 
 ```json
 {
   "data": {
     "refineProduct": {
       "addToCartAllowed": false,
-      "inStock": true,
+      "inStock": false,
       "lowStock": false,
-      "attributes": ["ProductViewAttribute"],
-      "description": "xyz789",
+      "attributes": [ProductViewAttribute],
+      "description": "abc123",
       "id": "4",
-      "images": ["ProductViewImage"],
-      "videos": ["ProductViewVideo"],
+      "images": [ProductViewImage],
+      "videos": [ProductViewVideo],
       "lastModifiedAt": "2007-12-03T10:15:30Z",
       "metaDescription": "xyz789",
       "metaKeyword": "abc123",
-      "metaTitle": "abc123",
+      "metaTitle": "xyz789",
       "name": "abc123",
       "shortDescription": "xyz789",
-      "inputOptions": ["ProductViewInputOption"],
+      "inputOptions": [ProductViewInputOption],
       "sku": "xyz789",
       "externalId": "xyz789",
-      "url": "xyz789",
-      "urlKey": "xyz789",
-      "links": ["ProductViewLink"],
-      "categories": ["CategoryProductView"],
+      "url": "abc123",
+      "urlKey": "abc123",
+      "links": [ProductViewLink],
+      "categories": [CategoryProductView],
       "queryType": "abc123",
-      "visibility": "abc123"
+      "visibility": "xyz789"
     }
   }
 }
 ```
 
+<HorizontalLine />
+
 ### searchCategory
 
 Search for categories by name with optional filtering and pagination.
 
-**Response**: [`SearchCategoryResultPage`](#searchcategoryresultpage)
+**Response:** [`SearchCategoryResultPage`](#searchcategoryresultpage)
 
 #### Arguments
 
@@ -548,6 +587,8 @@ Search for categories by name with optional filtering and pagination.
 | `currentPage` - [`Int`](#int) | The page number to retrieve (1-based indexing, default: 1). Default: `1` |
 
 #### Example
+
+##### Query
 
 ```graphql
 query searchCategory(
@@ -573,29 +614,36 @@ query searchCategory(
 }
 ```
 
-#### Variables
+##### Variables
 
 ```json
-{"searchTerm": "xyz789", "family": "xyz789", "pageSize": 20, "currentPage": 1}
+{
+  "searchTerm": "abc123",
+  "family": "xyz789",
+  "pageSize": 20,
+  "currentPage": 1
+}
 ```
 
-#### Response
+##### Response
 
 ```json
 {
   "data": {
     "searchCategory": {
-      "items": ["CategoryTreeView"],
+      "items": [CategoryTreeView],
       "totalCount": 987,
-      "pageInfo": "PageInfo"
+      "pageInfo": PageInfo
     }
   }
 }
 ```
 
+<HorizontalLine />
+
 ### variants
 
-**Response**: [`ProductViewVariantResults`](#productviewvariantresults)
+**Response:** [`ProductViewVariantResults`](#productviewvariantresults)
 
 #### Arguments
 
@@ -607,6 +655,8 @@ query searchCategory(
 | `cursor` - [`String`](#string) | Pagination cursor. For example, &#x60;123&#x60; for the first variant, &#x60;456&#x60; for the second variant. |
 
 #### Example
+
+##### Query
 
 ```graphql
 query variants(
@@ -629,16 +679,28 @@ query variants(
 }
 ```
 
-#### Variables
+##### Variables
 
 ```json
-{"sku": "abc123", "optionIds": ["abc123"], "pageSize": 123, "cursor": "xyz789"}
+{
+  "sku": "xyz789",
+  "optionIds": ["abc123"],
+  "pageSize": 987,
+  "cursor": "xyz789"
+}
 ```
 
-#### Response
+##### Response
 
 ```json
-{"data": {"variants": {"variants": ["ProductViewVariant"], "cursor": "xyz789"}}}
+{
+  "data": {
+    "variants": {
+      "variants": [ProductViewVariant],
+      "cursor": "xyz789"
+    }
+  }
+}
 ```
 
 ## Types
@@ -660,12 +722,14 @@ A bucket that contains information for each filterable option
 
 ```json
 {
-  "attribute": "xyz789",
-  "buckets": ["Bucket"],
+  "attribute": "abc123",
+  "buckets": [Bucket],
   "title": "abc123",
   "type": "INTELLIGENT"
 }
 ```
+
+<HorizontalLine />
 
 ### AggregationType
 
@@ -682,8 +746,10 @@ Identifies the data type of the aggregation
 #### Example
 
 ```json
-"INTELLIGENT"
+""INTELLIGENT""
 ```
+
+<HorizontalLine />
 
 ### AppliedQueryRule
 
@@ -700,8 +766,14 @@ The rule that was applied to this product
 #### Example
 
 ```json
-{"action_type": "BOOST", "rule_id": "abc123", "rule_name": "xyz789"}
+{
+  "action_type": "BOOST",
+  "rule_id": "abc123",
+  "rule_name": "abc123"
+}
 ```
+
+<HorizontalLine />
 
 ### AppliedQueryRuleActionType
 
@@ -718,8 +790,10 @@ The type of rule that was applied to a product during search (optional)
 #### Example
 
 ```json
-"BOOST"
+""BOOST""
 ```
+
+<HorizontalLine />
 
 ### AttributeMetadataResponse
 
@@ -736,14 +810,18 @@ Contains the output of the `attributeMetadata` query
 
 ```json
 {
-  "filterableInSearch": ["FilterableInSearchAttribute"],
-  "sortable": ["SortableAttribute"]
+  "filterableInSearch": [FilterableInSearchAttribute],
+  "sortable": [SortableAttribute]
 }
 ```
+
+<HorizontalLine />
 
 ### Boolean
 
 The `Boolean` scalar type represents `true` or `false`.
+
+<HorizontalLine />
 
 ### Bucket
 
@@ -771,6 +849,8 @@ An interface for bucket contents
 {"title": "xyz789"}
 ```
 
+<HorizontalLine />
+
 ### CategoryBucket
 
 New category bucket for federation
@@ -787,8 +867,15 @@ New category bucket for federation
 #### Example
 
 ```json
-{"count": 987, "id": 4, "path": "xyz789", "title": "xyz789"}
+{
+  "count": 123,
+  "id": "4",
+  "path": "xyz789",
+  "title": "abc123"
+}
 ```
+
+<HorizontalLine />
 
 ### CategoryBucketInterface
 
@@ -807,8 +894,10 @@ New category bucket for federation
 #### Example
 
 ```json
-{"id": 4}
+{"id": "4"}
 ```
+
+<HorizontalLine />
 
 ### CategoryImage
 
@@ -827,12 +916,14 @@ Represents an image associated with a category.
 
 ```json
 {
-  "url": "xyz789",
-  "label": "xyz789",
+  "url": "abc123",
+  "label": "abc123",
   "roles": ["abc123"],
   "customRoles": ["xyz789"]
 }
 ```
+
+<HorizontalLine />
 
 ### CategoryMetaTags
 
@@ -849,8 +940,14 @@ SEO metadata tags for the category.
 #### Example
 
 ```json
-{"title": "abc123", "description": "abc123", "keywords": ["abc123"]}
+{
+  "title": "xyz789",
+  "description": "xyz789",
+  "keywords": ["xyz789"]
+}
 ```
+
+<HorizontalLine />
 
 ### CategoryNavigationView
 
@@ -867,8 +964,14 @@ Represents a category optimized for navigation menus, with nested children for b
 #### Example
 
 ```json
-{"slug": "abc123", "name": "xyz789", "children": ["CategoryNavigationView"]}
+{
+  "slug": "abc123",
+  "name": "abc123",
+  "children": [CategoryNavigationView]
+}
 ```
+
+<HorizontalLine />
 
 ### CategoryProductView
 
@@ -887,12 +990,14 @@ Represents category information associated with a product, including hierarchica
 
 ```json
 {
-  "name": "abc123",
-  "slug": "abc123",
-  "level": 123,
-  "parents": ["CategoryProductView"]
+  "name": "xyz789",
+  "slug": "xyz789",
+  "level": 987,
+  "parents": [CategoryProductView]
 }
 ```
+
+<HorizontalLine />
 
 ### CategoryTreeView
 
@@ -915,16 +1020,18 @@ Represents a category within a hierarchical tree structure, including parent and
 
 ```json
 {
-  "slug": "abc123",
+  "slug": "xyz789",
   "name": "xyz789",
   "description": "abc123",
-  "metaTags": "CategoryMetaTags",
-  "images": ["CategoryImage"],
-  "level": 123,
-  "parentSlug": "abc123",
+  "metaTags": CategoryMetaTags,
+  "images": [CategoryImage],
+  "level": 987,
+  "parentSlug": "xyz789",
   "childrenSlugs": ["abc123"]
 }
 ```
+
+<HorizontalLine />
 
 ### CategoryView
 
@@ -941,6 +1048,7 @@ Represents a category. Contains information about a category, including the cate
 | `level` - [`Int`](#int) | The level of the category. The root category is a level 1 category. For example, men -&gt; level 1, men/clothing -&gt; level 2, men/clothing/shorts -&gt; level 3 |
 | `name` - [`String`](#string) | Category name. For example, &#x60;Electronics&#x60;, &#x60;Clothing&#x60; or &#x60;Books&#x60;. |
 | `parentId` - [`String!`](#string) | Parent category ID. For example, &#x60;123&#x60;, &#x60;456&#x60; or &#x60;789&#x60;. |
+| `position` - [`Int`](#int) | The position of the category in sort order. For example, &#x60;1&#x60;, &#x60;2&#x60;, &#x60;3&#x60; or &#x60;10&#x60;. |
 | `path` - [`String`](#string) | Category path. For example, &#x60;/electronics/laptops&#x60;, &#x60;/clothing/shirts&#x60; or &#x60;/books/fiction&#x60;. *(Deprecated: &#x27;CategoryView&#x27; is deprecated for use as a Bucket in &#x27;productSearch&#x27; facet (to be removed after Sep 1, 2024). Use &#x27;CategoryBucket&#x27; instead.)* |
 | `roles` - [`[String!]!`](#string) | List of roles for the category. For example, &#x60;show_on_plp&#x60;, &#x60;show_in_pdp&#x60; or &#x60;show_in_search&#x60;. |
 | `urlKey` - [`String`](#string) | Category URL key. For example, &#x60;electronics&#x60;, &#x60;clothing&#x60; or &#x60;books&#x60;. |
@@ -953,20 +1061,23 @@ Represents a category. Contains information about a category, including the cate
 ```json
 {
   "availableSortBy": ["xyz789"],
-  "children": ["xyz789"],
-  "defaultSortBy": "xyz789",
+  "children": ["abc123"],
+  "defaultSortBy": "abc123",
   "id": 4,
-  "level": 123,
-  "name": "xyz789",
-  "parentId": "xyz789",
-  "path": "abc123",
+  "level": 987,
+  "name": "abc123",
+  "parentId": "abc123",
+  "position": 987,
+  "path": "xyz789",
   "roles": ["abc123"],
   "urlKey": "abc123",
-  "urlPath": "xyz789",
-  "count": 123,
-  "title": "xyz789"
+  "urlPath": "abc123",
+  "count": 987,
+  "title": "abc123"
 }
 ```
+
+<HorizontalLine />
 
 ### CategoryViewInterface
 
@@ -997,16 +1108,18 @@ Base interface defining essential category fields shared across all category vie
 ```json
 {
   "availableSortBy": ["abc123"],
-  "defaultSortBy": "xyz789",
-  "id": 4,
+  "defaultSortBy": "abc123",
+  "id": "4",
   "level": 123,
   "name": "abc123",
-  "path": "xyz789",
+  "path": "abc123",
   "roles": ["abc123"],
   "urlKey": "abc123",
   "urlPath": "xyz789"
 }
 ```
+
+<HorizontalLine />
 
 ### CategoryViewV2
 
@@ -1030,8 +1143,13 @@ Base interface defining essential category fields shared across all category vie
 #### Example
 
 ```json
-{"slug": "abc123", "name": "xyz789"}
+{
+  "slug": "abc123",
+  "name": "xyz789"
+}
 ```
+
+<HorizontalLine />
 
 ### ComplexProductView
 
@@ -1071,33 +1189,54 @@ Represents all product types, except simple products. Complex product prices are
 
 ```json
 {
-  "addToCartAllowed": false,
-  "inStock": true,
+  "addToCartAllowed": true,
+  "inStock": false,
   "lowStock": false,
-  "attributes": ["ProductViewAttribute"],
+  "attributes": [ProductViewAttribute],
   "description": "xyz789",
-  "id": "4",
-  "images": ["ProductViewImage"],
-  "videos": ["ProductViewVideo"],
+  "id": 4,
+  "images": [ProductViewImage],
+  "videos": [ProductViewVideo],
   "lastModifiedAt": "2007-12-03T10:15:30Z",
-  "metaDescription": "xyz789",
+  "metaDescription": "abc123",
   "metaKeyword": "xyz789",
   "metaTitle": "xyz789",
-  "name": "xyz789",
-  "inputOptions": ["ProductViewInputOption"],
-  "options": ["ProductViewOption"],
-  "priceRange": "ProductViewPriceRange",
+  "name": "abc123",
+  "inputOptions": [ProductViewInputOption],
+  "options": [ProductViewOption],
+  "priceRange": ProductViewPriceRange,
   "shortDescription": "xyz789",
-  "sku": "xyz789",
+  "sku": "abc123",
   "externalId": "abc123",
-  "url": "abc123",
-  "urlKey": "abc123",
-  "links": ["ProductViewLink"],
-  "categories": ["CategoryProductView"],
+  "url": "xyz789",
+  "urlKey": "xyz789",
+  "links": [ProductViewLink],
+  "categories": [CategoryProductView],
   "queryType": "abc123",
   "visibility": "abc123"
 }
 ```
+
+<HorizontalLine />
+
+### CurrentProductInput
+
+Attributes of the product currently being viewed on PDP
+
+#### Input Fields
+
+| Input Field | Description |
+|-------------|-------------|
+| `sku` - [`String`](#string) | SKU of the current product |
+| `price` - [`Float`](#float) | Resolved display price of the current product (specialPrice ?? regularPrice) |
+
+#### Example
+
+```json
+{"sku": "abc123", "price": 987.65}
+```
+
+<HorizontalLine />
 
 ### DateTime
 
@@ -1108,6 +1247,8 @@ A slightly refined version of RFC-3339 compliant DateTime Scalar
 ```json
 "2007-12-03T10:15:30Z"
 ```
+
+<HorizontalLine />
 
 ### FilterableInSearchAttribute
 
@@ -1128,10 +1269,12 @@ Contains product attributes that can be used for filtering in a `productSearch` 
 {
   "attribute": "xyz789",
   "frontendInput": "abc123",
-  "label": "xyz789",
+  "label": "abc123",
   "numeric": true
 }
 ```
+
+<HorizontalLine />
 
 ### Float
 
@@ -1142,6 +1285,8 @@ The `Float` scalar type represents signed double-precision fractional values as 
 ```json
 987.65
 ```
+
+<HorizontalLine />
 
 ### Highlight
 
@@ -1158,8 +1303,14 @@ An object that provides highlighted text for matched words
 #### Example
 
 ```json
-{"attribute": "xyz789", "matched_words": ["abc123"], "value": "abc123"}
+{
+  "attribute": "xyz789",
+  "matched_words": ["abc123"],
+  "value": "abc123"
+}
 ```
+
+<HorizontalLine />
 
 ### ID
 
@@ -1168,8 +1319,10 @@ The `ID` scalar type represents a unique identifier, often used to refetch an ob
 #### Example
 
 ```json
-4
+"4"
 ```
+
+<HorizontalLine />
 
 ### Int
 
@@ -1181,6 +1334,8 @@ The `Int` scalar type represents non-fractional signed whole numeric values. Int
 123
 ```
 
+<HorizontalLine />
+
 ### JSON
 
 A JSON scalar
@@ -1190,6 +1345,8 @@ A JSON scalar
 ```json
 {}
 ```
+
+<HorizontalLine />
 
 ### PageInfo
 
@@ -1206,8 +1363,10 @@ Provides pagination information for navigating through paginated result sets.
 #### Example
 
 ```json
-{"currentPage": 123, "pageSize": 987, "totalPages": 987}
+{"currentPage": 123, "pageSize": 123, "totalPages": 123}
 ```
+
+<HorizontalLine />
 
 ### Price
 
@@ -1223,8 +1382,13 @@ Defines the price of a simple product or a part of a price range for a complex p
 #### Example
 
 ```json
-{"adjustments": ["PriceAdjustment"], "amount": "ProductViewMoney"}
+{
+  "adjustments": [PriceAdjustment],
+  "amount": ProductViewMoney
+}
 ```
+
+<HorizontalLine />
 
 ### PriceAdjustment
 
@@ -1240,8 +1404,10 @@ Specifies the amount and type of price adjustment.
 #### Example
 
 ```json
-{"amount": 987.65, "code": "xyz789"}
+{"amount": 987.65, "code": "abc123"}
 ```
+
+<HorizontalLine />
 
 ### ProductSearchItem
 
@@ -1259,11 +1425,13 @@ A single product returned by the query
 
 ```json
 {
-  "applied_query_rule": "AppliedQueryRule",
-  "highlights": ["Highlight"],
-  "productView": "ProductView"
+  "applied_query_rule": AppliedQueryRule,
+  "highlights": [Highlight],
+  "productView": ProductView
 }
 ```
+
+<HorizontalLine />
 
 ### ProductSearchResponse
 
@@ -1285,15 +1453,17 @@ Contains the output of a `productSearch` query
 
 ```json
 {
-  "facets": ["Aggregation"],
-  "items": ["ProductSearchItem"],
-  "page_info": "SearchResultPageInfo",
+  "facets": [Aggregation],
+  "items": [ProductSearchItem],
+  "page_info": SearchResultPageInfo,
   "related_terms": ["xyz789"],
   "suggestions": ["abc123"],
   "total_count": 987,
-  "warnings": ["ProductSearchWarning"]
+  "warnings": [ProductSearchWarning]
 }
 ```
+
+<HorizontalLine />
 
 ### ProductSearchSortInput
 
@@ -1312,6 +1482,8 @@ The product attribute to sort on
 {"attribute": "xyz789", "direction": "ASC"}
 ```
 
+<HorizontalLine />
+
 ### ProductSearchWarning
 
 Structured warning with code and message for easier client handling
@@ -1326,8 +1498,13 @@ Structured warning with code and message for easier client handling
 #### Example
 
 ```json
-{"code": "xyz789", "message": "abc123"}
+{
+  "code": "abc123",
+  "message": "abc123"
+}
 ```
+
+<HorizontalLine />
 
 ### ProductView
 
@@ -1372,31 +1549,33 @@ Defines the product fields available to the SimpleProductView and ComplexProduct
 
 ```json
 {
-  "addToCartAllowed": false,
+  "addToCartAllowed": true,
   "inStock": false,
   "lowStock": false,
-  "attributes": ["ProductViewAttribute"],
-  "description": "abc123",
+  "attributes": [ProductViewAttribute],
+  "description": "xyz789",
   "id": 4,
-  "images": ["ProductViewImage"],
-  "videos": ["ProductViewVideo"],
+  "images": [ProductViewImage],
+  "videos": [ProductViewVideo],
   "lastModifiedAt": "2007-12-03T10:15:30Z",
   "metaDescription": "abc123",
-  "metaKeyword": "abc123",
-  "metaTitle": "abc123",
+  "metaKeyword": "xyz789",
+  "metaTitle": "xyz789",
   "name": "abc123",
   "shortDescription": "abc123",
-  "inputOptions": ["ProductViewInputOption"],
+  "inputOptions": [ProductViewInputOption],
   "sku": "xyz789",
-  "externalId": "xyz789",
+  "externalId": "abc123",
   "url": "xyz789",
   "urlKey": "abc123",
-  "links": ["ProductViewLink"],
-  "categories": ["CategoryProductView"],
-  "queryType": "xyz789",
+  "links": [ProductViewLink],
+  "categories": [CategoryProductView],
+  "queryType": "abc123",
   "visibility": "xyz789"
 }
 ```
+
+<HorizontalLine />
 
 ### ProductViewAttribute
 
@@ -1414,8 +1593,15 @@ A container for customer-defined attributes that are displayed the storefront.
 #### Example
 
 ```json
-{"label": "abc123", "name": "abc123", "roles": ["xyz789"], "value": {}}
+{
+  "label": "xyz789",
+  "name": "abc123",
+  "roles": ["abc123"],
+  "value": {}
+}
 ```
+
+<HorizontalLine />
 
 ### ProductViewCurrency
 
@@ -1599,8 +1785,10 @@ The list of supported currency codes.
 #### Example
 
 ```json
-"AED"
+""AED""
 ```
+
+<HorizontalLine />
 
 ### ProductViewImage
 
@@ -1617,8 +1805,14 @@ Contains details about a product image.
 #### Example
 
 ```json
-{"label": "abc123", "roles": ["xyz789"], "url": "xyz789"}
+{
+  "label": "xyz789",
+  "roles": ["abc123"],
+  "url": "xyz789"
+}
 ```
+
+<HorizontalLine />
 
 ### ProductViewInputOption
 
@@ -1643,18 +1837,20 @@ Product options provide a way to configure products by making selections of part
 
 ```json
 {
-  "id": 4,
-  "title": "xyz789",
+  "id": "4",
+  "title": "abc123",
   "required": false,
   "type": "abc123",
   "markupAmount": 123.45,
   "suffix": "abc123",
   "sortOrder": 987,
-  "range": "ProductViewInputOptionRange",
-  "imageSize": "ProductViewInputOptionImageSize",
+  "range": ProductViewInputOptionRange,
+  "imageSize": ProductViewInputOptionImageSize,
   "fileExtensions": "xyz789"
 }
 ```
+
+<HorizontalLine />
 
 ### ProductViewInputOptionImageSize
 
@@ -1673,6 +1869,8 @@ Dimensions of the image associated with the input option.
 {"width": 123, "height": 123}
 ```
 
+<HorizontalLine />
+
 ### ProductViewInputOptionRange
 
 Lists the value range associated with a `ProductViewInputOption`. For example, if the input option is a text field, the range represents the number of characters.
@@ -1690,6 +1888,8 @@ Lists the value range associated with a `ProductViewInputOption`. For example, i
 {"from": 123.45, "to": 987.65}
 ```
 
+<HorizontalLine />
+
 ### ProductViewLink
 
 The product link type. Contains details about product links for related products and cross selling. For example, `related`, `up_sell` or `cross_sell`
@@ -1704,8 +1904,13 @@ The product link type. Contains details about product links for related products
 #### Example
 
 ```json
-{"product": "ProductView", "linkTypes": ["xyz789"]}
+{
+  "product": ProductView,
+  "linkTypes": ["xyz789"]
+}
 ```
+
+<HorizontalLine />
 
 ### ProductViewMoney
 
@@ -1721,8 +1926,10 @@ Defines a monetary value, including a numeric value and a currency code.
 #### Example
 
 ```json
-{"currency": "AED", "value": 987.65}
+{"currency": "AED", "value": 123.45}
 ```
+
+<HorizontalLine />
 
 ### ProductViewOption
 
@@ -1743,12 +1950,14 @@ Product options provide a way to configure products by making selections of part
 ```json
 {
   "id": "4",
-  "multi": false,
-  "required": false,
+  "multi": true,
+  "required": true,
   "title": "abc123",
-  "values": ["ProductViewOptionValue"]
+  "values": [ProductViewOptionValue]
 }
 ```
+
+<HorizontalLine />
 
 ### ProductViewOptionValue
 
@@ -1773,8 +1982,14 @@ Defines the product fields available to the ProductViewOptionValueProduct and Pr
 #### Example
 
 ```json
-{"id": "4", "title": "xyz789", "inStock": true}
+{
+  "id": "4",
+  "title": "xyz789",
+  "inStock": true
+}
 ```
+
+<HorizontalLine />
 
 ### ProductViewOptionValueConfiguration
 
@@ -1791,8 +2006,14 @@ An implementation of ProductViewOptionValue for configuration values.
 #### Example
 
 ```json
-{"id": 4, "title": "xyz789", "inStock": false}
+{
+  "id": 4,
+  "title": "xyz789",
+  "inStock": false
+}
 ```
+
+<HorizontalLine />
 
 ### ProductViewOptionValueProduct
 
@@ -1813,14 +2034,16 @@ An implementation of ProductViewOptionValue that adds details about a simple pro
 
 ```json
 {
-  "id": 4,
-  "isDefault": false,
-  "product": "SimpleProductView",
-  "quantity": 987.65,
-  "title": "abc123",
+  "id": "4",
+  "isDefault": true,
+  "product": SimpleProductView,
+  "quantity": 123.45,
+  "title": "xyz789",
   "inStock": true
 }
 ```
+
+<HorizontalLine />
 
 ### ProductViewOptionValueSwatch
 
@@ -1840,13 +2063,15 @@ An implementation of ProductViewOptionValueSwatch for swatches.
 
 ```json
 {
-  "id": "4",
-  "title": "abc123",
+  "id": 4,
+  "title": "xyz789",
   "type": "TEXT",
-  "value": "xyz789",
+  "value": "abc123",
   "inStock": true
 }
 ```
+
+<HorizontalLine />
 
 ### ProductViewPrice
 
@@ -1865,12 +2090,14 @@ Base product price view. Contains the final price after discounts, the regular p
 
 ```json
 {
-  "final": "Price",
-  "regular": "Price",
-  "tiers": ["ProductViewTierPrice"],
+  "final": Price,
+  "regular": Price,
+  "tiers": [ProductViewTierPrice],
   "roles": ["xyz789"]
 }
 ```
+
+<HorizontalLine />
 
 ### ProductViewPriceRange
 
@@ -1886,8 +2113,13 @@ The minimum and maximum price of a complex product.
 #### Example
 
 ```json
-{"maximum": "ProductViewPrice", "minimum": "ProductViewPrice"}
+{
+  "maximum": ProductViewPrice,
+  "minimum": ProductViewPrice
+}
 ```
+
+<HorizontalLine />
 
 ### ProductViewTierCondition
 
@@ -1901,8 +2133,10 @@ The minimum and maximum price of a complex product.
 #### Example
 
 ```json
-"ProductViewTierRangeCondition"
+ProductViewTierRangeCondition
 ```
+
+<HorizontalLine />
 
 ### ProductViewTierExactMatchCondition
 
@@ -1920,6 +2154,8 @@ Minimum quantity (inclusive) required to activate this tier price. For example, 
 {"in": [987.65]}
 ```
 
+<HorizontalLine />
+
 ### ProductViewTierPrice
 
 The discounted price that applies when the quantity conditions in `quantity` are satisfied. Contains the monetary amount and any price adjustments applied to this tier.
@@ -1934,8 +2170,13 @@ The discounted price that applies when the quantity conditions in `quantity` are
 #### Example
 
 ```json
-{"tier": "Price", "quantity": ["ProductViewTierRangeCondition"]}
+{
+  "tier": Price,
+  "quantity": [ProductViewTierRangeCondition]
+}
 ```
+
+<HorizontalLine />
 
 ### ProductViewTierRangeCondition
 
@@ -1951,8 +2192,10 @@ Minimum quantity (inclusive) required to activate this tier price. For example, 
 #### Example
 
 ```json
-{"gte": 123.45, "lt": 987.65}
+{"gte": 987.65, "lt": 987.65}
 ```
+
+<HorizontalLine />
 
 ### ProductViewVariant
 
@@ -1968,8 +2211,13 @@ Represents a product variant.
 #### Example
 
 ```json
-{"selections": ["xyz789"], "product": "ProductView"}
+{
+  "selections": ["abc123"],
+  "product": ProductView
+}
 ```
+
+<HorizontalLine />
 
 ### ProductViewVariantResults
 
@@ -1985,8 +2233,13 @@ Represents the results of a product variant search.
 #### Example
 
 ```json
-{"variants": ["ProductViewVariant"], "cursor": "abc123"}
+{
+  "variants": [ProductViewVariant],
+  "cursor": "xyz789"
+}
 ```
+
+<HorizontalLine />
 
 ### ProductViewVideo
 
@@ -2005,12 +2258,14 @@ Contains details about a product video. For example, a video of the product bein
 
 ```json
 {
-  "preview": "ProductViewImage",
+  "preview": ProductViewImage,
   "url": "xyz789",
-  "description": "xyz789",
+  "description": "abc123",
   "title": "abc123"
 }
 ```
+
+<HorizontalLine />
 
 ### PurchaseHistory
 
@@ -2026,8 +2281,13 @@ User purchase history
 #### Example
 
 ```json
-{"date": "2007-12-03T10:15:30Z", "items": ["abc123"]}
+{
+  "date": "2007-12-03T10:15:30Z",
+  "items": ["abc123"]
+}
 ```
+
+<HorizontalLine />
 
 ### QueryContextInput
 
@@ -2041,8 +2301,13 @@ User purchase history
 #### Example
 
 ```json
-{"customerGroup": "xyz789", "userViewHistory": ["ViewHistoryInput"]}
+{
+  "customerGroup": "abc123",
+  "userViewHistory": [ViewHistoryInput]
+}
 ```
+
+<HorizontalLine />
 
 ### RangeBucket
 
@@ -2060,8 +2325,15 @@ For use on numeric product fields
 #### Example
 
 ```json
-{"count": 123, "from": 987.65, "title": "abc123", "to": 123.45}
+{
+  "count": 123,
+  "from": 987.65,
+  "title": "abc123",
+  "to": 123.45
+}
 ```
+
+<HorizontalLine />
 
 ### RecommendationUnit
 
@@ -2085,15 +2357,17 @@ Recommendation Unit containing product and other details
 ```json
 {
   "displayOrder": 123,
-  "pageType": "abc123",
-  "productsView": ["ProductView"],
-  "storefrontLabel": "xyz789",
-  "totalProducts": 123,
+  "pageType": "xyz789",
+  "productsView": [ProductView],
+  "storefrontLabel": "abc123",
+  "totalProducts": 987,
   "typeId": "abc123",
   "unitId": "abc123",
-  "unitName": "xyz789"
+  "unitName": "abc123"
 }
 ```
+
+<HorizontalLine />
 
 ### Recommendations
 
@@ -2109,8 +2383,10 @@ Recommendations response
 #### Example
 
 ```json
-{"results": ["RecommendationUnit"], "totalResults": 123}
+{"results": [RecommendationUnit], "totalResults": 987}
 ```
+
+<HorizontalLine />
 
 ### ScalarBucket
 
@@ -2127,8 +2403,14 @@ For use on string and other scalar product fields
 #### Example
 
 ```json
-{"count": 123, "id": 4, "title": "xyz789"}
+{
+  "count": 123,
+  "id": "4",
+  "title": "xyz789"
+}
 ```
+
+<HorizontalLine />
 
 ### SearchCategoryResultPage
 
@@ -2145,8 +2427,14 @@ Represents a paginated result set of category search results.
 #### Example
 
 ```json
-{"items": ["CategoryTreeView"], "totalCount": 987, "pageInfo": "PageInfo"}
+{
+  "items": [CategoryTreeView],
+  "totalCount": 987,
+  "pageInfo": PageInfo
+}
 ```
+
+<HorizontalLine />
 
 ### SearchClauseInput
 
@@ -2171,10 +2459,12 @@ A product attribute to filter on
   "contains": "abc123",
   "eq": "xyz789",
   "in": ["abc123"],
-  "range": "SearchRangeInput",
-  "startsWith": "xyz789"
+  "range": SearchRangeInput,
+  "startsWith": "abc123"
 }
 ```
+
+<HorizontalLine />
 
 ### SearchRangeInput
 
@@ -2190,8 +2480,10 @@ A range of numeric values for use in a search
 #### Example
 
 ```json
-{"from": 987.65, "to": 123.45}
+{"from": 987.65, "to": 987.65}
 ```
+
+<HorizontalLine />
 
 ### SearchResultPageInfo
 
@@ -2208,8 +2500,10 @@ Provides navigation for the query response.
 #### Example
 
 ```json
-{"current_page": 987, "page_size": 987, "total_pages": 987}
+{"current_page": 987, "page_size": 987, "total_pages": 123}
 ```
+
+<HorizontalLine />
 
 ### SimpleProductView
 
@@ -2251,29 +2545,31 @@ Represents a single-SKU product without selectable variants. Because there are n
   "addToCartAllowed": true,
   "inStock": false,
   "lowStock": false,
-  "attributes": ["ProductViewAttribute"],
+  "attributes": [ProductViewAttribute],
   "description": "xyz789",
   "id": 4,
-  "images": ["ProductViewImage"],
-  "videos": ["ProductViewVideo"],
-  "inputOptions": ["ProductViewInputOption"],
+  "images": [ProductViewImage],
+  "videos": [ProductViewVideo],
+  "inputOptions": [ProductViewInputOption],
   "lastModifiedAt": "2007-12-03T10:15:30Z",
   "metaDescription": "xyz789",
   "metaKeyword": "abc123",
   "metaTitle": "xyz789",
   "name": "xyz789",
-  "price": "ProductViewPrice",
+  "price": ProductViewPrice,
   "shortDescription": "xyz789",
-  "sku": "abc123",
-  "externalId": "xyz789",
-  "url": "xyz789",
-  "urlKey": "abc123",
-  "links": ["ProductViewLink"],
-  "categories": ["CategoryProductView"],
-  "queryType": "xyz789",
-  "visibility": "abc123"
+  "sku": "xyz789",
+  "externalId": "abc123",
+  "url": "abc123",
+  "urlKey": "xyz789",
+  "links": [ProductViewLink],
+  "categories": [CategoryProductView],
+  "queryType": "abc123",
+  "visibility": "xyz789"
 }
 ```
+
+<HorizontalLine />
 
 ### SortEnum
 
@@ -2289,8 +2585,10 @@ Indicates whether to return results in ascending or descending order.
 #### Example
 
 ```json
-"ASC"
+""ASC""
 ```
+
+<HorizontalLine />
 
 ### SortableAttribute
 
@@ -2309,12 +2607,14 @@ Contains product attributes that be used for sorting in a `productSearch` query
 
 ```json
 {
-  "attribute": "abc123",
-  "frontendInput": "abc123",
+  "attribute": "xyz789",
+  "frontendInput": "xyz789",
   "label": "abc123",
   "numeric": false
 }
 ```
+
+<HorizontalLine />
 
 ### StatsBucket
 
@@ -2331,8 +2631,14 @@ For retrieving statistics across multiple buckets
 #### Example
 
 ```json
-{"max": 987.65, "min": 123.45, "title": "abc123"}
+{
+  "max": 987.65,
+  "min": 987.65,
+  "title": "abc123"
+}
 ```
+
+<HorizontalLine />
 
 ### String
 
@@ -2341,8 +2647,10 @@ The `String` scalar type represents textual data, represented as UTF-8 character
 #### Example
 
 ```json
-"abc123"
+"xyz789"
 ```
+
+<HorizontalLine />
 
 ### SwatchType
 
@@ -2360,8 +2668,10 @@ The type of the swatch.
 #### Example
 
 ```json
-"TEXT"
+""TEXT""
 ```
+
+<HorizontalLine />
 
 ### ViewHistory
 
@@ -2377,8 +2687,13 @@ User view history
 #### Example
 
 ```json
-{"date": "2007-12-03T10:15:30Z", "sku": "abc123"}
+{
+  "date": "2007-12-03T10:15:30Z",
+  "sku": "xyz789"
+}
 ```
+
+<HorizontalLine />
 
 ### ViewHistoryInput
 
@@ -2394,5 +2709,8 @@ User view history
 #### Example
 
 ```json
-{"dateTime": "2007-12-03T10:15:30Z", "sku": "xyz789"}
+{
+  "dateTime": "2007-12-03T10:15:30Z",
+  "sku": "abc123"
+}
 ```
