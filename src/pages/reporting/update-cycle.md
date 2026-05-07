@@ -13,7 +13,7 @@ Use the **Update Cycle Status API** to retrieve the most recent completed update
 
 <InlineAlert variant="info" slots="text" />
 
-See the [Export API](./export-api.md) for exporting data; both APIs use the same authentication header.
+See the [Export API](export-api.md) for exporting data; both APIs use the same authentication header.
 
 ## Base URL
 
@@ -31,7 +31,7 @@ See the [Export API](./export-api.md) for exporting data; both APIs use the same
 
 ### Authentication
 
-Before using this API, make sure you have generated an [Export API key](../reporting/index.md#generating-authentication-token-for-the-export-api).
+Before using this API, make sure you have generated an [Export API key](index.md#generating-authentication-token-for-the-export-api).
 
 ### Request headers
 

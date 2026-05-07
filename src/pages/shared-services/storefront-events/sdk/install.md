@@ -28,7 +28,7 @@ If you are using the Data Connection module, you can skip the installation proce
   npm install @adobe/magento-storefront-events-sdk
   ```
 
-### Confirm SDK is Available
+## Confirm SDK is Available
 
 If you used the CDN to install the script, confirm that the SDK asset has downloaded successfully by running the following code:
 

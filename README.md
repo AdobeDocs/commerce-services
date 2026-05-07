@@ -1,107 +1,93 @@
-# Services for Adobe Commerce Documentation
+# Adobe Commerce Merchandising Services Documentation
 
-Welcome! This site contains the latest Services for Adobe Commerce developer documentation for ongoing releases.
+This repository contains the code for the [Merchandising Services documentation](https://developer.adobe.com/commerce/services/) website. It is built using [Adobe Edge Delivery Services](https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/edge-delivery/overview) and deployed to [Adobe Developer](https://developer.adobe.com/commerce/services/).
 
-## Local development
+The site covers APIs and tools for managing and using commerce catalog and event data programmatically, including the Data Ingestion API, Merchandising API, Storefront Events SDK, Product Recommendations SDK, and Commerce Reporting API.
 
-This is a [Gatsby](https://www.gatsbyjs.com/) project that uses the [Adobe I/O Theme](https://github.com/adobe/aio-theme).
+## Quick start
 
-To build the site locally:
+For local development, you need to start three servers:
 
-1. Clone this repo.
-1. Install project dependencies.
-
-   ```bash
-   yarn install
-   ```
-
-1. Launch the project in development mode.
+1. **Content server** (this repo):
 
    ```bash
-   yarn dev
+   npm run dev
    ```
 
-## Components
+2. **Code server** ([adp-devsite](https://github.com/AdobeDocs/adp-devsite)):
 
-To achieve specific user experience goals for Commerce documentation, this repo overrides the original [`Edition`](https://github.com/adobe/aio-theme/blob/main/packages/gatsby-theme-aio/src/components/Edition/index.js) component from the upstream [`aio-theme`](https://github.com/adobe/aio-theme/) repo that we use as a dependency.
+   ```bash
+   git clone https://github.com/AdobeDocs/adp-devsite
+   cd adp-devsite
+   npm install
+   npm run dev
+   ```
 
-### Edition
+3. **Runtime connector** ([devsite-runtime-connector](https://github.com/aemsites/devsite-runtime-connector)):
 
-The custom `Edition` component in this repo displays a badge indicating whether a feature or functionality is available in specific Adobe Commerce environments. It has been customized to align with the badges that we use in Experience League docs.
+   ```bash
+   git clone https://github.com/aemsites/devsite-runtime-connector
+   cd devsite-runtime-connector
+   npm install
+   npm run dev
+   ```
 
-#### Usage
+Once all three servers are running, navigate to `http://localhost:3000/commerce/services`.
 
-```yaml
-# Page-level (metadata)
-edition: saas # For SaaS-only features
-edition: paas # For PaaS-only features
+For common utilities and documentation, see the [centralized README](https://github.com/AdobeDocs/adp-devsite-utils/blob/main/README.md).
+
+## Testing and linting
+
+### Markdown linting
+
+To lint Markdown files before pushing:
+
+```bash
+npm run lint:md
 ```
 
-```md
-<!-- Section-level (inline) -->
-<Edition name="paas" />  <!-- For PaaS-only features -->
-<Edition name="saas" />  <!-- For SaaS-only features -->
+To automatically fix linting errors:
+
+```bash
+npm run lint:md:fix
 ```
 
-## Resources
+### Content validation
 
-See the following resources to learn more about using the theme:
+To check internal and external links, validate front matter, and more:
 
-- [Arranging content structure](https://github.com/adobe/aio-theme#content-structure)
-- [Linking to pages](https://github.com/adobe/aio-theme#links)
-- [Using assets](https://github.com/adobe/aio-theme#assets)
-- [Configuring global navigation](https://github.com/adobe/aio-theme#global-navigation)
-- [Configuring side navigation](https://github.com/adobe/aio-theme#side-navigation)
-- [Using content blocks](https://github.com/adobe/aio-theme#jsx-blocks)
-- [Writing enhanced Markdown](https://github.com/adobe/aio-theme#writing-enhanced-markdown)
-- [Deploying the site](https://github.com/adobe/aio-theme#deploy-to-azure-storage-static-websites) _(Adobe employees only)_
+```bash
+npm run lint
+```
 
-If you have questions, open an issue and ask us. We look forward to hearing from you!
+### TOC validation
 
-## GraphQL API reference generator
+To validate the table of contents file:
 
-The Merchandising GraphQL API reference is generated using [SpectaQL](https://github.com/anvilco/spectaql). It fetches the live schema via introspection, injects custom descriptions from a metadata overlay, and filters the schema down to the include only the queries and types supported by Adobe Commerce Optimizer catalog service operations.
+```bash
+npm run test:config
+```
 
-### Quick start
+## GraphQL API reference
 
-1. Create a `.env` file in the project root:
+The Merchandising GraphQL API reference is generated using [SpectaQL](https://github.com/anvilco/spectaql). It introspects the live schema, injects custom descriptions from a metadata overlay, and filters the output to include only the queries and types supported by Adobe Commerce Optimizer.
 
-   ```bash
-   cp .env.example .env
-   ```
+The generated Markdown fragment is written to `src/pages/_includes/merchandising-api.md` and included in `src/pages/reference/graphql/index.md` via `<Fragment>`.
 
-2. Build the API reference:
+### Generating the reference
 
-   ```bash
-   yarn build:merchandising-api
-   ```
+1. Create a `.env` file in the project root and set the required variables:
 
-The generated output is written to `static/graphql-api/merchandising-api/index.html` and embedded in the documentation site using the Adobe I/O theme's `frameSrc` feature. After rebuilding, verify the output in your browser before committing changes.
+   | Variable | Description |
+   |---|---|
+   | `TENANT_ID` | Your Adobe Commerce tenant ID |
+   | `API_HOST` | GraphQL API hostname |
+   | `CATALOG_VIEW_ID` | Catalog view ID for the `AC-View-Id` header |
 
-To generate a live preview during local development, run: `yarn dev:merchandising-api`.
-
-### Prerequisites
-
-- Node.js matching the version in [.nvmrc](https://github.com/AdobeDocs/commerce-services/blob/main/.nvmrc)
-- Yarn
-
-### Update the API reference
-
-If the schema or metadata descriptions change, rebuild and test the API reference locally:
-
-1. Create a branch from `main`.
-2. Regenerate the API reference:
+1. Run the generator:
 
    ```bash
-   yarn build:merchandising-api
+   npm run generate:merchandising-api-docs
    ```
 
-3. Verify the output in your browser.
-4. Commit the updated `index.html` and `enhanced-schema.json` files.
-5. After updates are approved, a documentation team member merges the PR and publishes the updates to the [developer site](https://developer.adobe.com/commerce/services/merchandising-services/).
-
-See [`spectaql/README.md`](spectaql/README.md) for detailed configuration, build commands, offline builds, and script documentation.
-
-## REST API Reference Generator
-
-See [Generate the Data Ingestion API Reference](src/static/rest/README.md).
+See [`spectaql/README.md`](spectaql/README.md) for full configuration and script documentation.

@@ -1,0 +1,105 @@
+spectaql:
+  embeddable: true
+  oneFile: false
+  targetDir: /tmp/spectaql-md
+  embedLogo: false
+  themeDir: spectaql/markdown-theme
+  gruntConfigFile: spectaql/markdown-grunt-config.js
+  scrollPaddingTopPx: 0
+  errorOnInterpolationReferenceNotFound: true
+  displayAllServers: false
+  resolveWithOutput: true
+
+introspection:
+  url: https://${API_HOST}/${TENANT_ID}/graphql
+  exclude:
+    excludeMutations: true
+
+  headers:
+    AC-Environment-Id: ${TENANT_ID}
+    AC-View-Id: ${CATALOG_VIEW_ID}
+    Content-Type: application/json
+
+  spectaqlDirective:
+    enable: false
+
+  removeTrailingPeriodFromDescriptions: false
+  queryNameStrategy: none
+  fieldExpansionDepth: 1
+  inputValueDeprecation: true
+
+  metadataFile: spectaql/metadata-merchandising.json
+  metadatasReadPath: documentation
+  metadatasWritePath: documentation
+  metadatasPath: documentation
+  metadatas: true
+
+  queriesDocumentedDefault: true
+  queryDocumentedDefault: true
+  queryArgDocumentedDefault: true
+  hideQueriesWithUndocumentedReturnType: true
+
+  mutationsDocumentedDefault: false
+  mutationDocumentedDefault: false
+  mutationArgDocumentedDefault: false
+  hideMutationsWithUndocumentedReturnType: true
+
+  subscriptionsDocumentedDefault: true
+  subscriptionDocumentedDefault: true
+  subscriptionArgDocumentedDefault: true
+  hideSubscriptionsWithUndocumentedReturnType: true
+
+  hideUnusedTypes: true
+
+  objectsDocumentedDefault: true
+  objectDocumentedDefault: true
+  inputsDocumentedDefault: true
+  inputDocumentedDefault: true
+  enumsDocumentedDefault: true
+  enumDocumentedDefault: true
+  unionsDocumentedDefault: true
+  unionDocumentedDefault: true
+  hideUnionTypesOfUndocumentedType: true
+
+  fieldDocumentedDefault: true
+  hideFieldsOfUndocumentedType: true
+  inputFieldDocumentedDefault: true
+  hideInputFieldsOfUndocumentedType: true
+  argDocumentedDefault: true
+  hideArgsOfUndocumentedType: true
+
+extensions:
+  graphqlScalarExamples: true
+
+servers:
+  - url: https://na1-sandbox.api.commerce.adobe.com/{TENANT_ID}/graphql
+    description: Commerce Services GraphQL API
+    headers:
+      - name: AC-View-Id
+        example: cde0ab4c-1f7b-4e12-91f6-9c7840ab6523
+        comment: Required. View ID for catalog context.
+        required: true
+      - name: Content-Type
+        example: application/json
+        comment: Required. Content type header.
+        required: true
+      - name: AC-Price-Book-ID
+        example: us
+        comment: Price book identifier for pricing context.
+      - name: AC-Policy-{*}
+        example: AC-Policy-Brand
+        comment: Trigger name and value that sets data access filters.
+
+info:
+  x-hideIntroduction: false
+  x-hideWelcome: true
+  x-hideIntroItems: true
+  x-hideIsDeprecated: false
+  x-hideDeprecationReason: false
+  x-hidePoweredBy: true
+
+  description: |
+    The Merchandising GraphQL API enables developers to build rich, dynamic storefront experiences by providing efficient
+    access to catalog data from Adobe Commerce Optimizer.
+  title: Merchandising GraphQL API Reference
+  x-htmlTitle: Merchandising GraphQL API Reference

@@ -1,6 +1,5 @@
 ---
 title: Monitor and Troubleshoot
-edition: saas
 description: Troubleshoot common issues with the Merchandising GraphQL API. Learn how to debug authentication errors, missing data, performance issues, and more.
 keywords:
   - GraphQL
@@ -8,6 +7,9 @@ keywords:
   - Backend Development
   - Troubleshooting
 ---
+
+<Edition slots="text" backgroundColor="green"/>
+[SaaS only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions)
 
 # Monitor and troubleshoot
 

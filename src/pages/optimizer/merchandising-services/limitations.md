@@ -1,6 +1,5 @@
 ---
 title: Limitations and considerations
-edition: saas
 description: Learn about the limitations and considerations when using the Merchandising API to retrieve catalog data from Adobe Commerce Optimizer.
 keywords:
   - GraphQL
@@ -9,27 +8,30 @@ keywords:
   - Performance
 ---
 
+<Edition slots="text" backgroundColor="green"/>
+[SaaS only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions)
+
 # Limitations and considerations
 
 The Merchandising API provides powerful capabilities for accessing catalog data, but there are important limitations and considerations to keep in mind when using it. This section outlines the key constraints and best practices to ensure optimal performance and reliability.
 
-### API Limits
+## API Limits
 
 - **Rate Limiting**: Requests are subject to rate limits based on your subscription tier
 - **Query Complexity**: Complex queries may have timeout restrictions
 - **Response Size**: Large result sets may be paginated or truncated
 - **Concurrent Requests**: Limit concurrent requests to avoid throttling
 
-For details about these limits, see [Boundaries and Limits](https://experienceleague.adobe.com/en/docs/commerce/optimizer/boundaries-limits) in the *Adobe Commerce Optimizer Guide*.
+  For details about these limits, see [Boundaries and Limits](https://experienceleague.adobe.com/en/docs/commerce/optimizer/boundaries-limits) in the *Adobe Commerce Optimizer Guide*.
 
-### Data Constraints
+## Data Constraints
 
 - **Read-Only Access**: The API provides read-only access to catalog data
 - **Data Freshness**: For details about catalog data synchronization, see [Boundaries and Limits](https://experienceleague.adobe.com/en/docs/commerce/optimizer/boundaries-limits) in the *Adobe Commerce Optimizer Guide*.
 - **Locale Requirements**: All queries require a specific locale to be set in the headers
 - **Catalog View Dependencies**: Data access depends on configured catalog views
 
-### Technical Limitations
+## Technical Limitations
 
 - **GraphQL Only**: The API only supports GraphQL queries
 - **HTTPS Only**: Production requests must use HTTPS

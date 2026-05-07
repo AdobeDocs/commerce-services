@@ -1,6 +1,5 @@
 ---
 title: Retrieve catalog data
-edition: saas
 description: Build dynamic commerce storefronts with the Merchandising GraphQL API. Access real-time catalog, product discovery, and recommendations data.
 keywords:
   - GraphQL
@@ -11,6 +10,9 @@ keywords:
   - Recommendations
   - Security
 ---
+
+<Edition slots="text" backgroundColor="green"/>
+[SaaS only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions)
 
 # Retrieve catalog data with the Merchandising API
 
@@ -23,7 +25,7 @@ The Merchandising API is part of Adobe Commerce Optimizer's composable commerce 
 - **Scale efficiently** with optimized GraphQL queries that fetch only the data you need
 - **Maintain performance** with built-in caching and CDN integration
 
-### Key Benefits
+## Key Benefits
 
 - **Real-time data access** to product catalogs, pricing, and inventory
 - **Flexible querying** with GraphQL for efficient data retrieval
@@ -31,7 +33,7 @@ The Merchandising API is part of Adobe Commerce Optimizer's composable commerce 
 - **Localization ready** with built-in support for multiple locales and currencies
 - **Performance optimized** with intelligent caching and query optimization
 
-### When to Use the Merchandising API
+## When to Use the Merchandising API
 
 The Merchandising API is ideal for:
 
@@ -48,7 +50,7 @@ The Merchandising API is ideal for:
 
 The Merchandising API sits between your storefront applications and the Adobe Commerce Optimizer data layer:
 
-![Merchandising Services API](../../_images/merchandising/merchandising-data-flow.png)
+![Merchandising Services API](../../images/merchandising/merchandising-data-flow.png)
 
 This diagram illustrates the flow of data between the storefront, the Merchandising API, and the Adobe Commerce Optimizer backend:
 
@@ -71,7 +73,7 @@ For custom storefronts built with frameworks like React, Vue.js, Angular, or any
 
 - **Direct API Integration**: Use GraphQL clients to connect directly to the [Merchandising API](using-the-api.md) from your frontend application
 - **GraphQL Client Libraries**: Use libraries like Apollo Client, Relay, or urql for efficient GraphQL data fetching
-- **Adobe Developer App Builder**: Use [Adobe Developer App Builder](https://experienceleague.adobe.com/en/docs/commerce-learn/tutorials/adobe-developer-app-builder/introduction-to-app-builder) to create custom applications that leverage the Merchandising API
+- **Adobe Developer App Builder**: Use [Adobe Developer App Builder](https://experienceleague.adobe.com/en/docs/commerce-learn/tutorials/extensibility/adobe-developer-app-builder/introduction-to-app-builder) to create custom applications that leverage the Merchandising API
 - **Headless CMS**: Integrate with headless CMS platforms for content management
 
 ## Security
@@ -96,8 +98,8 @@ See the [Get Started with the Merchandising API](using-the-api.md) section for i
 ## Related Documentation
 
 - **[Data Ingestion API](../data-ingestion/index.md)**: Ingest and manage product and pricing data
-- **<a href="https://experienceleague.adobe.com/docs/commerce/optimizer/setup/catalog-view.html" target="_blank" rel="noopener noreferrer">Catalog Management</a>**: Set up catalog views and policies in Adobe Commerce Optimizer
-- **<a href="https://developer.adobe.com/commerce/services/reference/graphql/" target="_blank" rel="noopener noreferrer">Merchandising API Reference</a>**: Merchandising API Reference
+- **[Catalog Management](https://experienceleague.adobe.com/en/docs/commerce/optimizer/setup/catalog-view)**: Set up catalog views and policies in Adobe Commerce Optimizer
+- **[Merchandising API Reference](../../reference/graphql/index.md)**: Merchandising API Reference
 - **[GraphQL Queries](use-cases.md#available-queries)**: Available queries
 
 For additional support and community resources, visit the [Adobe Commerce Developer Portal](https://developer.adobe.com/commerce/).

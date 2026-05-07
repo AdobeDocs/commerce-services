@@ -1,6 +1,5 @@
 ---
 title: Test Data Ingestion API operations
-edition: saas
 description: Learn how to test Data Ingestion REST API operations using the interactive Try It feature in the API Reference documentation
 keywords:
   - REST
@@ -8,6 +7,9 @@ keywords:
   - Backend Development
   - Troubleshooting
 ---
+
+<Edition slots="text" backgroundColor="green"/>
+[SaaS only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions)
 
 # Test Data Ingestion API operations
 
@@ -36,7 +38,7 @@ Before testing the API, ensure you have:
 
 ## Step 1: Get credentials
 
-1. Open the [Data Ingestion API Reference](https://developer.adobe.com/commerce/services/reference/rest/).
+1. Open the [Data Ingestion API Reference](../../reference/rest/index.md).
 
 2. Locate the **Get Credentials** section at the top of the page.
 
@@ -56,7 +58,7 @@ Follow these steps to test any API operation using the interactive documentation
 
 1. **Choose an operation to test:**
 
-   - Navigate to any endpoint in the [Data Ingestion API Reference](https://developer.adobe.com/commerce/services/reference/rest/).
+   - Navigate to any endpoint in the [Data Ingestion API Reference](../../reference/rest/index.md).
 
    - Click **Try it** for the operation you want to test.
 
