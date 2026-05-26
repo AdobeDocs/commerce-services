@@ -168,7 +168,7 @@ Pass the `slugs` parameter to `categoryTree` to fetch only the branches you need
 
 ### searchCategory result ordering
 
-`searchCategory` returns matching categories sorted alphabetically (A–Z, case-insensitive) by `name`. There is no sort argument; this is the default behavior and the API contract is unchanged.
+`searchCategory` returns matching categories sorted alphabetically (A–Z, case-insensitive) by `name`. There is no sort argument; this is the default behavior.
 
 Shorter category names often sort before longer names that share the same prefix. For example, `Food` appears before `Food - Baby Food`, which helps typeahead and picker UIs that show only the first page of results surface top-level categories before deeply nested matches.
 
