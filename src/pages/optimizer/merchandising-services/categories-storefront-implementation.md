@@ -170,7 +170,7 @@ Pass the `slugs` parameter to `categoryTree` to fetch only the branches you need
 
 `searchCategory` returns matching categories sorted alphabetically (A–Z, case-insensitive) by `name`. There is no sort argument; this is the default behavior.
 
-Shorter category names often sort before longer names that share the same prefix. For example, `Food` appears before `Food - Baby Food`, which helps typeahead and picker UIs that show only the first page of results surface top-level categories before deeply nested matches.
+Categories with shorter names usually sort before longer names that share the same prefix. For example, `Food` appears before `Food - Baby Food`. In typeahead and category pickers that show only the first page of results, parent categories are more likely to appear before longer, nested paths.
 
 ## Navigation query examples
 
