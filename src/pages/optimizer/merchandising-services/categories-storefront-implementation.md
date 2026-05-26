@@ -138,7 +138,7 @@ See the [CategoryTree query examples](#categorytree-query-examples) and [searchC
 
 - Use the `navigation` query for storefront menus. It is heavily cached, limited to four levels, and returns only the lightweight fields needed for rendering.
 - Use the `categoryTree` query when you need full hierarchy metadata, descriptions, images, or SEO fields.
-- Use the `searchCategory` query when the shopper or CMS workflow needs to find categories by name (for example, search-as-you-type or admin pickers), with optional `family` scoping and pagination.
+- Use the `searchCategory` query when the shopper or CMS workflow needs to find categories by name (for example, search-as-you-type or admin pickers), with optional `family` scoping and pagination. Results are sorted alphabetically by `name` (case-insensitive); see [searchCategory result ordering](#searchcategory-result-ordering).
 - Use the `categories` field on product queries only when category context (such as breadcrumbs) is needed on a product page. Omit it when it is not needed to avoid unnecessary overhead.
 
 ### Navigation query depth limit
@@ -165,6 +165,12 @@ Pass the `depth` parameter to `categoryTree` to avoid fetching deeper levels tha
 ### Target specific subtrees
 
 Pass the `slugs` parameter to `categoryTree` to fetch only the branches you need rather than the entire tree.
+
+### searchCategory result ordering
+
+`searchCategory` returns matching categories sorted alphabetically (A–Z, case-insensitive) by `name`. There is no sort argument; this is the default behavior and the API contract is unchanged.
+
+Shorter category names often sort before longer names that share the same prefix. For example, `Food` appears before `Food - Baby Food`, which helps typeahead and picker UIs that show only the first page of results surface top-level categories before deeply nested matches.
 
 ## Navigation query examples
 
@@ -659,6 +665,7 @@ The `searchCategory` query matches category **names** against a `searchTerm` and
 
 - If the `family` argument is omitted, it returns categories across all families.
 - The `searchTerm` argument is case-insensitive and must be a minimum of three characters.
+- Matching categories in `items` are sorted alphabetically (A–Z, case-insensitive) by `name`. See [searchCategory result ordering](#searchcategory-result-ordering).
 
 Each `items` entry is a [`CategoryTreeView`](../../reference/graphql/index.md#categorytreeview), so you can reuse the same fields as in `categoryTree` responses (for example, `slug`, `name`, `description`, and `images`).
 
@@ -689,7 +696,7 @@ type PageInfo {
 
 ### Search categories by name
 
-Shoppers and internal tools often find categories by typing a fragment of the display name rather than browsing the tree. The following example calls `searchCategory` with `searchTerm: "Men"` and no `family`, then requests `totalCount`, a page of `items` with `slug`, `name`, and `level`,  plus `pageInfo` for pagination.. The response lists every category whose name matches across the catalog scope your API uses.
+Shoppers and internal tools often find categories by typing a fragment of the display name rather than browsing the tree. The following example calls `searchCategory` with `searchTerm: "food"` and no `family`, then requests `slug`, `name`, `description`, and `childrenSlugs` on each match plus `totalCount`. Results are returned in alphabetical order by `name`, so the top-level `Food` category appears before longer names such as `Food - Baby Food`.
 
 <CodeBlock slots="heading, code" repeat="2" languages="JSON" />
 
@@ -697,14 +704,14 @@ Shoppers and internal tools often find categories by typing a fragment of the di
 
 ```graphql
 query {
-  searchCategory(searchTerm: "Men", pageSize: 20, currentPage: 1) {
-    totalCount
+  searchCategory(searchTerm: "food") {
     items {
-      name
       slug
-      parentSlug
+      name
+      description
       childrenSlugs
     }
+    totalCount
   }
 }
 ```
@@ -715,56 +722,39 @@ query {
 {
   "data": {
     "searchCategory": {
-      "totalCount": 5,
       "items": [
         {
-          "name": "Men",
-          "slug": "men",
-          "parentSlug": "",
+          "slug": "food",
+          "name": "Food",
+          "description": "Food and beverages",
           "childrenSlugs": [
-            "men/tops",
-            "men/bottoms",
-            "men/accessories",
-            "men/footwear"
+            "food/baby-food",
+            "food/beverages"
           ]
         },
         {
-          "name": "Men Footwear",
-          "slug": "men/footwear",
-          "parentSlug": "men",
+          "slug": "food/baby-food",
+          "name": "Food - Baby Food",
+          "description": "Baby and child nutrition",
           "childrenSlugs": [
-            "men/footwear/sneakers"
+            "food/baby-food/infant-milk"
           ]
         },
         {
-          "name": "Men Accessories",
-          "slug": "men/accessories",
-          "parentSlug": "men",
-          "childrenSlugs": [
-            "men/accessories/socks"
-          ]
+          "slug": "food/baby-food/infant-milk",
+          "name": "Food - baby food - infant milk - Growth",
+          "description": "Growth milk for children",
+          "childrenSlugs": []
         },
         {
-          "name": "Men Bottoms",
-          "slug": "men/bottoms",
-          "parentSlug": "men",
-          "childrenSlugs": [
-            "men/bottoms/shorts"
-          ]
-        },
-        {
-          "name": "Men Tops test",
-          "slug": "men/tops",
-          "parentSlug": "men",
-          "childrenSlugs": [
-            "men/tops/shirts"
-          ]
+          "slug": "food/beverages",
+          "name": "food - Beverages - Water",
+          "description": "Water and beverages",
+          "childrenSlugs": []
         }
-      ]
+      ],
+      "totalCount": 4
     }
-  },
-  "extensions": {
-    "request-id": "c1d2e6a3-6671-408f-8674-14aae3ae890f"
   }
 }
 ```
