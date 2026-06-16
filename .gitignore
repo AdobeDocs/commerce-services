@@ -31,3 +31,4 @@ lerna-debug.log
 local-test.yml
 tmp/
 redoc-static.html
+.claude
