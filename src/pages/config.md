@@ -43,6 +43,8 @@
         - [Event reference](/shared-services/storefront-events/reference/index.md)
             - [Storefront events by framework](/shared-services/storefront-events/reference/event-framework.md)
             - [Complete list of storefront events](/shared-services/storefront-events/reference/storefront-events.md)
+        - [Storefront implementation guides](/shared-services/implementation/index.md)
+            - [Instrument checkout analytics for a Luma storefront](/shared-services/implementation/tutorial.md)
     - [Adobe Commerce Reporting API](/reporting/index.md)
         - [Export API](/reporting/export-api.md)
         - [Import API](/reporting/import-api.md)
