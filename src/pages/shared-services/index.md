@@ -7,4 +7,4 @@ keywords:
 
 # Shared services
 
-Learn about the events deployed to your storefront and how to publish, subscribe, and handle the events programmatically. For step-by-step Luma implementation guides, see [Storefront implementation guides](./implementation/index.md).
+Learn about the events deployed to your storefront and how to publish, subscribe, and handle the events programmatically. For a step-by-step Luma implementation guide, see [Storefront implementation guide](./implementation/index.md).
