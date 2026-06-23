@@ -9,7 +9,7 @@ keywords:
 
 # Instrument checkout analytics for a Luma storefront
 
-This guide shows how to build a custom Adobe Commerce module that publishes the `placeOrder` event on the checkout success page for a Luma-based storefront. After you complete this guide, Adobe Commerce can receive the `place-order` event that [Product Recommendations](../storefront-events/index.md#product-recommendations) and [Live Search](../storefront-events/index.md#live-search) use for revenue and conversion metrics.
+This guide shows how to build a custom Adobe Commerce module that publishes the `placeOrder` event on the checkout success page for a Luma-based storefront. After you complete this guide, Adobe Commerce can receive the `placeOrder` event that [Product Recommendations](../storefront-events/index.md#product-recommendations) and [Live Search](../storefront-events/index.md#live-search) use for revenue and conversion metrics.
 
 Adobe Commerce empties the cart server-side before the success page renders, so cart line items are unavailable when the page loads. This module uses a two-part approach:
 
@@ -31,7 +31,7 @@ You create a `Vendor_CheckoutAnalytics` module with these files:
 | `view/frontend/requirejs-config.js` | Registers the mixin and SDK/collector CDN paths |
 | `view/frontend/layout/checkout_onepage_success.xml` | Loads the success-page component |
 | `view/frontend/templates/checkout-success.phtml` | Initializes the success-page component |
-| `view/frontend/web/js/action/place-order-mixin.js` | Persists cart data before order placement |
+| `view/frontend/web/js/action/placeOrder-mixin.js` | Persists cart data before order placement |
 | `view/frontend/web/js/view/checkout-success.js` | Restores context and publishes `placeOrder` |
 | `view/frontend/web/js/noopSdk.js`, `noopCollector.js` | Fallback modules when CDN assets fail to load |
 
@@ -57,12 +57,27 @@ mkdir -p app/code/Vendor/CheckoutAnalytics/view/frontend/web/js/action
 mkdir -p app/code/Vendor/CheckoutAnalytics/view/frontend/web/js/view
 ```
 
+Confirm the following files are present before continuing:
+
+- app/code/Vendor/CheckoutAnalytics/registration.php
+- etc/module.xml
+- view/frontend/requirejs-config.js
+- view/frontend/layout/checkout_onepage_success.xml
+- view/frontend/templates/checkout-success.phtml
+- view/frontend/web/js/action/placeOrder-mixin.js
+- view/frontend/web/js/view/checkout-success.js
+
 ## Step 2: Define the module {#define-module}
 
-Create `app/code/Vendor/CheckoutAnalytics/etc/module.xml`:
+Create `app/code/Vendor/CheckoutAnalytics/etc/module.xml`. This declares the module and specifies a soft load-order dependency on `Magento_Checkout`, ensuring the mixin targets already-registered AMD modules.
 
 ```xml
 <?xml version="1.0"?>
+<!--
+    Vendor_CheckoutAnalytics module declaration.
+    Declares a soft dependency on Magento_Checkout so this module loads after it,
+    ensuring our mixins target already-registered AMD modules.
+-->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
     <module name="Vendor_CheckoutAnalytics">
@@ -75,10 +90,16 @@ Create `app/code/Vendor/CheckoutAnalytics/etc/module.xml`:
 
 ## Step 3: Register the module {#register-module}
 
-Create `app/code/Vendor/CheckoutAnalytics/registration.php`:
+Create `app/code/Vendor/CheckoutAnalytics/registration.php` at the module root. This registers the module with the Magento component registry.
 
 ```php
 <?php
+/**
+ * Vendor_CheckoutAnalytics
+ *
+ * Registers the module with the Magento component registry.
+ */
+
 use Magento\Framework\Component\ComponentRegistrar;
 
 ComponentRegistrar::register(
@@ -90,33 +111,60 @@ ComponentRegistrar::register(
 
 ## Step 4: Create fallback modules {#create-fallback}
 
-RequireJS uses these empty modules when CDN assets fail to load. Create each file with the same content.
+Create three empty AMD modules that serve as local fallbacks when the CDN is unreachable. RequireJS will automatically fall back to these if any CDN URL in `requirejs-config.js` fails to load, ensuring the checkout flow is never blocked.
 
-`app/code/Vendor/CheckoutAnalytics/view/frontend/web/js/noopSdk.js`:
+**File**: `app/code/Vendor/CheckoutAnalytics/view/frontend/web/js/noopSdk.js`:
 
 ```js
-define(function () {
-    'use strict';
+/**
+ * Copyright &copy; Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
 
-    return {};
-});
+/* eslint-disable */
+define(function () { });
 ```
 
-`app/code/Vendor/CheckoutAnalytics/view/frontend/web/js/noopCollector.js`:
+**File**: `app/code/Vendor/CheckoutAnalytics/view/frontend/web/js/noopCollector.js`:
 
 ```js
-define(function () {
-    'use strict';
+/**
+ * Copyright &copy; Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
 
-    return {};
-});
+/* eslint-disable */
+define(function () { });
 ```
 
-## Step 5: Create the place-order mixin {#create-mixin}
-
-Create `app/code/Vendor/CheckoutAnalytics/view/frontend/web/js/action/place-order-mixin.js`. This mixin runs before the standard place-order action and stores cart line items in `localStorage`.
+**File**: app/code/Vendor/CheckoutAnalytics/view/frontend/web/js/noopDs.js
 
 ```js
+/**
+ * Copyright &copy; Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/* eslint-disable */
+define(function () { });
+```
+
+## Step 5: Create the placeOrder mixin {#create-mixin}
+
+Create the placeOrder mixin. This intercepts `Magento_Checkout/js/action/placeOrder` before the redirect so cart and storefront data can be snapshotted to `localStorage`. Magento clears the cart server-side before the success page loads, making this the only opportunity to capture that data.
+
+For background on the mixin pattern, see [JavaScript Mixins](https://developer.adobe.com/commerce/frontend-core/javascript/mixins).
+
+**File**: app/code/Vendor/CheckoutAnalytics/view/frontend/web/js/action/placeOrder-mixin.js
+
+```js
+/**
+ * placeOrder-mixin.js — Vendor_CheckoutAnalytics
+ *
+ * Intercepts the placeOrder action before the redirect so we can snapshot
+ * cart + storefront data to localStorage. Magento clears the cart server-side
+ * before the success page loads, so this is the only opportunity to capture it.
+ */
 define([
     'mage/utils/wrapper',
     'Magento_Checkout/js/model/quote'
@@ -125,21 +173,57 @@ define([
 
     var STORAGE_KEY = 'mse_checkout_cart_data';
 
-    function persistCartData() {
-        var items = (quote.getItems() || []).map(function (item) {
-            return {
-                sku: item.sku,
-                name: item.name,
-                qty: item.qty,
-                price: parseFloat(item.price)
-            };
-        });
+    function getImageUrl(item) {
+        if (item.thumbnail) { return item.thumbnail; }
+        if (item.product && item.product.thumbnail_url) { return item.product.thumbnail_url; }
+        return '';
+    }
 
-        localStorage.setItem(STORAGE_KEY, JSON.stringify({ items: items }));
+    function persistCartData() {
+        try {
+            var quoteItems = quote.getItems();
+            var totals     = quote.getTotals()();  // KO observable — call it to get value
+            var cartId     = quote.getQuoteId ? quote.getQuoteId() : '';
+            var cc         = window.checkoutConfig || {};
+
+            var items = (quoteItems || []).map(function (item) {
+                return {
+                    productSku:      item.sku  || '',
+                    productName:     item.name || '',
+                    qty:             item.qty  || 1,
+                    offerPrice:      parseFloat(item.price) || 0,
+                    currencyCode:    (totals && totals.quote_currency_code) || '',
+                    productImageUrl: getImageUrl(item)
+                };
+            });
+
+            localStorage.setItem(STORAGE_KEY, JSON.stringify({
+                cartId: cartId,
+                items:  items,
+                grandTotal:     totals ? parseFloat(totals.grand_total)      || 0 : 0,
+                subTotal:       totals ? parseFloat(totals.subtotal)          || 0 : 0,
+                taxTotal:       totals ? parseFloat(totals.tax_amount)        || 0 : 0,
+                discountAmount: totals ? parseFloat(totals.discount_amount)   || 0 : 0,
+                currencyCode:   totals ? (totals.quote_currency_code || '')       : '',
+                storefrontInstance: {
+                    storeCode:     cc.storeCode                    || '',
+                    storeViewCode: cc.activeStore || cc.storeViewCode || '',
+                    websiteCode:   cc.websiteCode                  || '',
+                    environmentId: cc.environmentId                || '',
+                    storeId:       cc.storeId      || null,
+                    websiteId:     cc.websiteId    || null,
+                    storeGroupId:  cc.storeGroupId || null
+                }
+            }));
+        } catch (e) {
+            console.error('[CheckoutAnalytics] Failed to persist cart data:', e);
+        }
     }
 
     return function (originalAction) {
+        console.log('[CheckoutAnalytics] placeOrder mixin initialized');
         return wrapper.wrap(originalAction, function (originalFn, paymentData, messageContainer) {
+            console.log('[CheckoutAnalytics] placeOrder mixin invoked, persisting cart data');
             persistCartData();
             return originalFn(paymentData, messageContainer);
         });
@@ -147,11 +231,24 @@ define([
 });
 ```
 
-## Step 6: Create the success-page component {#create-success-page}
+## Step 6: Create the checkout success component {#create-success-page}
 
-Create `app/code/Vendor/CheckoutAnalytics/view/frontend/web/js/view/checkout-success.js`. This component sets [storefront context](../storefront-events/sdk/context.md) and restores cart data before it publishes the event.
+Create the success-page JavaScript component. This is initialized using the `x-magento-init` on the checkout success page. It restores the cart snapshot saved by the mixin, sets MSE contexts, and fires `mse.publish.placeOrder()`. The MSE SDK and Collector are declared as AMD dependencies so they are guaranteed to have executed before this callback runs.
+
+**File**: app/code/Vendor/CheckoutAnalytics/view/frontend/web/js/view/checkout-success.js
 
 ```js
+/**
+ * checkout-success.js — Vendor_CheckoutAnalytics
+ *
+ * Initialized via x-magento-init on the checkout_onepage_success page.
+ * Restores the cart snapshot saved by placeOrder-mixin.js, sets MSE contexts,
+ * and fires mse.publish.placeOrder().
+ *
+ * The SDK and Collector are loaded as AMD dependencies via requirejs-config.js paths.
+ * By the time this callback runs they have already executed and attached to
+ * window.magentoStorefrontEvents.
+ */
 define([
     'magentoStorefrontEvents',
     'magentoStorefrontEventCollector'
@@ -160,97 +257,224 @@ define([
 
     var STORAGE_KEY = 'mse_checkout_cart_data';
 
-    return function (config) {
-        var mse = window.magentoStorefrontEvents;
-        var storedData = localStorage.getItem(STORAGE_KEY);
-        var cartData = storedData ? JSON.parse(storedData) : null;
+    function getPersistedCartData() {
+        try {
+            var raw = localStorage.getItem(STORAGE_KEY);
+            return raw ? JSON.parse(raw) : null;
+        } catch (e) {
+            console.error('[CheckoutAnalytics] Could not parse persisted cart data:', e);
+            return null;
+        }
+    }
 
+    function getOrderId() {
+        var orderId = (window.checkoutConfig || {}).orderId;
+        if (orderId) {
+            return String(orderId);
+        }
+        // Fallback: Luma renders the increment ID inside .order-number > strong
+        var el = document.querySelector('.order-number strong');
+        return (el && el.textContent) ? el.textContent.trim() : '';
+    }
+
+    function publishPlaceOrder(mse, cartData) {
+        var cc    = window.checkoutConfig || {};
+        var items = (cartData && cartData.items) || [];
+
+        mse.context.setStorefrontInstance({
+            environment:           'Testing',
+            environmentId:         'YOUR_ENV_ID',
+            baseCurrencyCode:      'USD',
+            storeViewCurrencyCode: 'USD',
+            viewId:                'YOUR_VIEW_ID',
+            storefrontTemplate:    'LUMA_BRIDGE',
+            storeUrl:              ''
+        });
+
+        mse.context.setShoppingCart({
+            cartId: (cartData && cartData.cartId) || '',
+            items: items.map(function (item, ix) {
+                return {
+                    id:      String(ix),
+                    product: {
+                        name:         item.productName     || '',
+                        sku:          item.productSku      || '',
+                        mainImageUrl: item.productImageUrl || ''
+                    },
+                    quantity: item.qty || 1,
+                    prices:   { price: { value: item.offerPrice || 0 } }
+                };
+            }),
+            totalQuantity: items.length,
+            prices: {
+                subtotalExcludingTax: { value: cartData ? cartData.subTotal : 0 },
+                subtotalIncludingTax: { value: cartData ? cartData.subTotal + cartData.taxTotal : 0 },
+            }
+        });
+
+        mse.context.setOrder({
+            orderId:        getOrderId(),
+            grandTotal:     (cartData && cartData.grandTotal)     || 0,
+            subTotal:       (cartData && cartData.subTotal)       || 0,
+            taxTotal:       (cartData && cartData.taxTotal)       || 0,
+            discountAmount: (cartData && cartData.discountAmount) || 0,
+            currencyCode:   (cartData && cartData.currencyCode)   || ''
+        });
+
+        mse.context.setPage({
+            pageType:    'checkout',
+            eventType:   'visibilityHidden',
+            maxXOffset:  0,
+            maxYOffset:  0,
+            minHeight:   0,
+            minWidth:    0,
+            referrerUrl: document.referrer || '',
+            ping:        { pageInfos: [] }
+        });
+
+        var shopperId = 'guest';
+        if (cc.customerData && cc.customerData.id) {
+            shopperId = String(cc.customerData.id);
+        }
+        mse.context.setShopper({ shopperId: shopperId });
+
+        mse.publish.pageView();
+        mse.publish.placeOrder();
+
+        
+        //Set purchaseHistory in localStorgage for use in recommendations requests
+        //Catalog view matches the viewId set in setStorefrontInstance above
+        const key = `CatalogView1:purchaseHistory`;
+        const purchasedProducts = shoppingCartContext.items.map((item) => item.product.sku);
+        const purchaseHistory = JSON.parse(window.localStorage.getItem(key) || '[]');
+        purchaseHistory.push({ date: new Date().toISOString(), items: purchasedProducts });
+        window.localStorage.setItem(key, JSON.stringify(purchaseHistory.slice(-20)));
+        localStorage.removeItem(STORAGE_KEY);
+    }
+
+    return function () {
+        console.log('[CheckoutAnalytics] checkout-success component initialized');
+
+        var cartData = getPersistedCartData();
+        if (!cartData) {
+            console.warn('[CheckoutAnalytics] No cart snapshot in localStorage — ' +
+                'placeOrder event will fire without item-level detail.');
+        }
+
+        var mse = window.magentoStorefrontEvents;
         if (!mse) {
+            console.error('[CheckoutAnalytics] MSE SDK not available on window — cannot fire placeOrder event.');
             return;
         }
 
-        mse.context.setStorefrontInstance({
-            environment: config.environment || 'Production',
-            environmentId: config.environmentId,
-            viewId: config.viewId
-        });
-
-        if (cartData && cartData.items) {
-            mse.context.setShoppingCart({
-                items: cartData.items.map(function (item) {
-                    return {
-                        sku: item.sku,
-                        name: item.name,
-                        quantity: item.qty,
-                        price: item.price
-                    };
-                })
-            });
-        }
-
-        mse.publish.placeOrder();
-        localStorage.removeItem(STORAGE_KEY);
+        console.log('[CheckoutAnalytics] cartData:', cartData);
+        publishPlaceOrder(mse, cartData);
     };
 });
 ```
 
 ## Step 7: Register RequireJS configuration {#register-requirejs}
 
-Create `app/code/Vendor/CheckoutAnalytics/view/frontend/requirejs-config.js`:
+Create `requirejs-config.js`. This registers the placeOrder mixin and defines RequireJS paths for the MSE SDK, Collector, and data services base. Each path entry is an array — if the first CDN URL fails to load, RequireJS automatically falls back to the local noop module, so the checkout flow is never blocked.
+
+**File**: app/code/Vendor/CheckoutAnalytics/view/frontend/requirejs-config.js
 
 ```js
+/**
+ * RequireJS configuration for Vendor_CheckoutAnalytics.
+ *
+ * - placeOrder-mixin: snapshots cart to localStorage before the order redirect.
+ * - paths: loads the MSE SDK and Collector as AMD deps with CDN + noop fallbacks.
+ *   The success-page component (checkout-success.js) declares these as deps so
+ *   they are guaranteed to execute before its callback runs.
+ */
 var config = {
     config: {
         mixins: {
-            'Magento_Checkout/js/action/place-order': {
-                'Vendor_CheckoutAnalytics/js/action/place-order-mixin': true
+            'Magento_Checkout/js/action/placeOrder': {
+                'Vendor_CheckoutAnalytics/js/action/placeOrder-mixin': true
             }
         }
     },
     paths: {
         magentoStorefrontEvents: [
-            'https://cdn.jsdelivr.net/npm/@adobe/magento-storefront-events-sdk@1/dist/index',
+            'https://cdn.jsdelivr.net/npm/@adobe/magento-storefront-events-sdk@qa/dist/index',
             'Vendor_CheckoutAnalytics/js/noopSdk'
         ],
         magentoStorefrontEventCollector: [
-            'https://cdn.jsdelivr.net/npm/@adobe/magento-storefront-event-collector@1/dist/index',
+            'https://cdn.jsdelivr.net/npm/@adobe/magento-storefront-event-collector@qa/dist/index',
             'Vendor_CheckoutAnalytics/js/noopCollector'
+        ],
+        dataServicesBase: [
+            'https://acds-events.adobe.io/v7/ds.min',
+            'Magento_DataServices/js/noopDs'
         ]
     }
 };
 ```
 
-## Step 8: Add the layout update {#add-layout}
+>[!NOTE]
+>
+>The `@qa` tag loads the latest pre-release build of the SDK and Collector. For production deployments, pin to a stable release version. See [Step 12](#step-12-update-cdn-package-versions-optional) for details.
 
-Create `app/code/Vendor/CheckoutAnalytics/view/frontend/layout/checkout_onepage_success.xml`:
+## Step 8: Add the success page layout update {#add-layout}
+
+Create the layout XML file that injects the analytics block into the checkout success page. The `checkout_onepage_success` handle is dispatched by `Magento_Checkout` only on that page, ensuring this update is scoped correctly.
+
+**File**: app/code/Vendor/CheckoutAnalytics/view/frontend/layout/checkout_onepage_success.xml
 
 ```xml
 <?xml version="1.0"?>
+<!--
+    Injects our analytics block into the checkout success page.
+
+    The handle `checkout_onepage_success` is dispatched by
+    Magento_Checkout/Controller/Onepage/Success::execute() before rendering,
+    so this layout update is guaranteed to run only on that page.
+
+    We append a block inside `checkout.success` (the main success container)
+    so it renders after the order confirmation content. The block is
+    display-less — it only outputs a <script> initialisation tag.
+-->
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      layout="1column"
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
         <referenceContainer name="content">
             <block class="Magento\Framework\View\Element\Template"
-                   name="checkout.analytics.success"
-                   template="Vendor_CheckoutAnalytics::checkout-success.phtml"/>
+                   name="vendor.checkout_analytics.success"
+                   template="Vendor_CheckoutAnalytics::checkout-success.phtml"
+                   after="-"/>
         </referenceContainer>
     </body>
 </page>
 ```
 
-## Step 9: Add the template {#add-template}
+## Step 9: Add the success page template {#add-template}
 
-Create `app/code/Vendor/CheckoutAnalytics/view/frontend/templates/checkout-success.phtml`. Replace the placeholder values with your `environmentId` and `viewId`.
+Create the `.phtml` template. This file has no visible HTML — its sole purpose is to bootstrap the JavaScript component via the `x-magento-init` pattern so RequireJS loads and runs it after the page DOM is ready. The `*` selector initializes the component against the document body.
 
-```html
+**File**: app/code/Vendor/CheckoutAnalytics/view/frontend/templates/checkout-success.phtml
+
+```php
+<?php
+/**
+ * Vendor_CheckoutAnalytics — checkout success analytics initialisation.
+ *
+ * This template is injected on the checkout_onepage_success layout handle.
+ * It contains no visible HTML — its sole purpose is to bootstrap our JS
+ * component via the x-magento-init pattern so RequireJS loads and runs it
+ * after the page DOM is ready.
+ *
+ * The `*` selector tells Magento to initialise the component against the
+ * document body (no specific DOM element required).
+ *
+ * @var \Magento\Framework\View\Element\Template $block
+ */
+?>
 <script type="text/x-magento-init">
 {
     "*": {
-        "Vendor_CheckoutAnalytics/js/view/checkout-success": {
-            "environmentId": "YOUR_ENV_ID",
-            "viewId": "YOUR_VIEW_ID"
-        }
+        "Vendor_CheckoutAnalytics/js/view/checkout-success": {}
     }
 }
 </script>
@@ -262,52 +486,160 @@ Run the following commands from your Adobe Commerce root:
 
 ```bash
 bin/magento module:enable Vendor_CheckoutAnalytics
+```
+
+Run setup upgrade to register the module in `app/etc/config.php` and run any required schema or data upgrades:
+
+```bash
 bin/magento setup:upgrade
+```
+
+Compile dependency injection:
+
+```bash
 bin/magento setup:di:compile
+```
+
+>[!NOTE]
+>
+>This module contains no PHP classes beyond `registration.php`, so this step completes quickly. It is still required to rebuild the global DI map so Magento picks up the new module correctly.
+
+Deploy static content (the `-f` flag forces deployment in any application mode):
+
+```bash
 bin/magento setup:static-content:deploy -f
+```
+
+For production mode, specify your locale explicitly:
+
+```bash
+bin/magento setup:static-content:deploy en_US -f
+```
+
+Flush the cache:
+
+```bash
 bin/magento cache:flush
 ```
 
-## Verify the implementation
+## Step 11: Configure the storefront instance context {#config-context}
 
-Complete a test order and confirm the following:
+Open `view/frontend/web/js/view/checkout-success.js` and update the `setStorefrontInstance` call with your environment values:
 
-1. **Cart snapshot** — Before redirect, the browser stores cart data under the `mse_checkout_cart_data` key in `localStorage`.
-2. **SDK and collector** — On the success page, the browser loads the SDK and collector assets from the CDN (or the noop fallback if the CDN is blocked).
-3. **Event published** — In the browser console, `window.magentoStorefrontEvents` is defined and the `placeOrder` handler runs without errors.
-4. **Event delivery** — Follow [Verify event collection](../storefront-events/collector/verify.md) to confirm the collector sends the event to Adobe Commerce.
+```js
+mse.context.setStorefrontInstance({
+    environment:           'Production',   // 'Testing' or 'Production'
+    environmentId:         'YOUR_ENV_ID',  // Tenant ID associated with ACO/EDS storefront
+    baseCurrencyCode:      'USD',
+    storeViewCurrencyCode: 'USD',
+    viewId:                'YOUR_VIEW_ID', // Catalog View ID associated with ACO/EDS storefront
+    storefrontTemplate:    'LUMA_BRIDGE',
+    storeUrl:              'https://your-store.example.com'
+});
+```
 
-After verification, check the [Product Recommendations](https://experienceleague.adobe.com/en/docs/commerce/product-recommendations/admin/workspace) or [Live Search](https://experienceleague.adobe.com/en/docs/commerce/live-search/live-search-admin/performance) dashboard for `place-order` metrics.
+>[!IMPORTANT]
+>The `environmentId` value and `viewId` values need to align with the configuration of your EDS storefront. Using a placeholder value will cause events to be routed to the wrong data stream or dropped entirely.
+
+After editing the file, redeploy static content and flush the cache:
+
+```bash
+bin/magento setup:static-content:deploy -f && bin/magento cache:flush
+```
+
+## Step 12: Update CDN Package Versions (Optional) {#update-cdn}
+
+By default, `requirejs-config.js` loads the `@qa` tag of the SDK and Collector. To pin to a stable release, update the paths entries in `requirejs-config.js`:
+
+```js
+paths: {
+    magentoStorefrontEvents: [
+        'https://cdn.jsdelivr.net/npm/@adobe/magento-storefront-events-sdk@1/dist/index',
+        'Vendor_CheckoutAnalytics/js/noopSdk'
+    ],
+    magentoStorefrontEventCollector: [
+        'https://cdn.jsdelivr.net/npm/@adobe/magento-storefront-event-collector@1/dist/index',
+        'Vendor_CheckoutAnalytics/js/noopCollector'
+    ]
+}
+```
+
+After editing, redeploy static content and flush the cache.
+
+## Step 13: Verify the implementation {#verify-implementation}
+
+### Cart snapshot on the checkout page
+
+Confirm the mixin is capturing cart data before the redirect:
+
+1. Open your store in a browser with the DevTools console open.
+1. Add one or more products to the cart and proceed to checkout.
+1. In the console, confirm the mixin initialized: `[CheckoutAnalytics] placeOrder mixin initialized`.
+1. Place the order. Before the page redirects, confirm: `[CheckoutAnalytics] placeOrder mixin invoked, persisting cart data`.
+1. In DevTools, open *Application > Local Storage* and confirm a key named `mse_checkout_cart_data` exists with a JSON payload containing cart items, totals, and storefront instance fields.
+
+### Event published on the success page
+
+Confirm the `placeOrder` event fires correctly after the redirect:
+
+1.    After the redirect to the success page, open the console and confirm the following log messages appear:
+
+```bash
+[CheckoutAnalytics] checkout-success component initialized
+[CheckoutAnalytics] cartData: { cartId: "...", items: [...], ... }
+[CheckoutAnalytics] Publishing placeOrder event
+```
+
+1. Confirm the `mse_checkout_cart_data` key has been removed from Local Storage after the event fires.
+1. To confirm the event was received by the MSE SDK, run the following in the console before placing a test order:
+
+```bash
+window.magentoStorefrontEvents.subscribe.placeOrder(function (event) {
+    console.log('placeOrder event received:', event);
+});
+```
+
+>[!NOTE]
+>
+>If `window.magentoStorefrontEvents` is undefined on the success page, the CDN scripts failed to load. Check the **Network** tab in DevTools for failed requests to `cdn.jsdelivr.net`. The noop fallback modules prevent JavaScript errors but do not set `window.magentoStorefrontEvents`, so no event will fire.
 
 ## Troubleshooting
 
-### Mixin does not run
+### The placeOrder mixin is not running
 
-Confirm that `requirejs-config.js` is deployed and that static content is up to date. In the browser console, inspect registered mixins:
+Confirm the mixin is registered by checking the compiled RequireJS config in the browser:
 
 ```js
 require.s.contexts._.config.config.mixins
+// Should contain an entry for 'Magento_Checkout/js/action/placeOrder'
 ```
 
-You should see an entry for `Magento_Checkout/js/action/place-order`.
+If the entry is missing, re-run static content deployment and flush the cache.
 
-### Cart data is missing on the success page
+### mse_checkout_cart_data is empty or missing on the success page
 
-Custom payment methods or checkout customizations may bypass `Magento_Checkout/js/action/place-order`. Add the cart snapshot logic to the action your checkout flow uses before redirect.
+This means `persistCartData()` ran but the quote returned no items. This can happen if the active payment method bypasses the standard placeOrder action. Check whether your payment method uses a custom placeOrder action — if so, add a second mixin targeting that module.
 
-### SDK or collector does not load
+### The placeOrder event fires but contexts are missing or incorrect
 
-Check the browser Network tab for failed requests to `cdn.jsdelivr.net`. If the CDN is blocked, RequireJS loads the noop fallback and events are not sent to Adobe Commerce.
+Inspect the context state directly in the console:
 
-### Events publish but do not appear in dashboards
+```bash
+var mse = window.magentoStorefrontEvents;
+console.log(mse.context.getShoppingCart());
+console.log(mse.context.getOrder());
+console.log(mse.context.getStorefrontInstance());
+```
 
-Confirm that `environmentId` and `viewId` in `checkout-success.phtml` match your SaaS configuration. Then follow [Verify event collection](../storefront-events/collector/verify.md).
+Cross-reference each field against the [MSE context reference](https://developer.adobe.com/commerce/services/shared-services/storefront-events/sdk/context).
 
-## Next steps
+### Static content is not updating after editing JS files
 
-- [Context for storefront events](../storefront-events/sdk/context.md) — Add page, shopper, or order context as needed.
-- [Publish storefront events](../storefront-events/sdk/publish.md) — Reference for `mse.publish.placeOrder`.
-- [completeCheckout event](../storefront-events/reference/storefront-events.md#completecheckout) — Data collected from checkout events.
+In developer mode, RequireJS serves files directly from `app/code` so edits are reflected immediately. In production mode, redeploy static content and flush the cache after every JS change:
+
+```bash
+bin/magento setup:static-content:deploy -f && bin/magento cache:flush
+```
 
 ## Related documentation
 
