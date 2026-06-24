@@ -45,7 +45,25 @@ Before you begin, confirm the following:
 - Your `environmentId` and `viewId` from your Adobe Commerce SaaS configuration.
 - The [Storefront Events SDK](../storefront-events/sdk/install.md) and [Event Collector](../storefront-events/collector/index.md) are available from the CDN (this guide loads them via RequireJS).
 
-## Step 1: Create the module structure {#create-structure}
+## Implementation steps
+
+Follow these steps in order:
+
+1. [Create the module structure](#create-the-module-structure)
+1. [Define the module](#define-the-module)
+1. [Register the module](#register-the-module)
+1. [Create fallback modules](#create-fallback-modules)
+1. [Create the placeOrder mixin](#create-the-placeorder-mixin)
+1. [Create the checkout success component](#create-the-checkout-success-component)
+1. [Register RequireJS configuration](#register-requirejs-configuration)
+1. [Add the success page layout update](#add-the-success-page-layout-update)
+1. [Add the success page template](#add-the-success-page-template)
+1. [Enable the module](#enable-the-module)
+1. [Configure the storefront instance context](#configure-the-storefront-instance-context)
+1. [Update CDN package versions (optional)](#update-cdn-package-versions-optional)
+1. [Verify the implementation](#verify-the-implementation)
+
+## Create the module structure
 
 Run the following commands from your Adobe Commerce root:
 
@@ -67,7 +85,7 @@ Confirm the following files are present before continuing:
 - view/frontend/web/js/action/placeOrder-mixin.js
 - view/frontend/web/js/view/checkout-success.js
 
-## Step 2: Define the module {#define-module}
+## Define the module
 
 Create `app/code/Vendor/CheckoutAnalytics/etc/module.xml`. This declares the module and specifies a soft load-order dependency on `Magento_Checkout`, ensuring the mixin targets already-registered AMD modules.
 
@@ -88,7 +106,7 @@ Create `app/code/Vendor/CheckoutAnalytics/etc/module.xml`. This declares the mod
 </config>
 ```
 
-## Step 3: Register the module {#register-module}
+## Register the module
 
 Create `app/code/Vendor/CheckoutAnalytics/registration.php` at the module root. This registers the module with the Magento component registry.
 
@@ -109,7 +127,7 @@ ComponentRegistrar::register(
 );
 ```
 
-## Step 4: Create fallback modules {#create-fallback}
+## Create fallback modules
 
 Create three empty AMD modules that serve as local fallbacks when the CDN is unreachable. RequireJS will automatically fall back to these if any CDN URL in `requirejs-config.js` fails to load, ensuring the checkout flow is never blocked.
 
@@ -149,7 +167,7 @@ define(function () { });
 define(function () { });
 ```
 
-## Step 5: Create the placeOrder mixin {#create-placeorder-mixin}
+## Create the placeOrder mixin
 
 Create the placeOrder mixin. This intercepts `Magento_Checkout/js/action/placeOrder` before the redirect so cart and storefront data can be snapshotted to `localStorage`. Magento clears the cart server-side before the success page loads, making this the only opportunity to capture that data.
 
@@ -231,7 +249,7 @@ define([
 });
 ```
 
-## Step 6: Create the checkout success component {#create-checkout-success-component}
+## Create the checkout success component
 
 Create the success-page JavaScript component. This is initialized using the `x-magento-init` on the checkout success page. It restores the cart snapshot saved by the mixin, sets MSE contexts, and fires `mse.publish.placeOrder()`. The MSE SDK and Collector are declared as AMD dependencies so they are guaranteed to have executed before this callback runs.
 
@@ -373,7 +391,7 @@ define([
 });
 ```
 
-## Step 7: Register RequireJS configuration {#register-requirejs}
+## Register RequireJS configuration
 
 Create `requirejs-config.js`. This registers the placeOrder mixin and defines RequireJS paths for the MSE SDK, Collector, and data services base. Each path entry is an array — if the first CDN URL fails to load, RequireJS automatically falls back to the local noop module, so the checkout flow is never blocked.
 
@@ -415,9 +433,9 @@ var config = {
 
 <InlineAlert variant="note" slots="text"/>
 
-The `@qa` tag loads the latest pre-release build of the SDK and Collector. For production deployments, pin to a stable release version. See [Step 12](#update-cdn-versions) for details.
+The `@qa` tag loads the latest pre-release build of the SDK and Collector. For production deployments, pin to a stable release version. See [Update CDN package versions (optional)](#update-cdn-package-versions-optional) for details.
 
-## Step 8: Add the success page layout update {#add-layout}
+## Add the success page layout update
 
 Create the layout XML file that injects the analytics block into the checkout success page. The `checkout_onepage_success` handle is dispatched by `Magento_Checkout` only on that page, ensuring this update is scoped correctly.
 
@@ -449,7 +467,7 @@ Create the layout XML file that injects the analytics block into the checkout su
 </page>
 ```
 
-## Step 9: Add the success page template {#add-template}
+## Add the success page template
 
 Create the `.phtml` template. This file has no visible HTML — its sole purpose is to bootstrap the JavaScript component via the `x-magento-init` pattern so RequireJS loads and runs it after the page DOM is ready. The `*` selector initializes the component against the document body.
 
@@ -480,7 +498,7 @@ Create the `.phtml` template. This file has no visible HTML — its sole purpose
 </script>
 ```
 
-## Step 10: Enable the module {#enable-module}
+## Enable the module
 
 Run the following commands from your Adobe Commerce root:
 
@@ -522,7 +540,7 @@ Flush the cache:
 bin/magento cache:flush
 ```
 
-## Step 11: Configure the storefront instance context {#configure-storefront-context}
+## Configure the storefront instance context
 
 Open `view/frontend/web/js/view/checkout-success.js` and update the `setStorefrontInstance` call with your environment values:
 
@@ -548,7 +566,7 @@ After editing the file, redeploy static content and flush the cache:
 bin/magento setup:static-content:deploy -f && bin/magento cache:flush
 ```
 
-## Step 12: Update CDN Package Versions (Optional) {#update-cdn-versions}
+## Update CDN package versions (optional)
 
 By default, `requirejs-config.js` loads the `@qa` tag of the SDK and Collector. To pin to a stable release, update the paths entries in `requirejs-config.js`:
 
@@ -567,7 +585,7 @@ paths: {
 
 After editing, redeploy static content and flush the cache.
 
-## Step 13: Verify the implementation {#verify-implementation}
+## Verify the implementation
 
 ### Cart snapshot on the checkout page
 
