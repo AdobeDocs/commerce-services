@@ -2027,7 +2027,7 @@ An implementation of ProductViewOptionValue that adds details about a simple pro
 | `isDefault` - [`Boolean`](#boolean) | Indicates whether the option value is the default. |
 | `product` - [`SimpleProductView`](#simpleproductview) | Details about a simple product. For example, a product with a SKU of &#x60;123&#x60;, a name of &#x60;Product 1&#x60;, a price of &#x60;100.00&#x60;. |
 | `quantity` - [`Float`](#float) | Default quantity of an option value. |
-| `canEditQuantity` - [`Boolean`](#boolean) | Indicates if the quantity of the option value can be edited. |
+| `canEditQuantity` - [`Boolean`](#boolean) | Indicates whether the quantity of the option value can be edited. |
 | `title` - [`String`](#string) | The display name of the option value. For example, &#x60;Red&#x60;, &#x60;Blue&#x60; or &#x60;Green&#x60; |
 | `inStock` - [`Boolean`](#boolean) | Indicates whether the remaining quantity of the product option value has reached the out-of-stock threshold. |
 
