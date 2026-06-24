@@ -413,9 +413,9 @@ var config = {
 };
 ```
 
->[!NOTE]
->
->The `@qa` tag loads the latest pre-release build of the SDK and Collector. For production deployments, pin to a stable release version. See [Step 12](#step-12-update-cdn-package-versions-optional) for details.
+<InlineAlert variant="note" slots="text"/>
+
+The `@qa` tag loads the latest pre-release build of the SDK and Collector. For production deployments, pin to a stable release version. See [Step 12](#update-cdn) for details.
 
 ## Step 8: Add the success page layout update {#add-layout}
 
@@ -500,9 +500,9 @@ Compile dependency injection:
 bin/magento setup:di:compile
 ```
 
->[!NOTE]
->
->This module contains no PHP classes beyond `registration.php`, so this step completes quickly. It is still required to rebuild the global DI map so Magento picks up the new module correctly.
+<InlineAlert variant="note" slots="text"/>
+
+This module contains no PHP classes beyond `registration.php`, so this step completes quickly. It is still required to rebuild the global DI map so Magento picks up the new module correctly.
 
 Deploy static content (the `-f` flag forces deployment in any application mode):
 
@@ -538,8 +538,9 @@ mse.context.setStorefrontInstance({
 });
 ```
 
->[!IMPORTANT]
->The `environmentId` value and `viewId` values need to align with the configuration of your EDS storefront. Using a placeholder value will cause events to be routed to the wrong data stream or dropped entirely.
+<InlineAlert variant="important" slots="text"/>
+
+The `environmentId` value and `viewId` values need to align with the configuration of your EDS storefront. Using a placeholder value will cause events to be routed to the wrong data stream or dropped entirely.
 
 After editing the file, redeploy static content and flush the cache:
 
@@ -599,9 +600,9 @@ window.magentoStorefrontEvents.subscribe.placeOrder(function (event) {
 });
 ```
 
->[!NOTE]
->
->If `window.magentoStorefrontEvents` is undefined on the success page, the CDN scripts failed to load. Check the **Network** tab in DevTools for failed requests to `cdn.jsdelivr.net`. The noop fallback modules prevent JavaScript errors but do not set `window.magentoStorefrontEvents`, so no event will fire.
+<InlineAlert variant="note" slots="text"/>
+
+If `window.magentoStorefrontEvents` is undefined on the success page, the CDN scripts failed to load. Check the **Network** tab in DevTools for failed requests to `cdn.jsdelivr.net`. The noop fallback modules prevent JavaScript errors but do not set `window.magentoStorefrontEvents`, so no event will fire.
 
 ## Troubleshooting
 
