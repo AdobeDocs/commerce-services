@@ -149,7 +149,7 @@ define(function () { });
 define(function () { });
 ```
 
-## Step 5: Create the placeOrder mixin {#create-mixin}
+## Step 5: Create the placeOrder mixin {#create-placeorder-mixin}
 
 Create the placeOrder mixin. This intercepts `Magento_Checkout/js/action/placeOrder` before the redirect so cart and storefront data can be snapshotted to `localStorage`. Magento clears the cart server-side before the success page loads, making this the only opportunity to capture that data.
 
@@ -231,7 +231,7 @@ define([
 });
 ```
 
-## Step 6: Create the checkout success component {#create-success-page}
+## Step 6: Create the checkout success component {#create-checkout-success-component}
 
 Create the success-page JavaScript component. This is initialized using the `x-magento-init` on the checkout success page. It restores the cart snapshot saved by the mixin, sets MSE contexts, and fires `mse.publish.placeOrder()`. The MSE SDK and Collector are declared as AMD dependencies so they are guaranteed to have executed before this callback runs.
 
@@ -415,7 +415,7 @@ var config = {
 
 <InlineAlert variant="note" slots="text"/>
 
-The `@qa` tag loads the latest pre-release build of the SDK and Collector. For production deployments, pin to a stable release version. See [Step 12](#update-cdn) for details.
+The `@qa` tag loads the latest pre-release build of the SDK and Collector. For production deployments, pin to a stable release version. See [Step 12](#update-cdn-versions) for details.
 
 ## Step 8: Add the success page layout update {#add-layout}
 
@@ -522,7 +522,7 @@ Flush the cache:
 bin/magento cache:flush
 ```
 
-## Step 11: Configure the storefront instance context {#config-context}
+## Step 11: Configure the storefront instance context {#configure-storefront-context}
 
 Open `view/frontend/web/js/view/checkout-success.js` and update the `setStorefrontInstance` call with your environment values:
 
@@ -548,7 +548,7 @@ After editing the file, redeploy static content and flush the cache:
 bin/magento setup:static-content:deploy -f && bin/magento cache:flush
 ```
 
-## Step 12: Update CDN Package Versions (Optional) {#update-cdn}
+## Step 12: Update CDN Package Versions (Optional) {#update-cdn-versions}
 
 By default, `requirejs-config.js` loads the `@qa` tag of the SDK and Collector. To pin to a stable release, update the paths entries in `requirejs-config.js`:
 
@@ -647,5 +647,5 @@ bin/magento setup:static-content:deploy -f && bin/magento cache:flush
 - [Adobe Commerce Storefront Events SDK](../storefront-events/sdk/index.md)
 - [Install the Event Collector](../storefront-events/collector/index.md)
 - [Adobe Commerce storefront events](../storefront-events/index.md)
-- [JavaScript mixins](https://developer.adobe.com/commerce/frontend-core/guide/themes/js-mixins/)
+- [JavaScript mixins](https://developer.adobe.com/commerce/frontend-core/javascript/mixins)
 - [RequireJS](https://requirejs.org/docs/api.html)
