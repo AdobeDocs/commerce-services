@@ -22,6 +22,8 @@ If you are using the Data Connection module, the module deploys the eventing fra
 - [**Adobe Commerce Storefront Events SDK**](sdk/index.md)—Provides access to a common data layer and an event publishing/subscription service.
 - [**Adobe Commerce Storefront Events Collector**](collector/index.md)—Listens for and handles events sent from the SDK.
 
+For a Luma-specific example that publishes the `placeOrder` event on checkout success, see [Instrument checkout analytics for a Luma storefront](../implementation/tutorial.md).
+
 ## Available events based on module
 
 The following section lists the events from which each module collects behavioral data.
