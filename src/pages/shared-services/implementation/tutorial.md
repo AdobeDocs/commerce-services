@@ -41,7 +41,7 @@ You create a `Vendor_CheckoutAnalytics` module with these files:
 
 Before you begin, confirm the following:
 
-- Adobe Commerce 2.4.x with a Luma-based or Luma-derived frontend (RequireJS/AMD).
+- Adobe Commerce 2.4.x with a Luma-based or Luma-derived frontend (RequireJS and Asynchronous Module Definition (AMD))
 - PHP 8.1+ and Adobe Commerce CLI access.
 - Browser access to CDN resources on `cdn.jsdelivr.net`.
 - Your `environmentId` and `viewId` from your Adobe Commerce SaaS configuration.
@@ -121,7 +121,7 @@ ComponentRegistrar::register(
 
 ## Create fallback modules
 
-Create three empty AMD modules that serve as local fallbacks when the CDN is unreachable. RequireJS will automatically fall back to these if any CDN URL in `requirejs-config.js` fails to load, ensuring the checkout flow is never blocked.
+Create three empty AMD modules that serve as local fallbacks when the CDN is unreachable. RequireJS automatically falls back to these if any CDN URL in `requirejs-config.js` fails to load, ensuring the checkout flow is never blocked.
 
 **File**: `app/code/Vendor/CheckoutAnalytics/view/frontend/web/js/noopSdk.js`:
 
@@ -161,7 +161,7 @@ define(function () { });
 
 ## Create the place-order mixin
 
-Create the place-order mixin. This intercepts `Magento_Checkout/js/action/place-order` before the redirect so cart and storefront data can be snapshotted to `localStorage`. Magento clears the cart server-side before the success page loads, making this the only opportunity to capture that data.
+Create the place-order mixin. This mixin intercepts `Magento_Checkout/js/action/place-order` before the redirect so cart and storefront data can be snapshotted to `localStorage`. Magento clears the cart server-side before the success page loads, making this the only opportunity to capture that data.
 
 For background on the mixin pattern, see [JavaScript Mixins](https://developer.adobe.com/commerce/frontend-core/javascript/mixins).
 
@@ -385,7 +385,7 @@ define([
 
 ## Register RequireJS configuration
 
-Create `requirejs-config.js`. This registers the place-order mixin and defines RequireJS paths for the MSE SDK, Collector, and data services base. Each path entry is an array — if the first CDN URL fails to load, RequireJS automatically falls back to the local noop module, so the checkout flow is never blocked.
+Create the `requirejs-config.js` configuration file. This registers the place-order mixin and defines RequireJS paths for the MSE SDK, Collector, and data services base. Each path entry is an array — if the first CDN URL fails to load, RequireJS automatically falls back to the local noop module, so the checkout flow is never blocked.
 
 **File**: app/code/Vendor/CheckoutAnalytics/view/frontend/requirejs-config.js
 
@@ -394,8 +394,8 @@ Create `requirejs-config.js`. This registers the place-order mixin and defines R
  * RequireJS configuration for Vendor_CheckoutAnalytics.
  *
  * - place-order-mixin: snapshots cart to localStorage before the order redirect.
- * - paths: loads the MSE SDK and Collector as AMD deps with CDN + noop fallbacks.
- *   The success-page component (checkout-success.js) declares these as deps so
+ * - paths: loads the MSE SDK and Collector as AMD dependencies with CDN + noop fallbacks.
+ *   The success-page component (checkout-success.js) declares these as dependencies so
  *   they are guaranteed to execute before its callback runs.
  */
 var config = {
@@ -546,7 +546,7 @@ mse.context.setStorefrontInstance({
 
 <InlineAlert variant="important" slots="text"/>
 
-The `environmentId` value and `viewId` values need to align with the configuration of your EDS storefront. Using a placeholder value will cause events to be routed to the wrong data stream or dropped entirely.
+The `environmentId` value and `viewId` values need to align with the configuration of your EDS storefront. Using a placeholder value causes events to be routed to the wrong data stream or dropped entirely.
 
 After editing the file, redeploy static content and flush the cache:
 
@@ -577,15 +577,15 @@ Confirm the mixin is capturing cart data before the redirect:
 
 1. Open your store in a browser with the DevTools console open.
 1. Add one or more products to the cart and proceed to checkout.
-1. In the console, confirm the mixin initialized: `[CheckoutAnalytics] place-order mixin initialized`.
+1. In the console, confirm that the mixin initialized: `[CheckoutAnalytics] place-order mixin initialized`.
 1. Place the order. Before the page redirects, confirm: `[CheckoutAnalytics] place-order mixin invoked, persisting cart data`.
-1. In DevTools, open *Application > Local Storage* and confirm a key named `mse_checkout_cart_data` exists with a JSON payload containing cart items, totals, and storefront instance fields.
+1. In DevTools, open *Application > Local Storage* and confirm that a key named `mse_checkout_cart_data` exists with a JSON payload containing cart items, totals, and storefront instance fields.
 
 ### Event published on the success page
 
 Confirm the `placeOrder` event fires correctly after the redirect:
 
-1.    After the redirect to the success page, open the console and confirm the following log messages appear:
+1. After the redirect to the success page, open the console and confirm the following log messages appear:
 
 ```bash
 [CheckoutAnalytics] checkout-success component initialized
@@ -593,8 +593,8 @@ Confirm the `placeOrder` event fires correctly after the redirect:
 [CheckoutAnalytics] Publishing placeOrder event
 ```
 
-1. Confirm the `mse_checkout_cart_data` key has been removed from Local Storage after the event fires.
-1. To confirm the event was received by the MSE SDK, run the following in the console before placing a test order:
+1. Confirm that the `mse_checkout_cart_data` key has been removed from Local Storage after the event fires.
+1. To confirm that the event was received by the MSE SDK, run the following code in the console before placing a test order:
 
 ```bash
 window.magentoStorefrontEvents.subscribe.placeOrder(function (event) {
@@ -604,13 +604,13 @@ window.magentoStorefrontEvents.subscribe.placeOrder(function (event) {
 
 <InlineAlert variant="note" slots="text"/>
 
-If `window.magentoStorefrontEvents` is undefined on the success page, the CDN scripts failed to load. Check the **Network** tab in DevTools for failed requests to `cdn.jsdelivr.net`. The noop fallback modules prevent JavaScript errors but do not set `window.magentoStorefrontEvents`, so no event will fire.
+If `window.magentoStorefrontEvents` is undefined on the success page, the CDN scripts failed to load. Check the **Network** tab in DevTools for failed requests to `cdn.jsdelivr.net`. The noop fallback modules prevent JavaScript errors but do not set `window.magentoStorefrontEvents`, so no events fire.
 
 ## Troubleshooting
 
 ### The place-order mixin is not running
 
-Confirm the mixin is registered by checking the compiled RequireJS config in the browser:
+Confirm that the mixin is registered by checking the compiled RequireJS config in the browser:
 
 ```js
 require.s.contexts._.config.config.mixins
@@ -621,7 +621,7 @@ If the entry is missing, re-run static content deployment and flush the cache.
 
 ### mse_checkout_cart_data is empty or missing on the success page
 
-This means `persistCartData()` ran but the quote returned no items. This can happen if the active payment method bypasses the standard `place-order` action. Check whether your payment method uses a custom place-order action — if so, add a second mixin targeting that module.
+Missing or empty results mean that `persistCartData()` ran but the quote returned no items. This issue can happen if the active payment method bypasses the standard `place-order` action. Check whether your payment method uses a custom place-order action — if so, add a second mixin targeting that module.
 
 ### The placeOrder event fires but contexts are missing or incorrect
 
