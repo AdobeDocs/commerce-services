@@ -1,7 +1,7 @@
 {
-  "total": 43,
+  "total": 45,
   "offset": 0,
-  "limit": 43,
+  "limit": 45,
   "data": [
     {
       "page": "/",
@@ -18,9 +18,10 @@
     {
       "page": "/config",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/160899226?v=4",
         "https://avatars.githubusercontent.com/u/12731225?v=4"
       ],
-      "lastUpdated": "5/4/2026"
+      "lastUpdated": "6/23/2026"
     },
     {
       "page": "/includes/authentication/get-new-bearer-token",
@@ -49,7 +50,7 @@
         "https://avatars.githubusercontent.com/u/6391769?v=4",
         "https://avatars.githubusercontent.com/u/12731225?v=4"
       ],
-      "lastUpdated": "6/24/2026"
+      "lastUpdated": "5/26/2026"
     },
     {
       "page": "/live-search/",
@@ -259,21 +260,39 @@
     {
       "page": "/shared-services/",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/160899226?v=4",
         "https://avatars.githubusercontent.com/u/13662379?v=4",
         "https://avatars.githubusercontent.com/u/11652541?v=4"
       ],
-      "lastUpdated": "7/23/2025"
+      "lastUpdated": "6/23/2026"
+    },
+    {
+      "page": "/shared-services/implementation/",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/160899226?v=4"
+      ],
+      "lastUpdated": "6/23/2026"
+    },
+    {
+      "page": "/shared-services/implementation/tutorial",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/45772211?v=4",
+        "https://avatars.githubusercontent.com/u/160899226?v=4"
+      ],
+      "lastUpdated": "6/25/2026"
     },
     {
       "page": "/shared-services/storefront-events/",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/160899226?v=4",
         "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/45772211?v=4",
         "https://avatars.githubusercontent.com/u/9975788?v=4",
         "https://avatars.githubusercontent.com/u/6391769?v=4",
         "https://avatars.githubusercontent.com/u/13662379?v=4"
       ],
-      "lastUpdated": "5/4/2026"
+      "lastUpdated": "6/24/2026"
+
     },
     {
       "page": "/shared-services/storefront-events/collector/",
