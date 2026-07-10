@@ -25,7 +25,7 @@ For example, you can define a product attribute as searchable, filterable, and s
 Metadata is required to index product data for discovery. Consequently, it must be created before creating products. For each Commerce project, the following product attribute metadata must be defined for each catalog source (`locale`):
 
 - `sku`
-- `name`
+-  'name`
 - `description`
 - `shortDescription`
 - `price`
