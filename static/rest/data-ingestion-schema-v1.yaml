@@ -2444,7 +2444,7 @@ components:
         position:
           type: integer
           format: int32
-          description: Sort order of the category
+          description: Sort order for the category
         metaTags:
           $ref: "#/components/schemas/ProductMetaAttribute"
         images:
@@ -2498,7 +2498,7 @@ components:
         position:
           type: integer
           format: int32
-          description: Sort order of the category
+          description: Sort order for the category
         metaTags:
           $ref: "#/components/schemas/ProductMetaAttribute"
         images:
