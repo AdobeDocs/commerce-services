@@ -352,7 +352,7 @@ paths:
             schema:
               type: array
               items:
-                $ref: "#/components/schemas/FeedMetadataUpdate"
+                $ref: "#/components/schemas/FeedProductMetadataUpdate"
             examples:
               FeedWithMetadataInformation:
                 summary: Example of product attribute metadata
@@ -403,7 +403,7 @@ paths:
             schema:
               type: array
               items:
-                $ref: "#/components/schemas/FeedMetadataDelete"
+                $ref: "#/components/schemas/FeedProductMetadataDelete"
             examples:
               FeedWithMetadataInformation:
                 summary: Delete product attribute metadata
@@ -495,7 +495,7 @@ paths:
             schema:
               type: array
               items:
-                $ref: "#/components/schemas/FeedMetadataUpdate"
+                $ref: "#/components/schemas/FeedCategoryMetadataUpdate"
             examples:
               FeedWithMetadataInformation:
                 summary: Example of category attribute metadata
@@ -541,7 +541,7 @@ paths:
             schema:
               type: array
               items:
-                $ref: "#/components/schemas/FeedMetadataDelete"
+                $ref: "#/components/schemas/FeedCategoryMetadataDelete"
             examples:
               FeedWithMetadataInformation:
                 summary: Delete category attribute metadata
@@ -573,6 +573,7 @@ paths:
           - Use the optional `position` field to assign a numeric sort order to the category.
           - Use the optional `metaTags` field to define SEO meta tags (title, description, keywords) for the category.
           - Use the optional `images` field to associate images with the category.
+          - Use the optional `attributes` field to add additional attributes.
 
         After you create categories, link a product to a category using the `path` value for the [routes](#operation/createProducts!path=routes&t=request) field. When you create or update products. The value of `path` in the route must match the `slug` value for the category.
 
@@ -621,6 +622,12 @@ paths:
                         "description": "Shop men's clothing, shoes, and accessories",
                         "keywords": ["men", "clothing", "accessories"]
                       },
+                      "attributes": [
+                        {
+                          "code": "bottom_description",
+                          "values": ["The bottom description"]
+                        }
+                      ],
                       "images": [
                         {
                           "url": "https://example.com/images/men-category.png",
@@ -2657,12 +2664,17 @@ components:
           format: int32
           description: Sort order for the category
         metaTags:
-          $ref: "#/components/schemas/ProductMetaAttribute"
+          $ref: "#/components/schemas/CategoryMetaAttribute"
+        attributes:
+          type: array
+          description: A list of category attributes.
+          items:
+            $ref: "#/components/schemas/CategoryAttribute"
         images:
           type: array
           description: A list of category images.
           items:
-            $ref: "#/components/schemas/ProductImage"
+            $ref: "#/components/schemas/CategoryImage"
       additionalProperties: false
     FeedCategoryUpdate:
       title: FeedCategoryUpdate
@@ -2711,12 +2723,17 @@ components:
           format: int32
           description: Sort order for the category
         metaTags:
-          $ref: "#/components/schemas/ProductMetaAttribute"
+          $ref: "#/components/schemas/CategoryMetaAttribute"
+        attributes:
+          type: array
+          description: A list of category attributes.
+          items:
+            $ref: "#/components/schemas/CategoryAttribute"
         images:
           type: array
           description: A list of category images.
           items:
-            $ref: "#/components/schemas/ProductImage"
+            $ref: "#/components/schemas/CategoryImage"
       additionalProperties: false
     FeedCategoryDelete:
       title: Delete category
@@ -3316,6 +3333,22 @@ components:
         description:
           type: string
           description: A meta description
+    CategoryMetaAttribute:
+      title: Meta Attributes
+      description: Meta attributes that are specified in <meta> tags.
+      type: object
+      properties:
+        title:
+          type: string
+          description: A meta title
+        keywords:
+          type: array
+          description: A meta keywords
+          items:
+            type: string
+        description:
+          type: string
+          description: A meta description
     ProductAttribute:
       title: Product Attribute
       type: object
@@ -3354,6 +3387,21 @@ components:
             [Option Value ID](#operation/createProducts!path=options/values/id&t=request) in a configurable product.
 
             A variant reference ID can be specified only for a product that represents a variant of a configurable product.
+    CategoryAttribute:
+      title: Category Attribute
+      type: object
+      required:
+        - code
+        - values
+      properties:
+        code:
+          type: string
+          description: Category Attribute Code
+        values:
+          type: array
+          description: A list of value(s) associated with a specified attribute code.
+          items:
+            type: string
     ProductRoutes:
       title: Routes
       type: object
@@ -3393,6 +3441,34 @@ components:
               - SMALL
               - THUMBNAIL
               - SWATCH
+        customRoles:
+          type: array
+          description: >
+            Custom image role. Merchants can define custom roles in addition to the predefined values.
+          items:
+            type: string
+    CategoryImage:
+      title: Category Image
+      type: object
+      required:
+        - url
+      properties:
+        url:
+          type: string
+          description: Media resource URL
+        label:
+          type: string
+          description: Media resource label
+        roles:
+          type: array
+          description: |
+            Roles associated with this image that determine how the image is used on the storefront.
+            - `BASE`: Category image is visible as a main image on the Category Detail Page.
+            - `THUMBNAIL`: Thumbnail images appear in the thumbnail gallery, shopping cart, etc.
+          items:
+            enum:
+              - BASE
+              - THUMBNAIL
         customRoles:
           type: array
           description: >
