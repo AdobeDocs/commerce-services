@@ -421,10 +421,6 @@ paths:
         - CategoryMetadata
       summary: Create category attribute metadata
       description: |
-        To ensure category data is indexed for discovery, create or replace existing category attribute metadata resources before creating categories.
-
-        Also, you can define metadata for custom attributes.
-
         When creating category attribute metadata:
           - Each category attribute requires a unique `code` and `source`.
           - Use the `dataType` field to define the data type for the category attribute.
