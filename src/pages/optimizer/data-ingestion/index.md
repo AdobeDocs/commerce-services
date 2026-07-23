@@ -16,13 +16,13 @@ Developers setting up catalogs for merchants with large or complex product assor
 
 The Data Ingestion API is designed to be used by backend applications to manage product data. It is not intended for use by frontend applications or storefronts. It is implemented as a REST (Representational State Transfer) API endpoint to manage the following types of data.
 
-## Metadata
+## Product metadata
 
-Metadata defines the characteristics and behavior of a product attribute. It includes details such as the attribute's type, label, input method, and usage in the storefront, search, and filtering functionalities. These settings control how product attributes appear and function throughout the storefront.
+Product metadata defines the characteristics and behavior of a product attribute. It includes details such as the attribute's type, label, input method, and usage in the storefront, search, and filtering functionalities. These settings control how product attributes appear and function throughout the storefront.
 
 For example, you can define a product attribute as searchable, filterable, and sortable. You can also specify the search type for a product attribute, such as autocomplete or exact match.
 
-Metadata is required to index product data for discovery. Consequently, it must be created before creating products. For each Commerce project, the following product attribute metadata must be defined for each catalog source (`locale`):
+Product metadata is required to index product data for discovery. Consequently, it must be created before creating products. For each Commerce project, the following product attribute metadata must be defined for each catalog source (`locale`):
 
 - `sku`
 - `name`
@@ -32,11 +32,19 @@ Metadata is required to index product data for discovery. Consequently, it must 
 
 You can also define custom metadata for additional product attributes. For example, you can define a `brand` attribute to allow product discovery and filtering by brand name.
 
-For details, see [Metadata API](../../reference/rest/index.md#tag/Metadata) in the *Data Ingestion API Reference*.
+For details, see [Product Metadata API](../../reference/rest/index.md#tag/ProductMetadata) in the *Data Ingestion API Reference*.
+
+## Category metadata
+
+Category metadata defines the characteristics of a custom category attribute, such as its data type and display label. Define category metadata to create custom category attributes that you can then assign values to on individual categories using the `attributes` field.
+
+Unlike product metadata, category metadata is optional. You only need to define it if you want to add custom category attributes beyond the standard category fields, such as `name`, `description`, and `metaTags`.
+
+For details, see [Category Metadata API](../../reference/rest/index.md#tag/CategoryMetadata) in the *Data Ingestion API Reference*.
 
 ## Categories
 
-Categories are used to organize products into a hierarchical structure, making it easier for customers to navigate and find products in the storefront. Categories can be nested, allowing you to create subcategories within main categories. For details on creating categories and category hierarchies using slug-based paths, see [Categories](../../reference/rest/index.md) resource in the API reference.
+Categories are used to organize products into a hierarchical structure, making it easier for customers to navigate and find products in the storefront. Categories can be nested, allowing you to create subcategories within main categories. You can also assign custom category attributes—defined using category metadata—to a category using the `attributes` field. For details on creating categories and category hierarchies using slug-based paths, see [Categories](../../reference/rest/index.md) resource in the API reference.
 
 ## Products
 
