@@ -255,7 +255,7 @@ Pass `slugs` when you need a specific branch rather than a level-capped slice fr
 
 ### Optional fields add overhead
 
-The `description`, `metaTags`, and `images` fields on `categoryTree` are optional. Selecting them adds negligible latency—at most about 7 ms in testing. Exclude these fields when a view doesn't need descriptive content or SEO metadata; excluding them is about payload relevance, not performance.
+The `description`, `metaTags`, and `images` fields on `categoryTree` are optional. Selecting them adds negligible latency—at most about 7 ms in testing. Exclude these fields when a view doesn't need descriptive content or SEO metadata. Excluding them is about payload relevance, not performance.
 
 ### Limit `categoryTree` depth
 

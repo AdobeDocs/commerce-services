@@ -70,7 +70,7 @@ npm run test:config
 
 ## REST API reference
 
-For details on generating the REST API reference, see [`rest-api/README.md`](rest-api/README.md).
+For details on generating the REST API reference, see [`static/rest/README.md`](static/rest/README.md).
 
 ## GraphQL API reference
 
