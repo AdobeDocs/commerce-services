@@ -78,11 +78,11 @@ Follow these steps to test any API operation using the interactive documentation
    - Examine the response body and headers
    - Note any error messages for troubleshooting
 
-## Example: Testing the Create Metadata operation
+## Example: Testing the Create ProductMetadata operation
 
-Here's a practical example of testing the Create Metadata endpoint:
+Here's a practical example of testing the Create ProductMetadata endpoint:
 
-1. Navigate to **POST /v1/catalog/attributes/metadata** in the API Reference.
+1. Navigate to the **ProductMetadata** section, then locate [**POST /v1/catalog/products/metadata**](../../reference/rest/index.md#operation/createProductMetadata) in the API Reference.
 2. Click **Try it**.
 3. Enter your `tenantId` in the path parameter.
 4. Add your access token to the Authorization header.

@@ -81,18 +81,18 @@
     {
       "page": "/optimizer/data-ingestion/",
       "avatars": [
-        "https://avatars.githubusercontent.com/u/12731225?v=4",
-        "https://avatars.githubusercontent.com/u/6391769?v=4"
+        "https://avatars.githubusercontent.com/u/6391769?v=4",
+        "https://avatars.githubusercontent.com/u/12731225?v=4"
       ],
-      "lastUpdated": "5/6/2026"
+      "lastUpdated": "7/15/2026"
     },
     {
       "page": "/optimizer/data-ingestion/api-testing",
       "avatars": [
-        "https://avatars.githubusercontent.com/u/12731225?v=4",
-        "https://avatars.githubusercontent.com/u/6391769?v=4"
+        "https://avatars.githubusercontent.com/u/6391769?v=4",
+        "https://avatars.githubusercontent.com/u/12731225?v=4"
       ],
-      "lastUpdated": "5/6/2026"
+      "lastUpdated": "7/15/2026"
     },
     {
       "page": "/optimizer/data-ingestion/authentication",
@@ -276,10 +276,11 @@
     {
       "page": "/shared-services/implementation/tutorial",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/13182778?v=4",
         "https://avatars.githubusercontent.com/u/45772211?v=4",
         "https://avatars.githubusercontent.com/u/160899226?v=4"
       ],
-      "lastUpdated": "6/25/2026"
+      "lastUpdated": "7/21/2026"
     },
     {
       "page": "/shared-services/storefront-events/",

@@ -354,7 +354,7 @@ define([
         
         //Set purchaseHistory in localStorgage for use in recommendations requests
         //Catalog view matches the viewId set in setStorefrontInstance above
-        const key = `CatalogView1:purchaseHistory`;
+        const key = `YOUR_VIEW_ID:purchaseHistory`;
         const purchasedProducts = shoppingCartContext.items.map((item) => item.product.sku);
         const purchaseHistory = JSON.parse(window.localStorage.getItem(key) || '[]');
         purchaseHistory.push({ date: new Date().toISOString(), items: purchasedProducts });
