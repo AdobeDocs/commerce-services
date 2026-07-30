@@ -17,7 +17,7 @@ Use the following API operations to manage categories for Commerce projects that
 
 - Create category data using the `categories` operations available in the [Data Ingestion REST API](../../reference/rest/index.md#tag/Categories), and using the `products` operations to manage product category assignments.
 
-- Retrieve category navigation and hierarchy data using the [`navigation`](../../reference/graphql/index.md#navigation) and [`categoryTree`](../../reference/graphql/index.md#categorytree) queries. Both queries take a `family` argument where applicable; on `categoryTree`, `family` is optional—pass it to scope results when your catalog uses multiple category families.
+- Retrieve category navigation and hierarchy data using the [`navigation`](../../reference/graphql/index.md#navigation) and [`categoryTree`](../../reference/graphql/index.md#categorytree) queries. Both queries take a `family` argument where applicable; on `categoryTree`, `family` is optional—pass it to scope results when your catalog uses multiple category families. See [How category families work](#how-category-families-work) for what a family is and how it shapes the response.
 
 - Search categories by name with optional family filtering and pagination using the [`searchCategory`](../../reference/graphql/index.md#searchcategory) query.
 
@@ -132,6 +132,90 @@ For complete field details, including the `CategoryMetaTags` and `CategoryImage`
 
 See the [CategoryTree query examples](#categorytree-query-examples) and [searchCategory query examples](#searchcategory-query-examples) sections for example queries and responses using this type.
 
+## How category families work
+
+A **family** is a named tag you apply to category nodes in the canonical category tree. Use families to scope navigation menus, category trees, and search results to a subset of your catalog, such as a seasonal promotion or a specific storefront. This way, you avoid duplicating categories.
+
+### Family-scoped tree construction rules
+
+Calling `navigation(family: "X")` does not return a filtered copy of the canonical tree. Instead, the query walks the canonical tree and applies these rules:
+
+- **Include** a node if it is tagged with the requested family.
+- **Skip** a node not tagged with the family—omit it from the response, but continue traversing its children.
+- **Promote** a tagged node to its nearest tagged ancestor, skipping over any untagged nodes in between.
+- **Root-promote** a tagged node with no tagged ancestor at all—it becomes a root-level node in the response.
+
+#### Example: One untagged intermediate node
+
+Given the following category tree (tags shown in brackets):
+
+```text
+outdoor-gear                         [top_menu]
+  └── camping                        [top_menu, summer-promotion]
+        └── tents                    [top_menu, summer-promotion]
+
+apparel                              [top_menu]
+  └── mens                           [top_menu, summer-promotion]
+        └── shirts                   [top_menu]              ← untagged intermediate
+              └── short-sleeve       [top_menu, summer-promotion]
+```
+
+Calling `navigation(family: "summer-promotion")` returns:
+
+```json
+{
+  "navigation": [
+    { "slug": "outdoor-gear/camping", "children": [
+        { "slug": "outdoor-gear/camping/tents", "children": [] }
+    ]},
+    { "slug": "apparel/mens", "children": [
+        { "slug": "apparel/mens/shirts/short-sleeve", "children": [] }
+    ]}
+  ]
+}
+```
+
+- `outdoor-gear` and `apparel` are not tagged with `summer-promotion`, so they are skipped. Their tagged children (`camping`, `mens`) are promoted to root level.
+- `shirts` is not tagged with `summer-promotion`, so it is skipped. Its tagged child `short-sleeve` is promoted directly under `mens`, its nearest tagged ancestor.
+- Every `slug` reflects the canonical full path (for example, `apparel/mens/shirts/short-sleeve`)—not a path recalculated for the virtual position. See [Slug values are canonical, not virtual](#slug-values-are-canonical-not-virtual).
+
+#### Example: Multiple stacked untagged ancestors
+
+Promotion can skip more than one level. Given:
+
+```text
+electronics                          [top_menu]
+  └── audio                          [top_menu]              ← untagged
+        └── headphones               [top_menu]              ← untagged
+              └── wireless           [top_menu]              ← untagged
+                    └── earbuds      [top_menu, summer-promotion]
+```
+
+Calling `navigation(family: "summer-promotion")` returns:
+
+```json
+{
+  "navigation": [
+    { "slug": "electronics/audio/headphones/wireless/earbuds", "children": [] }
+  ]
+}
+```
+
+`audio`, `headphones`, and `wireless` are all skipped—none is tagged with `summer-promotion`. Because `earbuds` has no tagged ancestor at all, promotion carries it all the way to the root of the response, not just past one intermediate node. Its `slug` still reflects the full canonical path.
+
+### Slug values are canonical, not virtual
+
+A promoted node's `slug` always reflects its full path in the canonical category tree, never a path relative to its promoted (virtual) parent. Do not infer a category's real ancestry from its position in a `navigation` response—use the `slug` segments instead.
+
+### Empty family results
+
+If no categories in the catalog are tagged with the requested family, `navigation` returns an empty array (`{ "navigation": [] }`), not `null` and not an error.
+
+### Common mistakes to avoid
+
+- **Assuming every ancestor is tagged**—see [Family-scoped tree construction rules](#family-scoped-tree-construction-rules).
+- **Expecting virtual slugs**—see [Slug values are canonical, not virtual](#slug-values-are-canonical-not-virtual).
+
 ## Limitations and considerations
 
 ### Choose the right query for the use case
@@ -145,6 +229,21 @@ See the [CategoryTree query examples](#categorytree-query-examples) and [searchC
 
 The `navigation` query returns a maximum of four levels of nested categories. Nesting `children` beyond four levels in your query returns no additional data. Design your category hierarchy and query depth accordingly.
 
+### Query latency guidance
+
+Measured P95 (95th percentile) latency for `navigation` scales with tree depth and the number of children per node:
+
+| Depth | Max children per node | Approx. total categories | Measured P95 |
+|---|---|---|---|
+| 2 | 200 | 201 | 200 ms |
+| 3 | 20 | 421 | 210 ms |
+| 4 | 6 | 260 | 130 ms |
+| 4 | 7 | — | 460 ms (degrades) |
+
+Width affects latency more than depth: at depth 4, going from 6 to 7 children per node degrades P95 from 130 ms to 460 ms. Design wide category hierarchies with these numbers in mind.
+
+`categoryTree` and `searchCategory` have no identified latency limits across the depth, width, and payload combinations tested.
+
 ### `categoryTree` depth and discovery behavior
 
 The `depth` argument behaves differently depending on whether you pass starting `slugs`:
@@ -156,7 +255,7 @@ Pass `slugs` when you need a specific branch rather than a level-capped slice fr
 
 ### Optional fields add overhead
 
-The `description`, `metaTags`, and `images` fields on `categoryTree` are optional. Exclude them when building navigation or hierarchy views that do not need descriptive content or SEO metadata.
+The `description`, `metaTags`, and `images` fields on `categoryTree` are optional. Selecting them adds negligible latency—at most about 7 ms in testing. Exclude these fields when a view does not need descriptive content or SEO metadata. Excluding them is about payload relevance, not performance.
 
 ### Limit `categoryTree` depth
 
@@ -182,7 +281,7 @@ type Query {
 }
 ```
 
-The `family` parameter is required and specifies which category family to retrieve. The query returns the full hierarchy for that family in a single request.
+The `family` parameter is required and specifies which category family to retrieve. The query returns the full hierarchy for that family in a single request, built using the rules described in [How category families work](#how-category-families-work).
 
 ### Retrieve basic top menu navigation
 

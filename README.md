@@ -68,6 +68,10 @@ To validate the table of contents file:
 npm run test:config
 ```
 
+## REST API reference
+
+For details on generating the REST API reference, see [`static/rest/README.md`](static/rest/README.md).
+
 ## GraphQL API reference
 
 The Merchandising GraphQL API reference is generated using [SpectaQL](https://github.com/anvilco/spectaql). It introspects the live schema, injects custom descriptions from a metadata overlay, and filters the output to include only the queries and types supported by Adobe Commerce Optimizer.
