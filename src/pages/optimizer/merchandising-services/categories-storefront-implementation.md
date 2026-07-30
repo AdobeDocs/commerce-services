@@ -134,7 +134,7 @@ See the [CategoryTree query examples](#categorytree-query-examples) and [searchC
 
 ## How category families work
 
-A **family** is a named tag you apply to category nodes in the canonical category tree. Use families to scope navigation menus, category trees, and search results to a subset of your catalog—for example, a seasonal promotion or a specific storefront—without duplicating categories.
+A **family** is a named tag you apply to category nodes in the canonical category tree. Use families to scope navigation menus, category trees, and search results to a subset of your catalog, such as a seasonal promotion or a specific storefront. This way, you avoid duplicating categories.
 
 ### Family-scoped tree construction rules
 
@@ -255,7 +255,7 @@ Pass `slugs` when you need a specific branch rather than a level-capped slice fr
 
 ### Optional fields add overhead
 
-The `description`, `metaTags`, and `images` fields on `categoryTree` are optional. Selecting them adds negligible latency—at most about 7 ms in testing. Exclude these fields when a view doesn't need descriptive content or SEO metadata. Excluding them is about payload relevance, not performance.
+The `description`, `metaTags`, and `images` fields on `categoryTree` are optional. Selecting them adds negligible latency—at most about 7 ms in testing. Exclude these fields when a view does not need descriptive content or SEO metadata. Excluding them is about payload relevance, not performance.
 
 ### Limit `categoryTree` depth
 
