@@ -13,7 +13,7 @@ keywords:
 
 # Use cases for the Merchandising API
 
-The Merchandising API supports various e-commerce scenarios. The catalog data delivered by the API is filtered based on the request headers and the catalog view, catalog source, policy, and price book configuration in Adobe Commerce Optimizer. This allows you to create tailored storefront experiences for different customer segments, channels, and regions.
+The Merchandising API supports various e-commerce scenarios. The catalog data delivered by the API is filtered based on the request headers and the catalog view, catalog source, policy, and price book configuration in Adobe Commerce Optimizer. This allows you to create tailored storefront experiences for different customer segments, channels, and regions. A catalog view can also be configured as a Private Catalog View, restricting access to clients that present a valid signed access token. See [Authentication](using-the-api.md#authentication).
 
 **E-commerce Storefronts:**
 
@@ -26,7 +26,7 @@ The Merchandising API supports various e-commerce scenarios. The catalog data de
 
 **Multi-channel Commerce:**
 
-* **B2B Portals**: Customize catalogs for business customers
+* **B2B Portals**: Customize catalogs for business customers, including Private Catalog Views for contracted assortments and account-specific pricing restricted to authorized buyers
 * **Marketplace Integration**: Power third-party marketplace listings
 * **Mobile Apps**: Provide consistent data across mobile platforms
 * **Headless Commerce**: Support decoupled frontend architectures
