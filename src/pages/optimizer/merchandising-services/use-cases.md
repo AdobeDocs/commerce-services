@@ -79,7 +79,7 @@ The query returns a `ProductView` output object with the product content values.
 
 #### Return details about a simple product
 
-The following query returns details about simple product with sku `cru-sus-prm-2014`. `
+The following query returns details about a simple product with SKU `cru-sus-prm-2014`.
 
 <CodeBlock slots="heading, code" repeat="2" languages="JSON" />
 

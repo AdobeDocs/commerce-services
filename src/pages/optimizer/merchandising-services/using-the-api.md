@@ -13,7 +13,7 @@ keywords:
 
 # Get started with the Merchandising API
 
-Use the Merchandising API to retrieve product data from your Commerce catalogs and display it in Commerce frontend experiences. Data includes products, product attribute metadata, prices books, and prices.
+Use the Merchandising API to retrieve product data from your Commerce catalogs and display it in Commerce frontend experiences. Data includes products,categories, product and category attribute metadata, prices books, and prices.
 
 ## Prerequisites
 

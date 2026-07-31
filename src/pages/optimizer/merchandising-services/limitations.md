@@ -24,7 +24,7 @@ The Merchandising API provides powerful capabilities for accessing catalog data,
 
   For details about these limits, see [Boundaries and Limits](https://experienceleague.adobe.com/en/docs/commerce/optimizer/boundaries-limits) in the *Adobe Commerce Optimizer Guide*.
 
-## Private Catalog View Limits
+## Private catalog view limits
 
 - **Restricted Access Keys per catalog view**: Maximum of 3
 - **Restricted Access Keys per environment**: Maximum of 100
