@@ -21,7 +21,7 @@ Before using the Merchandising API, ensure you have:
 
 - **Adobe Commerce Optimizer Access**: Active subscription and the instance ID associated with your Adobe Commerce Optimizer instance
 - **Catalog Data**: Products and pricing data ingested via the [Data Ingestion API](../data-ingestion/index.md)
-- **Catalog Views**: Configured views and policies in Adobe Commerce Optimizer
+- **Catalog views**: Configured views and policies in Adobe Commerce Optimizer
 - **Authentication Setup**: Proper headers configured for API requests
 - **GraphQL Client**: A tool or library to make GraphQL requests (e.g., Postman, Apollo Client, or cURL)
 - **Familiarity with GraphQL**: Basic understanding of GraphQL queries and mutations
@@ -57,17 +57,45 @@ Sandbox instances are available only in the North America region.
 
 ### Authentication
 
-Authentication is not required for the Merchandising API.
+Authentication is not required for the Merchandising API by default.
+
+A catalog view with Catalog Protection enabled and at least one Restricted Access Key assigned is called a **Private Catalog View**. Requests to a Private Catalog View must include a valid, signed JSON Web Token (JWT) in the `X-Commerce-Access-Token` header. Adobe Commerce Optimizer validates the token's `RS256` signature against the Restricted Access Keys assigned to the catalog view and returns data only if the signature is valid and neither the token nor the key has expired.
+
+Generating the RSA key pair, signing the token, and configuring Restricted Access Keys are the responsibility of your client application. The public key you register with Adobe Commerce Optimizer must be PEM-encoded RSA, between 2048 and 8192 bits; the matching private key signs each JWT and should never leave your system. See [Restricted access keys](https://experienceleague.adobe.com/en/docs/commerce/optimizer/setup/restricted-access-keys) and [Protect a catalog view](https://experienceleague.adobe.com/en/docs/commerce/optimizer/setup/catalog-view#protect-a-catalog-view) for setup steps.
+
+A request to a Private Catalog View without a valid token returns a GraphQL error instead of data:
+
+```json
+{
+  "errors": [
+    {
+      "message": "Access key validation failed: Missing token",
+      "extensions": { "x-commerce-exception": "access-key-invalid" }
+    }
+  ]
+}
+```
+
+The `message` field describes why validation failed:
+
+| Reason | Cause |
+|---|---|
+| `Missing token` | No `X-Commerce-Access-Token` header was sent on a Private Catalog View. |
+| `Access token signature invalid` | The token's signature doesn't verify against any Restricted Access Key assigned to the catalog view, for example because it was signed with the wrong key or was tampered with. |
+| `Restricted access is enabled but no valid access keys are available` | Catalog Protection is enabled, but no Restricted Access Keys are assigned to the catalog view, or every assigned key has expired. |
+
+A token that has passed its own expiration (the `exp` claim) is denied the same way, even if the signature would otherwise validate.
 
 ### Headers
 
-When making requests to the storefront API, you must include required HTTP headers that provide necessary information, such as the catalog view ID, catalog source locale. Additionally, you can include optional policy and price book headers that tailor the API response to your needs.
+When making requests to the Merchandising API, you must include required HTTP headers that provide necessary information, such as the catalog view ID, catalog source locale. Additionally, you can include optional policy and price book headers that tailor the API response to your needs.
 
 | Header name| Description |
 |--------------|-------------|
 |`AC-View-ID` | Required. The unique ID assigned to the catalog view that products will be sold through. For example, in the automotive industry, the catalog view could be dealers. In the manufacturing industry, the view could be a manufacturing location for suppliers. You can view the list of available catalog views and find the viewID from the [Adobe Commerce Optimizer UI](https://experienceleague.adobe.com/en/docs/commerce/optimizer/setup/catalog-view).|
 |`AC-Policy-{*}` | Optional. The trigger name configured for a policy that sets data access filters to restrict product access based on request attributes and context. Examples include POS physical stores, marketplaces, or advertisement pipelines like Google, Meta, or Instagram. You can view the list of available policies and associated ids from the [Adobe Commerce Optimizer UI](https://experienceleague.adobe.com/en/docs/commerce/optimizer/setup/policies). You can specify multiple policy headers per request. Example: `AC-Policy-Brand`.|
-|`AC-Price-Book-ID` | Optional. Defines how prices are calculated for a specific catalog view. Supply this value if the merchant uses price books to calculate product pricing. If you do not include the Price Book ID, Merchandising Services provides a default price book `main` with currency in US dollars. See the Catalog View configuration for a list of price books available for use with the specified Catalog View.|
+|`AC-Price-Book-ID` | Optional. Defines how prices are calculated for a specific catalog view. Supply this value if the merchant uses price books to calculate product pricing. If you do not include the Price Book ID, Merchandising Services provides a default price book `main` with currency in US dollars. See the catalog view configuration for a list of price books available for use with the specified catalog view.|
+|`X-Commerce-Access-Token` | Conditionally required. Required if the catalog view specified by `AC-View-ID` is a Private Catalog View. The signed JWT proving authorization to access that catalog view. See [Authentication](#authentication).|
 
 ### Request template
 
@@ -79,7 +107,6 @@ curl --request POST \
 --header 'AC-View-ID: {{catalogViewId}}'  \
 --header 'AC-Price-Book-ID: {{priceBookId}}'  \
 --header 'AC-Policy-{{attributeCode}}: {{attributeValue}}'  \
-
 --data '{{apiPayload}}'
 ```
 
@@ -116,6 +143,23 @@ To get started with the Merchandising API, follow these steps to make your first
    ```
 
    For sample requests and examples using the API, see the [Merchandising API Reference](../../reference/graphql/index.md).
+
+   If the catalog view specified by `AC-View-ID` is a Private Catalog View, add the `X-Commerce-Access-Token` header with a valid signed JWT to the request. See [Authentication](#authentication) for how the token is generated and validated.
+
+   ```shell
+   curl --request POST \
+   --url https://na1-sandbox.api.commerce.adobe.com/{{tenantId}}/graphql \
+   --header 'AC-View-ID: {{catalogViewId}}'  \
+   --header 'AC-Price-Book-ID: {{priceBookId}}'  \
+   --header 'X-Commerce-Access-Token: {{accessToken}}'  \
+   --data '{{apiPayload}}'
+   ```
+
+   | Placeholder name | Description                                                                                                     |
+   |------------------|-----------------------------------------------------------------------------------------------------------------|
+   | `accessToken` | Required for Private Catalog Views. The signed JWT proving authorization to access the catalog view specified by `catalogViewId`, for example `eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...`.|
+
+   Omitting this header, or supplying an invalid or expired token, returns the GraphQL error shown in [Authentication](#authentication) instead of catalog data.
 
 ## Test with the GraphQL Playground
 

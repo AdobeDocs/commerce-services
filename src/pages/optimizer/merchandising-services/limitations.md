@@ -24,6 +24,15 @@ The Merchandising API provides powerful capabilities for accessing catalog data,
 
   For details about these limits, see [Boundaries and Limits](https://experienceleague.adobe.com/en/docs/commerce/optimizer/boundaries-limits) in the *Adobe Commerce Optimizer Guide*.
 
+## Private Catalog View Limits
+
+- **Restricted Access Keys per catalog view**: Maximum of 3
+- **Restricted Access Keys per environment**: Maximum of 100
+- **RSA key size**: PEM-encoded RSA public keys must be between 2048 and 8192 bits
+- **Key propagation on revocation**: Removing or deleting a Restricted Access Key may take a short time (observed up to approximately 5 minutes) to take effect due to caching, after which requests using tokens signed by that key are denied
+
+  For additional limits, see [Boundaries and Limits](https://experienceleague.adobe.com/en/docs/commerce/optimizer/boundaries-limits) in the *Adobe Commerce Optimizer Guide*.
+
 ## Data Constraints
 
 - **Read-Only Access**: The API provides read-only access to catalog data
