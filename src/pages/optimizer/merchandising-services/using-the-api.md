@@ -59,9 +59,17 @@ Sandbox instances are available only in the North America region.
 
 Authentication is not required for the Merchandising API by default.
 
-A catalog view with Catalog Protection enabled and at least one Restricted Access Key assigned is called a **Private Catalog View**. Requests to a Private Catalog View must include a valid, signed JSON Web Token (JWT) in the `X-Commerce-Access-Token` header. Adobe Commerce Optimizer validates the token's `RS256` signature against the Restricted Access Keys assigned to the catalog view and returns data only if the signature is valid and neither the token nor the key has expired.
+However, if you configure a catalog view with catalog protection and restricted access keys to create a private catalog view. Requests to a Private Catalog View must include a valid, signed JSON Web Token (JWT) in the `X-Commerce-Access-Token` header.
 
-Generating the RSA key pair, signing the token, and configuring Restricted Access Keys are the responsibility of your client application. The public key you register with Adobe Commerce Optimizer must be PEM-encoded RSA, between 2048 and 8192 bits; the matching private key signs each JWT and should never leave your system. See [Restricted access keys](https://experienceleague.adobe.com/en/docs/commerce/optimizer/setup/restricted-access-keys) and [Protect a catalog view](https://experienceleague.adobe.com/en/docs/commerce/optimizer/setup/catalog-view#protect-a-catalog-view) for setup steps.
+Setting up a Private Catalog View is the responsibility of your client application:
+
+- **Generate an RSA key pair.** The public key must be PEM-encoded and between 2048 and 8192 bits.
+- **Register the public key** as a Restricted Access Key on the catalog view. See [Restricted access keys](https://experienceleague.adobe.com/en/docs/commerce/optimizer/setup/restricted-access-keys) and [Protect a catalog view](https://experienceleague.adobe.com/en/docs/commerce/optimizer/setup/catalog-view#protect-a-catalog-view).
+- **Keep the private key** on your system, and use it to sign a JWT for each request.
+
+Adobe Commerce Optimizer validates each token's `RS256` signature against the Restricted Access Keys assigned to the catalog view, and returns catalog data only if the signature is valid and neither the token nor the key has expired.
+
+![Sequence diagram showing the Private Catalog View authentication flow: registering an RSA public key as a Restricted Access Key, then signing and validating a JWT on each request](../../images/adobe-commerce-optimizer-auth-sequence_1.png)
 
 A request to a Private Catalog View without a valid token returns a GraphQL error instead of data:
 
@@ -142,8 +150,6 @@ To get started with the Merchandising API, follow these steps to make your first
      -d '{"query": "query ProductSearch($search: String!) { productSearch( phrase: $search, page_size: 10) { items { productView { sku name description shortDescription images { url } ... on SimpleProductView { attributes { label name value } price { regular { amount { value currency } } roles } } } } } }", "variables": { "search": "your-string"}}'
    ```
 
-   For sample requests and examples using the API, see the [Merchandising API Reference](../../reference/graphql/index.md).
-
    If the catalog view specified by `AC-View-ID` is a Private Catalog View, add the `X-Commerce-Access-Token` header with a valid signed JWT to the request. See [Authentication](#authentication) for how the token is generated and validated.
 
    ```shell
@@ -160,6 +166,10 @@ To get started with the Merchandising API, follow these steps to make your first
    | `accessToken` | Required for Private Catalog Views. The signed JWT proving authorization to access the catalog view specified by `catalogViewId`, for example `eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...`.|
 
    Omitting this header, or supplying an invalid or expired token, returns the GraphQL error shown in [Authentication](#authentication) instead of catalog data.
+
+<InlineAlert variant="info" slots="text" />
+
+For sample requests and examples using the API, see the [Merchandising API Reference].
 
 ## Test with the GraphQL Playground
 
