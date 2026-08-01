@@ -13,7 +13,7 @@ keywords:
 
 # Get started with the Merchandising API
 
-Use the Merchandising API to retrieve product data from your Commerce catalogs and display it in Commerce frontend experiences. Data includes products,categories, product and category attribute metadata, prices books, and prices.
+Use the Merchandising API to retrieve product data from your Commerce catalogs and display it in Commerce frontend experiences. Data includes products, categories, product and category attribute metadata, price books, and prices.
 
 ## Prerequisites
 
@@ -44,7 +44,7 @@ The URL structure is:
 ```https://{{region}}-{{environment}}.api.commerce.adobe.com/{{tenantId}}```
 
 - `region` is the cloud region where your instance is deployed.
-- `environment-type` is present only for non-production,`sandbox` environments.
+- `environment` is present only for non-production `sandbox` environments.
 - `tenantId` is the unique identifier for your organization's specific instance within the Adobe Experience Cloud.
 
 <InlineAlert variant="info" slots="text" />
@@ -59,9 +59,9 @@ Sandbox instances are available only in the North America region.
 
 Authentication is not required for the Merchandising API by default.
 
-However, if you configure a catalog view with catalog protection and restricted access keys to create a private catalog view. Requests to a Private Catalog View must include a valid, signed JSON Web Token (JWT) in the `X-Commerce-Access-Token` header.
+However, requests for data from private catalog views configured with catalog protection and restricted access keys must include a valid, signed JSON Web Token (JWT) in the `X-Commerce-Access-Token` header.
 
-Setting up a Private Catalog View is the responsibility of your client application:
+Setting up a private catalog view is the responsibility of your client application:
 
 - **Generate an RSA key pair.** The public key must be PEM-encoded and between 2048 and 8192 bits.
 - **Register the public key** as a Restricted Access Key on the catalog view. See [Restricted access keys](https://experienceleague.adobe.com/en/docs/commerce/optimizer/setup/restricted-access-keys) and [Protect a catalog view](https://experienceleague.adobe.com/en/docs/commerce/optimizer/setup/catalog-view#protect-a-catalog-view).
@@ -69,7 +69,7 @@ Setting up a Private Catalog View is the responsibility of your client applicati
 
 Adobe Commerce Optimizer validates each token's `RS256` signature against the Restricted Access Keys assigned to the catalog view, and returns catalog data only if the signature is valid and neither the token nor the key has expired.
 
-![Sequence diagram showing the Private Catalog View authentication flow: registering an RSA public key as a Restricted Access Key, then signing and validating a JWT on each request](../../images/adobe-commerce-optimizer-auth-sequence_1.png)
+![Sequence diagram showing the Private Catalog View authentication flow: registering an RSA public key as a Restricted Access Key, then signing and validating a JWT on each request](../../images/merchandising/adobe-commerce-optimizer-auth-sequence.png)
 
 A request to a Private Catalog View without a valid token returns a GraphQL error instead of data:
 
@@ -140,7 +140,7 @@ To get started with the Merchandising API, follow these steps to make your first
 
 2. Make your first query.
 
-   Use the following example to search for products using the `productSearch` query, replacing the variable with your own values based on the catalog data and the configuration or your Adobe Commerce Optimizer instance This query retrieves a list of products based on a search term, including their IDs, SKUs, names, and prices.
+   Use the following example to search for products using the `productSearch` query. Replace the variables with values that match your catalog data and your Adobe Commerce Optimizer configuration. This query retrieves a list of products based on a search term, including their IDs, SKUs, names, and prices.
 
    ```bash
    curl -X POST \
@@ -169,7 +169,7 @@ To get started with the Merchandising API, follow these steps to make your first
 
 <InlineAlert variant="info" slots="text" />
 
-For sample requests and examples using the API, see the [Merchandising API Reference].
+For sample requests and examples using the API, see the [Merchandising API Reference](../../reference/graphql/index.md).
 
 ## Test with the GraphQL Playground
 
