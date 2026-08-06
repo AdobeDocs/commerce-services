@@ -83,7 +83,7 @@ For custom storefronts built with frameworks like React, Vue.js, Angular, or any
 - **API Key Protection**: Never expose API keys in client-side code
 - **HTTPS**: Always use HTTPS for production environments
 - **Request Validation**: Validate all user inputs before sending to the API
-- **Private Catalog Views**: If a catalog view has Catalog Protection enabled, requests must include a signed JWT in the `X-Commerce-Access-Token` header. See [Authentication](using-the-api.md#authentication) for details.
+- **Private Catalog Views**: If a catalog view has Catalog Protection enabled, requests must include a signed JSON Web Token (JWT) in the `AC-Catalog-View-Access-Token` header. See [Authentication](using-the-api.md#authentication) for details.
 
 ### Data Access
 

@@ -59,7 +59,7 @@ Sandbox instances are available only in the North America region.
 
 Authentication is not required for the Merchandising API by default.
 
-However, requests for data from private catalog views configured with catalog protection and restricted access keys must include a valid, signed JSON Web Token (JWT) in the `X-Commerce-Access-Token` header.
+However, requests for data from private catalog views configured with catalog protection and restricted access keys must include a valid, signed JSON Web Token (JWT) in the `AC-Catalog-View-Access-Token` header.
 
 Setting up a private catalog view is the responsibility of your client application:
 
@@ -88,7 +88,7 @@ The `message` field describes why validation failed:
 
 | Reason | Cause |
 |---|---|
-| `Missing token` | No `X-Commerce-Access-Token` header was sent on a Private Catalog View. |
+| `Missing token` | No `AC-Catalog-View-Access-Token` header was sent on a Private Catalog View. |
 | `Access token signature invalid` | The token's signature doesn't verify against any Restricted Access Key assigned to the catalog view, for example because it was signed with the wrong key or was tampered with. |
 | `Restricted access is enabled but no valid access keys are available` | Catalog Protection is enabled, but no Restricted Access Keys are assigned to the catalog view, or every assigned key has expired. |
 
@@ -103,7 +103,7 @@ When making requests to the Merchandising API, you must include required HTTP he
 |`AC-View-ID` | Required. The unique ID assigned to the catalog view that products will be sold through. For example, in the automotive industry, the catalog view could be dealers. In the manufacturing industry, the view could be a manufacturing location for suppliers. You can view the list of available catalog views and find the viewID from the [Adobe Commerce Optimizer UI](https://experienceleague.adobe.com/en/docs/commerce/optimizer/setup/catalog-view).|
 |`AC-Policy-{*}` | Optional. The trigger name configured for a policy that sets data access filters to restrict product access based on request attributes and context. Examples include POS physical stores, marketplaces, or advertisement pipelines like Google, Meta, or Instagram. You can view the list of available policies and associated ids from the [Adobe Commerce Optimizer UI](https://experienceleague.adobe.com/en/docs/commerce/optimizer/setup/policies). You can specify multiple policy headers per request. Example: `AC-Policy-Brand`.|
 |`AC-Price-Book-ID` | Optional. Defines how prices are calculated for a specific catalog view. Supply this value if the merchant uses price books to calculate product pricing. If you do not include the Price Book ID, Merchandising Services provides a default price book `main` with currency in US dollars. See the catalog view configuration for a list of price books available for use with the specified catalog view.|
-|`X-Commerce-Access-Token` | Conditionally required. Required if the catalog view specified by `AC-View-ID` is a Private Catalog View. The signed JWT proving authorization to access that catalog view. See [Authentication](#authentication).|
+|`AC-Catalog-View-Access-Token` | Conditionally required. Required if the catalog view specified by `AC-View-ID` is a Private Catalog View. The signed JWT proving authorization to access that catalog view. See [Authentication](#authentication).|
 
 ### Request template
 
@@ -150,14 +150,14 @@ To get started with the Merchandising API, follow these steps to make your first
      -d '{"query": "query ProductSearch($search: String!) { productSearch( phrase: $search, page_size: 10) { items { productView { sku name description shortDescription images { url } ... on SimpleProductView { attributes { label name value } price { regular { amount { value currency } } roles } } } } } }", "variables": { "search": "your-string"}}'
    ```
 
-   If the catalog view specified by `AC-View-ID` is a Private Catalog View, add the `X-Commerce-Access-Token` header with a valid signed JWT to the request. See [Authentication](#authentication) for how the token is generated and validated.
+   If the catalog view specified by `AC-View-ID` is a Private Catalog View, add the `AC-Catalog-View-Access-Token` header with a valid signed JWT to the request. See [Authentication](#authentication) for how the token is generated and validated.
 
    ```shell
    curl --request POST \
    --url https://na1-sandbox.api.commerce.adobe.com/{{tenantId}}/graphql \
    --header 'AC-View-ID: {{catalogViewId}}'  \
    --header 'AC-Price-Book-ID: {{priceBookId}}'  \
-   --header 'X-Commerce-Access-Token: {{accessToken}}'  \
+   --header 'AC-Catalog-View-Access-Token: {{accessToken}}'  \
    --data '{{apiPayload}}'
    ```
 
