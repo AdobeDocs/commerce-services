@@ -24,7 +24,7 @@ When building dynamic storefronts with the Merchandising GraphQL API, it's essen
 
 ## Private catalog view access errors
 
-If a request to a Private Catalog View returns an `access-key-invalid` GraphQL error instead of data, check the `message` field for the specific cause:
+If a request to a private catalog view returns an `access-key-invalid` GraphQL error instead of data, check the `message` field for the specific cause:
 
 - **Missing token**: Add the `AC-Catalog-View-Access-Token` header with a valid signed JSON Web Token (JWT) for the catalog view specified by `AC-View-ID`. See [Authentication](using-the-api.md#authentication).
 - **Access token signature invalid**: Confirm the JWT was signed with the private key that matches a Restricted Access Key assigned to that catalog view, and that the token wasn't truncated or altered.
