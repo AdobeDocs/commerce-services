@@ -114,7 +114,7 @@ curl --request POST \
 --url https://na1-sandbox.api.commerce.adobe.com/{{tenantId}}/graphql \
 --header 'AC-View-ID: {{catalogViewId}}'  \
 --header 'AC-Price-Book-ID: {{priceBookId}}'  \
---header 'AC-Policy-{{attributeCode}}: {{attributeValue}}'  \
+  --header 'AC-Catalog-View-Access-Token: {{accessToken}}' 
 --data '{{apiPayload}}'
 ```
 
