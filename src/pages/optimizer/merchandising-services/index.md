@@ -54,9 +54,9 @@ The Merchandising API sits between your storefront applications and the Adobe Co
 
 This diagram illustrates the flow of data between the storefront, the Merchandising API, and the Adobe Commerce Optimizer backend:
 
-1. **Storefront Request**: Your application sends GraphQL queries to the Merchandising API
-2. **Context Processing**: The API applies catalog views, policies, and catalog source locale filters based on the request headers
-3. **Data Retrieval**: Optimized queries fetch relevant product and pricing data
+1. **Storefront request**: Your application sends GraphQL queries to the Merchandising API
+2. **Context processing**: The API applies catalog views, policies, and catalog source locale filters based on the request headers
+3. **Data retrieval**: Optimized queries fetch relevant product and pricing data
 4. **Response**: Structured data is returned to your application for rendering
 
 Product catalog updates delivered directly through data ingestion API requests or a third-party app integration are synchronized to Adobe Commerce Optimizer, ensuring that the Merchandising API always serves the latest data.
@@ -71,8 +71,8 @@ If your storefront uses Adobe Edge Delivery Services, integration is configured 
 
 For custom storefronts built with frameworks like React, Vue.js, Angular, or any other technology:
 
-- **Direct API Integration**: Use GraphQL clients to connect directly to the [Merchandising API](using-the-api.md) from your frontend application
-- **GraphQL Client Libraries**: Use libraries like Apollo Client, Relay, or urql for efficient GraphQL data fetching
+- **Direct API integration**: Use GraphQL clients to connect directly to the [Merchandising API](using-the-api.md) from your frontend application
+- **GraphQL client libraries**: Use libraries like Apollo Client, Relay, or urql for efficient GraphQL data fetching
 - **Adobe Developer App Builder**: Use [Adobe Developer App Builder](https://experienceleague.adobe.com/en/docs/commerce-learn/tutorials/extensibility/adobe-developer-app-builder/introduction-to-app-builder) to create custom applications that leverage the Merchandising API
 - **Headless CMS**: Integrate with headless CMS platforms for content management
 
@@ -80,18 +80,18 @@ For custom storefronts built with frameworks like React, Vue.js, Angular, or any
 
 ### Authentication
 
-- **API Key Protection**: Never expose API keys in client-side code
+- **API key protection**: Never expose API keys in client-side code
 - **HTTPS**: Always use HTTPS for production environments
-- **Request Validation**: Validate all user inputs before sending to the API
-- **Private Catalog Views**: If a catalog view has Catalog Protection enabled, requests must include a signed JSON Web Token (JWT) in the `AC-Catalog-View-Access-Token` header. See [Authentication](using-the-api.md#authentication) for details.
+- **Request validation**: Validate all user inputs before sending to the API
+- **Private catalog views**: If a catalog view has Catalog Protection enabled, requests must include a signed JSON Web Token (JWT) in the `AC-Catalog-View-Access-Token` header. See [Authentication](using-the-api.md#authentication) for details.
 
 ### Data Access
 
-- **Catalog Views**: Use catalog views to control data access based on business context
-- **Private Catalog Views**: Restrict a catalog view to authorized clients only by enabling Catalog Protection and assigning Restricted Access Keys. See [Authentication](using-the-api.md#authentication).
+- **Catalog views**: Use catalog views to control data access based on business context
+- **Private catalog views**: Restrict a catalog view to authorized clients only by enabling catalog protection and assigning restricted access keys in [!DNL Adobe Commerce Optimizer Studio](https://experienceleague.adobe.com/en/docs/commerce/optimizer/setup/private-catalog-view.md).
 - **Policies**: Implement policies to filter data based on customer segments
-- **Locale Filtering**: Use locale headers to ensure appropriate data is returned
-- **Price Books**: Use price book headers to manage pricing data returned across different customer segments and regions
+- **Locale filtering**: Use locale headers to ensure appropriate data is returned
+- **Price books**: Use price book headers to manage pricing data returned across different customer segments and regions
 
 ## Next Steps
 
