@@ -19,8 +19,8 @@ Use the Merchandising API to retrieve product data from your Commerce catalogs a
 
 Before using the Merchandising API, ensure you have:
 
-- **Adobe Commerce Optimizer Access**: Active subscription and the instance ID associated with your Adobe Commerce Optimizer instance
-- **Catalog Data**: Products and pricing data ingested via the [Data Ingestion API](../data-ingestion/index.md)
+- **Adobe Commerce Optimizer access**: Active subscription and the instance ID associated with your Adobe Commerce Optimizer instance
+- **Catalog data**: Products and pricing data ingested via the [Data Ingestion API](../data-ingestion/index.md)
 - **Catalog views**: Configured views and policies in Adobe Commerce Optimizer
 - **Authentication Setup**: Proper headers configured for API requests
 - **GraphQL Client**: A tool or library to make GraphQL requests (e.g., Postman, Apollo Client, or cURL)
@@ -92,7 +92,7 @@ The `message` field describes why validation failed:
 | `Access token signature invalid` | The token's signature doesn't verify against any restricted access key assigned to the catalog view, for example because it was signed with the wrong key or was tampered with. |
 | `Restricted access is enabled but no valid access keys are available` | Catalog Protection is enabled, but no restricted access keys are assigned to the catalog view, or every assigned key has expired. |
 
-A token that has passed its own expiration (the `exp` claim) is denied the same way, even if the signature would otherwise validate.
+A token that has passed its own expiration date is denied the same way, even if the signature would otherwise validate.
 
 ### Headers
 
