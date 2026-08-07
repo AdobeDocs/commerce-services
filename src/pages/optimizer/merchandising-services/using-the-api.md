@@ -64,7 +64,7 @@ However, requests for data from private catalog views configured with catalog pr
 You can set up a private catalog view in Adobe Commece Optimizer Studio by enabling catalog protection and assigning a restricted access key to a catalog view.
 
 - **Generate an RSA key pair.** The public key must be PEM-encoded and between 2048 and 8192 bits.
-- **Register the public key** as a restricted access key on the catalog view. See [Restricted access keys](https://experienceleague.adobe.com/en/docs/commerce/optimizer/setup/restricted-access-keys) and [Protect a catalog view](https://experienceleague.adobe.com/en/docs/commerce/optimizer/setup/catalog-view#protect-a-catalog-view).
+- **Register the public key** as a restricted access key on the catalog view. See [Restricted access keys](https://experienceleague.adobe.com/en/docs/commerce/optimizer/setup/restricted-access-keys) and [Protect a catalog view](https://experienceleague.adobe.com/en/docs/commerce/optimizer/setup/private-catalog-view#protect-a-catalog-view).
 - **Keep the private key** on your system, and use it to sign a JWT for each request.
 
 Adobe Commerce Optimizer validates each token's `RS256` signature against the restricted access keys assigned to the catalog view, and returns catalog data only if the signature is valid and neither the token nor the key has expired.
