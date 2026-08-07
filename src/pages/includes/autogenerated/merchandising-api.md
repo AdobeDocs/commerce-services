@@ -18,6 +18,8 @@ Content-Type: application/json
 AC-Price-Book-ID: us
 # Trigger name and value that sets data access filters.
 AC-Policy-{*}: AC-Policy-Brand
+# Conditionally required. Required if the catalog view specified by `AC-View-Id` is a private catalog view. Signed JWT proving authorization to access that catalog view.
+AC-Catalog-View-Access-Token: eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...
 ```
 
 ## Required headers
@@ -119,7 +121,7 @@ query categoryTree(
 
 ```json
 {
-  "family": "abc123",
+  "family": "xyz789",
   "slugs": ["abc123"],
   "depth": 123
 }
@@ -133,14 +135,14 @@ query categoryTree(
     "categoryTree": [
       {
         "slug": "abc123",
-        "name": "xyz789",
+        "name": "abc123",
         "attributes": [CategoryViewAttribute],
-        "description": "abc123",
+        "description": "xyz789",
         "metaTags": CategoryMetaTags,
         "images": [CategoryImage],
-        "level": 987,
+        "level": 123,
         "parentSlug": "abc123",
-        "childrenSlugs": ["xyz789"]
+        "childrenSlugs": ["abc123"]
       }
     ]
   }
@@ -203,8 +205,8 @@ query navigation(
   "data": {
     "navigation": [
       {
-        "slug": "xyz789",
-        "name": "xyz789",
+        "slug": "abc123",
+        "name": "abc123",
         "attributes": [CategoryViewAttribute],
         "children": [CategoryNavigationView]
       }
@@ -242,7 +244,7 @@ query payByLinkCart($token: String!) {
 ##### Variables
 
 ```json
-{"token": "xyz789"}
+{"token": "abc123"}
 ```
 
 ##### Response
@@ -324,7 +326,7 @@ query productSearch(
   "current_page": 1,
   "filter": [SearchClauseInput],
   "page_size": 20,
-  "phrase": "abc123",
+  "phrase": "xyz789",
   "sort": [ProductSearchSortInput]
 }
 ```
@@ -338,7 +340,7 @@ query productSearch(
       "facets": [Aggregation],
       "items": [ProductSearchItem],
       "page_info": SearchResultPageInfo,
-      "related_terms": ["xyz789"],
+      "related_terms": ["abc123"],
       "suggestions": ["xyz789"],
       "total_count": 123,
       "warnings": [ProductSearchWarning]
@@ -413,7 +415,7 @@ query products($skus: [String]) {
 ##### Variables
 
 ```json
-{"skus": ["abc123"]}
+{"skus": ["xyz789"]}
 ```
 
 ##### Response
@@ -427,25 +429,25 @@ query products($skus: [String]) {
         "inStock": false,
         "lowStock": false,
         "attributes": [ProductViewAttribute],
-        "description": "xyz789",
+        "description": "abc123",
         "id": "4",
         "images": [ProductViewImage],
         "videos": [ProductViewVideo],
         "lastModifiedAt": "2007-12-03T10:15:30Z",
-        "metaDescription": "abc123",
+        "metaDescription": "xyz789",
         "metaKeyword": "abc123",
         "metaTitle": "xyz789",
         "name": "xyz789",
         "shortDescription": "abc123",
         "inputOptions": [ProductViewInputOption],
-        "sku": "abc123",
+        "sku": "xyz789",
         "externalId": "abc123",
         "externalIds": [ExternalId],
         "url": "abc123",
         "urlKey": "xyz789",
         "links": [ProductViewLink],
         "categories": [CategoryProductView],
-        "queryType": "abc123",
+        "queryType": "xyz789",
         "visibility": "xyz789"
       }
     ]
@@ -503,7 +505,7 @@ query recommendationsByUnitIds(
 
 ```json
 {
-  "unitIds": ["xyz789"],
+  "unitIds": ["abc123"],
   "currentSku": "xyz789",
   "currentProduct": CurrentProductInput,
   "userPurchaseHistory": [PurchaseHistory],
@@ -518,6 +520,78 @@ query recommendationsByUnitIds(
 {
   "data": {
     "recommendationsByUnitIds": {
+      "results": [RecommendationUnit],
+      "totalResults": 987
+    }
+  }
+}
+```
+
+<HorizontalLine />
+
+### recommendationsByUnits
+
+**Response:** [`Recommendations`](#recommendations)
+
+#### Arguments
+
+| Name | Description |
+|------|-------------|
+| `selector` - [`UnitSelector!`](#unitselector) | Context of preconfigured units |
+| `currentSku` - [`String`](#string) | SKU of the product currently being viewed on PDP |
+| `currentProduct` - [`CurrentProductInput`](#currentproductinput) | Current product context from PDP (SKU, price, category, etc.) |
+| `userPurchaseHistory` - [`[PurchaseHistory]`](#purchasehistory) | User purchase history with timestamp |
+| `userViewHistory` - [`[ViewHistory]`](#viewhistory) | User view history with timestamp |
+| `cartSkus` - [`[String]`](#string) | SKUs of products in the cart |
+
+#### Example
+
+##### Query
+
+```graphql
+query recommendationsByUnits(
+  $selector: UnitSelector!,
+  $currentSku: String,
+  $currentProduct: CurrentProductInput,
+  $userPurchaseHistory: [PurchaseHistory],
+  $userViewHistory: [ViewHistory],
+  $cartSkus: [String]
+) {
+  recommendationsByUnits(
+    selector: $selector,
+    currentSku: $currentSku,
+    currentProduct: $currentProduct,
+    userPurchaseHistory: $userPurchaseHistory,
+    userViewHistory: $userViewHistory,
+    cartSkus: $cartSkus
+  ) {
+    results {
+      ...RecommendationUnitFragment
+    }
+    totalResults
+  }
+}
+```
+
+##### Variables
+
+```json
+{
+  "selector": UnitSelector,
+  "currentSku": "xyz789",
+  "currentProduct": CurrentProductInput,
+  "userPurchaseHistory": [PurchaseHistory],
+  "userViewHistory": [ViewHistory],
+  "cartSkus": ["abc123"]
+}
+```
+
+##### Response
+
+```json
+{
+  "data": {
+    "recommendationsByUnits": {
       "results": [RecommendationUnit],
       "totalResults": 987
     }
@@ -600,7 +674,7 @@ query refineProduct(
 ```json
 {
   "optionIds": ["abc123"],
-  "sku": "xyz789"
+  "sku": "abc123"
 }
 ```
 
@@ -610,19 +684,19 @@ query refineProduct(
 {
   "data": {
     "refineProduct": {
-      "addToCartAllowed": false,
-      "inStock": true,
+      "addToCartAllowed": true,
+      "inStock": false,
       "lowStock": false,
       "attributes": [ProductViewAttribute],
-      "description": "abc123",
+      "description": "xyz789",
       "id": "4",
       "images": [ProductViewImage],
       "videos": [ProductViewVideo],
       "lastModifiedAt": "2007-12-03T10:15:30Z",
-      "metaDescription": "abc123",
+      "metaDescription": "xyz789",
       "metaKeyword": "abc123",
-      "metaTitle": "xyz789",
-      "name": "abc123",
+      "metaTitle": "abc123",
+      "name": "xyz789",
       "shortDescription": "abc123",
       "inputOptions": [ProductViewInputOption],
       "sku": "abc123",
@@ -688,8 +762,8 @@ query searchCategory(
 
 ```json
 {
-  "searchTerm": "xyz789",
-  "family": "abc123",
+  "searchTerm": "abc123",
+  "family": "xyz789",
   "pageSize": 20,
   "currentPage": 1
 }
@@ -753,8 +827,8 @@ query variants(
 
 ```json
 {
-  "sku": "xyz789",
-  "optionIds": ["xyz789"],
+  "sku": "abc123",
+  "optionIds": ["abc123"],
   "pageSize": 123,
   "cursor": "xyz789"
 }
@@ -767,7 +841,7 @@ query variants(
   "data": {
     "variants": {
       "variants": [ProductViewVariant],
-      "cursor": "xyz789"
+      "cursor": "abc123"
     }
   }
 }
@@ -794,7 +868,7 @@ A bucket that contains information for each filterable option
 {
   "attribute": "abc123",
   "buckets": [Bucket],
-  "title": "abc123",
+  "title": "xyz789",
   "type": "INTELLIGENT"
 }
 ```
@@ -838,7 +912,7 @@ The rule that was applied to this product
 ```json
 {
   "action_type": "BOOST",
-  "rule_id": "abc123",
+  "rule_id": "xyz789",
   "rule_name": "abc123"
 }
 ```
@@ -938,9 +1012,9 @@ New category bucket for federation
 
 ```json
 {
-  "count": 987,
+  "count": 123,
   "id": "4",
-  "path": "abc123",
+  "path": "xyz789",
   "title": "xyz789"
 }
 ```
@@ -964,7 +1038,7 @@ New category bucket for federation
 #### Example
 
 ```json
-{"id": 4}
+{"id": "4"}
 ```
 
 <HorizontalLine />
@@ -1012,8 +1086,8 @@ SEO metadata tags for the category.
 ```json
 {
   "title": "abc123",
-  "description": "xyz789",
-  "keywords": ["abc123"]
+  "description": "abc123",
+  "keywords": ["xyz789"]
 }
 ```
 
@@ -1036,8 +1110,8 @@ Represents a category optimized for navigation menus, with nested children for b
 
 ```json
 {
-  "slug": "xyz789",
-  "name": "xyz789",
+  "slug": "abc123",
+  "name": "abc123",
   "attributes": [CategoryViewAttribute],
   "children": [CategoryNavigationView]
 }
@@ -1063,8 +1137,8 @@ Represents category information associated with a product, including hierarchica
 
 ```json
 {
-  "name": "xyz789",
-  "slug": "abc123",
+  "name": "abc123",
+  "slug": "xyz789",
   "level": 987,
   "parents": [CategoryProductView],
   "attributes": [CategoryViewAttribute]
@@ -1114,15 +1188,15 @@ Represents a category within a hierarchical tree structure, including parent and
 
 ```json
 {
-  "slug": "xyz789",
+  "slug": "abc123",
   "name": "xyz789",
   "attributes": [CategoryViewAttribute],
-  "description": "xyz789",
+  "description": "abc123",
   "metaTags": CategoryMetaTags,
   "images": [CategoryImage],
-  "level": 123,
-  "parentSlug": "xyz789",
-  "childrenSlugs": ["xyz789"]
+  "level": 987,
+  "parentSlug": "abc123",
+  "childrenSlugs": ["abc123"]
 }
 ```
 
@@ -1155,20 +1229,20 @@ Represents a category. Contains information about a category, including the cate
 
 ```json
 {
-  "availableSortBy": ["xyz789"],
+  "availableSortBy": ["abc123"],
   "children": ["abc123"],
-  "defaultSortBy": "xyz789",
-  "id": 4,
+  "defaultSortBy": "abc123",
+  "id": "4",
   "level": 987,
   "name": "abc123",
-  "parentId": "xyz789",
+  "parentId": "abc123",
   "position": 987,
   "path": "abc123",
-  "roles": ["abc123"],
-  "urlKey": "abc123",
+  "roles": ["xyz789"],
+  "urlKey": "xyz789",
   "urlPath": "abc123",
   "count": 123,
-  "title": "abc123"
+  "title": "xyz789"
 }
 ```
 
@@ -1191,9 +1265,9 @@ A container for customer-defined attributes that are displayed the storefront.
 
 ```json
 {
-  "name": "xyz789",
-  "label": "abc123",
-  "dataType": "abc123",
+  "name": "abc123",
+  "label": "xyz789",
+  "dataType": "xyz789",
   "value": {}
 }
 ```
@@ -1228,13 +1302,13 @@ Base interface defining essential category fields shared across all category vie
 
 ```json
 {
-  "availableSortBy": ["xyz789"],
+  "availableSortBy": ["abc123"],
   "defaultSortBy": "xyz789",
   "id": "4",
   "level": 987,
-  "name": "xyz789",
-  "path": "abc123",
-  "roles": ["abc123"],
+  "name": "abc123",
+  "path": "xyz789",
+  "roles": ["xyz789"],
   "urlKey": "xyz789",
   "urlPath": "abc123"
 }
@@ -1266,8 +1340,8 @@ Base interface defining essential category fields shared across all category vie
 
 ```json
 {
-  "slug": "xyz789",
-  "name": "xyz789",
+  "slug": "abc123",
+  "name": "abc123",
   "attributes": [CategoryViewAttribute]
 }
 ```
@@ -1313,32 +1387,32 @@ Represents all product types, except simple products. Complex product prices are
 
 ```json
 {
-  "addToCartAllowed": true,
-  "inStock": true,
-  "lowStock": true,
+  "addToCartAllowed": false,
+  "inStock": false,
+  "lowStock": false,
   "attributes": [ProductViewAttribute],
-  "description": "abc123",
-  "id": "4",
+  "description": "xyz789",
+  "id": 4,
   "images": [ProductViewImage],
   "videos": [ProductViewVideo],
   "lastModifiedAt": "2007-12-03T10:15:30Z",
-  "metaDescription": "xyz789",
-  "metaKeyword": "xyz789",
-  "metaTitle": "abc123",
-  "name": "xyz789",
+  "metaDescription": "abc123",
+  "metaKeyword": "abc123",
+  "metaTitle": "xyz789",
+  "name": "abc123",
   "inputOptions": [ProductViewInputOption],
   "options": [ProductViewOption],
   "priceRange": ProductViewPriceRange,
-  "shortDescription": "abc123",
+  "shortDescription": "xyz789",
   "sku": "abc123",
-  "externalId": "abc123",
+  "externalId": "xyz789",
   "externalIds": [ExternalId],
   "url": "xyz789",
   "urlKey": "xyz789",
   "links": [ProductViewLink],
   "categories": [CategoryProductView],
-  "queryType": "abc123",
-  "visibility": "xyz789"
+  "queryType": "xyz789",
+  "visibility": "abc123"
 }
 ```
 
@@ -1390,7 +1464,7 @@ Represents an external identifier with its origin system
 
 ```json
 {
-  "id": "abc123",
+  "id": "xyz789",
   "origin": "xyz789"
 }
 ```
@@ -1414,9 +1488,9 @@ Contains product attributes that can be used for filtering in a `productSearch` 
 
 ```json
 {
-  "attribute": "xyz789",
+  "attribute": "abc123",
   "frontendInput": "abc123",
-  "label": "xyz789",
+  "label": "abc123",
   "numeric": false
 }
 ```
@@ -1430,7 +1504,7 @@ The `Float` scalar type represents signed double-precision fractional values as 
 #### Example
 
 ```json
-123.45
+987.65
 ```
 
 <HorizontalLine />
@@ -1452,7 +1526,7 @@ An object that provides highlighted text for matched words
 ```json
 {
   "attribute": "xyz789",
-  "matched_words": ["abc123"],
+  "matched_words": ["xyz789"],
   "value": "xyz789"
 }
 ```
@@ -1478,7 +1552,7 @@ The `Int` scalar type represents non-fractional signed whole numeric values. Int
 #### Example
 
 ```json
-987
+123
 ```
 
 <HorizontalLine />
@@ -1510,7 +1584,7 @@ Provides pagination information for navigating through paginated result sets.
 #### Example
 
 ```json
-{"currentPage": 123, "pageSize": 987, "totalPages": 987}
+{"currentPage": 987, "pageSize": 987, "totalPages": 123}
 ```
 
 <HorizontalLine />
@@ -1528,7 +1602,7 @@ Result of payByLinkCart.
 #### Example
 
 ```json
-{"masked_cart_id": "xyz789"}
+{"masked_cart_id": "abc123"}
 ```
 
 <HorizontalLine />
@@ -1569,7 +1643,7 @@ Specifies the amount and type of price adjustment.
 #### Example
 
 ```json
-{"amount": 123.45, "code": "xyz789"}
+{"amount": 987.65, "code": "xyz789"}
 ```
 
 <HorizontalLine />
@@ -1621,9 +1695,9 @@ Contains the output of a `productSearch` query
   "facets": [Aggregation],
   "items": [ProductSearchItem],
   "page_info": SearchResultPageInfo,
-  "related_terms": ["xyz789"],
+  "related_terms": ["abc123"],
   "suggestions": ["xyz789"],
-  "total_count": 987,
+  "total_count": 123,
   "warnings": [ProductSearchWarning]
 }
 ```
@@ -1644,7 +1718,7 @@ The product attribute to sort on
 #### Example
 
 ```json
-{"attribute": "abc123", "direction": "ASC"}
+{"attribute": "xyz789", "direction": "ASC"}
 ```
 
 <HorizontalLine />
@@ -1665,7 +1739,7 @@ Structured warning with code and message for easier client handling
 ```json
 {
   "code": "xyz789",
-  "message": "xyz789"
+  "message": "abc123"
 }
 ```
 
@@ -1716,24 +1790,24 @@ Defines the product fields available to the SimpleProductView and ComplexProduct
 ```json
 {
   "addToCartAllowed": false,
-  "inStock": false,
+  "inStock": true,
   "lowStock": true,
   "attributes": [ProductViewAttribute],
   "description": "abc123",
-  "id": "4",
+  "id": 4,
   "images": [ProductViewImage],
   "videos": [ProductViewVideo],
   "lastModifiedAt": "2007-12-03T10:15:30Z",
-  "metaDescription": "abc123",
+  "metaDescription": "xyz789",
   "metaKeyword": "abc123",
-  "metaTitle": "xyz789",
+  "metaTitle": "abc123",
   "name": "xyz789",
   "shortDescription": "xyz789",
   "inputOptions": [ProductViewInputOption],
   "sku": "xyz789",
   "externalId": "xyz789",
   "externalIds": [ExternalId],
-  "url": "abc123",
+  "url": "xyz789",
   "urlKey": "abc123",
   "links": [ProductViewLink],
   "categories": [CategoryProductView],
@@ -1762,7 +1836,7 @@ A container for customer-defined attributes that are displayed the storefront.
 ```json
 {
   "label": "abc123",
-  "name": "abc123",
+  "name": "xyz789",
   "roles": ["xyz789"],
   "value": {}
 }
@@ -1973,9 +2047,9 @@ Contains details about a product image.
 
 ```json
 {
-  "label": "xyz789",
-  "roles": ["xyz789"],
-  "url": "xyz789"
+  "label": "abc123",
+  "roles": ["abc123"],
+  "url": "abc123"
 }
 ```
 
@@ -2005,11 +2079,11 @@ Product options provide a way to configure products by making selections of part
 ```json
 {
   "id": 4,
-  "title": "xyz789",
+  "title": "abc123",
   "required": false,
   "type": "abc123",
   "markupAmount": 123.45,
-  "suffix": "abc123",
+  "suffix": "xyz789",
   "sortOrder": 987,
   "range": ProductViewInputOptionRange,
   "imageSize": ProductViewInputOptionImageSize,
@@ -2033,7 +2107,7 @@ Dimensions of the image associated with the input option.
 #### Example
 
 ```json
-{"width": 123, "height": 123}
+{"width": 987, "height": 987}
 ```
 
 <HorizontalLine />
@@ -2073,7 +2147,7 @@ The product link type. Contains details about product links for related products
 ```json
 {
   "product": ProductView,
-  "linkTypes": ["abc123"]
+  "linkTypes": ["xyz789"]
 }
 ```
 
@@ -2116,7 +2190,7 @@ Product options provide a way to configure products by making selections of part
 
 ```json
 {
-  "id": 4,
+  "id": "4",
   "multi": true,
   "required": true,
   "title": "xyz789",
@@ -2150,7 +2224,7 @@ Defines the product fields available to the ProductViewOptionValueProduct and Pr
 
 ```json
 {
-  "id": 4,
+  "id": "4",
   "title": "abc123",
   "inStock": false
 }
@@ -2176,7 +2250,7 @@ An implementation of ProductViewOptionValue for configuration values.
 {
   "id": 4,
   "title": "xyz789",
-  "inStock": true
+  "inStock": false
 }
 ```
 
@@ -2205,7 +2279,7 @@ An implementation of ProductViewOptionValue that adds details about a simple pro
   "id": "4",
   "isDefault": true,
   "product": SimpleProductView,
-  "quantity": 123.45,
+  "quantity": 987.65,
   "canEditQuantity": true,
   "title": "abc123",
   "inStock": true
@@ -2232,11 +2306,11 @@ An implementation of ProductViewOptionValueSwatch for swatches.
 
 ```json
 {
-  "id": 4,
-  "title": "xyz789",
+  "id": "4",
+  "title": "abc123",
   "type": "TEXT",
-  "value": "abc123",
-  "inStock": true
+  "value": "xyz789",
+  "inStock": false
 }
 ```
 
@@ -2428,8 +2502,8 @@ Contains details about a product video. For example, a video of the product bein
 ```json
 {
   "preview": ProductViewImage,
-  "url": "xyz789",
-  "description": "xyz789",
+  "url": "abc123",
+  "description": "abc123",
   "title": "abc123"
 }
 ```
@@ -2520,21 +2594,23 @@ Recommendation Unit containing product and other details
 | `typeId` - [`String`](#string) | Type of recommendation |
 | `unitId` - [`String`](#string) | Id of the preconfigured unit |
 | `unitName` - [`String`](#string) | Name of the preconfigured unit |
+| `label` - [`String`](#string) | Label of the preconfigured unit |
 | `userError` - [`String`](#string) | User error message if the unit could not be fully resolved (e.g. required currentSku was not provided) |
 
 #### Example
 
 ```json
 {
-  "displayOrder": 123,
-  "pageType": "abc123",
+  "displayOrder": 987,
+  "pageType": "xyz789",
   "productsView": [ProductView],
-  "storefrontLabel": "xyz789",
-  "totalProducts": 987,
+  "storefrontLabel": "abc123",
+  "totalProducts": 123,
   "typeId": "abc123",
   "unitId": "xyz789",
   "unitName": "abc123",
-  "userError": "abc123"
+  "label": "xyz789",
+  "userError": "xyz789"
 }
 ```
 
@@ -2574,7 +2650,7 @@ For use on string and other scalar product fields
 #### Example
 
 ```json
-{"count": 123, "id": 4, "title": "xyz789"}
+{"count": 123, "id": 4, "title": "abc123"}
 ```
 
 <HorizontalLine />
@@ -2622,12 +2698,12 @@ A product attribute to filter on
 
 ```json
 {
-  "attribute": "abc123",
+  "attribute": "xyz789",
   "contains": "abc123",
-  "eq": "abc123",
-  "in": ["xyz789"],
+  "eq": "xyz789",
+  "in": ["abc123"],
   "range": SearchRangeInput,
-  "startsWith": "abc123"
+  "startsWith": "xyz789"
 }
 ```
 
@@ -2667,7 +2743,7 @@ Provides navigation for the query response.
 #### Example
 
 ```json
-{"current_page": 987, "page_size": 987, "total_pages": 123}
+{"current_page": 987, "page_size": 123, "total_pages": 123}
 ```
 
 <HorizontalLine />
@@ -2712,18 +2788,18 @@ Represents a single-SKU product without selectable variants. Because there are n
 {
   "addToCartAllowed": false,
   "inStock": true,
-  "lowStock": true,
+  "lowStock": false,
   "attributes": [ProductViewAttribute],
-  "description": "abc123",
-  "id": 4,
+  "description": "xyz789",
+  "id": "4",
   "images": [ProductViewImage],
   "videos": [ProductViewVideo],
   "inputOptions": [ProductViewInputOption],
   "lastModifiedAt": "2007-12-03T10:15:30Z",
   "metaDescription": "abc123",
-  "metaKeyword": "xyz789",
+  "metaKeyword": "abc123",
   "metaTitle": "abc123",
-  "name": "xyz789",
+  "name": "abc123",
   "price": ProductViewPrice,
   "shortDescription": "abc123",
   "sku": "xyz789",
@@ -2733,7 +2809,7 @@ Represents a single-SKU product without selectable variants. Because there are n
   "urlKey": "abc123",
   "links": [ProductViewLink],
   "categories": [CategoryProductView],
-  "queryType": "xyz789",
+  "queryType": "abc123",
   "visibility": "xyz789"
 }
 ```
@@ -2797,7 +2873,7 @@ Contains product attributes that be used for sorting in a `productSearch` query
 {
   "attribute": "abc123",
   "frontendInput": "xyz789",
-  "label": "xyz789",
+  "label": "abc123",
   "numeric": true
 }
 ```
@@ -2822,7 +2898,7 @@ For retrieving statistics across multiple buckets
 {
   "max": 123.45,
   "min": 987.65,
-  "title": "xyz789"
+  "title": "abc123"
 }
 ```
 
@@ -2835,7 +2911,7 @@ The `String` scalar type represents textual data, represented as UTF-8 character
 #### Example
 
 ```json
-"abc123"
+"xyz789"
 ```
 
 <HorizontalLine />
@@ -2861,6 +2937,28 @@ The type of the swatch.
 
 <HorizontalLine />
 
+### UnitSelector
+
+Provide either rec unit ids or labels to retrieve rec units
+
+#### Input Fields
+
+| Input Field | Description |
+|-------------|-------------|
+| `unitIds` - [`[String!]`](#string) | List unit IDs of preconfigured units |
+| `labels` - [`[String!]`](#string) | List of labels of the preconfigured unit |
+
+#### Example
+
+```json
+{
+  "unitIds": ["xyz789"],
+  "labels": ["xyz789"]
+}
+```
+
+<HorizontalLine />
+
 ### ViewHistory
 
 User view history
@@ -2877,7 +2975,7 @@ User view history
 ```json
 {
   "date": "2007-12-03T10:15:30Z",
-  "sku": "xyz789"
+  "sku": "abc123"
 }
 ```
 
