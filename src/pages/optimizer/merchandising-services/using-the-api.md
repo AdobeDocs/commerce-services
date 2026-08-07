@@ -168,9 +168,6 @@ Omitting the `AC-Catalog-View-Access-Token` header, or supplying an invalid or e
 
 For sample requests and examples using the API, see the [Merchandising API Reference](../../reference/graphql/index.md).
 
-## Test with the GraphQL Playground
-
-
 ## Related documentation
 
 - **[Adobe Commerce Optimizer Guide](https://experienceleague.adobe.com/en/docs/commerce/optimizer/overview)**: Review comprehensive documentation for Adobe Commerce Optimizer.
