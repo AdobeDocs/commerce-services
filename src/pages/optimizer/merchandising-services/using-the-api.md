@@ -96,7 +96,7 @@ A token that has passed its own expiration date is denied the same way, even if 
 
 ### Headers
 
-When making requests to the Merchandising API, you must include required HTTP headers that provide necessary information, such as the catalog view ID, catalog source locale. Additionally, you can include optional policy and price book headers that tailor the API response to your needs.
+When making requests to the Merchandising API, you must include required HTTP headers that provide necessary information, such as the catalog view ID, catalog source locale. Additionally, you can include optional policy, price book , or catalog access view token headers that tailor the API response to your needs.
 
 | Header name| Description |
 |--------------|-------------|
