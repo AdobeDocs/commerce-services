@@ -21,7 +21,7 @@ Before using the Merchandising API, ensure you have:
 
 - **Adobe Commerce Optimizer access**: Active subscription and the instance ID associated with your Adobe Commerce Optimizer instance
 - **Catalog data**: Products and pricing data ingested via the [Data Ingestion API](../data-ingestion/index.md)
-- **Catalog views**: Configured views and policies in Adobe Commerce Optimizer
+- **Catalog views**: Configured views and policies in [Adobe Commerce Optimizer Studio](https://experienceleague.adobe.com/en/docs/commerce/optimizer/setup/catalog-view)
 - **Authentication Setup**: Proper headers configured for API requests
 - **GraphQL Client**: A tool or library to make GraphQL requests (e.g., Postman, Apollo Client, or cURL)
 - **Familiarity with GraphQL**: Basic understanding of GraphQL queries and mutations
@@ -61,7 +61,7 @@ Authentication is not required for the Merchandising API by default.
 
 However, requests for data from private catalog views configured with catalog protection and restricted access keys must include a valid, signed JSON Web Token (JWT) in the `AC-Catalog-View-Access-Token` header.
 
-Setting up a private catalog view is the responsibility of your client application:
+You can set up a private catalog view in Adobe Commece Optimizer Studio by enabling catalog protection and assigning a restricted access key to a catalog view.
 
 - **Generate an RSA key pair.** The public key must be PEM-encoded and between 2048 and 8192 bits.
 - **Register the public key** as a restricted access key on the catalog view. See [Restricted access keys](https://experienceleague.adobe.com/en/docs/commerce/optimizer/setup/restricted-access-keys) and [Protect a catalog view](https://experienceleague.adobe.com/en/docs/commerce/optimizer/setup/catalog-view#protect-a-catalog-view).
@@ -170,7 +170,6 @@ For sample requests and examples using the API, see the [Merchandising API Refer
 
 ## Test with the GraphQL Playground
 
-For interactive testing and exploration, use the [Adobe Commerce Optimizer API Playground](https://experienceleague.adobe.com/developer/commerce/storefront/playgrounds/commerce-optimizer/).
 
 ## Related documentation
 

@@ -29,7 +29,7 @@ If a request to a private catalog view returns an `access-key-invalid` GraphQL e
 - **Missing token**: Add the `AC-Catalog-View-Access-Token` header with a valid signed JSON Web Token (JWT) for the catalog view specified by `AC-View-ID`. See [Authentication](using-the-api.md#authentication).
 - **Access token signature invalid**: Confirm the JWT was signed with the private key that matches a Restricted Access Key assigned to that catalog view, and that the token wasn't truncated or altered.
 - **Restricted access is enabled but no valid access keys are available**: Assign at least one Restricted Access Key to the catalog view, or verify that an existing key hasn't passed its expiration date.
-- **Token expired**: A JWT past its own `exp` claim is denied even if its signature is otherwise valid. Tokens aren't refreshable, so mint a new one.
+- **Token expired**: A JWT past its own `exp` claim is denied even if its signature is otherwise valid. Tokens aren't refreshable, so generate a new one.
 - **Recently rotated or deleted key still appears to grant access**: A short caching window (observed up to approximately 5 minutes) can delay revocation after a Restricted Access Key is unassigned or deleted.
 
 ## Debugging
