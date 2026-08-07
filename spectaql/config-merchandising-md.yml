@@ -91,7 +91,7 @@ servers:
         comment: Trigger name and value that sets data access filters.
       - name: AC-Catalog-View-Access-Token
         example: eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...
-        comment: Conditionally required. Required if the catalog view specified by `AC-View-Id` is a private catalog view. Signed JWT proving authorization to access that catalog view.
+        comment: Required if the catalog view specified by `AC-View-Id` is a [private catalog view.](https://experienceleague.adobe.com/en/docs/commerce/optimizer/setup/private-catalog-view) Signed JWT proving authorization to access that catalog view.
 
 info:
   x-hideIntroduction: false
