@@ -13,30 +13,30 @@ keywords:
 
 # Use cases for the Merchandising API
 
-The Merchandising API supports various e-commerce scenarios. The catalog data delivered by the API is filtered based on the request headers and the catalog view, catalog source, policy, and price book configuration in Adobe Commerce Optimizer. This allows you to create tailored storefront experiences for different customer segments, channels, and regions.
+The Merchandising API supports various e-commerce scenarios. The catalog data delivered by the API is filtered based on the request headers and the catalog view, catalog source, policy, and price book configuration in Adobe Commerce Optimizer. This allows you to create tailored storefront experiences for different customer segments, channels, and regions. A catalog view can also be configured as a private catalog view, restricting access to clients that present a valid signed access token. See [Authentication](using-the-api.md#authentication).
 
 **E-commerce Storefronts:**
 
-* **Category Management**: Build category navigation trees, menus, and breadcrumbs
-* **Product Catalogs**: Display product listings with filtering and sorting
-* **Product Details**: Show comprehensive product information and variants
-* **Category Management**: Build category navigation trees, menus, and breadcrumbs
+* **Category management**: Build category navigation trees, menus, and breadcrumbs
+* **Product catalogs**: Display product listings with filtering and sorting
+* **Product details**: Show comprehensive product information and variants
+* **Category management**: Build category navigation trees, menus, and breadcrumbs
 * **Recommendations**: Display personalized, cross-sell, and upsell product recommendations
-* **Search Functionality**: Implement product search with autocomplete
+* **Search functionality**: Implement product search with autocomplete
 
 **Multi-channel Commerce:**
 
-* **B2B Portals**: Customize catalogs for business customers
-* **Marketplace Integration**: Power third-party marketplace listings
-* **Mobile Apps**: Provide consistent data across mobile platforms
+* **B2B portals**: Customize catalogs for business customers, including private catalog views for contracted assortments and account-specific pricing restricted to authorized buyers
+* **Marketplace integration**: Power third-party marketplace listings
+* **Mobile apps**: Provide consistent data across mobile platforms
 * **Headless Commerce**: Support decoupled frontend architectures
 
 **Personalization:**
 
-* **Customer Segmentation**: Deliver targeted product recommendations
-* **Regional Pricing**: Display locale-specific pricing and availability
-* **Dynamic Content**: Adapt product displays based on user behavior
-* **A/B Testing**: Support experimentation with different product presentations
+* **Customer segmentation**: Deliver targeted product recommendations
+* **Regional pricing**: Display locale-specific pricing and availability
+* **Dynamic content**: Adapt product displays based on user behavior
+* **A/B testing**: Support experimentation with different product presentations
 
 ## Available Queries
 
@@ -79,7 +79,7 @@ The query returns a `ProductView` output object with the product content values.
 
 #### Return details about a simple product
 
-The following query returns details about simple product with sku `cru-sus-prm-2014`. `
+The following query returns details about a simple product with SKU `cru-sus-prm-2014`.
 
 <CodeBlock slots="heading, code" repeat="2" languages="JSON" />
 
