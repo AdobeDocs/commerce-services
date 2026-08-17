@@ -19,15 +19,16 @@ The Merchandising API supports various e-commerce scenarios. The catalog data de
 
 * **Category management**: Build category navigation trees, menus, and breadcrumbs
 * **Product catalogs**: Display product listings with filtering and sorting
-* **Product details**: Show comprehensive product information and variants
+* **[Product details](#return-product-details)**: Show comprehensive product information and variants
 * **Category management**: Build category navigation trees, menus, and breadcrumbs
 * **Recommendations**: Display personalized, cross-sell, and upsell product recommendations
-* **Search functionality**: Implement product search with autocomplete
+* **[Search functionality](#product-search)**: Implement product search with autocomplete
 
 **Multi-channel Commerce:**
 
 * **B2B portals**: Customize catalogs for business customers, including private catalog views for contracted assortments and account-specific pricing restricted to authorized buyers
 * **Marketplace integration**: Power third-party marketplace listings
+* **[External checkout](#return-external-ids-for-a-product)**: Pass a product's `externalIds` to third-party checkout and marketplace providers that identify the product using their own system
 * **Mobile apps**: Provide consistent data across mobile platforms
 * **Headless Commerce**: Support decoupled frontend architectures
 
@@ -673,6 +674,59 @@ query GetBundleProductDetails {
     },
     "extensions": {
         "request-id": "e804166e-d456-430a-9c65-00409d6ef326"
+    }
+}
+```
+
+#### Return external IDs for a product
+
+A product can carry one or more external identifiers from other systems, such as an external checkout provider or a marketplace. Use the `externalIds` field to retrieve each identifier's value along with the system that issued it.
+
+<InlineAlert variant="info" slots="text"/>
+
+The `externalId` field is deprecated and returns only a single identifier. Use `externalIds` instead, which supports multiple identifiers per product.
+
+The following query returns the external IDs for the SKU `cru-sus-prm-2014`.
+
+<CodeBlock slots="heading, code" repeat="2" languages="JSON" />
+
+**Request:**
+
+```graphql
+query {
+    products(skus: ["cru-sus-prm-2014"]) {
+        sku
+        externalIds {
+            id
+            origin
+        }
+    }
+}
+```
+
+**Response:**
+
+```json
+{
+    "data": {
+        "products": [
+            {
+                "sku": "cru-sus-prm-2014",
+                "externalIds": [
+                    {
+                        "id": "cru-sus-prm-2014",
+                        "origin": "AdobeCommerce"
+                    },
+                    {
+                        "id": "EXT-88213",
+                        "origin": "ExternalCheckout"
+                    }
+                ]
+            }
+        ]
+    },
+    "extensions": {
+        "request-id": "3f8f0e2e-6f9d-4b7b-9c9a-2f9b6c9b1a11"
     }
 }
 ```
