@@ -16,8 +16,10 @@
 - subPages:
     - [Merchandising Services](/optimizer/index.md)
         - [Ingest product and price data](/optimizer/data-ingestion/index.md)
+            - [Product catalog ingestion contexts](/optimizer/data-ingestion/catalog-data-ingestion.md)
             - [Authentication](/optimizer/data-ingestion/authentication.md)
             - [Get started](/optimizer/data-ingestion/using-the-api.md)
+            - [Ingest sample data](/optimizer/data-ingestion/ingest-sample-data.md)
             - [Test API operations](/optimizer/data-ingestion/api-testing.md)
             - [API Reference](/reference/rest/index.md)
         - [Retrieve catalog data](/optimizer/merchandising-services/index.md)
