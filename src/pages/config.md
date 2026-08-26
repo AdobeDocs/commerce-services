@@ -28,7 +28,7 @@
             - [Monitor and troubleshoot](/optimizer/merchandising-services/troubleshooting.md)
             - [API Reference](/reference/graphql/index.md)
         - [Tutorial](/optimizer/ccdm-use-case.md)
-    - [Live Search Events](/live-search/index.md)
+    - [Live Search Events](/shared-services/storefront-events/#live-search)
     - [Product Recommendations SDK](/product-recommendations/index.md)
     - [Introduction](/shared-services/index.md)
     - [Adobe Commerce storefront events](/shared-services/storefront-events/index.md)
