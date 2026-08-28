@@ -1,7 +1,7 @@
 {
-  "total": 45,
+  "total": 47,
   "offset": 0,
-  "limit": 45,
+  "limit": 47,
   "data": [
     {
       "page": "/",
@@ -18,10 +18,11 @@
     {
       "page": "/config",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/6391769?v=4",
         "https://avatars.githubusercontent.com/u/160899226?v=4",
         "https://avatars.githubusercontent.com/u/12731225?v=4"
       ],
-      "lastUpdated": "6/23/2026"
+      "lastUpdated": "8/26/2026"
     },
     {
       "page": "/includes/authentication/get-new-bearer-token",
@@ -103,15 +104,29 @@
       "lastUpdated": "5/6/2026"
     },
     {
+      "page": "/optimizer/data-ingestion/catalog-data-ingestion",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/6391769?v=4"
+      ],
+      "lastUpdated": "8/26/2026"
+    },
+    {
+      "page": "/optimizer/data-ingestion/ingest-sample-data",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/6391769?v=4"
+      ],
+      "lastUpdated": "8/26/2026"
+    },
+    {
       "page": "/optimizer/data-ingestion/using-the-api",
       "avatars": [
-        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/6391769?v=4",
+        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/15336075?v=4",
         "https://avatars.githubusercontent.com/u/13662379?v=4",
         "https://avatars.githubusercontent.com/u/53337351?v=4"
       ],
-      "lastUpdated": "5/6/2026"
+      "lastUpdated": "8/26/2026"
     },
     {
       "page": "/optimizer/manage-catalogs",
