@@ -3378,16 +3378,6 @@ components:
         code:
           type: string
           description: Product Attribute Code
-        # Engineering review: confirm DCAT-2461 before publication.
-        type:
-          type: string
-          description: Attribute value type.
-          enum:
-            - BOOLEAN
-            - NUMBER
-            - STRING
-            - ARRAY
-            - OBJECT
         values:
           type: array
           description: A list of value(s) associated with a specified attribute code.
