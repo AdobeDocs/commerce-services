@@ -17,7 +17,7 @@ The fields needed to scope storefront events depend on your Adobe Commerce setup
 |---|---|---|
 | PaaS / Adobe Commerce as a Cloud Service  | `websiteCode`, `storeCode`, and `storeViewCode` | Adobe website, store, and store view |
 | Adobe Commerce Optimizer | `viewId` and `locale` | Adobe Commerce Optimizer catalog view and locale |
-| Adobe Commerce Optimizer + PaaS | `viewId` for Adobe Commerce Optimizer catalog scoping; Adobe scope codes where needed for PaaS transaction routing | Use the fields appropriate to each event path. Do not treat `storeViewCode` and `viewId` as interchangeable |
+| Adobe Commerce Optimizer + PaaS | `viewId` and `locale` for Adobe Commerce Optimizer catalog scoping; Adobe scope codes where needed for PaaS transaction routing | Use the fields appropriate to each event path. Do not treat `storeViewCode` and `viewId` as interchangeable |
 
 ### PaaS / Adobe Commerce as a Cloud Service (SaaS)
 
