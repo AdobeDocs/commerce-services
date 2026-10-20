@@ -113,6 +113,10 @@ Abstract types that define common contracts:
 
 - **MediaGalleryInterface** - Interface for media gallery items
 
+## Union Types
+
+- **ProductViewMedia** - An ordered product gallery entry that resolves to either `ProductViewImage` or `ProductViewVideo`
+
 ## Enum Types
 
 Enumeration types with predefined values:
@@ -131,6 +135,9 @@ ProductView (interface)
 ├── SimpleProductView (object)
 ├── ComplexProductView (object)
 ├── ProductViewAttribute (object)
+├── ProductViewMedia (union)
+│   ├── ProductViewImage (object)
+│   └── ProductViewVideo (object)
 ├── ProductViewPrice (object)
 ├── ProductViewOption (object)
 └── ProductViewVariant (object)
