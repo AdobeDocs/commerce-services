@@ -78,7 +78,7 @@ Use the [`productSearch` query](#product-search) to return product listing page 
 
 The query returns a `ProductView` output object with the product content values.
 
-#### Return the ordered media gallery
+### Return the ordered media gallery
 
 Use the `gallery` field to retrieve product images and videos in resolved display order. The field returns the `ProductViewMedia` union, so use inline fragments to request fields for each media type.
 
@@ -110,7 +110,7 @@ query GetProductMediaGallery {
 
 The API resolves the gallery order before returning the response. If an image and video have the same position, the image is returned first. Preserve the returned order when rendering the gallery. The `sortOrder` values used to resolve the gallery are not exposed. The existing `images` and `videos` fields remain available for backward compatibility.
 
-#### Return details about a simple product
+### Return details about a simple product
 
 The following query returns details about a simple product with SKU `cru-sus-prm-2014`.
 
