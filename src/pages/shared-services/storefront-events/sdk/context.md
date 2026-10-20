@@ -48,9 +48,9 @@ mse.context.setStorefrontInstance(storefrontCtx);
 
 ### If a scope field is missing
 
-A missing scope field might not produce a clear error when an event is published. The event can fail to associate with the intended store view or catalog view, and downstream aggregations might omit it or attribute it to the wrong scope.
+A missing scope field might not produce a clear error when an event is published, and the event data might not be scoped as you expect.
 
-For PaaS and Adobe Commerce as a Cloud Service (SaaS), a missing `storeViewCode` can prevent the event from appearing in catalog aggregations. For Adobe Commerce Optimizer, a missing `viewId` can cause events to fall back to an incorrect scope.
+For PaaS and Adobe Commerce as a Cloud Service (SaaS), a missing `storeViewCode` can prevent the event from appearing in catalog aggregations. For Adobe Commerce Optimizer, a missing `viewId` can cause events to be scoped incorrectly.
 
 <InlineAlert variant="important" slots="text"/>
 
