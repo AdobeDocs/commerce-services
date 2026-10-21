@@ -408,12 +408,13 @@ paths:
               FeedWithMetadataInformation:
                 summary: Delete product attribute metadata
                 description: Marks existing product attribute metadata as deleted.
-                value: [
-                  {
-                    "code": "name",
-                    "source": { "locale": "en-US" }
-                  }
-                ]
+                value:
+                  [
+                    {
+                      "code": "name",
+                      "source": { "locale": "en-US" }
+                    }
+                  ]
 
   /v1/catalog/categories/metadata:
     post:
@@ -546,12 +547,13 @@ paths:
               FeedWithMetadataInformation:
                 summary: Delete category attribute metadata
                 description: Marks existing category attribute metadata as deleted.
-                value: [
-                  {
-                    "code": "bottom_description",
-                    "source": { "locale": "en-US" }
-                  }
-                ]
+                value:
+                  [
+                    {
+                      "code": "bottom_description",
+                      "source": { "locale": "en-US" }
+                    }
+                  ]
 
   /v1/catalog/categories:
     post:
@@ -766,16 +768,17 @@ paths:
               FeedWithCategoryInformation:
                 summary: Delete categories
                 description: Marks existing categories as deleted.
-                value: [
-                  {
-                    "slug": "men/clothing/pants",
-                    "source": { "locale": "en-US" }
-                  },
-                  {
-                    "slug": "women/shoes/boots",
-                    "source": { "locale": "en-US" }
-                  }
-                ]
+                value:
+                  [
+                    {
+                      "slug": "men/clothing/pants",
+                      "source": { "locale": "en-US" }
+                    },
+                    {
+                      "slug": "women/shoes/boots",
+                      "source": { "locale": "en-US" }
+                    }
+                  ]
 
   /v1/catalog/products:
     post:
@@ -2442,6 +2445,7 @@ components:
             - DECIMAL
             - INTEGER
             - BOOLEAN
+            - OBJECT
         filterable:
           type: boolean
           description: Indicates whether the attribute can be used to filter products.
@@ -2510,6 +2514,7 @@ components:
             - DECIMAL
             - INTEGER
             - BOOLEAN
+            - OBJECT
         filterable:
           type: boolean
           description: Indicates whether the attribute can be used to filter products.
@@ -2579,6 +2584,7 @@ components:
             - DECIMAL
             - INTEGER
             - BOOLEAN
+            - OBJECT
     FeedCategoryMetadataUpdate:
       title: Update category metadata attribute
       description: Metadata information for a category attribute.
@@ -2605,6 +2611,7 @@ components:
             - DECIMAL
             - INTEGER
             - BOOLEAN
+            - OBJECT
     FeedCategoryMetadataDelete:
       title: Delete category metadata attribute
       description: Delete metadata information for a category attribute.
@@ -2822,6 +2829,12 @@ components:
           description: A list of product images.
           items:
             $ref: "#/components/schemas/ProductImage"
+        videos:
+          type: array
+          nullable: true
+          description: A list of product videos.
+          items:
+            $ref: "#/components/schemas/ProductVideo"
         links:
           type: array
           description: A list of linked SKUs.
@@ -2910,6 +2923,12 @@ components:
           description: A list of product images.
           items:
             $ref: "#/components/schemas/ProductImage"
+        videos:
+          type: array
+          nullable: true
+          description: A list of product videos.
+          items:
+            $ref: "#/components/schemas/ProductVideo"
         links:
           type: array
           description: |
@@ -3359,21 +3378,6 @@ components:
         code:
           type: string
           description: Product Attribute Code
-# DCAT-2461:
-#        type:
-#          enum:
-#            - BOOLEAN
-#            - NUMBER
-#            - STRING
-#            - ARRAY
-#            - OBJECT
-#          description: |
-#            Type of attribute value to be applied during the rendering phase. Validation occurs only when the code is rendered. Invalid values are ignored.
-#            - `BOOLEAN`: Accept single value: "true" or false
-#            - `NUMBER`: Accept single number,e.g. "85", "0.42", etc.
-#            - `STRING`: Accept single string,e.g. "Great day, yall!"
-#            - `ARRAY`: Accept list of strings ,e.g. ["red", "green", "blue"]
-#            - `OBJECT`: Accept JSON object `"{"name": "swatch", "color": "red"}"`
         values:
           type: array
           description: A list of value(s) associated with a specified attribute code.
@@ -3447,6 +3451,72 @@ components:
             Custom image role. Merchants can define custom roles in addition to the predefined values.
           items:
             type: string
+        sortOrder:
+          type: integer
+          nullable: true
+          description: Sort order for the image.
+    ProductVideo:
+      title: Product Video
+      type: object
+      required:
+        - url
+      properties:
+        url:
+          type: string
+          minLength: 1
+          pattern: '^(?!\s*$).+'
+          description: Video resource URL.
+        title:
+          type: string
+          nullable: true
+          description: Video title.
+        description:
+          type: string
+          nullable: true
+          description: Video description.
+        sortOrder:
+          type: integer
+          nullable: true
+          description: |
+            Sort order for the video. If omitted, the position in the videos array is used.
+            If an image and a video have the same sort order, the image is placed first.
+        preview:
+          $ref: "#/components/schemas/ProductVideoPreview"
+      additionalProperties: false
+    ProductVideoPreview:
+      title: Product Video Preview
+      description: Image rendered in the gallery as the preview for the video.
+      type: object
+      required:
+        - url
+      properties:
+        url:
+          type: string
+          minLength: 1
+          pattern: '^(?!\s*$).+'
+          description: Preview image URL.
+        label:
+          type: string
+          nullable: true
+          description: Preview image label.
+        roles:
+          type: array
+          nullable: true
+          description: Roles associated with the preview image.
+          items:
+            type: string
+            enum:
+              - BASE
+              - SMALL
+              - THUMBNAIL
+              - SWATCH
+        customRoles:
+          type: array
+          nullable: true
+          description: Custom roles associated with the preview image.
+          items:
+            type: string
+      additionalProperties: false
     CategoryImage:
       title: Category Image
       type: object
@@ -3522,6 +3592,12 @@ components:
             Option value ID.
             For `CONFIGURABLE` or `SWATCH` option types, this ID must match the ["variantReferenceId"](#operation/createProducts!path=attributes/variantReferenceId&t=request)
             defined in the product variant.
+        sku:
+          type: string
+          minLength: 1
+          maxLength: 64
+          pattern: '^(?!\s*$).+'
+          description: SKU associated with the option value.
         label:
           type: string
           description: Option value label
