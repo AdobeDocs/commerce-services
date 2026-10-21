@@ -9,6 +9,8 @@ keywords:
 
 # Context for storefront events
 
+The Storefront Events SDK uses context objects to provide details about your storefront and shopper interactions. Use the functions on this page to read and update those values.
+
 ## Storefront instance context requirements
 
 The fields needed to scope storefront events depend on your Adobe Commerce setup. Include the scope fields for your platform in the `StorefrontInstance` context before you publish events. A field being optional in the shared SDK type does not mean you can omit it for every platform.
