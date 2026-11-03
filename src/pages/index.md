@@ -66,3 +66,7 @@ Import data into your Commerce data warehouse and export raw data from your Comm
 ## Contributing to this documentation
 
 We encourage you to participate in our open documentation initiative. If you have suggestions, corrections, additions, or deletions for this documentation, check out the source on [GitHub](https://github.com/adobedocs/commerce-services), and open a pull request.
+
+## What's new
+
+<Fragment src="/_includes/templated/whats-new.md" />
