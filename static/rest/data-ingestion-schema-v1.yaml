@@ -57,7 +57,7 @@ tags:
       [Implement categories on the storefront](https://developer.adobe.com/commerce/services/optimizer/merchandising-services/categories-storefront-implementation/).
 
   - name: Products
-    description: Create and manage product data including simple products, configurable products, and their variants. Control product visibility, attributes, images, and pricing
+    description: Create and manage product data including simple products, configurable products, and their variants. Control product visibility, attributes, images, and pricing. Retrieve ingested products by SKU to verify the catalog data
   - name: Price Books
     description: |
       Define pricing scopes to manage product prices across different customer tiers and markets. Price books support a hierarchical model, allowing up to three levels of nested child price books under each base price book. Each price book can reference a parent price book, forming a tree structure for pricing scopes.
@@ -1288,6 +1288,7 @@ paths:
         For `array` type fields, a new value can be appended to the existing list. For an object list, you can update a specific object by matching on a key field. The following fields are supported:
         * `attributes` - match on `code`
         * `images` - match on `url`
+        * `videos` - match on `url`
         * `routes` - match on `path`
         * `links` - match on `type` and `sku`
         * `bundles` match on `type` and `group`
@@ -1433,6 +1434,188 @@ paths:
                         ]
                     }
                   ]
+    get:
+      tags:
+        - Products
+      summary: Get products
+      description: |
+        Retrieve products by SKU(s) for a catalog source (`locale`), as they were ingested.
+        Use this operation to verify ingested product data, for example, to check that a product exists before sending an [update request](#operation/updateProducts).
+      
+        Specify the `locale` and from 1 to 100 `sku` parameters. To request several products, repeat the `sku` parameter, for example,
+        `?locale=en-US&sku=red-pants&sku=blue-pants`.
+
+        The following rules apply:
+        - The `locale` and `sku` values are case-insensitive.
+        - Data is returned after processing since ingestion operations are asynchronous.
+        - Products are returned in no particular order, not necessarily the order of the requested SKUs.
+        - A SKU that is specified more than once is returned once. The limit of 100 SKUs counts every `sku` parameter, including duplicates.
+        - A SKU that does not exist or was deleted is omitted from the response. If none of the SKUs is found, the response is an empty array.
+        - Fields that have no value are omitted from a product. List fields, such as `attributes` are always returned and are empty if the product has no items.
+
+        The request is rejected with a `400` status code if the `locale` is missing or blank, no `sku` is specified, a `sku` is blank, or more than 100 `sku` parameters are specified.
+      operationId: getProducts
+      parameters:
+        - name: Authorization
+          in: header
+          required: true
+          description: Access token of the request, sent as a bearer token. The token must include the `commerce.aco.admin` scope.
+          schema:
+            type: string
+        - name: locale
+          in: query
+          required: true
+          description: Catalog source of the products, for example, `en-US`. Matches the `source.locale` value specified when the product was created.
+          schema:
+            type: string
+          example: en-US
+        - name: sku
+          in: query
+          required: true
+          description: |
+            SKU of a product to retrieve. Repeat the parameter to retrieve several products, up to 100 per request.
+          style: form
+          explode: true
+          schema:
+            type: array
+            minItems: 1
+            maxItems: 100
+            items:
+              type: string
+          example: [red-pants, blue-pants]
+      responses:
+        "200":
+          x-summary: Products found
+          description: |
+            The products found for the requested SKUs.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/CatalogProduct"
+              examples:
+                SimpleProduct:
+                  summary: Get a simple product
+                  description: >
+                    Response to `GET /v1/catalog/products?locale=en-US&sku=red-pants`.
+                  value:
+                    [
+                      {
+                        "sku": "red-pants",
+                        "source": { "locale": "en-US" },
+                        "name": "red pants",
+                        "slug": "red-pants.html",
+                        "status": "ENABLED",
+                        "description": "long description about red pants",
+                        "shortDescription": "just pants",
+                        "visibleIn": ["CATALOG", "SEARCH"],
+                        "metaTags":
+                          {
+                            "title": "Yoga pants ",
+                            "description": "Climb with Zeppelin Yoga Pant",
+                            "keywords": ["pants", "yoga"]
+                          },
+                        "attributes":
+                          [
+                            {
+                              "code": "cost",
+                              "values": ["10.5"]
+                            },
+                            {
+                              "code": "states",
+                              "values": ["TX", "CA"]
+                            }
+                          ],
+                        "images":
+                          [
+                            {
+                              "url": "https://example.com/images/pants.jpg",
+                              "label": "photo of my pants!",
+                              "roles": ["BASE", "THUMBNAIL"],
+                              "customRoles": ["widget"],
+                              "sortOrder": 1
+                            }
+                          ],
+                        "videos":
+                          [
+                            {
+                              "url": "https://example.com/videos/pants.mp4",
+                              "title": "How to wear red pants",
+                              "description": "A short video about red pants",
+                              "sortOrder": 2,
+                              "preview":
+                                {
+                                  "url": "https://example.com/images/pants-video-preview.jpg",
+                                  "label": "video preview",
+                                  "roles": ["THUMBNAIL"],
+                                  "customRoles": []
+                                }
+                            }
+                          ],
+                        "links": [],
+                        "routes":
+                          [
+                            { "path": "men", "position": 0 },
+                            { "path": "men/clothing", "position": 1 },
+                            { "path": "men/clothing/pants", "position": 1 }
+                          ],
+                        "configurations": [],
+                        "bundles": [],
+                        "externalIds": [],
+                        "createdAt": "2026-02-15T08:30:00.000Z",
+                        "modifiedAt": "2026-02-16T10:15:30.000Z"
+                      }
+                    ]
+                ProductNotFound:
+                  summary: No product found
+                  description: >
+                    Response when none of the requested SKUs exists.
+                  value: []
+        "400":
+          x-summary: Invalid request
+          description: |
+            The request is invalid. Check the `message` field for details.
+            The request is rejected in the following cases:
+
+            * The `locale` parameter is missing or blank.
+            * The `sku` parameter is missing.
+            * A `sku` parameter is blank.
+            * More than 100 `sku` parameters are specified. Duplicate SKUs are counted.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/400Response"
+              examples:
+                MissingLocale:
+                  summary: Missing or blank locale
+                  description: >
+                    Response to `GET /v1/catalog/products?sku=red-pants`.
+                  value: { "message": "locale must not be blank" }
+                MissingSku:
+                  summary: Missing SKU
+                  description: >
+                    Response to `GET /v1/catalog/products?locale=en-US`.
+                  value: { "message": "At least one SKU is required in the sku parameter" }
+                BlankSku:
+                  summary: Blank SKU
+                  description: >
+                    Response to `GET /v1/catalog/products?locale=en-US&sku=`.
+                  value: { "message": "sku must not contain blank IDs" }
+                TooManySkus:
+                  summary: More than 100 SKUs
+                  description: >
+                    Response to a request with 101 `sku` parameters.
+                  value:
+                    {
+                      "message": "Maximum number of SKUs reached: up to 100 SKUs are allowed per request, 101 provided"
+                    }
+        "401":
+          $ref: "#/components/responses/UnauthorizedResponse"
+        "403":
+          $ref: "#/components/responses/ForbiddenResponse"
+        "429":
+          $ref: "#/components/responses/TooManyRequestsResponse"
   /v1/catalog/products/delete:
     post:
       tags:
@@ -2821,6 +3004,11 @@ components:
           description: A list of product images.
           items:
             $ref: "#/components/schemas/ProductImage"
+        videos:
+          type: array
+          description: A list of product videos.
+          items:
+            $ref: "#/components/schemas/ProductVideo"
         links:
           type: array
           description: A list of linked SKUs.
@@ -2909,6 +3097,11 @@ components:
           description: A list of product images.
           items:
             $ref: "#/components/schemas/ProductImage"
+        videos:
+          type: array
+          description: A list of product videos.
+          items:
+            $ref: "#/components/schemas/ProductVideo"
         links:
           type: array
           description: |
@@ -2936,6 +3129,27 @@ components:
           description: A list of external IDs for the product.
           items:
             $ref: "#/components/schemas/ProductExternalId"
+    CatalogProduct:
+      title: Catalog Product
+      description: |
+        A product returned by the [get products](#operation/getProducts) operation.
+        It has the fields of the [create products](#operation/createProducts) payload, plus the `createdAt` and `modifiedAt` fields.
+      allOf:
+        - $ref: "#/components/schemas/FeedProduct"
+        - type: object
+          properties:
+            createdAt:
+              type: string
+              format: date-time
+              description: |
+                Date and time when the product was created, in ISO 8601 format (UTC).
+                Not returned for products that were created before the creation time was tracked.
+              example: "2026-02-15T08:30:00.000Z"
+            modifiedAt:
+              type: string
+              format: date-time
+              description: Date and time when the product was last updated, in ISO 8601 format (UTC).
+              example: "2026-02-16T10:15:30.000Z"
     FeedProductDelete:
       title: Catalog Product delete payload
       type: object
@@ -3446,6 +3660,74 @@ components:
             Custom image role. Merchants can define custom roles in addition to the predefined values.
           items:
             type: string
+        sortOrder:
+          type: integer
+          format: int32
+          nullable: true
+          description: |
+            Position of the image in the product gallery. If omitted, the natural position of the item in the `images` array is used.
+    ProductVideo:
+      title: Product Video
+      type: object
+      required:
+        - url
+      properties:
+        url:
+          type: string
+          description: Video resource URL
+        title:
+          type: string
+          nullable: true
+          description: Video title
+        description:
+          type: string
+          nullable: true
+          description: Video description
+        sortOrder:
+          type: integer
+          format: int32
+          nullable: true
+          description: |
+            Position of the video in the product gallery. If omitted, the natural position of the item in the `videos` array is used.
+            If an image and a video have the same `sortOrder`, the image is placed first.
+        preview:
+          $ref: "#/components/schemas/ProductVideoPreview"
+    ProductVideoPreview:
+      title: Product Video Preview
+      description: Image rendered in the product gallery as the preview of the video.
+      type: object
+      required:
+        - url
+      properties:
+        url:
+          type: string
+          description: Preview image URL
+        label:
+          type: string
+          nullable: true
+          description: Preview image label
+        roles:
+          type: array
+          nullable: true
+          description: |
+            Roles associated with the preview image that determine how it is used on the storefront.
+            - `BASE`: Image is visible as a main image on the Product Detail Page.
+            - `SMALL`: Image is visible as a main image on the Category or search result page or other product listing pages.
+            - `THUMBNAIL`: Thumbnail images appear in the thumbnail gallery, shopping cart, etc.
+            - `SWATCH`: A swatch can be used to illustrate the color, pattern, or texture.
+          items:
+            enum:
+              - BASE
+              - SMALL
+              - THUMBNAIL
+              - SWATCH
+        customRoles:
+          type: array
+          nullable: true
+          description: >
+            Custom image role. Merchants can define custom roles in addition to the predefined values.
+          items:
+            type: string
     CategoryImage:
       title: Category Image
       type: object
@@ -3659,6 +3941,14 @@ components:
               }
             ]
         }
+    400Response:
+      title: 400 Bad Request
+      type: object
+      properties:
+        message:
+          type: string
+          description: Error description.
+      example: { "message": "locale must not be blank" }
     401Response:
       title: 401 Unauthorized
       type: object
