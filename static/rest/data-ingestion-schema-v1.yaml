@@ -57,7 +57,7 @@ tags:
       [Implement categories on the storefront](https://developer.adobe.com/commerce/services/optimizer/merchandising-services/categories-storefront-implementation/).
 
   - name: Products
-    description: Create and manage product data including simple products, configurable products, and their variants. Control product visibility, attributes, images, and pricing
+    description: Create and manage product data including simple products, configurable products, and their variants. Control product visibility, attributes, images, and pricing. Retrieve ingested products by SKU to verify the catalog data
   - name: Price Books
     description: |
       Define pricing scopes to manage product prices across different customer tiers and markets. Price books support a hierarchical model, allowing up to three levels of nested child price books under each base price book. Each price book can reference a parent price book, forming a tree structure for pricing scopes.
@@ -320,6 +320,26 @@ paths:
                       "searchTypes": []
                     }
                   ]
+              ObjectAndGeopointAttributesMetadata:
+                summary: Create product attributes metadata for OBJECT and GEOPOINT attributes
+                description: |
+                  Defines metadata for attributes whose values are JSON objects (`OBJECT`) or latitude/longitude coordinate pairs (`GEOPOINT`).
+                  The [product attributes](#operation/createProducts!path=attributes&t=request) values of such attributes are provided as JSON strings when you create products.
+                value:
+                  [
+                    {
+                      "code": "swatch",
+                      "source": { "locale": "en-US" },
+                      "label": "Swatch",
+                      "dataType": "OBJECT"
+                    },
+                    {
+                      "code": "store_location",
+                      "source": { "locale": "en-US" },
+                      "label": "Store location",
+                      "dataType": "GEOPOINT"
+                    }
+                  ]
     patch:
       tags:
         - ProductMetadata
@@ -375,6 +395,131 @@ paths:
                     }
                   ]
 
+    get:
+      tags:
+        - ProductMetadata
+      summary: Get product attribute metadata
+      description: |
+        Retrieve product attribute metadata by attribute code(s) for a catalog source (`locale`), as it was ingested.
+        Use this operation to verify ingested product attribute metadata, for example, to check that metadata exists before sending an [update request](#operation/updateProductMetadata).
+
+        Specify the `locale` and from 1 to 100 `code` parameters. To request several attributes, repeat the `code` parameter, for example,
+        `?locale=en-US&code=color&code=size`.
+
+        The following rules apply:
+        - The `locale` and `code` values are case-insensitive.
+        - Data is returned after processing since ingestion operations are asynchronous.
+        - Metadata is returned in no particular order, not necessarily the order of the requested codes.
+        - A code that is specified more than once is returned once. The limit of 100 codes counts every `code` parameter, including duplicates.
+        - A code that does not exist or was deleted is omitted from the response. If none of the codes is found, the response is an empty array.
+        - Fields that have no value are omitted from the metadata. List fields, such as `visibleIn` and `searchTypes`, are always returned and are empty if the attribute has no items.
+
+        The request is rejected with a `400` status code if the `locale` is missing or blank, no `code` is specified, a `code` is blank, or more than 100 `code` parameters are specified.
+      operationId: getProductMetadata
+      parameters:
+        - $ref: "#/components/parameters/AuthorizationAdmin"
+        - name: locale
+          in: query
+          required: true
+          description: Catalog source of the metadata, for example, `en-US`. Matches the `source.locale` value specified when the metadata was created.
+          schema:
+            type: string
+          example: en-US
+        - name: code
+          in: query
+          required: true
+          description: |
+            Code of a product attribute to retrieve metadata for. Repeat the parameter to retrieve several attributes, up to 100 per request.
+          style: form
+          explode: true
+          schema:
+            type: array
+            minItems: 1
+            maxItems: 100
+            items:
+              type: string
+          example: [color, size]
+      responses:
+        "200":
+          x-summary: Metadata found
+          description: |
+            The product attribute metadata found for the requested codes.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/CatalogProductMetadata"
+              examples:
+                ProductMetadata:
+                  summary: Get product attribute metadata
+                  description: >
+                    Response to `GET /v1/catalog/products/metadata?locale=en-US&code=color`.
+                  value:
+                    [
+                      {
+                        "code": "color",
+                        "source": { "locale": "en-US" },
+                        "label": "Color",
+                        "dataType": "TEXT",
+                        "visibleIn": ["PRODUCT_DETAIL", "PRODUCT_LISTING", "SEARCH_RESULTS"],
+                        "filterable": true,
+                        "sortable": false,
+                        "searchable": true,
+                        "searchWeight": 1.0,
+                        "searchTypes": ["AUTOCOMPLETE"],
+                        "modifiedAt": "2026-02-16T10:15:30.000Z"
+                      }
+                    ]
+                MetadataNotFound:
+                  summary: No metadata found
+                  description: >
+                    Response when none of the requested codes exists.
+                  value: []
+        "400":
+          x-summary: Invalid request
+          description: |
+            The request is invalid. Check the `message` field for details.
+            The request is rejected in the following cases:
+
+            * The `locale` parameter is missing or blank.
+            * The `code` parameter is missing.
+            * A `code` parameter is blank.
+            * More than 100 `code` parameters are specified. Duplicate codes are counted.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/400Response"
+              examples:
+                MissingLocale:
+                  summary: Missing or blank locale
+                  description: >
+                    Response to `GET /v1/catalog/products/metadata?code=color`.
+                  value: { "message": "locale must not be blank" }
+                MissingCode:
+                  summary: Missing code
+                  description: >
+                    Response to `GET /v1/catalog/products/metadata?locale=en-US`.
+                  value: { "message": "At least one code is required in the code parameter" }
+                BlankCode:
+                  summary: Blank code
+                  description: >
+                    Response to `GET /v1/catalog/products/metadata?locale=en-US&code=`.
+                  value: { "message": "code must not contain blank IDs" }
+                TooManyCodes:
+                  summary: More than 100 codes
+                  description: >
+                    Response to a request with 101 `code` parameters.
+                  value:
+                    {
+                      "message": "Maximum number of codes reached: up to 100 codes are allowed per request, 101 provided"
+                    }
+        "401":
+          $ref: "#/components/responses/UnauthorizedResponse"
+        "403":
+          $ref: "#/components/responses/ForbiddenResponse"
+        "429":
+          $ref: "#/components/responses/TooManyRequestsResponse"
   /v1/catalog/products/metadata/delete:
     post:
       tags:
@@ -513,6 +658,125 @@ paths:
                     }
                   ]
 
+    get:
+      tags:
+        - CategoryMetadata
+      summary: Get category attribute metadata
+      description: |
+        Retrieve category attribute metadata by attribute code(s) for a catalog source (`locale`), as it was ingested.
+        Use this operation to verify ingested category attribute metadata, for example, to check that metadata exists before sending an [update request](#operation/updateCategoryMetadata).
+
+        Specify the `locale` and from 1 to 100 `code` parameters. To request several attributes, repeat the `code` parameter, for example,
+        `?locale=en-US&code=bottom_description&code=top_description`.
+
+        The following rules apply:
+        - The `locale` and `code` values are case-insensitive.
+        - Data is returned after processing since ingestion operations are asynchronous.
+        - Metadata is returned in no particular order, not necessarily the order of the requested codes.
+        - A code that is specified more than once is returned once. The limit of 100 codes counts every `code` parameter, including duplicates.
+        - A code that does not exist or was deleted is omitted from the response. If none of the codes is found, the response is an empty array.
+        - Fields that have no value are omitted from the metadata.
+
+        The request is rejected with a `400` status code if the `locale` is missing or blank, no `code` is specified, a `code` is blank, or more than 100 `code` parameters are specified.
+      operationId: getCategoryMetadata
+      parameters:
+        - $ref: "#/components/parameters/AuthorizationAdmin"
+        - name: locale
+          in: query
+          required: true
+          description: Catalog source of the metadata, for example, `en-US`. Matches the `source.locale` value specified when the metadata was created.
+          schema:
+            type: string
+          example: en-US
+        - name: code
+          in: query
+          required: true
+          description: |
+            Code of a category attribute to retrieve metadata for. Repeat the parameter to retrieve several attributes, up to 100 per request.
+          style: form
+          explode: true
+          schema:
+            type: array
+            minItems: 1
+            maxItems: 100
+            items:
+              type: string
+          example: [bottom_description, top_description]
+      responses:
+        "200":
+          x-summary: Metadata found
+          description: |
+            The category attribute metadata found for the requested codes.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/CatalogCategoryMetadata"
+              examples:
+                CategoryMetadata:
+                  summary: Get category attribute metadata
+                  description: >
+                    Response to `GET /v1/catalog/categories/metadata?locale=en-US&code=bottom_description`.
+                  value:
+                    [
+                      {
+                        "code": "bottom_description",
+                        "source": { "locale": "en-US" },
+                        "label": "Category Description",
+                        "dataType": "TEXT",
+                        "modifiedAt": "2026-02-16T10:15:30.000Z"
+                      }
+                    ]
+                MetadataNotFound:
+                  summary: No metadata found
+                  description: >
+                    Response when none of the requested codes exists.
+                  value: []
+        "400":
+          x-summary: Invalid request
+          description: |
+            The request is invalid. Check the `message` field for details.
+            The request is rejected in the following cases:
+
+            * The `locale` parameter is missing or blank.
+            * The `code` parameter is missing.
+            * A `code` parameter is blank.
+            * More than 100 `code` parameters are specified. Duplicate codes are counted.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/400Response"
+              examples:
+                MissingLocale:
+                  summary: Missing or blank locale
+                  description: >
+                    Response to `GET /v1/catalog/categories/metadata?code=bottom_description`.
+                  value: { "message": "locale must not be blank" }
+                MissingCode:
+                  summary: Missing code
+                  description: >
+                    Response to `GET /v1/catalog/categories/metadata?locale=en-US`.
+                  value: { "message": "At least one code is required in the code parameter" }
+                BlankCode:
+                  summary: Blank code
+                  description: >
+                    Response to `GET /v1/catalog/categories/metadata?locale=en-US&code=`.
+                  value: { "message": "code must not contain blank IDs" }
+                TooManyCodes:
+                  summary: More than 100 codes
+                  description: >
+                    Response to a request with 101 `code` parameters.
+                  value:
+                    {
+                      "message": "Maximum number of codes reached: up to 100 codes are allowed per request, 101 provided"
+                    }
+        "401":
+          $ref: "#/components/responses/UnauthorizedResponse"
+        "403":
+          $ref: "#/components/responses/ForbiddenResponse"
+        "429":
+          $ref: "#/components/responses/TooManyRequestsResponse"
   /v1/catalog/categories/metadata/delete:
     post:
       tags:
@@ -717,6 +981,149 @@ paths:
                       ]
                     }
                   ]
+    get:
+      tags:
+        - Categories
+      summary: Get categories
+      description: |
+        Retrieve categories by slug(s) for a catalog source (`locale`), as they were ingested.
+        Use this operation to verify ingested category data, for example, to check that a category exists before sending an [update request](#operation/updateCategories).
+
+        Specify the `locale` and from 1 to 100 `slug` parameters. To request several categories, repeat the `slug` parameter, for example,
+        `?locale=en-US&slug=men&slug=men/clothing`.
+
+        The following rules apply:
+        - The `locale` and `slug` values are case-insensitive.
+        - Data is returned after processing since ingestion operations are asynchronous.
+        - Categories are returned in no particular order, not necessarily the order of the requested slugs.
+        - A slug that is specified more than once is returned once. The limit of 100 slugs counts every `slug` parameter, including duplicates.
+        - A slug that does not exist or was deleted is omitted from the response. If none of the slugs is found, the response is an empty array.
+        - Fields that have no value are omitted from a category. List fields, such as `attributes`, `images`, and `families`, are always returned and are empty if the category has no items.
+
+        The request is rejected with a `400` status code if the `locale` is missing or blank, no `slug` is specified, a `slug` is blank, or more than 100 `slug` parameters are specified.
+      operationId: getCategories
+      parameters:
+        - $ref: "#/components/parameters/AuthorizationAdmin"
+        - name: locale
+          in: query
+          required: true
+          description: Catalog source of the categories, for example, `en-US`. Matches the `source.locale` value specified when the category was created.
+          schema:
+            type: string
+          example: en-US
+        - name: slug
+          in: query
+          required: true
+          description: |
+            Slug of a category to retrieve, for example, `men/clothing`. Repeat the parameter to retrieve several categories, up to 100 per request.
+          style: form
+          explode: true
+          schema:
+            type: array
+            minItems: 1
+            maxItems: 100
+            items:
+              type: string
+          example: [men, men/clothing]
+      responses:
+        "200":
+          x-summary: Categories found
+          description: |
+            The categories found for the requested slugs.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/CatalogCategory"
+              examples:
+                Category:
+                  summary: Get a category
+                  description: >
+                    Response to `GET /v1/catalog/categories?locale=en-US&slug=men`.
+                  value:
+                    [
+                      {
+                        "slug": "men",
+                        "source": { "locale": "en-US" },
+                        "name": "Men",
+                        "description": "Men's clothing, shoes, and accessories",
+                        "families": ["apparel", "accessories"],
+                        "position": 1,
+                        "metaTags":
+                          {
+                            "title": "Men's Collection",
+                            "description": "Shop men's clothing, shoes, and accessories",
+                            "keywords": ["men", "clothing", "accessories"]
+                          },
+                        "attributes":
+                          [
+                            {
+                              "code": "bottom_description",
+                              "values": ["The bottom description"]
+                            }
+                          ],
+                        "images":
+                          [
+                            {
+                              "url": "https://example.com/images/men-category.png",
+                              "label": "Men's Category",
+                              "roles": ["BASE"],
+                              "customRoles": []
+                            }
+                          ],
+                        "modifiedAt": "2026-02-16T10:15:30.000Z"
+                      }
+                    ]
+                CategoryNotFound:
+                  summary: No category found
+                  description: >
+                    Response when none of the requested slugs exists.
+                  value: []
+        "400":
+          x-summary: Invalid request
+          description: |
+            The request is invalid. Check the `message` field for details.
+            The request is rejected in the following cases:
+
+            * The `locale` parameter is missing or blank.
+            * The `slug` parameter is missing.
+            * A `slug` parameter is blank.
+            * More than 100 `slug` parameters are specified. Duplicate slugs are counted.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/400Response"
+              examples:
+                MissingLocale:
+                  summary: Missing or blank locale
+                  description: >
+                    Response to `GET /v1/catalog/categories?slug=men`.
+                  value: { "message": "locale must not be blank" }
+                MissingSlug:
+                  summary: Missing slug
+                  description: >
+                    Response to `GET /v1/catalog/categories?locale=en-US`.
+                  value: { "message": "At least one slug is required in the slug parameter" }
+                BlankSlug:
+                  summary: Blank slug
+                  description: >
+                    Response to `GET /v1/catalog/categories?locale=en-US&slug=`.
+                  value: { "message": "slug must not contain blank IDs" }
+                TooManySlugs:
+                  summary: More than 100 slugs
+                  description: >
+                    Response to a request with 101 `slug` parameters.
+                  value:
+                    {
+                      "message": "Maximum number of slugs reached: up to 100 slugs are allowed per request, 101 provided"
+                    }
+        "401":
+          $ref: "#/components/responses/UnauthorizedResponse"
+        "403":
+          $ref: "#/components/responses/ForbiddenResponse"
+        "429":
+          $ref: "#/components/responses/TooManyRequestsResponse"
   /v1/catalog/categories/delete:
     post:
       tags:
@@ -953,6 +1360,33 @@ paths:
                           { "path": "men" },
                           { "path": "men/clothing/", "position": 1 },
                           { "path": "men/clothing/pants", "position": 1}
+                        ]
+                    }
+                  ]
+              ProductWithObjectAndGeopointAttributes:
+                summary: Create a product with OBJECT and GEOPOINT attributes
+                description: >
+                  Create a product with attributes of the `OBJECT` and `GEOPOINT` types. The value of an `OBJECT` attribute is a JSON object
+                  that is provided as a JSON string. The value of a `GEOPOINT` attribute is a JSON string with exactly two numeric
+                  properties, `lat` (from -90 to 90) and `lon` (from -180 to 180).
+                value:
+                  [
+                    {
+                      "sku": "red-pants-austin",
+                      "source": { "locale": "en-US" },
+                      "name": "red pants (Austin)",
+                      "slug": "red-pants-austin.html",
+                      "status": "ENABLED",
+                      "attributes":
+                        [
+                          {
+                            "code": "swatch",
+                            "values": ["{\"name\": \"swatch\", \"color\": \"red\"}"]
+                          },
+                          {
+                            "code": "store_location",
+                            "values": ["{\"lat\": 30.2672, \"lon\": -97.7431}"]
+                          }
                         ]
                     }
                   ]
@@ -1288,6 +1722,7 @@ paths:
         For `array` type fields, a new value can be appended to the existing list. For an object list, you can update a specific object by matching on a key field. The following fields are supported:
         * `attributes` - match on `code`
         * `images` - match on `url`
+        * `videos` - match on `url`
         * `routes` - match on `path`
         * `links` - match on `type` and `sku`
         * `bundles` match on `type` and `group`
@@ -1433,6 +1868,191 @@ paths:
                         ]
                     }
                   ]
+    get:
+      tags:
+        - Products
+      summary: Get products
+      description: |
+        Retrieve products by SKU(s) for a catalog source (`locale`), as they were ingested.
+        Use this operation to verify ingested product data, for example, to check that a product exists before sending an [update request](#operation/updateProducts).
+      
+        Specify the `locale` and from 1 to 100 `sku` parameters. To request several products, repeat the `sku` parameter, for example,
+        `?locale=en-US&sku=red-pants&sku=blue-pants`.
+
+        The following rules apply:
+        - The `locale` and `sku` values are case-insensitive.
+        - Data is returned after processing since ingestion operations are asynchronous.
+        - Products are returned in no particular order, not necessarily the order of the requested SKUs.
+        - A SKU that is specified more than once is returned once. The limit of 100 SKUs counts every `sku` parameter, including duplicates.
+        - A SKU that does not exist or was deleted is omitted from the response. If none of the SKUs is found, the response is an empty array.
+        - Fields that have no value are omitted from a product. List fields, such as `attributes` are always returned and are empty if the product has no items.
+
+        The request is rejected with a `400` status code if the `locale` is missing or blank, no `sku` is specified, a `sku` is blank, or more than 100 `sku` parameters are specified.
+      operationId: getProducts
+      parameters:
+        - $ref: "#/components/parameters/AuthorizationAdmin"
+        - name: locale
+          in: query
+          required: true
+          description: Catalog source of the products, for example, `en-US`. Matches the `source.locale` value specified when the product was created.
+          schema:
+            type: string
+          example: en-US
+        - name: sku
+          in: query
+          required: true
+          description: |
+            SKU of a product to retrieve. Repeat the parameter to retrieve several products, up to 100 per request.
+          style: form
+          explode: true
+          schema:
+            type: array
+            minItems: 1
+            maxItems: 100
+            items:
+              type: string
+          example: [red-pants, blue-pants]
+      responses:
+        "200":
+          x-summary: Products found
+          description: |
+            The products found for the requested SKUs.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/CatalogProduct"
+              examples:
+                SimpleProduct:
+                  summary: Get a simple product
+                  description: >
+                    Response to `GET /v1/catalog/products?locale=en-US&sku=red-pants`.
+                  value:
+                    [
+                      {
+                        "sku": "red-pants",
+                        "source": { "locale": "en-US" },
+                        "name": "red pants",
+                        "slug": "red-pants.html",
+                        "status": "ENABLED",
+                        "description": "long description about red pants",
+                        "shortDescription": "just pants",
+                        "visibleIn": ["CATALOG", "SEARCH"],
+                        "metaTags":
+                          {
+                            "title": "Yoga pants ",
+                            "description": "Climb with Zeppelin Yoga Pant",
+                            "keywords": ["pants", "yoga"]
+                          },
+                        "attributes":
+                          [
+                            {
+                              "code": "cost",
+                              "values": ["10.5"]
+                            },
+                            {
+                              "code": "states",
+                              "values": ["TX", "CA"]
+                            },
+                            {
+                              "code": "swatch",
+                              "values": ["{\"name\": \"swatch\", \"color\": \"red\"}"]
+                            },
+                            {
+                              "code": "store_location",
+                              "values": ["{\"lat\": 30.2672, \"lon\": -97.7431}"]
+                            }
+                          ],
+                        "images":
+                          [
+                            {
+                              "url": "https://example.com/images/pants.jpg",
+                              "label": "photo of my pants!",
+                              "roles": ["BASE", "THUMBNAIL"],
+                              "customRoles": ["widget"],
+                              "sortOrder": 1
+                            }
+                          ],
+                        "videos":
+                          [
+                            {
+                              "url": "https://example.com/videos/pants.mp4",
+                              "title": "How to wear red pants",
+                              "description": "A short video about red pants",
+                              "sortOrder": 2,
+                              "preview":
+                                {
+                                  "url": "https://example.com/images/pants-video-preview.jpg",
+                                  "label": "video preview",
+                                  "roles": ["THUMBNAIL"],
+                                  "customRoles": []
+                                }
+                            }
+                          ],
+                        "links": [],
+                        "routes":
+                          [
+                            { "path": "men", "position": 0 },
+                            { "path": "men/clothing", "position": 1 },
+                            { "path": "men/clothing/pants", "position": 1 }
+                          ],
+                        "configurations": [],
+                        "bundles": [],
+                        "externalIds": [],
+                        "createdAt": "2026-02-15T08:30:00.000Z",
+                        "modifiedAt": "2026-02-16T10:15:30.000Z"
+                      }
+                    ]
+                ProductNotFound:
+                  summary: No product found
+                  description: >
+                    Response when none of the requested SKUs exists.
+                  value: []
+        "400":
+          x-summary: Invalid request
+          description: |
+            The request is invalid. Check the `message` field for details.
+            The request is rejected in the following cases:
+
+            * The `locale` parameter is missing or blank.
+            * The `sku` parameter is missing.
+            * A `sku` parameter is blank.
+            * More than 100 `sku` parameters are specified. Duplicate SKUs are counted.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/400Response"
+              examples:
+                MissingLocale:
+                  summary: Missing or blank locale
+                  description: >
+                    Response to `GET /v1/catalog/products?sku=red-pants`.
+                  value: { "message": "locale must not be blank" }
+                MissingSku:
+                  summary: Missing SKU
+                  description: >
+                    Response to `GET /v1/catalog/products?locale=en-US`.
+                  value: { "message": "At least one SKU is required in the sku parameter" }
+                BlankSku:
+                  summary: Blank SKU
+                  description: >
+                    Response to `GET /v1/catalog/products?locale=en-US&sku=`.
+                  value: { "message": "sku must not contain blank IDs" }
+                TooManySkus:
+                  summary: More than 100 SKUs
+                  description: >
+                    Response to a request with 101 `sku` parameters.
+                  value:
+                    {
+                      "message": "Maximum number of SKUs reached: up to 100 SKUs are allowed per request, 101 provided"
+                    }
+        "401":
+          $ref: "#/components/responses/UnauthorizedResponse"
+        "403":
+          $ref: "#/components/responses/ForbiddenResponse"
+        "429":
+          $ref: "#/components/responses/TooManyRequestsResponse"
   /v1/catalog/products/delete:
     post:
       tags:
@@ -1578,6 +2198,161 @@ paths:
                       ]
                     }
                   ]
+    get:
+      tags:
+        - Product Layers
+      summary: Get product layers
+      description: |
+        Retrieve product layers by SKU(s) for a layer and an optional catalog source (`locale`), as they were ingested.
+        Use this operation to verify ingested product layer data.
+
+        Specify the `layer`, from 1 to 100 `sku` parameters, and optionally the `locale`. To request several product layers, repeat the `sku` parameter, for example,
+        `?layer=seasonal-winter-2024&locale=en-US&sku=red-pants&sku=blue-pants`.
+        If the `locale` is omitted, the layer that applies to all locales is returned.
+
+        The following rules apply:
+        - The `layer`, `locale`, and `sku` values are case-insensitive.
+        - Data is returned after processing since ingestion operations are asynchronous.
+        - Product layers are returned in no particular order, not necessarily the order of the requested SKUs.
+        - A SKU that is specified more than once is returned once. The limit of 100 SKUs counts every `sku` parameter, including duplicates.
+        - A SKU that does not have the layer or whose layer was deleted is omitted from the response. If none of the SKUs is found, the response is an empty array.
+        - Only the fields that the layer was ingested with are returned. The layer is not merged with the base product.
+        - Fields that have no value are omitted from a layer. A list field is returned if the layer was ingested with it, and is empty if the layer cleared the list.
+
+        The request is rejected with a `400` status code if the `layer` is missing or blank, no `sku` is specified, a `sku` is blank, or more than 100 `sku` parameters are specified.
+      operationId: getProductLayers
+      parameters:
+        - $ref: "#/components/parameters/AuthorizationAdmin"
+        - name: layer
+          in: query
+          required: true
+          description: Name of the layer, for example, `seasonal-winter-2024`. Matches the `source.layer` value specified when the layer was created.
+          schema:
+            type: string
+          example: seasonal-winter-2024
+        - name: locale
+          in: query
+          required: false
+          description: |
+            Catalog source of the layer, for example, `en-US`. Matches the `source.locale` value specified when the layer was created.
+            If omitted, the layer that applies to all locales is returned.
+          schema:
+            type: string
+          example: en-US
+        - name: sku
+          in: query
+          required: true
+          description: |
+            SKU of a product to retrieve the layer for. Repeat the parameter to retrieve several product layers, up to 100 per request.
+          style: form
+          explode: true
+          schema:
+            type: array
+            minItems: 1
+            maxItems: 100
+            items:
+              type: string
+          example: [red-pants, blue-pants]
+      responses:
+        "200":
+          x-summary: Product layers found
+          description: |
+            The product layers found for the requested SKUs.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/CatalogProductLayer"
+              examples:
+                ProductLayer:
+                  summary: Get a product layer
+                  description: >
+                    Response to `GET /v1/catalog/products/layers?layer=seasonal-winter-2024&locale=en-US&sku=red-pants`.
+                  value:
+                    [
+                      {
+                        "sku": "red-pants",
+                        "source": { "locale": "en-US", "layer": "seasonal-winter-2024" },
+                        "name": "Premium Red Winter Pants - Limited Edition",
+                        "description": "Stay warm and stylish with our premium red winter pants. Features thermal lining and water-resistant fabric perfect for cold weather adventures.",
+                        "shortDescription": "Premium thermal-lined winter pants in warm, classic red",
+                        "images":
+                          [
+                            {
+                              "url": "https://cdn.example.com/products/red-pants-winter-2024.jpg",
+                              "label": "Premium Red Winter Pants - Front View",
+                              "roles": ["BASE", "THUMBNAIL"],
+                              "customRoles": ["hero", "seasonal-banner"]
+                            }
+                          ],
+                        "createdAt": "2026-02-15T08:30:00.000Z",
+                        "modifiedAt": "2026-02-16T10:15:30.000Z"
+                      }
+                    ]
+                LayerOfAllLocales:
+                  summary: Get a layer that applies to all locales
+                  description: >
+                    Response to `GET /v1/catalog/products/layers?layer=black-friday&sku=red-pants`. The `source.locale` field is omitted.
+                  value:
+                    [
+                      {
+                        "sku": "red-pants",
+                        "source": { "layer": "black-friday" },
+                        "shortDescription": "Red pants at Black Friday prices",
+                        "createdAt": "2026-02-15T08:30:00.000Z",
+                        "modifiedAt": "2026-02-16T10:15:30.000Z"
+                      }
+                    ]
+                LayerNotFound:
+                  summary: No product layer found
+                  description: >
+                    Response when none of the requested SKUs has the layer.
+                  value: []
+        "400":
+          x-summary: Invalid request
+          description: |
+            The request is invalid. Check the `message` field for details.
+            The request is rejected in the following cases:
+
+            * The `layer` parameter is missing or blank.
+            * The `sku` parameter is missing.
+            * A `sku` parameter is blank.
+            * More than 100 `sku` parameters are specified. Duplicate SKUs are counted.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/400Response"
+              examples:
+                MissingLayer:
+                  summary: Missing or blank layer
+                  description: >
+                    Response to `GET /v1/catalog/products/layers?sku=red-pants`.
+                  value: { "message": "layer must not be blank" }
+                MissingSku:
+                  summary: Missing SKU
+                  description: >
+                    Response to `GET /v1/catalog/products/layers?layer=seasonal-winter-2024`.
+                  value: { "message": "At least one SKU is required in the sku parameter" }
+                BlankSku:
+                  summary: Blank SKU
+                  description: >
+                    Response to `GET /v1/catalog/products/layers?layer=seasonal-winter-2024&sku=`.
+                  value: { "message": "sku must not contain blank IDs" }
+                TooManySkus:
+                  summary: More than 100 SKUs
+                  description: >
+                    Response to a request with 101 `sku` parameters.
+                  value:
+                    {
+                      "message": "Maximum number of SKUs reached: up to 100 SKUs are allowed per request, 101 provided"
+                    }
+        "401":
+          $ref: "#/components/responses/UnauthorizedResponse"
+        "403":
+          $ref: "#/components/responses/ForbiddenResponse"
+        "429":
+          $ref: "#/components/responses/TooManyRequestsResponse"
   /v1/catalog/products/layers/delete:
     post:
       tags:
@@ -1908,6 +2683,118 @@ paths:
             text/html;charset=UTF-8:
               schema:
                 $ref: "#/components/schemas/429Response"
+    get:
+      tags:
+        - Price Books
+      summary: Get price books
+      description: |
+        Retrieve price books by price book ID(s), as they were ingested.
+        Use this operation to verify ingested price book data, for example, to check that a price book exists before sending an [update request](#operation/updatePriceBooks).
+
+        Specify from 1 to 100 `priceBookId` parameters. To request several price books, repeat the `priceBookId` parameter, for example,
+        `?priceBookId=us&priceBookId=us-north`.
+
+        The following rules apply:
+        - The `priceBookId` values are case-insensitive.
+        - Data is returned after processing since ingestion operations are asynchronous.
+        - Price books are returned in no particular order, not necessarily the order of the requested IDs.
+        - A price book ID that is specified more than once is returned once. The limit of 100 IDs counts every `priceBookId` parameter, including duplicates.
+        - A price book that does not exist or was deleted is omitted from the response. If none of the price books is found, the response is an empty array.
+        - A base price book is returned with its `currency`. A child price book is returned with its `parentId` and without a `currency`, which it inherits from the base price book.
+        - Fields that have no value are omitted from a price book.
+
+        The request is rejected with a `400` status code if no `priceBookId` is specified, a `priceBookId` is blank, or more than 100 `priceBookId` parameters are specified.
+      operationId: getPriceBooks
+      parameters:
+        - $ref: "#/components/parameters/AuthorizationAdmin"
+        - name: priceBookId
+          in: query
+          required: true
+          description: |
+            ID of a price book to retrieve. Repeat the parameter to retrieve several price books, up to 100 per request.
+          style: form
+          explode: true
+          schema:
+            type: array
+            minItems: 1
+            maxItems: 100
+            items:
+              type: string
+          example: [us, us-north]
+      responses:
+        "200":
+          x-summary: Price books found
+          description: |
+            The price books found for the requested IDs.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/CatalogPriceBook"
+              examples:
+                PriceBooks:
+                  summary: Get a base price book and a child price book
+                  description: >
+                    Response to `GET /v1/catalog/price-books?priceBookId=us&priceBookId=us-north`.
+                  value:
+                    [
+                      {
+                        "priceBookId": "us",
+                        "name": "US Base Price Book",
+                        "currency": "USD",
+                        "modifiedAt": "2026-02-16T10:15:30.000Z"
+                      },
+                      {
+                        "priceBookId": "us-north",
+                        "parentId": "us",
+                        "name": "US North Region",
+                        "modifiedAt": "2026-02-16T10:15:30.000Z"
+                      }
+                    ]
+                PriceBookNotFound:
+                  summary: No price book found
+                  description: >
+                    Response when none of the requested IDs exists.
+                  value: []
+        "400":
+          x-summary: Invalid request
+          description: |
+            The request is invalid. Check the `message` field for details.
+            The request is rejected in the following cases:
+
+            * The `priceBookId` parameter is missing.
+            * A `priceBookId` parameter is blank.
+            * More than 100 `priceBookId` parameters are specified. Duplicate IDs are counted.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/400Response"
+              examples:
+                MissingPriceBookId:
+                  summary: Missing price book ID
+                  description: >
+                    Response to `GET /v1/catalog/price-books`.
+                  value: { "message": "At least one price book is required in the priceBookId parameter" }
+                BlankPriceBookId:
+                  summary: Blank price book ID
+                  description: >
+                    Response to `GET /v1/catalog/price-books?priceBookId=`.
+                  value: { "message": "priceBookId must not contain blank IDs" }
+                TooManyPriceBookIds:
+                  summary: More than 100 price book IDs
+                  description: >
+                    Response to a request with 101 `priceBookId` parameters.
+                  value:
+                    {
+                      "message": "Maximum number of price books reached: up to 100 price books are allowed per request, 101 provided"
+                    }
+        "401":
+          $ref: "#/components/responses/UnauthorizedResponse"
+        "403":
+          $ref: "#/components/responses/ForbiddenResponse"
+        "429":
+          $ref: "#/components/responses/TooManyRequestsResponse"
   /v1/catalog/price-books/delete:
     post:
       tags:
@@ -2265,6 +3152,143 @@ paths:
                       ]
                     }
                   ]
+    get:
+      tags:
+        - Prices
+      summary: Get prices
+      description: |
+        Retrieve product prices by SKU(s) for a price book, as they were ingested.
+        Use this operation to verify ingested price data, for example, to check that a price exists before sending an [update request](#operation/updatePrices).
+
+        Specify the `priceBookId` and from 1 to 100 `sku` parameters. To request several prices, repeat the `sku` parameter, for example,
+        `?priceBookId=us&sku=red-pants&sku=blue-pants`.
+
+        The following rules apply:
+        - The `priceBookId` and `sku` values are case-insensitive.
+        - Data is returned after processing since ingestion operations are asynchronous.
+        - Prices are returned in no particular order, not necessarily the order of the requested SKUs.
+        - A SKU that is specified more than once is returned once. The limit of 100 SKUs counts every `sku` parameter, including duplicates.
+        - A SKU that does not have a price in the price book or whose price was deleted is omitted from the response. If none of the SKUs is found, the response is an empty array.
+        - Only the prices defined in the specified price book are returned. The [price lookup](#tag/Prices) through the parent price books is not applied.
+        - Fields that have no value are omitted from a price. List fields, such as `discounts` and `tierPrices`, are always returned and are empty if the price has no items.
+
+        The request is rejected with a `400` status code if the `priceBookId` is missing or blank, no `sku` is specified, a `sku` is blank, or more than 100 `sku` parameters are specified.
+      operationId: getPrices
+      parameters:
+        - $ref: "#/components/parameters/AuthorizationAdmin"
+        - name: priceBookId
+          in: query
+          required: true
+          description: ID of the price book of the prices, for example, `us`. Matches the `priceBookId` value specified when the price was created.
+          schema:
+            type: string
+          example: us
+        - name: sku
+          in: query
+          required: true
+          description: |
+            SKU of a product to retrieve the price for. Repeat the parameter to retrieve several prices, up to 100 per request.
+          style: form
+          explode: true
+          schema:
+            type: array
+            minItems: 1
+            maxItems: 100
+            items:
+              type: string
+          example: [red-pants, blue-pants]
+      responses:
+        "200":
+          x-summary: Prices found
+          description: |
+            The prices found for the requested SKUs.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/CatalogProductPrice"
+              examples:
+                Prices:
+                  summary: Get prices
+                  description: >
+                    Response to `GET /v1/catalog/products/prices?priceBookId=us&sku=red-pants&sku=red-pants-xl`.
+                  value:
+                    [
+                      {
+                        "sku": "red-pants",
+                        "priceBookId": "us",
+                        "regular": 20.0,
+                        "discounts": [],
+                        "tierPrices": [],
+                        "modifiedAt": "2026-02-16T10:15:30.000Z"
+                      },
+                      {
+                        "sku": "red-pants-xl",
+                        "priceBookId": "us",
+                        "regular": 19.9,
+                        "discounts":
+                          [
+                            { "code": "seasonal_sale", "percentage": 10.0 },
+                            { "code": "loyalty_discount", "price": 2.0 }
+                          ],
+                        "tierPrices":
+                          [
+                            { "qty": 5.0, "percentage": 15.0 },
+                            { "qty": 10.0, "price": 15.0 }
+                          ],
+                        "modifiedAt": "2026-02-16T10:15:30.000Z"
+                      }
+                    ]
+                PriceNotFound:
+                  summary: No price found
+                  description: >
+                    Response when none of the requested SKUs has a price in the price book.
+                  value: []
+        "400":
+          x-summary: Invalid request
+          description: |
+            The request is invalid. Check the `message` field for details.
+            The request is rejected in the following cases:
+
+            * The `priceBookId` parameter is missing or blank.
+            * The `sku` parameter is missing.
+            * A `sku` parameter is blank.
+            * More than 100 `sku` parameters are specified. Duplicate SKUs are counted.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/400Response"
+              examples:
+                MissingPriceBookId:
+                  summary: Missing or blank price book ID
+                  description: >
+                    Response to `GET /v1/catalog/products/prices?sku=red-pants`.
+                  value: { "message": "priceBookId must not be blank" }
+                MissingSku:
+                  summary: Missing SKU
+                  description: >
+                    Response to `GET /v1/catalog/products/prices?priceBookId=us`.
+                  value: { "message": "At least one SKU is required in the sku parameter" }
+                BlankSku:
+                  summary: Blank SKU
+                  description: >
+                    Response to `GET /v1/catalog/products/prices?priceBookId=us&sku=`.
+                  value: { "message": "sku must not contain blank IDs" }
+                TooManySkus:
+                  summary: More than 100 SKUs
+                  description: >
+                    Response to a request with 101 `sku` parameters.
+                  value:
+                    {
+                      "message": "Maximum number of SKUs reached: up to 100 SKUs are allowed per request, 101 provided"
+                    }
+        "401":
+          $ref: "#/components/responses/UnauthorizedResponse"
+        "403":
+          $ref: "#/components/responses/ForbiddenResponse"
+        "429":
+          $ref: "#/components/responses/TooManyRequestsResponse"
   /v1/catalog/products/prices/delete:
     post:
       tags:
@@ -2365,6 +3389,13 @@ components:
       schema:
         type: string
         description: Authorization Bearer token
+    AuthorizationAdmin:
+      name: Authorization
+      in: header
+      required: true
+      description: Access token of the request, sent as a bearer token. The token must include the `commerce.aco.admin` scope.
+      schema:
+        type: string
     ContentType:
       name: Content-Type
       in: header
@@ -2434,13 +3465,19 @@ components:
           example: Attribute Name
         dataType:
           type: string
-          description: Data type
+          description: |
+            Data type of the attribute.
+            - `OBJECT`: Attribute values are JSON objects that are provided as JSON strings.
+            - `GEOPOINT`: Attribute values are latitude/longitude coordinate pairs that are provided as JSON strings, for example, `{"lat": 30.2672, "lon": -97.7431}`.
+              Provide the values in the [`values`](#operation/createProducts!path=attributes/values&t=request) list of the product attribute.
           example: TEXT
           enum:
             - TEXT
             - DECIMAL
             - INTEGER
             - BOOLEAN
+            - OBJECT
+            - GEOPOINT
         filterable:
           type: boolean
           description: Indicates whether the attribute can be used to filter products.
@@ -2502,13 +3539,19 @@ components:
           example: Attribute Name
         dataType:
           type: string
-          description: Data type
+          description: |
+            Data type of the attribute.
+            - `OBJECT`: Attribute values are JSON objects that are provided as JSON strings.
+            - `GEOPOINT`: Attribute values are latitude/longitude coordinate pairs that are provided as JSON strings, for example, `{"lat": 30.2672, "lon": -97.7431}`.
+              Provide the values in the [`values`](#operation/createProducts!path=attributes/values&t=request) list of the product attribute.
           example: TEXT
           enum:
             - TEXT
             - DECIMAL
             - INTEGER
             - BOOLEAN
+            - OBJECT
+            - GEOPOINT
         filterable:
           type: boolean
           description: Indicates whether the attribute can be used to filter products.
@@ -2821,6 +3864,11 @@ components:
           description: A list of product images.
           items:
             $ref: "#/components/schemas/ProductImage"
+        videos:
+          type: array
+          description: A list of product videos.
+          items:
+            $ref: "#/components/schemas/ProductVideo"
         links:
           type: array
           description: A list of linked SKUs.
@@ -2909,6 +3957,11 @@ components:
           description: A list of product images.
           items:
             $ref: "#/components/schemas/ProductImage"
+        videos:
+          type: array
+          description: A list of product videos.
+          items:
+            $ref: "#/components/schemas/ProductVideo"
         links:
           type: array
           description: |
@@ -2936,6 +3989,141 @@ components:
           description: A list of external IDs for the product.
           items:
             $ref: "#/components/schemas/ProductExternalId"
+    CatalogProduct:
+      title: Catalog Product
+      description: |
+        A product returned by the [get products](#operation/getProducts) operation.
+        It has the fields of the [create products](#operation/createProducts) payload, plus the `createdAt` and `modifiedAt` fields.
+      allOf:
+        - $ref: "#/components/schemas/FeedProduct"
+        - $ref: "#/components/schemas/CatalogTimestamps"
+    CatalogTimestamps:
+      title: Catalog record timestamps
+      description: Timestamps that are added to an entity returned by a get operation.
+      type: object
+      properties:
+        createdAt:
+          type: string
+          format: date-time
+          description: |
+            Date and time when the entity was created, in ISO 8601 format (UTC).
+            Returned only when the creation time is tracked for the entity.
+          example: "2026-02-15T08:30:00.000Z"
+        modifiedAt:
+          type: string
+          format: date-time
+          description: Date and time when the entity was last updated, in ISO 8601 format (UTC).
+          example: "2026-02-16T10:15:30.000Z"
+    CatalogProductLayer:
+      title: Catalog Product Layer
+      description: |
+        A product layer returned by the [get product layers](#operation/getProductLayers) operation.
+        It has the fields of the [create product layers](#operation/createProductLayers) payload that the layer was ingested with, plus the `createdAt` and `modifiedAt` fields.
+        The `source.locale` field is omitted for a layer that applies to all locales.
+      allOf:
+        - $ref: "#/components/schemas/FeedProductLayer"
+        - $ref: "#/components/schemas/CatalogTimestamps"
+    CatalogProductMetadata:
+      title: Catalog Product Metadata
+      description: |
+        Product attribute metadata returned by the [get product attribute metadata](#operation/getProductMetadata) operation.
+        It has the fields of the [create product attribute metadata](#operation/createProductMetadata) payload, plus the `createdAt` and `modifiedAt` fields.
+        The `visibleIn` and `searchTypes` lists are always returned, and the `filterable`, `sortable`, and `searchable` flags that were not specified are returned as `false`.
+      allOf:
+        - $ref: "#/components/schemas/FeedProductMetadata"
+        - $ref: "#/components/schemas/CatalogTimestamps"
+    CatalogCategoryMetadata:
+      title: Catalog Category Metadata
+      description: |
+        Category attribute metadata returned by the [get category attribute metadata](#operation/getCategoryMetadata) operation.
+        It has the fields of the [create category attribute metadata](#operation/createCategoryMetadata) payload, plus the `createdAt` and `modifiedAt` fields.
+      allOf:
+        - $ref: "#/components/schemas/FeedCategoryMetadata"
+        - $ref: "#/components/schemas/CatalogTimestamps"
+    CatalogCategory:
+      title: Catalog Category
+      description: |
+        A category returned by the [get categories](#operation/getCategories) operation.
+        It has the fields of the [create categories](#operation/createCategories) payload, plus the `createdAt` and `modifiedAt` fields.
+        The `attributes`, `images`, and `families` lists are always returned.
+      type: object
+      required:
+        - slug
+        - source
+        - name
+      properties:
+        slug:
+          type: string
+          description: |
+            Category slug using hierarchical format with forward slashes to represent parent-child relationships.
+          example: "men/clothing/pants"
+        source:
+          $ref: "#/components/schemas/Source"
+        name:
+          type: string
+          description: Display name of the category
+          example: "Men's Pants"
+        description:
+          type: string
+          description: Full-text description of the category.
+          example: "Men's clothing, shoes, and accessories"
+        families:
+          type: array
+          items:
+            type: string
+          description: Product family identifiers that this category is associated with.
+          example: ["apparel", "clothing"]
+        position:
+          type: integer
+          format: int32
+          description: Sort order for the category
+        metaTags:
+          $ref: "#/components/schemas/CategoryMetaAttribute"
+        attributes:
+          type: array
+          description: A list of category attributes.
+          items:
+            $ref: "#/components/schemas/CategoryAttribute"
+        images:
+          type: array
+          description: A list of category images.
+          items:
+            $ref: "#/components/schemas/CategoryImage"
+        createdAt:
+          type: string
+          format: date-time
+          description: |
+            Date and time when the category was created, in ISO 8601 format (UTC).
+            Returned only when the creation time is tracked for the category.
+          example: "2026-02-15T08:30:00.000Z"
+        modifiedAt:
+          type: string
+          format: date-time
+          description: Date and time when the category was last updated, in ISO 8601 format (UTC).
+          example: "2026-02-16T10:15:30.000Z"
+    CatalogPriceBook:
+      title: Catalog Price Book
+      description: |
+        A price book returned by the [get price books](#operation/getPriceBooks) operation.
+        It has the fields of the [create price books](#operation/createPriceBooks) payload, plus the `createdAt` and `modifiedAt` fields.
+        A base price book is returned with its `currency`. A child price book is returned with its `parentId` and without a `currency`,
+        which it inherits from the base price book.
+      oneOf:
+        - allOf:
+            - $ref: "#/components/schemas/PriceBookBase"
+            - $ref: "#/components/schemas/CatalogTimestamps"
+        - allOf:
+            - $ref: "#/components/schemas/PriceBookChild"
+            - $ref: "#/components/schemas/CatalogTimestamps"
+    CatalogProductPrice:
+      title: Catalog Product Price
+      description: |
+        A product price returned by the [get prices](#operation/getPrices) operation.
+        It has the fields of the [create prices](#operation/createPrices) payload, plus the `createdAt` and `modifiedAt` fields.
+        The `discounts` and `tierPrices` lists are always returned.
+      allOf:
+        - $ref: "#/components/schemas/FeedPrices"
+        - $ref: "#/components/schemas/CatalogTimestamps"
     FeedProductDelete:
       title: Catalog Product delete payload
       type: object
@@ -3375,7 +4563,9 @@ components:
 #            - `OBJECT`: Accept JSON object `"{"name": "swatch", "color": "red"}"`
         values:
           type: array
-          description: A list of value(s) associated with a specified attribute code.
+          description: |
+            A list of value(s) associated with a specified attribute code.
+            For the attributes that have metadata type `GEOPOINT` or `OBJECT`, the list must contain exactly one value.
           items:
             type: string
         variantReferenceId:
@@ -3383,7 +4573,7 @@ components:
           nullable: true
           description: |
             The variant reference ID establishes a link between a product variant and the corresponding
-            [Option Value ID](#operation/createProducts!path=options/values/id&t=request) in a configurable product.
+            [Option Value ID](#operation/createProducts!path=configurations/values/variantReferenceId&t=request) in a configurable product.
 
             A variant reference ID can be specified only for a product that represents a variant of a configurable product.
     CategoryAttribute:
@@ -3442,6 +4632,74 @@ components:
               - SWATCH
         customRoles:
           type: array
+          description: >
+            Custom image role. Merchants can define custom roles in addition to the predefined values.
+          items:
+            type: string
+        sortOrder:
+          type: integer
+          format: int32
+          nullable: true
+          description: |
+            Position of the image in the product gallery. If omitted, the natural position of the item in the `images` array is used.
+    ProductVideo:
+      title: Product Video
+      type: object
+      required:
+        - url
+      properties:
+        url:
+          type: string
+          description: Video resource URL
+        title:
+          type: string
+          nullable: true
+          description: Video title
+        description:
+          type: string
+          nullable: true
+          description: Video description
+        sortOrder:
+          type: integer
+          format: int32
+          nullable: true
+          description: |
+            Position of the video in the product gallery. If omitted, the natural position of the item in the `videos` array is used.
+            If an image and a video have the same `sortOrder`, the image is placed first.
+        preview:
+          $ref: "#/components/schemas/ProductVideoPreview"
+    ProductVideoPreview:
+      title: Product Video Preview
+      description: Image rendered in the product gallery as the preview of the video.
+      type: object
+      required:
+        - url
+      properties:
+        url:
+          type: string
+          description: Preview image URL
+        label:
+          type: string
+          nullable: true
+          description: Preview image label
+        roles:
+          type: array
+          nullable: true
+          description: |
+            Roles associated with the preview image that determine how it is used on the storefront.
+            - `BASE`: Image is visible as a main image on the Product Detail Page.
+            - `SMALL`: Image is visible as a main image on the Category or search result page or other product listing pages.
+            - `THUMBNAIL`: Thumbnail images appear in the thumbnail gallery, shopping cart, etc.
+            - `SWATCH`: A swatch can be used to illustrate the color, pattern, or texture.
+          items:
+            enum:
+              - BASE
+              - SMALL
+              - THUMBNAIL
+              - SWATCH
+        customRoles:
+          type: array
+          nullable: true
           description: >
             Custom image role. Merchants can define custom roles in addition to the predefined values.
           items:
@@ -3659,6 +4917,14 @@ components:
               }
             ]
         }
+    400Response:
+      title: 400 Bad Request
+      type: object
+      properties:
+        message:
+          type: string
+          description: Error description.
+      example: { "message": "locale must not be blank" }
     401Response:
       title: 401 Unauthorized
       type: object
