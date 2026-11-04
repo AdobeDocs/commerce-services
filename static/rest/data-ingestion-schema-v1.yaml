@@ -320,6 +320,26 @@ paths:
                       "searchTypes": []
                     }
                   ]
+              ObjectAndGeopointAttributesMetadata:
+                summary: Create product attributes metadata for OBJECT and GEOPOINT attributes
+                description: |
+                  Defines metadata for attributes whose values are JSON objects (`OBJECT`) or latitude/longitude coordinate pairs (`GEOPOINT`).
+                  The [product attributes](#operation/createProducts!path=attributes&t=request) values of such attributes are provided as JSON strings when you create products.
+                value:
+                  [
+                    {
+                      "code": "swatch",
+                      "source": { "locale": "en-US" },
+                      "label": "Swatch",
+                      "dataType": "OBJECT"
+                    },
+                    {
+                      "code": "store_location",
+                      "source": { "locale": "en-US" },
+                      "label": "Store location",
+                      "dataType": "GEOPOINT"
+                    }
+                  ]
     patch:
       tags:
         - ProductMetadata
@@ -1343,6 +1363,33 @@ paths:
                         ]
                     }
                   ]
+              ProductWithObjectAndGeopointAttributes:
+                summary: Create a product with OBJECT and GEOPOINT attributes
+                description: >
+                  Create a product with attributes of the `OBJECT` and `GEOPOINT` types. The value of an `OBJECT` attribute is a JSON object
+                  that is provided as a JSON string. The value of a `GEOPOINT` attribute is a JSON string with exactly two numeric
+                  properties, `lat` (from -90 to 90) and `lon` (from -180 to 180).
+                value:
+                  [
+                    {
+                      "sku": "red-pants-austin",
+                      "source": { "locale": "en-US" },
+                      "name": "red pants (Austin)",
+                      "slug": "red-pants-austin.html",
+                      "status": "ENABLED",
+                      "attributes":
+                        [
+                          {
+                            "code": "swatch",
+                            "values": ["{\"name\": \"swatch\", \"color\": \"red\"}"]
+                          },
+                          {
+                            "code": "store_location",
+                            "values": ["{\"lat\": 30.2672, \"lon\": -97.7431}"]
+                          }
+                        ]
+                    }
+                  ]
               ConfigurableProductWithVariants:
                 summary: Create a configurable product with four product variants
                 description: >
@@ -1907,6 +1954,14 @@ paths:
                             {
                               "code": "states",
                               "values": ["TX", "CA"]
+                            },
+                            {
+                              "code": "swatch",
+                              "values": ["{\"name\": \"swatch\", \"color\": \"red\"}"]
+                            },
+                            {
+                              "code": "store_location",
+                              "values": ["{\"lat\": 30.2672, \"lon\": -97.7431}"]
                             }
                           ],
                         "images":
@@ -3410,13 +3465,19 @@ components:
           example: Attribute Name
         dataType:
           type: string
-          description: Data type
+          description: |
+            Data type of the attribute.
+            - `OBJECT`: Attribute values are JSON objects that are provided as JSON strings.
+            - `GEOPOINT`: Attribute values are latitude/longitude coordinate pairs that are provided as JSON strings, for example, `{"lat": 30.2672, "lon": -97.7431}`.
+              Provide the values in the [`values`](#operation/createProducts!path=attributes/values&t=request) list of the product attribute.
           example: TEXT
           enum:
             - TEXT
             - DECIMAL
             - INTEGER
             - BOOLEAN
+            - OBJECT
+            - GEOPOINT
         filterable:
           type: boolean
           description: Indicates whether the attribute can be used to filter products.
@@ -3478,13 +3539,19 @@ components:
           example: Attribute Name
         dataType:
           type: string
-          description: Data type
+          description: |
+            Data type of the attribute.
+            - `OBJECT`: Attribute values are JSON objects that are provided as JSON strings.
+            - `GEOPOINT`: Attribute values are latitude/longitude coordinate pairs that are provided as JSON strings, for example, `{"lat": 30.2672, "lon": -97.7431}`.
+              Provide the values in the [`values`](#operation/createProducts!path=attributes/values&t=request) list of the product attribute.
           example: TEXT
           enum:
             - TEXT
             - DECIMAL
             - INTEGER
             - BOOLEAN
+            - OBJECT
+            - GEOPOINT
         filterable:
           type: boolean
           description: Indicates whether the attribute can be used to filter products.
@@ -4496,7 +4563,9 @@ components:
 #            - `OBJECT`: Accept JSON object `"{"name": "swatch", "color": "red"}"`
         values:
           type: array
-          description: A list of value(s) associated with a specified attribute code.
+          description: |
+            A list of value(s) associated with a specified attribute code.
+            For the attributes that have metadata type `GEOPOINT` or `OBJECT`, the list must contain exactly one value.
           items:
             type: string
         variantReferenceId:
@@ -4504,7 +4573,7 @@ components:
           nullable: true
           description: |
             The variant reference ID establishes a link between a product variant and the corresponding
-            [Option Value ID](#operation/createProducts!path=options/values/id&t=request) in a configurable product.
+            [Option Value ID](#operation/createProducts!path=configurations/values/variantReferenceId&t=request) in a configurable product.
 
             A variant reference ID can be specified only for a product that represents a variant of a configurable product.
     CategoryAttribute:
