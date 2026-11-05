@@ -3592,18 +3592,6 @@ components:
             Option value ID.
             For `CONFIGURABLE` or `SWATCH` option types, this ID must match the ["variantReferenceId"](#operation/createProducts!path=attributes/variantReferenceId&t=request)
             defined in the product variant.
-        sku:
-          type: string
-          minLength: 1
-          maxLength: 64
-          pattern: '^(?!\s*$).+'
-          description: SKU associated with the option value.
-        label:
-          type: string
-          description: Option value label
-        colorHex:
-          type: string
-          description: A hex representation of the color of the option value. Can be used for option with a SWATCH type.
         imageUrl:
           type: string
           description: Image URL of the option value. Can be used for option with a SWATCH type.
