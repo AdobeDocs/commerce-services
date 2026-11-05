@@ -2324,14 +2324,13 @@ components:
 
         Common causes of validation errors include:
 
-        * **Invalid SKU**: SKU does not exist in the catalog
-        * **Invalid Price Book**: Price book ID does not exist
-        * **Invalid Discount Code**: Duplicate or invalid discount codes
-        * **Invalid Tier Quantities**: Quantities not in ascending order or less than 2
-        * **Configurable Product Price**: Attempting to set price for configurable product SKU
+        * **Missing Required Fields**: A required field such as `sku`, `source`, `priceBookId`, or a discount `code` is missing
         * **Invalid Price Format**: Non-numeric or negative price values
+        * **Invalid Enumeration Values**: A field contains a value outside its allowed enumeration
         * **Incorrect Category Slug**: Invalid category slug format
-        * **Incorrect hierarchy configuration**: Misconfiguration of price book parent-child relationship
+
+        Items are processed asynchronously after acceptance. Update operations do not verify that the entity exists.
+        Requests targeting a nonexistent entity are accepted, but the update has no effect.
       content:
         application/json;charset=UTF-8:
           schema:

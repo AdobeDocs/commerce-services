@@ -9,6 +9,65 @@ keywords:
 
 # Context for storefront events
 
+The Storefront Events SDK uses context objects to provide details about your storefront and shopper interactions. Use the functions on this page to read and update those values.
+
+## Storefront instance context requirements
+
+The fields needed to scope storefront events depend on your Adobe Commerce setup. Include the scope fields for your platform in the `StorefrontInstance` context before you publish events. A field being optional in the shared SDK type does not mean you can omit it for every platform.
+
+| Storefront setup | Scope fields to include | How events are scoped |
+|---|---|---|
+| PaaS / Adobe Commerce as a Cloud Service  | `websiteCode`, `storeCode`, and `storeViewCode` | Adobe website, store, and store view |
+| Adobe Commerce Optimizer | `viewId` and `locale` | Adobe Commerce Optimizer catalog view and locale |
+| Adobe Commerce Optimizer + PaaS | `viewId` and `locale` for Adobe Commerce Optimizer catalog scoping; Adobe scope codes where needed for PaaS transaction routing | Use the fields appropriate to each event path. Do not treat `storeViewCode` and `viewId` as interchangeable |
+
+### PaaS / Adobe Commerce as a Cloud Service (SaaS)
+
+For Adobe Commerce on cloud infrastructure (PaaS) and Adobe Commerce as a Cloud Service (SaaS) storefronts, provide the Adobe scope codes, including `storeViewCode`. This field identifies the store view used to scope the event. Do not rely on `storeViewId` alone as a substitute for `storeViewCode`.
+
+```javascript
+const storefrontCtx = {
+    // Include the other required StorefrontInstance fields for your setup.
+    websiteCode: 'website',
+    storeCode: 'store',
+    storeViewCode: 'default'
+};
+mse.context.setStorefrontInstance(storefrontCtx);
+```
+
+### Adobe Commerce Optimizer
+
+For Adobe Commerce Optimizer storefront events, include `viewId` and `locale` in the storefront context. Use the catalog view ID for `viewId`. Do not use `storeViewCode` in its place.
+
+```javascript
+const storefrontCtx = {
+    // Include the other required StorefrontInstance fields for your setup.
+    viewId: '12345678-1234-1234-1234-123456789abc',
+    locale: 'en-US'
+};
+mse.context.setStorefrontInstance(storefrontCtx);
+```
+
+### If a scope field is missing
+
+A missing scope field might not produce a clear error when an event is published, and the event data might not be scoped as you expect.
+
+For PaaS and Adobe Commerce as a Cloud Service (SaaS), a missing `storeViewCode` can prevent the event from appearing in catalog aggregations. For Adobe Commerce Optimizer, a missing `viewId` can cause events to be scoped incorrectly.
+
+<InlineAlert variant="important" slots="text"/>
+
+Do not assume that an event is correctly scoped just because publishing did not report an error.
+
+### Verify the context
+
+Before you rely on event data, inspect a published event's `StorefrontInstance` context and confirm that it contains the scope fields required for your storefront setup:
+
+- **PaaS / Adobe Commerce as a Cloud Service (SaaS)**: `websiteCode`, `storeCode`, and `storeViewCode`
+- **Adobe Commerce Optimizer**: `viewId` and `locale`
+- **Adobe Commerce Optimizer + PaaS**: Confirm that the appropriate fields are present for the event's catalog or transaction path
+
+The shared `StorefrontInstance` type can mark platform-specific fields as optional because it supports multiple storefront setups. Follow the platform-specific requirements in this section when you implement the context.
+
 ## Functions
 
 The following functions get and set context data.

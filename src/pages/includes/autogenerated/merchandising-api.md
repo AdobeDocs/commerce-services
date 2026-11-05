@@ -384,6 +384,14 @@ query products($skus: [String]) {
     videos {
       ...ProductViewVideoFragment
     }
+    gallery {
+      ... on ProductViewImage {
+        ...ProductViewImageFragment
+      }
+      ... on ProductViewVideo {
+        ...ProductViewVideoFragment
+      }
+    }
     lastModifiedAt
     metaDescription
     metaKeyword
@@ -433,6 +441,7 @@ query products($skus: [String]) {
         "id": "4",
         "images": [ProductViewImage],
         "videos": [ProductViewVideo],
+        "gallery": [ProductViewImage],
         "lastModifiedAt": "2007-12-03T10:15:30Z",
         "metaDescription": "abc123",
         "metaKeyword": "abc123",
@@ -641,6 +650,14 @@ query refineProduct(
     videos {
       ...ProductViewVideoFragment
     }
+    gallery {
+      ... on ProductViewImage {
+        ...ProductViewImageFragment
+      }
+      ... on ProductViewVideo {
+        ...ProductViewVideoFragment
+      }
+    }
     lastModifiedAt
     metaDescription
     metaKeyword
@@ -692,6 +709,7 @@ query refineProduct(
       "id": "4",
       "images": [ProductViewImage],
       "videos": [ProductViewVideo],
+      "gallery": [ProductViewImage],
       "lastModifiedAt": "2007-12-03T10:15:30Z",
       "metaDescription": "xyz789",
       "metaKeyword": "abc123",
@@ -1370,6 +1388,7 @@ Represents all product types, except simple products. Complex product prices are
 | `id` - [`ID!`](#id) | The product ID, generated as a composite key, unique per locale. |
 | `images` - [`[ProductViewImage]`](#productviewimage) | A list of images defined for the product. Possible values include &#x60;image&#x60;, &#x60;small_image&#x60; or &#x60;swatch&#x60;. |
 | `videos` - [`[ProductViewVideo]`](#productviewvideo) | A list of videos defined for the product. |
+| `gallery` - [`[ProductViewMedia]`](#productviewmedia) | A list of all images and videos defined for the product, ordered as a single media gallery. |
 | `lastModifiedAt` - [`DateTime`](#datetime) | Date and time when the product was last updated. |
 | `metaDescription` - [`String`](#string) | A brief overview of the product for search results listings. |
 | `metaKeyword` - [`String`](#string) | A comma-separated list of keywords that are visible only to search engines. |
@@ -1401,6 +1420,7 @@ Represents all product types, except simple products. Complex product prices are
   "id": "4",
   "images": [ProductViewImage],
   "videos": [ProductViewVideo],
+  "gallery": [ProductViewImage],
   "lastModifiedAt": "2007-12-03T10:15:30Z",
   "metaDescription": "abc123",
   "metaKeyword": "abc123",
@@ -1767,6 +1787,7 @@ Defines the product fields available to the SimpleProductView and ComplexProduct
 | `id` - [`ID!`](#id) | The product ID, generated as a composite key, unique per locale. |
 | `images` - [`[ProductViewImage]`](#productviewimage) | A list of images defined for the product. |
 | `videos` - [`[ProductViewVideo]`](#productviewvideo) | A list of videos defined for the product. |
+| `gallery` - [`[ProductViewMedia]`](#productviewmedia) | A list of all images and videos defined for the product, ordered as a single media gallery. |
 | `lastModifiedAt` - [`DateTime`](#datetime) | Date and time when the product was last updated. |
 | `metaDescription` - [`String`](#string) | A brief overview of the product for search results listings. |
 | `metaKeyword` - [`String`](#string) | A comma-separated list of keywords that are visible only to search engines. |
@@ -1803,6 +1824,7 @@ Defines the product fields available to the SimpleProductView and ComplexProduct
   "id": "4",
   "images": [ProductViewImage],
   "videos": [ProductViewVideo],
+  "gallery": [ProductViewImage],
   "lastModifiedAt": "2007-12-03T10:15:30Z",
   "metaDescription": "abc123",
   "metaKeyword": "abc123",
@@ -2155,6 +2177,25 @@ The product link type. Contains details about product links for related products
   "product": ProductView,
   "linkTypes": ["xyz789"]
 }
+```
+
+<HorizontalLine />
+
+### ProductViewMedia
+
+A single entry in the product media gallery. The entry can be either an image or a video.
+
+#### Types
+
+| Union Types |
+|-------------|
+| [`ProductViewImage`](#productviewimage) |
+| [`ProductViewVideo`](#productviewvideo) |
+
+#### Example
+
+```json
+ProductViewImage
 ```
 
 <HorizontalLine />
@@ -2774,6 +2815,7 @@ Represents a single-SKU product without selectable variants. Because there are n
 | `id` - [`ID!`](#id) | The product ID, generated as a composite key, unique per locale. |
 | `images` - [`[ProductViewImage]`](#productviewimage) | A list of images defined for the product. Possible values include &#x60;image&#x60;, &#x60;small_image&#x60;, and &#x60;swatch&#x60;. |
 | `videos` - [`[ProductViewVideo]`](#productviewvideo) | A list of videos defined for the product. |
+| `gallery` - [`[ProductViewMedia]`](#productviewmedia) | A list of all images and videos defined for the product, ordered as a single media gallery. |
 | `inputOptions` - [`[ProductViewInputOption]`](#productviewinputoption) | A list of input options. For example, a text field, a number field or a date field. *(Deprecated: This field is deprecated and will be removed.)* |
 | `lastModifiedAt` - [`DateTime`](#datetime) | Date and time when the product was last updated. |
 | `metaDescription` - [`String`](#string) | A brief overview of the product for search results listings. |
@@ -2804,6 +2846,7 @@ Represents a single-SKU product without selectable variants. Because there are n
   "id": 4,
   "images": [ProductViewImage],
   "videos": [ProductViewVideo],
+  "gallery": [ProductViewImage],
   "inputOptions": [ProductViewInputOption],
   "lastModifiedAt": "2007-12-03T10:15:30Z",
   "metaDescription": "abc123",
