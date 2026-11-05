@@ -1,6 +1,6 @@
 ---
 title: Merchandising Services Developer Guide
-description: Use the Merchandising Services powered by Catalog Vies andw Polices to implement large, complex catalogs and develop highly performant storefront experiences.
+description: Use the Merchandising Services powered by Catalog Views and Policies to implement large, complex catalogs and develop highly performant storefront experiences.
 keywords:
   - GraphQL
   - REST
