@@ -44,7 +44,8 @@
       "https://www.npmjs.com/package/@adobe/magento-storefront-event-collector",
       "https://www.npmjs.com/package/@adobe/magento-storefront-events-sdk",
       "https://www.jsdelivr.com/",
-      "https://www.adobe.com/privacy/experience-cloud.html"
+      "https://www.adobe.com/privacy/experience-cloud.html",
+      "https://example.com/"
     ]
   },
   "overrides": {
