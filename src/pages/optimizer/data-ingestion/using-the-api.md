@@ -41,7 +41,7 @@ Sandbox instances can only be created in the North America region.
 
 ### Get your endpoint URL and tenant ID
 
-<Fragment src="../../includes/authentication/get-tenant-id.md" />
+<Fragment src="/_includes/authentication/get-tenant-id.md" />
 
 ## Header parameters
 
