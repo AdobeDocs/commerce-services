@@ -7,6 +7,8 @@
     "url": "https://github.com/AdobeDocs/commerce-services"
   },
   "scripts": {
+    "helper:render": "cd _helper && bundle exec rake render",
+    "helper:whatsnew": "cd _helper && bundle exec rake whatsnew",
     "dev": "npx --yes --prefer-online github:AdobeDocs/adp-devsite-utils dev",
     "buildNavigation": "npx --yes --prefer-online github:AdobeDocs/adp-devsite-utils buildNavigation -v",
     "buildRedirections": "npx --yes --prefer-online github:AdobeDocs/adp-devsite-utils buildRedirections -v",
@@ -33,7 +35,7 @@
     "skipRules": {
       "check-frontmatter": {
         "paths": [
-          "src/pages/includes"
+          "src/pages/_includes"
         ]
       }
     },
@@ -42,7 +44,8 @@
       "https://www.npmjs.com/package/@adobe/magento-storefront-event-collector",
       "https://www.npmjs.com/package/@adobe/magento-storefront-events-sdk",
       "https://www.jsdelivr.com/",
-      "https://www.adobe.com/privacy/experience-cloud.html"
+      "https://www.adobe.com/privacy/experience-cloud.html",
+      "https://example.com/"
     ]
   },
   "overrides": {
