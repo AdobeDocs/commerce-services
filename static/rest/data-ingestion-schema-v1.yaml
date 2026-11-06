@@ -320,10 +320,10 @@ paths:
                       "searchTypes": []
                     }
                   ]
-              ObjectAttributesMetadata:
-                summary: Create product attributes metadata for an OBJECT attribute
+              ObjectAndGeopointAttributesMetadata:
+                summary: Create product attributes metadata for OBJECT and GEOPOINT attributes
                 description: |
-                  Defines metadata for an attribute whose values are JSON objects (`OBJECT`).
+                  Defines metadata for attributes whose values are JSON objects (`OBJECT`) or latitude/longitude coordinate pairs (`GEOPOINT`).
                   The [product attributes](#operation/createProducts!path=attributes&t=request) values of such attributes are provided as JSON strings when you create products.
                 value:
                   [
@@ -332,6 +332,12 @@ paths:
                       "source": { "locale": "en-US" },
                       "label": "Swatch",
                       "dataType": "OBJECT"
+                    },
+                    {
+                      "code": "store_location",
+                      "source": { "locale": "en-US" },
+                      "label": "Store location",
+                      "dataType": "GEOPOINT"
                     }
                   ]
     patch:
@@ -1357,24 +1363,29 @@ paths:
                         ]
                     }
                   ]
-              ProductWithObjectAttribute:
-                summary: Create a product with an OBJECT attribute
+              ProductWithObjectAndGeopointAttributes:
+                summary: Create a product with OBJECT and GEOPOINT attributes
                 description: >
-                  Create a product with an attribute of the `OBJECT` type. The value of an `OBJECT` attribute is a JSON object
-                  that is provided as a JSON string.
+                  Create a product with attributes of the `OBJECT` and `GEOPOINT` types. The value of an `OBJECT` attribute is a JSON object
+                  that is provided as a JSON string. The value of a `GEOPOINT` attribute is a JSON string with exactly two numeric
+                  properties, `lat` (from -90 to 90) and `lon` (from -180 to 180).
                 value:
                   [
                     {
-                      "sku": "red-pants-swatch",
+                      "sku": "red-pants-austin",
                       "source": { "locale": "en-US" },
-                      "name": "red pants (swatch)",
-                      "slug": "red-pants-swatch.html",
+                      "name": "red pants (Austin)",
+                      "slug": "red-pants-austin.html",
                       "status": "ENABLED",
                       "attributes":
                         [
                           {
                             "code": "swatch",
                             "values": ["{\"name\": \"swatch\", \"color\": \"red\"}"]
+                          },
+                          {
+                            "code": "store_location",
+                            "values": ["{\"lat\": 30.2672, \"lon\": -97.7431}"]
                           }
                         ]
                     }
@@ -1947,6 +1958,10 @@ paths:
                             {
                               "code": "swatch",
                               "values": ["{\"name\": \"swatch\", \"color\": \"red\"}"]
+                            },
+                            {
+                              "code": "store_location",
+                              "values": ["{\"lat\": 30.2672, \"lon\": -97.7431}"]
                             }
                           ],
                         "images":
@@ -3453,6 +3468,7 @@ components:
           description: |
             Data type of the attribute.
             - `OBJECT`: Attribute values are JSON objects that are provided as JSON strings.
+            - `GEOPOINT`: Attribute values are latitude/longitude coordinate pairs that are provided as JSON strings, for example, `{"lat": 30.2672, "lon": -97.7431}`.
               Provide the values in the [`values`](#operation/createProducts!path=attributes/values&t=request) list of the product attribute.
           example: TEXT
           enum:
@@ -3461,6 +3477,7 @@ components:
             - INTEGER
             - BOOLEAN
             - OBJECT
+            - GEOPOINT
         filterable:
           type: boolean
           description: Indicates whether the attribute can be used to filter products.
@@ -3525,6 +3542,7 @@ components:
           description: |
             Data type of the attribute.
             - `OBJECT`: Attribute values are JSON objects that are provided as JSON strings.
+            - `GEOPOINT`: Attribute values are latitude/longitude coordinate pairs that are provided as JSON strings, for example, `{"lat": 30.2672, "lon": -97.7431}`.
               Provide the values in the [`values`](#operation/createProducts!path=attributes/values&t=request) list of the product attribute.
           example: TEXT
           enum:
@@ -3533,6 +3551,7 @@ components:
             - INTEGER
             - BOOLEAN
             - OBJECT
+            - GEOPOINT
         filterable:
           type: boolean
           description: Indicates whether the attribute can be used to filter products.
@@ -4548,7 +4567,7 @@ components:
           type: array
           description: |
             A list of value(s) associated with a specified attribute code.
-            For the attributes that have metadata type `OBJECT`, the list must contain exactly one value.
+            For the attributes that have metadata type `GEOPOINT` or `OBJECT`, the list must contain exactly one value.
           items:
             type: string
         variantReferenceId:
