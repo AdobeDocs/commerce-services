@@ -1,6 +1,6 @@
 ---
 title: Merchandising Services Developer Guide
-description: Use the Merchandising Services powered by Channels and Polices to implement large, complex catalogs and develop highly performant storefront experiences.
+description: Use the Merchandising Services powered by Catalog Views and Policies to implement large, complex catalogs and develop highly performant storefront experiences.
 keywords:
   - GraphQL
   - REST
@@ -19,7 +19,7 @@ keywords:
 
 This guide provides API reference and usage information for developers and commerce site administrators involved in storefront development, maintenance, and operations.
 
-Developers can use Adobe Commerce Optimizer Merchandising Services to implement large, complex catalogs, and develop highly performant storefront experiences. Merchandising Services provides a data model that separates product data from product context, allowing businesses to compose custom catalogs for different business models, such as B2B, B2C, and D2C and to manage the catalogs in a way that aligns with their go-to-market strategies.
+Developers can use Adobe Commerce Merchandising Services powered by Catalog Views and Policies to implement large, complex catalogs, and develop highly performant storefront experiences. Merchandising Services provides a composable catalog data model (CCDM) that separates product data from product context, allowing businesses to create custom catalog views for different business models, such as B2B, B2C, and D2C and to manage the catalogs in a way that aligns with their go-to-market strategies.
 
 ![Merchandising Services product data and context](../images/merchandising/merchandising-svcs-parts.png)
 
