@@ -558,7 +558,7 @@ paths:
                     "code": "name",
                     "source": { "locale": "en-US" }
                   }
-                ]
+                  ]
 
   /v1/catalog/categories/metadata:
     post:
@@ -815,7 +815,7 @@ paths:
                     "code": "bottom_description",
                     "source": { "locale": "en-US" }
                   }
-                ]
+                  ]
 
   /v1/catalog/categories:
     post:
@@ -1182,7 +1182,7 @@ paths:
                     "slug": "women/shoes/boots",
                     "source": { "locale": "en-US" }
                   }
-                ]
+                  ]
 
   /v1/catalog/products:
     post:
@@ -2000,7 +2000,7 @@ paths:
                         "configurations": [],
                         "bundles": [],
                         "externalIds": [],
-                        "createdAt": "2026-02-15T08:30:00.000Z",
+                        # "createdAt": "2026-02-15T08:30:00.000Z",
                         "modifiedAt": "2026-02-16T10:15:30.000Z"
                       }
                     ]
@@ -2286,7 +2286,7 @@ paths:
                               "customRoles": ["hero", "seasonal-banner"]
                             }
                           ],
-                        "createdAt": "2026-02-15T08:30:00.000Z",
+                        # "createdAt": "2026-02-15T08:30:00.000Z",
                         "modifiedAt": "2026-02-16T10:15:30.000Z"
                       }
                     ]
@@ -2300,7 +2300,7 @@ paths:
                         "sku": "red-pants",
                         "source": { "layer": "black-friday" },
                         "shortDescription": "Red pants at Black Friday prices",
-                        "createdAt": "2026-02-15T08:30:00.000Z",
+                        # "createdAt": "2026-02-15T08:30:00.000Z",
                         "modifiedAt": "2026-02-16T10:15:30.000Z"
                       }
                     ]
@@ -3993,7 +3993,7 @@ components:
       title: Catalog Product
       description: |
         A product returned by the [get products](#operation/getProducts) operation.
-        It has the fields of the [create products](#operation/createProducts) payload, plus the `createdAt` and `modifiedAt` fields.
+        It has the fields of the [create products](#operation/createProducts) payload, plus the `modifiedAt` field.
       allOf:
         - $ref: "#/components/schemas/FeedProduct"
         - $ref: "#/components/schemas/CatalogTimestamps"
@@ -4002,13 +4002,14 @@ components:
       description: Timestamps that are added to an entity returned by a get operation.
       type: object
       properties:
-        createdAt:
-          type: string
-          format: date-time
-          description: |
-            Date and time when the entity was created, in ISO 8601 format (UTC).
-            Returned only when the creation time is tracked for the entity.
-          example: "2026-02-15T08:30:00.000Z"
+        # createdAt is hidden until the creation time is available for the entities:
+        # createdAt:
+        #   type: string
+        #   format: date-time
+        #   description: |
+        #     Date and time when the entity was created, in ISO 8601 format (UTC).
+        #     Returned only when the creation time is tracked for the entity.
+        #   example: "2026-02-15T08:30:00.000Z"
         modifiedAt:
           type: string
           format: date-time
@@ -4018,7 +4019,7 @@ components:
       title: Catalog Product Layer
       description: |
         A product layer returned by the [get product layers](#operation/getProductLayers) operation.
-        It has the fields of the [create product layers](#operation/createProductLayers) payload that the layer was ingested with, plus the `createdAt` and `modifiedAt` fields.
+        It has the fields of the [create product layers](#operation/createProductLayers) payload that the layer was ingested with, plus the `modifiedAt` field.
         The `source.locale` field is omitted for a layer that applies to all locales.
       allOf:
         - $ref: "#/components/schemas/FeedProductLayer"
@@ -4027,7 +4028,7 @@ components:
       title: Catalog Product Metadata
       description: |
         Product attribute metadata returned by the [get product attribute metadata](#operation/getProductMetadata) operation.
-        It has the fields of the [create product attribute metadata](#operation/createProductMetadata) payload, plus the `createdAt` and `modifiedAt` fields.
+        It has the fields of the [create product attribute metadata](#operation/createProductMetadata) payload, plus the `modifiedAt` field.
         The `visibleIn` and `searchTypes` lists are always returned, and the `filterable`, `sortable`, and `searchable` flags that were not specified are returned as `false`.
       allOf:
         - $ref: "#/components/schemas/FeedProductMetadata"
@@ -4036,7 +4037,7 @@ components:
       title: Catalog Category Metadata
       description: |
         Category attribute metadata returned by the [get category attribute metadata](#operation/getCategoryMetadata) operation.
-        It has the fields of the [create category attribute metadata](#operation/createCategoryMetadata) payload, plus the `createdAt` and `modifiedAt` fields.
+        It has the fields of the [create category attribute metadata](#operation/createCategoryMetadata) payload, plus the `modifiedAt` field.
       allOf:
         - $ref: "#/components/schemas/FeedCategoryMetadata"
         - $ref: "#/components/schemas/CatalogTimestamps"
@@ -4044,7 +4045,7 @@ components:
       title: Catalog Category
       description: |
         A category returned by the [get categories](#operation/getCategories) operation.
-        It has the fields of the [create categories](#operation/createCategories) payload, plus the `createdAt` and `modifiedAt` fields.
+        It has the fields of the [create categories](#operation/createCategories) payload, plus the `modifiedAt` field.
         The `attributes`, `images`, and `families` lists are always returned.
       type: object
       required:
@@ -4089,13 +4090,14 @@ components:
           description: A list of category images.
           items:
             $ref: "#/components/schemas/CategoryImage"
-        createdAt:
-          type: string
-          format: date-time
-          description: |
-            Date and time when the category was created, in ISO 8601 format (UTC).
-            Returned only when the creation time is tracked for the category.
-          example: "2026-02-15T08:30:00.000Z"
+        # createdAt is hidden until the creation time is available for the entities:
+        # createdAt:
+        #   type: string
+        #   format: date-time
+        #   description: |
+        #     Date and time when the category was created, in ISO 8601 format (UTC).
+        #     Returned only when the creation time is tracked for the category.
+        #   example: "2026-02-15T08:30:00.000Z"
         modifiedAt:
           type: string
           format: date-time
@@ -4105,7 +4107,7 @@ components:
       title: Catalog Price Book
       description: |
         A price book returned by the [get price books](#operation/getPriceBooks) operation.
-        It has the fields of the [create price books](#operation/createPriceBooks) payload, plus the `createdAt` and `modifiedAt` fields.
+        It has the fields of the [create price books](#operation/createPriceBooks) payload, plus the `modifiedAt` field.
         A base price book is returned with its `currency`. A child price book is returned with its `parentId` and without a `currency`,
         which it inherits from the base price book.
       oneOf:
@@ -4119,7 +4121,7 @@ components:
       title: Catalog Product Price
       description: |
         A product price returned by the [get prices](#operation/getPrices) operation.
-        It has the fields of the [create prices](#operation/createPrices) payload, plus the `createdAt` and `modifiedAt` fields.
+        It has the fields of the [create prices](#operation/createPrices) payload, plus the `modifiedAt` field.
         The `discounts` and `tierPrices` lists are always returned.
       allOf:
         - $ref: "#/components/schemas/FeedPrices"
