@@ -207,8 +207,27 @@ paths:
             is used for filtering, sorting, and searching.
           - Use the `searchWeight` field to define the search weight for the product attribute.
           - Use the `searchTypes` field to define the search type for the product attribute.
+          - Use the `required` field to define whether the product attribute is mandatory.
 
         To update existing product attribute metadata, use the update operation.
+
+        <h3 id="GeographicCoordinates">Add a geographic coordinates attribute</h3>
+
+        Define a custom product metadata attribute that stores geographic coordinates by setting its `dataType` to `GEOPOINT`. Create the metadata before ingesting products that use the attribute.
+
+        When creating a product, supply the attribute's coordinates in its `attributes[].values` array as exactly one JSON string.
+        The string must contain exactly two numeric properties: `lat`, from -90 to 90, and `lon`, from -180 to 180.
+
+        **Product attribute value example**
+
+        ```json
+        {
+          "code": "store_location",
+          "values": ["{\"lat\": 30.2672, \"lon\": -97.7431}"]
+        }
+        ```
+
+        To view a complete request, go to [Create or replace products](#operation/createProducts) and select the *Create a product with OBJECT and GEOPOINT attributes* example from the dropdown in the <strong>Request samples</strong> panel.
 
       operationId: createProductMetadata
       parameters:
