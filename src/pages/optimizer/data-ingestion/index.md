@@ -32,6 +32,8 @@ Product metadata is required to index product data for discovery. Consequently, 
 
 You can also define custom metadata for additional product attributes. For example, you can define a `brand` attribute to allow product discovery and filtering by brand name.
 
+To define a custom product attribute that stores geographic coordinates, use the `GEOPOINT` data type. See [Create product attribute metadata](../../reference/rest/index.md#operation/createProductMetadata) for coordinate ingestion requirements and examples.
+
 For details, see [Product Metadata API](../../reference/rest/index.md#tag/ProductMetadata) in the *Data Ingestion API Reference*.
 
 ## Category metadata
