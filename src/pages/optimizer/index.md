@@ -45,6 +45,6 @@ Adobe Commerce Optimizer Merchandising Services provides the following APIs:
 
 **[Catalog Services API for CCDM](merchandising-services/index.md)**—GraphQL API to access rich view-model (read-only) catalog data to build product-related storefront experiences. This API is designed to be used by frontend applications to access catalog data.
 
-*Example Integration*: Use the Catalog Service API for composable commerce to query catalog data by sending a GraphQL query to filter products by attributes, such as category or brand, or retrieve localized pricing for a specific region. For example, a query can be sent to fetch products within a specific category and display their localized prices on a storefront page, enabling tailored and region-specific storefront experiences.
+*Example Integration*: Use the Catalog Service API for CCDM to query catalog data by sending a GraphQL query to filter products by attributes, such as category or brand, or retrieve localized pricing for a specific region. For example, a query can be sent to fetch products within a specific category and display their localized prices on a storefront page, enabling tailored and region-specific storefront experiences.
 
 *Example Integration*: Use the Merchandising API to query catalog data by sending a GraphQL query to retrieve product details, including name, price, and availability, for rendering on a storefront page. This enables dynamic and personalized storefront experiences.
