@@ -57,7 +57,7 @@ tags:
       [Implement categories on the storefront](https://developer.adobe.com/commerce/services/optimizer/merchandising-services/categories-storefront-implementation/).
 
   - name: Products
-    description: Create and manage product data including simple products, configurable products, and their variants. Control product visibility, attributes, images, and pricing. Retrieve ingested products by SKU to verify the catalog data
+    description: Create and manage product data including simple products, configurable products, and their variants. Control product visibility, attributes, images, and pricing. You can also retrieve ingested products by SKU to verify the catalog data
   - name: Price Books
     description: |
       Define pricing scopes to manage product prices across different customer tiers and markets. Price books support a hierarchical model, allowing up to three levels of nested child price books under each base price book. Each price book can reference a parent price book, forming a tree structure for pricing scopes.
@@ -429,8 +429,8 @@ paths:
         - The `locale` and `code` values are case-insensitive.
         - Data is returned after processing since ingestion operations are asynchronous.
         - Metadata is returned in no particular order, not necessarily the order of the requested codes.
-        - A code that is specified more than once is returned once. The limit of 100 codes counts every `code` parameter, including duplicates.
-        - A code that does not exist or was deleted is omitted from the response. If none of the codes is found, the response is an empty array.
+        - A code that is specified multiple times is returned once. The limit of 100 codes counts every `code` parameter, including duplicates.
+        - A code that does not exist or was deleted is omitted from the response. If no codes are found, the response is an empty array.
         - Fields that have no value are omitted from the metadata. List fields, such as `visibleIn` and `searchTypes`, are always returned and are empty if the attribute has no items.
 
         The request is rejected with a `400` status code if the `locale` is missing or blank, no `code` is specified, a `code` is blank, or more than 100 `code` parameters are specified.
@@ -692,8 +692,8 @@ paths:
         - The `locale` and `code` values are case-insensitive.
         - Data is returned after processing since ingestion operations are asynchronous.
         - Metadata is returned in no particular order, not necessarily the order of the requested codes.
-        - A code that is specified more than once is returned once. The limit of 100 codes counts every `code` parameter, including duplicates.
-        - A code that does not exist or was deleted is omitted from the response. If none of the codes is found, the response is an empty array.
+        - A code that is specified multiple times is returned once. The limit of 100 codes counts every `code` parameter, including duplicates.
+        - A code that does not exist or was deleted is omitted from the response. If no codes are found, the response is an empty array.
         - Fields that have no value are omitted from the metadata.
 
         The request is rejected with a `400` status code if the `locale` is missing or blank, no `code` is specified, a `code` is blank, or more than 100 `code` parameters are specified.
@@ -1015,8 +1015,8 @@ paths:
         - The `locale` and `slug` values are case-insensitive.
         - Data is returned after processing since ingestion operations are asynchronous.
         - Categories are returned in no particular order, not necessarily the order of the requested slugs.
-        - A slug that is specified more than once is returned once. The limit of 100 slugs counts every `slug` parameter, including duplicates.
-        - A slug that does not exist or was deleted is omitted from the response. If none of the slugs is found, the response is an empty array.
+        - A slug that is specified multiple times is returned once. The limit of 100 slugs counts every `slug` parameter, including duplicates.
+        - A slug that does not exist or was deleted is omitted from the response. If no slugs are found, the response is an empty array.
         - Fields that have no value are omitted from a category. List fields, such as `attributes`, `images`, and `families`, are always returned and are empty if the category has no items.
 
         The request is rejected with a `400` status code if the `locale` is missing or blank, no `slug` is specified, a `slug` is blank, or more than 100 `slug` parameters are specified.
@@ -1902,8 +1902,8 @@ paths:
         - The `locale` and `sku` values are case-insensitive.
         - Data is returned after processing since ingestion operations are asynchronous.
         - Products are returned in no particular order, not necessarily the order of the requested SKUs.
-        - A SKU that is specified more than once is returned once. The limit of 100 SKUs counts every `sku` parameter, including duplicates.
-        - A SKU that does not exist or was deleted is omitted from the response. If none of the SKUs is found, the response is an empty array.
+        - A SKU that is specified multiple times is returned once. The limit of 100 SKUs counts every `sku` parameter, including duplicates.
+        - A SKU that does not exist or was deleted is omitted from the response. If no SKUs are found, the response is an empty array.
         - Fields that have no value are omitted from a product. List fields, such as `attributes` are always returned and are empty if the product has no items.
 
         The request is rejected with a `400` status code if the `locale` is missing or blank, no `sku` is specified, a `sku` is blank, or more than 100 `sku` parameters are specified.
@@ -2233,8 +2233,8 @@ paths:
         - The `layer`, `locale`, and `sku` values are case-insensitive.
         - Data is returned after processing since ingestion operations are asynchronous.
         - Product layers are returned in no particular order, not necessarily the order of the requested SKUs.
-        - A SKU that is specified more than once is returned once. The limit of 100 SKUs counts every `sku` parameter, including duplicates.
-        - A SKU that does not have the layer or whose layer was deleted is omitted from the response. If none of the SKUs is found, the response is an empty array.
+        - A SKU that is specified multiple times is returned once. The limit of 100 SKUs counts every `sku` parameter, including duplicates.
+        - A SKU that does not have the layer or whose layer was deleted is omitted from the response. If no SKUs are found, the response is an empty array.
         - Only the fields that the layer was ingested with are returned. The layer is not merged with the base product.
         - Fields that have no value are omitted from a layer. A list field is returned if the layer was ingested with it, and is empty if the layer cleared the list.
 
@@ -2717,8 +2717,8 @@ paths:
         - The `priceBookId` values are case-insensitive.
         - Data is returned after processing since ingestion operations are asynchronous.
         - Price books are returned in no particular order, not necessarily the order of the requested IDs.
-        - A price book ID that is specified more than once is returned once. The limit of 100 IDs counts every `priceBookId` parameter, including duplicates.
-        - A price book that does not exist or was deleted is omitted from the response. If none of the price books is found, the response is an empty array.
+        - A price book ID that is specified multiple times is returned once. The limit of 100 IDs counts every `priceBookId` parameter, including duplicates.
+        - A price book that does not exist or was deleted is omitted from the response. If price books are found, the response is an empty array.
         - A base price book is returned with its `currency`. A child price book is returned with its `parentId` and without a `currency`, which it inherits from the base price book.
         - Fields that have no value are omitted from a price book.
 
@@ -3186,8 +3186,8 @@ paths:
         - The `priceBookId` and `sku` values are case-insensitive.
         - Data is returned after processing since ingestion operations are asynchronous.
         - Prices are returned in no particular order, not necessarily the order of the requested SKUs.
-        - A SKU that is specified more than once is returned once. The limit of 100 SKUs counts every `sku` parameter, including duplicates.
-        - A SKU that does not have a price in the price book or whose price was deleted is omitted from the response. If none of the SKUs is found, the response is an empty array.
+        - A SKU that is specified multiple times is returned once. The limit of 100 SKUs counts every `sku` parameter, including duplicates.
+        - A SKU that does not have a price in the price book or whose price was deleted is omitted from the response. If no SKUs are found, the response is an empty array.
         - Only the prices defined in the specified price book are returned. The [price lookup](#tag/Prices) through the parent price books is not applied.
         - Fields that have no value are omitted from a price. List fields, such as `discounts` and `tierPrices`, are always returned and are empty if the price has no items.
 
