@@ -1,6 +1,5 @@
 ---
 title: Test Data Ingestion API operations
-edition: saas
 description: Learn how to test Data Ingestion REST API operations using the interactive Try It feature in the API Reference documentation
 keywords:
   - REST
@@ -8,6 +7,9 @@ keywords:
   - Backend Development
   - Troubleshooting
 ---
+
+<Edition slots="text" backgroundColor="green"/>
+[SaaS only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions)
 
 # Test Data Ingestion API operations
 
@@ -36,7 +38,7 @@ Before testing the API, ensure you have:
 
 ## Step 1: Get credentials
 
-1. Open the [Data Ingestion API Reference](https://developer.adobe.com/commerce/services/reference/rest/).
+1. Open the [Data Ingestion API Reference](../../reference/rest/index.md).
 
 2. Locate the **Get Credentials** section at the top of the page.
 
@@ -56,11 +58,11 @@ Follow these steps to test any API operation using the interactive documentation
 
 1. **Choose an operation to test:**
 
-   - Navigate to any endpoint in the [Data Ingestion API Reference](https://developer.adobe.com/commerce/services/reference/rest/).
+   - Navigate to any endpoint in the [Data Ingestion API Reference](../../reference/rest/index.md).
 
    - Click **Try it** for the operation you want to test.
 
-2.  **Configure the endpoint:** In the request template, replace the `tenantId` placeholder with your instance ID.
+1.  **Configure the endpoint:** In the request template, replace the `tenantId` placeholder with your instance ID.
 
 1. **Add authentication:** Select the **Parameters** tab, and replace the **Authorization** value with the  access token you generated in Step 1.
 
@@ -76,11 +78,11 @@ Follow these steps to test any API operation using the interactive documentation
    - Examine the response body and headers
    - Note any error messages for troubleshooting
 
-## Example: Testing the Create Metadata operation
+## Example: Testing the Create ProductMetadata operation
 
-Here's a practical example of testing the Create Metadata endpoint:
+Here's a practical example of testing the Create ProductMetadata endpoint:
 
-1. Navigate to **POST /v1/catalog/attributes/metadata** in the API Reference.
+1. Navigate to the **ProductMetadata** section, then locate [**POST /v1/catalog/products/metadata**](../../reference/rest/index.md#operation/createProductMetadata) in the API Reference.
 2. Click **Try it**.
 3. Enter your `tenantId` in the path parameter.
 4. Add your access token to the Authorization header.
@@ -106,7 +108,7 @@ Here's a practical example of testing the Create Metadata endpoint:
        "searchWeight": 1,
        "searchTypes": [
          "AUTOCOMPLETE"
-       ]
+      ]
     }
    ]
    ```
@@ -161,6 +163,6 @@ Here's a practical example of testing the Create Metadata endpoint:
 
 After successfully testing API operations:
 
-1. **Integrate with your application** - Use the [Get Started guide](using-the-api.md) to implement API calls in your code
-3. **Explore SDKs** - Consider using the [TypeScript](https://github.com/adobe-commerce/aco-ts-sdk) or [Java](https://github.com/adobe-commerce/aco-java-sdk) SDKs for easier integration
-4. **Review limitations** - Understand [rate limits and boundaries](using-the-api.md#limitations) for production use.
+1. **Integrate with your application** - Use the [Get Started guide](using-the-api.md) to implement API calls in your code.
+2. **Explore SDKs** - Consider using the [TypeScript](https://github.com/adobe-commerce/aco-ts-sdk) or [Java](https://github.com/adobe-commerce/aco-java-sdk) SDKs for easier integration.
+3. **Review limitations** - Understand [rate limits and boundaries](using-the-api.md#limitations) for production use.

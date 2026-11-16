@@ -299,7 +299,7 @@ Unsubscribes from the `searchRequestSent` event.
 
 |Name|Required|Description|
 |---|---|---|
-|`handler`|Yes Event handler|
+|`handler`|Yes|Event handler|
 
 Syntax:
 

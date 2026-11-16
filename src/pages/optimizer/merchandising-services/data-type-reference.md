@@ -9,7 +9,7 @@ keywords:
 
 # GraphQL API Types Summary - Merchandising API
 
-This summary provides a detailed overview of the types used in the GraphQL API Merchandising API to  clarify the structure and relationships of the data managed by the API. For detailed information on each type and its fields, see the [Merchandising API reference](https://developer.adobe.com/commerce/services/reference/graphql/).
+This summary provides a detailed overview of the types used in the GraphQL API Merchandising API to  clarify the structure and relationships of the data managed by the API. For detailed information on each type and its fields, see the [Merchandising API reference](../../reference/graphql/index.md).
 
 This document provides a comprehensive overview of the types used in the following queries in the GraphQL API Merchandising API:
 
@@ -113,6 +113,10 @@ Abstract types that define common contracts:
 
 - **MediaGalleryInterface** - Interface for media gallery items
 
+## Union Types
+
+- **ProductViewMedia** - An ordered product gallery entry that resolves to either `ProductViewImage` or `ProductViewVideo`
+
 ## Enum Types
 
 Enumeration types with predefined values:
@@ -131,6 +135,9 @@ ProductView (interface)
 ├── SimpleProductView (object)
 ├── ComplexProductView (object)
 ├── ProductViewAttribute (object)
+├── ProductViewMedia (union)
+│   ├── ProductViewImage (object)
+│   └── ProductViewVideo (object)
 ├── ProductViewPrice (object)
 ├── ProductViewOption (object)
 └── ProductViewVariant (object)

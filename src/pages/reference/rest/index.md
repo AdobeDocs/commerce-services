@@ -9,8 +9,6 @@ keywords:
 layout: none
 ---
 
-import GetCredentialOAuthS2s from '/src/pages/credential/GetCredentialOAuthS2s.js'
-
-<GetCredentialOAuthS2s />
+<GetCredential />
 
 <RedoclyAPIBlock src='/commerce/services/rest/data-ingestion-schema-v1.yaml' hideLoading />

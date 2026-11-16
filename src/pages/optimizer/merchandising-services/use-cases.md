@@ -1,6 +1,5 @@
 ---
 title: Use cases for the Merchandising API
-edition: saas
 description: Learn about the limitations and considerations when using the Merchandising API to retrieve catalog data from Adobe Commerce Optimizer.
 keywords:
   - GraphQL
@@ -9,29 +8,36 @@ keywords:
   - Performance
 ---
 
+<Edition slots="text" backgroundColor="green"/>
+[SaaS only](https://experienceleague.adobe.com/en/docs/commerce/user-guides/product-solutions)
+
 # Use cases for the Merchandising API
 
-The Merchandising API supports various e-commerce scenarios. The catalog data delivered by the API is filtered based on the request headers and the catalog view, catalog source, policy, and price book configuration in Adobe Commerce Optimizer. This allows you to create tailored storefront experiences for different customer segments, channels, and regions.
+The Merchandising API supports various e-commerce scenarios. The catalog data delivered by the API is filtered based on the request headers and the catalog view, catalog source, policy, and price book configuration in Adobe Commerce Optimizer. This allows you to create tailored storefront experiences for different customer segments, channels, and regions. A catalog view can also be configured as a private catalog view, restricting access to clients that present a valid signed access token. See [Authentication](using-the-api.md#authentication).
 
-### E-commerce Storefronts
+**E-commerce Storefronts:**
 
-* **Product Catalogs**: Display product listings with filtering and sorting
-* **Search Functionality**: Implement product search with autocomplete
-* **Product Details**: Show comprehensive product information and variants
+* **Category management**: Build category navigation trees, menus, and breadcrumbs
+* **Product catalogs**: Display product listings with filtering and sorting
+* **[Product details](#return-product-details)**: Show comprehensive product information and variants
+* **Category management**: Build category navigation trees, menus, and breadcrumbs
+* **Recommendations**: Display personalized, cross-sell, and upsell product recommendations
+* **[Search functionality](#product-search)**: Implement product search with autocomplete
 
-### Multi-channel Commerce
+**Multi-channel Commerce:**
 
-* **B2B Portals**: Customize catalogs for business customers
-* **Marketplace Integration**: Power third-party marketplace listings
-* **Mobile Apps**: Provide consistent data across mobile platforms
+* **B2B portals**: Customize catalogs for business customers, including private catalog views for contracted assortments and account-specific pricing restricted to authorized buyers
+* **Marketplace integration**: Power third-party marketplace listings
+* **[External checkout](#return-external-ids-for-a-product)**: Pass a product's `externalIds` to third-party checkout and marketplace providers that identify the product using their own system
+* **Mobile apps**: Provide consistent data across mobile platforms
 * **Headless Commerce**: Support decoupled frontend architectures
 
-### Personalization
+**Personalization:**
 
-* **Customer Segmentation**: Deliver targeted product recommendations
-* **Regional Pricing**: Display locale-specific pricing and availability
-* **Dynamic Content**: Adapt product displays based on user behavior
-* **A/B Testing**: Support experimentation with different product presentations
+* **Customer segmentation**: Deliver targeted product recommendations
+* **Regional pricing**: Display locale-specific pricing and availability
+* **Dynamic content**: Adapt product displays based on user behavior
+* **A/B testing**: Support experimentation with different product presentations
 
 ## Available Queries
 
@@ -39,11 +45,15 @@ The Merchandising API provides several GraphQL queries designed for different us
 
 | Query | Description | Use Case |
 |-------|-------------|----------|
+| `attributeMetadata` | Return a list of product attribute codes that can be used for sorting or filtering in a `productSearch` query | Dynamic filter UIs, sorting options for search and listing pages |
+| `categoryTree` | Retrieve category tree nodes, optionally filtered by slugs and limited by depth | Category navigation, building category menus, breadcrumbs |
+| `navigation` | Retrieve the navigation tree for a given product family | Site navigation menus, header and footer navigation |
 | `products` | Retrieve detailed information about specific products by SKU | Product detail pages, product comparison |
 | `productSearch` | Search products with filters, sorting, and pagination | Search results, category pages, product listings |
+| `recommendations` | Retrieve personalized product recommendations | Related products, cross-sells, and upsells |
 | `refineProduct` | Get variant-specific information for configurable products | Product option selection, variant switching |
 | `variants` | Retrieve all variants of a configurable product | Product detail pages, variant galleries |
-| `recommendations` | Retrieve personalized product recommendations | Related products, cross-sells, and upsells |
+| `recommendationsByUnitIds` | Retrieve recommendation units by their unique ID to use on the storefront | Display recommendations on the storefront. [Supported types](https://experienceleague.adobe.com/en/docs/commerce/optimizer/merchandising/recommendations/types) include personalized, cross-sell and up-sells, popularity, and high-performing.|
 
 ## Query Examples
 
@@ -51,7 +61,7 @@ The following examples show how to retrieve product information using the produc
 
 <InlineAlert variant="info" slots="text" />
 
-For details about query input and output fields with additional examples, see the <a href="https://developer.adobe.com/commerce/services/reference/graphql/" target="_blank" rel="noopener noreferrer">Merchandising API Reference</a>.
+For details about query input and output fields with additional examples, see the [Merchandising API Reference](../../reference/graphql/index.md).
 
 ### Return product details
 
@@ -68,13 +78,45 @@ Use the [`productSearch` query](#product-search) to return product listing page 
 
 The query returns a `ProductView` output object with the product content values.
 
-#### Return details about a simple product
+### Return the ordered media gallery
 
-The following query returns details about simple product with sku `cru-sus-prm-2014`. `
+Use the `gallery` field to retrieve product images and videos in resolved display order. The field returns the `ProductViewMedia` union, so use inline fragments to request fields for each media type.
+
+```graphql
+query GetProductMediaGallery {
+  products(skus: ["cru-sus-prm-2014"]) {
+    sku
+    gallery {
+      __typename
+      ... on ProductViewImage {
+        url
+        label
+        roles
+      }
+      ... on ProductViewVideo {
+        url
+        title
+        description
+        preview {
+          url
+          label
+          roles
+        }
+      }
+    }
+  }
+}
+```
+
+The API resolves the gallery order before returning the response. If an image and video have the same position, the image is returned first. Preserve the returned order when rendering the gallery. The `sortOrder` values used to resolve the gallery are not exposed. The existing `images` and `videos` fields remain available for backward compatibility.
+
+### Return details about a simple product
+
+The following query returns details about a simple product with SKU `cru-sus-prm-2014`.
 
 <CodeBlock slots="heading, code" repeat="2" languages="JSON" />
 
-**Request**
+**Request:**
 
 ```graphql
 query {
@@ -144,7 +186,7 @@ query {
 }
 ```
 
-**Response**
+**Response:**
 
 ```json
 {
@@ -243,6 +285,7 @@ query {
         "request-id": "a95140e9-47f5-4f51-9386-8b6bbf50fd48"
     }
 }
+```
 
 #### Return details about a complex product
 
@@ -258,7 +301,7 @@ For each part type, the default configuration is to use the standard part qualit
 
 <CodeBlock slots="heading, code" repeat="2" languages="JSON" />
 
-**Request**
+**Request:**
 
 ```graphql
 query GetBundleProductDetails {
@@ -356,7 +399,7 @@ query GetBundleProductDetails {
 }
 ```
 
-**Response**
+**Response:**
 
 ```json
 {
@@ -667,13 +710,66 @@ query GetBundleProductDetails {
 }
 ```
 
+#### Return external IDs for a product
+
+A product can carry one or more external identifiers from other systems, such as an external checkout provider or a marketplace. Use the `externalIds` field to retrieve each identifier's value along with the system that issued it.
+
+<InlineAlert variant="info" slots="text"/>
+
+The `externalId` field is deprecated and returns only a single identifier. Use `externalIds` instead, which supports multiple identifiers per product.
+
+The following query returns the external IDs for the SKU `cru-sus-prm-2014`.
+
+<CodeBlock slots="heading, code" repeat="2" languages="JSON" />
+
+**Request:**
+
+```graphql
+query {
+    products(skus: ["cru-sus-prm-2014"]) {
+        sku
+        externalIds {
+            id
+            origin
+        }
+    }
+}
+```
+
+**Response:**
+
+```json
+{
+    "data": {
+        "products": [
+            {
+                "sku": "cru-sus-prm-2014",
+                "externalIds": [
+                    {
+                        "id": "cru-sus-prm-2014",
+                        "origin": "AdobeCommerce"
+                    },
+                    {
+                        "id": "EXT-88213",
+                        "origin": "ExternalCheckout"
+                    }
+                ]
+            }
+        ]
+    },
+    "extensions": {
+        "request-id": "3f8f0e2e-6f9d-4b7b-9c9a-2f9b6c9b1a11"
+    }
+}
+```
+
 ### Product Search
 
 Return information about simple products. This examples uses the productSearch query to return information about battery products for Cruz Verde 2014 models.
 
 <CodeBlock slots="heading, code" repeat="2" languages="JSON" />
 
-**Request**
+**Request:**
 
 ```graphql
 query {
@@ -700,7 +796,7 @@ query {
 }
 ```
 
-**Response**
+**Response:**
 
 ```json
 {

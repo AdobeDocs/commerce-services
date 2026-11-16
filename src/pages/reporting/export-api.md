@@ -11,7 +11,7 @@ keywords:
 
 The Adobe Commerce Reporting Export API allows you to access some of the raw data behind your Adobe Commerce Reporting dashboard.
 
-Before using the export API, make sure you [authenticate](../reporting/index.md#authentication) your connection.
+Before using the export API, make sure you [authenticate](index.md#authentication) your connection.
 
 <InlineAlert variant="info" slots="text" />
 
@@ -151,7 +151,7 @@ curl -H "X-RJM-API-Key: your\_key" https://api.rjmetrics.com/0.1/figure
 
 The `POST /figure/:id/export/format=<FormatType>` call outputs the data used to create the figure with the specified ID. Figure IDs can be found in the "Export Figure" dialog in the Adobe Commerce Reporting dashboard interface.
 
-![Export figure dialog](../_images/reporting/figure-id.png)
+![Export figure dialog](../images/reporting/figure-id.png)
 
 If a figure was created using the [Visual Report Builder](https://experienceleague.adobe.com/en/docs/commerce-business-intelligence/mbi/build/reports/ess-rpt-build-visual), you can specify an output format of either `.csv` or `.json`. If a figure was created using the [SQL Report Builder](https://experienceleague.adobe.com/en/docs/commerce-business-intelligence/mbi/analyze/sql/sql-rpt-bldr), you can specify an output format of `.csv` only.
 
@@ -201,7 +201,7 @@ curl -H "X-RJM-API-Key: your\_key" https://api.rjmetrics.com/0.1/chart
 
 The `POST /chart/:id/export/format=<FormatType>\]` call outputs the data used to create the specified chart. Chart IDs can be found in the "Export Chart" dialog in the Adobe Commerce Reporting dashboard interface.
 
-![Export chart dialog](../_images/reporting/chart-id.png)
+![Export chart dialog](../images/reporting/chart-id.png)
 
 The user can specify an output format of either `.csv` or `.json`.
 

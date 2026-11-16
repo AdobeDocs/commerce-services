@@ -11,13 +11,13 @@ keywords:
 
 The Adobe Commerce Reporting Import API allows you to push arbitrary data into your data warehouse using REST.
 
-Before using the import API, make sure you [authenticate](../reporting/index.md#authentication) your connection.
+Before using the import API, make sure you [authenticate](index.md#authentication) your connection.
 
 ## Return Codes
 
 The Data Import API uses standard HTTP return codes to indicate the status of a request. Your application should handle each of the following return statuses.
 
-Codes in the 2xx range indicate a successful transaction, codes in the 4xx range indicate a bad request, and codes in the 5xx range indicate an error with Adobe Commerce Reporting. If errors in the 5xx range persist, please contact [support](https://experienceleague.adobe.com/docs/commerce-knowledge-base/kb/help-center-guide/magento-help-center-user-guide.html).
+Codes in the 2xx range indicate a successful transaction, codes in the 4xx range indicate a bad request, and codes in the 5xx range indicate an error with Adobe Commerce Reporting. If errors in the 5xx range persist, please contact [support](https://experienceleague.adobe.com/en/docs/support-resources/adobe-support-tools-guide/adobe-commerce-support/adobe-commerce-help-center-user-guide).
 
 *  200 OK - request was successful.
 *  201 Created - new data was added as a result of the request.
