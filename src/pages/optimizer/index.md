@@ -41,7 +41,7 @@ Adobe Commerce Optimizer Merchandising Services provides the following APIs:
 
 **[Data Ingestion API](data-ingestion/index.md)**—REST API to add and manage product and pricing data for merchandising across multiple business channels and locales. Data includes products, product attribute metadata, price books, and prices. The API expects data in JSON format, which can be added to the Merchandising services data pipeline directly using the API or ingested from third-party systems.
 
-**Catalog Views and Policies**—From the UI, you can create catalog views that define how products are distributed across sales channels, locales (catalog sources), and applied policies. These configured catalog views enable the delivery of tailored, composable catalog with minimal development effort. For details, see the [Adobe Commerce Optimizer Guide](https://experienceleague.adobe.com/en/docs/commerce/optimizer/overview).
+**Catalog Views and Policies**—From the UI, you can create catalog views that define how products are distributed across sales channels, catalog sources, and applied policies. These configured catalog views enable the delivery of tailored, composable catalog with minimal development effort. For details, see the [Adobe Commerce Optimizer Guide](https://experienceleague.adobe.com/en/docs/commerce/optimizer/overview).
 
 **[Catalog Services GraphQL API for CCDM](merchandising-services/index.md)**—GraphQL API to access rich view-model (read-only) catalog data to build product-related storefront experiences. This API is designed to be used by frontend applications to access catalog data.
 
