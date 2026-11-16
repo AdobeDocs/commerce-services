@@ -19,7 +19,7 @@ keywords:
 
 <InlineAlert variant="info" slots="text"/>
 
-This guide provides API reference and usage information for developers and commerce site administrators who build, maintain, and operate storefronts using the composable Catalog service for Adobe Commerce Optimizer. If you are using Adobe Commerce on cloud infrastructure or on-premises, see the [Catalog Service, Live Search, and Product Recommendations documentation](https://experienceleague.adobe.com/en/docs/commerce/user-guides/home#available-services).
+This guide provides API reference and usage information for developers and commerce site administrators who build, maintain, and operate storefronts using Adobe Commerce Merchandising Services with the composable catalog data model (CCDM). If you are using Adobe Commerce on cloud infrastructure or on-premises, see the [Catalog Service, Live Search, and Product Recommendations documentation](https://experienceleague.adobe.com/en/docs/commerce/user-guides/home#available-services).
 
 Developers can use Adobe Commerce Merchandising Services powered by Catalog Views and Policies to implement large, complex catalogs, and develop highly performant storefront experiences. Merchandising Services provides a composable catalog data model (CCDM) that separates product data from product context, allowing businesses to create custom catalog views for different business models, such as B2B, B2C, and D2C and to manage the catalogs in a way that aligns with their go-to-market strategies.
 
