@@ -202,7 +202,8 @@ paths:
         When creating product attribute metadata:
           - Each product attribute requires a unique `code` and `source`.
           - Use the `dataType` field to define the data type for the product attribute.
-          - Use the `visibleIn` field to define where the product attribute is displayed on the storefront.
+          - Use the `visibleIn` field to define the product attribute's storefront roles. The `MISC` role
+            keeps the attribute available for backend and integration use without making it visible on PDP or PLP.
           - Use the `filterable`, `sortable`, and `searchable` fields to define how the product attribute
             is used for filtering, sorting, and searching.
           - Use the `searchWeight` field to define the search weight for the product attribute.
@@ -3438,12 +3439,16 @@ components:
             * `PRODUCT_LISTING`: Product attribute is visible on Product Listing Page.
             * `SEARCH_RESULTS`: Product attribute is visible on Search Results Page.
             * `PRODUCT_COMPARE`: Product attribute is visible on Product Compare Page.
+            * `MISC`: Product attribute is retained and available for backend and integration use through supported APIs.
+              This role alone does not make the attribute visible on PDP or PLP.
+            Roles are additive. `MISC` does not enable search, filtering, or sorting.
           items:
             enum:
               - PRODUCT_DETAIL
               - PRODUCT_LISTING
               - SEARCH_RESULTS
               - PRODUCT_COMPARE
+              - MISC
         label:
           type: string
           description: Label for the attribute that is displayed in user interfaces.
@@ -3510,12 +3515,16 @@ components:
             * `PRODUCT_LISTING`: Product attribute is visible on Product Listing Page.
             * `SEARCH_RESULTS`: Product attribute is visible on Search Results Page.
             * `PRODUCT_COMPARE`: Product attribute is visible on Product Compare Page.
+            * `MISC`: Product attribute is retained and available for backend and integration use through supported APIs.
+              This role alone does not make the attribute visible on PDP or PLP.
+            Roles are additive. `MISC` does not enable search, filtering, or sorting.
           items:
             enum:
               - PRODUCT_DETAIL
               - PRODUCT_LISTING
               - SEARCH_RESULTS
               - PRODUCT_COMPARE
+              - MISC
         label:
           type: string
           description: Label for the attribute that is displayed in user interfaces.
