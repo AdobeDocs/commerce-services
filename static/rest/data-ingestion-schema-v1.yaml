@@ -321,6 +321,21 @@ paths:
                       "searchTypes": []
                     }
                   ]
+              MiscBackendOnlyAttribute:
+                summary: Create metadata for a backend-only attribute
+                description: |
+                  Defines an attribute that is retained for backend and integration use.
+                  With only the `MISC` role, the attribute is not displayed on PDP or PLP.
+                value:
+                  [
+                    {
+                      "code": "internal_reference",
+                      "source": { "locale": "en-US" },
+                      "label": "Internal Reference",
+                      "dataType": "TEXT",
+                      "visibleIn": ["MISC"]
+                    }
+                  ]
               ObjectAttributesMetadata:
                 summary: Create product attributes metadata for an OBJECT attribute
                 description: |
