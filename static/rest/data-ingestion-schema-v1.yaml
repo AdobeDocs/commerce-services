@@ -325,7 +325,7 @@ paths:
                 summary: Create metadata for a backend-only attribute
                 description: |
                   Defines an attribute that is retained for backend and integration use.
-                  With only the `MISC` role, the attribute is not displayed on PDP or PLP.
+                  If the attribute is granted only the `MISC` role, it is not displayed on PDP or PLP.
                 value:
                   [
                     {
