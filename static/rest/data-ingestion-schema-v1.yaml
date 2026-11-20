@@ -203,7 +203,7 @@ paths:
           - Each product attribute requires a unique `code` and `source`.
           - Use the `dataType` field to define the data type for the product attribute.
           - Use the `visibleIn` field to define the product attribute's storefront roles. The `MISC` role
-            keeps the attribute available for backend and integration use without making it visible on PDP or PLP.
+            makes the attribute available for backend and integration use without making it visible on product details pages (PDP) or product listing pages (PLP).
           - Use the `filterable`, `sortable`, and `searchable` fields to define how the product attribute
             is used for filtering, sorting, and searching.
           - Use the `searchWeight` field to define the search weight for the product attribute.
