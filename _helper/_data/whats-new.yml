@@ -2,7 +2,7 @@
 title: What's new
 description: This section contains the changes made in the last 60 days. Minor updates,
   such as copy editing, are excluded from this list.
-updated: Fri Nov 20 15:08:34 2026
+updated: Fri Nov 27 15:08:33 2026
 entries:
 - description: The Product Metadata `visibleIn` field in the [ingestion schema](https://developer.adobe.com/commerce/services/reference/rest/#tag/ProductMetadata)
     now supports the `MISC` role. Use this role to keep an attribute available for
